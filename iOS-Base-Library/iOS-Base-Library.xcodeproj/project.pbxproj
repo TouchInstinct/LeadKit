@@ -202,7 +202,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if hash tailor 2>/dev/null; then\n    tailor\nelse\n    echo \"warning: Please install Tailor from https://tailor.sh\"\nfi\n\ninclude:\n- Source            # Inspect all Swift files under \"Source/\"\nexclude:\n- '**Tests.swift'   # Ignore Swift files that end in \"Tests\"\n- Source/Carthage   # Ignore Swift files under \"Source/Carthage/\"\n- Source/Pods       # Ignore Swift files under \"Source/Pods/\"";
+			shellScript = "if hash tailor 2>/dev/null; then\n    tailor\nelse\n    echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
 		};
 		952A639F1C540E4F00E3572C /* Swiftline */ = {
 			isa = PBXShellScriptBuildPhase;
