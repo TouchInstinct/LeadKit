@@ -71,12 +71,28 @@
 			children = (
 				952A638C1C5408AC00E3572C /* AppDelegate.swift */,
 				952A638E1C5408AC00E3572C /* ViewController.swift */,
+				952A63A01C54370200E3572C /* SupportingFiles */,
+				952A63A21C5437CA00E3572C /* Resourses */,
+			);
+			path = "iOS-Base-Library";
+			sourceTree = "<group>";
+		};
+		952A63A01C54370200E3572C /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				952A63981C5408AC00E3572C /* Info.plist */,
+			);
+			name = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		952A63A21C5437CA00E3572C /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
 				952A63901C5408AC00E3572C /* Main.storyboard */,
 				952A63931C5408AC00E3572C /* Assets.xcassets */,
 				952A63951C5408AC00E3572C /* LaunchScreen.storyboard */,
-				952A63981C5408AC00E3572C /* Info.plist */,
 			);
-			path = "iOS-Base-Library";
+			name = Resourses;
 			sourceTree = "<group>";
 		};
 		A4335B72714901204F872B8A /* Pods */ = {
@@ -355,6 +371,7 @@
 			baseConfigurationReference = DF472984BADA33609A7AA065 /* Pods-iOS-Base-Library.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "iOS-Base-Library/iOSBaseLibraryPrefixHeader.pch";
 				INFOPLIST_FILE = "iOS-Base-Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.touchin.iOS-Base-Library";
@@ -367,6 +384,7 @@
 			baseConfigurationReference = 6F5B2B4F5A576568CDD04A2A /* Pods-iOS-Base-Library.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "iOS-Base-Library/iOSBaseLibraryPrefixHeader.pch";
 				INFOPLIST_FILE = "iOS-Base-Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.touchin.iOS-Base-Library";

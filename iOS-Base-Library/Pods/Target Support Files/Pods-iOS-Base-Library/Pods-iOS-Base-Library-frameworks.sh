@@ -85,7 +85,9 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-iOS-Base-Library/Alamofire.framework"
+  install_framework "Pods-iOS-Base-Library/CocoaLumberjack.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-iOS-Base-Library/Alamofire.framework"
+  install_framework "Pods-iOS-Base-Library/CocoaLumberjack.framework"
 fi

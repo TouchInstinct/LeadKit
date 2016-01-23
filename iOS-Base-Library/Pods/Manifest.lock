@@ -1,10 +1,19 @@
 PODS:
   - Alamofire (3.1.5)
+  - CocoaLumberjack/Core (2.2.0)
+  - CocoaLumberjack/Default (2.2.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.2.0):
+    - CocoaLumberjack/Default
+  - CocoaLumberjack/Swift (2.2.0):
+    - CocoaLumberjack/Extensions
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
+  - CocoaLumberjack/Swift (~> 2.2.0)
 
 SPEC CHECKSUMS:
   Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
+  CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
 
 COCOAPODS: 0.39.0

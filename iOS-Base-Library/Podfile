@@ -9,5 +9,6 @@ inhibit_all_warnings!
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'iOS-Base-Library' do
-	pod 'Alamofire', '~> 3.0'
+	pod 'Alamofire', '~> 3.1.5'
+    pod 'CocoaLumberjack/Swift', '~> 2.2.0'
 end
