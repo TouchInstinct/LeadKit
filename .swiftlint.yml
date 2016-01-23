@@ -1,0 +1,10 @@
+disabled_rules:
+  - variable_name_min_length
+  - todo
+  - force_cast
+  - trailing_whitespace
+  - colon
+excluded:
+  - Carthage
+  - Pods
+line_length: 100
