@@ -75,6 +75,7 @@
 		952A638B1C5408AC00E3572C /* iOS-Base-Library */ = {
 			isa = PBXGroup;
 			children = (
+				952A63AD1C5529EE00E3572C /* Request */,
 				952A63A31C543CB100E3572C /* Logger */,
 				952A638C1C5408AC00E3572C /* AppDelegate.swift */,
 				952A638E1C5408AC00E3572C /* ViewController.swift */,
@@ -110,6 +111,13 @@
 				952A63AA1C54F76400E3572C /* TILogFormatter.swift */,
 			);
 			name = Logger;
+			sourceTree = "<group>";
+		};
+		952A63AD1C5529EE00E3572C /* Request */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Request;
 			sourceTree = "<group>";
 		};
 		A4335B72714901204F872B8A /* Pods */ = {
