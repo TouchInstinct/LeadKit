@@ -13,6 +13,7 @@
 		952A63921C5408AC00E3572C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 952A63901C5408AC00E3572C /* Main.storyboard */; };
 		952A63941C5408AC00E3572C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 952A63931C5408AC00E3572C /* Assets.xcassets */; };
 		952A63971C5408AC00E3572C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 952A63951C5408AC00E3572C /* LaunchScreen.storyboard */; };
+		952A63A51C543CD400E3572C /* TIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A63A41C543CD400E3572C /* TIApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		952A63931C5408AC00E3572C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		952A63961C5408AC00E3572C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		952A63981C5408AC00E3572C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		952A63A41C543CD400E3572C /* TIApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIApp.swift; sourceTree = "<group>"; };
 		DF472984BADA33609A7AA065 /* Pods-iOS-Base-Library.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Base-Library.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Base-Library/Pods-iOS-Base-Library.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +71,7 @@
 		952A638B1C5408AC00E3572C /* iOS-Base-Library */ = {
 			isa = PBXGroup;
 			children = (
+				952A63A31C543CB100E3572C /* Logger */,
 				952A638C1C5408AC00E3572C /* AppDelegate.swift */,
 				952A638E1C5408AC00E3572C /* ViewController.swift */,
 				952A63A01C54370200E3572C /* SupportingFiles */,
@@ -93,6 +96,14 @@
 				952A63951C5408AC00E3572C /* LaunchScreen.storyboard */,
 			);
 			name = Resourses;
+			sourceTree = "<group>";
+		};
+		952A63A31C543CB100E3572C /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				952A63A41C543CD400E3572C /* TIApp.swift */,
+			);
+			name = Logger;
 			sourceTree = "<group>";
 		};
 		A4335B72714901204F872B8A /* Pods */ = {
@@ -258,6 +269,7 @@
 			files = (
 				952A638F1C5408AC00E3572C /* ViewController.swift in Sources */,
 				952A638D1C5408AC00E3572C /* AppDelegate.swift in Sources */,
+				952A63A51C543CD400E3572C /* TIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
