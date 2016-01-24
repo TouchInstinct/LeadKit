@@ -23,6 +23,7 @@ public class TIApp {
         shortBundleVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
         bundleVersion = NSBundle.mainBundle().infoDictionary!["CFBundleVersion"] as! String
     }
+    
     /**
      Return app's version
      - returns: shortBundleVersion.bundleVersion
@@ -37,7 +38,7 @@ public class TIApp {
      */
     public func stringIdentifierForVendor() -> String {
         var returnValue = NSUserDefaults.standardUserDefaults().stringForKey(stringVendorIdentifierKey)
-        if (returnValue == nil) {
+        if returnValue == nil {
             returnValue = NSUUID().UUIDString
             NSUserDefaults.standardUserDefaults().setObject(returnValue, forKey: stringVendorIdentifierKey)
             NSUserDefaults.standardUserDefaults().synchronize()

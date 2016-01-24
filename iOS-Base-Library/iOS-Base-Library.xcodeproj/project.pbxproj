@@ -14,6 +14,8 @@
 		952A63941C5408AC00E3572C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 952A63931C5408AC00E3572C /* Assets.xcassets */; };
 		952A63971C5408AC00E3572C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 952A63951C5408AC00E3572C /* LaunchScreen.storyboard */; };
 		952A63A51C543CD400E3572C /* TIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A63A41C543CD400E3572C /* TIApp.swift */; };
+		952A63A71C54F71500E3572C /* TILog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A63A61C54F71500E3572C /* TILog.swift */; };
+		952A63AB1C54F76400E3572C /* TILogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A63AA1C54F76400E3572C /* TILogFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		952A63961C5408AC00E3572C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		952A63981C5408AC00E3572C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		952A63A41C543CD400E3572C /* TIApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIApp.swift; sourceTree = "<group>"; };
+		952A63A61C54F71500E3572C /* TILog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TILog.swift; sourceTree = "<group>"; };
+		952A63AA1C54F76400E3572C /* TILogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TILogFormatter.swift; sourceTree = "<group>"; };
 		DF472984BADA33609A7AA065 /* Pods-iOS-Base-Library.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Base-Library.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Base-Library/Pods-iOS-Base-Library.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				952A63A41C543CD400E3572C /* TIApp.swift */,
+				952A63A61C54F71500E3572C /* TILog.swift */,
+				952A63AA1C54F76400E3572C /* TILogFormatter.swift */,
 			);
 			name = Logger;
 			sourceTree = "<group>";
@@ -129,7 +135,7 @@
 				FCFE4B565A7903B741E3244E /* Embed Pods Frameworks */,
 				05526FCA226DE1CD8B67E2DA /* Copy Pods Resources */,
 				952A639E1C540E4D00E3572C /* Tailor */,
-				952A639F1C540E4F00E3572C /* Swiftline */,
+				952A63AC1C551F1400E3572C /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -229,16 +235,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if hash tailor 2>/dev/null; then\n    tailor\nelse\n    echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
+			shellScript = "if hash tailor 2>/dev/null; then\n    tailor --except=trailing-whitespace,forced-type-cast\nelse\n    echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
 		};
-		952A639F1C540E4F00E3572C /* Swiftline */ = {
+		952A63AC1C551F1400E3572C /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = Swiftline;
+			name = SwiftLint;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +274,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				952A638F1C5408AC00E3572C /* ViewController.swift in Sources */,
+				952A63A71C54F71500E3572C /* TILog.swift in Sources */,
+				952A63AB1C54F76400E3572C /* TILogFormatter.swift in Sources */,
 				952A638D1C5408AC00E3572C /* AppDelegate.swift in Sources */,
 				952A63A51C543CD400E3572C /* TIApp.swift in Sources */,
 			);
@@ -385,6 +393,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "iOS-Base-Library/iOSBaseLibraryPrefixHeader.pch";
 				INFOPLIST_FILE = "iOS-Base-Library/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.touchin.iOS-Base-Library";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -398,6 +407,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "iOS-Base-Library/iOSBaseLibraryPrefixHeader.pch";
 				INFOPLIST_FILE = "iOS-Base-Library/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.touchin.iOS-Base-Library";
 				PRODUCT_NAME = "$(TARGET_NAME)";
