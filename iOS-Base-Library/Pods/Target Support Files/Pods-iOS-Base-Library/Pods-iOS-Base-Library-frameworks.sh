@@ -86,10 +86,12 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-iOS-Base-Library/Alamofire.framework"
   install_framework "Pods-iOS-Base-Library/CocoaLumberjack.framework"
+  install_framework "Pods-iOS-Base-Library/Device.framework"
   install_framework "Pods-iOS-Base-Library/UIColor_Hex_Swift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-iOS-Base-Library/Alamofire.framework"
   install_framework "Pods-iOS-Base-Library/CocoaLumberjack.framework"
+  install_framework "Pods-iOS-Base-Library/Device.framework"
   install_framework "Pods-iOS-Base-Library/UIColor_Hex_Swift.framework"
 fi
