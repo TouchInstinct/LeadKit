@@ -27,6 +27,10 @@ xcuserdata
 *.hmap
 *.ipa
 
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
 # Swift Package Manager
 #
 # Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
@@ -39,7 +43,7 @@ xcuserdata
 # you should judge for yourself, the pros and cons are mentioned at:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
-# Pods/
+Pods/
 
 # Carthage
 #
@@ -58,7 +62,10 @@ Carthage/Build
 fastlane/report.xml
 fastlane/screenshots
 
-#ignore all pods directory
-Pods/
+
+# AppCode
+# https://intellij-support.jetbrains.com/hc/en-us/articles/206544839-How-to-manage-projects-under-Version-Control-Systems
 
 .idea/workspace.xml
+.idea/tasks.xml
+
