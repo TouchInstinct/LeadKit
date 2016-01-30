@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol StaticViewHeightProtocol {
+public protocol StaticViewHeightProtocol {
     static func viewHeight() -> CGFloat
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ViewHeightProtocol {
+public protocol ViewHeightProtocol {
     typealias ViewModelType
     
     static func viewHeight(forViewModel viewModel: ViewModelType) -> CGFloat

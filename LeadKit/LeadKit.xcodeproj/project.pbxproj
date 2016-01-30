@@ -124,11 +124,11 @@
 		78CFEE491C5C45E500F50370 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				78CFEE4C1C5C45E500F50370 /* StaticNibNameProtocol.swift */,
 				78CFEE4A1C5C45E500F50370 /* NIbNameProtocol.swift */,
 				78CFEE4B1C5C45E500F50370 /* ReuseIdentifierProtocol.swift */,
-				78CFEE4C1C5C45E500F50370 /* StaticNibNameProtocol.swift */,
-				78CFEE4D1C5C45E500F50370 /* StaticViewHeightProtocol.swift */,
 				78CFEE4E1C5C45E500F50370 /* StoryboardIdentifierProtocol.swift */,
+				78CFEE4D1C5C45E500F50370 /* StaticViewHeightProtocol.swift */,
 				78CFEE4F1C5C45E500F50370 /* ViewHeightProtocol.swift */,
 				78CFEE501C5C45E500F50370 /* ViewModelProtocol.swift */,
 			);
@@ -438,6 +438,7 @@
 				78CFEE401C5C456B00F50370 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		78CFEE411C5C456B00F50370 /* Build configuration list for PBXNativeTarget "LeadKitTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +447,7 @@
 				78CFEE431C5C456B00F50370 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
