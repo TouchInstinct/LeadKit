@@ -14,7 +14,7 @@
 		78CFEE521C5C45E500F50370 /* UITableView+CellRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE461C5C45E500F50370 /* UITableView+CellRegistration.swift */; };
 		78CFEE531C5C45E500F50370 /* UITableView+DequeueCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE471C5C45E500F50370 /* UITableView+DequeueCustomCell.swift */; };
 		78CFEE541C5C45E500F50370 /* UIView+LoadFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE481C5C45E500F50370 /* UIView+LoadFromNib.swift */; };
-		78CFEE551C5C45E500F50370 /* NIbNameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE4A1C5C45E500F50370 /* NIbNameProtocol.swift */; };
+		78CFEE551C5C45E500F50370 /* NibNameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE4A1C5C45E500F50370 /* NibNameProtocol.swift */; };
 		78CFEE561C5C45E500F50370 /* ReuseIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE4B1C5C45E500F50370 /* ReuseIdentifierProtocol.swift */; };
 		78CFEE571C5C45E500F50370 /* StaticNibNameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE4C1C5C45E500F50370 /* StaticNibNameProtocol.swift */; };
 		78CFEE581C5C45E500F50370 /* StaticViewHeightProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE4D1C5C45E500F50370 /* StaticViewHeightProtocol.swift */; };
@@ -44,7 +44,7 @@
 		78CFEE461C5C45E500F50370 /* UITableView+CellRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+CellRegistration.swift"; sourceTree = "<group>"; };
 		78CFEE471C5C45E500F50370 /* UITableView+DequeueCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+DequeueCustomCell.swift"; sourceTree = "<group>"; };
 		78CFEE481C5C45E500F50370 /* UIView+LoadFromNib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+LoadFromNib.swift"; sourceTree = "<group>"; };
-		78CFEE4A1C5C45E500F50370 /* NIbNameProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIbNameProtocol.swift; sourceTree = "<group>"; };
+		78CFEE4A1C5C45E500F50370 /* NibNameProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibNameProtocol.swift; sourceTree = "<group>"; };
 		78CFEE4B1C5C45E500F50370 /* ReuseIdentifierProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierProtocol.swift; sourceTree = "<group>"; };
 		78CFEE4C1C5C45E500F50370 /* StaticNibNameProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticNibNameProtocol.swift; sourceTree = "<group>"; };
 		78CFEE4D1C5C45E500F50370 /* StaticViewHeightProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticViewHeightProtocol.swift; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				78CFEE4C1C5C45E500F50370 /* StaticNibNameProtocol.swift */,
-				78CFEE4A1C5C45E500F50370 /* NIbNameProtocol.swift */,
+				78CFEE4A1C5C45E500F50370 /* NibNameProtocol.swift */,
 				78CFEE4B1C5C45E500F50370 /* ReuseIdentifierProtocol.swift */,
 				78CFEE4E1C5C45E500F50370 /* StoryboardIdentifierProtocol.swift */,
 				78CFEE4D1C5C45E500F50370 /* StaticViewHeightProtocol.swift */,
@@ -247,7 +247,7 @@
 				78CFEE521C5C45E500F50370 /* UITableView+CellRegistration.swift in Sources */,
 				78CFEE571C5C45E500F50370 /* StaticNibNameProtocol.swift in Sources */,
 				78CFEE531C5C45E500F50370 /* UITableView+DequeueCustomCell.swift in Sources */,
-				78CFEE551C5C45E500F50370 /* NIbNameProtocol.swift in Sources */,
+				78CFEE551C5C45E500F50370 /* NibNameProtocol.swift in Sources */,
 				78CFEE511C5C45E500F50370 /* UIStoryboard+InstantiateViewController.swift in Sources */,
 				78CFEE561C5C45E500F50370 /* ReuseIdentifierProtocol.swift in Sources */,
 				78CFEE5B1C5C45E500F50370 /* ViewModelProtocol.swift in Sources */,
