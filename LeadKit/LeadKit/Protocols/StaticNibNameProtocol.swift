@@ -8,6 +8,14 @@
 
 import Foundation
 
+/**
+ *  protocol which ensures that specific type can return nib name of view
+ */
 public protocol StaticNibNameProtocol {
+    /**
+     static method which returns nib name
+     
+     - returns: nib name string
+     */
     static func nibName() -> String
 }

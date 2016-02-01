@@ -8,8 +8,18 @@
 
 import Foundation
 
+/**
+ *  protocol which ensures that specific type can return height of view for view model
+ */
 public protocol ViewHeightProtocol {
     typealias ViewModelType
     
+    /**
+     method which returns view height for specific view model
+     
+     - parameter viewModel: object which represents view model of view
+     
+     - returns: view height
+     */
     static func viewHeight(forViewModel viewModel: ViewModelType) -> CGFloat
 }
