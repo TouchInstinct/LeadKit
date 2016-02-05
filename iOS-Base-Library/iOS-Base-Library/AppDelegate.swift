@@ -13,7 +13,7 @@ import CocoaLumberjack
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var log: TILog?
+    var log: Log?
     
     func application(application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func initLog() -> Void {
-        log = TILog.init()
-        DDLogInfo(log!.startMessage())
+        log = Log.init()
+        DDLogInfo(Log.startMessage())
     }
 
 }

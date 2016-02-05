@@ -10,7 +10,7 @@ import Foundation
 import CocoaLumberjack
 import CocoaLumberjack.DDDispatchQueueLogFormatter
 
-class TILogFormatter: DDDispatchQueueLogFormatter {
+class LogFormatter: DDDispatchQueueLogFormatter {
     let dateFormatter: NSDateFormatter
     
     override init() {
@@ -25,13 +25,13 @@ class TILogFormatter: DDDispatchQueueLogFormatter {
         var level: String!
 
         switch logMessage.flag {
-        case (DDLogFlag.Error):
+        case DDLogFlag.Error:
             level = "ERR"
-        case (DDLogFlag.Warning):
+        case DDLogFlag.Warning:
             level = "WRN"
-        case (DDLogFlag.Info):
+        case DDLogFlag.Info:
             level = "INF"
-        case (DDLogFlag.Debug):
+        case DDLogFlag.Debug:
             level = "DBG"
         default:
             level = "VRB"
