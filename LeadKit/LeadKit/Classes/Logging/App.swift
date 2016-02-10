@@ -16,7 +16,7 @@ public class App {
     public static let shortVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
     /// The value of CFBundleVersion
     public static let bundleVersion = NSBundle.mainBundle().infoDictionary!["CFBundleVersion"] as! String
-    
+
     /**
      Return app's version
      - returns: shortBundleVersion.bundleVersion
@@ -24,7 +24,7 @@ public class App {
     public static func version() -> String {
         return App.shortVersion + "." + App.bundleVersion
     }
-    
+
     /**
      Return device identifier
      - returns: UUIDString
@@ -38,5 +38,5 @@ public class App {
         }
         return returnValue!
     }
-    
+
 }
