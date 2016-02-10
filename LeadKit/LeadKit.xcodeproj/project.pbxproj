@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7830C4151C6B337D00180D02 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7830C4141C6B337D00180D02 /* CocoaLumberjack.framework */; };
+		7830C4171C6B33F900180D02 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7830C4161C6B33F900180D02 /* CocoaLumberjackSwift.framework */; };
+		78B0FC7D1C6B2BE200358B64 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC7C1C6B2BE200358B64 /* LogFormatter.swift */; };
+		78B0FC7F1C6B2C4D00358B64 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC7E1C6B2C4D00358B64 /* Log.swift */; };
+		78B0FC811C6B2CD500358B64 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC801C6B2CD500358B64 /* App.swift */; };
 		78CFEE2E1C5C456B00F50370 /* LeadKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 78CFEE2D1C5C456B00F50370 /* LeadKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78CFEE351C5C456B00F50370 /* LeadKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CFEE2A1C5C456B00F50370 /* LeadKit.framework */; };
 		78CFEE3A1C5C456B00F50370 /* LeadKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE391C5C456B00F50370 /* LeadKitTests.swift */; };
@@ -34,6 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7830C4141C6B337D00180D02 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = SOURCE_ROOT; };
+		7830C4161C6B33F900180D02 /* CocoaLumberjackSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjackSwift.framework; path = Carthage/Build/iOS/CocoaLumberjackSwift.framework; sourceTree = SOURCE_ROOT; };
+		78B0FC7C1C6B2BE200358B64 /* LogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFormatter.swift; sourceTree = "<group>"; };
+		78B0FC7E1C6B2C4D00358B64 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		78B0FC801C6B2CD500358B64 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		78CFEE2A1C5C456B00F50370 /* LeadKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LeadKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CFEE2D1C5C456B00F50370 /* LeadKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeadKit.h; sourceTree = "<group>"; };
 		78CFEE2F1C5C456B00F50370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,6 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7830C4171C6B33F900180D02 /* CocoaLumberjackSwift.framework in Frameworks */,
+				7830C4151C6B337D00180D02 /* CocoaLumberjack.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +84,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7830C4131C6B336A00180D02 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7830C4141C6B337D00180D02 /* CocoaLumberjack.framework */,
+				7830C4161C6B33F900180D02 /* CocoaLumberjackSwift.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		78B0FC7B1C6B2BAE00358B64 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				78B0FC7C1C6B2BE200358B64 /* LogFormatter.swift */,
+				78B0FC7E1C6B2C4D00358B64 /* Log.swift */,
+				78B0FC801C6B2CD500358B64 /* App.swift */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
 		78CFEE201C5C456B00F50370 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +124,8 @@
 		78CFEE2C1C5C456B00F50370 /* LeadKit */ = {
 			isa = PBXGroup;
 			children = (
+				7830C4131C6B336A00180D02 /* Frameworks */,
+				78B0FC7B1C6B2BAE00358B64 /* Logging */,
 				78CFEE441C5C45E500F50370 /* Extensions */,
 				78CFEE491C5C45E500F50370 /* Protocols */,
 				78CFEE2D1C5C456B00F50370 /* LeadKit.h */,
@@ -157,6 +190,7 @@
 				78CFEE261C5C456B00F50370 /* Frameworks */,
 				78CFEE271C5C456B00F50370 /* Headers */,
 				78CFEE281C5C456B00F50370 /* Resources */,
+				78B0FC871C6B314B00358B64 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -238,6 +272,24 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		78B0FC871C6B314B00358B64 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjack.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjackSwift.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		78CFEE251C5C456B00F50370 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -245,8 +297,10 @@
 			files = (
 				78CFEE541C5C45E500F50370 /* UIView+LoadFromNib.swift in Sources */,
 				78CFEE521C5C45E500F50370 /* UITableView+CellRegistration.swift in Sources */,
+				78B0FC7F1C6B2C4D00358B64 /* Log.swift in Sources */,
 				78CFEE571C5C45E500F50370 /* StaticNibNameProtocol.swift in Sources */,
 				78CFEE531C5C45E500F50370 /* UITableView+DequeueCustomCell.swift in Sources */,
+				78B0FC811C6B2CD500358B64 /* App.swift in Sources */,
 				78CFEE551C5C45E500F50370 /* NibNameProtocol.swift in Sources */,
 				78CFEE511C5C45E500F50370 /* UIStoryboard+InstantiateViewController.swift in Sources */,
 				78CFEE561C5C45E500F50370 /* ReuseIdentifierProtocol.swift in Sources */,
@@ -254,6 +308,7 @@
 				78CFEE5A1C5C45E500F50370 /* ViewHeightProtocol.swift in Sources */,
 				78CFEE581C5C45E500F50370 /* StaticViewHeightProtocol.swift in Sources */,
 				78CFEE591C5C45E500F50370 /* StoryboardIdentifierProtocol.swift in Sources */,
+				78B0FC7D1C6B2BE200358B64 /* LogFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +427,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LeadKit",
+					"$(PROJECT_DIR)/LeadKit/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LeadKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -389,6 +450,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LeadKit",
+					"$(PROJECT_DIR)/LeadKit/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LeadKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
