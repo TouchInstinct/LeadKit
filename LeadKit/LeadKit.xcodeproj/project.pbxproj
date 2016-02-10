@@ -10,6 +10,7 @@
 		7830C4151C6B337D00180D02 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7830C4141C6B337D00180D02 /* CocoaLumberjack.framework */; };
 		7830C4171C6B33F900180D02 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7830C4161C6B33F900180D02 /* CocoaLumberjackSwift.framework */; };
 		78A74EA91C6B373700FE9724 /* UIView+DefaultNibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */; };
+		78A74EAD1C6B408C00FE9724 /* ViewModelBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A74EAC1C6B408C00FE9724 /* ViewModelBuilderProtocol.swift */; };
 		78B0FC7D1C6B2BE200358B64 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC7C1C6B2BE200358B64 /* LogFormatter.swift */; };
 		78B0FC7F1C6B2C4D00358B64 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC7E1C6B2C4D00358B64 /* Log.swift */; };
 		78B0FC811C6B2CD500358B64 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC801C6B2CD500358B64 /* App.swift */; };
@@ -43,6 +44,7 @@
 		7830C4141C6B337D00180D02 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = SOURCE_ROOT; };
 		7830C4161C6B33F900180D02 /* CocoaLumberjackSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjackSwift.framework; path = Carthage/Build/iOS/CocoaLumberjackSwift.framework; sourceTree = SOURCE_ROOT; };
 		78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DefaultNibName.swift"; sourceTree = "<group>"; };
+		78A74EAC1C6B408C00FE9724 /* ViewModelBuilderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelBuilderProtocol.swift; sourceTree = "<group>"; };
 		78B0FC7C1C6B2BE200358B64 /* LogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFormatter.swift; sourceTree = "<group>"; };
 		78B0FC7E1C6B2C4D00358B64 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		78B0FC801C6B2CD500358B64 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -95,6 +97,14 @@
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
+		78A74EAA1C6B401800FE9724 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				78B0FC7B1C6B2BAE00358B64 /* Logging */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		78B0FC7B1C6B2BAE00358B64 /* Logging */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,8 +136,8 @@
 		78CFEE2C1C5C456B00F50370 /* LeadKit */ = {
 			isa = PBXGroup;
 			children = (
+				78A74EAA1C6B401800FE9724 /* Classes */,
 				7830C4131C6B336A00180D02 /* Frameworks */,
-				78B0FC7B1C6B2BAE00358B64 /* Logging */,
 				78CFEE441C5C45E500F50370 /* Extensions */,
 				78CFEE491C5C45E500F50370 /* Protocols */,
 				78CFEE2D1C5C456B00F50370 /* LeadKit.h */,
@@ -167,6 +177,7 @@
 				78CFEE4D1C5C45E500F50370 /* StaticViewHeightProtocol.swift */,
 				78CFEE4F1C5C45E500F50370 /* ViewHeightProtocol.swift */,
 				78CFEE501C5C45E500F50370 /* ViewModelProtocol.swift */,
+				78A74EAC1C6B408C00FE9724 /* ViewModelBuilderProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -312,6 +323,7 @@
 				78A74EA91C6B373700FE9724 /* UIView+DefaultNibName.swift in Sources */,
 				78CFEE581C5C45E500F50370 /* StaticViewHeightProtocol.swift in Sources */,
 				78CFEE591C5C45E500F50370 /* StoryboardIdentifierProtocol.swift in Sources */,
+				78A74EAD1C6B408C00FE9724 /* ViewModelBuilderProtocol.swift in Sources */,
 				78B0FC7D1C6B2BE200358B64 /* LogFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
