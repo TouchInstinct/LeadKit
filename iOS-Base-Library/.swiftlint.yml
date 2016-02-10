@@ -1,7 +1,0 @@
-disabled_rules:
-  - force_cast
-  - trailing_whitespace
-excluded:
-  - Carthage
-  - Pods
-line_length: 128
