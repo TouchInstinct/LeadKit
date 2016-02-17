@@ -25,9 +25,11 @@ public protocol AbstractNibNameProtocol {
 }
 
 /**
- *  protocol which ensures that specific type can return nib name of view for specified UserInterfaceIdiom (iPhone, iPad, AppleTV)
+ *  protocol which ensures that specific type can return nib name of view
+ for specified UserInterfaceIdiom (iPhone, iPad, AppleTV)
  */
-public protocol NibNameProtocol : AbstractNibNameProtocol {
+
+public protocol NibNameProtocol: AbstractNibNameProtocol {
     /**
      static method which returns nib name for specific UIUserInterfaceIdiom value
      

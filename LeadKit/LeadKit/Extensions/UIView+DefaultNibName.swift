@@ -8,13 +8,15 @@
 
 import Foundation
 
-extension UIView : StaticNibNameProtocol {
+extension UIView: StaticNibNameProtocol {
     /**
      default implementation of StaticNibNameProtocol
      
      - returns: class name string without dot (last class path component)
      */
+    
     public static func nibName() -> String {
         return NSStringFromClass(self).componentsSeparatedByString(".").last!
     }
+    
 }
