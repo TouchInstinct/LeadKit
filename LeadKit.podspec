@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.license         = "Apache License, Version 2.0"
   s.author          = "Touch Instinct"
   s.platform        = :ios, "8.0"
-  s.source          = { :git => "https://github.com/TouchInstinct/LeadKit.git", :tag => "podspec" }
+  s.source          = { :git => "https://github.com/TouchInstinct/LeadKit.git" }
   s.source_files    = "LeadKit/LeadKit/**/*.swift"
 
   s.dependency "CocoaLumberjack", "2.2.0"
