@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import CocoaLumberjackSwift
+import CocoaLumberjack
 
 public class Log {
 
