@@ -9,13 +9,6 @@
 import UIKit
 
 extension UINib {
-    /**
-     convenience initialized for UINib class
-     
-     - parameter name: name of the nib
-     
-     - returns: UINib instance
-     */
     convenience public init(nibName name: String) {
         self.init(nibName: name, bundle: nil)
     }
@@ -29,12 +22,15 @@ extension UIView {
      
      - returns: UIView subclass instance
      */
-    public static func loadFromNib<T where T: NibNameProtocol, T: UIView>(forUserInterfaceIdiom interfaceIdiom: UIUserInterfaceIdiom) -> T {
+    
+    public static func loadFromNib<T where T: NibNameProtocol, T: UIView>
+        (forUserInterfaceIdiom interfaceIdiom: UIUserInterfaceIdiom) -> T {
         return loadFromNib(named: T.nibName(forConfiguration: interfaceIdiom))
     }
     
     /**
-     method which return UIView subclass instance loaded from nib using nib name provided by StaticNibNameProtocol implementation
+     method which return UIView subclass instance loaded from nib using nib name
+     provided by StaticNibNameProtocol implementation
      
      - returns: UIView subclass instance
      */
@@ -52,4 +48,5 @@ extension UIView {
     public static func loadFromNib<T>(named nibName: String) -> T {
         return UINib(nibName: nibName).instantiateWithOwner(nil, options: nil).first as! T
     }
+    
 }
