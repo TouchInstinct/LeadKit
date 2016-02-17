@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F49F83F1C750D6D0034F277 /* LogFormatter.swift in Headers */ = {isa = PBXBuildFile; fileRef = 78B0FC7C1C6B2BE200358B64 /* LogFormatter.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F49F8401C750D6D0034F277 /* Log.swift in Headers */ = {isa = PBXBuildFile; fileRef = 78B0FC7E1C6B2C4D00358B64 /* Log.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F49F8411C750D6D0034F277 /* App.swift in Headers */ = {isa = PBXBuildFile; fileRef = 78B0FC801C6B2CD500358B64 /* App.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		7830C4151C6B337D00180D02 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7830C4141C6B337D00180D02 /* CocoaLumberjack.framework */; };
 		7830C4171C6B33F900180D02 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7830C4161C6B33F900180D02 /* CocoaLumberjackSwift.framework */; };
 		78A74EA91C6B373700FE9724 /* UIView+DefaultNibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */; };
@@ -193,9 +190,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				78CFEE2E1C5C456B00F50370 /* LeadKit.h in Headers */,
-				2F49F83F1C750D6D0034F277 /* LogFormatter.swift in Headers */,
-				2F49F8401C750D6D0034F277 /* Log.swift in Headers */,
-				2F49F8411C750D6D0034F277 /* App.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
