@@ -10,5 +10,5 @@ Pod::Spec.new do |s|
   s.source          = { :git => "https://github.com/TouchInstinct/LeadKit.git" }
   s.source_files    = "LeadKit/LeadKit/**/*.swift"
 
-  s.dependency "CocoaLumberjack", "2.2.0"
+  s.dependency "CocoaLumberjack/Swift", "2.2.0"
 end
