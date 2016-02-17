@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author          = "Touch Instinct"
   s.platform        = :ios, "8.0"
   s.source          = { :git => "https://github.com/TouchInstinct/LeadKit.git" }
-  s.source_files    = "LeadKit/LeadKit/**/*.{h,m}"
+  s.source_files    = "LeadKit/LeadKit/**/*.swift"
 
   s.dependency "CocoaLumberjack", "2.2.0"
 end
