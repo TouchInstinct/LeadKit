@@ -36,8 +36,8 @@ public class ObjectsGenerator<T> {
     }
     
     private func fillPool() {
-        for _ in 0..<self.poolSize {
-            self.objects.append(self.objectsContructor())
+        for _ in 0..<poolSize {
+            objects.append(objectsContructor())
         }
     }
     
@@ -53,7 +53,7 @@ public class ObjectsGenerator<T> {
             }
         }
         
-        return self.objects.popLast()!
+        return objects.popLast()!
     }
     
 }
