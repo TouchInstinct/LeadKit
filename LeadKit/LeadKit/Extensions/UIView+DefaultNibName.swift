@@ -15,7 +15,7 @@ extension UIView: StaticNibNameProtocol {
      - returns: class name string without dot (last class path component)
      */
     
-    public static func nibName() -> String {
+    public class func nibName() -> String {
         return NSStringFromClass(self).componentsSeparatedByString(".").last!
     }
     
