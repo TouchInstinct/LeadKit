@@ -6,7 +6,7 @@
 //  Copyright © 2016 Touch Instinct. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension UIView: StaticNibNameProtocol {
     /**
@@ -15,7 +15,7 @@ extension UIView: StaticNibNameProtocol {
      - returns: class name string without dot (last class path component)
      */
     
-    public static func nibName() -> String {
+    public class func nibName() -> String {
         return NSStringFromClass(self).componentsSeparatedByString(".").last!
     }
     
