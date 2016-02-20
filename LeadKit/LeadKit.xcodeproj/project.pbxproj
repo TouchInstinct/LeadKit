@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7830C4151C6B337D00180D02 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7830C4141C6B337D00180D02 /* CocoaLumberjack.framework */; };
 		78A74EA91C6B373700FE9724 /* UIView+DefaultNibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */; };
-		78A74EAD1C6B408C00FE9724 /* ViewModelBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A74EAC1C6B408C00FE9724 /* ViewModelBuilderProtocol.swift */; };
 		78B0FC7D1C6B2BE200358B64 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC7C1C6B2BE200358B64 /* LogFormatter.swift */; };
 		78B0FC7F1C6B2C4D00358B64 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC7E1C6B2C4D00358B64 /* Log.swift */; };
 		78B0FC811C6B2CD500358B64 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC801C6B2CD500358B64 /* App.swift */; };
@@ -29,6 +28,7 @@
 		78CFEE5B1C5C45E500F50370 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE501C5C45E500F50370 /* ViewModelProtocol.swift */; };
 		78E59B191C773EE600C6BFE9 /* ObjectsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E59B181C773EE600C6BFE9 /* ObjectsGenerator.swift */; };
 		78E59B1B1C77470A00C6BFE9 /* TableViewCellsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E59B1A1C77470A00C6BFE9 /* TableViewCellsGenerator.swift */; };
+		78E59B2A1C7861AF00C6BFE9 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E59B291C7861AF00C6BFE9 /* TableController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +43,7 @@
 
 /* Begin PBXFileReference section */
 		7830C4141C6B337D00180D02 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = SOURCE_ROOT; };
-		78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DefaultNibName.swift"; sourceTree = "<group>"; };
-		78A74EAC1C6B408C00FE9724 /* ViewModelBuilderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelBuilderProtocol.swift; sourceTree = "<group>"; };
+		78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+DefaultNibName.swift"; path = "LeadKit/Extensions/UIView/UIView+DefaultNibName.swift"; sourceTree = SOURCE_ROOT; };
 		78B0FC7C1C6B2BE200358B64 /* LogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFormatter.swift; sourceTree = "<group>"; };
 		78B0FC7E1C6B2C4D00358B64 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		78B0FC801C6B2CD500358B64 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -55,9 +54,9 @@
 		78CFEE391C5C456B00F50370 /* LeadKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadKitTests.swift; sourceTree = "<group>"; };
 		78CFEE3B1C5C456B00F50370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78CFEE451C5C45E500F50370 /* UIStoryboard+InstantiateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+InstantiateViewController.swift"; sourceTree = "<group>"; };
-		78CFEE461C5C45E500F50370 /* UITableView+CellRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+CellRegistration.swift"; sourceTree = "<group>"; };
-		78CFEE471C5C45E500F50370 /* UITableView+DequeueCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+DequeueCustomCell.swift"; sourceTree = "<group>"; };
-		78CFEE481C5C45E500F50370 /* UIView+LoadFromNib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+LoadFromNib.swift"; sourceTree = "<group>"; };
+		78CFEE461C5C45E500F50370 /* UITableView+CellRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+CellRegistration.swift"; path = "LeadKit/Extensions/UITableView/UITableView+CellRegistration.swift"; sourceTree = SOURCE_ROOT; };
+		78CFEE471C5C45E500F50370 /* UITableView+DequeueCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+DequeueCustomCell.swift"; path = "LeadKit/Extensions/UITableView/UITableView+DequeueCustomCell.swift"; sourceTree = SOURCE_ROOT; };
+		78CFEE481C5C45E500F50370 /* UIView+LoadFromNib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+LoadFromNib.swift"; path = "LeadKit/Extensions/UIView/UIView+LoadFromNib.swift"; sourceTree = SOURCE_ROOT; };
 		78CFEE4A1C5C45E500F50370 /* NibNameProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibNameProtocol.swift; sourceTree = "<group>"; };
 		78CFEE4B1C5C45E500F50370 /* ReuseIdentifierProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierProtocol.swift; sourceTree = "<group>"; };
 		78CFEE4C1C5C45E500F50370 /* StaticNibNameProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticNibNameProtocol.swift; sourceTree = "<group>"; };
@@ -67,6 +66,7 @@
 		78CFEE501C5C45E500F50370 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		78E59B181C773EE600C6BFE9 /* ObjectsGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectsGenerator.swift; sourceTree = "<group>"; };
 		78E59B1A1C77470A00C6BFE9 /* TableViewCellsGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellsGenerator.swift; sourceTree = "<group>"; };
+		78E59B291C7861AF00C6BFE9 /* TableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +100,7 @@
 		78A74EAA1C6B401800FE9724 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				78E59B281C78613B00C6BFE9 /* TableView */,
 				78E59B171C773E9600C6BFE9 /* Cache */,
 				78B0FC7B1C6B2BAE00358B64 /* Logging */,
 			);
@@ -159,11 +160,9 @@
 		78CFEE441C5C45E500F50370 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				78E59B2C1C786CD500C6BFE9 /* UIView */,
+				78E59B2B1C786CBF00C6BFE9 /* UITableView */,
 				78CFEE451C5C45E500F50370 /* UIStoryboard+InstantiateViewController.swift */,
-				78CFEE461C5C45E500F50370 /* UITableView+CellRegistration.swift */,
-				78CFEE471C5C45E500F50370 /* UITableView+DequeueCustomCell.swift */,
-				78CFEE481C5C45E500F50370 /* UIView+LoadFromNib.swift */,
-				78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -178,7 +177,6 @@
 				78CFEE4D1C5C45E500F50370 /* StaticViewHeightProtocol.swift */,
 				78CFEE4F1C5C45E500F50370 /* ViewHeightProtocol.swift */,
 				78CFEE501C5C45E500F50370 /* ViewModelProtocol.swift */,
-				78A74EAC1C6B408C00FE9724 /* ViewModelBuilderProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -190,6 +188,32 @@
 				78E59B1A1C77470A00C6BFE9 /* TableViewCellsGenerator.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		78E59B281C78613B00C6BFE9 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				78E59B291C7861AF00C6BFE9 /* TableController.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		78E59B2B1C786CBF00C6BFE9 /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				78CFEE461C5C45E500F50370 /* UITableView+CellRegistration.swift */,
+				78CFEE471C5C45E500F50370 /* UITableView+DequeueCustomCell.swift */,
+			);
+			path = UITableView;
+			sourceTree = "<group>";
+		};
+		78E59B2C1C786CD500C6BFE9 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				78CFEE481C5C45E500F50370 /* UIView+LoadFromNib.swift */,
+				78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */,
+			);
+			path = UIView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +380,7 @@
 				78CFEE531C5C45E500F50370 /* UITableView+DequeueCustomCell.swift in Sources */,
 				78E59B1B1C77470A00C6BFE9 /* TableViewCellsGenerator.swift in Sources */,
 				78B0FC811C6B2CD500358B64 /* App.swift in Sources */,
+				78E59B2A1C7861AF00C6BFE9 /* TableController.swift in Sources */,
 				78CFEE551C5C45E500F50370 /* NibNameProtocol.swift in Sources */,
 				78CFEE511C5C45E500F50370 /* UIStoryboard+InstantiateViewController.swift in Sources */,
 				78CFEE561C5C45E500F50370 /* ReuseIdentifierProtocol.swift in Sources */,
@@ -365,7 +390,6 @@
 				78A74EA91C6B373700FE9724 /* UIView+DefaultNibName.swift in Sources */,
 				78CFEE581C5C45E500F50370 /* StaticViewHeightProtocol.swift in Sources */,
 				78CFEE591C5C45E500F50370 /* StoryboardIdentifierProtocol.swift in Sources */,
-				78A74EAD1C6B408C00FE9724 /* ViewModelBuilderProtocol.swift in Sources */,
 				78B0FC7D1C6B2BE200358B64 /* LogFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
