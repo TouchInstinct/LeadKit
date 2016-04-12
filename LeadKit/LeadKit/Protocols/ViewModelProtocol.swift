@@ -12,7 +12,7 @@ import Foundation
  *  protocol which ensures that specific type can create view model and can apply new view state with view model
  */
 public protocol AbstractViewModelProtocol {
-    typealias ViewModelType
+    associatedtype ViewModelType
 
     /**
      method which applies new view state with view model object
