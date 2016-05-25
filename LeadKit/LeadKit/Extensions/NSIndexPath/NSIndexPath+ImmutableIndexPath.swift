@@ -11,18 +11,13 @@ import Foundation
 // http://stackoverflow.com/a/21686163
 
 extension NSIndexPath {
-    /**
-     method which check instance class and create immutable copy if class is not NSIndexPath
-     
-     - returns: immutable NSIndexPath instance
-     */
-    
-    func immutableIndexPath() -> NSIndexPath {
+        /// return immutable copy if class is not NSIndexPath or return self
+    var immutableIndexPath: NSIndexPath {
         if Mirror(reflecting: self).subjectType == NSIndexPath.self {  // check for UIMutableIndexPath
             return self
         }
         
-        return NSIndexPath(forItem: self.item, inSection: self.section)
+        return NSIndexPath(forItem: item, inSection: section)
     }
     
 }
