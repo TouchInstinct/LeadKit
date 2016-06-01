@@ -12,7 +12,7 @@ import Foundation
  *  protocol which ensures that specific type can return reuse identifier for view
  */
 public protocol AbstractReuseIdentifierProtocol {
-    typealias IdentifierType
+    associatedtype IdentifierType
     
     /**
      method which returns reuse identifier with protocol associated type

@@ -12,7 +12,7 @@ import UIKit
  *  protocol which ensures that specific type can return nib name of view for specific configuration
  */
 public protocol AbstractNibNameProtocol {
-    typealias ConfigurationType
+    associatedtype ConfigurationType
 
     /**
      static method which returns nib name for specific configuration

@@ -12,7 +12,7 @@ import Foundation
  *  protocol which ensures that specific type can return height of view for view model
  */
 public protocol ViewHeightProtocol {
-    typealias ViewModelType
+    associatedtype ViewModelType
     
     /**
      method which returns view height for specific view model
