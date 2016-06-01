@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7824CA521CFEE6B700D7B132 /* UIImage+RenderTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7824CA511CFEE6B700D7B132 /* UIImage+RenderTemplate.swift */; };
 		7830C4151C6B337D00180D02 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7830C4141C6B337D00180D02 /* CocoaLumberjack.framework */; };
 		7837F60F1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7837F60E1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift */; };
 		786A17A11CB8D71D007F9661 /* UIImage+CapInsetsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786A17A01CB8D71D007F9661 /* UIImage+CapInsetsUtils.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7824CA511CFEE6B700D7B132 /* UIImage+RenderTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+RenderTemplate.swift"; sourceTree = "<group>"; };
 		7830C4141C6B337D00180D02 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = SOURCE_ROOT; };
 		7837F60E1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstimatedViewHeightProtocol.swift; sourceTree = "<group>"; };
 		786A17A01CB8D71D007F9661 /* UIImage+CapInsetsUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CapInsetsUtils.swift"; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				786A17A01CB8D71D007F9661 /* UIImage+CapInsetsUtils.swift */,
+				7824CA511CFEE6B700D7B132 /* UIImage+RenderTemplate.swift */,
 			);
 			path = UIImage;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				78CFEE561C5C45E500F50370 /* ReuseIdentifierProtocol.swift in Sources */,
 				78E59B191C773EE600C6BFE9 /* ObjectsGenerator.swift in Sources */,
 				78CFEE5B1C5C45E500F50370 /* ViewModelProtocol.swift in Sources */,
+				7824CA521CFEE6B700D7B132 /* UIImage+RenderTemplate.swift in Sources */,
 				78CFEE5A1C5C45E500F50370 /* ViewHeightProtocol.swift in Sources */,
 				787682FA1CAD40C300532AB3 /* StaticEstimatedViewHeightProtocol.swift in Sources */,
 				78A74EA91C6B373700FE9724 /* UIView+DefaultNibName.swift in Sources */,

@@ -22,4 +22,5 @@ public protocol EstimatedViewHeightProtocol {
      - returns: estimatedViewHeight view height
      */
     static func estimatedViewHeight(forViewModel viewModel: ViewModelType) -> CGFloat
+
 }
