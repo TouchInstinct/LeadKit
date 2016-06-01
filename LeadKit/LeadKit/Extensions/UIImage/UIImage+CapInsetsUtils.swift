@@ -20,7 +20,7 @@ extension UIImage {
     public func renderWithSize(size: CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
 
-        self.drawInRect(CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height))
+        self.drawInRect(CGRect(origin: CGPoint.zero, size: size))
 
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
 
