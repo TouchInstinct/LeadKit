@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		7824CA521CFEE6B700D7B132 /* UIImage+RenderTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7824CA511CFEE6B700D7B132 /* UIImage+RenderTemplate.swift */; };
-		7830C4151C6B337D00180D02 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7830C4141C6B337D00180D02 /* CocoaLumberjack.framework */; };
 		7837F60F1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7837F60E1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift */; };
+		785C33451CFC908800C4C4AA /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785C33441CFC908800C4C4AA /* TableViewController.swift */; };
 		786A17A11CB8D71D007F9661 /* UIImage+CapInsetsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786A17A01CB8D71D007F9661 /* UIImage+CapInsetsUtils.swift */; };
 		787682FA1CAD40C300532AB3 /* StaticEstimatedViewHeightProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787682F91CAD40C200532AB3 /* StaticEstimatedViewHeightProtocol.swift */; };
 		787783631CA03CA0001CDC9B /* NSIndexPath+ImmutableIndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787783621CA03CA0001CDC9B /* NSIndexPath+ImmutableIndexPath.swift */; };
 		787783671CA04D4A001CDC9B /* NSString+SizeCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787783661CA04D4A001CDC9B /* NSString+SizeCalculation.swift */; };
+		787A071A1D085750009EC97F /* CellsControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A07191D085750009EC97F /* CellsControllerProtocol.swift */; };
+		787A071E1D08790B009EC97F /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787A071D1D08790B009EC97F /* CocoaLumberjack.framework */; };
 		788EC15A1CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EC1591CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift */; };
 		78A74EA91C6B373700FE9724 /* UIView+DefaultNibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */; };
 		78B0FC7D1C6B2BE200358B64 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC7C1C6B2BE200358B64 /* LogFormatter.swift */; };
@@ -48,12 +50,14 @@
 
 /* Begin PBXFileReference section */
 		7824CA511CFEE6B700D7B132 /* UIImage+RenderTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+RenderTemplate.swift"; sourceTree = "<group>"; };
-		7830C4141C6B337D00180D02 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = SOURCE_ROOT; };
 		7837F60E1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstimatedViewHeightProtocol.swift; sourceTree = "<group>"; };
+		785C33441CFC908800C4C4AA /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		786A17A01CB8D71D007F9661 /* UIImage+CapInsetsUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CapInsetsUtils.swift"; sourceTree = "<group>"; };
 		787682F91CAD40C200532AB3 /* StaticEstimatedViewHeightProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticEstimatedViewHeightProtocol.swift; sourceTree = "<group>"; };
 		787783621CA03CA0001CDC9B /* NSIndexPath+ImmutableIndexPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSIndexPath+ImmutableIndexPath.swift"; sourceTree = "<group>"; };
 		787783661CA04D4A001CDC9B /* NSString+SizeCalculation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+SizeCalculation.swift"; sourceTree = "<group>"; };
+		787A07191D085750009EC97F /* CellsControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellsControllerProtocol.swift; sourceTree = "<group>"; };
+		787A071D1D08790B009EC97F /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = ../../../Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
 		788EC1591CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+InstantiateViewController.swift"; sourceTree = "<group>"; };
 		78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+DefaultNibName.swift"; path = "LeadKit/Extensions/UIView/UIView+DefaultNibName.swift"; sourceTree = SOURCE_ROOT; };
 		78B0FC7C1C6B2BE200358B64 /* LogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFormatter.swift; sourceTree = "<group>"; };
@@ -84,7 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7830C4151C6B337D00180D02 /* CocoaLumberjack.framework in Frameworks */,
+				787A071E1D08790B009EC97F /* CocoaLumberjack.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,9 +106,18 @@
 		7830C4131C6B336A00180D02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7830C4141C6B337D00180D02 /* CocoaLumberjack.framework */,
+				787A071D1D08790B009EC97F /* CocoaLumberjack.framework */,
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		785C33431CFC89EF00C4C4AA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				785C33441CFC908800C4C4AA /* TableViewController.swift */,
+			);
+			name = Controllers;
+			path = ../Controllers;
 			sourceTree = "<group>";
 		};
 		787783611CA03C84001CDC9B /* NSIndexPath */ = {
@@ -126,6 +139,7 @@
 		78A74EAA1C6B401800FE9724 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				785C33431CFC89EF00C4C4AA /* Controllers */,
 				78E59B171C773E9600C6BFE9 /* Cache */,
 				78B0FC7B1C6B2BAE00358B64 /* Logging */,
 			);
@@ -207,6 +221,7 @@
 				78CFEE501C5C45E500F50370 /* ViewModelProtocol.swift */,
 				787682F91CAD40C200532AB3 /* StaticEstimatedViewHeightProtocol.swift */,
 				7837F60E1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift */,
+				787A07191D085750009EC97F /* CellsControllerProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -396,7 +411,7 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjack.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/CocoaLumberjack.framework",
 			);
 			name = "Carthage copy-frameworks";
 			outputPaths = (
@@ -412,6 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				785C33451CFC908800C4C4AA /* TableViewController.swift in Sources */,
 				7837F60F1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift in Sources */,
 				78CFEE541C5C45E500F50370 /* UIView+LoadFromNib.swift in Sources */,
 				78CFEE521C5C45E500F50370 /* UITableView+CellRegistration.swift in Sources */,
@@ -422,6 +438,7 @@
 				78CFEE531C5C45E500F50370 /* UITableView+DequeueCustomCell.swift in Sources */,
 				78E59B1B1C77470A00C6BFE9 /* ViewsGenerator.swift in Sources */,
 				78B0FC811C6B2CD500358B64 /* App.swift in Sources */,
+				787A071A1D085750009EC97F /* CellsControllerProtocol.swift in Sources */,
 				78CFEE551C5C45E500F50370 /* NibNameProtocol.swift in Sources */,
 				78CFEE561C5C45E500F50370 /* ReuseIdentifierProtocol.swift in Sources */,
 				78E59B191C773EE600C6BFE9 /* ObjectsGenerator.swift in Sources */,
@@ -557,7 +574,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/LeadKit",
 					"$(PROJECT_DIR)/LeadKit/Frameworks",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = LeadKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -580,7 +597,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/LeadKit",
 					"$(PROJECT_DIR)/LeadKit/Frameworks",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = LeadKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
