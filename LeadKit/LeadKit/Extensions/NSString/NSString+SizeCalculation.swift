@@ -47,7 +47,7 @@ extension NSString {
      
      - returns: minimum number of lines
      */
-    func numberOfLinesWith(width: CGFloat, attributes: [String: AnyObject]) -> UInt {
+    public func numberOfLinesWith(width: CGFloat, attributes: [String: AnyObject]) -> UInt {
         guard let font = attributes[NSFontAttributeName] as? UIFont else {
             preconditionFailure("Value for NSFontAttributeName should be defined in attributes")
         }
@@ -76,6 +76,21 @@ extension NSString {
      */
     public func widthWith(attriutes: [String: AnyObject]) -> CGFloat {
         return CGFloat(ceil(Double(sizeWithAttributes(attriutes).width)))
+    }
+
+    /**
+     method which calculates string width based on given height and character attributes
+
+     - parameter height:     maximum height of string
+     - parameter attributes: dictionary with string character attributes
+
+     - returns: string width
+     */
+    public func widthWith(height height: CGFloat, attributes: [String: AnyObject]?) -> CGFloat {
+        return self.boundingRectWithSize(CGSize(width: CGFloat.max, height: height),
+                                         options: .UsesLineFragmentOrigin,
+                                         attributes: attributes,
+                                         context: nil).size.width
     }
     
 }
