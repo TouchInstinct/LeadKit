@@ -79,18 +79,22 @@ extension NSString {
     }
 
     /**
-     method which calculates string width based on given height and character attributes
+     method which calculates text size based on given character attributes
 
-     - parameter height:     maximum height of string
+     - parameter width:      maximum width of text
+     - parameter height:     maximum height of text
      - parameter attributes: dictionary with string character attributes
 
-     - returns: string width
+     - returns: text size
      */
-    public func widthWith(height height: CGFloat, attributes: [String: AnyObject]?) -> CGFloat {
-        return self.boundingRectWithSize(CGSize(width: CGFloat.max, height: height),
+    public func sizeWith(maxWidth width: CGFloat = CGFloat.max,
+                         maxHeight height: CGFloat = CGFloat.max,
+                         attributes: [String: AnyObject]?) -> CGSize {
+
+        return self.boundingRectWithSize(CGSize(width: width, height: height),
                                          options: .UsesLineFragmentOrigin,
                                          attributes: attributes,
-                                         context: nil).size.width
+                                         context: nil).size
     }
-    
+
 }
