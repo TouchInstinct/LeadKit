@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78011A641D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78011A631D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift */; };
+		78011A691D47AF5100EA16A2 /* CellCreationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78011A681D47AF5100EA16A2 /* CellCreationType.swift */; };
 		7824CA521CFEE6B700D7B132 /* UIImage+RenderTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7824CA511CFEE6B700D7B132 /* UIImage+RenderTemplate.swift */; };
 		7837F60F1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7837F60E1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift */; };
 		785C33451CFC908800C4C4AA /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785C33441CFC908800C4C4AA /* TableViewController.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		78011A631D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DefaultReuseIdentifier.swift"; sourceTree = "<group>"; };
+		78011A681D47AF5100EA16A2 /* CellCreationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellCreationType.swift; sourceTree = "<group>"; };
 		7824CA511CFEE6B700D7B132 /* UIImage+RenderTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+RenderTemplate.swift"; sourceTree = "<group>"; };
 		7837F60E1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstimatedViewHeightProtocol.swift; sourceTree = "<group>"; };
 		785C33441CFC908800C4C4AA /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +107,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		78011A651D47AF3000EA16A2 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				78011A681D47AF5100EA16A2 /* CellCreationType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		7830C4131C6B336A00180D02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +192,7 @@
 				7830C4131C6B336A00180D02 /* Frameworks */,
 				78A74EAA1C6B401800FE9724 /* Classes */,
 				78CFEE441C5C45E500F50370 /* Extensions */,
+				78011A651D47AF3000EA16A2 /* Enums */,
 				78CFEE491C5C45E500F50370 /* Protocols */,
 				78CFEE2D1C5C456B00F50370 /* LeadKit.h */,
 				78CFEE2F1C5C456B00F50370 /* Info.plist */,
@@ -249,6 +262,7 @@
 			children = (
 				78CFEE481C5C45E500F50370 /* UIView+LoadFromNib.swift */,
 				78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */,
+				78011A631D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -427,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78011A691D47AF5100EA16A2 /* CellCreationType.swift in Sources */,
 				785C33451CFC908800C4C4AA /* TableViewController.swift in Sources */,
 				7837F60F1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift in Sources */,
 				78CFEE541C5C45E500F50370 /* UIView+LoadFromNib.swift in Sources */,
@@ -435,6 +450,7 @@
 				78CFEE571C5C45E500F50370 /* StaticNibNameProtocol.swift in Sources */,
 				788EC15A1CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift in Sources */,
 				787783671CA04D4A001CDC9B /* NSString+SizeCalculation.swift in Sources */,
+				78011A641D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift in Sources */,
 				78CFEE531C5C45E500F50370 /* UITableView+DequeueCustomCell.swift in Sources */,
 				78E59B1B1C77470A00C6BFE9 /* ViewsGenerator.swift in Sources */,
 				78B0FC811C6B2CD500358B64 /* App.swift in Sources */,

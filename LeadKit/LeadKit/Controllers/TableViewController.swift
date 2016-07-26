@@ -8,14 +8,7 @@
 
 import UIKit
 
-public enum CellCreationType: Int {
-
-    case Preloaded = 0
-    case OnTheFlight = 1
-    
-}
-
-public class TableViewController: UITableViewController, CellsControllerProtocol {
+public class TableViewController<ContentType>: UITableViewController, CellsControllerProtocol {
 
     private var heightCache: [NSIndexPath: CGFloat] = [:]
 
@@ -50,6 +43,12 @@ public class TableViewController: UITableViewController, CellsControllerProtocol
         aCoder.encodeInteger(cellCreationType.rawValue, forKey: "CellCreationType")
     }
 
+    /**
+     method which adds cells generator for cells with specified reuse identifier
+
+     - parameter cellsGenerator: cells generator
+     - parameter cellIdentifier: cell reuse identifier
+     */
     public func registerCellsGenerator(cellsGenerator: ViewsGenerator<UITableViewCell>,
                                        forCellsWithIdentifier cellIdentifier: String) {
         cellsObjectsCreators[cellIdentifier] = cellsGenerator
@@ -97,20 +96,43 @@ public class TableViewController: UITableViewController, CellsControllerProtocol
 
     // MARK: - Cache
 
+    /**
+     method which invalidates cache
+     */
     public func invalidateCache() {
         heightCache = [:]
     }
 
     // MARK: - Cells сontroller stub implementation
 
+    /**
+     method which returns reuse identifier for cell at specified index path
+
+     - parameter indexPath: NSIndexPath object
+
+     - returns: reuse identifier
+     */
     public func cellIdentifierForIndexPath(indexPath: NSIndexPath) -> String {
         fatalError("Your should implement cellIdentifierForIndexPath(_:)")
     }
 
+    /**
+     method which configures cell before it can be used
+
+     - parameter cell:        UITableView or subclass cell
+     - parameter atIndexPath: index path of cell
+     */
     public func configureCell(cell: UITableViewCell, atIndexPath: NSIndexPath) {
         // intended to be implemented in subclasses
     }
 
+    /**
+     method which return height for cell at specified index path
+
+     - parameter indexPath: NSIndexPath object
+
+     - returns: height of cell at specified index path
+     */
     public func heightForCellAtIndexPath(indexPath: NSIndexPath) -> CGFloat {
         // intended to be implemented in subclasses
         return UITableViewAutomaticDimension
