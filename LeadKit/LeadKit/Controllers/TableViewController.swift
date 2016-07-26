@@ -10,8 +10,6 @@ import UIKit
 
 public class TableViewController: UITableViewController, CellsControllerProtocol {
 
-    private var heightCache: [NSIndexPath: CGFloat] = [:]
-
     private var cellsObjectsCreators: [String: ViewsGenerator<UITableViewCell>] = [:]
 
     private let cellCreationType: CellCreationType
@@ -26,18 +24,12 @@ public class TableViewController: UITableViewController, CellsControllerProtocol
     }
 
     public required init?(coder aDecoder: NSCoder) {
-        if let cellCreationType = CellCreationType(rawValue: aDecoder.decodeIntegerForKey(TableViewController.creationTypeKey)) {
-            self.cellCreationType = cellCreationType
+        if let creationType = CellCreationType(rawValue: aDecoder.decodeIntegerForKey(TableViewController.creationTypeKey)) {
+            self.cellCreationType = creationType
             super.init(coder: aDecoder)
         } else {
             return nil
         }
-    }
-
-    public override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
-        invalidateCache()
     }
 
     public override func encodeWithCoder(aCoder: NSCoder) {
@@ -56,7 +48,7 @@ public class TableViewController: UITableViewController, CellsControllerProtocol
         cellsObjectsCreators[cellIdentifier] = cellsGenerator
     }
 
-    // MARK: - Table view data source
+    // MARK: - UITableViewDataSource
 
     public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell
@@ -77,32 +69,6 @@ public class TableViewController: UITableViewController, CellsControllerProtocol
         configureCell(cell, atIndexPath: indexPath)
 
         return cell
-    }
-
-    // MARK: - Table view delegate
-
-    public override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let immutableIndex = indexPath.immutableIndexPath
-
-        let cellHeight: CGFloat
-
-        if let cachedheight = heightCache[immutableIndex] {
-            cellHeight = cachedheight
-        } else {
-            cellHeight = heightForCellAtIndexPath(immutableIndex)
-            heightCache[immutableIndex] = cellHeight
-        }
-
-        return cellHeight
-    }
-
-    // MARK: - Cache
-
-    /**
-     method which invalidates cache
-     */
-    public func invalidateCache() {
-        heightCache = [:]
     }
 
     // MARK: - Cells сontroller stub implementation
