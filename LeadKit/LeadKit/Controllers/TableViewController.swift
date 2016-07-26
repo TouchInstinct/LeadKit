@@ -8,13 +8,15 @@
 
 import UIKit
 
-public class TableViewController<ContentType>: UITableViewController, CellsControllerProtocol {
+public class TableViewController: UITableViewController, CellsControllerProtocol {
 
     private var heightCache: [NSIndexPath: CGFloat] = [:]
 
     private var cellsObjectsCreators: [String: ViewsGenerator<UITableViewCell>] = [:]
 
     private let cellCreationType: CellCreationType
+
+    private static let creationTypeKey = "CellCreationType"
 
     // MARK: - Initialization
 
@@ -24,7 +26,7 @@ public class TableViewController<ContentType>: UITableViewController, CellsContr
     }
 
     public required init?(coder aDecoder: NSCoder) {
-        if let cellCreationType = CellCreationType(rawValue: aDecoder.decodeIntegerForKey("CellCreationType")) {
+        if let cellCreationType = CellCreationType(rawValue: aDecoder.decodeIntegerForKey(TableViewController.creationTypeKey)) {
             self.cellCreationType = cellCreationType
             super.init(coder: aDecoder)
         } else {
@@ -40,7 +42,7 @@ public class TableViewController<ContentType>: UITableViewController, CellsContr
 
     public override func encodeWithCoder(aCoder: NSCoder) {
         super.encodeWithCoder(aCoder)
-        aCoder.encodeInteger(cellCreationType.rawValue, forKey: "CellCreationType")
+        aCoder.encodeInteger(cellCreationType.rawValue, forKey: TableViewController.creationTypeKey)
     }
 
     /**
