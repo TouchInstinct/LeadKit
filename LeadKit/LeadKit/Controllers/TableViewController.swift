@@ -25,7 +25,7 @@ public class TableViewController: UITableViewController, CellsControllerProtocol
 
     public required init?(coder aDecoder: NSCoder) {
         if let creationType = CellCreationType(rawValue: aDecoder.decodeIntegerForKey(TableViewController.creationTypeKey)) {
-            self.cellCreationType = creationType
+            cellCreationType = creationType
             super.init(coder: aDecoder)
         } else {
             return nil
