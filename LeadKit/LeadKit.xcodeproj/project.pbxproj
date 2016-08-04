@@ -9,11 +9,21 @@
 /* Begin PBXBuildFile section */
 		78011A641D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78011A631D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift */; };
 		78011A691D47AF5100EA16A2 /* CellCreationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78011A681D47AF5100EA16A2 /* CellCreationType.swift */; };
+		78011A751D48AC2500EA16A2 /* NSURLSession+RxAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78011A731D48AC2500EA16A2 /* NSURLSession+RxAlamofire.swift */; };
+		78011A761D48AC2500EA16A2 /* RxAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78011A741D48AC2500EA16A2 /* RxAlamofire.swift */; };
+		78011A7B1D48ADFF00EA16A2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78011A771D48ADFF00EA16A2 /* Alamofire.framework */; };
+		78011A7D1D48ADFF00EA16A2 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78011A791D48ADFF00EA16A2 /* RxCocoa.framework */; };
+		78011A7E1D48ADFF00EA16A2 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78011A7A1D48ADFF00EA16A2 /* RxSwift.framework */; };
+		78011AB31D48B53600EA16A2 /* ApiRequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78011AB21D48B53600EA16A2 /* ApiRequestParameters.swift */; };
 		7824CA521CFEE6B700D7B132 /* UIImage+RenderTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7824CA511CFEE6B700D7B132 /* UIImage+RenderTemplate.swift */; };
 		7837F60F1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7837F60E1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift */; };
 		785C33451CFC908800C4C4AA /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785C33441CFC908800C4C4AA /* TableViewController.swift */; };
 		786A17A11CB8D71D007F9661 /* UIImage+CapInsetsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786A17A01CB8D71D007F9661 /* UIImage+CapInsetsUtils.swift */; };
+		786D78E81D53C378006B2CEA /* AlamofireRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786D78E71D53C378006B2CEA /* AlamofireRequest+Extensions.swift */; };
+		786D78EA1D53C43E006B2CEA /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786D78E91D53C43E006B2CEA /* ApiError.swift */; };
+		786D78EC1D53C46E006B2CEA /* AlamofireManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786D78EB1D53C46E006B2CEA /* AlamofireManager+Extensions.swift */; };
 		787682FA1CAD40C300532AB3 /* StaticEstimatedViewHeightProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787682F91CAD40C200532AB3 /* StaticEstimatedViewHeightProtocol.swift */; };
+		787768921D53600600C20604 /* Mapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787768911D53600600C20604 /* Mapper.framework */; };
 		787783631CA03CA0001CDC9B /* NSIndexPath+ImmutableIndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787783621CA03CA0001CDC9B /* NSIndexPath+ImmutableIndexPath.swift */; };
 		787783671CA04D4A001CDC9B /* NSString+SizeCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787783661CA04D4A001CDC9B /* NSString+SizeCalculation.swift */; };
 		787A071A1D085750009EC97F /* CellsControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A07191D085750009EC97F /* CellsControllerProtocol.swift */; };
@@ -53,11 +63,21 @@
 /* Begin PBXFileReference section */
 		78011A631D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DefaultReuseIdentifier.swift"; sourceTree = "<group>"; };
 		78011A681D47AF5100EA16A2 /* CellCreationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellCreationType.swift; sourceTree = "<group>"; };
+		78011A731D48AC2500EA16A2 /* NSURLSession+RxAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLSession+RxAlamofire.swift"; sourceTree = "<group>"; };
+		78011A741D48AC2500EA16A2 /* RxAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxAlamofire.swift; sourceTree = "<group>"; };
+		78011A771D48ADFF00EA16A2 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../../../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		78011A791D48ADFF00EA16A2 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = ../../../Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		78011A7A1D48ADFF00EA16A2 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = ../../../Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		78011AB21D48B53600EA16A2 /* ApiRequestParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequestParameters.swift; sourceTree = "<group>"; };
 		7824CA511CFEE6B700D7B132 /* UIImage+RenderTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+RenderTemplate.swift"; sourceTree = "<group>"; };
 		7837F60E1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstimatedViewHeightProtocol.swift; sourceTree = "<group>"; };
 		785C33441CFC908800C4C4AA /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		786A17A01CB8D71D007F9661 /* UIImage+CapInsetsUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CapInsetsUtils.swift"; sourceTree = "<group>"; };
+		786D78E71D53C378006B2CEA /* AlamofireRequest+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireRequest+Extensions.swift"; sourceTree = "<group>"; };
+		786D78E91D53C43E006B2CEA /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		786D78EB1D53C46E006B2CEA /* AlamofireManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireManager+Extensions.swift"; sourceTree = "<group>"; };
 		787682F91CAD40C200532AB3 /* StaticEstimatedViewHeightProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticEstimatedViewHeightProtocol.swift; sourceTree = "<group>"; };
+		787768911D53600600C20604 /* Mapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapper.framework; path = ../../../Carthage/Build/iOS/Mapper.framework; sourceTree = "<group>"; };
 		787783621CA03CA0001CDC9B /* NSIndexPath+ImmutableIndexPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSIndexPath+ImmutableIndexPath.swift"; sourceTree = "<group>"; };
 		787783661CA04D4A001CDC9B /* NSString+SizeCalculation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+SizeCalculation.swift"; sourceTree = "<group>"; };
 		787A07191D085750009EC97F /* CellsControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellsControllerProtocol.swift; sourceTree = "<group>"; };
@@ -92,7 +112,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78011A7E1D48ADFF00EA16A2 /* RxSwift.framework in Frameworks */,
+				78011A7D1D48ADFF00EA16A2 /* RxCocoa.framework in Frameworks */,
 				787A071E1D08790B009EC97F /* CocoaLumberjack.framework in Frameworks */,
+				787768921D53600600C20604 /* Mapper.framework in Frameworks */,
+				78011A7B1D48ADFF00EA16A2 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,14 +135,53 @@
 			isa = PBXGroup;
 			children = (
 				78011A681D47AF5100EA16A2 /* CellCreationType.swift */,
+				786D78E91D53C43E006B2CEA /* ApiError.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		78011A711D48AC2500EA16A2 /* RxAlamofire */ = {
+			isa = PBXGroup;
+			children = (
+				78011A721D48AC2500EA16A2 /* Cocoa */,
+				78011A741D48AC2500EA16A2 /* RxAlamofire.swift */,
+			);
+			name = RxAlamofire;
+			path = RxAlamofire/RxAlamofire/Source;
+			sourceTree = "<group>";
+		};
+		78011A721D48AC2500EA16A2 /* Cocoa */ = {
+			isa = PBXGroup;
+			children = (
+				78011A731D48AC2500EA16A2 /* NSURLSession+RxAlamofire.swift */,
+			);
+			path = Cocoa;
+			sourceTree = "<group>";
+		};
+		78011AAE1D48B46100EA16A2 /* Structures */ = {
+			isa = PBXGroup;
+			children = (
+				78011AB11D48B53600EA16A2 /* Api */,
+			);
+			path = Structures;
+			sourceTree = "<group>";
+		};
+		78011AB11D48B53600EA16A2 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				78011AB21D48B53600EA16A2 /* ApiRequestParameters.swift */,
+			);
+			path = Api;
 			sourceTree = "<group>";
 		};
 		7830C4131C6B336A00180D02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				787A071D1D08790B009EC97F /* CocoaLumberjack.framework */,
+				78011A7A1D48ADFF00EA16A2 /* RxSwift.framework */,
+				78011A791D48ADFF00EA16A2 /* RxCocoa.framework */,
+				78011A771D48ADFF00EA16A2 /* Alamofire.framework */,
+				787768911D53600600C20604 /* Mapper.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -130,6 +193,15 @@
 			);
 			name = Controllers;
 			path = ../Controllers;
+			sourceTree = "<group>";
+		};
+		786D78E61D53C355006B2CEA /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				786D78E71D53C378006B2CEA /* AlamofireRequest+Extensions.swift */,
+				786D78EB1D53C46E006B2CEA /* AlamofireManager+Extensions.swift */,
+			);
+			path = Alamofire;
 			sourceTree = "<group>";
 		};
 		787783611CA03C84001CDC9B /* NSIndexPath */ = {
@@ -171,6 +243,7 @@
 		78CFEE201C5C456B00F50370 = {
 			isa = PBXGroup;
 			children = (
+				78011A711D48AC2500EA16A2 /* RxAlamofire */,
 				78CFEE2C1C5C456B00F50370 /* LeadKit */,
 				78CFEE381C5C456B00F50370 /* LeadKitTests */,
 				78CFEE2B1C5C456B00F50370 /* Products */,
@@ -191,6 +264,7 @@
 			children = (
 				7830C4131C6B336A00180D02 /* Frameworks */,
 				78A74EAA1C6B401800FE9724 /* Classes */,
+				78011AAE1D48B46100EA16A2 /* Structures */,
 				78CFEE441C5C45E500F50370 /* Extensions */,
 				78011A651D47AF3000EA16A2 /* Enums */,
 				78CFEE491C5C45E500F50370 /* Protocols */,
@@ -218,6 +292,7 @@
 				78E59B2B1C786CBF00C6BFE9 /* UITableView */,
 				C37210711ACDF1042F70C2EB /* UIImage */,
 				C372153938A7B7D327F55124 /* UIStoryboard */,
+				786D78E61D53C355006B2CEA /* Alamofire */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -426,6 +501,10 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/../Carthage/Build/iOS/CocoaLumberjack.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/Mapper.framework",
 			);
 			name = "Carthage copy-frameworks";
 			outputPaths = (
@@ -452,21 +531,27 @@
 				787783671CA04D4A001CDC9B /* NSString+SizeCalculation.swift in Sources */,
 				78011A641D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift in Sources */,
 				78CFEE531C5C45E500F50370 /* UITableView+DequeueCustomCell.swift in Sources */,
+				786D78EC1D53C46E006B2CEA /* AlamofireManager+Extensions.swift in Sources */,
 				78E59B1B1C77470A00C6BFE9 /* ViewsGenerator.swift in Sources */,
 				78B0FC811C6B2CD500358B64 /* App.swift in Sources */,
+				786D78EA1D53C43E006B2CEA /* ApiError.swift in Sources */,
 				787A071A1D085750009EC97F /* CellsControllerProtocol.swift in Sources */,
 				78CFEE551C5C45E500F50370 /* NibNameProtocol.swift in Sources */,
 				78CFEE561C5C45E500F50370 /* ReuseIdentifierProtocol.swift in Sources */,
+				786D78E81D53C378006B2CEA /* AlamofireRequest+Extensions.swift in Sources */,
 				78E59B191C773EE600C6BFE9 /* ObjectsGenerator.swift in Sources */,
 				78CFEE5B1C5C45E500F50370 /* ViewModelProtocol.swift in Sources */,
 				7824CA521CFEE6B700D7B132 /* UIImage+RenderTemplate.swift in Sources */,
 				78CFEE5A1C5C45E500F50370 /* ViewHeightProtocol.swift in Sources */,
 				787682FA1CAD40C300532AB3 /* StaticEstimatedViewHeightProtocol.swift in Sources */,
+				78011A761D48AC2500EA16A2 /* RxAlamofire.swift in Sources */,
 				78A74EA91C6B373700FE9724 /* UIView+DefaultNibName.swift in Sources */,
 				786A17A11CB8D71D007F9661 /* UIImage+CapInsetsUtils.swift in Sources */,
 				78CFEE581C5C45E500F50370 /* StaticViewHeightProtocol.swift in Sources */,
 				787783631CA03CA0001CDC9B /* NSIndexPath+ImmutableIndexPath.swift in Sources */,
 				78CFEE591C5C45E500F50370 /* StoryboardIdentifierProtocol.swift in Sources */,
+				78011A751D48AC2500EA16A2 /* NSURLSession+RxAlamofire.swift in Sources */,
+				78011AB31D48B53600EA16A2 /* ApiRequestParameters.swift in Sources */,
 				78B0FC7D1C6B2BE200358B64 /* LogFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

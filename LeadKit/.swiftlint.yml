@@ -4,4 +4,5 @@ disabled_rules:
 excluded:
   - Carthage
   - Pods
+  - RxAlamofire
 line_length: 128
