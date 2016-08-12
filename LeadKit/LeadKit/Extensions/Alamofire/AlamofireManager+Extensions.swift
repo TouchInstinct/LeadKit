@@ -8,6 +8,7 @@
 
 import Alamofire
 import RxSwift
+import RxAlamofire
 
 public extension Alamofire.Manager {
 

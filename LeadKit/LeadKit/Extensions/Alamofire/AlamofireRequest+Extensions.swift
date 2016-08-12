@@ -9,6 +9,7 @@
 import Alamofire
 import RxSwift
 import Mapper
+import RxAlamofire
 
 public extension Alamofire.Request {
 
