@@ -13,5 +13,6 @@ Pod::Spec.new do |s|
   s.dependency "CocoaLumberjack/Swift", '~> 2.2'
   s.dependency "ModelMapper", '~> 3.0'
   s.dependency "RxSwift", '~> 2.6'
+  s.dependency "RxCocoa", '~> 2.6'
   s.dependency "Alamofire", '~> 3.4'
 end
