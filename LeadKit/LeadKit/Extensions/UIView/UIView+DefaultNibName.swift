@@ -16,7 +16,7 @@ extension UIView: StaticNibNameProtocol {
      */
     
     public class func nibName() -> String {
-        return NSStringFromClass(self).componentsSeparatedByString(".").last!
+        return String(self.dynamicType).componentsSeparatedByString(".").last!
     }
     
 }

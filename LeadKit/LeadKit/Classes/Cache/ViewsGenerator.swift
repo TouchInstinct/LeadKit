@@ -19,9 +19,7 @@ public class ViewsGenerator<T where T: UIView>: ObjectsGenerator<T> {
      - returns: nothing
      */
     init(poolSize: UInt, nibName: String) {
-        super.init(poolSize: poolSize, objectsContructor: {() -> T in
-            T.loadFromNib(named: nibName)
-        })
+        super.init(poolSize: poolSize, objectsContructor: { T.loadFromNib(named: nibName) })
     }
     
 }

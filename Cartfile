@@ -1,0 +1,3 @@
+github "CocoaLumberjack/CocoaLumberjack"
+github "ReactiveX/RxSwift"
+github "lyft/mapper"

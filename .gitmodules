@@ -1,0 +1,3 @@
+[submodule "LeadKit/RxAlamofire"]
+	path = LeadKit/RxAlamofire
+	url = https://github.com/RxSwiftCommunity/RxAlamofire
