@@ -11,5 +11,9 @@ Pod::Spec.new do |s|
   s.source_files    = "LeadKit/LeadKit/**/*.swift"
 
   s.dependency "CocoaLumberjack/Swift", '~> 2.2'
-  s.dependency "AlamofireObjectMapper", '~> 3.0'
+  s.dependency "ModelMapper", '~> 3.0'
+  s.dependency "RxSwift", '~> 2.6'
+  s.dependency "Alamofire", '~> 3.4'
+
+
 end
