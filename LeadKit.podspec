@@ -14,6 +14,4 @@ Pod::Spec.new do |s|
   s.dependency "ModelMapper", '~> 3.0'
   s.dependency "RxSwift", '~> 2.6'
   s.dependency "Alamofire", '~> 3.4'
-
-
 end
