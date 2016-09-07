@@ -31,6 +31,9 @@
 		78B0FC7D1C6B2BE200358B64 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC7C1C6B2BE200358B64 /* LogFormatter.swift */; };
 		78B0FC7F1C6B2C4D00358B64 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC7E1C6B2C4D00358B64 /* Log.swift */; };
 		78B0FC811C6B2CD500358B64 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC801C6B2CD500358B64 /* App.swift */; };
+		78C36F771D80117D00E7EBEA /* UIImage+Transformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C36F761D80117D00E7EBEA /* UIImage+Transformations.swift */; };
+		78C36F791D8011FA00E7EBEA /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C36F781D8011FA00E7EBEA /* UIImage+Resize.swift */; };
+		78C36F7B1D8015ED00E7EBEA /* UIImage+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C36F7A1D8015ED00E7EBEA /* UIImage+Creation.swift */; };
 		78CFEE2E1C5C456B00F50370 /* LeadKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 78CFEE2D1C5C456B00F50370 /* LeadKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78CFEE351C5C456B00F50370 /* LeadKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CFEE2A1C5C456B00F50370 /* LeadKit.framework */; };
 		78CFEE3A1C5C456B00F50370 /* LeadKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE391C5C456B00F50370 /* LeadKitTests.swift */; };
@@ -83,6 +86,9 @@
 		78B0FC7C1C6B2BE200358B64 /* LogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFormatter.swift; sourceTree = "<group>"; };
 		78B0FC7E1C6B2C4D00358B64 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		78B0FC801C6B2CD500358B64 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		78C36F761D80117D00E7EBEA /* UIImage+Transformations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Transformations.swift"; sourceTree = "<group>"; };
+		78C36F781D8011FA00E7EBEA /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
+		78C36F7A1D8015ED00E7EBEA /* UIImage+Creation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Creation.swift"; sourceTree = "<group>"; };
 		78CFEE2A1C5C456B00F50370 /* LeadKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LeadKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CFEE2D1C5C456B00F50370 /* LeadKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeadKit.h; sourceTree = "<group>"; };
 		78CFEE2F1C5C456B00F50370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -324,6 +330,9 @@
 			children = (
 				786A17A01CB8D71D007F9661 /* UIImage+CapInsetsUtils.swift */,
 				7824CA511CFEE6B700D7B132 /* UIImage+RenderTemplate.swift */,
+				78C36F761D80117D00E7EBEA /* UIImage+Transformations.swift */,
+				78C36F781D8011FA00E7EBEA /* UIImage+Resize.swift */,
+				78C36F7A1D8015ED00E7EBEA /* UIImage+Creation.swift */,
 			);
 			path = UIImage;
 			sourceTree = "<group>";
@@ -512,6 +521,7 @@
 				786D78EC1D53C46E006B2CEA /* AlamofireManager+Extensions.swift in Sources */,
 				78E59B1B1C77470A00C6BFE9 /* ViewsGenerator.swift in Sources */,
 				78B0FC811C6B2CD500358B64 /* App.swift in Sources */,
+				78C36F771D80117D00E7EBEA /* UIImage+Transformations.swift in Sources */,
 				786D78EA1D53C43E006B2CEA /* ApiError.swift in Sources */,
 				787A071A1D085750009EC97F /* CellsControllerProtocol.swift in Sources */,
 				78CFEE551C5C45E500F50370 /* NibNameProtocol.swift in Sources */,
@@ -519,11 +529,13 @@
 				786D78E81D53C378006B2CEA /* AlamofireRequest+Extensions.swift in Sources */,
 				78E59B191C773EE600C6BFE9 /* ObjectsGenerator.swift in Sources */,
 				78CFEE5B1C5C45E500F50370 /* ViewModelProtocol.swift in Sources */,
+				78C36F7B1D8015ED00E7EBEA /* UIImage+Creation.swift in Sources */,
 				7824CA521CFEE6B700D7B132 /* UIImage+RenderTemplate.swift in Sources */,
 				78CFEE5A1C5C45E500F50370 /* ViewHeightProtocol.swift in Sources */,
 				787682FA1CAD40C300532AB3 /* StaticEstimatedViewHeightProtocol.swift in Sources */,
 				78A74EA91C6B373700FE9724 /* UIView+DefaultNibName.swift in Sources */,
 				786A17A11CB8D71D007F9661 /* UIImage+CapInsetsUtils.swift in Sources */,
+				78C36F791D8011FA00E7EBEA /* UIImage+Resize.swift in Sources */,
 				78CFEE581C5C45E500F50370 /* StaticViewHeightProtocol.swift in Sources */,
 				787783631CA03CA0001CDC9B /* NSIndexPath+ImmutableIndexPath.swift in Sources */,
 				78CFEE591C5C45E500F50370 /* StoryboardIdentifierProtocol.swift in Sources */,

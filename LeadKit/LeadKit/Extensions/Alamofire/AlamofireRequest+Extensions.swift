@@ -41,5 +41,5 @@ public extension Alamofire.Request {
 
         return rx_responseResult(responseSerializer: mapperSerializer)
     }
-    
+
 }

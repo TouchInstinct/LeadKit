@@ -34,7 +34,7 @@ extension NSString {
      */
     public func heightWith(width: CGFloat, attributes: [String: AnyObject]?) -> CGFloat {
         return self.boundingRectWithSize(CGSize(width: width, height: CGFloat.max),
-            options: .UsesLineFragmentOrigin,
+            options: [.UsesLineFragmentOrigin, .UsesFontLeading],
             attributes: attributes,
             context: nil).size.height
     }
@@ -52,9 +52,7 @@ extension NSString {
             preconditionFailure("Value for NSFontAttributeName should be defined in attributes")
         }
         
-        let paragraphStyle = attributes[NSParagraphStyleAttributeName] as? NSParagraphStyle
-        
-        let lineHeight = font.lineHeight * (paragraphStyle?.lineHeightMultiple ?? 1.0)
+        let lineHeight = font.lineHeight
         
         let lineHeightRounded = roundDouble(Double(lineHeight), withPersicion: 2)
         
