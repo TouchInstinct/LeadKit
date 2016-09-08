@@ -20,7 +20,11 @@ public extension Alamofire.Manager {
      - returns: Observable with request 
      */
     func apiRequest(apiParameters: ApiRequestParameters) -> Observable<Request> {
-        return rx_request(apiParameters.method, apiParameters.url, parameters: apiParameters.parameters)
+        return rx_request(apiParameters.method,
+                          apiParameters.url,
+                          parameters: apiParameters.parameters,
+                          encoding: apiParameters.encoding,
+                          headers: apiParameters.headers)
     }
 
 }
