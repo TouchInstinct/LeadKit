@@ -80,18 +80,35 @@ public extension UIColor {
      convenience failable initializer which creates an instance with given hex color values if string has a correct format
 
      - parameter hexString: hex string with red green and blue values (can have `#` sign)
-     - parameter alpha: alpha component
+     - parameter alpha: alpha component used if not given in hexString
 
      - returns: new instance with given hex color or nil if hexString is incorrect
      */
     public convenience init?(hexString: String, alpha: CGFloat = 1) {
-        let hexStringWithoutHash = hexString.stringByReplacingOccurrencesOfString("#", withString: "",
-                                                                                  options: .LiteralSearch, range: nil)
-        if let hex = UInt32(hexStringWithoutHash, radix: 16) {
-            self.init(hex6: hex, alpha: alpha)
-        } else {
+        let hexStr = hexString.hasPrefix("#") ? hexString.substringFromIndex(hexString.startIndex.advancedBy(1)) : hexString
+
+        switch hexStr.characters.count {
+        case 3:
+            if let hex = UInt16(hexStr, radix: 16) {
+                self.init(hex3: hex, alpha: alpha)
+            }
+        case 4:
+            if let hex = UInt16(hexStr, radix: 16) {
+                self.init(hex4: hex)
+            }
+        case 6:
+            if let hex = UInt32(hexStr, radix: 16) {
+                self.init(hex6: hex, alpha: alpha)
+            }
+        case 8:
+            if let hex = UInt32(hexStr, radix: 16) {
+                self.init(hex8: hex)
+            }
+        default:
             return nil
         }
+
+        return nil
     }
 
 }
