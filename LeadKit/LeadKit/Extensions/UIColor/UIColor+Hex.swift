@@ -20,9 +20,9 @@ public extension UIColor {
      - returns: new instance with given three-digit hexadecimal value
      */
     public convenience init(hex3: UInt16, alpha: CGFloat = 1) {
-        let red     = CGFloat((hex3 & 0xF00) >> 8) / 0xFF
-        let green   = CGFloat((hex3 & 0x0F0) >> 4) / 0xFF
-        let blue    = CGFloat((hex3 & 0x00F) >> 0) / 0xFF
+        let red     = CGFloat((hex3 & 0xF00) >> 8) / 0xF
+        let green   = CGFloat((hex3 & 0x0F0) >> 4) / 0xF
+        let blue    = CGFloat((hex3 & 0x00F) >> 0) / 0xF
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
 
@@ -35,10 +35,10 @@ public extension UIColor {
      - returns: new instance with given four-digit hexadecimal value
      */
     public convenience init(hex4: UInt16) {
-        let red     = CGFloat((hex4 & 0xF000) >> 12) / 0xFF
-        let green   = CGFloat((hex4 & 0x0F00) >>  8) / 0xFF
-        let blue    = CGFloat((hex4 & 0x00F0) >>  4) / 0xFF
-        let alpha   = CGFloat((hex4 & 0x000F) >>  0) / 0xFF
+        let red     = CGFloat((hex4 & 0xF000) >> 12) / 0xF
+        let green   = CGFloat((hex4 & 0x0F00) >>  8) / 0xF
+        let blue    = CGFloat((hex4 & 0x00F0) >>  4) / 0xF
+        let alpha   = CGFloat((hex4 & 0x000F) >>  0) / 0xF
 
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
