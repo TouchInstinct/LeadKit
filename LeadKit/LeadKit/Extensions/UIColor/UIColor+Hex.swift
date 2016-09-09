@@ -87,28 +87,32 @@ public extension UIColor {
     public convenience init?(hexString: String, alpha: CGFloat = 1) {
         let hexStr = hexString.hasPrefix("#") ? hexString.substringFromIndex(hexString.startIndex.advancedBy(1)) : hexString
 
-        switch hexStr.characters.count {
-        case 3:
+        let charactersCount = hexStr.characters.count
+
+        switch charactersCount {
+        case 3, 4:
             if let hex = UInt16(hexStr, radix: 16) {
-                self.init(hex3: hex, alpha: alpha)
+                if charactersCount == 3 {
+                    self.init(hex3: hex, alpha: alpha)
+                } else {
+                    self.init(hex4: hex)
+                }
+            } else {
+                return nil
             }
-        case 4:
-            if let hex = UInt16(hexStr, radix: 16) {
-                self.init(hex4: hex)
-            }
-        case 6:
+        case 6, 8:
             if let hex = UInt32(hexStr, radix: 16) {
-                self.init(hex6: hex, alpha: alpha)
-            }
-        case 8:
-            if let hex = UInt32(hexStr, radix: 16) {
-                self.init(hex8: hex)
+                if charactersCount == 6 {
+                    self.init(hex6: hex, alpha: alpha)
+                } else {
+                    self.init(hex8: hex)
+                }
+            } else {
+                return nil
             }
         default:
             return nil
         }
-
-        return nil
     }
 
 }
