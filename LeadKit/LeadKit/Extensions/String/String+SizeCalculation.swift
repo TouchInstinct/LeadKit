@@ -1,5 +1,5 @@
 //
-//  NSString+SizeCAlculation.swift
+//  String+SizeCalculation.swift
 //  LeadKit
 //
 //  Created by Иван Смолин on 21/03/16.
@@ -40,7 +40,7 @@ public extension StringSizeCalculationResult {
 
 }
 
-public extension NSString {
+public extension String {
 
     /**
      method which calculates string size based on given character attributes and (optional) max width and height
@@ -55,13 +55,13 @@ public extension NSString {
                                     maxWidth: CGFloat = CGFloat.max,
                                     maxHeight: CGFloat = CGFloat.max) -> StringSizeCalculationResult {
 
-        let size = boundingRectWithSize(CGSize(width: maxWidth, height: maxHeight),
-                                        options: [.UsesLineFragmentOrigin, .UsesFontLeading],
-                                        attributes: attributes,
-                                        context: nil).size
+        let size = self.boundingRectWithSize(CGSize(width: maxWidth, height: maxHeight),
+                                             options: [.UsesLineFragmentOrigin, .UsesFontLeading],
+                                             attributes: attributes,
+                                             context: nil).size
 
         let fontLineHeight = (attributes?[NSFontAttributeName] as? UIFont)?.lineHeight
-
+        
         return StringSizeCalculationResult(size: size, fontLineHeight: fontLineHeight)
     }
     

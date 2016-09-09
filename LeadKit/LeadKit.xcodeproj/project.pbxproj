@@ -24,7 +24,7 @@
 		786D78EC1D53C46E006B2CEA /* AlamofireManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786D78EB1D53C46E006B2CEA /* AlamofireManager+Extensions.swift */; };
 		787682FA1CAD40C300532AB3 /* StaticEstimatedViewHeightProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787682F91CAD40C200532AB3 /* StaticEstimatedViewHeightProtocol.swift */; };
 		787783631CA03CA0001CDC9B /* NSIndexPath+ImmutableIndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787783621CA03CA0001CDC9B /* NSIndexPath+ImmutableIndexPath.swift */; };
-		787783671CA04D4A001CDC9B /* NSString+SizeCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787783661CA04D4A001CDC9B /* NSString+SizeCalculation.swift */; };
+		787783671CA04D4A001CDC9B /* String+SizeCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787783661CA04D4A001CDC9B /* String+SizeCalculation.swift */; };
 		787A071A1D085750009EC97F /* CellsControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A07191D085750009EC97F /* CellsControllerProtocol.swift */; };
 		788EC15A1CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EC1591CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift */; };
 		78A74EA91C6B373700FE9724 /* UIView+DefaultNibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */; };
@@ -81,7 +81,7 @@
 		786D78EB1D53C46E006B2CEA /* AlamofireManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireManager+Extensions.swift"; sourceTree = "<group>"; };
 		787682F91CAD40C200532AB3 /* StaticEstimatedViewHeightProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticEstimatedViewHeightProtocol.swift; sourceTree = "<group>"; };
 		787783621CA03CA0001CDC9B /* NSIndexPath+ImmutableIndexPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSIndexPath+ImmutableIndexPath.swift"; sourceTree = "<group>"; };
-		787783661CA04D4A001CDC9B /* NSString+SizeCalculation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+SizeCalculation.swift"; sourceTree = "<group>"; };
+		787783661CA04D4A001CDC9B /* String+SizeCalculation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SizeCalculation.swift"; sourceTree = "<group>"; };
 		787A07191D085750009EC97F /* CellsControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellsControllerProtocol.swift; sourceTree = "<group>"; };
 		788EC1591CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+InstantiateViewController.swift"; sourceTree = "<group>"; };
 		78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+DefaultNibName.swift"; path = "LeadKit/Extensions/UIView/UIView+DefaultNibName.swift"; sourceTree = SOURCE_ROOT; };
@@ -200,12 +200,12 @@
 			path = NSIndexPath;
 			sourceTree = "<group>";
 		};
-		787783651CA04D14001CDC9B /* NSString */ = {
+		787783651CA04D14001CDC9B /* String */ = {
 			isa = PBXGroup;
 			children = (
-				787783661CA04D4A001CDC9B /* NSString+SizeCalculation.swift */,
+				787783661CA04D4A001CDC9B /* String+SizeCalculation.swift */,
 			);
-			path = NSString;
+			path = String;
 			sourceTree = "<group>";
 		};
 		78A74EAA1C6B401800FE9724 /* Classes */ = {
@@ -291,7 +291,7 @@
 			children = (
 				78C36F7F1D8021D100E7EBEA /* UIColor */,
 				78C36F7C1D801E2F00E7EBEA /* Double */,
-				787783651CA04D14001CDC9B /* NSString */,
+				787783651CA04D14001CDC9B /* String */,
 				787783611CA03C84001CDC9B /* NSIndexPath */,
 				78E59B2C1C786CD500C6BFE9 /* UIView */,
 				78E59B2B1C786CBF00C6BFE9 /* UITableView */,
@@ -537,7 +537,7 @@
 				78B0FC7F1C6B2C4D00358B64 /* Log.swift in Sources */,
 				78CFEE571C5C45E500F50370 /* StaticNibNameProtocol.swift in Sources */,
 				788EC15A1CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift in Sources */,
-				787783671CA04D4A001CDC9B /* NSString+SizeCalculation.swift in Sources */,
+				787783671CA04D4A001CDC9B /* String+SizeCalculation.swift in Sources */,
 				78011A641D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift in Sources */,
 				78CFEE531C5C45E500F50370 /* UITableView+DequeueCustomCell.swift in Sources */,
 				786D78EC1D53C46E006B2CEA /* AlamofireManager+Extensions.swift in Sources */,
