@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.0.1"
+  s.version         = "0.0.3"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
