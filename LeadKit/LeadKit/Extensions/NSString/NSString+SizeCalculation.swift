@@ -20,11 +20,15 @@ public struct StringSizeCalculationResult {
 
 public extension StringSizeCalculationResult {
 
+    public var height: CGFloat { return size.height }
+
+    public var width: CGFloat { return size.width }
+
     public var numberOfLines: UInt? {
         if let lineHeight = fontLineHeight {
             let lineHeightRounded = Double(lineHeight).roundValue(withPersicion: 2)
 
-            let heightRounded = Double(size.height).roundValue(withPersicion: 2)
+            let heightRounded = Double(height).roundValue(withPersicion: 2)
 
             let numberOfLines = ceil(heightRounded / lineHeightRounded)
 
@@ -47,7 +51,7 @@ public extension NSString {
 
      - returns: string size calculation result
      */
-    public func sizeWith(attributes attributes: [String: AnyObject]?,
+    public func size(withAttributes attributes: [String: AnyObject]?,
                                     maxWidth: CGFloat = CGFloat.max,
                                     maxHeight: CGFloat = CGFloat.max) -> StringSizeCalculationResult {
 
@@ -57,7 +61,7 @@ public extension NSString {
                                         context: nil).size
 
         let fontLineHeight = (attributes?[NSFontAttributeName] as? UIFont)?.lineHeight
-        
+
         return StringSizeCalculationResult(size: size, fontLineHeight: fontLineHeight)
     }
     
