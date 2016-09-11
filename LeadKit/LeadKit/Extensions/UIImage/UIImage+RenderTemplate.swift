@@ -14,12 +14,14 @@ public extension UIImage {
      method which render current template UIImage into new image using given color
 
      - parameter color:  color which used to fill template image
-     - parameter opaque: a flag indicating whether the bitmap is opaque
+     - parameter opaque: a flag indicating whether the bitmap is opaque (default: False)
 
      - returns: new UIImage rendered with given color
      */
     public func renderTemplateWithColor(color: UIColor, opaque: Bool = false) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(size, opaque, 0.0)
+        UIGraphicsBeginImageContextWithOptions(size, opaque, scale)
+
+        defer { UIGraphicsEndImageContext() }
 
         let ctx = UIGraphicsGetCurrentContext()
 
@@ -38,11 +40,7 @@ public extension UIImage {
         CGContextSetBlendMode(ctx, .Multiply)
         CGContextDrawImage(ctx, imageRect, CGImage)
 
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-
-        UIGraphicsEndImageContext()
-        
-        return newImage
+        return UIGraphicsGetImageFromCurrentImageContext()
     }
     
 }

@@ -8,26 +8,7 @@
 
 import UIKit
 
-extension UIImage {
-
-    /**
-     method which render current UIImage for specific size and return new UIImage
-     
-     - parameter size: size of new rendered image
-     
-     - returns: new rendered UIImage
-     */
-    public func renderWithSize(size: CGSize) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
-
-        self.drawInRect(CGRect(origin: CGPoint.zero, size: size))
-
-        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-
-        UIGraphicsEndImageContext()
-
-        return resizedImage
-    }
+public extension UIImage {
 
     /**
      this method tries to find requested image with specific parameters in cache, and if doesn't exists - create it
@@ -81,7 +62,7 @@ extension UIImage {
                                                  right: assetsInsetsForScale.right / scale)
             
 
-            return self.fetchOrCreateImageWithName(name, size: size, capInsets: capInsetsForScale, cache: cache)
+            return fetchOrCreateImageWithName(name, size: size, capInsets: capInsetsForScale, cache: cache)
         }
 
         return nil
