@@ -11,7 +11,7 @@ import Foundation
 public extension Double {
 
     /**
-     rounds double value 1.7800000004 to 1.78
+     rounds double value 1.7860000004 to 1.79
 
      - parameter val:       value for rounding
      - parameter persicion: important number of digits after comma
@@ -19,9 +19,23 @@ public extension Double {
      - returns: rounded value
      */
     public func roundValue(withPersicion persicion: UInt) -> Double {
-        let divider = pow(10.0, Double(persicion - 1))
+        let divider = pow(10.0, Double(persicion))
 
         return round(self * divider) / divider
+    }
+
+    /**
+     discard dractional part double value 1.7860000004 to 1.78
+
+     - parameter val:       value for discarding dractional part
+     - parameter persicion: important number of digits after comma
+
+     - returns: value with discarded dractional part
+     */
+    func discardFractionalTo(number: Int) -> Double {
+        let divider = pow(10.0, Double(number))
+        let roundedNumber = Double(Int(self * divider)) / divider
+        return roundedNumber
     }
 
 }
