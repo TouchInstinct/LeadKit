@@ -11,17 +11,34 @@ import Foundation
 public extension Double {
 
     /**
-     rounds double value 1.7800000004 to 1.78
+     Type of rounding double value
 
-     - parameter val:       value for rounding
+     - Normal: From 167.567 you will get 167.6
+     - Down:   From 167.567 you will get 167.5
+     */
+    public enum RoundingType {
+        case Normal
+        case Down
+    }
+
+    /**
+     Rounding of double value
+
      - parameter persicion: important number of digits after comma
+     - parameter roundType: rounding type
 
      - returns: rounded value
      */
-    public func roundValue(withPersicion persicion: UInt) -> Double {
-        let divider = pow(10.0, Double(persicion - 1))
+    public func roundValue(withPersicion persicion: UInt,
+                                         roundType: RoundingType = .Normal) -> Double {
+        let divider = pow(10.0, Double(persicion))
 
-        return round(self * divider) / divider
+        switch roundType {
+        case .Normal:
+            return round(self * divider) / divider
+        case .Down:
+            return Double(Int(self * divider)) / divider
+        }
     }
 
 }
