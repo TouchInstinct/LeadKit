@@ -6,10 +6,9 @@
 //  Copyright © 2016 Touch Instinct. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class KeyboardTracker {
+public class KeyboardTracker {
 
     private enum KeyboardStatus {
         case Hidden
@@ -31,8 +30,8 @@ class KeyboardTracker {
         return trackingView
     }()
 
-    var isTracking = false
-    var inputContainer: UIView
+    public var isTracking = false
+    public var inputContainer: UIView
     private var notificationCenter: NSNotificationCenter
 
     init(viewController: UIViewController, inputContainer: UIView,
