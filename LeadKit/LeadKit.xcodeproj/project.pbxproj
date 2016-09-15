@@ -51,7 +51,7 @@
 		78CFEE5B1C5C45E500F50370 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE501C5C45E500F50370 /* ViewModelProtocol.swift */; };
 		78E59B191C773EE600C6BFE9 /* ObjectsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E59B181C773EE600C6BFE9 /* ObjectsGenerator.swift */; };
 		78E59B1B1C77470A00C6BFE9 /* ViewsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E59B1A1C77470A00C6BFE9 /* ViewsGenerator.swift */; };
-		95B0CF9E1D8AF2EC0082DDE6 /* KeyboardTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B0CF9D1D8AF2EC0082DDE6 /* KeyboardTracker.swift */; };
+		95B0CFA01D8B060E0082DDE6 /* KeyboardTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B0CF9F1D8B060E0082DDE6 /* KeyboardTracker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,7 +112,7 @@
 		78CFEE501C5C45E500F50370 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		78E59B181C773EE600C6BFE9 /* ObjectsGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectsGenerator.swift; sourceTree = "<group>"; };
 		78E59B1A1C77470A00C6BFE9 /* ViewsGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewsGenerator.swift; sourceTree = "<group>"; };
-		95B0CF9D1D8AF2EC0082DDE6 /* KeyboardTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardTracker.swift; sourceTree = "<group>"; };
+		95B0CF9F1D8B060E0082DDE6 /* KeyboardTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardTracker.swift; path = Chat/KeyboardTracker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,7 +353,7 @@
 		95B0CF9C1D8AF2C90082DDE6 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				95B0CF9D1D8AF2EC0082DDE6 /* KeyboardTracker.swift */,
+				95B0CF9F1D8B060E0082DDE6 /* KeyboardTracker.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -561,9 +561,9 @@
 				78CFEE551C5C45E500F50370 /* NibNameProtocol.swift in Sources */,
 				78CFEE561C5C45E500F50370 /* ReuseIdentifierProtocol.swift in Sources */,
 				786D78E81D53C378006B2CEA /* AlamofireRequest+Extensions.swift in Sources */,
+				95B0CFA01D8B060E0082DDE6 /* KeyboardTracker.swift in Sources */,
 				78C36F811D8021DD00E7EBEA /* UIColor+Hex.swift in Sources */,
 				78E59B191C773EE600C6BFE9 /* ObjectsGenerator.swift in Sources */,
-				95B0CF9E1D8AF2EC0082DDE6 /* KeyboardTracker.swift in Sources */,
 				78CFEE5B1C5C45E500F50370 /* ViewModelProtocol.swift in Sources */,
 				78C36F7B1D8015ED00E7EBEA /* UIImage+Creation.swift in Sources */,
 				7824CA521CFEE6B700D7B132 /* UIImage+RenderTemplate.swift in Sources */,
