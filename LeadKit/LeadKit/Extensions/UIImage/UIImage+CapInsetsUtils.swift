@@ -40,7 +40,7 @@ public extension UIImage {
     }
 
     /**
-     this metho tries to find requested image with specific parameters in cache, and if doesn't exists - create it
+     this method tries to find requested image with specific parameters in cache, and if doesn't exists - create it
      
      - parameter name:                  name of the image used in UIImage(named:)
      - parameter size:                  size of rendered image

@@ -24,8 +24,8 @@ public extension Alamofire.Request {
                 return .Failure(.Network(error: err))
             }
 
-            let JSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
-            let result = JSONResponseSerializer.serializeResponse(request, response, data, error)
+            let jsonResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
+            let result = jsonResponseSerializer.serializeResponse(request, response, data, error)
 
             switch result {
             case .Success(let value):

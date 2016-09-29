@@ -33,4 +33,25 @@ public extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
 
+    /**
+     creates an image from a UIView.
+
+     - parameter fromView: The source view.
+
+     - returns A new image
+     */
+    public convenience init?(fromView view: UIView) {
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0)
+
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
+        view.layer.renderInContext(context)
+        guard let cgImage = UIGraphicsGetImageFromCurrentImageContext().CGImage else {
+            return nil
+        }
+        self.init(CGImage: cgImage)
+        UIGraphicsEndImageContext()
+    }
+
 }
