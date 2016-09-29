@@ -28,7 +28,7 @@ public extension UIImage {
 
     /**
      creates a new image from a URL with optional caching.
-     if cached, the cached image is returned.
+     if using cache, the cached image is returned.
      otherwise, a place holder is used until the image from web is returned by the fetchComplete.
 
      - parameter url: The image URL.
