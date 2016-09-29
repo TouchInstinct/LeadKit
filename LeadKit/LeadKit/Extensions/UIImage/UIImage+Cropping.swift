@@ -32,11 +32,11 @@ public extension UIImage {
      - returns: cropped image
      */
     public func cropToSquare() -> UIImage? {
-        let newSize = CGSize(width: size.width * scale, height: size.height * scale)
-        let shortest = min(newSize.width, newSize.height)
-        let left: CGFloat = newSize.width > shortest ? (newSize.width-shortest)/2 : 0
-        let top: CGFloat = newSize.height > shortest ? (newSize.height-shortest)/2 : 0
-        let rect = CGRect(x: 0, y: 0, width: size.width, height: newSize.height)
+        let scaledSize = CGSize(width: size.width * scale, height: size.height * scale)
+        let shortest = min(scaledSize.width, scaledSize.height)
+        let left: CGFloat = scaledSize.width > shortest ? (scaledSize.width-shortest)/2 : 0
+        let top: CGFloat = scaledSize.height > shortest ? (scaledSize.height-shortest)/2 : 0
+        let rect = CGRect(x: 0, y: 0, width: scaledSize.width, height: scaledSize.height)
         let insetRect = CGRectInset(rect, left, top)
         return crop(insetRect)
     }

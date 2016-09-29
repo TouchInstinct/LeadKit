@@ -38,8 +38,8 @@ public extension UIImage {
      */
     public func resize(size: CGSize,
                 contentMode: UIImageContentMode = .ScaleToFill) -> UIImage? {
-        let horizontalRatio = size.width/size.width
-        let verticalRatio = size.height/size.height
+        let horizontalRatio = size.width / size.width
+        let verticalRatio = size.height / size.height
         var ratio: CGFloat = 1
 
         switch contentMode {

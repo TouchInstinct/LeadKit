@@ -23,7 +23,8 @@ public extension UIImage {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let colors = gradientColors.map {(color: UIColor) -> AnyObject? in return color.CGColor as AnyObject? } as NSArray
         let gradient = CGGradientCreateWithColors(colorSpace, colors, nil)
-        CGContextDrawLinearGradient(context, gradient,
+        CGContextDrawLinearGradient(context,
+                                    gradient,
                                     CGPoint(x: 0, y: 0),
                                     CGPoint(x: 0, y: size.height),
                                     CGGradientDrawingOptions(rawValue: 0))
@@ -79,12 +80,12 @@ public extension UIImage {
     public convenience init?(startColor: UIColor,
                              endColor: UIColor,
                              radialGradientCenter: CGPoint = CGPoint(x: 0.5, y: 0.5),
-                             radius: Float = 0.5,
+                             radius: CGFloat = 0.5,
                              size: CGSize = CGSize(width: 100, height: 100)) {
         UIGraphicsBeginImageContextWithOptions(size, true, 0)
 
         let numLocations: Int = 2
-        let locations: [CGFloat] = [0.0, 1.0] as [CGFloat]
+        let locations: [CGFloat] = [0.0, 1.0]
 
         let startComponents = CGColorGetComponents(startColor.CGColor)
         let endComponents = CGColorGetComponents(endColor.CGColor)
@@ -104,7 +105,7 @@ public extension UIImage {
         // Normalize the 0-1 ranged inputs to the width of the image
         let aCenter = CGPoint(x: radialGradientCenter.x * size.width,
                               y: radialGradientCenter.y * size.height)
-        let aRadius = CGFloat(min(size.width, size.height)) * CGFloat(radius)
+        let aRadius = (min(size.width, size.height)) * (radius)
 
         // Draw it
         CGContextDrawRadialGradient(UIGraphicsGetCurrentContext(),

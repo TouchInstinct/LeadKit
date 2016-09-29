@@ -31,12 +31,13 @@ public extension UIImageView {
 
         image = UIImage.imageFromURL(url,
                                      placeholder: placeholder,
-                                     shouldCacheImage: shouldCacheImage) { (uploadedImage: UIImage?) in
+                                     shouldCacheImage: shouldCacheImage) { [weak self]
+                                        (uploadedImage: UIImage?) in
 
             guard let image = uploadedImage else {
                 return nil
             }
-            self.image = image
+            self?.image = image
             if fadeIn {
                 let transition = CATransition()
                 transition.duration = 0.5

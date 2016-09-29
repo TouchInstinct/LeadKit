@@ -15,23 +15,13 @@ public enum UIImageContentMode {
     case ScaleToFill, ScaleAspectFit, ScaleAspectFill
 }
 
-struct StaticSharedCache {
-    static var sharedCache: NSCache? = nil
-    static var onceToken: dispatch_once_t = 0
-}
-
 public extension UIImage {
 
     /**
      a singleton shared NSURL cache used for images from URL
-     
-     - returns: shared image cache
      */
-    private class func sharedCache() -> NSCache {
-        dispatch_once(&StaticSharedCache.onceToken) {
-            StaticSharedCache.sharedCache = NSCache()
-        }
-        return StaticSharedCache.sharedCache
+    static var sharedCache: NSCache = {
+        return NSCache()
     }
 
     // MARK: Image From URL
@@ -39,23 +29,23 @@ public extension UIImage {
     /**
      creates a new image from a URL with optional caching.
      if cached, the cached image is returned.
-     otherwise, a place holder is used until the image from web is returned by the closure.
+     otherwise, a place holder is used until the image from web is returned by the fetchComplete.
 
      - parameter url: The image URL.
      - parameter placeholder: The placeholder image.
      - parameter shouldCacheImage: Weather or not we should cache the NSURL response (default: true)
-     - parameter closure: Returns the image from the web the first time is fetched.
+     - parameter fetchComplete: Returns the image from the web the first time is fetched.
 
      - returns: A new image
      */
     public class func imageFromURL(url: String,
                                    placeholder: UIImage,
                                    shouldCacheImage: Bool = true,
-                                   closure: (image: UIImage?) -> ()) -> UIImage? {
+                                   fetchComplete: (image: UIImage?) -> ()) -> UIImage? {
         // From Cache
         if shouldCacheImage {
             if let image = UIImage.sharedCache().objectForKey(url) as? UIImage {
-                closure(image: nil)
+                fetchComplete(image: nil)
                 return image
             }
         }
@@ -65,7 +55,7 @@ public extension UIImage {
             session.dataTaskWithURL(nsURL, completionHandler: { (data, response, error) -> Void in
                 if error != nil {
                     dispatch_async(dispatch_get_main_queue()) {
-                        closure(image: nil)
+                        fetchComplete(image: nil)
                     }
                 }
                 if let data = data, image = UIImage(data: data) {
@@ -73,7 +63,7 @@ public extension UIImage {
                         UIImage.sharedCache().setObject(image, forKey: url)
                     }
                     dispatch_async(dispatch_get_main_queue()) {
-                        closure(image: image)
+                        fetchComplete(image: image)
                     }
                 }
                 session.finishTasksAndInvalidate()

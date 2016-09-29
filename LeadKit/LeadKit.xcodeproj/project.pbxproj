@@ -57,6 +57,7 @@
 		95B39A7E1D9C069B0057BD54 /* UIImage+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39A7D1D9C069B0057BD54 /* UIImage+Text.swift */; };
 		95B39A801D9C09440057BD54 /* UIImage+Cropping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39A7F1D9C09440057BD54 /* UIImage+Cropping.swift */; };
 		95B39A841D9C0C3E0057BD54 /* UIImage+Alpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39A831D9C0C3E0057BD54 /* UIImage+Alpha.swift */; };
+		95B39A861D9D51250057BD54 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39A851D9D51250057BD54 /* String+Localization.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		95B39A7D1D9C069B0057BD54 /* UIImage+Text.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Text.swift"; sourceTree = "<group>"; };
 		95B39A7F1D9C09440057BD54 /* UIImage+Cropping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Cropping.swift"; sourceTree = "<group>"; };
 		95B39A831D9C0C3E0057BD54 /* UIImage+Alpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Alpha.swift"; sourceTree = "<group>"; };
+		95B39A851D9D51250057BD54 /* String+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				787783661CA04D4A001CDC9B /* String+SizeCalculation.swift */,
+				95B39A851D9D51250057BD54 /* String+Localization.swift */,
 			);
 			path = String;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				78C36F771D80117D00E7EBEA /* UIImage+Transformations.swift in Sources */,
 				786D78EA1D53C43E006B2CEA /* ApiError.swift in Sources */,
 				787A071A1D085750009EC97F /* CellsControllerProtocol.swift in Sources */,
+				95B39A861D9D51250057BD54 /* String+Localization.swift in Sources */,
 				78C36F7E1D801E3E00E7EBEA /* Double+Rounding.swift in Sources */,
 				78CFEE551C5C45E500F50370 /* NibNameProtocol.swift in Sources */,
 				78CFEE561C5C45E500F50370 /* ReuseIdentifierProtocol.swift in Sources */,

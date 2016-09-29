@@ -58,13 +58,13 @@ public extension UIImage {
             CGContextSaveGState(context)
             CGContextTranslateCTM(context, rect.minX, rect.minY)
             CGContextScaleCTM(context, cornerRadius, cornerRadius)
-            let fw = rect.size.width / cornerRadius
-            let fh = rect.size.height / cornerRadius
-            CGContextMoveToPoint(context, fw, fh/2)
-            CGContextAddArcToPoint(context, fw, fh, fw/2, fh, 1)
-            CGContextAddArcToPoint(context, 0, fh, 0, fh/2, 1)
-            CGContextAddArcToPoint(context, 0, 0, fw/2, 0, 1)
-            CGContextAddArcToPoint(context, fw, 0, fw, fh/2, 1)
+            let roundedWidth = rect.size.width / cornerRadius
+            let roundedHeight = rect.size.height / cornerRadius
+            CGContextMoveToPoint(context, roundedWidth, roundedHeight/2)
+            CGContextAddArcToPoint(context, roundedWidth, roundedHeight, roundedWidth/2, roundedHeight, 1)
+            CGContextAddArcToPoint(context, 0, roundedHeight, 0, roundedHeight/2, 1)
+            CGContextAddArcToPoint(context, 0, 0, roundedWidth/2, 0, 1)
+            CGContextAddArcToPoint(context, roundedWidth, 0, roundedWidth, roundedHeight/2, 1)
             CGContextRestoreGState(context)
         }
         CGContextClosePath(context)
