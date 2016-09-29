@@ -20,7 +20,7 @@ public extension UIImage {
     /**
      a singleton shared NSURL cache used for images from URL
      */
-    static let sharedCache = NSCache()
+    private static let sharedCache = NSCache()
 
     // MARK: Image From URL
 
