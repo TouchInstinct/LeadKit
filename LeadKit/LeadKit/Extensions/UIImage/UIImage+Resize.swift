@@ -68,10 +68,7 @@ public extension UIImage {
         CGContextSetInterpolationQuality(context, interpolationQuality)
         CGContextDrawImage(context, rect, CGImage)
 
-        guard let newContext = context else {
-            return nil
-        }
-        guard let cgImage = CGBitmapContextCreateImage(newContext) else {
+        guard let newContext = context, cgImage = CGBitmapContextCreateImage(newContext) else {
             return nil
         }
         return UIImage(CGImage: cgImage,
