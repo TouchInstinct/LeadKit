@@ -23,10 +23,8 @@ public class ObjectsGenerator<T> {
     /**
      initializer function
      
-     - parameter poolSize:   number of objects to generate
-     - parameter contructor: objects constructor closure
-     
-     - returns: nothing
+     - parameter poolSize: number of objects to generate
+     - parameter contructor: objects constructor closure     
      */
     init(poolSize: UInt, objectsContructor contructor: ObjectConstructor) {
         self.poolSize = poolSize

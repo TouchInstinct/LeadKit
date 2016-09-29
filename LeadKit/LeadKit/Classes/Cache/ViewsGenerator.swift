@@ -14,9 +14,7 @@ public class ViewsGenerator<T where T: UIView>: ObjectsGenerator<T> {
      initializer function
      
      - parameter poolSize: number of cells to generate
-     - parameter nibName:  view nib name
-     
-     - returns: nothing
+     - parameter nibName: view nib name     
      */
     init(poolSize: UInt, nibName: String) {
         super.init(poolSize: poolSize, objectsContructor: { T.loadFromNib(named: nibName) })

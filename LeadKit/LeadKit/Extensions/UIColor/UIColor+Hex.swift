@@ -11,13 +11,11 @@ import UIKit
 public extension UIColor {
 
     /**
-     The shorthand three-digit hexadecimal representation of color.
+     the shorthand three-digit hexadecimal representation of color.
      #RGB defines to the color #RRGGBB.
 
      - parameter hex3:  Three-digit hexadecimal value.
      - parameter alpha: 0.0 - 1.0. The default is 1.0.
-
-     - returns: new instance with given three-digit hexadecimal value
      */
     public convenience init(hex3: UInt16, alpha: CGFloat = 1) {
         let red     = CGFloat((hex3 & 0xF00) >> 8) / 0xF
@@ -27,12 +25,10 @@ public extension UIColor {
     }
 
     /**
-     The shorthand four-digit hexadecimal representation of color with alpha.
+     the shorthand four-digit hexadecimal representation of color with alpha.
      #RGBA defines to the color #RRGGBBAA.
 
      - parameter hex4: Four-digit hexadecimal value.
-
-     - returns: new instance with given four-digit hexadecimal value
      */
     public convenience init(hex4: UInt16) {
         let red     = CGFloat((hex4 & 0xF000) >> 12) / 0xF
@@ -44,12 +40,10 @@ public extension UIColor {
     }
 
     /**
-     The six-digit hexadecimal representation of color of the form #RRGGBB.
+     the six-digit hexadecimal representation of color of the form #RRGGBB.
 
      - parameter hex6:  Six-digit hexadecimal value.
      - parameter alpha: alpha: 0.0 - 1.0. The default is 1.0.
-
-     - returns: new instance with given six-digit hexadecimal value
      */
     public convenience init(hex6: UInt32, alpha: CGFloat = 1) {
         let red     = CGFloat((hex6 & 0xFF0000) >> 16) / 0xFF
@@ -60,11 +54,9 @@ public extension UIColor {
     }
 
     /**
-     The six-digit hexadecimal representation of color with alpha of the form #RRGGBBAA.
+     the six-digit hexadecimal representation of color with alpha of the form #RRGGBBAA.
 
      - parameter hex8: Eight-digit hexadecimal value.
-
-     - returns: new instance with given eight-digit hexadecimal value
      */
     public convenience init(hex8: UInt32) {
         let red     = CGFloat((hex8 & 0xFF000000) >> 24) / 0xFF
@@ -81,8 +73,6 @@ public extension UIColor {
 
      - parameter hexString: hex string with red green and blue values (can have `#` sign)
      - parameter alpha: alpha component used if not given in hexString
-
-     - returns: new instance with given hex color or nil if hexString is incorrect
      */
     public convenience init?(hexString: String, alpha: CGFloat = 1) {
         let hexStr = hexString.hasPrefix("#") ? hexString.substringFromIndex(hexString.startIndex.advancedBy(1)) : hexString
