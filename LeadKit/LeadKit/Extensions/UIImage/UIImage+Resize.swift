@@ -71,10 +71,12 @@ public extension UIImage {
         guard let newContext = context else {
             return nil
         }
-        let newImage = UIImage(CGImage: CGBitmapContextCreateImage(newContext),
-                               scale: scale,
-                               orientation: imageOrientation)
-        return newImage
+        guard let cgImage = CGBitmapContextCreateImage(newContext) else {
+            return nil
+        }
+        return UIImage(CGImage: cgImage,
+                       scale: scale,
+                       orientation: imageOrientation)
     }
 
 }

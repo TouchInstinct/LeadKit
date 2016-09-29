@@ -31,7 +31,7 @@ public extension UIImageView {
 
         image = UIImage.imageFromURL(url,
                                      placeholder: placeholder,
-                                     shouldCacheImage: shouldCacheImage) { [weak self]
+                                     cacheImage: shouldCacheImage) { [weak self]
                                         (uploadedImage: UIImage?) in
 
             guard let image = uploadedImage else {
