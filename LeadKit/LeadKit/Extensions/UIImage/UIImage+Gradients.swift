@@ -21,7 +21,7 @@ public extension UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         let context = UIGraphicsGetCurrentContext()
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let colors = gradientColors.map { return $0.CGColor }
+        let colors = gradientColors.map { $0.CGColor }
         let gradient = CGGradientCreateWithColors(colorSpace, colors, nil)
         CGContextDrawLinearGradient(context,
                                     gradient,
@@ -54,7 +54,7 @@ public extension UIImage {
         CGContextDrawImage(context, rect, CGImage)
         // Create gradient
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let colors = gradientColors.map { return $0.CGColor }
+        let colors = gradientColors.map { $0.CGColor }
         let gradient = CGGradientCreateWithColors(colorSpace, colors, nil)
         // Apply gradient
         CGContextClipToMask(context, rect, CGImage)
