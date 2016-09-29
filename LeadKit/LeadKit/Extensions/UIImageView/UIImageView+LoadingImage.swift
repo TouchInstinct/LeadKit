@@ -35,7 +35,7 @@ public extension UIImageView {
                                         (uploadedImage: UIImage?) in
 
             guard let image = uploadedImage else {
-                return nil
+                return
             }
             self?.image = image
             if fadeIn {
@@ -43,7 +43,7 @@ public extension UIImageView {
                 transition.duration = 0.5
                 transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
                 transition.type = kCATransitionFade
-                layer.addAnimation(transition, forKey: nil)
+                self?.layer.addAnimation(transition, forKey: nil)
             }
             closure?(image: image)
         }
