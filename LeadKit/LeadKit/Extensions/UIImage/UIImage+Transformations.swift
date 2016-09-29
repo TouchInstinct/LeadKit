@@ -44,11 +44,11 @@ public extension UIImage {
             return nil
         }
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        let width = CGImageGetWidth(imageWithAlpha?.CGImage)
-        let height = CGImageGetHeight(imageWithAlpha?.CGImage)
-        let bits = CGImageGetBitsPerComponent(imageWithAlpha?.CGImage)
-        let colorSpace = CGImageGetColorSpace(imageWithAlpha?.CGImage)
-        let bitmapInfo = CGImageGetBitmapInfo(imageWithAlpha?.CGImage)
+        let width = CGImageGetWidth(imageWithAlpha.CGImage)
+        let height = CGImageGetHeight(imageWithAlpha.CGImage)
+        let bits = CGImageGetBitsPerComponent(imageWithAlpha.CGImage)
+        let colorSpace = CGImageGetColorSpace(imageWithAlpha.CGImage)
+        let bitmapInfo = CGImageGetBitmapInfo(imageWithAlpha.CGImage)
         let context = CGBitmapContextCreate(nil, width, height, bits, 0, colorSpace, bitmapInfo.rawValue)
         let rect = CGRect(x: 0, y: 0, width: CGFloat(width) * scale, height: CGFloat(height) * scale)
         CGContextBeginPath(context)
@@ -69,7 +69,7 @@ public extension UIImage {
         }
         CGContextClosePath(context)
         CGContextClip(context)
-        CGContextDrawImage(context, rect, imageWithAlpha?.CGImage)
+        CGContextDrawImage(context, rect, imageWithAlpha.CGImage)
         guard let bitmapImage = CGBitmapContextCreateImage(context) else {
             return nil
         }

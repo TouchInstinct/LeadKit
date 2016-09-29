@@ -20,9 +20,7 @@ public extension UIImage {
     /**
      a singleton shared NSURL cache used for images from URL
      */
-    static var sharedCache: NSCache = {
-        return NSCache()
-    }
+    static let sharedCache = NSCache()
 
     // MARK: Image From URL
 
@@ -44,7 +42,7 @@ public extension UIImage {
                                    fetchComplete: (image: UIImage?) -> ()) -> UIImage? {
         // From Cache
         if cacheImage {
-            if let image = UIImage.sharedCache().objectForKey(url) as? UIImage {
+            if let image = UIImage.sharedCache.objectForKey(url) as? UIImage {
                 fetchComplete(image: nil)
                 return image
             }
@@ -59,7 +57,7 @@ public extension UIImage {
                     }
                 } else if let data = data, image = UIImage(data: data) {
                     if cacheImage {
-                        UIImage.sharedCache().setObject(image, forKey: url)
+                        UIImage.sharedCache.setObject(image, forKey: url)
                     }
                     dispatch_async(dispatch_get_main_queue()) {
                         fetchComplete(image: image)
