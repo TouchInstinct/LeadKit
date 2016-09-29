@@ -33,17 +33,17 @@ public extension UIImage {
 
      - parameter url: The image URL.
      - parameter placeholder: The placeholder image.
-     - parameter shouldCacheImage: Weather or not we should cache the NSURL response (default: true)
+     - parameter cacheImage: Weather or not we should cache the NSURL response (default: true)
      - parameter fetchComplete: Returns the image from the web the first time is fetched.
 
      - returns: A new image
      */
     public class func imageFromURL(url: String,
                                    placeholder: UIImage,
-                                   shouldCacheImage: Bool = true,
+                                   cacheImage: Bool = true,
                                    fetchComplete: (image: UIImage?) -> ()) -> UIImage? {
         // From Cache
-        if shouldCacheImage {
+        if cacheImage {
             if let image = UIImage.sharedCache().objectForKey(url) as? UIImage {
                 fetchComplete(image: nil)
                 return image
@@ -59,7 +59,7 @@ public extension UIImage {
                     }
                 }
                 if let data = data, image = UIImage(data: data) {
-                    if shouldCacheImage {
+                    if cacheImage {
                         UIImage.sharedCache().setObject(image, forKey: url)
                     }
                     dispatch_async(dispatch_get_main_queue()) {
