@@ -57,8 +57,7 @@ public extension UIImage {
                     dispatch_async(dispatch_get_main_queue()) {
                         fetchComplete(image: nil)
                     }
-                }
-                if let data = data, image = UIImage(data: data) {
+                } else if let data = data, image = UIImage(data: data) {
                     if cacheImage {
                         UIImage.sharedCache().setObject(image, forKey: url)
                     }
