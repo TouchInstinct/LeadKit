@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UITableView {
+public extension UITableView {
     /**
      method which register UITableViewCell subclass for reusing in UITableView with reuse identifier
      provided by ReuseIdentifierProtocol protocol implementation and nib name
@@ -19,9 +19,10 @@ extension UITableView {
      - see: ReuseIdentifierProtocol, StaticNibNameProtocol
      */
     
-    public func registerNib<T where T: ReuseIdentifierProtocol, T: UITableViewCell, T: StaticNibNameProtocol>
-        (forCellClass cellClass: T.Type) {
-        self.registerNib(UINib(nibName: T.nibName()), forCellReuseIdentifier: T.reuseIdentifier())
+    public func registerNib<T>(forCellClass cellClass: T.Type)
+        where T: ReuseIdentifierProtocol, T: UITableViewCell, T: StaticNibNameProtocol {
+
+        self.register(UINib(nibName: T.nibName), forCellReuseIdentifier: T.reuseIdentifier)
     }
     
     /**
@@ -35,10 +36,12 @@ extension UITableView {
      - see: ReuseIdentifierProtocol, NibNameProtocol
      */
     
-    public func registerNib<T where T: ReuseIdentifierProtocol, T: UITableViewCell, T: NibNameProtocol>
-        (forCellClass cellClass: T.Type, forUserInterfaceIdiom interfaceIdiom: UIUserInterfaceIdiom) {
+    public func registerNib<T>(forCellClass cellClass: T.Type,
+                            forUserInterfaceIdiom interfaceIdiom: UIUserInterfaceIdiom)
+        where T: ReuseIdentifierProtocol, T: UITableViewCell, T: NibNameProtocol {
+
         let nib = UINib(nibName: T.nibName(forConfiguration: interfaceIdiom))
-        self.registerNib(nib, forCellReuseIdentifier: T.reuseIdentifier())
+        self.register(nib, forCellReuseIdentifier: T.reuseIdentifier)
     }
     
 }

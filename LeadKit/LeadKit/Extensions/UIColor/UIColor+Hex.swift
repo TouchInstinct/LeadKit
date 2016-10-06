@@ -75,7 +75,13 @@ public extension UIColor {
      - parameter alpha: alpha component used if not given in hexString
      */
     public convenience init?(hexString: String, alpha: CGFloat = 1) {
-        let hexStr = hexString.hasPrefix("#") ? hexString.substringFromIndex(hexString.startIndex.advancedBy(1)) : hexString
+        let hexStr: String
+
+        if hexString.hasPrefix("#") {
+            hexStr = hexString.substring(from: hexString.characters.index(hexString.startIndex, offsetBy: 1))
+        } else {
+            hexStr = hexString
+        }
 
         let charactersCount = hexStr.characters.count
 

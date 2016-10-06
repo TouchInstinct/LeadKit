@@ -17,8 +17,8 @@ public extension Double {
      - Down:   From 167.567 you will get 167.5
      */
     public enum RoundingType {
-        case Normal
-        case Down
+        case normal
+        case down
     }
 
     /**
@@ -30,14 +30,14 @@ public extension Double {
      - returns: rounded value
      */
     public func roundValue(withPersicion persicion: UInt,
-                                         roundType: RoundingType = .Normal) -> Double {
+                                         roundType: RoundingType = .normal) -> Double {
         let divider = pow(10.0, Double(persicion))
 
         switch roundType {
-        case .Normal:
-            return round(self * divider) / divider
-        case .Down:
-            return Double(Int(self * divider)) / divider
+        case .normal:
+            return (self * divider).rounded(.up) / divider
+        case .down:
+            return (self * divider).rounded(.down) / divider
         }
     }
 

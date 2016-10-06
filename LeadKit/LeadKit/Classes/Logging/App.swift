@@ -8,20 +8,21 @@
 
 import Foundation
 
-public class App {
-    private static let stringVendorIdentifierKey = "stringIdentifierForVendor"
+open class App {
+
+    fileprivate static let stringVendorIdentifierKey = "stringIdentifierForVendor"
     /// The value of CFBundleName
-    public static let bundleName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
+    open static let bundleName = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
     /// The value of CFBundleShortVersionString
-    public static let shortVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
+    open static let shortVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
     /// The value of CFBundleVersion
-    public static let bundleVersion = NSBundle.mainBundle().infoDictionary!["CFBundleVersion"] as! String
+    open static let bundleVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
 
     /**
      Return app's version
      - returns: shortBundleVersion.bundleVersion
      */
-    public static func version() -> String {
+    open static var version: String {
         return App.shortVersion + "." + App.bundleVersion
     }
 
@@ -29,14 +30,16 @@ public class App {
      Return device identifier
      - returns: UUIDString
      */
-    public static func stringIdentifierForVendor() -> String {
-        var returnValue = NSUserDefaults.standardUserDefaults().stringForKey(App.stringVendorIdentifierKey)
-        if returnValue == nil {
-            returnValue = NSUUID().UUIDString
-            NSUserDefaults.standardUserDefaults().setObject(returnValue, forKey: App.stringVendorIdentifierKey)
-            NSUserDefaults.standardUserDefaults().synchronize()
+    open static var stringIdentifierForVendor: String {
+        if let vendorIdentifier = UserDefaults.standard.string(forKey: App.stringVendorIdentifierKey) {
+            return vendorIdentifier
         }
-        return returnValue!
+
+        let vendorIdentifier = UUID().uuidString
+        UserDefaults.standard.set(vendorIdentifier, forKey: App.stringVendorIdentifierKey)
+        UserDefaults.standard.synchronize()
+
+        return vendorIdentifier
     }
 
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2016 Touch Instinct. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 /**
  *  protocol which ensures that specific type can return nib name of view for specific configuration

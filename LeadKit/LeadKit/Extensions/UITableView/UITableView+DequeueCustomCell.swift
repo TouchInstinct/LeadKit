@@ -20,9 +20,10 @@ extension UITableView {
      - see: ReuseIdentifierProtocol
      */
     
-    public func dequeueReusableCell<T where T: UITableViewCell, T: ReuseIdentifierProtocol>
-        (forIndexPath indexPath: NSIndexPath) -> T {
-        return dequeueReusableCellWithIdentifier(T.reuseIdentifier(), forIndexPath: indexPath) as! T
+    public func dequeueReusableCell<T>(forIndexPath indexPath: IndexPath) -> T
+        where T: UITableViewCell, T: ReuseIdentifierProtocol {
+
+        return self.dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as! T
     }
     
 }

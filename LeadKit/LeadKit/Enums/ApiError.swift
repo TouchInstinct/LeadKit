@@ -13,10 +13,10 @@
  - JSONSerialization:   JSON serialization error
  - ObjectSerialization: object mapping error
  */
-public enum RequestError: ErrorType {
+public enum RequestError: Error {
 
-    case Network(error: NSError)
-    case JSONSerialization(error: NSError)
-    case Mapping(reason: String)
+    case network(error: Error)
+    case jsonSerialization(error: Error)
+    case mapping(reason: String)
     
 }

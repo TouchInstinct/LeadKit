@@ -10,36 +10,39 @@ import Alamofire
 import RxSwift
 import Mapper
 import RxAlamofire
+import struct RxCocoa.Reactive
 
-public extension Alamofire.Request {
+public extension Reactive where Base: DataRequest {
 
     /**
      method which serialize response into target object
 
      - returns: Observable with HTTP URL Response and target object
      */
-    func apiResponse<T: Mappable>() -> Observable<(NSHTTPURLResponse, T)> {
-        let mapperSerializer = ResponseSerializer<T, RequestError> { request, response, data, error in
+    func apiResponse<T: Mappable>() -> Observable<(HTTPURLResponse, T)> {
+        let mapperSerializer = DataResponseSerializer<T> { request, response, data, error in
             if let err = error {
-                return .Failure(.Network(error: err))
+                return .failure(RequestError.network(error: err))
             }
 
-            let jsonResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
+            let jsonResponseSerializer = DataRequest.jsonResponseSerializer()
             let result = jsonResponseSerializer.serializeResponse(request, response, data, error)
 
             switch result {
-            case .Success(let value):
-                if let responseObject = value as? NSDictionary, mappedObject = T.from(responseObject) {
-                    return .Success(mappedObject)
+            case .success(let value):
+                if let responseObject = value as? NSDictionary, let mappedObject = T.from(responseObject) {
+                    return .success(mappedObject)
                 } else {
-                    return .Failure(.Mapping(reason: "JSON could not be mapped into response object. JSON: \(value)"))
+                    let failureReason = "JSON could not be mapped into response object. JSON: \(value)"
+
+                    return .failure(RequestError.mapping(reason: failureReason))
                 }
-            case .Failure(let error):
-                return .Failure(.JSONSerialization(error: error))
+            case .failure(let error):
+                return .failure(RequestError.jsonSerialization(error: error))
             }
         }
 
-        return rx_responseResult(responseSerializer: mapperSerializer)
+        return responseResult(responseSerializer: mapperSerializer)
     }
 
 }

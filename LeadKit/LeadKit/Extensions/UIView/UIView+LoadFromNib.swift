@@ -8,13 +8,13 @@
 
 import UIKit
 
-extension UINib {
+public extension UINib {
     convenience public init(nibName name: String) {
         self.init(nibName: name, bundle: nil)
     }
 }
 
-extension UIView {
+public extension UIView {
     /**
      method which return UIView subclass instance loaded from nib using nib name provided by NibNameProtocol implementation
      
@@ -23,8 +23,8 @@ extension UIView {
      - returns: UIView subclass instance
      */
     
-    public static func loadFromNib<T where T: NibNameProtocol, T: UIView>
-        (forUserInterfaceIdiom interfaceIdiom: UIUserInterfaceIdiom) -> T {
+    public static func loadFromNib<T>
+        (forUserInterfaceIdiom interfaceIdiom: UIUserInterfaceIdiom) -> T where T: NibNameProtocol, T: UIView {
         return loadFromNib(named: T.nibName(forConfiguration: interfaceIdiom))
     }
     
@@ -34,8 +34,8 @@ extension UIView {
      
      - returns: UIView subclass instance
      */
-    public static func loadFromNib<T where T: StaticNibNameProtocol, T: UIView>() -> T {
-        return loadFromNib(named: T.nibName())
+    public static func loadFromNib<T>() -> T where T: StaticNibNameProtocol, T: UIView {
+        return loadFromNib(named: T.nibName)
     }
     
     /**
@@ -46,7 +46,7 @@ extension UIView {
      - returns: UIView subclass instance
      */
     public static func loadFromNib<T>(named nibName: String) -> T {
-        return UINib(nibName: nibName).instantiateWithOwner(nil, options: nil).first as! T
+        return UINib(nibName: nibName).instantiate(withOwner: nil, options: nil).first as! T
     }
     
 }

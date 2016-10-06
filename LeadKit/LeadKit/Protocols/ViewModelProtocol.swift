@@ -21,5 +21,5 @@ public protocol AbstractViewModelProtocol {
      
      - returns: nothing
      */
-    func setViewModel(viewModel: ViewModelType)
+    func setViewModel(_ viewModel: ViewModelType)
 }
