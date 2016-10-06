@@ -11,7 +11,7 @@ import CocoaLumberjack
 import CocoaLumberjack.DDDispatchQueueLogFormatter
 
 class LogFormatter: DDDispatchQueueLogFormatter {
-    let dateFormatter: DateFormatter
+    fileprivate let dateFormatter: DateFormatter
 
     override init() {
         dateFormatter = DateFormatter()

@@ -15,14 +15,15 @@ open class Log {
     open let fileLogger = DDFileLogger()
 
     init() {
-
         DDLog.add(fileLogger)
 
         DDLog.add(DDASLLogger.sharedInstance())
         DDLog.add(DDTTYLogger.sharedInstance())
 
-        DDASLLogger.sharedInstance().logFormatter = LogFormatter()
-        DDTTYLogger.sharedInstance().logFormatter = LogFormatter()
+        let logFormatter = LogFormatter()
+
+        DDASLLogger.sharedInstance().logFormatter = logFormatter
+        DDTTYLogger.sharedInstance().logFormatter = logFormatter
 
         let assertionHandler = NSAssertionHandler()
 
