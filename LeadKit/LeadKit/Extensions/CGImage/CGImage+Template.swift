@@ -13,7 +13,7 @@ public extension CGImage {
     /**
      method which render current template CGImage into new image using given color
 
-     - parameter color:  color which used to fill template image
+     - parameter withColor: color which used to fill template image
 
      - returns: new CGImage rendered with given color or nil if something goes wrong
      */

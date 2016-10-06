@@ -10,6 +10,15 @@ import UIKit
 
 public extension UIImage {
 
+    /**
+     method which creates new UIImage instance filled by given color
+
+     - parameter color:  color to fill
+     - parameter size:   size of new image
+
+     - returns: new instanse of UIImage with given size and color
+     */
+
     public convenience init?(color: UIColor, size: CGSize) {
         let cgImage = CGImage.create(color: color.cgColor,
                                      width: Int(ceil(size.width)),
@@ -22,6 +31,14 @@ public extension UIImage {
         self.init(cgImage: image)
     }
 
+    /**
+     creates an image from a UIView.
+
+     - parameter fromView: The source view.
+
+     - returns A new image or nil if something goes wrong.
+     */
+
     public convenience init?(fromView view: UIView) {
         guard let cgImage = CGImage.create(fromView: view) else {
             return nil
@@ -30,6 +47,13 @@ public extension UIImage {
         self.init(cgImage: cgImage)
     }
 
+    /**
+     method which render current template CGImage into new image using given color
+
+     - parameter withColor: color which used to fill template image
+
+     - returns: new CGImage rendered with given color or nil if something goes wrong
+     */
     public func renderTemplate(withColor color: UIColor) -> UIImage? {
         return cgImage?.renderTemplate(withColor: color.cgColor)?.uiImage
     }
