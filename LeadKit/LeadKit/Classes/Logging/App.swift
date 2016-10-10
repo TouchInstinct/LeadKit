@@ -30,7 +30,7 @@ open class App {
      Return device identifier
      - returns: UUIDString
      */
-    open static var stringIdentifierForVendor: String {
+    open static var deviceUniqueIdentifier: String {
         if let vendorIdentifier = UserDefaults.standard.string(forKey: App.stringVendorIdentifierKey) {
             return vendorIdentifier
         }
