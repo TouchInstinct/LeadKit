@@ -1,5 +1,5 @@
 //
-//  NSIndexPath+ImmutableIndexPath.swift
+//  IndexPath+ImmutableIndexPath.swift
 //  LeadKit
 //
 //  Created by Иван Смолин on 21/03/16.
@@ -10,14 +10,14 @@ import Foundation
 
 // http://stackoverflow.com/a/21686163
 
-extension NSIndexPath {
+extension IndexPath {
         /// return immutable copy if class is not NSIndexPath or return self
-    var immutableIndexPath: NSIndexPath {
-        if Mirror(reflecting: self).subjectType == NSIndexPath.self {  // check for UIMutableIndexPath
+    var immutableIndexPath: IndexPath {
+        if Mirror(reflecting: self).subjectType == IndexPath.self {  // check for UIMutableIndexPath
             return self
         }
         
-        return NSIndexPath(forItem: item, inSection: section)
+        return IndexPath(item: item, section: section)
     }
     
 }

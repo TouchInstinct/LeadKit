@@ -15,8 +15,8 @@ extension UIView: ReuseIdentifierProtocol {
 
      - returns: type name string
      */
-    public class func reuseIdentifier() -> String {
-        return String(self.dynamicType)
+    open class var reuseIdentifier: String {
+        return className(of: self)
     }
 
 }

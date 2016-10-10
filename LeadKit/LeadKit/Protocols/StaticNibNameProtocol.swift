@@ -13,9 +13,7 @@ import Foundation
  */
 public protocol StaticNibNameProtocol {
     /**
-     static method which returns nib name
-     
      - returns: nib name string
      */
-    static func nibName() -> String
+    static var nibName: String { get }
 }

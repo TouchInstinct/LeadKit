@@ -52,11 +52,11 @@ public extension String {
      - returns: string size calculation result
      */
     public func size(withAttributes attributes: [String: AnyObject]?,
-                                    maxWidth: CGFloat = CGFloat.max,
-                                    maxHeight: CGFloat = CGFloat.max) -> StringSizeCalculationResult {
+                                    maxWidth: CGFloat = CGFloat.greatestFiniteMagnitude,
+                                    maxHeight: CGFloat = CGFloat.greatestFiniteMagnitude) -> StringSizeCalculationResult {
 
-        let size = self.boundingRectWithSize(CGSize(width: maxWidth, height: maxHeight),
-                                             options: [.UsesLineFragmentOrigin, .UsesFontLeading],
+        let size = self.boundingRect(with: CGSize(width: maxWidth, height: maxHeight),
+                                             options: [.usesLineFragmentOrigin, .usesFontLeading],
                                              attributes: attributes,
                                              context: nil).size
 

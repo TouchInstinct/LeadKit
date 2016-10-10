@@ -11,33 +11,33 @@ import CocoaLumberjack
 import CocoaLumberjack.DDDispatchQueueLogFormatter
 
 class LogFormatter: DDDispatchQueueLogFormatter {
-    let dateFormatter: NSDateFormatter
+    fileprivate let dateFormatter: DateFormatter
 
     override init() {
-        dateFormatter = NSDateFormatter()
-        dateFormatter.formatterBehavior = .Behavior10_4
+        dateFormatter = DateFormatter()
+        dateFormatter.formatterBehavior = .behavior10_4
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss:SSS"
 
         super.init()
     }
 
-    override func formatLogMessage(logMessage: DDLogMessage!) -> String {
-        var level: String!
+    override func format(message logMessage: DDLogMessage) -> String {
+        let level: String
 
         switch logMessage.flag {
-        case DDLogFlag.Error:
+        case DDLogFlag.error:
             level = "ERR"
-        case DDLogFlag.Warning:
+        case DDLogFlag.warning:
             level = "WRN"
-        case DDLogFlag.Info:
+        case DDLogFlag.info:
             level = "INF"
-        case DDLogFlag.Debug:
+        case DDLogFlag.debug:
             level = "DBG"
         default:
             level = "VRB"
         }
 
-        let dateAndTime = dateFormatter.stringFromDate(logMessage.timestamp)
+        let dateAndTime = dateFormatter.string(from: logMessage.timestamp)
         return "\(level) \(dateAndTime) [\(logMessage.fileName):\(logMessage.line)]: \(logMessage.message)"
     }
 

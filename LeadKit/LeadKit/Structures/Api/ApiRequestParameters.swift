@@ -15,17 +15,17 @@ import RxSwift
  */
 public struct ApiRequestParameters {
 
-    let method: Alamofire.Method
-    let url: URLStringConvertible
-    let parameters: [String: AnyObject]?
+    let method: HTTPMethod
+    let url: URLConvertible
+    let parameters: Parameters?
     let encoding: ParameterEncoding
-    let headers: [String: String]?
+    let headers: HTTPHeaders?
 
-    public init(method: Alamofire.Method,
-                url: URLStringConvertible,
-                parameters: [String: AnyObject]? = nil,
-                encoding: ParameterEncoding = .URL,
-                headers: [String: String]? = nil) {
+    public init(url: URLConvertible,
+                method: HTTPMethod = .get,
+                parameters: Parameters? = nil,
+                encoding: ParameterEncoding = URLEncoding.default,
+                headers: HTTPHeaders? = nil) {
 
         self.method = method
         self.url = url

@@ -1,5 +1,5 @@
-github "CocoaLumberjack/CocoaLumberjack" ~> 2.2
-github "ReactiveX/RxSwift" ~> 2.6
-github "lyft/mapper" ~> 3.0
-github "Alamofire/Alamofire" ~> 3.4
-github "RxSwiftCommunity/RxAlamofire" ~> 1.1
+github "CocoaLumberjack/CocoaLumberjack" ~> 3.0.0
+github "ReactiveX/RxSwift" "3.0.0-beta.1"
+github "lyft/mapper" "5.0.0-beta.2"
+github "Alamofire/Alamofire" ~> 4.0.0
+github "RxSwiftCommunity/RxAlamofire" "3.0.0-beta.1"

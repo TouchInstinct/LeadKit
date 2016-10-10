@@ -9,14 +9,14 @@
 import UIKit
 
 extension UIView: StaticNibNameProtocol {
+
     /**
      default implementation of StaticNibNameProtocol
-     
-     - returns: class name string without dot (last class path component)
+
+     - returns: class name string
      */
-    
-    public class func nibName() -> String {
-        return String(self.dynamicType).componentsSeparatedByString(".").last!
+    open class var nibName: String {
+        return className(of: self)
     }
     
 }

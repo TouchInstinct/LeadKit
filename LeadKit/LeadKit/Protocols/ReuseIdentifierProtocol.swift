@@ -15,11 +15,9 @@ public protocol AbstractReuseIdentifierProtocol {
     associatedtype IdentifierType
     
     /**
-     method which returns reuse identifier with protocol associated type
-     
-     - returns: reuse identifier
+     - returns: reuse identifier with protocol associated type
      */
-    static func reuseIdentifier() -> IdentifierType
+    static var reuseIdentifier: IdentifierType { get }
 }
 
 /**
@@ -27,9 +25,7 @@ public protocol AbstractReuseIdentifierProtocol {
  */
 public protocol ReuseIdentifierProtocol: AbstractReuseIdentifierProtocol {
     /**
-     method which returns reuse identifier with string type
-     
-     - returns: reuse identifier
+     - returns: reuse identifier with string type
      */
-    static func reuseIdentifier() -> String
+    static var reuseIdentifier: String { get }
 }

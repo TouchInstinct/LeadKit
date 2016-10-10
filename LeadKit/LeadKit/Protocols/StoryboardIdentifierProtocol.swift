@@ -17,5 +17,5 @@ public protocol StoryboardIdentifierProtocol {
      
      - returns: storyboard identifier string
      */
-    static func storyboardIdentifier() -> String
+    static var storyboardIdentifier: String { get }
 }

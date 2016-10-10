@@ -10,7 +10,7 @@ import Alamofire
 import RxSwift
 import RxAlamofire
 
-public extension Alamofire.Manager {
+public extension Alamofire.SessionManager {
 
     /**
      method which executes request with given api parameters
@@ -19,12 +19,12 @@ public extension Alamofire.Manager {
 
      - returns: Observable with request 
      */
-    func apiRequest(apiParameters: ApiRequestParameters) -> Observable<Request> {
-        return rx_request(apiParameters.method,
-                          apiParameters.url,
-                          parameters: apiParameters.parameters,
-                          encoding: apiParameters.encoding,
-                          headers: apiParameters.headers)
+    func apiRequest(requestParameters: ApiRequestParameters) -> Observable<DataRequest> {
+        return RxAlamofire.request(requestParameters.method,
+                                   requestParameters.url,
+                                   parameters: requestParameters.parameters,
+                                   encoding: requestParameters.encoding,
+                                   headers: requestParameters.headers)
     }
 
 }
