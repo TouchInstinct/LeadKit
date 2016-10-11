@@ -7,8 +7,6 @@
 //
 
 import Alamofire
-import Mapper
-import RxSwift
 
 /**
  *  Struct which keeps base parameters required for api request
