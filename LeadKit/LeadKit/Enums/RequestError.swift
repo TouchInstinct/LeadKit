@@ -1,5 +1,5 @@
 //
-//  ApiError.swift
+//  RequestError.swift
 //  LeadKit
 //
 //  Created by Ivan Smolin on 04/08/16.
@@ -17,6 +17,6 @@ public enum RequestError: Error {
 
     case network(error: Error)
     case jsonSerialization(error: Error)
-    case mapping(reason: String)
-    
+    case mapping(error: Error)
+
 }

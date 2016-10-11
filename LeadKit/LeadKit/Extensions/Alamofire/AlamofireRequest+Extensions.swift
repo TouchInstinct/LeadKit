@@ -8,9 +8,9 @@
 
 import Alamofire
 import RxSwift
-import Mapper
 import RxAlamofire
 import struct RxCocoa.Reactive
+import Convertible
 
 public extension Reactive where Base: DataRequest {
 
@@ -19,7 +19,7 @@ public extension Reactive where Base: DataRequest {
 
      - returns: Observable with HTTP URL Response and target object
      */
-    func apiResponse<T: Mappable>() -> Observable<(HTTPURLResponse, T)> {
+    func apiResponse<T: Convertible>(convertibleOptions: [ConvertibleOption] = []) -> Observable<(HTTPURLResponse, T)> {
         let mapperSerializer = DataResponseSerializer<T> { request, response, data, error in
             if let err = error {
                 return .failure(RequestError.network(error: err))
@@ -30,12 +30,10 @@ public extension Reactive where Base: DataRequest {
 
             switch result {
             case .success(let value):
-                if let responseObject = value as? NSDictionary, let mappedObject = T.from(responseObject) {
-                    return .success(mappedObject)
-                } else {
-                    let failureReason = "JSON could not be mapped into response object. JSON: \(value)"
-
-                    return .failure(RequestError.mapping(reason: failureReason))
+                do {
+                    return .success(try T.initializeWithJson(JsonValue(object: value), options: convertibleOptions))
+                } catch let err {
+                    return .failure(RequestError.mapping(error: err))
                 }
             case .failure(let error):
                 return .failure(RequestError.jsonSerialization(error: error))
