@@ -9,13 +9,14 @@
 import Alamofire
 import RxSwift
 import RxAlamofire
+import ObjectMapper
 
 public extension Alamofire.SessionManager {
 
     /**
      method which executes request with given api parameters
 
-     - parameter apiParameters: api parameters to pass Alamofire
+     - parameter requestParameters: api parameters to pass Alamofire
 
      - returns: Observable with request 
      */
@@ -25,6 +26,17 @@ public extension Alamofire.SessionManager {
                                    parameters: requestParameters.parameters,
                                    encoding: requestParameters.encoding,
                                    headers: requestParameters.headers)
+    }
+
+    /**
+     method which executes request and serialize response into target object
+     
+     - parameter requestParameters: api parameters to pass Alamofire
+
+     - returns: Observable with HTTP URL Response and target object
+     */
+    func responseModel<T: ImmutableMappable>(requestParameters: ApiRequestParameters) -> Observable<(HTTPURLResponse, T)> {
+        return apiRequest(requestParameters: requestParameters).flatMap { $0.rx.apiResponse() }
     }
 
 }
