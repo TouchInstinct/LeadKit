@@ -8,9 +8,15 @@
 
 import Alamofire
 import RxSwift
+import ObjectMapper
 import RxAlamofire
 import struct RxCocoa.Reactive
-import Convertible
+
+public enum ApiResponseMappingError: Error {
+
+    case incorrectValueType(message: String)
+
+}
 
 public extension Reactive where Base: DataRequest {
 
@@ -19,28 +25,16 @@ public extension Reactive where Base: DataRequest {
 
      - returns: Observable with HTTP URL Response and target object
      */
-    func apiResponse<T: Convertible>(convertibleOptions: [ConvertibleOption] = []) -> Observable<(HTTPURLResponse, T)> {
-        let mapperSerializer = DataResponseSerializer<T> { request, response, data, error in
-            if let err = error {
-                return .failure(RequestError.network(error: err))
-            }
+    func apiResponse<T: ImmutableMappable>() -> Observable<(HTTPURLResponse, T)> {
+        return responseJSON().map { resp, value in
+            if let json = value as? [String: Any] {
+                return (resp, try T(map: Map(mappingType: .fromJSON, JSON: json)))
+            } else {
+                let failureReason = "Value has incorrect type: \(type(of: value)), expected: [String: Any]"
 
-            let jsonResponseSerializer = DataRequest.jsonResponseSerializer()
-            let result = jsonResponseSerializer.serializeResponse(request, response, data, error)
-
-            switch result {
-            case .success(let value):
-                do {
-                    return .success(try T.initializeWithJson(JsonValue(object: value), options: convertibleOptions))
-                } catch let err {
-                    return .failure(RequestError.mapping(error: err))
-                }
-            case .failure(let error):
-                return .failure(RequestError.jsonSerialization(error: error))
+                throw ApiResponseMappingError.incorrectValueType(message: failureReason)
             }
         }
-
-        return responseResult(responseSerializer: mapperSerializer)
     }
 
 }
