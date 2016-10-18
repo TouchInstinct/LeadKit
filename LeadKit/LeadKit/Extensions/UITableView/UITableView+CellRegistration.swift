@@ -22,7 +22,7 @@ public extension UITableView {
     public func registerNib<T>(forCellClass cellClass: T.Type)
         where T: ReuseIdentifierProtocol, T: UITableViewCell, T: StaticNibNameProtocol {
 
-        self.register(UINib(nibName: T.nibName), forCellReuseIdentifier: T.reuseIdentifier)
+        register(UINib(nibName: T.nibName), forCellReuseIdentifier: T.reuseIdentifier)
     }
     
     /**
@@ -41,7 +41,7 @@ public extension UITableView {
         where T: ReuseIdentifierProtocol, T: UITableViewCell, T: NibNameProtocol {
 
         let nib = UINib(nibName: T.nibName(forConfiguration: interfaceIdiom))
-        self.register(nib, forCellReuseIdentifier: T.reuseIdentifier)
+        register(nib, forCellReuseIdentifier: T.reuseIdentifier)
     }
     
 }

@@ -22,7 +22,7 @@ public extension UICollectionView {
     public func registerNib<T>(forCellClass cellClass: T.Type)
         where T: ReuseIdentifierProtocol, T: UICollectionViewCell, T: StaticNibNameProtocol {
 
-            self.register(UINib(nibName: T.nibName), forCellReuseIdentifier: T.reuseIdentifier)
+            register(UINib(nibName: T.nibName), forCellReuseIdentifier: T.reuseIdentifier)
     }
 
     /**
@@ -41,7 +41,7 @@ public extension UICollectionView {
         where T: ReuseIdentifierProtocol, T: UICollectionViewCell, T: NibNameProtocol {
             
             let nib = UINib(nibName: T.nibName(forConfiguration: interfaceIdiom))
-            self.register(nib, forCellReuseIdentifier: T.reuseIdentifier)
+            register(nib, forCellReuseIdentifier: T.reuseIdentifier)
     }
 
 }

@@ -23,7 +23,7 @@ public extension UICollectionView {
     public func dequeueReusableCell<T>(forIndexPath indexPath: IndexPath) -> T
         where T: UICollectionViewCell, T: ReuseIdentifierProtocol {
 
-            return self.dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as! T
+            return dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as! T
     }
 
 }

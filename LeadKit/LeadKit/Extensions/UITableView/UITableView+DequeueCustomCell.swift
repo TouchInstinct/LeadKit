@@ -23,7 +23,7 @@ extension UITableView {
     public func dequeueReusableCell<T>(forIndexPath indexPath: IndexPath) -> T
         where T: UITableViewCell, T: ReuseIdentifierProtocol {
 
-        return self.dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as! T
+        return dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as! T
     }
     
 }
