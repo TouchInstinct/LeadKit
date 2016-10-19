@@ -40,7 +40,6 @@
 		78CFEE351C5C456B00F50370 /* LeadKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CFEE2A1C5C456B00F50370 /* LeadKit.framework */; };
 		78CFEE3A1C5C456B00F50370 /* LeadKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE391C5C456B00F50370 /* LeadKitTests.swift */; };
 		78CFEE521C5C45E500F50370 /* UITableView+CellRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE461C5C45E500F50370 /* UITableView+CellRegistration.swift */; };
-		78CFEE531C5C45E500F50370 /* UITableView+DequeueCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE471C5C45E500F50370 /* UITableView+DequeueCustomCell.swift */; };
 		78CFEE541C5C45E500F50370 /* UIView+LoadFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE481C5C45E500F50370 /* UIView+LoadFromNib.swift */; };
 		78CFEE551C5C45E500F50370 /* NibNameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE4A1C5C45E500F50370 /* NibNameProtocol.swift */; };
 		78CFEE561C5C45E500F50370 /* ReuseIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE4B1C5C45E500F50370 /* ReuseIdentifierProtocol.swift */; };
@@ -52,6 +51,7 @@
 		78D4B5461DA64D49005B0764 /* UIViewController+DefaultStoryboardIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D4B5451DA64D49005B0764 /* UIViewController+DefaultStoryboardIdentifier.swift */; };
 		78D4B54A1DA64EAB005B0764 /* Any+TypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D4B5491DA64EAB005B0764 /* Any+TypeName.swift */; };
 		95B39A861D9D51250057BD54 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39A851D9D51250057BD54 /* String+Localization.swift */; };
+		E126CBB31DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126CBB21DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +101,6 @@
 		78CFEE391C5C456B00F50370 /* LeadKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadKitTests.swift; sourceTree = "<group>"; };
 		78CFEE3B1C5C456B00F50370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78CFEE461C5C45E500F50370 /* UITableView+CellRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+CellRegistration.swift"; path = "LeadKit/Extensions/UITableView/UITableView+CellRegistration.swift"; sourceTree = SOURCE_ROOT; };
-		78CFEE471C5C45E500F50370 /* UITableView+DequeueCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+DequeueCustomCell.swift"; path = "LeadKit/Extensions/UITableView/UITableView+DequeueCustomCell.swift"; sourceTree = SOURCE_ROOT; };
 		78CFEE481C5C45E500F50370 /* UIView+LoadFromNib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+LoadFromNib.swift"; path = "LeadKit/Extensions/UIView/UIView+LoadFromNib.swift"; sourceTree = SOURCE_ROOT; };
 		78CFEE4A1C5C45E500F50370 /* NibNameProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibNameProtocol.swift; sourceTree = "<group>"; };
 		78CFEE4B1C5C45E500F50370 /* ReuseIdentifierProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierProtocol.swift; sourceTree = "<group>"; };
@@ -113,6 +112,7 @@
 		78D4B5451DA64D49005B0764 /* UIViewController+DefaultStoryboardIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+DefaultStoryboardIdentifier.swift"; sourceTree = "<group>"; };
 		78D4B5491DA64EAB005B0764 /* Any+TypeName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Any+TypeName.swift"; sourceTree = "<group>"; };
 		95B39A851D9D51250057BD54 /* String+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
+		E126CBB21DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionView+CellRegistration.swift"; path = "UICollectionView/UICollectionView+CellRegistration.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +309,7 @@
 				787783611CA03C84001CDC9B /* IndexPath */,
 				78E59B2C1C786CD500C6BFE9 /* UIView */,
 				78E59B2B1C786CBF00C6BFE9 /* UITableView */,
+				E126CBB11DB68D9A00E1B2F8 /* UICollectionView */,
 				C37210711ACDF1042F70C2EB /* UIImage */,
 				780D23411DA412330084620D /* CGImage */,
 				780D23441DA416E80084620D /* CGContext */,
@@ -355,7 +356,6 @@
 			isa = PBXGroup;
 			children = (
 				78CFEE461C5C45E500F50370 /* UITableView+CellRegistration.swift */,
-				78CFEE471C5C45E500F50370 /* UITableView+DequeueCustomCell.swift */,
 			);
 			path = UITableView;
 			sourceTree = "<group>";
@@ -384,6 +384,14 @@
 				788EC1591CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift */,
 			);
 			path = UIStoryboard;
+			sourceTree = "<group>";
+		};
+		E126CBB11DB68D9A00E1B2F8 /* UICollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E126CBB21DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift */,
+			);
+			name = UICollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -561,7 +569,6 @@
 				787783671CA04D4A001CDC9B /* String+SizeCalculation.swift in Sources */,
 				78B036431DA4FEC90021D5CC /* CGImage+Transform.swift in Sources */,
 				78011A641D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift in Sources */,
-				78CFEE531C5C45E500F50370 /* UITableView+DequeueCustomCell.swift in Sources */,
 				786D78EC1D53C46E006B2CEA /* AlamofireManager+Extensions.swift in Sources */,
 				78B0FC811C6B2CD500358B64 /* App.swift in Sources */,
 				78B036491DA562C30021D5CC /* CGImage+Template.swift in Sources */,
@@ -578,6 +585,7 @@
 				78CFEE5A1C5C45E500F50370 /* ViewHeightProtocol.swift in Sources */,
 				787682FA1CAD40C300532AB3 /* StaticEstimatedViewHeightProtocol.swift in Sources */,
 				78A74EA91C6B373700FE9724 /* UIView+DefaultNibName.swift in Sources */,
+				E126CBB31DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift in Sources */,
 				78CFEE581C5C45E500F50370 /* StaticViewHeightProtocol.swift in Sources */,
 				787783631CA03CA0001CDC9B /* IndexPath+ImmutableIndexPath.swift in Sources */,
 				78B036471DA5624D0021D5CC /* CGImage+Creation.swift in Sources */,
