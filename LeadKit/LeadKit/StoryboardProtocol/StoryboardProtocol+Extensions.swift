@@ -8,7 +8,9 @@
 
 import UIKit
 
-public extension StoryboardProtocol where StoryboardIdentifier.RawValue == String, ViewControllerIdentifier.RawValue == String {
+public extension StoryboardProtocol where
+    StoryboardIdentifier: RawRepresentable, StoryboardIdentifier.RawValue == String,
+ViewControllerIdentifier: RawRepresentable, ViewControllerIdentifier.RawValue == String {
 
     /**
      - returns: UIStoryboradInstance with StoryboardIdentifier name

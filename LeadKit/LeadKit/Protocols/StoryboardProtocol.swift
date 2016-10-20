@@ -13,8 +13,8 @@ import UIKit
  */
 public protocol StoryboardProtocol {
 
-    associatedtype StoryboardIdentifier: RawRepresentable
-    associatedtype ViewControllerIdentifier: RawRepresentable
+    associatedtype StoryboardIdentifier
+    associatedtype ViewControllerIdentifier
 
     /**
      - returns: storyboard identifier with associatedtype type
