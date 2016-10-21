@@ -20,6 +20,9 @@
 		787783631CA03CA0001CDC9B /* IndexPath+ImmutableIndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787783621CA03CA0001CDC9B /* IndexPath+ImmutableIndexPath.swift */; };
 		787783671CA04D4A001CDC9B /* String+SizeCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787783661CA04D4A001CDC9B /* String+SizeCalculation.swift */; };
 		788E86F71DBA556C009BF65A /* StoryboardProtocol+DefaultBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788E86F61DBA556C009BF65A /* StoryboardProtocol+DefaultBundle.swift */; };
+		788E86FB1DBA6698009BF65A /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788E86F81DBA6698009BF65A /* RxAlamofire.framework */; };
+		788E86FC1DBA6698009BF65A /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788E86F91DBA6698009BF65A /* RxCocoa.framework */; };
+		788E86FD1DBA6698009BF65A /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788E86FA1DBA6698009BF65A /* RxSwift.framework */; };
 		788EC15A1CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EC1591CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift */; };
 		78A74EA91C6B373700FE9724 /* UIView+DefaultNibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */; };
 		78B036411DA4D7060021D5CC /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B036401DA4D7060021D5CC /* UIImage+Extensions.swift */; };
@@ -30,9 +33,6 @@
 		78B0364B1DA61EDE0021D5CC /* CGImage+Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0364A1DA61EDE0021D5CC /* CGImage+Crop.swift */; };
 		78B0365E1DA624C10021D5CC /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B036581DA624C10021D5CC /* Alamofire.framework */; };
 		78B0365F1DA624C10021D5CC /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B036591DA624C10021D5CC /* CocoaLumberjack.framework */; };
-		78B036611DA624C10021D5CC /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B0365B1DA624C10021D5CC /* RxAlamofire.framework */; };
-		78B036621DA624C10021D5CC /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B0365C1DA624C10021D5CC /* RxCocoa.framework */; };
-		78B036631DA624C10021D5CC /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B0365D1DA624C10021D5CC /* RxSwift.framework */; };
 		78B0FC7D1C6B2BE200358B64 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC7C1C6B2BE200358B64 /* LogFormatter.swift */; };
 		78B0FC7F1C6B2C4D00358B64 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC7E1C6B2C4D00358B64 /* Log.swift */; };
 		78B0FC811C6B2CD500358B64 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC801C6B2CD500358B64 /* App.swift */; };
@@ -81,6 +81,9 @@
 		787783621CA03CA0001CDC9B /* IndexPath+ImmutableIndexPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+ImmutableIndexPath.swift"; sourceTree = "<group>"; };
 		787783661CA04D4A001CDC9B /* String+SizeCalculation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SizeCalculation.swift"; sourceTree = "<group>"; };
 		788E86F61DBA556C009BF65A /* StoryboardProtocol+DefaultBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoryboardProtocol+DefaultBundle.swift"; sourceTree = "<group>"; };
+		788E86F81DBA6698009BF65A /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = ../../../Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
+		788E86F91DBA6698009BF65A /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = ../../../Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		788E86FA1DBA6698009BF65A /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = ../../../Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		788EC1591CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+InstantiateViewController.swift"; sourceTree = "<group>"; };
 		78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+DefaultNibName.swift"; path = "LeadKit/Extensions/UIView/UIView+DefaultNibName.swift"; sourceTree = SOURCE_ROOT; };
 		78B036401DA4D7060021D5CC /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
@@ -91,9 +94,6 @@
 		78B0364A1DA61EDE0021D5CC /* CGImage+Crop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Crop.swift"; sourceTree = "<group>"; };
 		78B036581DA624C10021D5CC /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../../../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		78B036591DA624C10021D5CC /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = ../../../Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
-		78B0365B1DA624C10021D5CC /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = ../../../Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
-		78B0365C1DA624C10021D5CC /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = ../../../Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		78B0365D1DA624C10021D5CC /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = ../../../Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		78B0FC7C1C6B2BE200358B64 /* LogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFormatter.swift; sourceTree = "<group>"; };
 		78B0FC7E1C6B2C4D00358B64 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		78B0FC801C6B2CD500358B64 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -128,10 +128,10 @@
 			files = (
 				78B891941DAE192B001CA8B4 /* ObjectMapper.framework in Frameworks */,
 				78B0365F1DA624C10021D5CC /* CocoaLumberjack.framework in Frameworks */,
-				78B036631DA624C10021D5CC /* RxSwift.framework in Frameworks */,
+				788E86FD1DBA6698009BF65A /* RxSwift.framework in Frameworks */,
 				78B0365E1DA624C10021D5CC /* Alamofire.framework in Frameworks */,
-				78B036621DA624C10021D5CC /* RxCocoa.framework in Frameworks */,
-				78B036611DA624C10021D5CC /* RxAlamofire.framework in Frameworks */,
+				788E86FC1DBA6698009BF65A /* RxCocoa.framework in Frameworks */,
+				788E86FB1DBA6698009BF65A /* RxAlamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,9 +151,9 @@
 			children = (
 				78B036581DA624C10021D5CC /* Alamofire.framework */,
 				78B036591DA624C10021D5CC /* CocoaLumberjack.framework */,
-				78B0365B1DA624C10021D5CC /* RxAlamofire.framework */,
-				78B0365C1DA624C10021D5CC /* RxCocoa.framework */,
-				78B0365D1DA624C10021D5CC /* RxSwift.framework */,
+				788E86F81DBA6698009BF65A /* RxAlamofire.framework */,
+				788E86F91DBA6698009BF65A /* RxCocoa.framework */,
+				788E86FA1DBA6698009BF65A /* RxSwift.framework */,
 				78B891931DAE192B001CA8B4 /* ObjectMapper.framework */,
 			);
 			path = Frameworks;

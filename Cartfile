@@ -1,5 +1,5 @@
 github "CocoaLumberjack/CocoaLumberjack" ~> 3.0.0
-github "ReactiveX/RxSwift" "3.0.0-beta.1"
+github "ReactiveX/RxSwift" "3.0.0-rc.1"
 github "Hearst-DD/ObjectMapper" ~> 2.1
 github "Alamofire/Alamofire" ~> 4.0.0
-github "RxSwiftCommunity/RxAlamofire" "3.0.0-beta.1"
+github "RxSwiftCommunity/RxAlamofire" "3.0.0-rc.2"

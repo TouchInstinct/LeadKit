@@ -10,7 +10,6 @@ import Alamofire
 import RxSwift
 import ObjectMapper
 import RxAlamofire
-import struct RxCocoa.Reactive
 
 public enum ApiResponseMappingError: Error {
 
