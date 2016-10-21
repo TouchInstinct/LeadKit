@@ -16,7 +16,7 @@ ViewControllerIdentifier: RawRepresentable, ViewControllerIdentifier.RawValue ==
      - returns: UIStoryboradInstance with StoryboardIdentifier name
      */
     public static var uiStoryboard: UIStoryboard {
-        return UIStoryboard(name: storyboardIdentifier.rawValue, bundle: Bundle.main)
+        return UIStoryboard(name: storyboardIdentifier.rawValue, bundle: bundle)
     }
 
     /**

@@ -22,6 +22,11 @@ public protocol StoryboardProtocol {
     static var storyboardIdentifier: StoryboardIdentifier { get }
 
     /**
+     - returns: bundle for storyboard initialization
+     */
+    static var bundle: Bundle? { get }
+
+    /**
      method which instantiate UIViewControlle instance for specific view controller identifier
 
      - parameter _: object which represents view controller identifier
