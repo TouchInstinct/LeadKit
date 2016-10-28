@@ -13,13 +13,13 @@ import RxSwift
 /// A type representing an possible errors that can be thrown during fetching
 /// model or array of specified type from UserDefaults.
 ///
-/// - noSuchValue:    there is no such value for given key
-/// - wrongValueType: the value type is unsuitable for performing mapping with it
-/// - unableToMap:    the value cannot be mapped to given type for some reason
+/// - noSuchValue:          there is no such value for given key
+/// - wrongStoredValueType: the stored value type is unsuitable for performing mapping with it
+/// - unableToMap:          the value cannot be mapped to given type for some reason
 public enum UserDefaultsError: Error {
 
     case noSuchValue(key: String)
-    case wrongValueType(expected: Any.Type, received: Any.Type)
+    case wrongStoredValueType(expected: Any.Type, received: Any.Type)
     case unableToMap(mappingError: Error)
     
 }
@@ -27,6 +27,18 @@ public enum UserDefaultsError: Error {
 fileprivate typealias JSONObject = [String: Any]
 
 public extension UserDefaults {
+
+    fileprivate func storedValue<ST>(forKey key: String) throws -> ST {
+        guard let objectForKey = object(forKey: key) else {
+            throw UserDefaultsError.noSuchValue(key: key)
+        }
+
+        guard let storedValue = objectForKey as? ST else {
+            throw UserDefaultsError.wrongStoredValueType(expected: ST.self, received: type(of: objectForKey))
+        }
+
+        return storedValue
+    }
 
     /// Returns the object with specified type associated with the first occurrence of the specified default.
     ///
@@ -36,17 +48,29 @@ public extension UserDefaults {
     ///
     /// - returns: The object with specified type associated with the specified key,
     /// or throw exception if the key was not found.
-    public func model<T>(forKey key: String) throws -> T where T: ImmutableMappable {
-        guard let objectForKey = object(forKey: key) else {
-            throw UserDefaultsError.noSuchValue(key: key)
-        }
-
-        guard let jsonObject = objectForKey as? JSONObject else {
-            throw UserDefaultsError.wrongValueType(expected: JSONObject.self, received: type(of: objectForKey))
-        }
+    public func object<T>(forKey key: String) throws -> T where T: ImmutableMappable {
+        let jsonObject = try storedValue(forKey: key) as JSONObject
 
         do {
             return try T(JSON: jsonObject)
+        } catch {
+            throw UserDefaultsError.unableToMap(mappingError: error)
+        }
+    }
+
+    /// Returns the array of objects with specified type associated with the first occurrence of the specified default.
+    ///
+    /// - parameter key: A key in the current user's defaults database.
+    ///
+    /// - throws: One of cases in UserDefaultsError
+    ///
+    /// - returns: The array of objects with specified type associated with the specified key,
+    /// or throw exception if the key was not found.
+    public func object<T>(forKey key: String) throws -> [T] where T: ImmutableMappable {
+        let jsonArray = try storedValue(forKey: key) as [JSONObject]
+
+        do {
+            return try jsonArray.map { try T(JSON: $0) }
         } catch {
             throw UserDefaultsError.unableToMap(mappingError: error)
         }
@@ -60,32 +84,8 @@ public extension UserDefaults {
     ///
     /// - returns: The object with specified type associated with the specified key, or passed default value
     /// if there is no such value for specified key or if error occurred during mapping.
-    public func model<T>(forKey key: String, defaultValue: T) -> T where T: ImmutableMappable {
-        return (try? model(forKey: key)) ?? defaultValue
-    }
-
-    /// Returns the array of objects with specified type associated with the first occurrence of the specified default.
-    ///
-    /// - parameter key: A key in the current user's defaults database.
-    ///
-    /// - throws: One of cases in UserDefaultsError
-    ///
-    /// - returns: The array of objects with specified type associated with the specified key,
-    /// or throw exception if the key was not found.
-    public func arrayOfModels<T>(forKey key: String) throws -> [T] where T: ImmutableMappable {
-        guard let objectForKey = object(forKey: key) else {
-            throw UserDefaultsError.noSuchValue(key: key)
-        }
-
-        guard let jsonArray = objectForKey as? [JSONObject] else {
-            throw UserDefaultsError.wrongValueType(expected: [JSONObject].self, received: type(of: objectForKey))
-        }
-
-        do {
-            return try jsonArray.map { try T(JSON: $0) }
-        } catch {
-            throw UserDefaultsError.unableToMap(mappingError: error)
-        }
+    public func object<T>(forKey key: String, defaultValue: T) -> T where T: ImmutableMappable {
+        return (try? object(forKey: key)) ?? defaultValue
     }
 
     /// Returns the array of objects with specified type associated with the first occurrence of the specified default.
@@ -96,8 +96,8 @@ public extension UserDefaults {
     ///
     /// - returns: The array of objects with specified type associated with the specified key, or passed default value
     /// if there is no such value for specified key or if error occurred during mapping.
-    public func arrayOfModels<T>(forKey key: String, defaultValue: [T]) -> [T] where T: ImmutableMappable {
-        return (try? arrayOfModels(forKey: key)) ?? defaultValue
+    public func object<T>(forKey key: String, defaultValue: [T]) -> [T] where T: ImmutableMappable {
+        return (try? object(forKey: key)) ?? defaultValue
     }
 
     /// Sets the value of the specified default key in the standard application domain.
@@ -120,15 +120,15 @@ public extension UserDefaults {
 
 public extension Reactive where Base: UserDefaults {
 
-    /// Reactive version of model(forKey:).
+    /// Reactive version of object<T>(forKey:) -> T.
     ///
     /// - parameter key: A key in the current user's defaults database.
     ///
     /// - returns: Observable of specified model type.
-    func model<T>(forKey key: String) -> Observable<T> where T: ImmutableMappable {
+    func object<T>(forKey key: String) -> Observable<T> where T: ImmutableMappable {
         return Observable.create { observer in
             do {
-                observer.onNext(try self.base.model(forKey: key))
+                observer.onNext(try self.base.object(forKey: key))
                 observer.onCompleted()
             } catch {
                 observer.onError(error)
@@ -138,7 +138,7 @@ public extension Reactive where Base: UserDefaults {
         }
     }
 
-    /// Reactive version of model(forKey:defaultValue:).
+    /// Reactive version of object<T>(forKey:defaultValue:) -> T.
     ///
     /// Will never call onError(:) on observer.
     ///
@@ -147,24 +147,24 @@ public extension Reactive where Base: UserDefaults {
     /// or if error occurred during mapping
     ///
     /// - returns: Observable of specified model type.
-    func model<T>(forKey key: String, defaultValue: T) -> Observable<T> where T: ImmutableMappable {
+    func object<T>(forKey key: String, defaultValue: T) -> Observable<T> where T: ImmutableMappable {
         return Observable.create { observer in
-            observer.onNext(self.base.model(forKey: key, defaultValue: defaultValue))
+            observer.onNext(self.base.object(forKey: key, defaultValue: defaultValue))
             observer.onCompleted()
 
             return Disposables.create()
         }
     }
 
-    /// Reactive version of arrayOfModels(forKey:).
+    /// Reactive version of object<T>(forKey:) -> [T].
     ///
     /// - parameter key: A key in the current user's defaults database.
     ///
     /// - returns: Observable of specified array type.
-    func arrayOfModels<T>(forKey key: String) -> Observable<[T]> where T: ImmutableMappable {
+    func object<T>(forKey key: String) -> Observable<[T]> where T: ImmutableMappable {
         return Observable.create { observer in
             do {
-                observer.onNext(try self.base.arrayOfModels(forKey: key))
+                observer.onNext(try self.base.object(forKey: key))
                 observer.onCompleted()
             } catch {
                 observer.onError(error)
@@ -174,7 +174,7 @@ public extension Reactive where Base: UserDefaults {
         }
     }
 
-    /// Reactive version of arrayOfModels(forKey:defaultValue:).
+    /// Reactive version of object<T>(forKey:defaultValue:) -> [T].
     ///
     /// Will never call onError(:) on observer.
     ///
@@ -183,16 +183,16 @@ public extension Reactive where Base: UserDefaults {
     /// or if error occurred during mapping
     ///
     /// - returns: Observable of specified array type.
-    func arrayOfModels<T>(forKey key: String, defaultValue: [T]) -> Observable<[T]> where T: ImmutableMappable {
+    func object<T>(forKey key: String, defaultValue: [T]) -> Observable<[T]> where T: ImmutableMappable {
         return Observable.create { observer in
-            observer.onNext(self.base.arrayOfModels(forKey: key, defaultValue: defaultValue))
+            observer.onNext(self.base.object(forKey: key, defaultValue: defaultValue))
             observer.onCompleted()
 
             return Disposables.create()
         }
     }
 
-    /// Reactive version of set(_:forKey:).
+    /// Reactive version of set<T>(_:forKey:).
     ///
     /// Will never call onError(:) on observer.
     ///
@@ -209,7 +209,7 @@ public extension Reactive where Base: UserDefaults {
         }
     }
 
-    /// Reactive version of set(_:forKey:).
+    /// Reactive version of set<T, S>(_:forKey:).
     ///
     /// Will never call onError(:) on observer.
     ///
