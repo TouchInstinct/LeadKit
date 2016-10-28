@@ -27,7 +27,7 @@ public extension Reactive where Base: DataRequest {
     func apiResponse<T: ImmutableMappable>() -> Observable<(HTTPURLResponse, T)> {
         return responseJSON().map { resp, value in
             if let json = value as? [String: Any] {
-                return (resp, try T(map: Map(mappingType: .fromJSON, JSON: json)))
+                return (resp, try T(JSON: json))
             } else {
                 let failureReason = "Value has incorrect type: \(type(of: value)), expected: [String: Any]"
 
