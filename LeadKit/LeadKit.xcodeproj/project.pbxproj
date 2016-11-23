@@ -11,6 +11,12 @@
 		78011AB31D48B53600EA16A2 /* ApiRequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78011AB21D48B53600EA16A2 /* ApiRequestParameters.swift */; };
 		780D23431DA412470084620D /* CGImage+Alpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D23421DA412470084620D /* CGImage+Alpha.swift */; };
 		780D23461DA416F80084620D /* CGContext+Initializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D23451DA416F80084620D /* CGContext+Initializers.swift */; };
+		7827C9341DE4ADB2009DA4E6 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7827C92E1DE4ADB2009DA4E6 /* Alamofire.framework */; };
+		7827C9351DE4ADB2009DA4E6 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7827C92F1DE4ADB2009DA4E6 /* CocoaLumberjack.framework */; };
+		7827C9361DE4ADB2009DA4E6 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7827C9301DE4ADB2009DA4E6 /* ObjectMapper.framework */; };
+		7827C9371DE4ADB2009DA4E6 /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7827C9311DE4ADB2009DA4E6 /* RxAlamofire.framework */; };
+		7827C9381DE4ADB2009DA4E6 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7827C9321DE4ADB2009DA4E6 /* RxCocoa.framework */; };
+		7827C9391DE4ADB2009DA4E6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7827C9331DE4ADB2009DA4E6 /* RxSwift.framework */; };
 		7834236A1DB8D0E100A79643 /* StoryboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783423691DB8D0E100A79643 /* StoryboardProtocol.swift */; };
 		7837F60F1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7837F60E1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift */; };
 		786D78E81D53C378006B2CEA /* AlamofireRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786D78E71D53C378006B2CEA /* AlamofireRequest+Extensions.swift */; };
@@ -19,9 +25,6 @@
 		787783631CA03CA0001CDC9B /* IndexPath+ImmutableIndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787783621CA03CA0001CDC9B /* IndexPath+ImmutableIndexPath.swift */; };
 		787783671CA04D4A001CDC9B /* String+SizeCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787783661CA04D4A001CDC9B /* String+SizeCalculation.swift */; };
 		7884DB9C1DC1439200E52A63 /* UserDefaults+MappableDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7884DB9B1DC1439200E52A63 /* UserDefaults+MappableDataTypes.swift */; };
-		788E86FB1DBA6698009BF65A /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788E86F81DBA6698009BF65A /* RxAlamofire.framework */; };
-		788E86FC1DBA6698009BF65A /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788E86F91DBA6698009BF65A /* RxCocoa.framework */; };
-		788E86FD1DBA6698009BF65A /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788E86FA1DBA6698009BF65A /* RxSwift.framework */; };
 		788EC15A1CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EC1591CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift */; };
 		78A0FCC71DC366A10070B5E1 /* StoryboardProtocol+DefaultBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A0FCC51DC366A10070B5E1 /* StoryboardProtocol+DefaultBundle.swift */; };
 		78A0FCC81DC366A10070B5E1 /* StoryboardProtocol+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A0FCC61DC366A10070B5E1 /* StoryboardProtocol+Extensions.swift */; };
@@ -32,12 +35,9 @@
 		78B036471DA5624D0021D5CC /* CGImage+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B036461DA5624D0021D5CC /* CGImage+Creation.swift */; };
 		78B036491DA562C30021D5CC /* CGImage+Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B036481DA562C30021D5CC /* CGImage+Template.swift */; };
 		78B0364B1DA61EDE0021D5CC /* CGImage+Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0364A1DA61EDE0021D5CC /* CGImage+Crop.swift */; };
-		78B0365E1DA624C10021D5CC /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B036581DA624C10021D5CC /* Alamofire.framework */; };
-		78B0365F1DA624C10021D5CC /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B036591DA624C10021D5CC /* CocoaLumberjack.framework */; };
 		78B0FC7D1C6B2BE200358B64 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC7C1C6B2BE200358B64 /* LogFormatter.swift */; };
 		78B0FC7F1C6B2C4D00358B64 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC7E1C6B2C4D00358B64 /* Log.swift */; };
 		78B0FC811C6B2CD500358B64 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC801C6B2CD500358B64 /* App.swift */; };
-		78B891941DAE192B001CA8B4 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B891931DAE192B001CA8B4 /* ObjectMapper.framework */; };
 		78C36F7E1D801E3E00E7EBEA /* Double+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C36F7D1D801E3E00E7EBEA /* Double+Rounding.swift */; };
 		78C36F811D8021DD00E7EBEA /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C36F801D8021DD00E7EBEA /* UIColor+Hex.swift */; };
 		78CFEE2E1C5C456B00F50370 /* LeadKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 78CFEE2D1C5C456B00F50370 /* LeadKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -73,6 +73,12 @@
 		78011AB21D48B53600EA16A2 /* ApiRequestParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequestParameters.swift; sourceTree = "<group>"; };
 		780D23421DA412470084620D /* CGImage+Alpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Alpha.swift"; sourceTree = "<group>"; };
 		780D23451DA416F80084620D /* CGContext+Initializers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGContext+Initializers.swift"; sourceTree = "<group>"; };
+		7827C92E1DE4ADB2009DA4E6 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../../../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		7827C92F1DE4ADB2009DA4E6 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = ../../../Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
+		7827C9301DE4ADB2009DA4E6 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = ../../../Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
+		7827C9311DE4ADB2009DA4E6 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = ../../../Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
+		7827C9321DE4ADB2009DA4E6 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = ../../../Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		7827C9331DE4ADB2009DA4E6 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = ../../../Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		783423691DB8D0E100A79643 /* StoryboardProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardProtocol.swift; sourceTree = "<group>"; };
 		7837F60E1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstimatedViewHeightProtocol.swift; sourceTree = "<group>"; };
 		786D78E71D53C378006B2CEA /* AlamofireRequest+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireRequest+Extensions.swift"; sourceTree = "<group>"; };
@@ -81,9 +87,6 @@
 		787783621CA03CA0001CDC9B /* IndexPath+ImmutableIndexPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+ImmutableIndexPath.swift"; sourceTree = "<group>"; };
 		787783661CA04D4A001CDC9B /* String+SizeCalculation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SizeCalculation.swift"; sourceTree = "<group>"; };
 		7884DB9B1DC1439200E52A63 /* UserDefaults+MappableDataTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+MappableDataTypes.swift"; sourceTree = "<group>"; };
-		788E86F81DBA6698009BF65A /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = ../../../Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
-		788E86F91DBA6698009BF65A /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = ../../../Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		788E86FA1DBA6698009BF65A /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = ../../../Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		788EC1591CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+InstantiateViewController.swift"; sourceTree = "<group>"; };
 		78A0FCC51DC366A10070B5E1 /* StoryboardProtocol+DefaultBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoryboardProtocol+DefaultBundle.swift"; sourceTree = "<group>"; };
 		78A0FCC61DC366A10070B5E1 /* StoryboardProtocol+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoryboardProtocol+Extensions.swift"; sourceTree = "<group>"; };
@@ -94,12 +97,9 @@
 		78B036461DA5624D0021D5CC /* CGImage+Creation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Creation.swift"; sourceTree = "<group>"; };
 		78B036481DA562C30021D5CC /* CGImage+Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Template.swift"; sourceTree = "<group>"; };
 		78B0364A1DA61EDE0021D5CC /* CGImage+Crop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Crop.swift"; sourceTree = "<group>"; };
-		78B036581DA624C10021D5CC /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../../../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		78B036591DA624C10021D5CC /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = ../../../Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
 		78B0FC7C1C6B2BE200358B64 /* LogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFormatter.swift; sourceTree = "<group>"; };
 		78B0FC7E1C6B2C4D00358B64 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		78B0FC801C6B2CD500358B64 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		78B891931DAE192B001CA8B4 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = ../../../Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		78C36F7D1D801E3E00E7EBEA /* Double+Rounding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Rounding.swift"; sourceTree = "<group>"; };
 		78C36F801D8021DD00E7EBEA /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		78CFEE2A1C5C456B00F50370 /* LeadKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LeadKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,12 +128,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78B891941DAE192B001CA8B4 /* ObjectMapper.framework in Frameworks */,
-				78B0365F1DA624C10021D5CC /* CocoaLumberjack.framework in Frameworks */,
-				788E86FD1DBA6698009BF65A /* RxSwift.framework in Frameworks */,
-				78B0365E1DA624C10021D5CC /* Alamofire.framework in Frameworks */,
-				788E86FC1DBA6698009BF65A /* RxCocoa.framework in Frameworks */,
-				788E86FB1DBA6698009BF65A /* RxAlamofire.framework in Frameworks */,
+				7827C9361DE4ADB2009DA4E6 /* ObjectMapper.framework in Frameworks */,
+				7827C9351DE4ADB2009DA4E6 /* CocoaLumberjack.framework in Frameworks */,
+				7827C9391DE4ADB2009DA4E6 /* RxSwift.framework in Frameworks */,
+				7827C9341DE4ADB2009DA4E6 /* Alamofire.framework in Frameworks */,
+				7827C9381DE4ADB2009DA4E6 /* RxCocoa.framework in Frameworks */,
+				7827C9371DE4ADB2009DA4E6 /* RxAlamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,12 +151,12 @@
 		0A3BB96A1D5DCFBD00B03CBD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				78B036581DA624C10021D5CC /* Alamofire.framework */,
-				78B036591DA624C10021D5CC /* CocoaLumberjack.framework */,
-				788E86F81DBA6698009BF65A /* RxAlamofire.framework */,
-				788E86F91DBA6698009BF65A /* RxCocoa.framework */,
-				788E86FA1DBA6698009BF65A /* RxSwift.framework */,
-				78B891931DAE192B001CA8B4 /* ObjectMapper.framework */,
+				7827C92E1DE4ADB2009DA4E6 /* Alamofire.framework */,
+				7827C92F1DE4ADB2009DA4E6 /* CocoaLumberjack.framework */,
+				7827C9301DE4ADB2009DA4E6 /* ObjectMapper.framework */,
+				7827C9311DE4ADB2009DA4E6 /* RxAlamofire.framework */,
+				7827C9321DE4ADB2009DA4E6 /* RxCocoa.framework */,
+				7827C9331DE4ADB2009DA4E6 /* RxSwift.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
