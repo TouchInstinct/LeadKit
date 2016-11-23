@@ -100,20 +100,30 @@ public extension UserDefaults {
         return (try? object(forKey: key)) ?? defaultValue
     }
 
-    /// Sets the value of the specified default key in the standard application domain.
+    /// Sets or removes the value of the specified default key in the standard application domain.
     ///
-    /// - parameter model: The object with specified type to store in the defaults database.
-    /// - parameter key:   The key with which to associate with the value.
-    public func set<T>(_ model: T, forKey key: String) where T: ImmutableMappable {
-        set(model.toJSON(), forKey: key)
+    /// - Parameters:
+    ///   - model: The object with specified type to store or nil to remove it from the defaults database.
+    ///   - key:   The key with which to associate with the value.
+    public func set<T>(_ model: T?, forKey key: String) where T: ImmutableMappable {
+        if let model = model {
+            set(model.toJSON(), forKey: key)
+        } else {
+            set(nil, forKey: key)
+        }
     }
 
-    /// Sets the value of the specified default key in the standard application domain.
+    /// Sets or removes the value of the specified default key in the standard application domain.
     ///
-    /// - parameter models: The array of object with specified type to store in the defaults database.
-    /// - parameter key:    The key with which to associate with the value.
-    public func set<T, S>(_ models: S, forKey key: String) where T: ImmutableMappable, S: Sequence, S.Iterator.Element == T {
-        set(models.map { $0.toJSON() }, forKey: key)
+    /// - Parameters:
+    ///   - models: The array of object with specified type to store or nil to remove it from the defaults database.
+    ///   - key:    The key with which to associate with the value.
+    public func set<T, S>(_ models: S?, forKey key: String) where T: ImmutableMappable, S: Sequence, S.Iterator.Element == T {
+        if let models = models {
+            set(models.map { $0.toJSON() }, forKey: key)
+        } else {
+            set(nil, forKey: key)
+        }
     }
 
 }
@@ -200,7 +210,7 @@ public extension Reactive where Base: UserDefaults {
     /// - parameter key:   The key with which to associate with the value.
     ///
     /// - returns: Observable of Void type.
-    func set<T>(_ model: T, forKey key: String) -> Observable<Void> where T: ImmutableMappable {
+    func set<T>(_ model: T?, forKey key: String) -> Observable<Void> where T: ImmutableMappable {
         return Observable.create { observer in
             observer.onNext(self.base.set(model, forKey: key))
             observer.onCompleted()
@@ -217,7 +227,7 @@ public extension Reactive where Base: UserDefaults {
     /// - parameter key:    The key with which to associate with the value.
     ///
     /// - returns: Observable of Void type.
-    func set<T, S>(_ models: S, forKey key: String) -> Observable<Void>
+    func set<T, S>(_ models: S?, forKey key: String) -> Observable<Void>
         where T: ImmutableMappable, S: Sequence, S.Iterator.Element == T {
 
         return Observable.create { observer in
