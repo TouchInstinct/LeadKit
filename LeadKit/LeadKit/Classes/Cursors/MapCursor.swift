@@ -58,15 +58,11 @@ public class MapCursor<Cursor: CursorType, T>: CursorType where Cursor.LoadResul
     }
 
     public func loadNextBatch() -> Observable<LoadResultType> {
-        return cursor.loadNextBatch().map { [weak self] loadedRange -> LoadResultType in
-            guard let strongSelf = self else {
-                throw CursorError.deallocated
-            }
+        return cursor.loadNextBatch().map { loadedRange in
+            let startIndex = self.elements.count
+            self.elements += self.cursor[loadedRange].flatMap(self.transform)
 
-            let startIndex = strongSelf.elements.count
-            strongSelf.elements += strongSelf.cursor[loadedRange].flatMap(strongSelf.transform)
-
-            return startIndex..<strongSelf.elements.count
+            return startIndex..<self.elements.count
         }
     }
     

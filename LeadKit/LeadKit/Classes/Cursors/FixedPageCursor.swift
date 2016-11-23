@@ -38,38 +38,26 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType where Cursor.LoadRe
     }
 
     public func loadNextBatch() -> Observable<LoadResultType> {
-        return Observable.create { [weak self] observer in
-            guard let strongSelf = self else {
-                observer.onError(CursorError.deallocated)
-
-                return Disposables.create()
-            }
-
-            if strongSelf.exhausted {
+        return Observable.create { observer in
+            if self.exhausted {
                 observer.onError(CursorError.exhausted)
 
                 return Disposables.create()
             }
 
-            let restOfLoaded = strongSelf.cursor.count - strongSelf.count
+            let restOfLoaded = self.cursor.count - self.count
 
-            if restOfLoaded >= strongSelf.pageSize || strongSelf.cursor.exhausted {
-                let startIndex = strongSelf.count
-                strongSelf.count += min(restOfLoaded, strongSelf.pageSize)
+            if restOfLoaded >= self.pageSize || self.cursor.exhausted {
+                let startIndex = self.count
+                self.count += min(restOfLoaded, self.pageSize)
 
-                observer.onNext(startIndex..<strongSelf.count)
+                observer.onNext(startIndex..<self.count)
 
                 return Disposables.create()
             }
 
-            return strongSelf.cursor.loadNextBatch()
-                .map { [weak self] _ -> Observable<LoadResultType> in
-                    guard let strongSelf = self else {
-                        throw CursorError.deallocated
-                    }
-
-                    return strongSelf.loadNextBatch()
-                }
+            return self.cursor.loadNextBatch()
+                .map { _ in self.loadNextBatch() }
                 .subscribe()
         }
     }

@@ -31,24 +31,18 @@ public class StaticCursor<Element>: CursorType {
     }
 
     public func loadNextBatch() -> Observable<LoadResultType> {
-        return Observable.create { [weak self] observer in
-            guard let strongSelf = self else {
-                observer.onError(CursorError.deallocated)
-
-                return Disposables.create()
-            }
-
-            if strongSelf.exhausted {
+        return Observable.create { observer in
+            if self.exhausted {
                 observer.onError(CursorError.exhausted)
 
                 return Disposables.create()
             }
 
-            strongSelf.count = strongSelf.content.count
+            self.count = self.content.count
 
-            strongSelf.exhausted = true
+            self.exhausted = true
 
-            observer.onNext(0..<strongSelf.count)
+            observer.onNext(0..<self.count)
 
             return Disposables.create()
         }

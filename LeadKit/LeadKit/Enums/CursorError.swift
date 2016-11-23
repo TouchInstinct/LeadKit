@@ -12,11 +12,9 @@ import Foundation
 ///
 /// - busy: cursor is currently processing another request
 /// - exhausted: cursor did load all available results
-/// - deallocated: cursor was deallocated during processing request
 public enum CursorError: Error {
 
     case busy
     case exhausted
-    case deallocated
 
 }
