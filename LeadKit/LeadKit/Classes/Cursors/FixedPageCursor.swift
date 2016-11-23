@@ -38,11 +38,9 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType where Cursor.LoadRe
     }
 
     public func loadNextBatch() -> Observable<LoadResultType> {
-        return Observable.create { observer in
+        return Observable.deferred {
             if self.exhausted {
-                observer.onError(CursorError.exhausted)
-
-                return Disposables.create()
+                throw CursorError.exhausted
             }
 
             let restOfLoaded = self.cursor.count - self.count
@@ -51,14 +49,11 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType where Cursor.LoadRe
                 let startIndex = self.count
                 self.count += min(restOfLoaded, self.pageSize)
 
-                observer.onNext(startIndex..<self.count)
-
-                return Disposables.create()
+                return Observable.just(startIndex..<self.count)
             }
 
             return self.cursor.loadNextBatch()
-                .map { _ in self.loadNextBatch() }
-                .subscribe()
+                .flatMap { _ in self.loadNextBatch() }
         }
     }
     

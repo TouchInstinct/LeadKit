@@ -31,20 +31,16 @@ public class StaticCursor<Element>: CursorType {
     }
 
     public func loadNextBatch() -> Observable<LoadResultType> {
-        return Observable.create { observer in
+        return Observable.deferred {
             if self.exhausted {
-                observer.onError(CursorError.exhausted)
-
-                return Disposables.create()
+                throw CursorError.exhausted
             }
 
             self.count = self.content.count
 
             self.exhausted = true
 
-            observer.onNext(0..<self.count)
-
-            return Disposables.create()
+            return Observable.just(0..<self.count)
         }
     }
     
