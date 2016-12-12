@@ -67,7 +67,6 @@ public extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
 
-
     /**
      convenience failable initializer which creates an instance with given hex color values if string has a correct format
 
