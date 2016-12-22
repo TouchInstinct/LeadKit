@@ -19,6 +19,7 @@
 		7827C9391DE4ADB2009DA4E6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7827C9331DE4ADB2009DA4E6 /* RxSwift.framework */; };
 		7834236A1DB8D0E100A79643 /* StoryboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783423691DB8D0E100A79643 /* StoryboardProtocol.swift */; };
 		7837F60F1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7837F60E1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift */; };
+		7845A15A1E0BCD9A00B527BB /* KeyboardNotificationValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7845A1591E0BCD9A00B527BB /* KeyboardNotificationValues.swift */; };
 		786D78E81D53C378006B2CEA /* AlamofireRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786D78E71D53C378006B2CEA /* AlamofireRequest+Extensions.swift */; };
 		786D78EC1D53C46E006B2CEA /* AlamofireManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786D78EB1D53C46E006B2CEA /* AlamofireManager+Extensions.swift */; };
 		78753E241DE58A5D006BC0FB /* CursorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78753E231DE58A5D006BC0FB /* CursorError.swift */; };
@@ -36,7 +37,6 @@
 		789F5A121DFECD11004A3694 /* KeyboardDidNotificationValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F5A111DFECD11004A3694 /* KeyboardDidNotificationValues.swift */; };
 		789F5A141DFECD54004A3694 /* KeyboardNotificationValuesError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F5A131DFECD54004A3694 /* KeyboardNotificationValuesError.swift */; };
 		789F5A161DFECD82004A3694 /* KeyboardWillNotificationValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F5A151DFECD82004A3694 /* KeyboardWillNotificationValues.swift */; };
-		789F5A1B1DFECF2B004A3694 /* Notification+UIKeyboardInfoValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F5A1A1DFECF2B004A3694 /* Notification+UIKeyboardInfoValues.swift */; };
 		789F5A1E1DFECF5F004A3694 /* NotificationCenter+RxKeyboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F5A1D1DFECF5F004A3694 /* NotificationCenter+RxKeyboardExtensions.swift */; };
 		789F5A201DFECF9F004A3694 /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F5A1F1DFECF9F004A3694 /* KeyboardNotification.swift */; };
 		78A0FCC71DC366A10070B5E1 /* StoryboardProtocol+DefaultBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A0FCC51DC366A10070B5E1 /* StoryboardProtocol+DefaultBundle.swift */; };
@@ -95,6 +95,7 @@
 		7827C9331DE4ADB2009DA4E6 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = ../../../Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		783423691DB8D0E100A79643 /* StoryboardProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardProtocol.swift; sourceTree = "<group>"; };
 		7837F60E1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstimatedViewHeightProtocol.swift; sourceTree = "<group>"; };
+		7845A1591E0BCD9A00B527BB /* KeyboardNotificationValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationValues.swift; sourceTree = "<group>"; };
 		786D78E71D53C378006B2CEA /* AlamofireRequest+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireRequest+Extensions.swift"; sourceTree = "<group>"; };
 		786D78EB1D53C46E006B2CEA /* AlamofireManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireManager+Extensions.swift"; sourceTree = "<group>"; };
 		78753E231DE58A5D006BC0FB /* CursorError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CursorError.swift; sourceTree = "<group>"; };
@@ -112,7 +113,6 @@
 		789F5A111DFECD11004A3694 /* KeyboardDidNotificationValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDidNotificationValues.swift; sourceTree = "<group>"; };
 		789F5A131DFECD54004A3694 /* KeyboardNotificationValuesError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationValuesError.swift; sourceTree = "<group>"; };
 		789F5A151DFECD82004A3694 /* KeyboardWillNotificationValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardWillNotificationValues.swift; sourceTree = "<group>"; };
-		789F5A1A1DFECF2B004A3694 /* Notification+UIKeyboardInfoValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+UIKeyboardInfoValues.swift"; sourceTree = "<group>"; };
 		789F5A1D1DFECF5F004A3694 /* NotificationCenter+RxKeyboardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+RxKeyboardExtensions.swift"; sourceTree = "<group>"; };
 		789F5A1F1DFECF9F004A3694 /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
 		78A0FCC51DC366A10070B5E1 /* StoryboardProtocol+DefaultBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoryboardProtocol+DefaultBundle.swift"; sourceTree = "<group>"; };
@@ -302,16 +302,9 @@
 			children = (
 				789F5A111DFECD11004A3694 /* KeyboardDidNotificationValues.swift */,
 				789F5A151DFECD82004A3694 /* KeyboardWillNotificationValues.swift */,
+				7845A1591E0BCD9A00B527BB /* KeyboardNotificationValues.swift */,
 			);
 			path = KeyboardNotificationValues;
-			sourceTree = "<group>";
-		};
-		789F5A191DFECF2B004A3694 /* Notification */ = {
-			isa = PBXGroup;
-			children = (
-				789F5A1A1DFECF2B004A3694 /* Notification+UIKeyboardInfoValues.swift */,
-			);
-			path = Notification;
 			sourceTree = "<group>";
 		};
 		789F5A1C1DFECF44004A3694 /* NotificationCenter */ = {
@@ -429,7 +422,6 @@
 				7884DB9A1DC1432B00E52A63 /* UserDefaults */,
 				789CC6091DE584C000F789D3 /* CursorType */,
 				789F5A0A1DFECB52004A3694 /* UIViewAnimationCurve */,
-				789F5A191DFECF2B004A3694 /* Notification */,
 				789F5A1C1DFECF44004A3694 /* NotificationCenter */,
 			);
 			path = Extensions;
@@ -695,6 +687,7 @@
 				78011A641D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift in Sources */,
 				786D78EC1D53C46E006B2CEA /* AlamofireManager+Extensions.swift in Sources */,
 				78B0FC811C6B2CD500358B64 /* App.swift in Sources */,
+				7845A15A1E0BCD9A00B527BB /* KeyboardNotificationValues.swift in Sources */,
 				78B036491DA562C30021D5CC /* CGImage+Template.swift in Sources */,
 				789F5A1E1DFECF5F004A3694 /* NotificationCenter+RxKeyboardExtensions.swift in Sources */,
 				78753E301DE594B4006BC0FB /* MapCursor.swift in Sources */,
@@ -710,7 +703,6 @@
 				786D78E81D53C378006B2CEA /* AlamofireRequest+Extensions.swift in Sources */,
 				78C36F811D8021DD00E7EBEA /* UIColor+Hex.swift in Sources */,
 				78CFEE5B1C5C45E500F50370 /* ViewModelProtocol.swift in Sources */,
-				789F5A1B1DFECF2B004A3694 /* Notification+UIKeyboardInfoValues.swift in Sources */,
 				789F5A121DFECD11004A3694 /* KeyboardDidNotificationValues.swift in Sources */,
 				EF5FB5691E0141610030E4BE /* UIView+Rotation.swift in Sources */,
 				780D23431DA412470084620D /* CGImage+Alpha.swift in Sources */,

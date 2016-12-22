@@ -23,11 +23,13 @@ public struct KeyboardWillNotificationValues {
 public extension KeyboardWillNotificationValues {
 
     init(notification: Notification) throws {
-        guard let sizeBegin = notification.keyboardFrameBegin?.size,
-            let sizeEnd = notification.keyboardFrameEnd?.size,
-            let animationDuration = notification.keyboardAnimationDuration,
-            let animationCurve = notification.keyboardAnimationCurve,
-            let isLocal = notification.keyboardIsLocal else {
+        let notificationValues = KeyboardNotificationValues(notification: notification)
+
+        guard let sizeBegin = notificationValues.frameBegin?.size,
+            let sizeEnd = notificationValues.frameEnd?.size,
+            let animationDuration = notificationValues.animationDuration,
+            let animationCurve = notificationValues.animationCurve,
+            let isLocal = notificationValues.isLocal else {
 
                 throw KeyboardNotificationValuesError.failedToInit(fromNotification: notification)
         }

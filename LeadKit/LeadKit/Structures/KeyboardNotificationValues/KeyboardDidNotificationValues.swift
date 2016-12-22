@@ -23,9 +23,11 @@ public struct KeyboardDidNotificationValues {
 public extension KeyboardDidNotificationValues {
 
     init(notification: Notification) throws {
-        guard let sizeBegin = notification.keyboardFrameBegin?.size,
-            let sizeEnd = notification.keyboardFrameEnd?.size,
-            let isLocal = notification.keyboardIsLocal else {
+        let notificationValues = KeyboardNotificationValues(notification: notification)
+
+        guard let sizeBegin = notificationValues.frameBegin?.size,
+            let sizeEnd = notificationValues.frameEnd?.size,
+            let isLocal = notificationValues.isLocal else {
 
                 throw KeyboardNotificationValuesError.failedToInit(fromNotification: notification)
         }
