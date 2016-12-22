@@ -69,6 +69,7 @@
 		78D4B54A1DA64EAB005B0764 /* Any+TypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D4B5491DA64EAB005B0764 /* Any+TypeName.swift */; };
 		95B39A861D9D51250057BD54 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39A851D9D51250057BD54 /* String+Localization.swift */; };
 		E126CBB31DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126CBB21DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift */; };
+		EF5FB5691E0141610030E4BE /* UIView+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5FB5681E0141610030E4BE /* UIView+Rotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,7 @@
 		78D4B5491DA64EAB005B0764 /* Any+TypeName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Any+TypeName.swift"; sourceTree = "<group>"; };
 		95B39A851D9D51250057BD54 /* String+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		E126CBB21DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionView+CellRegistration.swift"; path = "UICollectionView/UICollectionView+CellRegistration.swift"; sourceTree = "<group>"; };
+		EF5FB5681E0141610030E4BE /* UIView+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Rotation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,9 +480,10 @@
 		78E59B2C1C786CD500C6BFE9 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
-				78CFEE481C5C45E500F50370 /* UIView+LoadFromNib.swift */,
 				78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */,
 				78011A631D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift */,
+				78CFEE481C5C45E500F50370 /* UIView+LoadFromNib.swift */,
+				EF5FB5681E0141610030E4BE /* UIView+Rotation.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				78CFEE5B1C5C45E500F50370 /* ViewModelProtocol.swift in Sources */,
 				789F5A1B1DFECF2B004A3694 /* Notification+UIKeyboardInfoValues.swift in Sources */,
 				789F5A121DFECD11004A3694 /* KeyboardDidNotificationValues.swift in Sources */,
+				EF5FB5691E0141610030E4BE /* UIView+Rotation.swift in Sources */,
 				780D23431DA412470084620D /* CGImage+Alpha.swift in Sources */,
 				78CFEE5A1C5C45E500F50370 /* ViewHeightProtocol.swift in Sources */,
 				787682FA1CAD40C300532AB3 /* StaticEstimatedViewHeightProtocol.swift in Sources */,
