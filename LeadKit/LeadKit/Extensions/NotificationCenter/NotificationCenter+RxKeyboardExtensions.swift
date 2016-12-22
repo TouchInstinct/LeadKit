@@ -18,7 +18,7 @@ extension Reactive where Base: NotificationCenter {
 
         let willShowObservable = rxNotificationCenter.notification(.UIKeyboardWillShow)
             .map { notification -> KeyboardNotification in
-                return .willShow(notificationValues: try KeyboardWillNotificationValues(notification: notification))
+                return .willShow(notificationValues: try KeyboardWillNotificationValues(willNotification: notification))
         }
 
         let didShowObservable = rxNotificationCenter.notification(.UIKeyboardDidShow)
@@ -28,7 +28,7 @@ extension Reactive where Base: NotificationCenter {
 
         let willHideObservable = rxNotificationCenter.notification(.UIKeyboardWillHide)
             .map { notification -> KeyboardNotification in
-                return .willHide(notificationValues: try KeyboardWillNotificationValues(notification: notification))
+                return .willHide(notificationValues: try KeyboardWillNotificationValues(willNotification: notification))
         }
 
         let didHideObservable = rxNotificationCenter.notification(.UIKeyboardDidHide)
@@ -38,7 +38,7 @@ extension Reactive where Base: NotificationCenter {
 
         let willChangeFrameObservable = rxNotificationCenter.notification(.UIKeyboardWillChangeFrame)
             .map { notification -> KeyboardNotification in
-                return .willChangeFrame(notificationValues: try KeyboardWillNotificationValues(notification: notification))
+                return .willChangeFrame(notificationValues: try KeyboardWillNotificationValues(willNotification: notification))
         }
 
         let didChangeFrameObservable = rxNotificationCenter.notification(.UIKeyboardDidChangeFrame)
