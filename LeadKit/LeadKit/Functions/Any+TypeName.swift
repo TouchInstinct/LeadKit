@@ -8,6 +8,10 @@
 
 import Foundation
 
+/// Function which return string representation of type without ".Type" suffix
+///
+/// - Parameter type: a type
+/// - Returns: string representation of type without ".Type" suffix
 public func className<T>(of type: T) -> String {
     let clsName = String(describing: type(of: type))
 

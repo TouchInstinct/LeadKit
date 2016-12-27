@@ -11,15 +11,12 @@ import RxSwift
 import RxAlamofire
 import ObjectMapper
 
-public extension Alamofire.SessionManager {
+public extension Reactive where Base: Alamofire.SessionManager {
 
-    /**
-     method which executes request with given api parameters
-
-     - parameter requestParameters: api parameters to pass Alamofire
-
-     - returns: Observable with request 
-     */
+    /// Method which executes request with given api parameters
+    ///
+    /// - Parameter requestParameters: api parameters to pass Alamofire
+    /// - Returns: Observable with request
     func apiRequest(requestParameters: ApiRequestParameters) -> Observable<DataRequest> {
         return RxAlamofire.request(requestParameters.method,
                                    requestParameters.url,
@@ -28,15 +25,26 @@ public extension Alamofire.SessionManager {
                                    headers: requestParameters.headers)
     }
 
-    /**
-     method which executes request and serialize response into target object
-     
-     - parameter requestParameters: api parameters to pass Alamofire
-
-     - returns: Observable with HTTP URL Response and target object
-     */
+    /// Method which executes request and serialize response into target object
+    ///
+    /// - Parameter requestParameters: api parameters to pass Alamofire
+    /// - Returns: Observable with HTTP URL Response and target object
     func responseModel<T: ImmutableMappable>(requestParameters: ApiRequestParameters) -> Observable<(HTTPURLResponse, T)> {
-        return apiRequest(requestParameters: requestParameters).flatMap { $0.rx.apiResponse() }
+        return apiRequest(requestParameters: requestParameters)
+            .observeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+            .flatMap { $0.rx.apiResponse() }
+    }
+
+    /// Method which executes request and serialize response into target object
+    ///
+    /// - Parameter requestParameters: api parameters to pass Alamofire
+    /// - Returns: Observable with HTTP URL Response and target object
+    func responseObservableModel<T: ObservableMappable>(requestParameters: ApiRequestParameters) ->
+        Observable<(HTTPURLResponse, T)> where T.ModelType == T {
+
+        return apiRequest(requestParameters: requestParameters)
+            .observeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+            .flatMap { $0.rx.apiResponse() }
     }
 
 }

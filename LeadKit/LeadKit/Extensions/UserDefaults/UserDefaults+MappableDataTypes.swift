@@ -14,12 +14,10 @@ import RxSwift
 /// model or array of specified type from UserDefaults.
 ///
 /// - noSuchValue:          there is no such value for given key
-/// - wrongStoredValueType: the stored value type is unsuitable for performing mapping with it
 /// - unableToMap:          the value cannot be mapped to given type for some reason
 public enum UserDefaultsError: Error {
 
     case noSuchValue(key: String)
-    case wrongStoredValueType(expected: Any.Type, received: Any.Type)
     case unableToMap(mappingError: Error)
     
 }
@@ -33,11 +31,7 @@ public extension UserDefaults {
             throw UserDefaultsError.noSuchValue(key: key)
         }
 
-        guard let storedValue = objectForKey as? ST else {
-            throw UserDefaultsError.wrongStoredValueType(expected: ST.self, received: type(of: objectForKey))
-        }
-
-        return storedValue
+        return try cast(objectForKey) as ST
     }
 
     /// Returns the object with specified type associated with the first occurrence of the specified default.
