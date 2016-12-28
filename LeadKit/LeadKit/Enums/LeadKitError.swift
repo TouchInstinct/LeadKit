@@ -10,7 +10,7 @@ import Foundation
 
 /// Enum which represents common errors in LeadKit framework
 ///
-/// - failedToCastValue: attampt to cast was failed
+/// - failedToCastValue: attempt to cast was failed
 public enum LeadKitError: Error {
 
     case failedToCastValue(expectedType: Any.Type, givenType: Any.Type)

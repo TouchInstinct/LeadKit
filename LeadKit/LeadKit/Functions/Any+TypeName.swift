@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Function which return string representation of type without ".Type" suffix
+/// Function which returns string representation of type without ".Type" suffix
 ///
 /// - Parameter type: a type
 /// - Returns: string representation of type without ".Type" suffix

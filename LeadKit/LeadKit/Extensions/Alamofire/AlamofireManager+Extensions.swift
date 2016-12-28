@@ -25,7 +25,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
                                    headers: requestParameters.headers)
     }
 
-    /// Method which executes request and serialize response into target object
+    /// Method which executes request and serializes response into target object
     ///
     /// - Parameter requestParameters: api parameters to pass Alamofire
     /// - Returns: Observable with HTTP URL Response and target object
@@ -35,7 +35,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
             .flatMap { $0.rx.apiResponse() }
     }
 
-    /// Method which executes request and serialize response into target object
+    /// Method which executes request and serializes response into target object
     ///
     /// - Parameter requestParameters: api parameters to pass Alamofire
     /// - Returns: Observable with HTTP URL Response and target object

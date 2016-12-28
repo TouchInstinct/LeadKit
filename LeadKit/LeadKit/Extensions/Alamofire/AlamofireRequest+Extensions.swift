@@ -13,7 +13,7 @@ import RxAlamofire
 
 public extension Reactive where Base: DataRequest {
 
-    /// Method which serialize response into target object
+    /// Method which serializes response into target object
     ///
     /// - Returns: Observable with HTTP URL Response and target object
     func apiResponse<T: ImmutableMappable>() -> Observable<(HTTPURLResponse, T)> {
@@ -24,7 +24,7 @@ public extension Reactive where Base: DataRequest {
         }
     }
 
-    /// Method which serialize response into target object
+    /// Method which serializes response into target object
     ///
     /// - Returns: Observable with HTTP URL Response and target object
     func apiResponse<T: ObservableMappable>() -> Observable<(HTTPURLResponse, T)> where T.ModelType == T {
