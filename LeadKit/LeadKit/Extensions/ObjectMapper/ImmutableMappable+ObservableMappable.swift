@@ -16,8 +16,8 @@ public extension ObservableMappable where Self: ImmutableMappable, ModelType == 
     /// - Parameter map: ObjectMapper.Map object
     /// - Returns: Observable with value of ModelType(map: ObjectMapper.Map)
     /// - Throws: error of ModelType(map: ObjectMapper.Map)
-    static func createFrom(map: Map) throws -> Observable<Self> {
-        return Observable.just(try ModelType(map: map))
+    static func createFrom(map: Map) -> Observable<Self> {
+        return Observable.deferredJust { try ModelType(map: map) }
     }
 
 }

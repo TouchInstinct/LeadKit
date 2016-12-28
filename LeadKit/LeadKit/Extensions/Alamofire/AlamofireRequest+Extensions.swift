@@ -31,7 +31,7 @@ public extension Reactive where Base: DataRequest {
         return responseJSON().flatMap { resp, value -> Observable<(HTTPURLResponse, T)> in
             let json = try cast(value) as [String: Any]
 
-            return try T.createFrom(map: Map(mappingType: .fromJSON, JSON: json))
+            return T.createFrom(map: Map(mappingType: .fromJSON, JSON: json))
                 .map { (resp, $0) }
         }
     }

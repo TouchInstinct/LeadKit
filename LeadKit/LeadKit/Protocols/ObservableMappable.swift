@@ -14,6 +14,6 @@ public protocol ObservableMappable {
 
     associatedtype ModelType
 
-    static func createFrom(map: Map) throws -> Observable<ModelType>
+    static func createFrom(map: Map) -> Observable<ModelType>
 
 }
