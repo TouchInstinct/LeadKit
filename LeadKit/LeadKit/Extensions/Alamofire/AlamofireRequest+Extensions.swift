@@ -11,28 +11,28 @@ import RxSwift
 import ObjectMapper
 import RxAlamofire
 
-public enum ApiResponseMappingError: Error {
-
-    case incorrectValueType(message: String)
-
-}
-
 public extension Reactive where Base: DataRequest {
 
-    /**
-     method which serialize response into target object
-
-     - returns: Observable with HTTP URL Response and target object
-     */
+    /// Method which serializes response into target object
+    ///
+    /// - Returns: Observable with HTTP URL Response and target object
     func apiResponse<T: ImmutableMappable>() -> Observable<(HTTPURLResponse, T)> {
         return responseJSON().map { resp, value in
-            if let json = value as? [String: Any] {
-                return (resp, try T(JSON: json))
-            } else {
-                let failureReason = "Value has incorrect type: \(type(of: value)), expected: [String: Any]"
+            let json = try cast(value) as [String: Any]
 
-                throw ApiResponseMappingError.incorrectValueType(message: failureReason)
-            }
+            return (resp, try T(JSON: json))
+        }
+    }
+
+    /// Method which serializes response into target object
+    ///
+    /// - Returns: Observable with HTTP URL Response and target object
+    func apiResponse<T: ObservableMappable>() -> Observable<(HTTPURLResponse, T)> where T.ModelType == T {
+        return responseJSON().flatMap { resp, value -> Observable<(HTTPURLResponse, T)> in
+            let json = try cast(value) as [String: Any]
+
+            return T.createFrom(map: Map(mappingType: .fromJSON, JSON: json))
+                .map { (resp, $0) }
         }
     }
 

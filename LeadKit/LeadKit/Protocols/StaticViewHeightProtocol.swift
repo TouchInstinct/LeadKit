@@ -17,5 +17,5 @@ public protocol StaticViewHeightProtocol {
      
      - returns: view height
      */
-    static func viewHeight() -> CGFloat
+    static var viewHeight: CGFloat { get }
 }
