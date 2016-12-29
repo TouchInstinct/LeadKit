@@ -31,7 +31,6 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Returns: Observable with HTTP URL Response and target object
     func responseModel<T: ImmutableMappable>(requestParameters: ApiRequestParameters) -> Observable<(HTTPURLResponse, T)> {
         return apiRequest(requestParameters: requestParameters)
-            .observeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .flatMap { $0.rx.apiResponse() }
     }
 
@@ -43,7 +42,6 @@ public extension Reactive where Base: Alamofire.SessionManager {
         Observable<(HTTPURLResponse, T)> where T.ModelType == T {
 
         return apiRequest(requestParameters: requestParameters)
-            .observeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .flatMap { $0.rx.apiResponse() }
     }
 
