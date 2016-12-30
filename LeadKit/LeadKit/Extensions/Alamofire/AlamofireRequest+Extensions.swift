@@ -15,33 +15,37 @@ public extension Reactive where Base: DataRequest {
 
     /// Method which serializes response into target object
     ///
-    /// - Parameter mappingQueueQoS: QoS of underlying scheduler queue on which mapping will be executed
+    /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
-    func apiResponse<T: ImmutableMappable>(mappingQueueQoS: DispatchQoS = .default) -> Observable<(HTTPURLResponse, T)> {
-        return responseJSON()
+    func apiResponse<T: ImmutableMappable>(mappingQueue: DispatchQueue = DispatchQueue.global())
+        -> Observable<(HTTPURLResponse, T)> {
+
+        return responseJSONOnQueue(mappingQueue)
             .map { resp, value in
                 let json = try cast(value) as [String: Any]
 
                 return (resp, try T(JSON: json))
             }
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: mappingQueueQoS))
     }
 
     /// Method which serializes response into target object
     ///
-    /// - Parameter mappingQueueQoS: QoS of underlying scheduler queue on which mapping will be executed
+    /// - Parameter mappingQueue: The dispatch queue to use
     /// - Returns: Observable with HTTP URL Response and target object
-    func apiResponse<T: ObservableMappable>(mappingQueueQoS: DispatchQoS = .default) -> Observable<(HTTPURLResponse, T)>
-        where T.ModelType == T {
+    func apiResponse<T: ObservableMappable>(mappingQueue: DispatchQueue = DispatchQueue.global())
+        -> Observable<(HTTPURLResponse, T)> where T.ModelType == T {
 
-        return responseJSON()
+            return responseJSONOnQueue(mappingQueue)
             .flatMap { resp, value -> Observable<(HTTPURLResponse, T)> in
                 let json = try cast(value) as [String: Any]
 
                 return T.createFrom(map: Map(mappingType: .fromJSON, JSON: json))
                     .map { (resp, $0) }
-                    .subscribeOn(ConcurrentDispatchQueueScheduler(qos: mappingQueueQoS))
             }
+    }
+
+    internal func responseJSONOnQueue(_ queue: DispatchQueue) -> Observable<(HTTPURLResponse, Any)> {
+        return responseResult(queue: queue, responseSerializer: DataRequest.jsonResponseSerializer(options: .allowFragments))
     }
 
 }
