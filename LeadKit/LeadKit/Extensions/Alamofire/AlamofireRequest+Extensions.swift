@@ -15,25 +15,37 @@ public extension Reactive where Base: DataRequest {
 
     /// Method which serializes response into target object
     ///
+    /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
-    func apiResponse<T: ImmutableMappable>() -> Observable<(HTTPURLResponse, T)> {
-        return responseJSON().map { resp, value in
-            let json = try cast(value) as [String: Any]
+    func apiResponse<T: ImmutableMappable>(mappingQueue: DispatchQueue = DispatchQueue.global())
+        -> Observable<(HTTPURLResponse, T)> {
 
-            return (resp, try T(JSON: json))
-        }
+        return responseJSONOnQueue(mappingQueue)
+            .map { resp, value in
+                let json = try cast(value) as [String: Any]
+
+                return (resp, try T(JSON: json))
+            }
     }
 
     /// Method which serializes response into target object
     ///
+    /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
-    func apiResponse<T: ObservableMappable>() -> Observable<(HTTPURLResponse, T)> where T.ModelType == T {
-        return responseJSON().flatMap { resp, value -> Observable<(HTTPURLResponse, T)> in
-            let json = try cast(value) as [String: Any]
+    func apiResponse<T: ObservableMappable>(mappingQueue: DispatchQueue = DispatchQueue.global())
+        -> Observable<(HTTPURLResponse, T)> where T.ModelType == T {
 
-            return T.createFrom(map: Map(mappingType: .fromJSON, JSON: json))
-                .map { (resp, $0) }
-        }
+            return responseJSONOnQueue(mappingQueue)
+            .flatMap { resp, value -> Observable<(HTTPURLResponse, T)> in
+                let json = try cast(value) as [String: Any]
+
+                return T.createFrom(map: Map(mappingType: .fromJSON, JSON: json))
+                    .map { (resp, $0) }
+            }
+    }
+
+    internal func responseJSONOnQueue(_ queue: DispatchQueue) -> Observable<(HTTPURLResponse, Any)> {
+        return responseResult(queue: queue, responseSerializer: DataRequest.jsonResponseSerializer(options: .allowFragments))
     }
 
 }
