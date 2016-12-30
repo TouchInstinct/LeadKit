@@ -30,7 +30,7 @@ public extension Reactive where Base: DataRequest {
 
     /// Method which serializes response into target object
     ///
-    /// - Parameter mappingQueue: The dispatch queue to use
+    /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func apiResponse<T: ObservableMappable>(mappingQueue: DispatchQueue = DispatchQueue.global())
         -> Observable<(HTTPURLResponse, T)> where T.ModelType == T {
