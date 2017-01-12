@@ -32,7 +32,7 @@ public extension CGImage {
      - returns: A new image
      */
     public func round(withRadius radius: CGFloat) -> CGImage? {
-        guard let ctx = CGContext.create(forCGImage: self) ?? CGContext.create(width: width, height: height) else {
+        guard let ctx = CGContext(forCGImage: self) ?? CGContext(width: width, height: height) else {
             return nil
         }
 
@@ -68,13 +68,13 @@ public extension CGImage {
 
         let ctxRect: CGRect = CGRect(origin: CGPoint.zero, size: CGSize(width: newWidth, height: newHeight))
 
-        let context = CGContext.create(width: ctxWidth,
-                                       height: ctxHeight,
-                                       bitmapInfo: bitmapInfo,
-                                       colorSpace: colorSpace ?? CGColorSpaceCreateDeviceRGB(),
-                                       bitsPerComponent: bitsPerComponent)
+        let context = CGContext(width: ctxWidth,
+                                height: ctxHeight,
+                                bitmapInfo: bitmapInfo,
+                                colorSpace: colorSpace ?? CGColorSpaceCreateDeviceRGB(),
+                                bitsPerComponent: bitsPerComponent)
 
-        guard let ctx = context ?? CGContext.create(width: width, height: height) else {
+        guard let ctx = context ?? CGContext(width: width, height: height) else {
             return nil
         }
 
@@ -110,13 +110,13 @@ public extension CGImage {
         let ctxWidth = Int(ceil(newSize.width))
         let ctxHeight = Int(ceil(newSize.height))
 
-        let context = CGContext.create(width: ctxWidth,
-                                       height: ctxHeight,
-                                       bitmapInfo: bitmapInfo,
-                                       colorSpace: colorSpace ?? CGColorSpaceCreateDeviceRGB(),
-                                       bitsPerComponent: bitsPerComponent)
+        let context = CGContext(width: ctxWidth,
+                                height: ctxHeight,
+                                bitmapInfo: bitmapInfo,
+                                colorSpace: colorSpace ?? CGColorSpaceCreateDeviceRGB(),
+                                bitsPerComponent: bitsPerComponent)
 
-        guard let ctx = context ?? CGContext.create(width: ctxWidth, height: ctxHeight) else {
+        guard let ctx = context ?? CGContext(width: ctxWidth, height: ctxHeight) else {
             return nil
         }
 
@@ -176,13 +176,13 @@ public extension CGImage {
         let ctxWidth = Int(ceil(CGFloat(width) + padding * 2))
         let ctxHeight = Int(ceil(CGFloat(height) + padding * 2))
 
-        let context = CGContext.create(width: ctxWidth,
-                                       height: ctxHeight,
-                                       bitmapInfo: bitmapInfo,
-                                       colorSpace: colorSpace ?? CGColorSpaceCreateDeviceRGB(),
-                                       bitsPerComponent: bitsPerComponent)
+        let context = CGContext(width: ctxWidth,
+                                height: ctxHeight,
+                                bitmapInfo: bitmapInfo,
+                                colorSpace: colorSpace ?? CGColorSpaceCreateDeviceRGB(),
+                                bitsPerComponent: bitsPerComponent)
 
-        guard let ctx = context ?? CGContext.create(width: ctxWidth, height: ctxHeight) else {
+        guard let ctx = context ?? CGContext(width: ctxWidth, height: ctxHeight) else {
             return nil
         }
 

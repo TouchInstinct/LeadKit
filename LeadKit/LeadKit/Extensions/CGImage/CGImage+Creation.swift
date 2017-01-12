@@ -39,9 +39,9 @@ public extension CGImage {
                               height: Int,
                               opaque: Bool = false) -> CGImage? {
 
-        let context = CGContext.create(width: width,
-                                       height: height,
-                                       bitmapInfo: opaque ? opaqueBitmapInfo : alphaBitmapInfo)
+        let context = CGContext(width: width,
+                                height: height,
+                                bitmapInfo: opaque ? opaqueBitmapInfo : alphaBitmapInfo)
 
         guard let ctx = context else {
             return nil
@@ -66,7 +66,7 @@ public extension CGImage {
         let ctxWidth = Int(ceil(size.width))
         let ctxHeight = Int(ceil(size.height))
 
-        guard let ctx = CGContext.create(width: ctxWidth, height: ctxHeight) else {
+        guard let ctx = CGContext(width: ctxWidth, height: ctxHeight) else {
             return nil
         }
 

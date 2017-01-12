@@ -25,23 +25,22 @@ import CoreGraphics
 public extension CGContext {
 
     /**
-     method which creates an instance of CGContext with parameters taken from a given image
+     creates an instance of CGContext with parameters taken from a given image
 
      - parameter forCGImage: CGImage instance from which the parameters will be taken
      - parameter fallbackColorSpace: fallback color space if image doesn't have it
      */
-    public static func create(forCGImage cgImage: CGImage,
-                              fallbackColorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()) -> CGContext? {
-
-        return create(width: cgImage.width,
-                      height: cgImage.height,
-                      bitmapInfo: cgImage.bitmapInfo,
-                      colorSpace: cgImage.colorSpace ?? fallbackColorSpace,
-                      bitsPerComponent: cgImage.bitsPerComponent)
+    public convenience init?(forCGImage cgImage: CGImage,
+                             fallbackColorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()) {
+        self.init(width: cgImage.width,
+                  height: cgImage.height,
+                  bitmapInfo: cgImage.bitmapInfo,
+                  colorSpace: cgImage.colorSpace ?? fallbackColorSpace,
+                  bitsPerComponent: cgImage.bitsPerComponent)
     }
 
     /**
-     method which creates an instance of CGContext
+     creates an instance of CGContext
 
      - parameter width: The width, in pixels, of the required bitmap.
      - parameter height: The height, in pixels, of the required bitmap.
@@ -51,19 +50,18 @@ public extension CGContext {
      - parameter colorSpace: The color space to use for the bitmap context.
      - parameter bitsPerComponent: The number of bits to use for each component of a pixel in memory.
      */
-    public static func create(width: Int,
-                              height: Int,
-                              bitmapInfo: CGBitmapInfo = alphaBitmapInfo,
-                              colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB(),
-                              bitsPerComponent: Int = 8) -> CGContext? {
-
-        return CGContext(data: nil,
-                         width: width,
-                         height: height,
-                         bitsPerComponent: bitsPerComponent,
-                         bytesPerRow: 0,
-                         space: colorSpace,
-                         bitmapInfo: bitmapInfo.rawValue)
+    public convenience init?(width: Int,
+                     height: Int,
+                     bitmapInfo: CGBitmapInfo = alphaBitmapInfo,
+                     colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB(),
+                     bitsPerComponent: Int = 8) {
+        self.init(data: nil,
+                  width: width,
+                  height: height,
+                  bitsPerComponent: bitsPerComponent,
+                  bytesPerRow: 0,
+                  space: colorSpace,
+                  bitmapInfo: bitmapInfo.rawValue)
     }
-    
+
 }
