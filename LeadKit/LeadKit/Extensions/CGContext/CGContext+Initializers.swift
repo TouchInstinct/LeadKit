@@ -1,9 +1,23 @@
 //
-//  CGContext+Initializers.swift
-//  LeadKit
+//  Copyright (c) 2017 Touch Instinct
 //
-//  Created by Ivan Smolin on 04/10/16.
-//  Copyright © 2016 Touch Instinct. All rights reserved.
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 //
 
 import CoreGraphics
@@ -11,23 +25,22 @@ import CoreGraphics
 public extension CGContext {
 
     /**
-     method which creates an instance of CGContext with parameters taken from a given image
+     creates an instance of CGContext with parameters taken from a given image
 
      - parameter forCGImage: CGImage instance from which the parameters will be taken
      - parameter fallbackColorSpace: fallback color space if image doesn't have it
      */
-    public static func create(forCGImage cgImage: CGImage,
-                              fallbackColorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()) -> CGContext? {
-
-        return create(width: cgImage.width,
-                      height: cgImage.height,
-                      bitmapInfo: cgImage.bitmapInfo,
-                      colorSpace: cgImage.colorSpace ?? fallbackColorSpace,
-                      bitsPerComponent: cgImage.bitsPerComponent)
+    public convenience init?(forCGImage cgImage: CGImage,
+                             fallbackColorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()) {
+        self.init(width: cgImage.width,
+                  height: cgImage.height,
+                  bitmapInfo: cgImage.bitmapInfo,
+                  colorSpace: cgImage.colorSpace ?? fallbackColorSpace,
+                  bitsPerComponent: cgImage.bitsPerComponent)
     }
 
     /**
-     method which creates an instance of CGContext
+     creates an instance of CGContext
 
      - parameter width: The width, in pixels, of the required bitmap.
      - parameter height: The height, in pixels, of the required bitmap.
@@ -37,19 +50,18 @@ public extension CGContext {
      - parameter colorSpace: The color space to use for the bitmap context.
      - parameter bitsPerComponent: The number of bits to use for each component of a pixel in memory.
      */
-    public static func create(width: Int,
-                              height: Int,
-                              bitmapInfo: CGBitmapInfo = alphaBitmapInfo,
-                              colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB(),
-                              bitsPerComponent: Int = 8) -> CGContext? {
-
-        return CGContext(data: nil,
-                         width: width,
-                         height: height,
-                         bitsPerComponent: bitsPerComponent,
-                         bytesPerRow: 0,
-                         space: colorSpace,
-                         bitmapInfo: bitmapInfo.rawValue)
+    public convenience init?(width: Int,
+                     height: Int,
+                     bitmapInfo: CGBitmapInfo = alphaBitmapInfo,
+                     colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB(),
+                     bitsPerComponent: Int = 8) {
+        self.init(data: nil,
+                  width: width,
+                  height: height,
+                  bitsPerComponent: bitsPerComponent,
+                  bytesPerRow: 0,
+                  space: colorSpace,
+                  bitmapInfo: bitmapInfo.rawValue)
     }
-    
+
 }
