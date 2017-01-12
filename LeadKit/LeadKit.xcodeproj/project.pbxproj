@@ -56,7 +56,6 @@
 		78CFEE2E1C5C456B00F50370 /* LeadKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 78CFEE2D1C5C456B00F50370 /* LeadKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78CFEE351C5C456B00F50370 /* LeadKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CFEE2A1C5C456B00F50370 /* LeadKit.framework */; };
 		78CFEE3A1C5C456B00F50370 /* LeadKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE391C5C456B00F50370 /* LeadKitTests.swift */; };
-		78CFEE521C5C45E500F50370 /* UITableView+CellRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE461C5C45E500F50370 /* UITableView+CellRegistration.swift */; };
 		78CFEE541C5C45E500F50370 /* UIView+LoadFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE481C5C45E500F50370 /* UIView+LoadFromNib.swift */; };
 		78CFEE551C5C45E500F50370 /* NibNameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE4A1C5C45E500F50370 /* NibNameProtocol.swift */; };
 		78CFEE561C5C45E500F50370 /* ReuseIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE4B1C5C45E500F50370 /* ReuseIdentifierProtocol.swift */; };
@@ -136,7 +135,6 @@
 		78CFEE341C5C456B00F50370 /* LeadKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeadKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CFEE391C5C456B00F50370 /* LeadKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadKitTests.swift; sourceTree = "<group>"; };
 		78CFEE3B1C5C456B00F50370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		78CFEE461C5C45E500F50370 /* UITableView+CellRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+CellRegistration.swift"; path = "LeadKit/Extensions/UITableView/UITableView+CellRegistration.swift"; sourceTree = SOURCE_ROOT; };
 		78CFEE481C5C45E500F50370 /* UIView+LoadFromNib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+LoadFromNib.swift"; path = "LeadKit/Extensions/UIView/UIView+LoadFromNib.swift"; sourceTree = SOURCE_ROOT; };
 		78CFEE4A1C5C45E500F50370 /* NibNameProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibNameProtocol.swift; sourceTree = "<group>"; };
 		78CFEE4B1C5C45E500F50370 /* ReuseIdentifierProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierProtocol.swift; sourceTree = "<group>"; };
@@ -428,7 +426,6 @@
 				78C36F7F1D8021D100E7EBEA /* UIColor */,
 				C37210711ACDF1042F70C2EB /* UIImage */,
 				C372153938A7B7D327F55124 /* UIStoryboard */,
-				78E59B2B1C786CBF00C6BFE9 /* UITableView */,
 				78E59B2C1C786CD500C6BFE9 /* UIView */,
 				78D4B5441DA64D31005B0764 /* UIViewController */,
 				7884DB9A1DC1432B00E52A63 /* UserDefaults */,
@@ -470,14 +467,6 @@
 				7873D1501E112B0D001816EB /* Any+Cast.swift */,
 			);
 			path = Functions;
-			sourceTree = "<group>";
-		};
-		78E59B2B1C786CBF00C6BFE9 /* UITableView */ = {
-			isa = PBXGroup;
-			children = (
-				78CFEE461C5C45E500F50370 /* UITableView+CellRegistration.swift */,
-			);
-			path = UITableView;
 			sourceTree = "<group>";
 		};
 		78E59B2C1C786CD500C6BFE9 /* UIView */ = {
@@ -694,7 +683,6 @@
 				EF2921A61E165DF400E8F43B /* TimeInterval+DateComponents.swift in Sources */,
 				78D4B5461DA64D49005B0764 /* UIViewController+DefaultStoryboardIdentifier.swift in Sources */,
 				7834236A1DB8D0E100A79643 /* StoryboardProtocol.swift in Sources */,
-				78CFEE521C5C45E500F50370 /* UITableView+CellRegistration.swift in Sources */,
 				78B0FC7F1C6B2C4D00358B64 /* Log.swift in Sources */,
 				78753E2E1DE58DBA006BC0FB /* FixedPageCursor.swift in Sources */,
 				789CC60B1DE584F800F789D3 /* CursorType+Slice.swift in Sources */,
