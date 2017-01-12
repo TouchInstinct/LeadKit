@@ -32,7 +32,7 @@ public extension CGImage {
      - returns: new CGImage rendered with given color or nil if something goes wrong
      */
     public func renderTemplate(withColor color: CGColor) -> CGImage? {
-        guard let ctx = CGContext(forCGImage: self) ?? CGContext(width: width, height: height) else {
+        guard let ctx = CGContext.create(forCGImage: self) ?? CGContext.create(width: width, height: height) else {
             return nil
         }
 

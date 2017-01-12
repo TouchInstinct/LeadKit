@@ -44,7 +44,7 @@ public extension CGImage {
             return self
         }
 
-        let ctx = CGContext(width: width, height: height, bitmapInfo: alphaBitmapInfo)
+        let ctx = CGContext.create(width: width, height: height, bitmapInfo: alphaBitmapInfo)
         ctx?.draw(self, in: bounds)
 
         return ctx?.makeImage()
