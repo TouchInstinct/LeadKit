@@ -38,7 +38,6 @@
 		788EC15A1CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EC1591CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift */; };
 		789CC6081DE5835600F789D3 /* CursorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CC6071DE5835600F789D3 /* CursorType.swift */; };
 		789CC60B1DE584F800F789D3 /* CursorType+Slice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CC60A1DE584F800F789D3 /* CursorType+Slice.swift */; };
-		789F5A1E1DFECF5F004A3694 /* NotificationCenter+RxKeyboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F5A1D1DFECF5F004A3694 /* NotificationCenter+RxKeyboardExtensions.swift */; };
 		78A0FCC71DC366A10070B5E1 /* StoryboardProtocol+DefaultBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A0FCC51DC366A10070B5E1 /* StoryboardProtocol+DefaultBundle.swift */; };
 		78A0FCC81DC366A10070B5E1 /* StoryboardProtocol+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A0FCC61DC366A10070B5E1 /* StoryboardProtocol+Extensions.swift */; };
 		78A74EA91C6B373700FE9724 /* UIView+DefaultNibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */; };
@@ -67,6 +66,7 @@
 		78D4B5461DA64D49005B0764 /* UIViewController+DefaultStoryboardIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D4B5451DA64D49005B0764 /* UIViewController+DefaultStoryboardIdentifier.swift */; };
 		78D4B54A1DA64EAB005B0764 /* Any+TypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D4B5491DA64EAB005B0764 /* Any+TypeName.swift */; };
 		95B39A861D9D51250057BD54 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39A851D9D51250057BD54 /* String+Localization.swift */; };
+		CA1FE7091E27D7DE00968901 /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE7081E27D7DE00968901 /* UIDevice+Extensions.swift */; };
 		E126CBB31DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126CBB21DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift */; };
 		EF2921A61E165DF400E8F43B /* TimeInterval+DateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2921A51E165DF400E8F43B /* TimeInterval+DateComponents.swift */; };
 		EF5FB5691E0141610030E4BE /* UIView+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5FB5681E0141610030E4BE /* UIView+Rotation.swift */; };
@@ -114,7 +114,6 @@
 		788EC1591CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+InstantiateViewController.swift"; sourceTree = "<group>"; };
 		789CC6071DE5835600F789D3 /* CursorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CursorType.swift; sourceTree = "<group>"; };
 		789CC60A1DE584F800F789D3 /* CursorType+Slice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CursorType+Slice.swift"; sourceTree = "<group>"; };
-		789F5A1D1DFECF5F004A3694 /* NotificationCenter+RxKeyboardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+RxKeyboardExtensions.swift"; sourceTree = "<group>"; };
 		78A0FCC51DC366A10070B5E1 /* StoryboardProtocol+DefaultBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoryboardProtocol+DefaultBundle.swift"; sourceTree = "<group>"; };
 		78A0FCC61DC366A10070B5E1 /* StoryboardProtocol+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoryboardProtocol+Extensions.swift"; sourceTree = "<group>"; };
 		78A74EA81C6B373700FE9724 /* UIView+DefaultNibName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+DefaultNibName.swift"; path = "LeadKit/Extensions/UIView/UIView+DefaultNibName.swift"; sourceTree = SOURCE_ROOT; };
@@ -146,6 +145,7 @@
 		78D4B5451DA64D49005B0764 /* UIViewController+DefaultStoryboardIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+DefaultStoryboardIdentifier.swift"; sourceTree = "<group>"; };
 		78D4B5491DA64EAB005B0764 /* Any+TypeName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Any+TypeName.swift"; sourceTree = "<group>"; };
 		95B39A851D9D51250057BD54 /* String+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
+		CA1FE7081E27D7DE00968901 /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIDevice+Extensions.swift"; path = "UIDevice/UIDevice+Extensions.swift"; sourceTree = "<group>"; };
 		E126CBB21DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionView+CellRegistration.swift"; path = "UICollectionView/UICollectionView+CellRegistration.swift"; sourceTree = "<group>"; };
 		EF2921A51E165DF400E8F43B /* TimeInterval+DateComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeInterval+DateComponents.swift"; sourceTree = "<group>"; };
 		EF5FB5681E0141610030E4BE /* UIView+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Rotation.swift"; sourceTree = "<group>"; };
@@ -311,14 +311,6 @@
 			path = CursorType;
 			sourceTree = "<group>";
 		};
-		789F5A1C1DFECF44004A3694 /* NotificationCenter */ = {
-			isa = PBXGroup;
-			children = (
-				789F5A1D1DFECF5F004A3694 /* NotificationCenter+RxKeyboardExtensions.swift */,
-			);
-			path = NotificationCenter;
-			sourceTree = "<group>";
-		};
 		78A0FCC41DC366A10070B5E1 /* StoryboardProtocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,7 +407,6 @@
 				789CC6091DE584C000F789D3 /* CursorType */,
 				78C36F7C1D801E2F00E7EBEA /* Double */,
 				787783611CA03C84001CDC9B /* IndexPath */,
-				789F5A1C1DFECF44004A3694 /* NotificationCenter */,
 				787D87481E10E19000D6015C /* ObjectMapper */,
 				787609201E1403460093CE36 /* Observable */,
 				780F56C81E0D76A5004530B6 /* Sequence */,
@@ -424,6 +415,7 @@
 				EF2921A41E16595100E8F43B /* TimeInterval */,
 				E126CBB11DB68D9A00E1B2F8 /* UICollectionView */,
 				78C36F7F1D8021D100E7EBEA /* UIColor */,
+				CA1FE7071E27D79C00968901 /* UIDevice */,
 				C37210711ACDF1042F70C2EB /* UIImage */,
 				C372153938A7B7D327F55124 /* UIStoryboard */,
 				78E59B2C1C786CD500C6BFE9 /* UIView */,
@@ -494,6 +486,14 @@
 				788EC1591CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift */,
 			);
 			path = UIStoryboard;
+			sourceTree = "<group>";
+		};
+		CA1FE7071E27D79C00968901 /* UIDevice */ = {
+			isa = PBXGroup;
+			children = (
+				CA1FE7081E27D7DE00968901 /* UIDevice+Extensions.swift */,
+			);
+			name = UIDevice;
 			sourceTree = "<group>";
 		};
 		E126CBB11DB68D9A00E1B2F8 /* UICollectionView */ = {
@@ -697,7 +697,6 @@
 				786D78EC1D53C46E006B2CEA /* AlamofireManager+Extensions.swift in Sources */,
 				78B0FC811C6B2CD500358B64 /* App.swift in Sources */,
 				78B036491DA562C30021D5CC /* CGImage+Template.swift in Sources */,
-				789F5A1E1DFECF5F004A3694 /* NotificationCenter+RxKeyboardExtensions.swift in Sources */,
 				7873D14F1E1127BC001816EB /* LeadKitError.swift in Sources */,
 				78753E301DE594B4006BC0FB /* MapCursor.swift in Sources */,
 				780D23461DA416F80084620D /* CGContext+Initializers.swift in Sources */,
@@ -718,6 +717,7 @@
 				780D23431DA412470084620D /* CGImage+Alpha.swift in Sources */,
 				78CFEE5A1C5C45E500F50370 /* ViewHeightProtocol.swift in Sources */,
 				787682FA1CAD40C300532AB3 /* StaticEstimatedViewHeightProtocol.swift in Sources */,
+				CA1FE7091E27D7DE00968901 /* UIDevice+Extensions.swift in Sources */,
 				78A74EA91C6B373700FE9724 /* UIView+DefaultNibName.swift in Sources */,
 				7884DB9C1DC1439200E52A63 /* UserDefaults+MappableDataTypes.swift in Sources */,
 				E126CBB31DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift in Sources */,
