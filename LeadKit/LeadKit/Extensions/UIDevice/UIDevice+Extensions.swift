@@ -22,10 +22,10 @@
 
 import UIKit
 
-extension UIDevice {
+public extension UIDevice {
 
     /// Returns true if the current device is simulator
-    open static var isSimulator: Bool {
+    public static var isSimulator: Bool {
         return ProcessInfo.processInfo.environment["SIMULATOR_DEVICE_NAME"] != nil
     }
     
