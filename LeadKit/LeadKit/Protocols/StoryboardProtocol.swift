@@ -50,3 +50,15 @@ public protocol StoryboardProtocol {
     static func instantiateViewController(_: ViewControllerIdentifier) -> UIViewController
     
 }
+
+public extension StoryboardProtocol {
+
+    public static func instantiate<T: UIViewController>(_ identificator: Self.ViewControllerIdentifier) -> T {
+        guard let controller = instantiateViewController(identificator) as? T else {
+            assertionFailure("\(T.self) not created")
+            return T()
+        }
+        return controller
+    }
+    
+}

@@ -20,9 +20,9 @@
 //  THE SOFTWARE.
 //
 
-protocol ModuleConfigurator {
+public protocol ModuleConfigurator {
 
     associatedtype ViewControllerT
 
-    func configure(input: ViewControllerT)
+    public func configure(input: ViewControllerT)
 }
