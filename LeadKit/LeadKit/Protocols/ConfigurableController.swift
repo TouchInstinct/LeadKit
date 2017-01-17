@@ -23,49 +23,54 @@
 import Foundation
 import UIKit
 
-protocol ConfigurableController {
+public protocol ConfigurableController {
 
     associatedtype ViewModelT
 
-    var viewModel: ViewModelT { get }
+    public var viewModel: ViewModelT { get }
 
-    func bindViews(with _: ViewModelT)
+    public func bindViews()
 
-    func addViews()
+    public func addViews()
 
-    func setAppearance()
+    public func setAppearance()
 
-    func configureBarButtons()
+    public func configureBarButtons()
 
-    func localize()
+    public func localize()
 
-    func initialLoadView()
+    public func initialLoadView()
 
 }
 
 extension ConfigurableController where Self: UIViewController {
 
-    func addViews() {
+    public func bindViews() {
         // nothing
     }
 
-    func setAppearance() {
+    public func addViews() {
         // nothing
     }
 
-    func configureBarButtons() {
+    public func setAppearance() {
         // nothing
     }
 
-    func localize() {
+    public func configureBarButtons() {
         // nothing
     }
 
-    func initialLoadView() {
+    public func localize() {
+        // nothing
+    }
+
+    public func initialLoadView() {
         addViews()
         setAppearance()
         configureBarButtons()
         localize()
+        bindViews()
     }
     
 }
