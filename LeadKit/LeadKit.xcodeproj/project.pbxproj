@@ -67,6 +67,9 @@
 		78D4B54A1DA64EAB005B0764 /* Any+TypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D4B5491DA64EAB005B0764 /* Any+TypeName.swift */; };
 		95B39A861D9D51250057BD54 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39A851D9D51250057BD54 /* String+Localization.swift */; };
 		CA1FE7091E27D7DE00968901 /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE7081E27D7DE00968901 /* UIDevice+Extensions.swift */; };
+		CAA707D51E2E614E0022D732 /* ModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA707D41E2E614E0022D732 /* ModuleConfigurator.swift */; };
+		CAA707D71E2E616D0022D732 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA707D61E2E616D0022D732 /* BaseViewModel.swift */; };
+		CAA707D91E2E61A50022D732 /* ConfigurableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA707D81E2E61A50022D732 /* ConfigurableController.swift */; };
 		E126CBB31DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126CBB21DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift */; };
 		EF2921A61E165DF400E8F43B /* TimeInterval+DateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2921A51E165DF400E8F43B /* TimeInterval+DateComponents.swift */; };
 		EF5FB5691E0141610030E4BE /* UIView+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5FB5681E0141610030E4BE /* UIView+Rotation.swift */; };
@@ -146,6 +149,9 @@
 		78D4B5491DA64EAB005B0764 /* Any+TypeName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Any+TypeName.swift"; sourceTree = "<group>"; };
 		95B39A851D9D51250057BD54 /* String+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		CA1FE7081E27D7DE00968901 /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIDevice+Extensions.swift"; path = "UIDevice/UIDevice+Extensions.swift"; sourceTree = "<group>"; };
+		CAA707D41E2E614E0022D732 /* ModuleConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleConfigurator.swift; sourceTree = "<group>"; };
+		CAA707D61E2E616D0022D732 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		CAA707D81E2E61A50022D732 /* ConfigurableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableController.swift; sourceTree = "<group>"; };
 		E126CBB21DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionView+CellRegistration.swift"; path = "UICollectionView/UICollectionView+CellRegistration.swift"; sourceTree = "<group>"; };
 		EF2921A51E165DF400E8F43B /* TimeInterval+DateComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeInterval+DateComponents.swift"; sourceTree = "<group>"; };
 		EF5FB5681E0141610030E4BE /* UIView+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Rotation.swift"; sourceTree = "<group>"; };
@@ -440,6 +446,9 @@
 				783423691DB8D0E100A79643 /* StoryboardProtocol.swift */,
 				789CC6071DE5835600F789D3 /* CursorType.swift */,
 				780F56CB1E0D7ACA004530B6 /* ObservableMappable.swift */,
+				CAA707D41E2E614E0022D732 /* ModuleConfigurator.swift */,
+				CAA707D61E2E616D0022D732 /* BaseViewModel.swift */,
+				CAA707D81E2E61A50022D732 /* ConfigurableController.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -695,6 +704,7 @@
 				78B036431DA4FEC90021D5CC /* CGImage+Transform.swift in Sources */,
 				78011A641D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift in Sources */,
 				786D78EC1D53C46E006B2CEA /* AlamofireManager+Extensions.swift in Sources */,
+				CAA707D51E2E614E0022D732 /* ModuleConfigurator.swift in Sources */,
 				78B0FC811C6B2CD500358B64 /* App.swift in Sources */,
 				78B036491DA562C30021D5CC /* CGImage+Template.swift in Sources */,
 				7873D14F1E1127BC001816EB /* LeadKitError.swift in Sources */,
@@ -719,7 +729,9 @@
 				787682FA1CAD40C300532AB3 /* StaticEstimatedViewHeightProtocol.swift in Sources */,
 				CA1FE7091E27D7DE00968901 /* UIDevice+Extensions.swift in Sources */,
 				78A74EA91C6B373700FE9724 /* UIView+DefaultNibName.swift in Sources */,
+				CAA707D91E2E61A50022D732 /* ConfigurableController.swift in Sources */,
 				7884DB9C1DC1439200E52A63 /* UserDefaults+MappableDataTypes.swift in Sources */,
+				CAA707D71E2E616D0022D732 /* BaseViewModel.swift in Sources */,
 				E126CBB31DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift in Sources */,
 				78CFEE581C5C45E500F50370 /* StaticViewHeightProtocol.swift in Sources */,
 				787783631CA03CA0001CDC9B /* IndexPath+ImmutableIndexPath.swift in Sources */,
