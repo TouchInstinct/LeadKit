@@ -24,5 +24,5 @@ public protocol ModuleConfigurator {
 
     associatedtype ViewControllerT
 
-    public func configure(input: ViewControllerT)
+    func configure(input: ViewControllerT)
 }

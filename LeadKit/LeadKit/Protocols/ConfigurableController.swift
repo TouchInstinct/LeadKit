@@ -27,19 +27,19 @@ public protocol ConfigurableController {
 
     associatedtype ViewModelT
 
-    public var viewModel: ViewModelT { get }
+    var viewModel: ViewModelT { get }
 
-    public func bindViews()
+    func bindViews()
 
-    public func addViews()
+    func addViews()
 
-    public func setAppearance()
+    func setAppearance()
 
-    public func configureBarButtons()
+    func configureBarButtons()
 
-    public func localize()
+    func localize()
 
-    public func initialLoadView()
+    func initialLoadView()
 
 }
 
