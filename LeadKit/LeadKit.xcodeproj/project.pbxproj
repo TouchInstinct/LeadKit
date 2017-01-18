@@ -434,21 +434,21 @@
 		78CFEE491C5C45E500F50370 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				78CFEE4C1C5C45E500F50370 /* StaticNibNameProtocol.swift */,
-				78CFEE4A1C5C45E500F50370 /* NibNameProtocol.swift */,
-				78CFEE4B1C5C45E500F50370 /* ReuseIdentifierProtocol.swift */,
-				78CFEE4E1C5C45E500F50370 /* StoryboardIdentifierProtocol.swift */,
-				78CFEE4D1C5C45E500F50370 /* StaticViewHeightProtocol.swift */,
-				78CFEE4F1C5C45E500F50370 /* ViewHeightProtocol.swift */,
-				78CFEE501C5C45E500F50370 /* ViewModelProtocol.swift */,
-				787682F91CAD40C200532AB3 /* StaticEstimatedViewHeightProtocol.swift */,
-				7837F60E1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift */,
-				783423691DB8D0E100A79643 /* StoryboardProtocol.swift */,
-				789CC6071DE5835600F789D3 /* CursorType.swift */,
-				780F56CB1E0D7ACA004530B6 /* ObservableMappable.swift */,
-				CAA707D41E2E614E0022D732 /* ModuleConfigurator.swift */,
 				CAA707D61E2E616D0022D732 /* BaseViewModel.swift */,
 				CAA707D81E2E61A50022D732 /* ConfigurableController.swift */,
+				789CC6071DE5835600F789D3 /* CursorType.swift */,
+				7837F60E1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift */,
+				CAA707D41E2E614E0022D732 /* ModuleConfigurator.swift */,
+				78CFEE4A1C5C45E500F50370 /* NibNameProtocol.swift */,
+				780F56CB1E0D7ACA004530B6 /* ObservableMappable.swift */,
+				78CFEE4B1C5C45E500F50370 /* ReuseIdentifierProtocol.swift */,
+				787682F91CAD40C200532AB3 /* StaticEstimatedViewHeightProtocol.swift */,
+				78CFEE4C1C5C45E500F50370 /* StaticNibNameProtocol.swift */,
+				78CFEE4D1C5C45E500F50370 /* StaticViewHeightProtocol.swift */,
+				78CFEE4E1C5C45E500F50370 /* StoryboardIdentifierProtocol.swift */,
+				783423691DB8D0E100A79643 /* StoryboardProtocol.swift */,
+				78CFEE4F1C5C45E500F50370 /* ViewHeightProtocol.swift */,
+				78CFEE501C5C45E500F50370 /* ViewModelProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
