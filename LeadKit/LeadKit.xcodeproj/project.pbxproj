@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1250D4F91E3147A2003DA305 /* UIBarButtonItem+TextBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1250D4F81E3147A2003DA305 /* UIBarButtonItem+TextBarItem.swift */; };
 		78011A641D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78011A631D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift */; };
 		78011AB31D48B53600EA16A2 /* ApiRequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78011AB21D48B53600EA16A2 /* ApiRequestParameters.swift */; };
 		780D23431DA412470084620D /* CGImage+Alpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D23421DA412470084620D /* CGImage+Alpha.swift */; };
@@ -86,6 +87,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1250D4F81E3147A2003DA305 /* UIBarButtonItem+TextBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+TextBarItem.swift"; sourceTree = "<group>"; };
 		78011A631D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DefaultReuseIdentifier.swift"; sourceTree = "<group>"; };
 		78011AB21D48B53600EA16A2 /* ApiRequestParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequestParameters.swift; sourceTree = "<group>"; };
 		780D23421DA412470084620D /* CGImage+Alpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Alpha.swift"; sourceTree = "<group>"; };
@@ -193,6 +195,14 @@
 				7827C9331DE4ADB2009DA4E6 /* RxSwift.framework */,
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		1250D4F71E31477F003DA305 /* UIBarButtonItem */ = {
+			isa = PBXGroup;
+			children = (
+				1250D4F81E3147A2003DA305 /* UIBarButtonItem+TextBarItem.swift */,
+			);
+			path = UIBarButtonItem;
 			sourceTree = "<group>";
 		};
 		78011A651D47AF3000EA16A2 /* Enums */ = {
@@ -419,6 +429,7 @@
 				78A0FCC41DC366A10070B5E1 /* StoryboardProtocol */,
 				787783651CA04D14001CDC9B /* String */,
 				EF2921A41E16595100E8F43B /* TimeInterval */,
+				1250D4F71E31477F003DA305 /* UIBarButtonItem */,
 				E126CBB11DB68D9A00E1B2F8 /* UICollectionView */,
 				78C36F7F1D8021D100E7EBEA /* UIColor */,
 				CA1FE7071E27D79C00968901 /* UIDevice */,
@@ -691,6 +702,7 @@
 				78CFEE541C5C45E500F50370 /* UIView+LoadFromNib.swift in Sources */,
 				EF2921A61E165DF400E8F43B /* TimeInterval+DateComponents.swift in Sources */,
 				78D4B5461DA64D49005B0764 /* UIViewController+DefaultStoryboardIdentifier.swift in Sources */,
+				1250D4F91E3147A2003DA305 /* UIBarButtonItem+TextBarItem.swift in Sources */,
 				7834236A1DB8D0E100A79643 /* StoryboardProtocol.swift in Sources */,
 				78B0FC7F1C6B2C4D00358B64 /* Log.swift in Sources */,
 				78753E2E1DE58DBA006BC0FB /* FixedPageCursor.swift in Sources */,
