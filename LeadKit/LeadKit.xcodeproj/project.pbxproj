@@ -21,6 +21,9 @@
 		7827C9391DE4ADB2009DA4E6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7827C9331DE4ADB2009DA4E6 /* RxSwift.framework */; };
 		7834236A1DB8D0E100A79643 /* StoryboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783423691DB8D0E100A79643 /* StoryboardProtocol.swift */; };
 		7837F60F1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7837F60E1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift */; };
+		783AF06B1E41CE6C00EC5ADE /* Observable+ToastErrorLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783AF06A1E41CE6C00EC5ADE /* Observable+ToastErrorLogging.swift */; };
+		783AF06D1E41CF5B00EC5ADE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783AF06C1E41CF5B00EC5ADE /* NetworkService.swift */; };
+		783AF06F1E41D84A00EC5ADE /* ToastSwiftFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783AF06E1E41D84A00EC5ADE /* ToastSwiftFramework.framework */; };
 		786D78E81D53C378006B2CEA /* AlamofireRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786D78E71D53C378006B2CEA /* AlamofireRequest+Extensions.swift */; };
 		786D78EC1D53C46E006B2CEA /* AlamofireManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786D78EB1D53C46E006B2CEA /* AlamofireManager+Extensions.swift */; };
 		7873D14F1E1127BC001816EB /* LeadKitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7873D14E1E1127BC001816EB /* LeadKitError.swift */; };
@@ -100,6 +103,9 @@
 		7827C9331DE4ADB2009DA4E6 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = ../../../Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		783423691DB8D0E100A79643 /* StoryboardProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardProtocol.swift; sourceTree = "<group>"; };
 		7837F60E1CBCF5C0000D74C1 /* EstimatedViewHeightProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstimatedViewHeightProtocol.swift; sourceTree = "<group>"; };
+		783AF06A1E41CE6C00EC5ADE /* Observable+ToastErrorLogging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+ToastErrorLogging.swift"; sourceTree = "<group>"; };
+		783AF06C1E41CF5B00EC5ADE /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		783AF06E1E41D84A00EC5ADE /* ToastSwiftFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToastSwiftFramework.framework; path = ../../../Carthage/Build/iOS/ToastSwiftFramework.framework; sourceTree = "<group>"; };
 		786D78E71D53C378006B2CEA /* AlamofireRequest+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireRequest+Extensions.swift"; sourceTree = "<group>"; };
 		786D78EB1D53C46E006B2CEA /* AlamofireManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireManager+Extensions.swift"; sourceTree = "<group>"; };
 		7873D14E1E1127BC001816EB /* LeadKitError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadKitError.swift; sourceTree = "<group>"; };
@@ -163,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7827C9361DE4ADB2009DA4E6 /* ObjectMapper.framework in Frameworks */,
+				783AF06F1E41D84A00EC5ADE /* ToastSwiftFramework.framework in Frameworks */,
 				7827C9351DE4ADB2009DA4E6 /* CocoaLumberjack.framework in Frameworks */,
 				7827C9391DE4ADB2009DA4E6 /* RxSwift.framework in Frameworks */,
 				7827C9341DE4ADB2009DA4E6 /* Alamofire.framework in Frameworks */,
@@ -191,6 +198,7 @@
 				7827C9311DE4ADB2009DA4E6 /* RxAlamofire.framework */,
 				7827C9321DE4ADB2009DA4E6 /* RxCocoa.framework */,
 				7827C9331DE4ADB2009DA4E6 /* RxSwift.framework */,
+				783AF06E1E41D84A00EC5ADE /* ToastSwiftFramework.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -249,6 +257,14 @@
 			path = Sequence;
 			sourceTree = "<group>";
 		};
+		783AF0591E40824300EC5ADE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				783AF06C1E41CF5B00EC5ADE /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		786D78E61D53C355006B2CEA /* Alamofire */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				787609211E1403830093CE36 /* Observable+DeferredJust.swift */,
+				783AF06A1E41CE6C00EC5ADE /* Observable+ToastErrorLogging.swift */,
 			);
 			path = Observable;
 			sourceTree = "<group>";
@@ -329,6 +346,7 @@
 		78A74EAA1C6B401800FE9724 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				783AF0591E40824300EC5ADE /* Services */,
 				78B0FC7B1C6B2BAE00358B64 /* Logging */,
 				78753E2A1DE58BED006BC0FB /* Cursors */,
 			);
@@ -670,6 +688,7 @@
 				"$(SRCROOT)/../Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/ObjectMapper.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/RxAlamofire.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/ToastSwiftFramework.framework",
 			);
 			name = "Carthage copy-frameworks";
 			outputPaths = (
@@ -714,6 +733,7 @@
 				78C36F7E1D801E3E00E7EBEA /* Double+Rounding.swift in Sources */,
 				78CFEE551C5C45E500F50370 /* NibNameProtocol.swift in Sources */,
 				787609221E1403830093CE36 /* Observable+DeferredJust.swift in Sources */,
+				783AF06B1E41CE6C00EC5ADE /* Observable+ToastErrorLogging.swift in Sources */,
 				78CFEE561C5C45E500F50370 /* ReuseIdentifierProtocol.swift in Sources */,
 				78A0FCC81DC366A10070B5E1 /* StoryboardProtocol+Extensions.swift in Sources */,
 				78B036411DA4D7060021D5CC /* UIImage+Extensions.swift in Sources */,
@@ -723,6 +743,7 @@
 				78C36F811D8021DD00E7EBEA /* UIColor+Hex.swift in Sources */,
 				78CFEE5B1C5C45E500F50370 /* ViewModelProtocol.swift in Sources */,
 				EF5FB5691E0141610030E4BE /* UIView+Rotation.swift in Sources */,
+				783AF06D1E41CF5B00EC5ADE /* NetworkService.swift in Sources */,
 				780F56CC1E0D7ACA004530B6 /* ObservableMappable.swift in Sources */,
 				780D23431DA412470084620D /* CGImage+Alpha.swift in Sources */,
 				78CFEE5A1C5C45E500F50370 /* ViewHeightProtocol.swift in Sources */,
