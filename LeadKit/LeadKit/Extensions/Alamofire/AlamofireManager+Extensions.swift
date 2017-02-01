@@ -45,7 +45,9 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func responseModel<T: ImmutableMappable>(requestParameters: ApiRequestParameters,
-                       mappingQueue: DispatchQueue = DispatchQueue.global()) -> Observable<(HTTPURLResponse, T)> {
+                       mappingQueue: DispatchQueue = DispatchQueue.global())
+        -> Observable<(response: HTTPURLResponse, model: T)> {
+
         return apiRequest(requestParameters: requestParameters)
             .flatMap { $0.rx.apiResponse(mappingQueue: mappingQueue) }
     }
@@ -56,8 +58,8 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func responseObservableModel<T: ObservableMappable>(requestParameters: ApiRequestParameters,
-                                 mappingQueue: DispatchQueue = DispatchQueue.global()) -> Observable<(HTTPURLResponse, T)>
-        where T.ModelType == T {
+                                 mappingQueue: DispatchQueue = DispatchQueue.global())
+        -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
 
         return apiRequest(requestParameters: requestParameters)
             .flatMap { $0.rx.apiResponse(mappingQueue: mappingQueue) }

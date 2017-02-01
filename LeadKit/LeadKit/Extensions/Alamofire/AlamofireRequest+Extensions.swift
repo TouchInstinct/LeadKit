@@ -32,7 +32,7 @@ public extension Reactive where Base: DataRequest {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func apiResponse<T: ImmutableMappable>(mappingQueue: DispatchQueue = DispatchQueue.global())
-        -> Observable<(HTTPURLResponse, T)> {
+        -> Observable<(response: HTTPURLResponse, model: T)> {
 
         return responseJSONOnQueue(mappingQueue)
             .map { resp, value in
@@ -47,10 +47,10 @@ public extension Reactive where Base: DataRequest {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func apiResponse<T: ObservableMappable>(mappingQueue: DispatchQueue = DispatchQueue.global())
-        -> Observable<(HTTPURLResponse, T)> where T.ModelType == T {
+        -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
 
             return responseJSONOnQueue(mappingQueue)
-            .flatMap { resp, value -> Observable<(HTTPURLResponse, T)> in
+                .flatMap { resp, value -> Observable<(response: HTTPURLResponse, model: T)> in
                 let json = try cast(value) as [String: Any]
 
                 return T.createFrom(map: Map(mappingType: .fromJSON, JSON: json))

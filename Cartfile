@@ -2,3 +2,4 @@ github "CocoaLumberjack/CocoaLumberjack" ~> 3.0.0
 github "ReactiveX/RxSwift" "3.0.1"
 github "RxSwiftCommunity/RxAlamofire" "3.0.1"
 github "Hearst-DD/ObjectMapper" ~> 2.1
+github "scalessec/Toast-Swift" ~> 2.0.0
