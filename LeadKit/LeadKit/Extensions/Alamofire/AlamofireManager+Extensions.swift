@@ -49,7 +49,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
         return apiRequest(requestParameters: requestParameters)
-            .flatMap { $0.rx.apiResponse(mappingQueue: mappingQueue) }
+            .flatMap { $0.validate().rx.apiResponse(mappingQueue: mappingQueue) }
     }
 
     /// Method which executes request and serializes response into target object
@@ -62,7 +62,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
         -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
 
         return apiRequest(requestParameters: requestParameters)
-            .flatMap { $0.rx.apiResponse(mappingQueue: mappingQueue) }
+            .flatMap { $0.validate().rx.apiResponse(mappingQueue: mappingQueue) }
     }
 
 }
