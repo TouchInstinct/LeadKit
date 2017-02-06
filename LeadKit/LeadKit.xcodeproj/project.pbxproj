@@ -55,6 +55,7 @@
 		78B0FC811C6B2CD500358B64 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0FC801C6B2CD500358B64 /* App.swift */; };
 		78C36F7E1D801E3E00E7EBEA /* Double+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C36F7D1D801E3E00E7EBEA /* Double+Rounding.swift */; };
 		78C36F811D8021DD00E7EBEA /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C36F801D8021DD00E7EBEA /* UIColor+Hex.swift */; };
+		78C54AFD1E432EEF0051EFBA /* UIViewController+TopVisibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C54AFC1E432EEF0051EFBA /* UIViewController+TopVisibleViewController.swift */; };
 		78CFEE2E1C5C456B00F50370 /* LeadKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 78CFEE2D1C5C456B00F50370 /* LeadKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78CFEE351C5C456B00F50370 /* LeadKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CFEE2A1C5C456B00F50370 /* LeadKit.framework */; };
 		78CFEE3A1C5C456B00F50370 /* LeadKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CFEE391C5C456B00F50370 /* LeadKitTests.swift */; };
@@ -137,6 +138,7 @@
 		78B0FC801C6B2CD500358B64 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		78C36F7D1D801E3E00E7EBEA /* Double+Rounding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Rounding.swift"; sourceTree = "<group>"; };
 		78C36F801D8021DD00E7EBEA /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		78C54AFC1E432EEF0051EFBA /* UIViewController+TopVisibleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+TopVisibleViewController.swift"; sourceTree = "<group>"; };
 		78CFEE2A1C5C456B00F50370 /* LeadKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LeadKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CFEE2D1C5C456B00F50370 /* LeadKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeadKit.h; sourceTree = "<group>"; };
 		78CFEE2F1C5C456B00F50370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				78D4B5451DA64D49005B0764 /* UIViewController+DefaultStoryboardIdentifier.swift */,
+				78C54AFC1E432EEF0051EFBA /* UIViewController+TopVisibleViewController.swift */,
 			);
 			path = UIViewController;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 				78C36F7E1D801E3E00E7EBEA /* Double+Rounding.swift in Sources */,
 				78CFEE551C5C45E500F50370 /* NibNameProtocol.swift in Sources */,
 				787609221E1403830093CE36 /* Observable+DeferredJust.swift in Sources */,
+				78C54AFD1E432EEF0051EFBA /* UIViewController+TopVisibleViewController.swift in Sources */,
 				783AF06B1E41CE6C00EC5ADE /* Observable+ToastErrorLogging.swift in Sources */,
 				78CFEE561C5C45E500F50370 /* ReuseIdentifierProtocol.swift in Sources */,
 				78A0FCC81DC366A10070B5E1 /* StoryboardProtocol+Extensions.swift in Sources */,

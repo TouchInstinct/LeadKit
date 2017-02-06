@@ -20,21 +20,20 @@
 //  THE SOFTWARE.
 //
 
-import RxSwift
-import Toast_Swift
+import UIKit
 
-public extension Observable {
+public extension UIViewController {
 
-    /// Method which shows toast with localized description of error in DEBUG mode
-    ///
-    /// - Returns: The source sequence with the side-effecting behavior applied.
-    func showErrorsInToastInDebugMode() -> Observable<Observable.E> {
-        return observeOn(MainScheduler.instance)
-            .do(onError: { (error) in
-                #if DEBUG
-                    UIApplication.shared.keyWindow?.makeToast(error.localizedDescription)
-                #endif
-            })
+    /// Return top visible controller even if we have inner UI(Navigation/TabBar)Controller's inside
+    var topVisibleViewController: UIViewController {
+        switch self {
+        case let navController as UINavigationController:
+            return navController.visibleViewController?.topVisibleViewController ?? navController
+        case let tabController as UITabBarController:
+            return tabController.selectedViewController?.topVisibleViewController ?? tabController
+        default:
+            return self.presentedViewController?.topVisibleViewController ?? self
+        }
     }
 
 }
