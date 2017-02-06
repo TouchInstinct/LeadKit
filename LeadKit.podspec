@@ -10,8 +10,8 @@ Pod::Spec.new do |s|
   s.source_files    = "LeadKit/LeadKit/**/*.swift"
 
   s.dependency "CocoaLumberjack/Swift", '~> 3.0.0'
-  s.dependency "RxSwift", '3.0.1'
-  s.dependency "RxCocoa", '3.0.1'
+  s.dependency "RxSwift", '3.2.0'
+  s.dependency "RxCocoa", '3.2.0'
   s.dependency "RxAlamofire", '3.0.0'
   s.dependency "ObjectMapper", '~> 2.1'
   s.dependency "Toast-Swift", '~> 2.0.0'
