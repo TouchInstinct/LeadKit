@@ -157,7 +157,7 @@ public extension Reactive where Base: UserDefaults {
     ///
     /// - returns: Observable of specified model type.
     func object<T>(forKey key: String, defaultValue: T) -> Observable<T> where T: ImmutableMappable {
-        return Observable.just(self.base.object(forKey: key, defaultValue: defaultValue))
+        return Observable.deferredJust { self.base.object(forKey: key, defaultValue: defaultValue) }
     }
 
     /// Reactive version of object<T>(forKey:) -> [T].
@@ -179,7 +179,7 @@ public extension Reactive where Base: UserDefaults {
     ///
     /// - returns: Observable of specified array type.
     func object<T>(forKey key: String, defaultValue: [T]) -> Observable<[T]> where T: ImmutableMappable {
-        return Observable.just(self.base.object(forKey: key, defaultValue: defaultValue))
+        return Observable.deferredJust { self.base.object(forKey: key, defaultValue: defaultValue) }
     }
 
     /// Reactive version of set<T>(_:forKey:).
