@@ -144,16 +144,7 @@ public extension Reactive where Base: UserDefaults {
     ///
     /// - returns: Observable of specified model type.
     func object<T>(forKey key: String) -> Observable<T> where T: ImmutableMappable {
-        return Observable.create { observer in
-            do {
-                observer.onNext(try self.base.object(forKey: key))
-                observer.onCompleted()
-            } catch {
-                observer.onError(error)
-            }
-
-            return Disposables.create()
-        }
+        return Observable.deferredJust { try self.base.object(forKey: key) }
     }
 
     /// Reactive version of object<T>(forKey:defaultValue:) -> T.
@@ -166,12 +157,7 @@ public extension Reactive where Base: UserDefaults {
     ///
     /// - returns: Observable of specified model type.
     func object<T>(forKey key: String, defaultValue: T) -> Observable<T> where T: ImmutableMappable {
-        return Observable.create { observer in
-            observer.onNext(self.base.object(forKey: key, defaultValue: defaultValue))
-            observer.onCompleted()
-
-            return Disposables.create()
-        }
+        return Observable.deferredJust { self.base.object(forKey: key, defaultValue: defaultValue) }
     }
 
     /// Reactive version of object<T>(forKey:) -> [T].
@@ -180,16 +166,7 @@ public extension Reactive where Base: UserDefaults {
     ///
     /// - returns: Observable of specified array type.
     func object<T>(forKey key: String) -> Observable<[T]> where T: ImmutableMappable {
-        return Observable.create { observer in
-            do {
-                observer.onNext(try self.base.object(forKey: key))
-                observer.onCompleted()
-            } catch {
-                observer.onError(error)
-            }
-
-            return Disposables.create()
-        }
+        return Observable.deferredJust { try self.base.object(forKey: key) }
     }
 
     /// Reactive version of object<T>(forKey:defaultValue:) -> [T].
@@ -202,12 +179,7 @@ public extension Reactive where Base: UserDefaults {
     ///
     /// - returns: Observable of specified array type.
     func object<T>(forKey key: String, defaultValue: [T]) -> Observable<[T]> where T: ImmutableMappable {
-        return Observable.create { observer in
-            observer.onNext(self.base.object(forKey: key, defaultValue: defaultValue))
-            observer.onCompleted()
-
-            return Disposables.create()
-        }
+        return Observable.deferredJust { self.base.object(forKey: key, defaultValue: defaultValue) }
     }
 
     /// Reactive version of set<T>(_:forKey:).

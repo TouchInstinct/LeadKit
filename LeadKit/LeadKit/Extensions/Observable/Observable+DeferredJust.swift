@@ -30,7 +30,7 @@ public extension Observable {
     /// that subscribes to the resulting sequence.
     /// - Returns: An observable sequence whose observers trigger an invocation of the given element factory function.
     static func deferredJust(_ elementFactory: @escaping () throws -> Element) -> Observable<Element> {
-        return create { (observer) -> Disposable in
+        return create { observer -> Disposable in
             do {
                 observer.onNext(try elementFactory())
                 observer.onCompleted()
