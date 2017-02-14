@@ -42,6 +42,21 @@ public extension Reactive where Base: DataRequest {
             }
     }
 
+    /// Method which serializes response into array of target objects
+    ///
+    /// - Parameter mappingQueue: The dispatch queue to use for mapping
+    /// - Returns: Observable with HTTP URL Response and array of target objects
+    func apiResponse<T: ImmutableMappable>(mappingQueue: DispatchQueue = DispatchQueue.global())
+        -> Observable<(HTTPURLResponse, [T])> {
+
+            return responseJSONOnQueue(mappingQueue)
+                .map { resp, value in
+                    let jsonArray = try cast(value) as [[String: Any]]
+
+                    return (resp, try Mapper<T>().mapArray(JSONArray: jsonArray))
+            }
+    }
+
     /// Method which serializes response into target object
     ///
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
