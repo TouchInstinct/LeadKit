@@ -21,7 +21,7 @@
 //
 
 import RxSwift
-import Toast_Swift
+import ToastSwiftFramework
 
 public extension Observable {
 
