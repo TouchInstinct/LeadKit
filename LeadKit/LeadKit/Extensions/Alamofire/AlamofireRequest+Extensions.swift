@@ -42,6 +42,21 @@ public extension Reactive where Base: DataRequest {
             }
     }
 
+    /// Method which serializes response into array of target objects
+    ///
+    /// - Parameter mappingQueue: The dispatch queue to use for mapping
+    /// - Returns: Observable with HTTP URL Response and array of target objects
+    func apiResponse<T: ImmutableMappable>(mappingQueue: DispatchQueue = DispatchQueue.global())
+        -> Observable<(response: HTTPURLResponse, models: [T])> {
+
+            return responseJSONOnQueue(mappingQueue)
+                .map { resp, value in
+                    let jsonArray = try cast(value) as [[String: Any]]
+
+                    return (resp, try Mapper<T>().mapArray(JSONArray: jsonArray))
+            }
+    }
+
     /// Method which serializes response into target object
     ///
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
@@ -55,6 +70,26 @@ public extension Reactive where Base: DataRequest {
 
                 return T.createFrom(map: Map(mappingType: .fromJSON, JSON: json))
                     .map { (resp, $0) }
+            }
+    }
+
+    /// Method which serializes response into array of target objects
+    ///
+    /// - Parameter mappingQueue: The dispatch queue to use for mapping
+    /// - Returns: Observable with HTTP URL Response and array of target objects
+    func apiResponse<T: ObservableMappable>(mappingQueue: DispatchQueue = DispatchQueue.global())
+        -> Observable<(response: HTTPURLResponse, models: [T])> where T.ModelType == T {
+
+            return responseJSONOnQueue(mappingQueue)
+                .flatMap { resp, value -> Observable<(response: HTTPURLResponse, models: [T])> in
+                    let jsonArray = try cast(value) as [[String: Any]]
+
+                    let createFromList = jsonArray.map {
+                        T.createFrom(map: Map(mappingType: .fromJSON, JSON: $0))
+                    }
+
+                    return Observable.zip(createFromList) { $0 }
+                        .map { (resp, $0) }
             }
     }
 
