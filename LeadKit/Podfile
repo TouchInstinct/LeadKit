@@ -1,0 +1,22 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+
+target 'LeadKit' do
+  use_frameworks!
+
+  pod "CocoaLumberjack/Swift", '~> 3.0.0'
+  pod "RxSwift", '3.2.0'
+  pod "RxCocoa", '3.2.0'
+  pod "RxAlamofire", '3.0.0'
+  pod "ObjectMapper", '~> 2.1'
+  pod "Toast-Swift", '~> 2.0.0'
+
+  target 'LeadKitTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+# If you have slow HDD
+ENV['COCOAPODS_DISABLE_STATS'] = "true"
