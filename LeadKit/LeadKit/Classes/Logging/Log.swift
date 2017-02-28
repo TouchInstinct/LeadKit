@@ -28,7 +28,7 @@ open class Log {
     /// Logger for CocoaLumberJack
     open let fileLogger = DDFileLogger()
 
-    open init() {
+    public init() {
         DDLog.add(fileLogger)
 
         DDLog.add(DDASLLogger.sharedInstance())

@@ -1,0 +1,40 @@
+PODS:
+  - Alamofire (4.3.0)
+  - CocoaLumberjack/Core (3.0.0)
+  - CocoaLumberjack/Default (3.0.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (3.0.0):
+    - CocoaLumberjack/Default
+  - CocoaLumberjack/Swift (3.0.0):
+    - CocoaLumberjack/Extensions
+  - ObjectMapper (2.2.3)
+  - RxAlamofire (3.0.0):
+    - RxAlamofire/Core (= 3.0.0)
+  - RxAlamofire/Core (3.0.0):
+    - Alamofire (~> 4.0)
+    - RxSwift (~> 3.0)
+  - RxCocoa (3.2.0):
+    - RxSwift (~> 3.1)
+  - RxSwift (3.2.0)
+  - Toast-Swift (2.0.0)
+
+DEPENDENCIES:
+  - CocoaLumberjack/Swift (~> 3.0.0)
+  - ObjectMapper (~> 2.1)
+  - RxAlamofire (= 3.0.0)
+  - RxCocoa (= 3.2.0)
+  - RxSwift (= 3.2.0)
+  - Toast-Swift (~> 2.0.0)
+
+SPEC CHECKSUMS:
+  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  CocoaLumberjack: c823149bccc5519a9447aeb433be7b1212a7d6a5
+  ObjectMapper: d3b3de11267f5d971f390eb8d63dd509116a4329
+  RxAlamofire: 0b1fa48f545fffe7f7a28af2086bcaa3b5946cc9
+  RxCocoa: ccdf43101a70407097a29082f648ba1676075b30
+  RxSwift: 46574f70d416b7923c237195939cc488a7fbf3a0
+  Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
+
+PODFILE CHECKSUM: 633d32257b0584c0270a56c06f3a7e022e383d80
+
+COCOAPODS: 1.2.0
