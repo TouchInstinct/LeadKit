@@ -25,27 +25,27 @@ import ObjectMapper
 struct Post: ImmutableMappable {
 
     let userId: Int
-    let id: Int
+    let postId: Int
     let title: String
     let body: String
 
-    init(userId: Int, id: Int, title: String, body: String) {
+    init(userId: Int, postId: Int, title: String, body: String) {
         self.userId = userId
-        self.id = id
+        self.postId = postId
         self.title = title
         self.body = body
     }
 
     init(map: Map) throws {
         userId = try map.value("userId")
-        id = try map.value("id")
+        postId = try map.value("id")
         title = try map.value("title")
         body = try map.value("body")
     }
 
     mutating func mapping(map: Map) {
         userId >>> map["userId"]
-        id >>> map["id"]
+        postId >>> map["id"]
         title >>> map["title"]
         body >>> map["body"]
     }
@@ -54,12 +54,11 @@ struct Post: ImmutableMappable {
 
 extension Post: Equatable {
 
-    static func ==(lhs: Post, rhs: Post) -> Bool {
+    static func == (lhs: Post, rhs: Post) -> Bool {
         return lhs.userId == rhs.userId &&
-            lhs.id == rhs.id &&
+            lhs.postId == rhs.postId &&
             lhs.title == rhs.title &&
             lhs.body == rhs.body
     }
     
 }
-

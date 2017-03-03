@@ -51,7 +51,7 @@ public extension UICollectionView {
      */
 
     public func registerNib<T>(forCellClass cellClass: T.Type,
-                            forUserInterfaceIdiom interfaceIdiom: UIUserInterfaceIdiom)
+                               forUserInterfaceIdiom interfaceIdiom: UIUserInterfaceIdiom)
         where T: ReuseIdentifierProtocol, T: UICollectionViewCell, T: NibNameProtocol {
             
             let nib = UINib(nibName: T.nibName(forConfiguration: interfaceIdiom))

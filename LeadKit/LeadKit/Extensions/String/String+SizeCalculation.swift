@@ -66,8 +66,8 @@ public extension String {
      - returns: string size calculation result
      */
     public func size(withAttributes attributes: [String: AnyObject]?,
-                                    maxWidth: CGFloat = CGFloat.greatestFiniteMagnitude,
-                                    maxHeight: CGFloat = CGFloat.greatestFiniteMagnitude) -> StringSizeCalculationResult {
+                     maxWidth: CGFloat = CGFloat.greatestFiniteMagnitude,
+                     maxHeight: CGFloat = CGFloat.greatestFiniteMagnitude) -> StringSizeCalculationResult {
 
         let size = self.boundingRect(with: CGSize(width: maxWidth, height: maxHeight),
                                              options: [.usesLineFragmentOrigin, .usesFontLeading],
