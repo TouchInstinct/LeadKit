@@ -43,5 +43,5 @@ ViewControllerIdentifier: RawRepresentable, ViewControllerIdentifier.RawValue ==
     public static func instantiateViewController(_ viewController: ViewControllerIdentifier) -> UIViewController {
         return uiStoryboard.instantiateViewController(withIdentifier: viewController.rawValue)
     }
-    
+
 }

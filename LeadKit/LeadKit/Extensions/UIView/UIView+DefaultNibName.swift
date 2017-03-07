@@ -32,5 +32,5 @@ extension UIView: StaticNibNameProtocol {
     open class var nibName: String {
         return className(of: self)
     }
-    
+
 }

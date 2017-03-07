@@ -28,5 +28,5 @@ public extension UIDevice {
     public static var isSimulator: Bool {
         return ProcessInfo.processInfo.environment["SIMULATOR_DEVICE_NAME"] != nil
     }
-    
+
 }

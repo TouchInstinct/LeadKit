@@ -49,7 +49,7 @@ struct Post: ImmutableMappable {
         title >>> map["title"]
         body >>> map["body"]
     }
-    
+
 }
 
 extension Post: Equatable {
@@ -60,5 +60,5 @@ extension Post: Equatable {
             lhs.title == rhs.title &&
             lhs.body == rhs.body
     }
-    
+
 }

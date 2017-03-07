@@ -70,5 +70,5 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType where Cursor.LoadRe
                 .flatMap { _ in self.loadNextBatch() }
         }
     }
-    
+
 }

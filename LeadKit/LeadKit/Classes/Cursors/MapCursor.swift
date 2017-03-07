@@ -79,5 +79,5 @@ public class MapCursor<Cursor: CursorType, T>: CursorType where Cursor.LoadResul
             return startIndex..<self.elements.count
         }
     }
-    
+
 }

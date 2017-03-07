@@ -61,5 +61,5 @@ public extension Sequence {
             .toArray()
             .map { $0.sorted { $0.0.idx < $0.1.idx }.flatMap { $0.results } }
     }
-    
+
 }

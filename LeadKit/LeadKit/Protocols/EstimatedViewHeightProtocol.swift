@@ -27,7 +27,7 @@ import Foundation
  */
 public protocol EstimatedViewHeightProtocol {
     associatedtype ViewModelType
-    
+
     /**
      method which returns estimated view height for specific view model
      

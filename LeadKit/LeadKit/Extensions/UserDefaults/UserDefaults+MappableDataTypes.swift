@@ -33,7 +33,7 @@ public enum UserDefaultsError: Error {
 
     case noSuchValue(key: String)
     case unableToMap(mappingError: Error)
-    
+
 }
 
 fileprivate typealias JSONObject = [String: Any]

@@ -115,5 +115,5 @@ public extension Observable {
             networkService.decreaseRequestCounter()
         })
     }
-    
+
 }

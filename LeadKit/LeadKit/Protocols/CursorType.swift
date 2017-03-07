@@ -41,5 +41,5 @@ public protocol CursorType {
     ///
     /// - Returns: Observable of LoadResultType
     func loadNextBatch() -> Observable<LoadResultType>
-    
+
 }

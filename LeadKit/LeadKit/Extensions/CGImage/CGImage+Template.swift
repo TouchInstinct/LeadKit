@@ -49,5 +49,5 @@ public extension CGImage {
 
         return ctx.makeImage()
     }
-    
+
 }

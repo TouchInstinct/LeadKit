@@ -75,8 +75,8 @@ public extension String {
                                              context: nil).size
 
         let fontLineHeight = (attributes?[NSFontAttributeName] as? UIFont)?.lineHeight
-        
+
         return StringSizeCalculationResult(size: size, fontLineHeight: fontLineHeight)
     }
-    
+
 }

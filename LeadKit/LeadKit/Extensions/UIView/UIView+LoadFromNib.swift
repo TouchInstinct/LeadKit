@@ -36,12 +36,12 @@ public extension UIView {
      
      - returns: UIView subclass instance
      */
-    
+
     public static func loadFromNib<T>
         (forUserInterfaceIdiom interfaceIdiom: UIUserInterfaceIdiom) -> T where T: NibNameProtocol, T: UIView {
         return loadFromNib(named: T.nibName(forConfiguration: interfaceIdiom))
     }
-    
+
     /**
      method which return UIView subclass instance loaded from nib using nib name
      provided by StaticNibNameProtocol implementation
@@ -51,7 +51,7 @@ public extension UIView {
     public static func loadFromNib<T>() -> T where T: StaticNibNameProtocol, T: UIView {
         return loadFromNib(named: T.nibName)
     }
-    
+
     /**
      method which loads UIView (or subclass) instance from nib using given nib name parameter
      
@@ -60,7 +60,12 @@ public extension UIView {
      - returns: UIView subclass instance
      */
     public static func loadFromNib<T>(named nibName: String) -> T {
-        return UINib(nibName: nibName).instantiate(withOwner: nil, options: nil).first as! T
+        guard let nibView = UINib(nibName: nibName).instantiate(withOwner: nil, options: nil).first as? T else {
+            fatalError("Can't nstantiate nib view with type \(T.self)")
+        }
+
+        return nibView
+
     }
-    
+
 }

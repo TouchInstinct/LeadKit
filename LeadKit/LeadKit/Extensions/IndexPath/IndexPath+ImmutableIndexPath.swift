@@ -30,8 +30,8 @@ extension IndexPath {
         if Mirror(reflecting: self).subjectType == IndexPath.self {  // check for UIMutableIndexPath
             return self
         }
-        
+
         return IndexPath(item: item, section: section)
     }
-    
+
 }

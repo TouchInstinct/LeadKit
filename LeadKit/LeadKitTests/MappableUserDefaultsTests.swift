@@ -29,18 +29,18 @@ class MappableUserDefaultsTests: XCTestCase {
     static let postsKey = "posts"
 
     let disposeBag = DisposeBag()
-    
+
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         userDefaults.set(nil, forKey: MappableUserDefaultsTests.postKey)
         userDefaults.set(nil, forKey: MappableUserDefaultsTests.postsKey)
 
         super.tearDown()
     }
-    
+
     func testPostSave() {
         userDefaults.set(model: post, forKey: MappableUserDefaultsTests.postKey)
 
@@ -90,5 +90,5 @@ class MappableUserDefaultsTests: XCTestCase {
             })
             .addDisposableTo(disposeBag)
     }
-    
+
 }

@@ -32,5 +32,5 @@ extension UIViewController: StoryboardIdentifierProtocol {
     open class var storyboardIdentifier: String {
         return className(of: self)
     }
-    
+
 }

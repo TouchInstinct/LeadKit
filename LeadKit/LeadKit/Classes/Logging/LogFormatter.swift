@@ -22,7 +22,6 @@
 
 import Foundation
 import CocoaLumberjack
-import CocoaLumberjack.DDDispatchQueueLogFormatter
 
 class LogFormatter: DDDispatchQueueLogFormatter {
     fileprivate let dateFormatter: DateFormatter

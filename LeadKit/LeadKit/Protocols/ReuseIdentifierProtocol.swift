@@ -27,7 +27,7 @@ import Foundation
  */
 public protocol AbstractReuseIdentifierProtocol {
     associatedtype IdentifierType
-    
+
     /**
      - returns: reuse identifier with protocol associated type
      */

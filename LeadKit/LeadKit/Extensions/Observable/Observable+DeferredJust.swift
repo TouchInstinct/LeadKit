@@ -41,5 +41,5 @@ public extension Observable {
             return Disposables.create()
         }
     }
-    
+
 }
