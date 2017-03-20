@@ -29,9 +29,14 @@ extension UIStoryboard {
      
      - returns: UIViewController subclass instance
      */
-    
+
     public func instantiateViewController<T>() -> T where T: UIViewController, T: StoryboardIdentifierProtocol {
-        return self.instantiateViewController(withIdentifier: T.storyboardIdentifier) as! T
+        guard let viewController = self.instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T else {
+
+            fatalError("Can't instantiate view controller with type \(T.self)")
+        }
+
+        return viewController
     }
-    
+
 }

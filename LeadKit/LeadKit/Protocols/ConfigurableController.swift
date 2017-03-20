@@ -72,5 +72,5 @@ extension ConfigurableController where Self: UIViewController {
         localize()
         bindViews()
     }
-    
+
 }

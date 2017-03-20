@@ -48,7 +48,7 @@ public protocol StoryboardProtocol {
      - returns: UIViewController instance
      */
     static func instantiateViewController(_: ViewControllerIdentifier) -> UIViewController
-    
+
 }
 
 public extension StoryboardProtocol {
@@ -60,5 +60,5 @@ public extension StoryboardProtocol {
         }
         return controller
     }
-    
+
 }

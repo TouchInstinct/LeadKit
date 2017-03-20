@@ -33,7 +33,7 @@ public enum UserDefaultsError: Error {
 
     case noSuchValue(key: String)
     case unableToMap(mappingError: Error)
-    
+
 }
 
 fileprivate typealias JSONObject = [String: Any]
@@ -74,7 +74,7 @@ public extension UserDefaults {
     ///
     /// - returns: The array of objects with specified type associated with the specified key,
     /// or throw exception if the key was not found.
-    public func object<T>(forKey key: String) throws -> [T] where T: ImmutableMappable {
+    public func objects<T>(forKey key: String) throws -> [T] where T: ImmutableMappable {
         let jsonArray = try storedValue(forKey: key) as [JSONObject]
 
         do {
@@ -104,8 +104,8 @@ public extension UserDefaults {
     ///
     /// - returns: The array of objects with specified type associated with the specified key, or passed default value
     /// if there is no such value for specified key or if error occurred during mapping.
-    public func object<T>(forKey key: String, defaultValue: [T]) -> [T] where T: ImmutableMappable {
-        return (try? object(forKey: key)) ?? defaultValue
+    public func objects<T>(forKey key: String, defaultValue: [T]) -> [T] where T: ImmutableMappable {
+        return (try? objects(forKey: key)) ?? defaultValue
     }
 
     /// Sets or removes the value of the specified default key in the standard application domain.
@@ -113,7 +113,7 @@ public extension UserDefaults {
     /// - Parameters:
     ///   - model: The object with specified type to store or nil to remove it from the defaults database.
     ///   - key:   The key with which to associate with the value.
-    public func set<T>(_ model: T?, forKey key: String) where T: ImmutableMappable {
+    public func set<T>(model: T?, forKey key: String) where T: ImmutableMappable {
         if let model = model {
             set(model.toJSON(), forKey: key)
         } else {
@@ -126,7 +126,7 @@ public extension UserDefaults {
     /// - Parameters:
     ///   - models: The array of object with specified type to store or nil to remove it from the defaults database.
     ///   - key:    The key with which to associate with the value.
-    public func set<T, S>(_ models: S?, forKey key: String) where T: ImmutableMappable, S: Sequence, S.Iterator.Element == T {
+    public func set<T, S>(models: S?, forKey key: String) where T: ImmutableMappable, S: Sequence, S.Iterator.Element == T {
         if let models = models {
             set(models.map { $0.toJSON() }, forKey: key)
         } else {
@@ -166,7 +166,7 @@ public extension Reactive where Base: UserDefaults {
     ///
     /// - returns: Observable of specified array type.
     func object<T>(forKey key: String) -> Observable<[T]> where T: ImmutableMappable {
-        return Observable.deferredJust { try self.base.object(forKey: key) }
+        return Observable.deferredJust { try self.base.objects(forKey: key) }
     }
 
     /// Reactive version of object<T>(forKey:defaultValue:) -> [T].
@@ -179,7 +179,7 @@ public extension Reactive where Base: UserDefaults {
     ///
     /// - returns: Observable of specified array type.
     func object<T>(forKey key: String, defaultValue: [T]) -> Observable<[T]> where T: ImmutableMappable {
-        return Observable.deferredJust { self.base.object(forKey: key, defaultValue: defaultValue) }
+        return Observable.deferredJust { self.base.objects(forKey: key, defaultValue: defaultValue) }
     }
 
     /// Reactive version of set<T>(_:forKey:).
@@ -190,9 +190,9 @@ public extension Reactive where Base: UserDefaults {
     /// - parameter key:   The key with which to associate with the value.
     ///
     /// - returns: Observable of Void type.
-    func set<T>(_ model: T?, forKey key: String) -> Observable<Void> where T: ImmutableMappable {
+    func set<T>(model: T?, forKey key: String) -> Observable<Void> where T: ImmutableMappable {
         return Observable.create { observer in
-            observer.onNext(self.base.set(model, forKey: key))
+            observer.onNext(self.base.set(model: model, forKey: key))
             observer.onCompleted()
 
             return Disposables.create()
@@ -207,11 +207,11 @@ public extension Reactive where Base: UserDefaults {
     /// - parameter key:    The key with which to associate with the value.
     ///
     /// - returns: Observable of Void type.
-    func set<T, S>(_ models: S?, forKey key: String) -> Observable<Void>
+    func set<T, S>(models: S?, forKey key: String) -> Observable<Void>
         where T: ImmutableMappable, S: Sequence, S.Iterator.Element == T {
 
         return Observable.create { observer in
-            observer.onNext(self.base.set(models, forKey: key))
+            observer.onNext(self.base.set(models: models, forKey: key))
             observer.onCompleted()
 
             return Disposables.create()

@@ -45,7 +45,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func responseModel<T: ImmutableMappable>(requestParameters: ApiRequestParameters,
-                       mappingQueue: DispatchQueue = DispatchQueue.global())
+                                             mappingQueue: DispatchQueue = DispatchQueue.global())
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
         return apiRequest(requestParameters: requestParameters)
@@ -58,7 +58,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and array of target objects
     func responseModel<T: ImmutableMappable>(requestParameters: ApiRequestParameters,
-                       mappingQueue: DispatchQueue = DispatchQueue.global())
+                                             mappingQueue: DispatchQueue = DispatchQueue.global())
         -> Observable<(response: HTTPURLResponse, models: [T])> {
 
         return apiRequest(requestParameters: requestParameters)
@@ -71,7 +71,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func responseObservableModel<T: ObservableMappable>(requestParameters: ApiRequestParameters,
-                                 mappingQueue: DispatchQueue = DispatchQueue.global())
+                                                        mappingQueue: DispatchQueue = DispatchQueue.global())
         -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
 
         return apiRequest(requestParameters: requestParameters)
@@ -84,7 +84,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and array of target objects
     func responseObservableModel<T: ObservableMappable>(requestParameters: ApiRequestParameters,
-                                 mappingQueue: DispatchQueue = DispatchQueue.global())
+                                                        mappingQueue: DispatchQueue = DispatchQueue.global())
         -> Observable<(response: HTTPURLResponse, models: [T])> where T.ModelType == T {
 
             return apiRequest(requestParameters: requestParameters)

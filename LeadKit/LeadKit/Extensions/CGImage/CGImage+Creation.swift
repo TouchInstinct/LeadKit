@@ -71,7 +71,7 @@ public extension CGImage {
         }
 
         view.layer.render(in: ctx)
-        
+
         return ctx.makeImage()
     }
 

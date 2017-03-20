@@ -44,7 +44,7 @@ public extension Double {
      - returns: rounded value
      */
     public func roundValue(withPersicion persicion: UInt,
-                                         roundType: RoundingType = .normal) -> Double {
+                           roundType: RoundingType = .normal) -> Double {
         let divider = pow(10.0, Double(persicion))
 
         switch roundType {

@@ -65,5 +65,5 @@ public extension CGContext {
                          space: colorSpace,
                          bitmapInfo: bitmapInfo.rawValue)
     }
-    
+
 }

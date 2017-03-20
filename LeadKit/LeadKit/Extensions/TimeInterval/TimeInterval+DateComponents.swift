@@ -30,6 +30,8 @@ extension TimeInterval {
     private static let secondsInHour   = secondsInMinute * minutesInHour
     private static let secondsInDay    = secondsInHour * hoursInDay
 
+    public typealias TimeComponents = (days: Int, hours: Int, minutes: Int, seconds: Int)
+
     /**
      Deserialize TimeInterval from string
      Works fine for values like 0:0, 0:0:0, 000:00:00, 0.00:00:00
@@ -57,7 +59,7 @@ extension TimeInterval {
      Returns a tuple with date components, contained in TimeInterval value
      Supported components: days, hours, minutes, seconds
      */
-    public var timeComponents: (days: Int, hours: Int, minutes: Int, seconds: Int) {
+    public var timeComponents: TimeComponents {
         var ti = Int(self)
         let days = (ti / TimeInterval.secondsInDay) % TimeInterval.secondsInDay
         ti -= days * TimeInterval.secondsInDay

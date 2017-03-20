@@ -31,7 +31,7 @@ public extension CursorType where LoadResultType == CountableRange<Int> {
     var loadedElements: [Self.Element] {
         return self[0..<count]
     }
-    
+
 }
 
 public extension CursorType where LoadResultType == CountableClosedRange<Int> {
@@ -43,5 +43,5 @@ public extension CursorType where LoadResultType == CountableClosedRange<Int> {
     var loadedElements: [Self.Element] {
         return self[0...count - 1]
     }
-    
+
 }

@@ -57,5 +57,5 @@ public class StaticCursor<Element>: CursorType {
             return Observable.just(0..<self.count)
         }
     }
-    
+
 }

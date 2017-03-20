@@ -1,8 +1,21 @@
 disabled_rules:
-  - force_cast
-  - trailing_whitespace
+  - variable_name
 excluded:
   - Carthage
   - Pods
-  - RxAlamofire
 line_length: 128
+type_body_length:
+  - 500 # warning
+  - 700 # error
+file_length:
+  warning: 500
+  error: 1200
+warning_threshold: 1
+
+custom_rules:
+  uiwebview_disabled:
+    included: ".*.swift"
+    name: "UIWebView Usage Disabled"
+    regex: "(UIWebView)"
+    message: "Do not use UIWebView. Use WKWebView Instead. https://developer.apple.com/reference/uikit/uiwebview"
+    severity: error

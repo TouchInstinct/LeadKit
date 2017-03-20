@@ -94,7 +94,7 @@ public extension CGImage {
         } else {
             ctx.stroke(inset, width: border)
         }
-        
+
         return ctx.makeImage()
     }
 
@@ -191,13 +191,13 @@ public extension CGImage {
                                    y: padding,
                                    width: CGFloat(width),
                                    height: CGFloat(height))
-        
+
         ctx.addRect(imageLocation)
         ctx.clip()
-        
+
         ctx.draw(self, in: imageLocation)
-        
+
         return ctx.makeImage()
     }
-    
+
 }
