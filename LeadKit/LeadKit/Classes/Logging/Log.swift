@@ -25,19 +25,16 @@ import CocoaLumberjack
 
 open class Log {
 
-    /// Logger for CocoaLumberJack
-    open let fileLogger = DDFileLogger()
-
     public init() {
-        DDLog.add(fileLogger)
+        DDLog.add(DDFileLogger())
 
-        DDLog.add(DDASLLogger.sharedInstance())
-        DDLog.add(DDTTYLogger.sharedInstance())
+        DDLog.add(DDASLLogger.sharedInstance)
+        DDLog.add(DDTTYLogger.sharedInstance)
 
         let logFormatter = LogFormatter()
 
-        DDASLLogger.sharedInstance().logFormatter = logFormatter
-        DDTTYLogger.sharedInstance().logFormatter = logFormatter
+        DDASLLogger.sharedInstance.logFormatter = logFormatter
+        DDTTYLogger.sharedInstance.logFormatter = logFormatter
 
         let assertionHandler = NSAssertionHandler()
 

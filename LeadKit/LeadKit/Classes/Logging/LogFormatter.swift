@@ -23,7 +23,7 @@
 import Foundation
 import CocoaLumberjack
 
-class LogFormatter: DDDispatchQueueLogFormatter {
+class LogFormatter: NSObject, DDLogFormatter {
     fileprivate let dateFormatter: DateFormatter
 
     override init() {
@@ -34,7 +34,7 @@ class LogFormatter: DDDispatchQueueLogFormatter {
         super.init()
     }
 
-    override func format(message logMessage: DDLogMessage) -> String {
+    func format(message logMessage: DDLogMessage) -> String? {
         let level: String
 
         switch logMessage.flag {
