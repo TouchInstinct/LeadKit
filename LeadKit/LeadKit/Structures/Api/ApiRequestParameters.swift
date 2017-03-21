@@ -27,11 +27,11 @@ import Alamofire
  */
 public struct ApiRequestParameters {
 
-    let method: HTTPMethod
-    let url: URLConvertible
-    let parameters: Parameters?
-    let encoding: ParameterEncoding
-    let headers: HTTPHeaders?
+    public let method: HTTPMethod
+    public let url: URLConvertible
+    public let parameters: Parameters?
+    public let encoding: ParameterEncoding
+    public let headers: HTTPHeaders?
 
     public init(url: URLConvertible,
                 method: HTTPMethod = .get,
