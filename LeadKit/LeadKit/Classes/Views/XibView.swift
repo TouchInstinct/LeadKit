@@ -23,7 +23,7 @@
 import UIKit
 
 /// Class used to intantiate custom view in storyboards
-public class XibView: UIView {
+open class XibView: UIView {
 
     /// Nib name used to intanciate inner view 
     open var innerViewNibName: String {
