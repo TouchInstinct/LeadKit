@@ -22,10 +22,10 @@
 
 import UIKit
 
-/// Class used to intantiate custom view in storyboards
+/// Class used to instantiate custom view in storyboards
 open class XibView: UIView {
 
-    /// Nib name used to intanciate inner view 
+    /// Nib name used to instantiate inner view
     open var innerViewNibName: String {
         return className(of: type(of: self))
     }
