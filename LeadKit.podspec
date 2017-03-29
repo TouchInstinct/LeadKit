@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.4.4"
+  s.version         = "0.4.6"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.source          = { :git => "https://github.com/TouchInstinct/LeadKit.git", :tag => s.version }
   s.source_files    = "LeadKit/LeadKit/**/*.swift"
 
-  s.dependency "CocoaLumberjack/Swift", '~> 3.0.0'
+  s.dependency "CocoaLumberjack/Swift", '~> 3.1.0'
   s.dependency "RxSwift", '3.2.0'
   s.dependency "RxCocoa", '3.2.0'
   s.dependency "RxAlamofire", '3.0.0'

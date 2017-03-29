@@ -23,39 +23,20 @@
 import UIKit
 
 public extension UICollectionView {
-    /**
-     method which register UICollectionViewCell subclass for reusing in UICollectionView with reuse identifier
-     provided by ReuseIdentifierProtocol protocol implementation and nib name
-     provided by StaticNibNameProtocol protocol implementation
-     
-     - parameter cellClass: UICollectionViewCell subclass which implements ReuseIdentifierProtocol and StaticNibNameProtocol
-     
-     - see: ReuseIdentifierProtocol, StaticNibNameProtocol
-     */
 
-    public func registerNib<T>(forCellClass cellClass: T.Type)
+    /// Method which register UICollectionViewCell subclass for reusing in UICollectionView with
+    /// reuse identifier provided by ReuseIdentifierProtocol protocol implementation
+    /// and nib name provided by StaticNibNameProtocol protocol implementation
+    ///
+    /// - Parameters:
+    ///   - cellClass: UICollectionViewCell subclass which implements
+    ///                ReuseIdentifierProtocol and StaticNibNameProtocol
+    ///   - bundle: The bundle in which to search for the nib file.
+    ///             If you specify nil, this method looks for the nib file in the main bundle.
+    public func registerNib<T>(forCellClass cellClass: T.Type, bundle: Bundle? = nil)
         where T: ReuseIdentifierProtocol, T: UICollectionViewCell, T: StaticNibNameProtocol {
 
-            register(UINib(nibName: T.nibName), forCellWithReuseIdentifier: T.reuseIdentifier)
-    }
-
-    /**
-     method which register UICollectionViewCell subclass for reusing in UICollectionView with reuse identifier
-     provided by ReuseIdentifierProtocol protocol implementation and nib name
-     provided by NibNameProtocol protocol implementation
-     
-     - parameter cellClass:      UICollectionViewCell subclass which implements ReuseIdentifierProtocol and NibNameProtocol
-     - parameter interfaceIdiom: UIUserInterfaceIdiom value for NibNameProtocol
-     
-     - see: ReuseIdentifierProtocol, NibNameProtocol
-     */
-
-    public func registerNib<T>(forCellClass cellClass: T.Type,
-                               forUserInterfaceIdiom interfaceIdiom: UIUserInterfaceIdiom)
-        where T: ReuseIdentifierProtocol, T: UICollectionViewCell, T: NibNameProtocol {
-
-            let nib = UINib(nibName: T.nibName(forConfiguration: interfaceIdiom))
-            register(nib, forCellWithReuseIdentifier: T.reuseIdentifier)
+            register(UINib(nibName: T.nibName, bundle: bundle), forCellWithReuseIdentifier: T.reuseIdentifier)
     }
 
 }
