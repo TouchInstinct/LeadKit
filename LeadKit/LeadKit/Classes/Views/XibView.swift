@@ -51,7 +51,7 @@ open class XibView: UIView {
         frame = CGRect(origin: frame.origin, size: view.frame.size)
 
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
+
         addSubview(view)
     }
 

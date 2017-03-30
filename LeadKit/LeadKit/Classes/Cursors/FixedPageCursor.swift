@@ -31,6 +31,8 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType where Cursor.LoadRe
 
     private let pageSize: Int
 
+    private let semaphore = DispatchSemaphore(value: 1)
+
     /// Initializer with enclosed cursor
     ///
     /// - Parameters:
@@ -52,7 +54,13 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType where Cursor.LoadRe
     }
 
     public func loadNextBatch() -> Observable<LoadResultType> {
+        return loadNextBatch(withSemaphore: semaphore)
+    }
+
+    private func loadNextBatch(withSemaphore semaphore: DispatchSemaphore?) -> Observable<LoadResultType> {
         return Observable.deferred {
+            semaphore?.wait()
+
             if self.exhausted {
                 throw CursorError.exhausted
             }
@@ -67,8 +75,15 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType where Cursor.LoadRe
             }
 
             return self.cursor.loadNextBatch()
-                .flatMap { _ in self.loadNextBatch() }
+                .flatMap { _ in
+                    self.loadNextBatch(withSemaphore: nil)
+                }
         }
+        .do(onNext: { [weak semaphore] _ in
+            semaphore?.signal()
+        }, onError: { [weak semaphore] _ in
+            semaphore?.signal()
+        })
     }
 
 }
