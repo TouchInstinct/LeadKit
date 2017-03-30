@@ -49,6 +49,8 @@ public class MapCursor<Cursor: CursorType, T>: CursorType where Cursor.LoadResul
 
     private var elements: [T] = []
 
+    private let semaphore = DispatchSemaphore(value: 1)
+
     /// Initializer with enclosed cursor
     ///
     /// - Parameters:
@@ -72,12 +74,21 @@ public class MapCursor<Cursor: CursorType, T>: CursorType where Cursor.LoadResul
     }
 
     public func loadNextBatch() -> Observable<LoadResultType> {
-        return cursor.loadNextBatch().map { loadedRange in
-            let startIndex = self.elements.count
-            self.elements += self.cursor[loadedRange].flatMap(self.transform)
+        return Observable.deferred {
+            self.semaphore.wait()
 
-            return startIndex..<self.elements.count
+            return self.cursor.loadNextBatch().map { loadedRange in
+                let startIndex = self.elements.count
+                self.elements += self.cursor[loadedRange].flatMap(self.transform)
+
+                return startIndex..<self.elements.count
+            }
         }
+        .do(onNext: { [weak semaphore] _ in
+            semaphore?.signal()
+        }, onError: { [weak semaphore] _ in
+            semaphore?.signal()
+        })
     }
 
 }

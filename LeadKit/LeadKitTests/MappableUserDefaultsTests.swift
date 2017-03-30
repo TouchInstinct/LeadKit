@@ -30,12 +30,7 @@ class MappableUserDefaultsTests: XCTestCase {
         return Post(userId: 1, postId: 1, title: "First post", body: "")
     }()
 
-    lazy var posts: [Post] = {
-        return [Post(userId: 1, postId: 1, title: "First post", body: ""),
-                Post(userId: 1, postId: 2, title: "Second post", body: ""),
-                Post(userId: 2, postId: 3, title: "Third post", body: ""),
-                Post(userId: 2, postId: 4, title: "Forth post", body: "")]
-    }()
+    let posts = Post.generate()
 
     let userDefaults = UserDefaults.standard
 
