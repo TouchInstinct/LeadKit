@@ -23,8 +23,9 @@
 import RxSwift
 import RxCocoa
 
-public class PaginationViewModel<C: CursorType>
-where C: ResettableCursorType, C.LoadResultType == CountableRange<Int> {
+public typealias ResettableCursorType = CursorType & ResettableType
+
+public final class PaginationViewModel<C: ResettableCursorType> {
 
     public indirect enum State {
 
@@ -51,6 +52,8 @@ where C: ResettableCursorType, C.LoadResultType == CountableRange<Int> {
 
     private var currentRequest: Disposable?
 
+    private let internalScheduler = SerialDispatchQueueScheduler(qos: .default)
+
     public var state: Driver<State> {
         return internalState.asDriver()
     }
@@ -75,16 +78,15 @@ where C: ResettableCursorType, C.LoadResultType == CountableRange<Int> {
         }
 
         currentRequest = cursor.loadNextBatch()
-            .subscribe(onNext: { [weak self] loadedRange in
-                self?.onGot(cursorLoadResult: loadedRange)
+            .subscribeOn(internalScheduler)
+            .subscribe(onNext: { [weak self] newItems in
+                self?.onGot(newItems: newItems)
             }, onError: { [weak self] error in
                 self?.onGot(error: error)
             })
     }
 
-    private func onGot(cursorLoadResult: C.LoadResultType) {
-        let newItems = cursor[cursorLoadResult]
-
+    private func onGot(newItems: [C.Element]) {
         if newItems.count > 0 {
             internalState.value = .results(newItems: newItems, after: internalState.value)
         } else {

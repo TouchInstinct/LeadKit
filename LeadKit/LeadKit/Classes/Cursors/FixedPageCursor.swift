@@ -23,9 +23,7 @@
 import RxSwift
 
 /// Paging cursor implementation with enclosed cursor for fetching results
-public class FixedPageCursor<Cursor: CursorType>: CursorType where Cursor.LoadResultType == CountableRange<Int> {
-
-    public typealias LoadResultType = CountableRange<Int>
+public class FixedPageCursor<Cursor: CursorType>: CursorType {
 
     private let cursor: Cursor
 
@@ -53,11 +51,11 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType where Cursor.LoadRe
         return cursor[index]
     }
 
-    public func loadNextBatch() -> Observable<LoadResultType> {
+    public func loadNextBatch() -> Observable<[Cursor.Element]> {
         return loadNextBatch(withSemaphore: semaphore)
     }
 
-    private func loadNextBatch(withSemaphore semaphore: DispatchSemaphore?) -> Observable<LoadResultType> {
+    private func loadNextBatch(withSemaphore semaphore: DispatchSemaphore?) -> Observable<[Cursor.Element]> {
         return Observable.deferred {
             semaphore?.wait()
 
@@ -71,7 +69,7 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType where Cursor.LoadRe
                 let startIndex = self.count
                 self.count += min(restOfLoaded, self.pageSize)
 
-                return Observable.just(startIndex..<self.count)
+                return .just(self.cursor[startIndex..<self.count])
             }
 
             return self.cursor.loadNextBatch()

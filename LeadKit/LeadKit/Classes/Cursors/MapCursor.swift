@@ -22,9 +22,7 @@
 
 import RxSwift
 
-public typealias MapCursorLoadResultType = CountableRange<Int>
-
-public extension CursorType where Self.LoadResultType == MapCursorLoadResultType {
+public extension CursorType {
 
     /// Creates MapCursor with current cursor
     ///
@@ -37,9 +35,7 @@ public extension CursorType where Self.LoadResultType == MapCursorLoadResultType
 }
 
 /// Map cursor implementation with enclosed cursor for fetching results
-public class MapCursor<Cursor: CursorType, T>: CursorType where Cursor.LoadResultType == MapCursorLoadResultType {
-
-    public typealias LoadResultType = Cursor.LoadResultType
+public class MapCursor<Cursor: CursorType, T>: CursorType {
 
     public typealias Transform = (Cursor.Element) -> T?
 
@@ -73,15 +69,15 @@ public class MapCursor<Cursor: CursorType, T>: CursorType where Cursor.LoadResul
         return elements[index]
     }
 
-    public func loadNextBatch() -> Observable<LoadResultType> {
+    public func loadNextBatch() -> Observable<[T]> {
         return Observable.deferred {
             self.semaphore.wait()
 
-            return self.cursor.loadNextBatch().map { loadedRange in
-                let startIndex = self.elements.count
-                self.elements += self.cursor[loadedRange].flatMap(self.transform)
+            return self.cursor.loadNextBatch().map { newItems in
+                let transformedNewItems = newItems.flatMap(self.transform)
+                self.elements += transformedNewItems
 
-                return startIndex..<self.elements.count
+                return transformedNewItems
             }
         }
         .do(onNext: { [weak semaphore] _ in

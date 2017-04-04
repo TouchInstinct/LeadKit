@@ -23,7 +23,7 @@
 import LeadKit
 import RxSwift
 
-class StubCursor: CursorType, ResettableCursorType {
+class StubCursor: ResettableCursorType {
 
     typealias LoadResultType = CountableRange<Int>
 
@@ -57,7 +57,7 @@ class StubCursor: CursorType, ResettableCursorType {
         self.requestDelay = other.requestDelay
     }
 
-    func loadNextBatch() -> Observable<CountableRange<Int>> {
+    func loadNextBatch() -> Observable<[Post]> {
         return Observable.create { observer -> Disposable in
             if self.exhausted {
                 observer.onError(CursorError.exhausted)
@@ -71,7 +71,7 @@ class StubCursor: CursorType, ResettableCursorType {
 
                     self.posts = Array((self.posts + newPosts)[0..<maxNewPosts])
 
-                    observer.onNext(countBefore..<self.count)
+                    observer.onNext(self[countBefore..<self.count])
                     observer.onCompleted()
                 })
             }

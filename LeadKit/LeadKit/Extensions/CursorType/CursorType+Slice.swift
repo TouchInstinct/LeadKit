@@ -22,26 +22,18 @@
 
 import Foundation
 
-public extension CursorType where LoadResultType == CountableRange<Int> {
+public extension CursorType {
 
-    subscript(range: LoadResultType) -> [Self.Element] {
+    subscript(range: CountableRange<Int>) -> [Self.Element] {
+        return range.map { self[$0] }
+    }
+
+    subscript(range: CountableClosedRange<Int>) -> [Self.Element] {
         return range.map { self[$0] }
     }
 
     var loadedElements: [Self.Element] {
         return self[0..<count]
-    }
-
-}
-
-public extension CursorType where LoadResultType == CountableClosedRange<Int> {
-
-    subscript(range: LoadResultType) -> [Self.Element] {
-        return range.map { self[$0] }
-    }
-
-    var loadedElements: [Self.Element] {
-        return self[0...count - 1]
     }
 
 }

@@ -12,11 +12,12 @@
 		674743941E929A5A00B47671 /* PaginationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674743931E929A5A00B47671 /* PaginationViewModelTests.swift */; };
 		675D24B21E9234BB00E92D1F /* PaginationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675D24B11E9234BB00E92D1F /* PaginationViewModel.swift */; };
 		67788F9F1E69661800484DEE /* CGFloat+Pixels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67788F9E1E69661800484DEE /* CGFloat+Pixels.swift */; };
+		678A202A1E93C1A900787562 /* PaginationTableViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A20291E93C1A900787562 /* PaginationTableViewWrapper.swift */; };
 		67B3057B1E8A8727008169CA /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67B3057A1E8A8727008169CA /* TestView.xib */; };
 		67B3057D1E8A8735008169CA /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B3057C1E8A8735008169CA /* TestView.swift */; };
 		67B3057F1E8A8804008169CA /* LoadFromNibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B3057E1E8A8804008169CA /* LoadFromNibTests.swift */; };
 		67B305841E8A92E8008169CA /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B305831E8A92E8008169CA /* XibView.swift */; };
-		67B856E31E923BE600F54304 /* ResettableCursorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B856E21E923BE600F54304 /* ResettableCursorType.swift */; };
+		67B856E31E923BE600F54304 /* ResettableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B856E21E923BE600F54304 /* ResettableType.swift */; };
 		67EF144C1E8BEACB00D6E0DD /* StubCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EF144B1E8BEACB00D6E0DD /* StubCursor.swift */; };
 		67EF144E1E8BED4E00D6E0DD /* CursorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EF144D1E8BED4E00D6E0DD /* CursorTests.swift */; };
 		78011A641D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78011A631D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift */; };
@@ -105,11 +106,12 @@
 		674743931E929A5A00B47671 /* PaginationViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationViewModelTests.swift; sourceTree = "<group>"; };
 		675D24B11E9234BB00E92D1F /* PaginationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationViewModel.swift; sourceTree = "<group>"; };
 		67788F9E1E69661800484DEE /* CGFloat+Pixels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Pixels.swift"; sourceTree = "<group>"; };
+		678A20291E93C1A900787562 /* PaginationTableViewWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationTableViewWrapper.swift; sourceTree = "<group>"; };
 		67B3057A1E8A8727008169CA /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
 		67B3057C1E8A8735008169CA /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		67B3057E1E8A8804008169CA /* LoadFromNibTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadFromNibTests.swift; sourceTree = "<group>"; };
 		67B305831E8A92E8008169CA /* XibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
-		67B856E21E923BE600F54304 /* ResettableCursorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResettableCursorType.swift; sourceTree = "<group>"; };
+		67B856E21E923BE600F54304 /* ResettableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResettableType.swift; sourceTree = "<group>"; };
 		67EF144B1E8BEACB00D6E0DD /* StubCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCursor.swift; sourceTree = "<group>"; };
 		67EF144D1E8BED4E00D6E0DD /* CursorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CursorTests.swift; sourceTree = "<group>"; };
 		78011A631D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DefaultReuseIdentifier.swift"; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				675D24B11E9234BB00E92D1F /* PaginationViewModel.swift */,
+				678A20291E93C1A900787562 /* PaginationTableViewWrapper.swift */,
 			);
 			path = Pagination;
 			sourceTree = "<group>";
@@ -533,7 +536,7 @@
 				783423691DB8D0E100A79643 /* StoryboardProtocol.swift */,
 				78CFEE4F1C5C45E500F50370 /* ViewHeightProtocol.swift */,
 				78CFEE501C5C45E500F50370 /* ViewModelProtocol.swift */,
-				67B856E21E923BE600F54304 /* ResettableCursorType.swift */,
+				67B856E21E923BE600F54304 /* ResettableType.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -886,6 +889,7 @@
 				7873D1511E112B0D001816EB /* Any+Cast.swift in Sources */,
 				78B036431DA4FEC90021D5CC /* CGImage+Transform.swift in Sources */,
 				78011A641D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift in Sources */,
+				678A202A1E93C1A900787562 /* PaginationTableViewWrapper.swift in Sources */,
 				786D78EC1D53C46E006B2CEA /* AlamofireManager+Extensions.swift in Sources */,
 				CAA707D51E2E614E0022D732 /* ModuleConfigurator.swift in Sources */,
 				675D24B21E9234BB00E92D1F /* PaginationViewModel.swift in Sources */,
@@ -925,7 +929,7 @@
 				CAA707D71E2E616D0022D732 /* BaseViewModel.swift in Sources */,
 				E126CBB31DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift in Sources */,
 				78CFEE581C5C45E500F50370 /* StaticViewHeightProtocol.swift in Sources */,
-				67B856E31E923BE600F54304 /* ResettableCursorType.swift in Sources */,
+				67B856E31E923BE600F54304 /* ResettableType.swift in Sources */,
 				787783631CA03CA0001CDC9B /* IndexPath+ImmutableIndexPath.swift in Sources */,
 				78B036471DA5624D0021D5CC /* CGImage+Creation.swift in Sources */,
 				789CC6081DE5835600F789D3 /* CursorType.swift in Sources */,

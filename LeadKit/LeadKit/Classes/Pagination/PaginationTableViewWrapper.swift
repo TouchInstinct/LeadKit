@@ -20,18 +20,34 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
-public protocol ResettableCursorType {
+public protocol PaginationTableViewWrapperDelegate: class {
 
-    init(initialFrom other: Self)
+    associatedtype Cursor: ResettableCursorType
+
+    func paginationWrapper(wrapper: PaginationTableViewWrapper<Cursor, Self>,
+                           didLoad newItems: [Cursor.Element],
+                           itemsBefore: [Cursor.Element])
+
+    func paginationWrapper(wrapper: PaginationTableViewWrapper<Cursor, Self>,
+                           didReload allItems: [Cursor.Element])
 
 }
 
-public extension ResettableCursorType {
+public class PaginationTableViewWrapper<C: ResettableCursorType, D: PaginationTableViewWrapperDelegate>
+where D.Cursor == C {
 
-    func reset() -> Self {
-        return Self(initialFrom: self)
+    private let tableView: UITableView
+
+    private let paginationViewModel: PaginationViewModel<C>
+
+    private weak var delegate: D?
+
+    public init(tableView: UITableView, cursor: C, delegate: D) {
+        self.tableView = tableView
+        self.paginationViewModel = PaginationViewModel(cursor: cursor)
+        self.delegate = delegate
     }
 
 }

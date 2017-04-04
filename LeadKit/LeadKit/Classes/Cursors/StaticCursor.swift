@@ -25,8 +25,6 @@ import RxSwift
 /// Stub cursor implementation for array content type
 public class StaticCursor<Element>: CursorType {
 
-    public typealias LoadResultType = CountableRange<Int>
-
     private let content: [Element]
 
     private let semaphore = DispatchSemaphore(value: 1)
@@ -46,7 +44,7 @@ public class StaticCursor<Element>: CursorType {
         return content[index]
     }
 
-    public func loadNextBatch() -> Observable<LoadResultType> {
+    public func loadNextBatch() -> Observable<[Element]> {
         return Observable.deferred {
             self.semaphore.wait()
 
@@ -58,7 +56,7 @@ public class StaticCursor<Element>: CursorType {
 
             self.exhausted = true
 
-            return Observable.just(0..<self.count)
+            return .just(self.content)
         }
         .do(onNext: { [weak semaphore] _ in
             semaphore?.signal()

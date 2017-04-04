@@ -58,8 +58,8 @@ class CursorTests: XCTestCase {
         let cursorExpectationError = expectation(description: "Fixed page cursor error expectation")
 
         fixedPageCursor.loadNextBatch()
-            .subscribe(onNext: { loadedRange in
-                XCTAssertEqual(fixedPageCursor[loadedRange].count, 15)
+            .subscribe(onNext: { loadedItems in
+                XCTAssertEqual(loadedItems.count, 15)
 
                 cursorExpectation.fulfill()
             })
@@ -89,8 +89,8 @@ class CursorTests: XCTestCase {
         let cursorExpectation = expectation(description: "Fixed page cursor expectation")
 
         fixedPageCursor.loadNextBatch()
-            .subscribe(onNext: { loadedRange in
-                XCTAssertEqual(fixedPageCursor[loadedRange].count, 8)
+            .subscribe(onNext: { loadedItems in
+                XCTAssertEqual(loadedItems.count, 8)
 
                 cursorExpectation.fulfill()
             })
