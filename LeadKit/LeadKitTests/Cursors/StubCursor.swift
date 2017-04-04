@@ -23,7 +23,7 @@
 import LeadKit
 import RxSwift
 
-class StubCursor: CursorType {
+class StubCursor: CursorType, ResettableCursorType {
 
     typealias LoadResultType = CountableRange<Int>
 
@@ -50,6 +50,11 @@ class StubCursor: CursorType {
     init(maxItemsCount: Int = 12, requestDelay: DispatchTimeInterval = .seconds(2)) {
         self.maxItemsCount = maxItemsCount
         self.requestDelay = requestDelay
+    }
+
+    required init(initialFrom other: StubCursor) {
+        self.maxItemsCount = other.maxItemsCount
+        self.requestDelay = other.requestDelay
     }
 
     func loadNextBatch() -> Observable<CountableRange<Int>> {

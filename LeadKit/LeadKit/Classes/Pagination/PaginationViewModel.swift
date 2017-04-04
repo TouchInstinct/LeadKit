@@ -1,0 +1,103 @@
+//
+//  Copyright (c) 2017 Touch Instinct
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the Software), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+//
+
+import RxSwift
+import RxCocoa
+
+public class PaginationViewModel<C: CursorType>
+where C: ResettableCursorType, C.LoadResultType == CountableRange<Int> {
+
+    public indirect enum State {
+
+        case initial
+        case loading // can be after any state
+        case loadingMore // can be after results
+        case results(newItems: [C.Element], after: State) // can be after loading or loadingMore
+        case error(error: Error, after: State) // can be after loading or loadingMore
+        case empty // can be after loading or loadingMore
+        case exhausted // can be after results
+
+    }
+
+    public enum LoadType {
+
+        case reload
+        case next
+
+    }
+
+    private var cursor: C
+
+    private let internalState = Variable<State>(.initial)
+
+    private var currentRequest: Disposable?
+
+    public var state: Driver<State> {
+        return internalState.asDriver()
+    }
+
+    public init(cursor: C) {
+        self.cursor = cursor
+    }
+
+    public func load(_ loadType: LoadType) {
+        switch loadType {
+        case .reload:
+            currentRequest?.dispose()
+            cursor = cursor.reset()
+
+            internalState.value = .loading
+        case .next:
+            if case .exhausted(_) = internalState.value {
+                preconditionFailure("You shouldn't call load(.next) after got .exhausted state!")
+            }
+
+            internalState.value = .loadingMore
+        }
+
+        currentRequest = cursor.loadNextBatch()
+            .subscribe(onNext: { [weak self] loadedRange in
+                self?.onGot(cursorLoadResult: loadedRange)
+            }, onError: { [weak self] error in
+                self?.onGot(error: error)
+            })
+    }
+
+    private func onGot(cursorLoadResult: C.LoadResultType) {
+        let newItems = cursor[cursorLoadResult]
+
+        if newItems.count > 0 {
+            internalState.value = .results(newItems: newItems, after: internalState.value)
+        } else {
+            internalState.value = .empty
+        }
+
+        if cursor.exhausted {
+            internalState.value = .exhausted
+        }
+    }
+
+    private func onGot(error: Error) {
+        internalState.value = .error(error: error, after: internalState.value)
+    }
+
+}
