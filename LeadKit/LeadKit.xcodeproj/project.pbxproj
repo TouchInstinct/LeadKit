@@ -76,6 +76,7 @@
 		CAA707D91E2E61A50022D732 /* ConfigurableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA707D81E2E61A50022D732 /* ConfigurableController.swift */; };
 		CAE698C21E965B47000394B0 /* TableDirector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE698C01E965B47000394B0 /* TableDirector+Extensions.swift */; };
 		CAE698C61E96775F000394B0 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE698C41E96775F000394B0 /* String+Extensions.swift */; };
+		CAE698CB1E967A96000394B0 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE698C91E967A96000394B0 /* UIApplication+Extensions.swift */; };
 		E126CBB31DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126CBB21DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift */; };
 		EF2921A61E165DF400E8F43B /* TimeInterval+DateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2921A51E165DF400E8F43B /* TimeInterval+DateComponents.swift */; };
 		EF5FB5691E0141610030E4BE /* UIView+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5FB5681E0141610030E4BE /* UIView+Rotation.swift */; };
@@ -167,6 +168,7 @@
 		CAA707D81E2E61A50022D732 /* ConfigurableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableController.swift; sourceTree = "<group>"; };
 		CAE698C01E965B47000394B0 /* TableDirector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TableDirector+Extensions.swift"; path = "TableDirector/TableDirector+Extensions.swift"; sourceTree = "<group>"; };
 		CAE698C41E96775F000394B0 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		CAE698C91E967A96000394B0 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIApplication+Extensions.swift"; path = "UIApplication/UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		CC832342120EAD568C9F7FC3 /* Pods-LeadKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKitTests/Pods-LeadKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E126CBB21DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionView+CellRegistration.swift"; path = "UICollectionView/UICollectionView+CellRegistration.swift"; sourceTree = "<group>"; };
 		EF2921A51E165DF400E8F43B /* TimeInterval+DateComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeInterval+DateComponents.swift"; sourceTree = "<group>"; };
@@ -455,7 +457,6 @@
 		78CFEE441C5C45E500F50370 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CAE698BF1E965AE9000394B0 /* TableDirector */,
 				786D78E61D53C355006B2CEA /* Alamofire */,
 				780D23441DA416E80084620D /* CGContext */,
 				67788F9D1E6965F800484DEE /* CGFloat */,
@@ -468,7 +469,9 @@
 				780F56C81E0D76A5004530B6 /* Sequence */,
 				78A0FCC41DC366A10070B5E1 /* StoryboardProtocol */,
 				787783651CA04D14001CDC9B /* String */,
+				CAE698BF1E965AE9000394B0 /* TableDirector */,
 				EF2921A41E16595100E8F43B /* TimeInterval */,
+				CAE698C81E967A69000394B0 /* UIApplication */,
 				E126CBB11DB68D9A00E1B2F8 /* UICollectionView */,
 				78C36F7F1D8021D100E7EBEA /* UIColor */,
 				CA1FE7071E27D79C00968901 /* UIDevice */,
@@ -570,6 +573,14 @@
 				CAE698C01E965B47000394B0 /* TableDirector+Extensions.swift */,
 			);
 			name = TableDirector;
+			sourceTree = "<group>";
+		};
+		CAE698C81E967A69000394B0 /* UIApplication */ = {
+			isa = PBXGroup;
+			children = (
+				CAE698C91E967A96000394B0 /* UIApplication+Extensions.swift */,
+			);
+			name = UIApplication;
 			sourceTree = "<group>";
 		};
 		E126CBB11DB68D9A00E1B2F8 /* UICollectionView */ = {
@@ -861,6 +872,7 @@
 				78B036411DA4D7060021D5CC /* UIImage+Extensions.swift in Sources */,
 				78A0FCC71DC366A10070B5E1 /* StoryboardProtocol+DefaultBundle.swift in Sources */,
 				78753E241DE58A5D006BC0FB /* CursorError.swift in Sources */,
+				CAE698CB1E967A96000394B0 /* UIApplication+Extensions.swift in Sources */,
 				786D78E81D53C378006B2CEA /* AlamofireRequest+Extensions.swift in Sources */,
 				78C36F811D8021DD00E7EBEA /* UIColor+Hex.swift in Sources */,
 				78CFEE5B1C5C45E500F50370 /* ViewModelProtocol.swift in Sources */,
