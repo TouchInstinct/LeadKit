@@ -22,10 +22,10 @@
 
 import TableKit
 
-extension TableDirector {
+public extension TableDirector {
 
     @discardableResult
-    func replace(section: TableSection, atIndex index: Int, reload: Bool = true) -> Self {
+    public func replace(section: TableSection, atIndex index: Int, reload: Bool = true) -> Self {
         if index < sections.count {
             remove(sectionAt: index)
         }
@@ -37,7 +37,7 @@ extension TableDirector {
     }
 
     @discardableResult
-    func reload(sectionAtIndex index: Int, with animation: UITableViewRowAnimation = .none) -> Self {
+    public func reload(sectionAtIndex index: Int, with animation: UITableViewRowAnimation = .none) -> Self {
         let action = { [tableView] in
             if index < tableView?.numberOfSections ?? 0 {
                 tableView?.reloadSections([index], with: animation)
@@ -54,18 +54,18 @@ extension TableDirector {
     }
 
     @discardableResult
-    func replace(withSections sections: [TableSection]) -> Self {
+    public func replace(withSections sections: [TableSection]) -> Self {
         clear().append(sections: sections).reload()
         return self
     }
 
     @discardableResult
-    func replace(withSection section: TableSection) -> Self {
+    public func replace(withSection section: TableSection) -> Self {
         return replace(withSections: [section])
     }
 
     @discardableResult
-    func replace(withRows rows: [Row]) -> Self {
+    public func replace(withRows rows: [Row]) -> Self {
         return replace(withSection: TableSection(rows: rows))
     }
 
