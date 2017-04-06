@@ -38,10 +38,10 @@ open class NetworkService {
 
     /// Let netwrok service automatically show / hide activity indicator
     public func bindActivityIndicator() {
-        return requestCount.asDriver()
-            .map { $0 != 0 }
-            .drive(UIApplication.shared.rx.isNetworkActivityIndicatorVisible)
-            .addDisposableTo(disposeBag)
+//        return requestCount.asDriver()
+//            .map { $0 != 0 }
+//            .drive(UIApplication.shared.rx.isNetworkActivityIndicatorVisible)
+//            .addDisposableTo(disposeBag)
     }
 
     /// Creates new instance of NetworkService with given Alamofire session manager

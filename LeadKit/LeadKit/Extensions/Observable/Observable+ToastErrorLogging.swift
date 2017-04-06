@@ -29,15 +29,15 @@ public extension Observable {
     ///
     /// - Returns: The source sequence with the side-effecting behavior applied.
     func showErrorsInToastInDebugMode() -> Observable<Observable.E> {
-        #if DEBUG
-            return `do`(onError: { (error) in
-                DispatchQueue.main.async {
-                    UIApplication.shared.keyWindow?.makeToast(error.localizedDescription)
-                }
-            })
-        #else
+//        #if DEBUG
+//            return `do`(onError: { (error) in
+//                DispatchQueue.main.async {
+//                    UIApplication.shared.keyWindow?.makeToast(error.localizedDescription)
+//                }
+//            })
+//        #else
             return self
-        #endif
+//        #endif
     }
 
 }
