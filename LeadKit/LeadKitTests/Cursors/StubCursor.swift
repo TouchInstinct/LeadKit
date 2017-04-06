@@ -25,8 +25,6 @@ import RxSwift
 
 class StubCursor: ResettableCursorType {
 
-    typealias LoadResultType = CountableRange<Int>
-
     typealias Element = Post
 
     private var posts: [Post] = []

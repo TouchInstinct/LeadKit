@@ -22,14 +22,14 @@
 
 import UIKit
 import RxSwift
+import UIScrollView_InfiniteScroll
 
 public protocol PaginationTableViewWrapperDelegate: class {
 
     associatedtype Cursor: ResettableCursorType
 
     func paginationWrapper(wrapper: PaginationTableViewWrapper<Cursor, Self>,
-                           didLoad newItems: [Cursor.Element],
-                           itemsBefore: [Cursor.Element])
+                           didLoad newItems: [Cursor.Element])
 
     func paginationWrapper(wrapper: PaginationTableViewWrapper<Cursor, Self>,
                            didReload allItems: [Cursor.Element])
@@ -38,6 +38,8 @@ public protocol PaginationTableViewWrapperDelegate: class {
 
     func errorPlaceholder(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>,
                           forError error: Error) -> UIView
+
+    func loadingIndicator(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>) -> UIView
 
 }
 
@@ -71,6 +73,10 @@ public extension PaginationTableViewWrapperDelegate {
         label.centerYAnchor.constraint(equalTo: placeholder.centerYAnchor).isActive = true
 
         return placeholder
+    }
+
+    func loadingIndicator(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>) -> UIView {
+        return UIActivityIndicatorView(activityIndicatorStyle: .gray)
     }
 
 }
@@ -119,6 +125,15 @@ where D.Cursor == C {
             }
         })
         .addDisposableTo(disposeBag)
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.rx.controlEvent(.valueChanged)
+            .bindNext { [weak self] _ in
+                self?.reload()
+            }
+            .addDisposableTo(disposeBag)
+
+        tableView.support.setRefreshControl(refreshControl)
     }
 
     public func reload() {
@@ -138,7 +153,17 @@ where D.Cursor == C {
     }
 
     private func onResultsState(newItems: [C.Element], afterState: PaginationViewModel<C>.State) {
-        //
+        if case .loading = afterState {
+            delegate?.paginationWrapper(wrapper: self, didReload: newItems)
+
+            tableView.support.refreshControl?.endRefreshing()
+
+            addInfiniteScroll()
+        } else if case .loadingMore = afterState {
+            delegate?.paginationWrapper(wrapper: self, didLoad: newItems)
+
+            tableView.finishInfiniteScroll()
+        }
     }
 
     private func onErrorState(error: Error, afterState: PaginationViewModel<C>.State) {
@@ -150,7 +175,12 @@ where D.Cursor == C {
     }
 
     private func onExhaustedState() {
-        //
+        tableView.removeInfiniteScroll()
     }
 
+    private func addInfiniteScroll() {
+        tableView.addInfiniteScroll { [weak paginationViewModel] _ in
+            paginationViewModel?.load(.next)
+        }
+    }
 }

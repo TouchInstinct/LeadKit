@@ -13,6 +13,8 @@
 		675D24B21E9234BB00E92D1F /* PaginationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675D24B11E9234BB00E92D1F /* PaginationViewModel.swift */; };
 		67788F9F1E69661800484DEE /* CGFloat+Pixels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67788F9E1E69661800484DEE /* CGFloat+Pixels.swift */; };
 		678A202A1E93C1A900787562 /* PaginationTableViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A20291E93C1A900787562 /* PaginationTableViewWrapper.swift */; };
+		679DE4901E9588B6006F25FE /* SupportProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DE48F1E9588B6006F25FE /* SupportProtocol.swift */; };
+		679DE4941E9613ED006F25FE /* UIScrollView+Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DE4931E9613ED006F25FE /* UIScrollView+Support.swift */; };
 		67B3057B1E8A8727008169CA /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67B3057A1E8A8727008169CA /* TestView.xib */; };
 		67B3057D1E8A8735008169CA /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B3057C1E8A8735008169CA /* TestView.swift */; };
 		67B3057F1E8A8804008169CA /* LoadFromNibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B3057E1E8A8804008169CA /* LoadFromNibTests.swift */; };
@@ -107,6 +109,8 @@
 		675D24B11E9234BB00E92D1F /* PaginationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationViewModel.swift; sourceTree = "<group>"; };
 		67788F9E1E69661800484DEE /* CGFloat+Pixels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Pixels.swift"; sourceTree = "<group>"; };
 		678A20291E93C1A900787562 /* PaginationTableViewWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationTableViewWrapper.swift; sourceTree = "<group>"; };
+		679DE48F1E9588B6006F25FE /* SupportProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportProtocol.swift; sourceTree = "<group>"; };
+		679DE4931E9613ED006F25FE /* UIScrollView+Support.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Support.swift"; sourceTree = "<group>"; };
 		67B3057A1E8A8727008169CA /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
 		67B3057C1E8A8735008169CA /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		67B3057E1E8A8804008169CA /* LoadFromNibTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadFromNibTests.swift; sourceTree = "<group>"; };
@@ -233,6 +237,14 @@
 				67788F9E1E69661800484DEE /* CGFloat+Pixels.swift */,
 			);
 			path = CGFloat;
+			sourceTree = "<group>";
+		};
+		679DE4921E9613ED006F25FE /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				679DE4931E9613ED006F25FE /* UIScrollView+Support.swift */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 		67B305791E8A8727008169CA /* Views */ = {
@@ -514,6 +526,7 @@
 				78E59B2C1C786CD500C6BFE9 /* UIView */,
 				78D4B5441DA64D31005B0764 /* UIViewController */,
 				CA6196DE1E9BDB3900C5889F /* UIWindow */,
+				679DE4921E9613ED006F25FE /* Support */,
 				7884DB9A1DC1432B00E52A63 /* UserDefaults */,
 			);
 			path = Extensions;
@@ -537,6 +550,7 @@
 				78CFEE4F1C5C45E500F50370 /* ViewHeightProtocol.swift */,
 				78CFEE501C5C45E500F50370 /* ViewModelProtocol.swift */,
 				67B856E21E923BE600F54304 /* ResettableType.swift */,
+				679DE48F1E9588B6006F25FE /* SupportProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -890,6 +904,7 @@
 				78B036431DA4FEC90021D5CC /* CGImage+Transform.swift in Sources */,
 				78011A641D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift in Sources */,
 				678A202A1E93C1A900787562 /* PaginationTableViewWrapper.swift in Sources */,
+				679DE4901E9588B6006F25FE /* SupportProtocol.swift in Sources */,
 				786D78EC1D53C46E006B2CEA /* AlamofireManager+Extensions.swift in Sources */,
 				CAA707D51E2E614E0022D732 /* ModuleConfigurator.swift in Sources */,
 				675D24B21E9234BB00E92D1F /* PaginationViewModel.swift in Sources */,
@@ -898,6 +913,7 @@
 				CAE698C61E96775F000394B0 /* String+Extensions.swift in Sources */,
 				7873D14F1E1127BC001816EB /* LeadKitError.swift in Sources */,
 				78753E301DE594B4006BC0FB /* MapCursor.swift in Sources */,
+				679DE4941E9613ED006F25FE /* UIScrollView+Support.swift in Sources */,
 				780D23461DA416F80084620D /* CGContext+Initializers.swift in Sources */,
 				95B39A861D9D51250057BD54 /* String+Localization.swift in Sources */,
 				78C36F7E1D801E3E00E7EBEA /* Double+Rounding.swift in Sources */,
