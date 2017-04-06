@@ -74,6 +74,7 @@
 		CAA707D51E2E614E0022D732 /* ModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA707D41E2E614E0022D732 /* ModuleConfigurator.swift */; };
 		CAA707D71E2E616D0022D732 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA707D61E2E616D0022D732 /* BaseViewModel.swift */; };
 		CAA707D91E2E61A50022D732 /* ConfigurableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA707D81E2E61A50022D732 /* ConfigurableController.swift */; };
+		CAE698C21E965B47000394B0 /* TableDirector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE698C01E965B47000394B0 /* TableDirector+Extensions.swift */; };
 		E126CBB31DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126CBB21DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift */; };
 		EF2921A61E165DF400E8F43B /* TimeInterval+DateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2921A51E165DF400E8F43B /* TimeInterval+DateComponents.swift */; };
 		EF5FB5691E0141610030E4BE /* UIView+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5FB5681E0141610030E4BE /* UIView+Rotation.swift */; };
@@ -163,6 +164,7 @@
 		CAA707D41E2E614E0022D732 /* ModuleConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleConfigurator.swift; sourceTree = "<group>"; };
 		CAA707D61E2E616D0022D732 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		CAA707D81E2E61A50022D732 /* ConfigurableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableController.swift; sourceTree = "<group>"; };
+		CAE698C01E965B47000394B0 /* TableDirector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TableDirector+Extensions.swift"; path = "TableDirector/TableDirector+Extensions.swift"; sourceTree = "<group>"; };
 		CC832342120EAD568C9F7FC3 /* Pods-LeadKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKitTests/Pods-LeadKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E126CBB21DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionView+CellRegistration.swift"; path = "UICollectionView/UICollectionView+CellRegistration.swift"; sourceTree = "<group>"; };
 		EF2921A51E165DF400E8F43B /* TimeInterval+DateComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeInterval+DateComponents.swift"; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 		78CFEE441C5C45E500F50370 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CAE698BF1E965AE9000394B0 /* TableDirector */,
 				786D78E61D53C355006B2CEA /* Alamofire */,
 				780D23441DA416E80084620D /* CGContext */,
 				67788F9D1E6965F800484DEE /* CGFloat */,
@@ -556,6 +559,14 @@
 				CA1FE7081E27D7DE00968901 /* UIDevice+Extensions.swift */,
 			);
 			name = UIDevice;
+			sourceTree = "<group>";
+		};
+		CAE698BF1E965AE9000394B0 /* TableDirector */ = {
+			isa = PBXGroup;
+			children = (
+				CAE698C01E965B47000394B0 /* TableDirector+Extensions.swift */,
+			);
+			name = TableDirector;
 			sourceTree = "<group>";
 		};
 		E126CBB11DB68D9A00E1B2F8 /* UICollectionView */ = {
@@ -857,6 +868,7 @@
 				787682FA1CAD40C300532AB3 /* StaticEstimatedViewHeightProtocol.swift in Sources */,
 				CA1FE7091E27D7DE00968901 /* UIDevice+Extensions.swift in Sources */,
 				78A74EA91C6B373700FE9724 /* UIView+DefaultNibName.swift in Sources */,
+				CAE698C21E965B47000394B0 /* TableDirector+Extensions.swift in Sources */,
 				CAA707D91E2E61A50022D732 /* ConfigurableController.swift in Sources */,
 				7884DB9C1DC1439200E52A63 /* UserDefaults+MappableDataTypes.swift in Sources */,
 				CAA707D71E2E616D0022D732 /* BaseViewModel.swift in Sources */,
