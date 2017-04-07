@@ -67,8 +67,8 @@ public extension PaginationTableViewWrapperDelegate {
         -> AnyLoadingIndicator {
 
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-            
+
         return AnyLoadingIndicator(indicator)
     }
-    
+
 }
