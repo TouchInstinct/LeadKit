@@ -30,8 +30,8 @@ public final class PaginationViewModel<C: ResettableCursorType> {
     public indirect enum State {
 
         case initial
-        case loading // can be after any state
-        case loadingMore // can be after results
+        case loading(after: State) // can be after any state
+        case loadingMore(after: State) // can be after error or results
         case results(newItems: [C.Element], after: State) // can be after loading or loadingMore
         case error(error: Error, after: State) // can be after loading or loadingMore
         case empty // can be after loading or loadingMore
@@ -68,13 +68,13 @@ public final class PaginationViewModel<C: ResettableCursorType> {
             currentRequest?.dispose()
             cursor = cursor.reset()
 
-            internalState.value = .loading
+            internalState.value = .loading(after: internalState.value)
         case .next:
             if case .exhausted(_) = internalState.value {
                 preconditionFailure("You shouldn't call load(.next) after got .exhausted state!")
             }
 
-            internalState.value = .loadingMore
+            internalState.value = .loadingMore(after: internalState.value)
         }
 
         currentRequest = cursor.loadNextBatch()
@@ -99,7 +99,16 @@ public final class PaginationViewModel<C: ResettableCursorType> {
     }
 
     private func onGot(error: Error) {
-        internalState.value = .error(error: error, after: internalState.value)
+        if case .exhausted? = error as? CursorError, case .loading(let after) = internalState.value {
+            switch after {
+            case .initial, .empty: // cursor exhausted after creation
+                internalState.value = .empty
+            default:
+                internalState.value = .error(error: error, after: internalState.value)
+            }
+        } else {
+            internalState.value = .error(error: error, after: internalState.value)
+        }
     }
 
 }

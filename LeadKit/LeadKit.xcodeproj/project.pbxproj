@@ -20,6 +20,11 @@
 		67B3057F1E8A8804008169CA /* LoadFromNibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B3057E1E8A8804008169CA /* LoadFromNibTests.swift */; };
 		67B305841E8A92E8008169CA /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B305831E8A92E8008169CA /* XibView.swift */; };
 		67B856E31E923BE600F54304 /* ResettableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B856E21E923BE600F54304 /* ResettableType.swift */; };
+		67DC65041E979B34002F2FFF /* LoadingIndicatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DC65031E979B34002F2FFF /* LoadingIndicatorProtocol.swift */; };
+		67DC65061E979B70002F2FFF /* UIView+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DC65051E979B70002F2FFF /* UIView+LoadingIndicator.swift */; };
+		67DC65091E979BB8002F2FFF /* UIActivityIndicator+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DC65081E979BB8002F2FFF /* UIActivityIndicator+LoadingIndicator.swift */; };
+		67DC650C1E979C0A002F2FFF /* AnyLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DC650B1E979C0A002F2FFF /* AnyLoadingIndicator.swift */; };
+		67DC650F1E979D0C002F2FFF /* PaginationTableViewWrapperDelegate+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DC650E1E979D0C002F2FFF /* PaginationTableViewWrapperDelegate+DefaultImplementation.swift */; };
 		67EF144C1E8BEACB00D6E0DD /* StubCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EF144B1E8BEACB00D6E0DD /* StubCursor.swift */; };
 		67EF144E1E8BED4E00D6E0DD /* CursorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EF144D1E8BED4E00D6E0DD /* CursorTests.swift */; };
 		78011A641D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78011A631D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift */; };
@@ -116,6 +121,11 @@
 		67B3057E1E8A8804008169CA /* LoadFromNibTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadFromNibTests.swift; sourceTree = "<group>"; };
 		67B305831E8A92E8008169CA /* XibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		67B856E21E923BE600F54304 /* ResettableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResettableType.swift; sourceTree = "<group>"; };
+		67DC65031E979B34002F2FFF /* LoadingIndicatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorProtocol.swift; sourceTree = "<group>"; };
+		67DC65051E979B70002F2FFF /* UIView+LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+LoadingIndicator.swift"; sourceTree = "<group>"; };
+		67DC65081E979BB8002F2FFF /* UIActivityIndicator+LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicator+LoadingIndicator.swift"; sourceTree = "<group>"; };
+		67DC650B1E979C0A002F2FFF /* AnyLoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyLoadingIndicator.swift; sourceTree = "<group>"; };
+		67DC650E1E979D0C002F2FFF /* PaginationTableViewWrapperDelegate+DefaultImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PaginationTableViewWrapperDelegate+DefaultImplementation.swift"; sourceTree = "<group>"; };
 		67EF144B1E8BEACB00D6E0DD /* StubCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCursor.swift; sourceTree = "<group>"; };
 		67EF144D1E8BED4E00D6E0DD /* CursorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CursorTests.swift; sourceTree = "<group>"; };
 		78011A631D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DefaultReuseIdentifier.swift"; sourceTree = "<group>"; };
@@ -264,6 +274,30 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		67DC65071E979BA9002F2FFF /* UIActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				67DC65081E979BB8002F2FFF /* UIActivityIndicator+LoadingIndicator.swift */,
+			);
+			path = UIActivityIndicator;
+			sourceTree = "<group>";
+		};
+		67DC650A1E979BFD002F2FFF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				67DC650B1E979C0A002F2FFF /* AnyLoadingIndicator.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		67DC650D1E979CF7002F2FFF /* PaginationTableViewWrapperDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				67DC650E1E979D0C002F2FFF /* PaginationTableViewWrapperDelegate+DefaultImplementation.swift */,
+			);
+			path = PaginationTableViewWrapperDelegate;
+			sourceTree = "<group>";
+		};
 		67EF144A1E8BEA9C00D6E0DD /* Cursors */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +318,7 @@
 		78011AAE1D48B46100EA16A2 /* Structures */ = {
 			isa = PBXGroup;
 			children = (
+				67DC650A1E979BFD002F2FFF /* Views */,
 				78011AB11D48B53600EA16A2 /* Api */,
 			);
 			path = Structures;
@@ -513,11 +548,14 @@
 				787783611CA03C84001CDC9B /* IndexPath */,
 				787D87481E10E19000D6015C /* ObjectMapper */,
 				787609201E1403460093CE36 /* Observable */,
+				67DC650D1E979CF7002F2FFF /* PaginationTableViewWrapperDelegate */,
 				780F56C81E0D76A5004530B6 /* Sequence */,
 				78A0FCC41DC366A10070B5E1 /* StoryboardProtocol */,
 				787783651CA04D14001CDC9B /* String */,
 				CAE698BF1E965AE9000394B0 /* TableDirector */,
+				679DE4921E9613ED006F25FE /* Support */,
 				EF2921A41E16595100E8F43B /* TimeInterval */,
+				67DC65071E979BA9002F2FFF /* UIActivityIndicator */,
 				E126CBB11DB68D9A00E1B2F8 /* UICollectionView */,
 				78C36F7F1D8021D100E7EBEA /* UIColor */,
 				CA1FE7071E27D79C00968901 /* UIDevice */,
@@ -526,7 +564,6 @@
 				78E59B2C1C786CD500C6BFE9 /* UIView */,
 				78D4B5441DA64D31005B0764 /* UIViewController */,
 				CA6196DE1E9BDB3900C5889F /* UIWindow */,
-				679DE4921E9613ED006F25FE /* Support */,
 				7884DB9A1DC1432B00E52A63 /* UserDefaults */,
 			);
 			path = Extensions;
@@ -551,6 +588,7 @@
 				78CFEE501C5C45E500F50370 /* ViewModelProtocol.swift */,
 				67B856E21E923BE600F54304 /* ResettableType.swift */,
 				679DE48F1E9588B6006F25FE /* SupportProtocol.swift */,
+				67DC65031E979B34002F2FFF /* LoadingIndicatorProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -581,6 +619,7 @@
 				78011A631D47ABC500EA16A2 /* UIView+DefaultReuseIdentifier.swift */,
 				78CFEE481C5C45E500F50370 /* UIView+LoadFromNib.swift */,
 				EF5FB5681E0141610030E4BE /* UIView+Rotation.swift */,
+				67DC65051E979B70002F2FFF /* UIView+LoadingIndicator.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -898,6 +937,7 @@
 				78753E2C1DE58BF9006BC0FB /* StaticCursor.swift in Sources */,
 				78D4B54A1DA64EAB005B0764 /* Any+TypeName.swift in Sources */,
 				78CFEE571C5C45E500F50370 /* StaticNibNameProtocol.swift in Sources */,
+				67DC650C1E979C0A002F2FFF /* AnyLoadingIndicator.swift in Sources */,
 				788EC15A1CF64528009CFB6B /* UIStoryboard+InstantiateViewController.swift in Sources */,
 				787783671CA04D4A001CDC9B /* String+SizeCalculation.swift in Sources */,
 				7873D1511E112B0D001816EB /* Any+Cast.swift in Sources */,
@@ -917,6 +957,7 @@
 				780D23461DA416F80084620D /* CGContext+Initializers.swift in Sources */,
 				95B39A861D9D51250057BD54 /* String+Localization.swift in Sources */,
 				78C36F7E1D801E3E00E7EBEA /* Double+Rounding.swift in Sources */,
+				67DC65061E979B70002F2FFF /* UIView+LoadingIndicator.swift in Sources */,
 				787609221E1403830093CE36 /* Observable+DeferredJust.swift in Sources */,
 				67B305841E8A92E8008169CA /* XibView.swift in Sources */,
 				78C54AFD1E432EEF0051EFBA /* UIViewController+TopVisibleViewController.swift in Sources */,
@@ -945,10 +986,13 @@
 				CAA707D71E2E616D0022D732 /* BaseViewModel.swift in Sources */,
 				E126CBB31DB68DDA00E1B2F8 /* UICollectionView+CellRegistration.swift in Sources */,
 				78CFEE581C5C45E500F50370 /* StaticViewHeightProtocol.swift in Sources */,
+				67DC65091E979BB8002F2FFF /* UIActivityIndicator+LoadingIndicator.swift in Sources */,
 				67B856E31E923BE600F54304 /* ResettableType.swift in Sources */,
 				787783631CA03CA0001CDC9B /* IndexPath+ImmutableIndexPath.swift in Sources */,
 				78B036471DA5624D0021D5CC /* CGImage+Creation.swift in Sources */,
 				789CC6081DE5835600F789D3 /* CursorType.swift in Sources */,
+				67DC650F1E979D0C002F2FFF /* PaginationTableViewWrapperDelegate+DefaultImplementation.swift in Sources */,
+				67DC65041E979B34002F2FFF /* LoadingIndicatorProtocol.swift in Sources */,
 				78B0364B1DA61EDE0021D5CC /* CGImage+Crop.swift in Sources */,
 				EDF3DE3F1EA4F2E80016F729 /* UIViewController+XibName.swift in Sources */,
 				78B036451DA561D00021D5CC /* CGImage+Utils.swift in Sources */,
