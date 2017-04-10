@@ -15,4 +15,5 @@ Pod::Spec.new do |s|
   s.dependency "RxAlamofire", '3.0.0'
   s.dependency "ObjectMapper", '~> 2.1'
   s.dependency "Toast-Swift", '~> 2.0.0'
+  s.dependency "TableKit", '~> 2.3.1'
 end
