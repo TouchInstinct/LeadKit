@@ -36,7 +36,7 @@ public extension UIWindow {
      - parameter statusBarStyle: new status bar style
      */
     public func changeRootController(controller: UIViewController,
-                                            statusBarStyle: UIStatusBarStyle) {
+                                     statusBarStyle: UIStatusBarStyle) {
         animateRootViewControllerChanging(controller: controller)
 
         rootViewController?.dismiss(animated: false, completion: nil)
