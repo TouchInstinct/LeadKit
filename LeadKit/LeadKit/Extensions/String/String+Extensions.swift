@@ -22,37 +22,15 @@
 
 import UIKit
 
-/// Class used to instantiate custom view in storyboards
-open class XibView: UIView {
+public extension String {
 
-    /// Nib name used to instantiate inner view
-    open var innerViewNibName: String {
-        return className(of: type(of: self))
-    }
+    /**
+     method returns image with self name
 
-    public convenience init() {
-        self.init(frame: .zero)
-    }
-
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
-
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupView()
-    }
-
-    private func setupView() {
-        let view: UIView = UIView.loadFromNib(named: innerViewNibName, owner: self)
-
-        // Make frame size match the size of the content view in the xib
-        frame = CGRect(origin: frame.origin, size: view.frame.size)
-
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-        addSubview(view)
+     - returns: image
+     */
+    public var image: UIImage? {
+        return UIImage(named: self)
     }
 
 }
