@@ -38,13 +38,14 @@ public extension UIView {
     ///
     /// - Parameters:
     ///   - nibName: nib name
-    ///   - bundle: The bundle in which to search for the nib file.
-    ///             If you specify nil, this method looks for the nib file in the main bundle.
+    ///   - bundle:  The bundle in which to search for the nib file.
+    ///              If you specify nil, this method looks for the nib file in the main bundle.
+    ///   - owner:   current owner
     /// - Returns: UIView or UIView subclass instance
-    public static func loadFromNib<T>(named nibName: String, bundle: Bundle? = nil) -> T {
+    public static func loadFromNib<T>(named nibName: String, bundle: Bundle? = nil, owner: UIView? = nil) -> T {
         let nib = UINib(nibName: nibName, bundle: bundle)
 
-        guard let nibView = nib.instantiate(withOwner: nil, options: nil).first as? T else {
+        guard let nibView = nib.instantiate(withOwner: owner, options: nil).first as? T else {
             fatalError("Can't nstantiate nib view with type \(T.self)")
         }
 

@@ -45,8 +45,7 @@ open class XibView: UIView {
     }
 
     private func setupView() {
-        let bundle = Bundle(for: type(of: self))
-        let view: UIView = UIView.loadFromNib(named: innerViewNibName, bundle: bundle)
+        let view: UIView = UIView.loadFromNib(named: innerViewNibName, owner: self)
 
         // Make frame size match the size of the content view in the xib
         frame = CGRect(origin: frame.origin, size: view.frame.size)
