@@ -22,7 +22,7 @@
 
 import UIKit
 
-public extension UIApplication {
+public extension UIWindow {
 
     /// default scale
     static let snapshotScale: CGFloat = 1.5
@@ -30,46 +30,38 @@ public extension UIApplication {
     static let snapshotAnimationDuration = 0.5
 
     /**
-     static method changes root controller in window and sets status bar style
-     
+     method changes root controller in window and sets status bar style
+
      - parameter controller:     new root controller
      - parameter statusBarStyle: new status bar style
-     - parameter appWindow:      application window
-    */
-    public static func changeRootController(controller: UIViewController,
-                                            statusBarStyle: UIStatusBarStyle,
-                                            appWindow: UIWindow?) {
-        guard let window = appWindow else {
-            return
-        }
+     */
+    public func changeRootController(controller: UIViewController,
+                                            statusBarStyle: UIStatusBarStyle) {
+        animateRootViewControllerChanging(controller: controller)
 
-        animateRootViewControllerChanging(controller: controller, window: window)
-
-        window.rootViewController?.dismiss(animated: false, completion: nil)
-        window.rootViewController = controller
-        window.makeKeyAndVisible()
+        rootViewController?.dismiss(animated: false, completion: nil)
+        rootViewController = controller
+        makeKeyAndVisible()
         UIApplication.shared.statusBarStyle = statusBarStyle
     }
 
     /**
-     static method animates changing root controller
-     
+     method animates changing root controller
+
      - parameter controller: new root controller
-     - parameter window:     current window
-    */
-    private static func animateRootViewControllerChanging(controller: UIViewController,
-                                                          window: UIWindow) {
-        if let snapshot = window.snapshotView(afterScreenUpdates: true) {
+     */
+    private func animateRootViewControllerChanging(controller: UIViewController) {
+        if let snapshot = snapshotView(afterScreenUpdates: true) {
             controller.view.addSubview(snapshot)
-            UIView.animate(withDuration: snapshotAnimationDuration, animations: {
+            UIView.animate(withDuration: UIWindow.snapshotAnimationDuration, animations: {
                 snapshot.layer.opacity = 0.0
-                snapshot.layer.transform = CATransform3DMakeScale(snapshotScale,
-                                                                  snapshotScale,
-                                                                  snapshotScale)
+                snapshot.layer.transform = CATransform3DMakeScale(UIWindow.snapshotScale,
+                                                                  UIWindow.snapshotScale,
+                                                                  UIWindow.snapshotScale)
             }, completion: { _ in
                 snapshot.removeFromSuperview()
             })
         }
     }
-
+    
 }
