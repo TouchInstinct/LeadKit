@@ -29,6 +29,8 @@ public class StaticCursor<Element>: CursorType {
 
     private let content: [Element]
 
+    private let semaphore = DispatchSemaphore(value: 1)
+
     /// Initializer for array content type
     ///
     /// - Parameter content: array with elements of Elemet type
@@ -46,6 +48,8 @@ public class StaticCursor<Element>: CursorType {
 
     public func loadNextBatch() -> Observable<LoadResultType> {
         return Observable.deferred {
+            self.semaphore.wait()
+
             if self.exhausted {
                 throw CursorError.exhausted
             }
@@ -56,6 +60,11 @@ public class StaticCursor<Element>: CursorType {
 
             return Observable.just(0..<self.count)
         }
+        .do(onNext: { [weak semaphore] _ in
+            semaphore?.signal()
+        }, onError: { [weak semaphore] _ in
+            semaphore?.signal()
+        })
     }
 
 }
