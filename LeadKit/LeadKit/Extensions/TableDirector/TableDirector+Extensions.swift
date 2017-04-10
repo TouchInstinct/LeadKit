@@ -56,10 +56,14 @@ public extension TableDirector {
     @discardableResult
     public func reload(sectionAtIndex index: Int, with animation: UITableViewRowAnimation = .none) -> Self {
         let action = { [tableView] in
-            if index < tableView?.numberOfSections ?? 0 {
-                tableView?.reloadSections([index], with: animation)
+            guard let tableView = tableView else {
+                return
+            }
+
+            if index < tableView.numberOfSections {
+                tableView.reloadSections([index], with: animation)
             } else {
-                tableView?.reloadData()
+                tableView.reloadData()
             }
         }
         if animation == .none {
