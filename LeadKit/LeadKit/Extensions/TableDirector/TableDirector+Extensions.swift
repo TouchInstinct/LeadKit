@@ -24,6 +24,15 @@ import TableKit
 
 public extension TableDirector {
 
+    /**
+     method replaces current table director's section at index and reloads it
+     
+     - parameter section: new section
+     - parameter index:   current replaced section index
+     - parameter reload:  is reloaded after replace
+
+     - returns: self
+     */
     @discardableResult
     public func replace(section: TableSection, atIndex index: Int, reload: Bool = true) -> Self {
         if index < sections.count {
@@ -36,6 +45,14 @@ public extension TableDirector {
         return self
     }
 
+    /**
+     method reloads section at index with animation
+     
+     - parameter index:     current reloaded section index
+     - parameter animation: reloading animation. Default .none
+
+     - returns: self
+     */
     @discardableResult
     public func reload(sectionAtIndex index: Int, with animation: UITableViewRowAnimation = .none) -> Self {
         let action = { [tableView] in
@@ -53,17 +70,38 @@ public extension TableDirector {
         return self
     }
 
+    /**
+     method replaces current table director's state with sections
+     
+     - parameter sections: new sections
+
+     - returns: self
+     */
     @discardableResult
     public func replace(withSections sections: [TableSection]) -> Self {
         clear().append(sections: sections).reload()
         return self
     }
 
+    /**
+     method replaces current table director's state with section
+     
+     - parameter section: new section
+
+     - returns: self
+     */
     @discardableResult
     public func replace(withSection section: TableSection) -> Self {
         return replace(withSections: [section])
     }
 
+    /**
+     method replaces current table director's state with rows
+     
+     - parameter rows: new rows
+
+     - returns: self
+     */
     @discardableResult
     public func replace(withRows rows: [Row]) -> Self {
         return replace(withSection: TableSection(rows: rows))

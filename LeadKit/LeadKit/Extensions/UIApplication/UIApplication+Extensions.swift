@@ -24,9 +24,18 @@ import UIKit
 
 public extension UIApplication {
 
+    /// default scale
     static let snapshotScale: CGFloat = 1.5
+    /// default root controller animation duration
     static let snapshotAnimationDuration = 0.5
 
+    /**
+     static method changes root controller in window and sets status bar style
+     
+     - parameter controller:     new root controller
+     - parameter statusBarStyle: new status bar style
+     - parameter appWindow:      application window
+    */
     public static func changeRootController(controller: UIViewController,
                                             statusBarStyle: UIStatusBarStyle,
                                             appWindow: UIWindow?) {
@@ -42,6 +51,12 @@ public extension UIApplication {
         UIApplication.shared.statusBarStyle = statusBarStyle
     }
 
+    /**
+     static method animates changing root controller
+     
+     - parameter controller: new root controller
+     - parameter window:     current window
+    */
     private static func animateRootViewControllerChanging(controller: UIViewController,
                                                           window: UIWindow) {
         if let snapshot = window.snapshotView(afterScreenUpdates: true) {

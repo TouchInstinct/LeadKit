@@ -24,6 +24,11 @@ import UIKit
 
 public extension String {
 
+    /**
+     method returns image with self name
+
+     - returns: image
+     */
     public var image: UIImage? {
         return UIImage(named: self)
     }
