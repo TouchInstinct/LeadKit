@@ -23,22 +23,44 @@
 import RxSwift
 import RxCocoa
 
+/// Cursor type which can be resetted
 public typealias ResettableCursorType = CursorType & ResettableType
 
+/// Class that encapsulate all pagination logic
 public final class PaginationViewModel<C: ResettableCursorType> {
 
+    /// Enum contains all possible states for PaginationViewModel class.
+    ///
+    /// - initial: initial state of view model.
+    /// Can occur only once after initial binding.
+    /// - loading: loading state of view model. Contains previous state of view model.
+    /// Can occur after any state.
+    /// - loadingMore: loading more items state of view model. Contains previous state of view model.
+    /// Can occur after error or results state.
+    /// - results: results state of view model. Contains loaded items and previous state of view model.
+    /// Can occur after loading or loadingMore state.
+    /// - error: error state of view model. Contains received error and previous state of view model.
+    /// Can occur after loading or loadingMore state.
+    /// - empty: empty state of view model.
+    /// Can occur after loading or loadingMore state when we got empty result (zero items).
+    /// - exhausted: exhausted state of view model.
+    /// Can occur after results state or after initial->loading state when cursor reports that it's exhausted.
     public indirect enum State {
 
         case initial
-        case loading(after: State) // can be after any state
-        case loadingMore(after: State) // can be after error or results
-        case results(newItems: [C.Element], after: State) // can be after loading or loadingMore
-        case error(error: Error, after: State) // can be after loading or loadingMore
-        case empty // can be after loading or loadingMore
-        case exhausted // can be after results
+        case loading(after: State)
+        case loadingMore(after: State)
+        case results(newItems: [C.Element], after: State)
+        case error(error: Error, after: State)
+        case empty
+        case exhausted
 
     }
 
+    /// Enum represents possible load types for PaginationViewModel class
+    ///
+    /// - reload: reload all items and reset cursor to initial state.
+    /// - next: load next batch of items.
     public enum LoadType {
 
         case reload
@@ -54,14 +76,21 @@ public final class PaginationViewModel<C: ResettableCursorType> {
 
     private let internalScheduler = SerialDispatchQueueScheduler(qos: .default)
 
+    /// Current PaginationViewModel state Driver
     public var state: Driver<State> {
         return internalState.asDriver()
     }
 
+    /// Initializer with enclosed cursor
+    ///
+    /// - Parameter cursor: cursor to use for pagination
     public init(cursor: C) {
         self.cursor = cursor
     }
 
+    /// Mathod which triggers loading of items.
+    ///
+    /// - Parameter loadType: type of loading. See LoadType enum.
     public func load(_ loadType: LoadType) {
         switch loadType {
         case .reload:
@@ -71,7 +100,7 @@ public final class PaginationViewModel<C: ResettableCursorType> {
             internalState.value = .loading(after: internalState.value)
         case .next:
             if case .exhausted(_) = internalState.value {
-                preconditionFailure("You shouldn't call load(.next) after got .exhausted state!")
+                fatalError("You shouldn't call load(.next) after got .exhausted state!")
             }
 
             internalState.value = .loadingMore(after: internalState.value)

@@ -22,14 +22,21 @@
 
 import Foundation
 
+/// Protocol that ensures that specific type can init new resetted instance from another instance.
 public protocol ResettableType {
 
+    /// Initializer with other instance parameter.
+    ///
+    /// - Parameter other: Other instance of specific type.
     init(initialFrom other: Self)
 
 }
 
 public extension ResettableType {
 
+    /// Method that creates new resseted instance of self
+    ///
+    /// - Returns: resseted instance of self
     func reset() -> Self {
         return Self(initialFrom: self)
     }

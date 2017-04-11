@@ -24,57 +24,81 @@ import UIKit
 import RxSwift
 import UIScrollView_InfiniteScroll
 
+/// PaginationTableViewWrapper delegate used for pagination results handling and
+/// customization of bound states (loading, empty, error, etc.).
 public protocol PaginationTableViewWrapperDelegate: class {
 
     associatedtype Cursor: ResettableCursorType
 
+    /// Delegate method that handles loading new chunk of data.
+    ///
+    /// - Parameters:
+    ///   - wrapper: Wrapper object that loaded new items.
+    ///   - newItems: New items.
     func paginationWrapper(wrapper: PaginationTableViewWrapper<Cursor, Self>,
                            didLoad newItems: [Cursor.Element])
 
+    /// Delegate method that handles reloading or initial loading of data.
+    ///
+    /// - Parameters:
+    ///   - wrapper: Wrapper object that reload items.
+    ///   - allItems: New items.
     func paginationWrapper(wrapper: PaginationTableViewWrapper<Cursor, Self>,
                            didReload allItems: [Cursor.Element])
 
+    /// Delegate method that returns placeholder view for empty state.
+    ///
+    /// - Parameter wrapper: Wrapper object that requests empty placeholder view.
+    /// - Returns: Configured instace of UIView.
     func emptyPlaceholder(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>) -> UIView
 
+    /// Delegate method that returns placeholder view for error state.
+    ///
+    /// - Parameters:
+    ///   - wrapper: Wrapper object that requests error placeholder view.
+    ///   - error: Error that occured due data loading.
+    /// - Returns: Configured instace of UIView.
     func errorPlaceholder(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>,
                           forError error: Error) -> UIView
 
+    /// Delegate method that returns loading idicator for initial loading state.
+    /// This indicator will appear at center of the placeholders container.
+    ///
+    /// - Parameter wrapper: Wrapper object that requests loading indicator
+    /// - Returns: Configured instace of AnyLoadingIndicator.
     func initialLoadingIndicator(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>) -> AnyLoadingIndicator
 
+    /// Delegate method that returns loading idicator for initial loading state.
+    ///
+    /// - Parameter wrapper: Wrapper object that requests loading indicator.
+    /// - Returns: Configured instace of AnyLoadingIndicator.
     func loadingMoreIndicator(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>) -> AnyLoadingIndicator
+
+    /// Delegate method that returns instance of UIButton for "retry load more" action.
+    ///
+    /// - Parameter wrapper: Wrapper object that requests button for "retry load more" action.
+    /// - Returns: Configured instace of AnyLoadingIndicator.
+    func retryLoadMoreButton(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>) -> UIButton
+
+    /// Delegate method that returns preferred height for "retry load more" button.
+    ///
+    /// - Parameter wrapper: Wrapper object that requests height "retry load more" button.
+    /// - Returns: Preferred height of "retry load more" button.
+    func retryLoadMoreButtonHeight(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>) -> CGFloat
 
 }
 
-public class PaginationTableViewWrapper<C: ResettableCursorType, D: PaginationTableViewWrapperDelegate>
+/// Class that connects PaginationViewModel with UITableView. It handles all non-visual and visual states.
+final public class PaginationTableViewWrapper<C: ResettableCursorType, D: PaginationTableViewWrapperDelegate>
 where D.Cursor == C {
-
-    public typealias PlaceholderTransform = (UIView, CGPoint) -> Void
 
     private let tableView: UITableView
     private let placeholdersContainerView: UIView
     private let paginationViewModel: PaginationViewModel<C>
     private weak var delegate: D?
 
-    public var placeholderTransformOnScroll: PlaceholderTransform = { view, offset in
-        var newFrame = view.frame
-        newFrame.origin.y = -offset.y
-
-        view.frame = newFrame
-    }
-
-    public var scrollObservable: Observable<CGPoint>? {
-        didSet {
-            scrollObservable?.subscribe(onNext: { [weak self] offset in
-                guard let placeholder = self?.currentPlaceholderView else {
-                    return
-                }
-
-                self?.placeholderTransformOnScroll(placeholder, offset)
-            })
-            .addDisposableTo(disposeBag)
-        }
-    }
-
+    /// Sets the offset between the real end of the scroll view content and the scroll position,
+    /// so the handler can be triggered before reaching end. Defaults to 0.0;
     public var infiniteScrollTriggerOffset: CGFloat {
         get {
             return tableView.infiniteScrollTriggerOffset
@@ -89,45 +113,50 @@ where D.Cursor == C {
 
     private var currentPlaceholderView: UIView?
 
+    private let applicationCurrentyActive = Variable<Bool>(false)
+
+    private var waitingOperations: [() -> Void] = []
+
+    /// Initializer with table view, placeholders container view, cusor and delegate parameters.
+    ///
+    /// - Parameters:
+    ///   - tableView: UITableView instance to work with.
+    ///   - placeholdersContainer: UIView container to be used for placeholders.
+    ///   - cursor: Cursor object that acts as data source.
+    ///   - delegate: Delegate object for data loading events handling and UI customization.
     public init(tableView: UITableView, placeholdersContainer: UIView, cursor: C, delegate: D) {
         self.tableView = tableView
         self.placeholdersContainerView = placeholdersContainer
         self.paginationViewModel = PaginationViewModel(cursor: cursor)
         self.delegate = delegate
 
-        paginationViewModel.state.drive(onNext: { [weak self] state in
-            print(state)
-            switch state {
-            case .initial:
-                self?.onInitialState()
-            case .loading(let after):
-                self?.onLoadingState(afterState: after)
-            case .loadingMore(let after):
-                self?.onLoadingMoreState(afterState: after)
-            case .results(let newItems, let after):
-                self?.onResultsState(newItems: newItems, afterState: after)
-            case .error(let error, let after):
-                self?.onErrorState(error: error, afterState: after)
-            case .empty:
-                self?.onEmptyState()
-            case .exhausted:
-                self?.onExhaustedState()
-            }
-        })
-        .addDisposableTo(disposeBag)
+        bindViewModelStates()
 
-        let refreshControl = UIRefreshControl()
-        refreshControl.rx.controlEvent(.valueChanged)
-            .bindNext { [weak self] in
-                self?.reload()
-            }
-            .addDisposableTo(disposeBag)
+        createRefreshControl()
 
-        tableView.support.setRefreshControl(refreshControl)
+        bindAppStateNotifications()
     }
 
+    /// Method that reload all data in internal view model.
     public func reload() {
         paginationViewModel.load(.reload)
+    }
+
+    /// Method that enables placeholders animation due pull-to-refresh interaction.
+    ///
+    /// - Parameter scrollObservable: Observable that emits content offset as CGPoint.
+    public func setScrollObservable(_ scrollObservable: Observable<CGPoint>) {
+        scrollObservable.subscribe(onNext: { [weak self] offset in
+            guard let placeholder = self?.currentPlaceholderView else {
+                return
+            }
+
+            var newFrame = placeholder.frame
+            newFrame.origin.y = -offset.y
+
+            placeholder.frame = newFrame
+        })
+        .addDisposableTo(disposeBag)
     }
 
     // MARK: States handling
@@ -165,7 +194,7 @@ where D.Cursor == C {
     }
 
     private func onLoadingMoreState(afterState: PaginationViewModel<C>.State) {
-        if case .error = afterState {
+        if case .error = afterState { // user tap retry button in table footer
             tableView.tableFooterView = nil
             addInfiniteScroll()
             tableView.beginInfiniteScroll(true)
@@ -206,10 +235,13 @@ where D.Cursor == C {
 
             tableView.removeInfiniteScroll()
 
-            let retryButton = UIButton(type: .custom)
-            retryButton.backgroundColor = .lightGray
-            retryButton.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44)
-            retryButton.setTitle("Retry load more", for: .normal)
+            guard let retryButton = delegate?.retryLoadMoreButton(forPaginationWrapper: self),
+                let retryButtonHeigth = delegate?.retryLoadMoreButtonHeight(forPaginationWrapper: self) else {
+                    return
+            }
+
+            retryButton.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: retryButtonHeigth)
+
             retryButton.rx.controlEvent(.touchUpInside)
                 .bindNext { [weak self] in
                     self?.paginationViewModel.load(.next)
@@ -246,6 +278,51 @@ where D.Cursor == C {
         tableView.infiniteScrollIndicatorView = delegate?.loadingMoreIndicator(forPaginationWrapper: self).view
     }
 
+    private func createRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.rx.controlEvent(.valueChanged)
+            .bindNext { [weak self] in
+                self?.reload()
+            }
+            .addDisposableTo(disposeBag)
+
+        tableView.support.setRefreshControl(refreshControl)
+    }
+
+    private func bindViewModelStates() {
+        paginationViewModel.state.drive(onNext: { [weak self] state in
+            let stateHandling = { [weak self] in
+                switch state {
+                case .initial:
+                    self?.onInitialState()
+                case .loading(let after):
+                    self?.onLoadingState(afterState: after)
+                case .loadingMore(let after):
+                    self?.onLoadingMoreState(afterState: after)
+                case .results(let newItems, let after):
+                    self?.onResultsState(newItems: newItems, afterState: after)
+                case .error(let error, let after):
+                    self?.onErrorState(error: error, afterState: after)
+                case .empty:
+                    self?.onEmptyState()
+                case .exhausted:
+                    self?.onExhaustedState()
+                }
+            }
+
+            guard let strongSelf = self else {
+                return
+            }
+
+            if strongSelf.applicationCurrentyActive.value {
+                stateHandling()
+            } else {
+                strongSelf.waitingOperations.append(stateHandling)
+            }
+        })
+        .addDisposableTo(disposeBag)
+    }
+
     private func enterPlaceholderState() {
         tableView.support.refreshControl?.endRefreshing()
         tableView.isUserInteractionEnabled = true
@@ -260,6 +337,32 @@ where D.Cursor == C {
 
         placeholderView.anchorConstrainst(to: placeholdersContainerView).forEach { $0.isActive = true }
     }
+
+    private func bindAppStateNotifications() {
+        let notificationCenter = NotificationCenter.default.rx
+
+        notificationCenter.notification(.UIApplicationWillResignActive)
+            .subscribe(onNext: { [weak self] _ in
+                self?.applicationCurrentyActive.value = false
+            })
+            .addDisposableTo(disposeBag)
+
+        notificationCenter.notification(.UIApplicationDidBecomeActive)
+            .subscribe(onNext: { [weak self] _ in
+                self?.applicationCurrentyActive.value = true
+            })
+            .addDisposableTo(disposeBag)
+
+        applicationCurrentyActive.asDriver()
+            .drive(onNext: { [weak self] appActive in
+                if appActive {
+                    self?.waitingOperations.forEach { $0() }
+                    self?.waitingOperations = []
+                }
+            })
+            .addDisposableTo(disposeBag)
+    }
+
 }
 
 private extension UIView {

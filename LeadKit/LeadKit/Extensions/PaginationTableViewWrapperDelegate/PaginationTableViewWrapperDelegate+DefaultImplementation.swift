@@ -71,4 +71,16 @@ public extension PaginationTableViewWrapperDelegate {
         return AnyLoadingIndicator(indicator)
     }
 
+    func retryLoadMoreButton(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>) -> UIButton {
+        let retryButton = UIButton(type: .custom)
+        retryButton.backgroundColor = .lightGray
+        retryButton.setTitle("Retry load more", for: .normal)
+
+        return retryButton
+    }
+
+    func retryLoadMoreButtonHeight(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>) -> CGFloat {
+        return 44
+    }
+
 }

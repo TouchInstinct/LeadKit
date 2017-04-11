@@ -22,17 +22,23 @@
 
 import UIKit
 
+/// Protocol that ensures that specific type support basic animation actions.
 public protocol Animatable {
 
+    /// Method that starts animation.
     func startAnimating()
+    /// Method that stops animation.
     func stopAnimating()
 
 }
 
+/// Protocol that describes badic loading indicator.
 public protocol LoadingIndicator {
 
+    /// Type of view. Should be instance of UIView with basic animation actions.
     associatedtype View: UIView, Animatable
 
+    /// The underlying view.
     var view: View { get }
 
 }
