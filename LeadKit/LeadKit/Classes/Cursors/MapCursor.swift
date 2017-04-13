@@ -27,9 +27,19 @@ public extension CursorType {
     /// Creates MapCursor with current cursor
     ///
     /// - Parameter transform: closure to transform elements
-    /// - Returns: new MapCursorInstance
+    /// - Returns: new MapCursor instance
     func flatMap<T>(transform: @escaping MapCursor<Self, T>.Transform) -> MapCursor<Self, T> {
         return MapCursor(cursor: self, transform: transform)
+    }
+
+    /// Creates ResettableMapCursor with current cursor
+    ///
+    /// - Parameter transform: closure to transform elements
+    /// - Returns: new ResettableMapCursor instance
+    func flatMap<T>(transform: @escaping ResettableMapCursor<Self, T>.Transform)
+        -> ResettableMapCursor<Self, T> where Self: ResettableCursorType {
+
+        return ResettableMapCursor(cursor: self, transform: transform)
     }
 
 }
@@ -39,9 +49,9 @@ public class MapCursor<Cursor: CursorType, T>: CursorType {
 
     public typealias Transform = (Cursor.Element) -> T?
 
-    private let cursor: Cursor
+    fileprivate let cursor: Cursor
 
-    private let transform: Transform
+    fileprivate let transform: Transform
 
     private var elements: [T] = []
 
@@ -85,6 +95,18 @@ public class MapCursor<Cursor: CursorType, T>: CursorType {
         }, onError: { [weak semaphore] _ in
             semaphore?.signal()
         })
+    }
+
+}
+
+public class ResettableMapCursor<Cursor: ResettableCursorType, T>: MapCursor<Cursor, T>, ResettableType {
+
+    public override init(cursor: Cursor, transform: @escaping Transform) {
+        super.init(cursor: cursor, transform: transform)
+    }
+
+    public required init(initialFrom other: ResettableMapCursor) {
+        super.init(cursor: other.cursor, transform: other.transform)
     }
 
 }

@@ -37,7 +37,7 @@ public final class PaginationViewModel<C: ResettableCursorType> {
     /// Can occur after any state.
     /// - loadingMore: loading more items state of view model. Contains previous state of view model.
     /// Can occur after error or results state.
-    /// - results: results state of view model. Contains loaded items and previous state of view model.
+    /// - results: results state of view model. Contains loaded items, cursor and previous state of view model.
     /// Can occur after loading or loadingMore state.
     /// - error: error state of view model. Contains received error and previous state of view model.
     /// Can occur after loading or loadingMore state.
@@ -50,7 +50,7 @@ public final class PaginationViewModel<C: ResettableCursorType> {
         case initial
         case loading(after: State)
         case loadingMore(after: State)
-        case results(newItems: [C.Element], after: State)
+        case results(newItems: [C.Element], inCursor: C, after: State)
         case error(error: Error, after: State)
         case empty
         case exhausted
@@ -106,21 +106,19 @@ public final class PaginationViewModel<C: ResettableCursorType> {
             internalState.value = .loadingMore(after: internalState.value)
         }
 
-        currentRequest = cursor.loadNextBatch()
+        let currentCursor = cursor
+
+        currentRequest = currentCursor.loadNextBatch()
             .subscribeOn(internalScheduler)
             .subscribe(onNext: { [weak self] newItems in
-                self?.onGot(newItems: newItems)
+                self?.onGot(newItems: newItems, using: currentCursor)
             }, onError: { [weak self] error in
                 self?.onGot(error: error)
             })
     }
 
-    private func onGot(newItems: [C.Element]) {
-        if newItems.count > 0 {
-            internalState.value = .results(newItems: newItems, after: internalState.value)
-        } else {
-            internalState.value = .empty
-        }
+    private func onGot(newItems: [C.Element], using cursor: C) {
+        internalState.value = .results(newItems: newItems, inCursor: cursor, after: internalState.value)
 
         if cursor.exhausted {
             internalState.value = .exhausted

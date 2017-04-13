@@ -35,16 +35,20 @@ public protocol PaginationTableViewWrapperDelegate: class {
     /// - Parameters:
     ///   - wrapper: Wrapper object that loaded new items.
     ///   - newItems: New items.
+    ///   - cursor: Cursor used to load items
     func paginationWrapper(wrapper: PaginationTableViewWrapper<Cursor, Self>,
-                           didLoad newItems: [Cursor.Element])
+                           didLoad newItems: [Cursor.Element],
+                           usingCursor cursor: Cursor)
 
     /// Delegate method that handles reloading or initial loading of data.
     ///
     /// - Parameters:
     ///   - wrapper: Wrapper object that reload items.
     ///   - allItems: New items.
+    ///   - cursor: Cursor used to load items
     func paginationWrapper(wrapper: PaginationTableViewWrapper<Cursor, Self>,
-                           didReload allItems: [Cursor.Element])
+                           didReload allItems: [Cursor.Element],
+                           usingCursor cursor: Cursor)
 
     /// Delegate method that returns placeholder view for empty state.
     ///
@@ -113,7 +117,7 @@ where D.Cursor == C {
 
     private var currentPlaceholderView: UIView?
 
-    private let applicationCurrentyActive = Variable<Bool>(false)
+    private let applicationCurrentyActive = Variable<Bool>(true)
 
     private var waitingOperations: [() -> Void] = []
 
@@ -201,11 +205,11 @@ where D.Cursor == C {
         }
     }
 
-    private func onResultsState(newItems: [C.Element], afterState: PaginationViewModel<C>.State) {
+    private func onResultsState(newItems: [C.Element], inCursor cursor: C, afterState: PaginationViewModel<C>.State) {
         tableView.isUserInteractionEnabled = true
 
         if case .loading = afterState {
-            delegate?.paginationWrapper(wrapper: self, didReload: newItems)
+            delegate?.paginationWrapper(wrapper: self, didReload: newItems, usingCursor: cursor)
 
             currentPlaceholderView?.removeFromSuperview()
 
@@ -213,7 +217,7 @@ where D.Cursor == C {
 
             addInfiniteScroll()
         } else if case .loadingMore = afterState {
-            delegate?.paginationWrapper(wrapper: self, didLoad: newItems)
+            delegate?.paginationWrapper(wrapper: self, didLoad: newItems, usingCursor: cursor)
 
             tableView.finishInfiniteScroll()
         }
@@ -299,8 +303,8 @@ where D.Cursor == C {
                     self?.onLoadingState(afterState: after)
                 case .loadingMore(let after):
                     self?.onLoadingMoreState(afterState: after)
-                case .results(let newItems, let after):
-                    self?.onResultsState(newItems: newItems, afterState: after)
+                case .results(let newItems, let cursor, let after):
+                    self?.onResultsState(newItems: newItems, inCursor: cursor, afterState: after)
                 case .error(let error, let after):
                     self?.onErrorState(error: error, afterState: after)
                 case .empty:
@@ -335,7 +339,7 @@ where D.Cursor == C {
 
         placeholdersContainerView.insertSubview(placeholderView, belowSubview: tableView)
 
-        placeholderView.anchorConstrainst(to: placeholdersContainerView).forEach { $0.isActive = true }
+        placeholdersContainerView.addConstraints(placeholderView.anchorConstrainst(to: placeholdersContainerView))
     }
 
     private func bindAppStateNotifications() {
