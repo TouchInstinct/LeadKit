@@ -336,6 +336,7 @@ where D.Cursor == C {
 
     private func preparePlaceholderView(_ placeholderView: UIView) {
         placeholderView.translatesAutoresizingMaskIntoConstraints = false
+        placeholderView.isHidden = false
 
         placeholdersContainerView.insertSubview(placeholderView, belowSubview: tableView)
 
