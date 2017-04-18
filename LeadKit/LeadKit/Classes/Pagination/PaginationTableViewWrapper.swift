@@ -93,13 +93,12 @@ public protocol PaginationTableViewWrapperDelegate: class {
 }
 
 /// Class that connects PaginationViewModel with UITableView. It handles all non-visual and visual states.
-final public class PaginationTableViewWrapper<C: ResettableCursorType, D: PaginationTableViewWrapperDelegate>
-where D.Cursor == C {
+final public class PaginationTableViewWrapper<Cursor: ResettableCursorType, Delegate: PaginationTableViewWrapperDelegate>
+where Delegate.Cursor == Cursor {
 
     private let tableView: UITableView
-    private let placeholdersContainerView: UIView
-    private let paginationViewModel: PaginationViewModel<C>
-    private weak var delegate: D?
+    private let paginationViewModel: PaginationViewModel<Cursor>
+    private weak var delegate: Delegate?
 
     /// Sets the offset between the real end of the scroll view content and the scroll position,
     /// so the handler can be triggered before reaching end. Defaults to 0.0;
@@ -107,7 +106,6 @@ where D.Cursor == C {
         get {
             return tableView.infiniteScrollTriggerOffset
         }
-
         set {
             tableView.infiniteScrollTriggerOffset = newValue
         }
@@ -116,6 +114,7 @@ where D.Cursor == C {
     private let disposeBag = DisposeBag()
 
     private var currentPlaceholderView: UIView?
+    private var currentPlaceholderViewTopConstraint: NSLayoutConstraint?
 
     private let applicationCurrentyActive = Variable<Bool>(true)
 
@@ -125,12 +124,10 @@ where D.Cursor == C {
     ///
     /// - Parameters:
     ///   - tableView: UITableView instance to work with.
-    ///   - placeholdersContainer: UIView container to be used for placeholders.
     ///   - cursor: Cursor object that acts as data source.
     ///   - delegate: Delegate object for data loading events handling and UI customization.
-    public init(tableView: UITableView, placeholdersContainer: UIView, cursor: C, delegate: D) {
+    public init(tableView: UITableView, cursor: Cursor, delegate: Delegate) {
         self.tableView = tableView
-        self.placeholdersContainerView = placeholdersContainer
         self.paginationViewModel = PaginationViewModel(cursor: cursor)
         self.delegate = delegate
 
@@ -151,14 +148,7 @@ where D.Cursor == C {
     /// - Parameter scrollObservable: Observable that emits content offset as CGPoint.
     public func setScrollObservable(_ scrollObservable: Observable<CGPoint>) {
         scrollObservable.subscribe(onNext: { [weak self] offset in
-            guard let placeholder = self?.currentPlaceholderView else {
-                return
-            }
-
-            var newFrame = placeholder.frame
-            newFrame.origin.y = -offset.y
-
-            placeholder.frame = newFrame
+            self?.currentPlaceholderViewTopConstraint?.constant = -offset.y
         })
         .addDisposableTo(disposeBag)
     }
@@ -169,11 +159,11 @@ where D.Cursor == C {
         //
     }
 
-    private func onLoadingState(afterState: PaginationViewModel<C>.State) {
+    private func onLoadingState(afterState: PaginationViewModel<Cursor>.State) {
         if case .initial = afterState {
             tableView.isUserInteractionEnabled = false
 
-            currentPlaceholderView?.removeFromSuperview()
+            removeCurrentPlaceholderView()
 
             guard let loadingIndicator = delegate?.initialLoadingIndicator(forPaginationWrapper: self) else {
                 return
@@ -181,12 +171,9 @@ where D.Cursor == C {
 
             let loadingIndicatorView = loadingIndicator.view
 
-            loadingIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+            loadingIndicatorView.translatesAutoresizingMaskIntoConstraints = true
 
-            placeholdersContainerView.insertSubview(loadingIndicatorView, aboveSubview: tableView)
-
-            loadingIndicatorView.centerXAnchor.constraint(equalTo: placeholdersContainerView.centerXAnchor).isActive = true
-            loadingIndicatorView.centerYAnchor.constraint(equalTo: placeholdersContainerView.centerYAnchor).isActive = true
+            tableView.backgroundView = loadingIndicatorView
 
             loadingIndicator.startAnimating()
 
@@ -197,7 +184,7 @@ where D.Cursor == C {
         }
     }
 
-    private func onLoadingMoreState(afterState: PaginationViewModel<C>.State) {
+    private func onLoadingMoreState(afterState: PaginationViewModel<Cursor>.State) {
         if case .error = afterState { // user tap retry button in table footer
             tableView.tableFooterView = nil
             addInfiniteScroll()
@@ -205,13 +192,13 @@ where D.Cursor == C {
         }
     }
 
-    private func onResultsState(newItems: [C.Element], inCursor cursor: C, afterState: PaginationViewModel<C>.State) {
+    private func onResultsState(newItems: [Cursor.Element], inCursor cursor: Cursor, afterState: PaginationViewModel<Cursor>.State) {
         tableView.isUserInteractionEnabled = true
 
         if case .loading = afterState {
             delegate?.paginationWrapper(wrapper: self, didReload: newItems, usingCursor: cursor)
 
-            currentPlaceholderView?.removeFromSuperview()
+            removeCurrentPlaceholderView()
 
             tableView.support.refreshControl?.endRefreshing()
 
@@ -223,7 +210,7 @@ where D.Cursor == C {
         }
     }
 
-    private func onErrorState(error: Error, afterState: PaginationViewModel<C>.State) {
+    private func onErrorState(error: Error, afterState: PaginationViewModel<Cursor>.State) {
         if case .loading = afterState {
             enterPlaceholderState()
 
@@ -331,16 +318,31 @@ where D.Cursor == C {
         tableView.support.refreshControl?.endRefreshing()
         tableView.isUserInteractionEnabled = true
 
-        currentPlaceholderView?.removeFromSuperview()
+        removeCurrentPlaceholderView()
     }
 
     private func preparePlaceholderView(_ placeholderView: UIView) {
         placeholderView.translatesAutoresizingMaskIntoConstraints = false
         placeholderView.isHidden = false
 
-        placeholdersContainerView.insertSubview(placeholderView, belowSubview: tableView)
+        // I was unable to add pull-to-refresh placeholder scroll behaviour without this trick
+        let wrapperView = UIView()
+        wrapperView.addSubview(placeholderView)
 
-        placeholdersContainerView.addConstraints(placeholderView.anchorConstrainst(to: placeholdersContainerView))
+        let leadingConstraint = placeholderView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor)
+        let trailingConstraint = placeholderView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor)
+        let topConstraint = placeholderView.topAnchor.constraint(equalTo: wrapperView.topAnchor)
+        let bottomConstraint = placeholderView.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor)
+
+        wrapperView.addConstraints([leadingConstraint, trailingConstraint, topConstraint, bottomConstraint])
+
+        currentPlaceholderViewTopConstraint = topConstraint
+
+        tableView.backgroundView = wrapperView
+    }
+
+    private func removeCurrentPlaceholderView() {
+        tableView.backgroundView = nil
     }
 
     private func bindAppStateNotifications() {
@@ -366,19 +368,6 @@ where D.Cursor == C {
                 }
             })
             .addDisposableTo(disposeBag)
-    }
-
-}
-
-private extension UIView {
-
-    func anchorConstrainst(to view: UIView) -> [NSLayoutConstraint] {
-        return [
-            leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topAnchor.constraint(equalTo: view.topAnchor),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ]
     }
 
 }
