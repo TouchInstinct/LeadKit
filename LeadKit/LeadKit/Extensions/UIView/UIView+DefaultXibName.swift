@@ -22,14 +22,14 @@
 
 import UIKit
 
-extension UIView: StaticNibNameProtocol {
+extension UIView: XibNameProtocol {
 
     /**
      default implementation of StaticNibNameProtocol
 
      - returns: class name string
      */
-    open class var nibName: String {
+    open class var xibName: String {
         return className(of: self)
     }
 
