@@ -24,11 +24,6 @@ import UIKit
 
 extension UIView: XibNameProtocol {
 
-    /**
-     default implementation of StaticNibNameProtocol
-
-     - returns: class name string
-     */
     open class var xibName: String {
         return className(of: self)
     }

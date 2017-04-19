@@ -22,13 +22,8 @@
 
 import UIKit
 
-extension UIViewController {
+extension UIViewController: XibNameProtocol {
 
-    /**
-     Name of related xib
-
-     - returns: type name string
-     */
     open class var xibName: String {
         return typeName(of: self)
     }
