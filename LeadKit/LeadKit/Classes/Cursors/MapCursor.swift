@@ -55,7 +55,7 @@ public class MapCursor<Cursor: CursorType, T>: CursorType {
 
     private var elements: [T] = []
 
-    private let semaphore = DispatchSemaphore(value: 1)
+    private let mutex = Mutex()
 
     /// Initializer with enclosed cursor
     ///
@@ -68,20 +68,20 @@ public class MapCursor<Cursor: CursorType, T>: CursorType {
     }
 
     public var exhausted: Bool {
-        return cursor.exhausted
+        return mutex.sync { cursor.exhausted }
     }
 
     public var count: Int {
-        return elements.count
+        return mutex.sync { elements.count }
     }
 
     public subscript(index: Int) -> T {
-        return elements[index]
+        return mutex.sync { elements[index] }
     }
 
     public func loadNextBatch() -> Observable<[T]> {
         return Observable.deferred {
-            self.semaphore.wait()
+            self.mutex.unbalancedLock()
 
             return self.cursor.loadNextBatch().map { newItems in
                 let transformedNewItems = newItems.flatMap(self.transform)
@@ -90,15 +90,16 @@ public class MapCursor<Cursor: CursorType, T>: CursorType {
                 return transformedNewItems
             }
         }
-        .do(onNext: { [weak semaphore] _ in
-            semaphore?.signal()
-        }, onError: { [weak semaphore] _ in
-            semaphore?.signal()
+        .do(onNext: { _ in
+            self.mutex.unbalancedUnlock()
+        }, onError: { _ in
+            self.mutex.unbalancedUnlock()
         })
     }
 
 }
 
+/// MapCursor subclass with implementation of ResettableType
 public class ResettableMapCursor<Cursor: ResettableCursorType, T>: MapCursor<Cursor, T>, ResettableType {
 
     public override init(cursor: Cursor, transform: @escaping Transform) {

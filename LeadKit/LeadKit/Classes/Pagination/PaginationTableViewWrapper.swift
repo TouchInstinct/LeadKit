@@ -192,7 +192,10 @@ where Delegate.Cursor == Cursor {
         }
     }
 
-    private func onResultsState(newItems: [Cursor.Element], inCursor cursor: Cursor, afterState: PaginationViewModel<Cursor>.State) {
+    private func onResultsState(newItems: [Cursor.Element],
+                                inCursor cursor: Cursor,
+                                afterState: PaginationViewModel<Cursor>.State) {
+
         tableView.isUserInteractionEnabled = true
 
         if case .loading = afterState {

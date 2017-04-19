@@ -25,11 +25,17 @@ import RxSwift
 /// Paging cursor implementation with enclosed cursor for fetching results
 public class FixedPageCursor<Cursor: CursorType>: CursorType {
 
-    private let cursor: Cursor
+    fileprivate let cursor: Cursor
 
-    private let pageSize: Int
+    fileprivate let pageSize: Int
 
-    private let semaphore = DispatchSemaphore(value: 1)
+    private var internalCount = 0
+
+    private var internalExhausted: Bool {
+        return cursor.exhausted && cursor.count == internalCount
+    }
+
+    private let mutex = Mutex()
 
     /// Initializer with enclosed cursor
     ///
@@ -42,46 +48,61 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType {
     }
 
     public var exhausted: Bool {
-        return cursor.exhausted && cursor.count == count
+        return mutex.sync { internalExhausted }
     }
 
-    public private(set) var count: Int = 0
+    public var count: Int {
+        return mutex.sync { internalCount }
+    }
 
     public subscript(index: Int) -> Cursor.Element {
-        return cursor[index]
+        return mutex.sync { cursor[index] }
     }
 
     public func loadNextBatch() -> Observable<[Cursor.Element]> {
-        return loadNextBatch(withSemaphore: semaphore)
+        return loadNextBatch(usingMutex: mutex)
     }
 
-    private func loadNextBatch(withSemaphore semaphore: DispatchSemaphore?) -> Observable<[Cursor.Element]> {
+    private func loadNextBatch(usingMutex mutex: Mutex?) -> Observable<[Cursor.Element]> {
         return Observable.deferred {
-            semaphore?.wait()
+            mutex?.unbalancedLock()
 
-            if self.exhausted {
+            if self.internalExhausted {
                 throw CursorError.exhausted
             }
 
-            let restOfLoaded = self.cursor.count - self.count
+            let restOfLoaded = self.cursor.count - self.internalCount
 
             if restOfLoaded >= self.pageSize || self.cursor.exhausted {
-                let startIndex = self.count
-                self.count += min(restOfLoaded, self.pageSize)
+                let startIndex = self.internalCount
+                self.internalCount += min(restOfLoaded, self.pageSize)
 
-                return .just(self.cursor[startIndex..<self.count])
+                return .just(self.cursor[startIndex..<self.internalCount])
             }
 
             return self.cursor.loadNextBatch()
                 .flatMap { _ in
-                    self.loadNextBatch(withSemaphore: nil)
+                    self.loadNextBatch(usingMutex: nil)
                 }
         }
-        .do(onNext: { [weak semaphore] _ in
-            semaphore?.signal()
-        }, onError: { [weak semaphore] _ in
-            semaphore?.signal()
+        .do(onNext: { _ in
+            mutex?.unbalancedUnlock()
+        }, onError: { _ in
+            mutex?.unbalancedUnlock()
         })
+    }
+
+}
+
+/// FixedPageCursor subclass with implementation of ResettableType
+public class ResettableFixedPageCursor<Cursor: ResettableCursorType>: FixedPageCursor<Cursor>, ResettableType {
+
+    public override init(cursor: Cursor, pageSize: Int) {
+        super.init(cursor: cursor, pageSize: pageSize)
+    }
+
+    public required init(initialFrom other: ResettableFixedPageCursor) {
+        super.init(cursor: other.cursor, pageSize: other.pageSize)
     }
 
 }

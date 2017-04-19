@@ -46,7 +46,7 @@ class PaginationViewModelTests: XCTestCase {
             switch state {
             case .initial, .loadingMore, .loading:
                 print("PageViewModel state changed to \(state)")
-            case .results(let newItems, _):
+            case .results(let newItems, _, _):
                 print(newItems.count)
                 paginationExpectation.fulfill()
             default:

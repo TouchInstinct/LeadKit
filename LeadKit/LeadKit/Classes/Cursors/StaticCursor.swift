@@ -23,11 +23,14 @@
 import RxSwift
 
 /// Stub cursor implementation for array content type
-public class StaticCursor<Element>: CursorType {
+public class StaticCursor<Element>: ResettableCursorType {
 
     private let content: [Element]
 
-    private let semaphore = DispatchSemaphore(value: 1)
+    private var internalExhausted = false
+    private var internalCount = 0
+
+    private let mutex = Mutex()
 
     /// Initializer for array content type
     ///
@@ -36,32 +39,40 @@ public class StaticCursor<Element>: CursorType {
         self.content = content
     }
 
-    public private(set) var exhausted = false
+    public required init(initialFrom other: StaticCursor) {
+        self.content = other.content
+    }
 
-    public private(set) var count = 0
+    public var exhausted: Bool {
+        return mutex.sync { internalExhausted }
+    }
+
+    public var count: Int {
+        return mutex.sync { internalCount }
+    }
 
     public subscript(index: Int) -> Element {
-        return content[index]
+        return mutex.sync { content[index] }
     }
 
     public func loadNextBatch() -> Observable<[Element]> {
         return Observable.deferred {
-            self.semaphore.wait()
+            self.mutex.unbalancedLock()
 
             if self.exhausted {
                 throw CursorError.exhausted
             }
 
-            self.count = self.content.count
+            self.internalCount = self.content.count
 
-            self.exhausted = true
+            self.internalExhausted = true
 
             return .just(self.content)
         }
-        .do(onNext: { [weak semaphore] _ in
-            semaphore?.signal()
-        }, onError: { [weak semaphore] _ in
-            semaphore?.signal()
+        .do(onNext: { _ in
+            self.mutex.unbalancedUnlock()
+        }, onError: { _ in
+            self.mutex.unbalancedUnlock()
         })
     }
 
