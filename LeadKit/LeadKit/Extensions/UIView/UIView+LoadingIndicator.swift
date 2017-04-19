@@ -20,7 +20,7 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
 extension LoadingIndicator where Self: UIView {
 
