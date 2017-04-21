@@ -70,6 +70,9 @@ public extension CGImage {
             return nil
         }
 
+        ctx.translateBy(x: 0, y: size.height)
+        ctx.scaleBy(x: 1.0, y: -1.0)
+
         view.layer.render(in: ctx)
 
         return ctx.makeImage()
