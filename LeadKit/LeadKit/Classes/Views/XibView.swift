@@ -27,7 +27,7 @@ open class XibView: UIView {
 
     /// Nib name used to instantiate inner view
     open var innerViewNibName: String {
-        return className(of: self)
+        return type(of: self).xibName
     }
 
     public convenience init() {
