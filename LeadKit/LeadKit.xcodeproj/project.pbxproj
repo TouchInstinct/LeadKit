@@ -109,6 +109,7 @@
 
 /* Begin PBXFileReference section */
 		12F36034A5278991B658B53E /* Pods_LeadKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		671FF1611EAA264B001B882C /* iOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = iOS.playground; sourceTree = "<group>"; };
 		6727419C1E65B99E0075836A /* MappableUserDefaultsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappableUserDefaultsTests.swift; sourceTree = "<group>"; };
 		6727419F1E65C1E00075836A /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		674743931E929A5A00B47671 /* PaginationViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationViewModelTests.swift; sourceTree = "<group>"; };
@@ -528,6 +529,7 @@
 				78D4B54B1DA650FC005B0764 /* Functions */,
 				78CFEE2D1C5C456B00F50370 /* LeadKit.h */,
 				78CFEE2F1C5C456B00F50370 /* Info.plist */,
+				671FF1611EAA264B001B882C /* iOS.playground */,
 			);
 			path = LeadKit;
 			sourceTree = "<group>";
