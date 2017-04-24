@@ -102,7 +102,7 @@ public class ResettableFixedPageCursor<Cursor: ResettableCursorType>: FixedPageC
     }
 
     public required init(initialFrom other: ResettableFixedPageCursor) {
-        super.init(cursor: other.cursor, pageSize: other.pageSize)
+        super.init(cursor: other.cursor.reset(), pageSize: other.pageSize)
     }
 
 }
