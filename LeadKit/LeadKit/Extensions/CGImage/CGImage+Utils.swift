@@ -27,17 +27,16 @@ import CoreGraphics
 public let alphaBitmapInfo = CGBitmapInfo(rawValue: CGBitmapInfo().rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue)
 public let opaqueBitmapInfo = CGBitmapInfo(rawValue: CGBitmapInfo().rawValue | CGImageAlphaInfo.none.rawValue)
 
-public enum ImageContentMode {
-    case scaleToFill, scaleAspectFit, scaleAspectFill
-}
-
 public extension CGImage {
 
-    /**
-     - returns: bounds of image.
-     */
+    /// Size of image.
+    var size: CGSize {
+        return CGSize(width: width, height: height)
+    }
+
+    /// Bounds of image.
     var bounds: CGRect {
-        return CGRect(origin: CGPoint.zero, size: CGSize(width: width, height: height))
+        return CGRect(origin: .zero, size: size)
     }
 
 }

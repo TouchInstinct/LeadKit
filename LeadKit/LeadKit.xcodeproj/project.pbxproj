@@ -12,6 +12,8 @@
 		674743941E929A5A00B47671 /* PaginationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674743931E929A5A00B47671 /* PaginationViewModelTests.swift */; };
 		675D24B21E9234BB00E92D1F /* PaginationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675D24B11E9234BB00E92D1F /* PaginationViewModel.swift */; };
 		675FB4251EA7797C0075BF3D /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675FB4241EA7797C0075BF3D /* Mutex.swift */; };
+		676D177E1EAE0661002E19F9 /* ResizeContentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676D177D1EAE0661002E19F9 /* ResizeContentMode.swift */; };
+		676D17811EAE137B002E19F9 /* CGSize+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676D17801EAE137B002E19F9 /* CGSize+Resize.swift */; };
 		67788F9F1E69661800484DEE /* CGFloat+Pixels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67788F9E1E69661800484DEE /* CGFloat+Pixels.swift */; };
 		678A202A1E93C1A900787562 /* PaginationTableViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A20291E93C1A900787562 /* PaginationTableViewWrapper.swift */; };
 		679DE4901E9588B6006F25FE /* SupportProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DE48F1E9588B6006F25FE /* SupportProtocol.swift */; };
@@ -115,6 +117,8 @@
 		674743931E929A5A00B47671 /* PaginationViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationViewModelTests.swift; sourceTree = "<group>"; };
 		675D24B11E9234BB00E92D1F /* PaginationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationViewModel.swift; sourceTree = "<group>"; };
 		675FB4241EA7797C0075BF3D /* Mutex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mutex.swift; sourceTree = "<group>"; };
+		676D177D1EAE0661002E19F9 /* ResizeContentMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizeContentMode.swift; sourceTree = "<group>"; };
+		676D17801EAE137B002E19F9 /* CGSize+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+Resize.swift"; sourceTree = "<group>"; };
 		67788F9E1E69661800484DEE /* CGFloat+Pixels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Pixels.swift"; sourceTree = "<group>"; };
 		678A20291E93C1A900787562 /* PaginationTableViewWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationTableViewWrapper.swift; sourceTree = "<group>"; };
 		679DE48F1E9588B6006F25FE /* SupportProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportProtocol.swift; sourceTree = "<group>"; };
@@ -252,6 +256,14 @@
 			path = Concurrency;
 			sourceTree = "<group>";
 		};
+		676D177F1EAE1364002E19F9 /* CGSize */ = {
+			isa = PBXGroup;
+			children = (
+				676D17801EAE137B002E19F9 /* CGSize+Resize.swift */,
+			);
+			path = CGSize;
+			sourceTree = "<group>";
+		};
 		67788F9D1E6965F800484DEE /* CGFloat */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +334,7 @@
 			children = (
 				78753E231DE58A5D006BC0FB /* CursorError.swift */,
 				7873D14E1E1127BC001816EB /* LeadKitError.swift */,
+				676D177D1EAE0661002E19F9 /* ResizeContentMode.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -556,6 +569,7 @@
 				780D23441DA416E80084620D /* CGContext */,
 				67788F9D1E6965F800484DEE /* CGFloat */,
 				780D23411DA412330084620D /* CGImage */,
+				676D177F1EAE1364002E19F9 /* CGSize */,
 				789CC6091DE584C000F789D3 /* CursorType */,
 				78C36F7C1D801E2F00E7EBEA /* Double */,
 				787783611CA03C84001CDC9B /* IndexPath */,
@@ -565,8 +579,8 @@
 				780F56C81E0D76A5004530B6 /* Sequence */,
 				78A0FCC41DC366A10070B5E1 /* StoryboardProtocol */,
 				787783651CA04D14001CDC9B /* String */,
-				CAE698BF1E965AE9000394B0 /* TableDirector */,
 				679DE4921E9613ED006F25FE /* Support */,
+				CAE698BF1E965AE9000394B0 /* TableDirector */,
 				EF2921A41E16595100E8F43B /* TimeInterval */,
 				67DC65071E979BA9002F2FFF /* UIActivityIndicator */,
 				E126CBB11DB68D9A00E1B2F8 /* UICollectionView */,
@@ -963,6 +977,7 @@
 				675D24B21E9234BB00E92D1F /* PaginationViewModel.swift in Sources */,
 				78B0FC811C6B2CD500358B64 /* App.swift in Sources */,
 				78B036491DA562C30021D5CC /* CGImage+Template.swift in Sources */,
+				676D177E1EAE0661002E19F9 /* ResizeContentMode.swift in Sources */,
 				CAE698C61E96775F000394B0 /* String+Extensions.swift in Sources */,
 				7873D14F1E1127BC001816EB /* LeadKitError.swift in Sources */,
 				78753E301DE594B4006BC0FB /* MapCursor.swift in Sources */,
@@ -1012,6 +1027,7 @@
 				78B036451DA561D00021D5CC /* CGImage+Utils.swift in Sources */,
 				78CFEE591C5C45E500F50370 /* StoryboardIdentifierProtocol.swift in Sources */,
 				78011AB31D48B53600EA16A2 /* ApiRequestParameters.swift in Sources */,
+				676D17811EAE137B002E19F9 /* CGSize+Resize.swift in Sources */,
 				78B0FC7D1C6B2BE200358B64 /* LogFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

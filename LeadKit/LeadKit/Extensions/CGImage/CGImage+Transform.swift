@@ -24,13 +24,10 @@ import CoreGraphics
 
 public extension CGImage {
 
-    /**
-     creates a new image with rounded corners.
-
-     - parameter withRadius: The corner radius.
-
-     - returns: A new image
-     */
+    /// Creates a new image with rounded corners.
+    ///
+    /// - Parameter radius: The corner radius.
+    /// - Returns: New image with rounded corners or nil if something goes wrong.
     public func round(withRadius radius: CGFloat) -> CGImage? {
         guard let ctx = CGContext.create(forCGImage: self) ?? CGContext.create(width: width, height: height) else {
             return nil
@@ -43,16 +40,14 @@ public extension CGImage {
         return ctx.makeImage()
     }
 
-    /**
-     creates a new image with a border.
-
-     - parameter width: The size of the border.
-     - parameter color: The color of the border.
-     - parameter radius: The corner radius.
-     - parameter extendSize: Extend result image size and don't overlap source image by border.
-
-     - returns: A new image
-     */
+    /// Creates a new image with a border.
+    ///
+    /// - Parameters:
+    ///   - border: The size of the border.
+    ///   - color: The color of the border.
+    ///   - radius: The corner radius.
+    ///   - extendSize: Extend result image size and don't overlap source image by border.
+    /// - Returns: A new image with border or nil if something goes wrong..
     public func applyBorder(width border: CGFloat,
                             color: CGColor,
                             radius: CGFloat = 0,
@@ -66,7 +61,7 @@ public extension CGImage {
         let ctxWidth = Int(ceil(newWidth))
         let ctxHeight = Int(ceil(newHeight))
 
-        let ctxRect: CGRect = CGRect(origin: CGPoint.zero, size: CGSize(width: newWidth, height: newHeight))
+        let ctxRect = CGRect(origin: CGPoint.zero, size: CGSize(width: newWidth, height: newHeight))
 
         let context = CGContext.create(width: ctxWidth,
                                        height: ctxHeight,
@@ -98,15 +93,13 @@ public extension CGImage {
         return ctx.makeImage()
     }
 
-    /**
-     creates a resized copy of an image.
-
-     - parameter newSize: the new size of the image.
-     - parameter contentMode: the way to handle the content in the new size.
-
-     - returns: a new image
-     */
-    public func resize(newSize: CGSize, contentMode: ImageContentMode = .scaleToFill) -> CGImage? {
+    /// Creates a resized copy of an image.
+    ///
+    /// - Parameters:
+    ///   - newSize: The new size of the image.
+    ///   - origin: The point where to place resized image
+    /// - Returns: A new resized image or nil if something goes wrong.
+    public func resize(to newSize: CGSize, usingOrigin origin: CGPoint = .zero) -> CGImage? {
         let ctxWidth = Int(ceil(newSize.width))
         let ctxHeight = Int(ceil(newSize.height))
 
@@ -120,58 +113,19 @@ public extension CGImage {
             return nil
         }
 
-        let horizontalRatio = newSize.width / CGFloat(width)
-        let verticalRatio = newSize.height / CGFloat(height)
-
-        let ratio: CGFloat
-
-        switch contentMode {
-        case .scaleToFill:
-            ratio = 1
-        case .scaleAspectFill:
-            ratio = max(horizontalRatio, verticalRatio)
-        case .scaleAspectFit:
-            ratio = min(horizontalRatio, verticalRatio)
-        }
-
-        let newImageWidth = contentMode == .scaleToFill ? newSize.width : CGFloat(width) * ratio
-        let newImageHeight = contentMode == .scaleToFill ? newSize.height : CGFloat(height) * ratio
-
-        let originX: CGFloat
-        let originY: CGFloat
-
-        if newImageWidth > newSize.width {
-            originX = (newSize.width - newImageWidth) / 2
-        } else if newImageWidth < newSize.width {
-            originX = newSize.width / 2 - newImageWidth / 2
-        } else {
-            originX = 0
-        }
-
-        if newImageHeight > newSize.height {
-            originY = (newSize.height - newImageHeight) / 2
-        } else if newImageHeight < newSize.height {
-            originY = newSize.height / 2 - newImageHeight / 2
-        } else {
-            originY = 0
-        }
-
-        let rect = CGRect(origin: CGPoint(x: originX, y: originY),
-                          size: CGSize(width: newImageWidth, height: newImageHeight))
+        let resizeRect = CGRect(origin: origin,
+                                size: CGSize(width: ctxWidth, height: ctxHeight))
 
         ctx.interpolationQuality = .high
-        ctx.draw(self, in: rect)
+        ctx.draw(self, in: resizeRect)
 
         return ctx.makeImage()
     }
 
-    /**
-     returns a copy of the image with border of the given size added around its edges.
-
-     - parameter padding: The padding amount.
-
-     - returns: A new image.
-     */
+    /// Creates a copy of the image with border of the given size added around its edges.
+    ///
+    /// - Parameter padding: The padding amount.
+    /// - Returns: A new padded image or nil if something goes wrong..
     public func applyPadding(_ padding: CGFloat) -> CGImage? {
         let ctxWidth = Int(ceil(CGFloat(width) + padding * 2))
         let ctxHeight = Int(ceil(CGFloat(height) + padding * 2))

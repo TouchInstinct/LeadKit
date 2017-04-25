@@ -24,9 +24,7 @@ import CoreGraphics
 
 public extension CGImage {
 
-    /**
-     - returns: true if the image has an alpha layer.
-     */
+    /// A Boolean value indicating whether the image data has an alpha channel.
     public var hasAlpha: Bool {
         switch alphaInfo {
         case .first, .last, .premultipliedFirst, .premultipliedLast:
@@ -36,9 +34,10 @@ public extension CGImage {
         }
     }
 
-    /**
-     - returns: a copy of the given image, adding an alpha channel if it doesn't already have one.
-     */
+    /// Adds an alpha channel to image if it doesn't already have one.
+    ///
+    /// - Returns: A copy of the given image, adding an alpha channel if it doesn't already have one
+    /// or nil if something goes wrong.
     public func applyAlpha() -> CGImage? {
         guard !hasAlpha else {
             return self

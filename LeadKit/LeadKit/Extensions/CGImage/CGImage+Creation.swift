@@ -24,16 +24,14 @@ import CoreGraphics
 
 public extension CGImage {
 
-    /**
-     method which creates new CGImage instance filled by given color
-
-     - parameter color:  color to fill
-     - parameter width:  width of new image
-     - parameter height: height of new image
-     - parameter opaque: a flag indicating whether the bitmap is opaque (default: False)
-
-     - returns: new instanse of UIImage with given size and color
-     */
+    /// Creates new CGImage instance filled by given color.
+    ///
+    /// - Parameters:
+    ///   - color: Color to fill.
+    ///   - width: Width of new image.
+    ///   - height: Height of new image.
+    ///   - opaque: A flag indicating whether the bitmap is opaque (default: false).
+    /// - Returns: A new instanse of UIImage with given size and color or nil if something goes wrong.
     public static func create(color: CGColor,
                               width: Int,
                               height: Int,
@@ -53,13 +51,10 @@ public extension CGImage {
         return ctx.makeImage()
     }
 
-    /**
-     creates an image from a UIView.
-
-     - parameter fromView: The source view.
-
-     - returns A new image
-     */
+    /// Creates an image from a given UIView.
+    ///
+    /// - Parameter view: The source view.
+    /// - Returns: A new image created from the given view or nil if something goes wrong.
     public static func create(fromView view: UIView) -> CGImage? {
         let size = view.bounds.size
 
