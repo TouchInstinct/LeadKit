@@ -35,3 +35,7 @@ public func className<T>(of type: T) -> String {
         return clsName
     }
 }
+
+public func typeName<T>(of type: T.Type) -> String {
+    return String(describing: type)
+}

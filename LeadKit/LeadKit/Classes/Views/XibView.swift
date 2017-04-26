@@ -27,12 +27,7 @@ open class XibView: UIView {
 
     /// Nib name used to instantiate inner view
     open var innerViewNibName: String {
-        let clsName = String(describing: type(of: self))
-        if let typeRange = clsName.range(of: ".Type") {
-            return clsName.substring(to: typeRange.lowerBound)
-        } else {
-            return clsName
-        }
+        return className(of: self)
     }
 
     public convenience init() {
