@@ -30,7 +30,7 @@ extension UIViewController {
      - returns: type name string
      */
     open class var xibName: String {
-        return className(of: self)
+        return typeName(of: self)
     }
 
 }
