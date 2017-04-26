@@ -22,9 +22,9 @@
 
 import Foundation
 
-/// Function which returns string representation of type without ".Type" suffix
+/// Function which returns string representation of object type without ".Type" suffix
 ///
-/// - Parameter type: a type
+/// - Parameter type: an object type
 /// - Returns: string representation of type without ".Type" suffix
 public func className<T>(of type: T) -> String {
     let clsName = String(describing: type(of: type))
@@ -36,6 +36,10 @@ public func className<T>(of type: T) -> String {
     }
 }
 
+/// Function which returns string representation of class type without ".Type" suffix
+///
+/// - Parameter type: an class type
+/// - Returns: string representation of type without ".Type" suffix
 public func typeName<T>(of type: T.Type) -> String {
     return String(describing: type)
 }
