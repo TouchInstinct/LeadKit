@@ -22,6 +22,15 @@
 
 import CoreGraphics
 
+extension CGBitmapInfo {
+
+    // The bitmapInfo value are hard-coded to prevent an "unsupported parameter combination" error
+
+    static let alphaBitmapInfo = CGBitmapInfo(rawValue: CGBitmapInfo().rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue)
+    static let opaqueBitmapInfo = CGBitmapInfo(rawValue: CGBitmapInfo().rawValue | CGImageAlphaInfo.none.rawValue)
+
+}
+
 public extension CGContext {
 
     /// Creates a bitmap graphics context with parameters taken from a given image.
@@ -53,7 +62,7 @@ public extension CGContext {
     /// - Returns: A new bitmap context, or NULL if a context could not be created.
     public static func create(width: Int,
                               height: Int,
-                              bitmapInfo: CGBitmapInfo = alphaBitmapInfo,
+                              bitmapInfo: CGBitmapInfo = .alphaBitmapInfo,
                               colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB(),
                               bitsPerComponent: Int = 8) -> CGContext? {
 
