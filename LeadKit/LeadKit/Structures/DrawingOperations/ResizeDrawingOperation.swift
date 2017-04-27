@@ -22,39 +22,34 @@
 
 import CoreGraphics
 
-struct ImageDrawingOperation: DrawingOperation {
+struct ResizeDrawingOperation: DrawingOperation {
 
     private let image: CGImage
-    private let newSize: CGSize
-    private let origin: CGPoint
-    public let opaque: Bool
-    private let flipY: Bool
+    private let drawRect: CGRect
+    public let contextSize: CGContextSize
 
     public init(image: CGImage,
-                newSize: CGSize,
-                origin: CGPoint = .zero,
-                opaque: Bool = false,
-                flipY: Bool = false) {
+                imageSize: CGSize,
+                preferredNewSize: CGSize,
+                resizeMode: ResizeMode,
+                cropToImageBounds: Bool = false) {
 
         self.image = image
-        self.newSize = newSize
-        self.origin = origin
-        self.opaque = opaque
-        self.flipY = flipY
-    }
 
-    public var contextSize: CGContextSize {
-        return newSize.ceiledContextSize
+        let resizedRect = imageSize.resizeRect(forNewSize: preferredNewSize, resizeMode: resizeMode)
+
+        if cropToImageBounds {
+            drawRect = CGRect(origin: .zero, size: resizedRect.size)
+            contextSize = resizedRect.size.ceiledContextSize
+        } else {
+            drawRect = resizedRect
+            contextSize = preferredNewSize.ceiledContextSize
+        }
     }
 
     public func apply(in context: CGContext) {
-        if flipY {
-            context.translateBy(x: 0, y: newSize.height)
-            context.scaleBy(x: 1.0, y: -1.0)
-        }
-
         context.interpolationQuality = .high
-        context.draw(image, in: CGRect(origin: origin, size: newSize))
+        context.draw(image, in: drawRect)
     }
-
+    
 }

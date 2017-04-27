@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67186B181EB1DC0500CFAFFB /* ResizeDrawingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67186B171EB1DC0500CFAFFB /* ResizeDrawingOperation.swift */; };
 		6727419D1E65B99E0075836A /* MappableUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6727419C1E65B99E0075836A /* MappableUserDefaultsTests.swift */; };
 		672741A01E65C1E00075836A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6727419F1E65C1E00075836A /* Post.swift */; };
 		674743941E929A5A00B47671 /* PaginationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674743931E929A5A00B47671 /* PaginationViewModelTests.swift */; };
@@ -117,6 +118,7 @@
 
 /* Begin PBXFileReference section */
 		12F36034A5278991B658B53E /* Pods_LeadKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67186B171EB1DC0500CFAFFB /* ResizeDrawingOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizeDrawingOperation.swift; sourceTree = "<group>"; };
 		671FF1611EAA264B001B882C /* iOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = iOS.playground; sourceTree = "<group>"; };
 		6727419C1E65B99E0075836A /* MappableUserDefaultsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappableUserDefaultsTests.swift; sourceTree = "<group>"; };
 		6727419F1E65C1E00075836A /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				67A7B19E1EAF646400E5BC59 /* PaddingDrawingOperation.swift */,
 				67A7B1A01EAF67AE00E5BC59 /* SolidFillDrawingOperation.swift */,
 				67A7B1A21EAF6B4600E5BC59 /* CALayerDrawingOperation.swift */,
+				67186B171EB1DC0500CFAFFB /* ResizeDrawingOperation.swift */,
 			);
 			path = DrawingOperations;
 			sourceTree = "<group>";
@@ -1015,6 +1018,7 @@
 				95B39A861D9D51250057BD54 /* String+Localization.swift in Sources */,
 				78C36F7E1D801E3E00E7EBEA /* Double+Rounding.swift in Sources */,
 				67DC65061E979B70002F2FFF /* UIView+LoadingIndicator.swift in Sources */,
+				67186B181EB1DC0500CFAFFB /* ResizeDrawingOperation.swift in Sources */,
 				787609221E1403830093CE36 /* Observable+DeferredJust.swift in Sources */,
 				67B305841E8A92E8008169CA /* XibView.swift in Sources */,
 				78C54AFD1E432EEF0051EFBA /* UIViewController+TopVisibleViewController.swift in Sources */,

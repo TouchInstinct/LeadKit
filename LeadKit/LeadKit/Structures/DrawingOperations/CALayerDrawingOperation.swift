@@ -37,9 +37,6 @@ struct CALayerDrawingOperation: DrawingOperation {
     }
 
     public func apply(in context: CGContext) {
-        context.translateBy(x: 0, y: size.height)
-        context.scaleBy(x: 1.0, y: -1.0)
-
         layer.render(in: context)
     }
 

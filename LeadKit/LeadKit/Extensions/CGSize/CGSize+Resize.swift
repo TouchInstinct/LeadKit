@@ -31,8 +31,8 @@ public extension CGSize {
     ///   - resizeMode: Resize mode to use.
     /// - Returns: A new CGRect instance matching request parameters.
     public func resizeRect(forNewSize newSize: CGSize, resizeMode: ResizeMode) -> CGRect {
-        let horizontalRatio = newSize.width / CGFloat(width)
-        let verticalRatio = newSize.height / CGFloat(height)
+        let horizontalRatio = newSize.width / width
+        let verticalRatio = newSize.height / height
 
         let ratio: CGFloat
 
@@ -45,8 +45,8 @@ public extension CGSize {
             ratio = min(horizontalRatio, verticalRatio)
         }
 
-        let newWidth = resizeMode == .scaleToFill ? newSize.width : CGFloat(width) * ratio
-        let newHeight = resizeMode == .scaleToFill ? newSize.height : CGFloat(height) * ratio
+        let newWidth = resizeMode == .scaleToFill ? newSize.width : width * ratio
+        let newHeight = resizeMode == .scaleToFill ? newSize.height : height * ratio
 
         let originX: CGFloat
         let originY: CGFloat

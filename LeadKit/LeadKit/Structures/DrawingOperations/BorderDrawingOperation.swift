@@ -52,7 +52,7 @@ struct BorderDrawingOperation: DrawingOperation {
         let width = imageSize.width + offset * 2
         let height = imageSize.height + offset * 2
 
-        return (width: Int(ceil(width)), height: Int(ceil(height)))
+        return CGSize(width: width, height: height).ceiledContextSize
     }
 
     public func apply(in context: CGContext) {

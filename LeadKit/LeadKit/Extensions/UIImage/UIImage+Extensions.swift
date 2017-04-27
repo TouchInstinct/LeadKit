@@ -116,7 +116,7 @@ public extension UIImage {
                                               imageSize: size,
                                               radius: radius)
 
-        return operation.imageFromNewRenderer(scale: scale)
+        return operation.imageFromNewRenderer(scale: scale).redraw()
     }
 
     /// Creates a new circle image with a border.
@@ -159,37 +159,24 @@ public extension UIImage {
     /// - Parameters:
     ///   - newSize: The new size of the image.
     ///   - contentMode: The way to handle the content in the new size.
+    ///   - cropToImageBounds: Should output image size match resized image size.
+    /// Note: If passed true with ResizeMode.scaleAspectFit content mode it will give the original image.
     /// - Returns: A new image scaled to new size.
-    public func resize(newSize: CGSize, contentMode: ResizeMode = .scaleToFill) -> UIImage {
+    public func resize(newSize: CGSize,
+                       contentMode: ResizeMode = .scaleToFill,
+                       cropToImageBounds: Bool = false) -> UIImage {
+
         guard let image = cgImage else {
             return self
         }
 
-        let resizedRect = size.resizeRect(forNewSize: newSize, resizeMode: contentMode)
+        let operation = ResizeDrawingOperation(image: image,
+                                               imageSize: size,
+                                               preferredNewSize: newSize,
+                                               resizeMode: contentMode,
+                                               cropToImageBounds: cropToImageBounds)
 
-        let operation = ImageDrawingOperation(image: image,
-                                              newSize: resizedRect.size,
-                                              origin: resizedRect.origin)
-
-        return operation.imageFromNewRenderer(scale: scale)
-    }
-
-    /// Creates a resized copy of image using scaleAspectFit strategy.
-    ///
-    /// - Parameter preferredNewSize: The preferred new size of image.
-    /// - Returns: A new image which size may be less then or equals to given preferredSize.
-    public func resizeAspectFit(preferredNewSize: CGSize) -> UIImage {
-        guard let image = cgImage else {
-            return self
-        }
-
-        let resizedRect = size.resizeRect(forNewSize: preferredNewSize, resizeMode: .scaleAspectFit)
-
-        let operation = ImageDrawingOperation(image: image,
-                                              newSize: resizedRect.size,
-                                              origin: .zero)
-
-        return operation.imageFromNewRenderer(scale: scale)
+        return operation.imageFromNewRenderer(scale: scale).redraw()
     }
 
     /// Adds an alpha channel if UIImage doesn't already have one.
@@ -204,7 +191,7 @@ public extension UIImage {
                                               newSize: size,
                                               opaque: false)
 
-        return operation.imageFromNewRenderer(scale: scale)
+        return operation.imageFromNewRenderer(scale: scale).redraw()
     }
 
     /// Creates a copy of the image with border of the given size added around its edges.
@@ -217,6 +204,17 @@ public extension UIImage {
         }
 
         let operation = PaddingDrawingOperation(image: image, imageSize: size, padding: padding)
+
+        return operation.imageFromNewRenderer(scale: scale).redraw()
+    }
+
+    /// Workaround to fix flipped image rendering (by Y)
+    private func redraw() -> UIImage {
+        guard let image = cgImage else {
+            return self
+        }
+
+        let operation = ImageDrawingOperation(image: image, newSize: size)
 
         return operation.imageFromNewRenderer(scale: scale)
     }
@@ -233,10 +231,8 @@ private extension DrawingOperation {
         format.opaque = opaque
         format.scale = scale
 
-        let renderer = UIGraphicsImageRenderer(size: size, format: format)
-
-        return renderer.image { context in
-            self.apply(in: context.cgContext)
+        return UIGraphicsImageRenderer(size: size, format: format).image {
+            self.apply(in: $0.cgContext)
         }
     }
 
