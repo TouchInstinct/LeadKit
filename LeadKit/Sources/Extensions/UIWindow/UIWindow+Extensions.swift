@@ -29,20 +29,15 @@ public extension UIWindow {
     /// default root controller animation duration
     static let snapshotAnimationDuration = 0.5
 
-    /**
-     method changes root controller in window and sets status bar style
-
-     - parameter controller:     new root controller
-     - parameter statusBarStyle: new status bar style
-     */
-    public func changeRootController(controller: UIViewController,
-                                     statusBarStyle: UIStatusBarStyle) {
+    /// Method changes root controller in window.
+    ///
+    /// - Parameter controller: New root controller.
+    public func changeRootController(controller: UIViewController) {
         animateRootViewControllerChanging(controller: controller)
 
         rootViewController?.dismiss(animated: false, completion: nil)
         rootViewController = controller
         makeKeyAndVisible()
-        UIApplication.shared.statusBarStyle = statusBarStyle
     }
 
     /**

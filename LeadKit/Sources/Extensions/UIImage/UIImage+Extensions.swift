@@ -22,7 +22,7 @@
 
 import UIKit
 
-@available(iOS 10.0, *)
+@available(iOS 10.0, tvOS 10.0, *)
 public extension UIImage {
 
     /// Creates an image filled by given color.
@@ -221,7 +221,7 @@ public extension UIImage {
 
 }
 
-@available(iOS 10.0, *)
+@available(iOS 10.0, tvOS 10.0, *)
 private extension DrawingOperation {
 
     func imageFromNewRenderer(scale: CGFloat) -> UIImage {

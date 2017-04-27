@@ -1,21 +1,57 @@
-# Uncomment the next line to define a global platform for your project
-platform :ios, '9.0'
-
-target 'LeadKit' do
-  use_frameworks!
-
+abstract_target 'LeadKit' do
   pod "CocoaLumberjack/Swift", '~> 3.1.0'
   pod "RxSwift", '3.2.0'
   pod "RxCocoa", '3.2.0'
   pod "RxAlamofire", '3.0.0'
   pod "ObjectMapper", '~> 2.1'
-  pod "Toast-Swift", '~> 2.0.0'
-  pod "TableKit", '~> 2.3.1'
-  pod "UIScrollView-InfiniteScroll", '~> 1.0.0'
 
-  target 'LeadKitTests' do
-    inherit! :search_paths
-    # Pods for testing
+  inhibit_all_warnings!
+
+  target 'LeadKit iOS' do
+    platform :ios, '9.0'
+
+    use_frameworks!
+
+    pod "Toast-Swift", '~> 2.0.0'
+    pod "TableKit", '~> 2.3.1'
+    pod "UIScrollView-InfiniteScroll", '~> 1.0.0'
+
+    target 'LeadKit iOSTests' do
+      inherit! :search_paths
+      # Pods for testing
+    end
+
+  end
+
+  target 'LeadKit iOS Extensions' do
+    platform :ios, '9.0'
+
+    use_frameworks!
+
+    target 'LeadKit iOS ExtensionsTests' do
+      inherit! :search_paths
+      # Pods for testing
+    end
+
+  end
+
+  target 'LeadKit watchOS' do
+    platform :watchos, '2.0'
+
+    use_frameworks!
+
+  end
+
+  target 'LeadKit tvOS' do
+    platform :tvos, '9.0'
+
+    use_frameworks!
+
+    target 'LeadKit tvOSTests' do
+      inherit! :search_paths
+      # Pods for testing
+    end
+
   end
 
 end

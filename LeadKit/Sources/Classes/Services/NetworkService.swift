@@ -31,17 +31,12 @@ import RxAlamofire
 /// and shows errors in DEBUG mode
 open class NetworkService {
 
-    private let disposeBag = DisposeBag()
-    private let requestCount = Variable<Int>(0)
+    private let requestCountVariable = Variable<Int>(0)
 
     public let sessionManager: Alamofire.SessionManager
 
-    /// Let netwrok service automatically show / hide activity indicator
-    public func bindActivityIndicator() {
-        return requestCount.asDriver()
-            .map { $0 != 0 }
-            .drive(UIApplication.shared.rx.isNetworkActivityIndicatorVisible)
-            .addDisposableTo(disposeBag)
+    var requestCount: Driver<Int> {
+        return requestCountVariable.asDriver()
     }
 
     /// Creates new instance of NetworkService with given Alamofire session manager
@@ -58,9 +53,18 @@ open class NetworkService {
     public func rxRequest<T: ObservableMappable>(with parameters: ApiRequestParameters)
         -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
 
-            return sessionManager.rx.responseObservableModel(requestParameters: parameters)
-                .counterTracking(for: self)
-                .showErrorsInToastInDebugMode()
+            let responseObservable = sessionManager.rx.responseObservableModel(requestParameters: parameters)
+                .counterTracking(for: self) as Observable<(response: HTTPURLResponse, model: T)>
+
+            #if os(iOS)
+                #if LEADKIT_EXTENSION_TARGET
+                    return responseObservable
+                #else
+                    return responseObservable.showErrorsInToastInDebugMode()
+                #endif
+            #else
+                return responseObservable
+            #endif
     }
 
     /// Perform reactive request to get mapped ImmutableMappable model and http response
@@ -70,9 +74,18 @@ open class NetworkService {
     public func rxRequest<T: ImmutableMappable>(with parameters: ApiRequestParameters)
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
-        return sessionManager.rx.responseModel(requestParameters: parameters)
-            .counterTracking(for: self)
-            .showErrorsInToastInDebugMode()
+            let responseObservable = sessionManager.rx.responseModel(requestParameters: parameters)
+                .counterTracking(for: self) as Observable<(response: HTTPURLResponse, model: T)>
+
+            #if os(iOS)
+                #if LEADKIT_EXTENSION_TARGET
+                    return responseObservable
+                #else
+                    return responseObservable.showErrorsInToastInDebugMode()
+                #endif
+            #else
+                return responseObservable
+            #endif
     }
 
     /// Perform reactive request to get UIImage and http response
@@ -82,21 +95,30 @@ open class NetworkService {
     public func rxLoadImage(url: String) -> Observable<(HTTPURLResponse, UIImage?)> {
         let request = RxAlamofire.requestData(.get, url, headers: [:])
 
-        return request
+        let requestObservable = request
             .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .map { (response, data) -> (HTTPURLResponse, UIImage?) in
                 (response, UIImage(data: data))
             }
             .counterTracking(for: self)
-            .showErrorsInToastInDebugMode()
+
+        #if os(iOS)
+            #if LEADKIT_EXTENSION_TARGET
+                return requestObservable
+            #else
+                return requestObservable.showErrorsInToastInDebugMode()
+            #endif
+        #else
+            return requestObservable
+        #endif
     }
 
     fileprivate func increaseRequestCounter() {
-        requestCount.value += 1
+        requestCountVariable.value += 1
     }
 
     fileprivate func decreaseRequestCounter() {
-        requestCount.value -= 1
+        requestCountVariable.value -= 1
     }
 
 }
