@@ -46,7 +46,7 @@ public extension UIView {
         let nib = UINib(nibName: nibName, bundle: bundle)
 
         guard let nibView = nib.instantiate(withOwner: owner, options: nil).first as? T else {
-            fatalError("Can't nstantiate nib view with type \(T.self)")
+            fatalError("Can't instantiate nib view with type \(T.self)")
         }
 
         return nibView
