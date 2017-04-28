@@ -13,21 +13,24 @@ Pod::Spec.new do |s|
     ss.tvos.deployment_target = '9.0'
     ss.watchos.deployment_target = '2.0'
 
-    ss.source_files = "LeadKit/LeadKit/Sources/Extensions/UIColor/UIColor+Hex.swift"
+    ss.source_files = "LeadKit/Sources/Extensions/UIColor/UIColor+Hex.swift"
   end
 
   s.subspec 'Drawing' do |ss|
-    ss.ios.deployment_target = '8.0'
-    ss.tvos.deployment_target = '9.0'
+    # ss.ios.deployment_target = '8.0' # can't get it work: DrawingOperation.swift:29:17: note: did you mean 'DrawingOperation'?
+    # ss.tvos.deployment_target = '9.0' # can't get it work: DrawingOperation.swift:29:17: note: did you mean 'DrawingOperation'?
     ss.watchos.deployment_target = '2.0'
 
     ss.source_files = [
-      "LeadKit/LeadKit/Sources/Enums/ResizeContentMode.swift",
-      "LeadKit/LeadKit/Sources/Extensions/{CGContext,CGImage,CGSize,UIImage}/*",
-      "LeadKit/LeadKit/Sources/Protocols/{DrawingOperation,SupportProtocol}.swift",
-      "LeadKit/LeadKit/Sources/Structures/Drawing/*",
+      "LeadKit/Sources/Enums/ResizeContentMode.swift",
+      "LeadKit/Sources/Extensions/{CGContext,CGImage,CGSize,UIImage}/*",
+      "LeadKit/Sources/Protocols/{DrawingOperation,SupportProtocol}.swift",
+      "LeadKit/Sources/Structures/Drawing/*",
     ]
-    ss.watchos.exclude_files = "LeadKit/LeadKit/Sources/Structures/Drawing/CALayerDrawingOperation.swift"
+    ss.watchos.exclude_files = [
+      "LeadKit/Sources/Structures/Drawing/CALayerDrawingOperation.swift",
+      "LeadKit/Sources/Extensions/UIImage/*",
+    ]
   end
 
   s.subspec 'Core' do |ss|
@@ -35,35 +38,40 @@ Pod::Spec.new do |s|
     ss.tvos.deployment_target = '9.0'
     ss.watchos.deployment_target = '2.0'
 
-    ss.source_files = "LeadKit/LeadKit/Sources/**/*.swift"
+    ss.source_files = "LeadKit/Sources/**/*.swift"
     ss.watchos.exclude_files = [
-      "LeadKit/LeadKit/Sources/Classes/Pagination/PaginationTableViewWrapperDelegate.swift",
-      "LeadKit/LeadKit/Sources/Classes/View/XibView.swift",
-      "LeadKit/LeadKit/Sources/Extensions/CGFloat/CGFloat+Pixels.swift",
-      "LeadKit/LeadKit/Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
-      "LeadKit/LeadKit/Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
-      "LeadKit/LeadKit/Sources/Extensions/StoryboardProtocol/*",
-      "LeadKit/LeadKit/Sources/Extensions/Support/UIScrollView+Support.swift",
-      "LeadKit/LeadKit/Sources/Extensions/TableDirector/TableDirector+Extensions.swift",
-      "LeadKit/LeadKit/Sources/Extensions/UIActivityIndicator/UIActivityIndicator+LoadingIndicator.swift",
-      "LeadKit/LeadKit/Sources/Extensions/UICollectionView/*",
-      "LeadKit/LeadKit/Sources/Extensions/UIDevice/*",
-      "LeadKit/LeadKit/Sources/Extensions/UIImage/*",
-      "LeadKit/LeadKit/Sources/Extensions/UIStoryboard/*",
-      "LeadKit/LeadKit/Sources/Extensions/UIView/*",
-      "LeadKit/LeadKit/Sources/Extensions/UIViewController/*",
-      "LeadKit/LeadKit/Sources/Extensions/UIWindow/*",
-      "LeadKit/LeadKit/Sources/Protocols/LoadingIndicator.swift",
-      "LeadKit/LeadKit/Sources/Protocols/StoryboardProtocol.swift",
-      "LeadKit/LeadKit/Sources/Structures/Views/AnyLoadingIndicator.swift",
-      "LeadKit/LeadKit/Sources/Structures/DrawingOperations/CALayerDrawingOperation.swift",
+      "LeadKit/Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
+      "LeadKit/Sources/Classes/Views/XibView.swift",
+      "LeadKit/Sources/Extensions/CGFloat/CGFloat+Pixels.swift",
+      "LeadKit/Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
+      "LeadKit/Sources/Extensions/Observable/Observable+ToastErrorLogging.swift",
+      "LeadKit/Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
+      "LeadKit/Sources/Extensions/StoryboardProtocol/*",
+      "LeadKit/Sources/Extensions/Support/UIScrollView+Support.swift",
+      "LeadKit/Sources/Extensions/TableDirector/TableDirector+Extensions.swift",
+      "LeadKit/Sources/Extensions/UIActivityIndicator/UIActivityIndicator+LoadingIndicator.swift",
+      "LeadKit/Sources/Extensions/UICollectionView/*",
+      "LeadKit/Sources/Extensions/UIDevice/*",
+      "LeadKit/Sources/Extensions/UIImage/*",
+      "LeadKit/Sources/Extensions/UIStoryboard/*",
+      "LeadKit/Sources/Extensions/UIView/*",
+      "LeadKit/Sources/Extensions/UIViewController/*",
+      "LeadKit/Sources/Extensions/UIWindow/*",
+      "LeadKit/Sources/Protocols/LoadingIndicator.swift",
+      "LeadKit/Sources/Protocols/StoryboardProtocol.swift",
+      "LeadKit/Sources/Structures/Views/AnyLoadingIndicator.swift",
+      "LeadKit/Sources/Structures/DrawingOperations/CALayerDrawingOperation.swift",
+      "LeadKit/Sources/Structures/DrawingOperations/RoundDrawingOperation.swift",
+      "LeadKit/Sources/Structures/DrawingOperations/BorderDrawingOperation.swift",
     ]
     ss.tvos.exclude_files = [
-      "LeadKit/LeadKit/Sources/Structures/Drawing/CALayerDrawingOperation.swift",
-      "LeadKit/LeadKit/Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
-      "LeadKit/LeadKit/Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
-      "LeadKit/LeadKit/Sources/Extensions/Support/UIScrollView+Support.swift",
-      "LeadKit/LeadKit/Sources/Extensions/TableDirector/TableDirector+Extensions.swift",
+      "LeadKit/Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
+      "LeadKit/Sources/Structures/Drawing/CALayerDrawingOperation.swift",
+      "LeadKit/Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
+      "LeadKit/Sources/Extensions/Observable/Observable+ToastErrorLogging.swift",
+      "LeadKit/Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
+      "LeadKit/Sources/Extensions/Support/UIScrollView+Support.swift",
+      "LeadKit/Sources/Extensions/TableDirector/TableDirector+Extensions.swift",
     ]
 
     ss.dependency "CocoaLumberjack/Swift", '~> 3.1.0'
@@ -80,14 +88,17 @@ Pod::Spec.new do |s|
   s.subspec 'Core-iOS-Extension' do |ss|
     ss.platform = :ios, '9.0'
 
-    ss.source_files = "LeadKit/LeadKit/Sources/**/*.swift"
+    ss.source_files = "LeadKit/Sources/**/*.swift"
 
     ss.exclude_files = [
-      "LeadKit/LeadKit/Sources/Classes/Pagination/PaginationTableViewWrapperDelegate.swift",
-      "LeadKit/LeadKit/Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
-      "LeadKit/LeadKit/Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
-      "LeadKit/LeadKit/Sources/Extensions/TableDirector/TableDirector+Extensions.swift",
+      "LeadKit/Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
+      "LeadKit/Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
+      "LeadKit/Sources/Extensions/Observable/Observable+ToastErrorLogging.swift",
+      "LeadKit/Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
+      "LeadKit/Sources/Extensions/TableDirector/TableDirector+Extensions.swift",
     ]
+
+    ss.pod_target_xcconfig = { 'SWIFT_ACTIVE_COMPILATION_CONDITIONS' => 'LEADKIT_EXTENSION_TARGET' }
 
     ss.dependency "CocoaLumberjack/Swift", '~> 3.1.0'
     ss.dependency "RxSwift", '3.2.0'
