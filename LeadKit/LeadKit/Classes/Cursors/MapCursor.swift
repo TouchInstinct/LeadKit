@@ -55,8 +55,6 @@ public class MapCursor<Cursor: CursorType, T>: CursorType {
 
     private var elements: [T] = []
 
-    private let mutex = Mutex()
-
     /// Initializer with enclosed cursor
     ///
     /// - Parameters:
@@ -68,33 +66,24 @@ public class MapCursor<Cursor: CursorType, T>: CursorType {
     }
 
     public var exhausted: Bool {
-        return mutex.sync { cursor.exhausted }
+        return cursor.exhausted
     }
 
     public var count: Int {
-        return mutex.sync { elements.count }
+        return elements.count
     }
 
     public subscript(index: Int) -> T {
-        return mutex.sync { elements[index] }
+        return elements[index]
     }
 
     public func loadNextBatch() -> Observable<[T]> {
-        return Observable.deferred {
-            self.mutex.unbalancedLock()
+        return cursor.loadNextBatch().map { newItems in
+            let transformedNewItems = newItems.flatMap(self.transform)
+            self.elements += transformedNewItems
 
-            return self.cursor.loadNextBatch().map { newItems in
-                let transformedNewItems = newItems.flatMap(self.transform)
-                self.elements += transformedNewItems
-
-                return transformedNewItems
-            }
+            return transformedNewItems
         }
-        .do(onNext: { _ in
-            self.mutex.unbalancedUnlock()
-        }, onError: { _ in
-            self.mutex.unbalancedUnlock()
-        })
     }
 
 }

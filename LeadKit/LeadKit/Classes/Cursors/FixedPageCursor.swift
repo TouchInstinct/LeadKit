@@ -29,14 +29,6 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType {
 
     fileprivate let pageSize: Int
 
-    private var internalCount = 0
-
-    private var internalExhausted: Bool {
-        return cursor.exhausted && cursor.count == internalCount
-    }
-
-    private let mutex = Mutex()
-
     /// Initializer with enclosed cursor
     ///
     /// - Parameters:
@@ -48,48 +40,35 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType {
     }
 
     public var exhausted: Bool {
-        return mutex.sync { internalExhausted }
+        return cursor.exhausted && cursor.count == count
     }
 
-    public var count: Int {
-        return mutex.sync { internalCount }
-    }
+    public private(set) var count: Int = 0
 
     public subscript(index: Int) -> Cursor.Element {
-        return mutex.sync { cursor[index] }
+        return cursor[index]
     }
 
     public func loadNextBatch() -> Observable<[Cursor.Element]> {
-        return loadNextBatch(usingMutex: mutex)
-    }
-
-    private func loadNextBatch(usingMutex mutex: Mutex?) -> Observable<[Cursor.Element]> {
         return Observable.deferred {
-            mutex?.unbalancedLock()
-
-            if self.internalExhausted {
+            if self.exhausted {
                 throw CursorError.exhausted
             }
 
-            let restOfLoaded = self.cursor.count - self.internalCount
+            let restOfLoaded = self.cursor.count - self.count
 
             if restOfLoaded >= self.pageSize || self.cursor.exhausted {
-                let startIndex = self.internalCount
-                self.internalCount += min(restOfLoaded, self.pageSize)
+                let startIndex = self.count
+                self.count += min(restOfLoaded, self.pageSize)
 
-                return .just(self.cursor[startIndex..<self.internalCount])
+                return .just(self.cursor[startIndex..<self.count])
             }
 
             return self.cursor.loadNextBatch()
                 .flatMap { _ in
-                    self.loadNextBatch(usingMutex: nil)
-                }
+                    self.loadNextBatch()
+            }
         }
-        .do(onNext: { _ in
-            mutex?.unbalancedUnlock()
-        }, onError: { _ in
-            mutex?.unbalancedUnlock()
-        })
     }
 
 }

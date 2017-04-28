@@ -27,11 +27,6 @@ public class StaticCursor<Element>: ResettableCursorType {
 
     private let content: [Element]
 
-    private var internalExhausted = false
-    private var internalCount = 0
-
-    private let mutex = Mutex()
-
     /// Initializer for array content type
     ///
     /// - Parameter content: array with elements of Elemet type
@@ -43,37 +38,26 @@ public class StaticCursor<Element>: ResettableCursorType {
         self.content = other.content
     }
 
-    public var exhausted: Bool {
-        return mutex.sync { internalExhausted }
-    }
+    public private(set) var exhausted = false
 
-    public var count: Int {
-        return mutex.sync { internalCount }
-    }
+    public private(set) var count = 0
 
     public subscript(index: Int) -> Element {
-        return mutex.sync { content[index] }
+        return content[index]
     }
 
     public func loadNextBatch() -> Observable<[Element]> {
         return Observable.deferred {
-            self.mutex.unbalancedLock()
-
             if self.exhausted {
                 throw CursorError.exhausted
             }
 
-            self.internalCount = self.content.count
+            self.count = self.content.count
 
-            self.internalExhausted = true
+            self.exhausted = true
 
             return .just(self.content)
         }
-        .do(onNext: { _ in
-            self.mutex.unbalancedUnlock()
-        }, onError: { _ in
-            self.mutex.unbalancedUnlock()
-        })
     }
 
 }
