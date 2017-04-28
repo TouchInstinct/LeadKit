@@ -44,6 +44,7 @@ Pod::Spec.new do |s|
       "LeadKit/Sources/Classes/Views/XibView.swift",
       "LeadKit/Sources/Extensions/CGFloat/CGFloat+Pixels.swift",
       "LeadKit/Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
+      "LeadKit/Sources/Extensions/NetworkService/NetworkService+RxLoadImage.swift",
       "LeadKit/Sources/Extensions/Observable/Observable+ToastErrorLogging.swift",
       "LeadKit/Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
       "LeadKit/Sources/Extensions/StoryboardProtocol/*",

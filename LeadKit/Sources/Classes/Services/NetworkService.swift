@@ -88,31 +88,6 @@ open class NetworkService {
             #endif
     }
 
-    /// Perform reactive request to get UIImage and http response
-    ///
-    /// - Parameter url: An object adopting `URLConvertible`
-    /// - Returns: Observable of tuple containing (HTTPURLResponse, UIImage?)
-    public func rxLoadImage(url: String) -> Observable<(HTTPURLResponse, UIImage?)> {
-        let request = RxAlamofire.requestData(.get, url, headers: [:])
-
-        let requestObservable = request
-            .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .map { (response, data) -> (HTTPURLResponse, UIImage?) in
-                (response, UIImage(data: data))
-            }
-            .counterTracking(for: self)
-
-        #if os(iOS)
-            #if LEADKIT_EXTENSION_TARGET
-                return requestObservable
-            #else
-                return requestObservable.showErrorsInToastInDebugMode()
-            #endif
-        #else
-            return requestObservable
-        #endif
-    }
-
     fileprivate func increaseRequestCounter() {
         requestCountVariable.value += 1
     }

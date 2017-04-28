@@ -352,6 +352,9 @@
 		67952DCE1EB327B500B3BA1A /* LeadKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67952DC51EB327B400B3BA1A /* LeadKit.framework */; };
 		67952DDD1EB3281300B3BA1A /* LeadKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 67186B201EB247A200CFAFFB /* LeadKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		67CDEE401EB369BF00895905 /* ConfigurableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462241EB3396E00EAB194 /* ConfigurableController.swift */; };
+		67CDEE421EB3AD1C00895905 /* NetworkService+RxLoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CDEE411EB3AD1C00895905 /* NetworkService+RxLoadImage.swift */; };
+		67CDEE431EB3AD1C00895905 /* NetworkService+RxLoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CDEE411EB3AD1C00895905 /* NetworkService+RxLoadImage.swift */; };
+		67CDEE441EB3AD1C00895905 /* NetworkService+RxLoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CDEE411EB3AD1C00895905 /* NetworkService+RxLoadImage.swift */; };
 		BA6C6DB45950382041948FC5 /* Pods_LeadKit_LeadKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE9323150A9760008093F73 /* Pods_LeadKit_LeadKit_iOS.framework */; };
 		D6EE55093E404DEA62B03DDF /* Pods_LeadKit_LeadKit_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8590CA7831555C295C5DC572 /* Pods_LeadKit_LeadKit_watchOS.framework */; };
 		DEE25FE98D40ED1C168F384A /* Pods_LeadKit_LeadKit_iOS_Extensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887F99C5326BD220C2811BD6 /* Pods_LeadKit_LeadKit_iOS_Extensions.framework */; };
@@ -509,6 +512,7 @@
 		67952DCD1EB327B400B3BA1A /* LeadKit iOS ExtensionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LeadKit iOS ExtensionsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67952DDC1EB3280900B3BA1A /* Info-iOS-Extensions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS-Extensions.plist"; sourceTree = "<group>"; };
 		67952DDE1EB3285A00B3BA1A /* Info-iOS-Extensions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS-Extensions.plist"; sourceTree = "<group>"; };
+		67CDEE411EB3AD1C00895905 /* NetworkService+RxLoadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkService+RxLoadImage.swift"; sourceTree = "<group>"; };
 		78405D3B3D3C3E17456877FF /* Pods_LeadKit_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8590CA7831555C295C5DC572 /* Pods_LeadKit_LeadKit_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_LeadKit_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		887F99C5326BD220C2811BD6 /* Pods_LeadKit_LeadKit_iOS_Extensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_LeadKit_iOS_Extensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1009,6 +1013,7 @@
 			isa = PBXGroup;
 			children = (
 				6714639D1EB33AEB00EAB194 /* NetworkService+ActivityIndicator.swift */,
+				67CDEE411EB3AD1C00895905 /* NetworkService+RxLoadImage.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -1887,6 +1892,7 @@
 				6714626C1EB3396E00EAB194 /* XibView.swift in Sources */,
 				6714637C1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				6714631C1EB3396E00EAB194 /* UserDefaults+MappableDataTypes.swift in Sources */,
+				67CDEE421EB3AD1C00895905 /* NetworkService+RxLoadImage.swift in Sources */,
 				671463341EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
 				671462C01EB3396E00EAB194 /* StoryboardProtocol+Extensions.swift in Sources */,
 				671462701EB3396E00EAB194 /* CursorError.swift in Sources */,
@@ -2015,6 +2021,7 @@
 				671463631EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
 				671462DF1EB3396E00EAB194 /* UIActivityIndicator+LoadingIndicator.swift in Sources */,
 				671462871EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
+				67CDEE441EB3AD1C00895905 /* NetworkService+RxLoadImage.swift in Sources */,
 				671463231EB3396E00EAB194 /* Any+Cast.swift in Sources */,
 				6714634F1EB3396E00EAB194 /* ReuseIdentifierProtocol.swift in Sources */,
 				671462F31EB3396E00EAB194 /* UIImage+SupportExtensions.swift in Sources */,
@@ -2184,6 +2191,7 @@
 				6714632D1EB3396E00EAB194 /* ConfigurableController.swift in Sources */,
 				6714628D1EB3396E00EAB194 /* CGImage+Alpha.swift in Sources */,
 				671462751EB3396E00EAB194 /* LeadKitError.swift in Sources */,
+				67CDEE431EB3AD1C00895905 /* NetworkService+RxLoadImage.swift in Sources */,
 				671462D91EB3396E00EAB194 /* TimeInterval+DateComponents.swift in Sources */,
 				6714638D1EB3396E00EAB194 /* SolidFillDrawingOperation.swift in Sources */,
 				671463A31EB33FF600EAB194 /* Animatable.swift in Sources */,
