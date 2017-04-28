@@ -20,7 +20,7 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import CoreGraphics
 
 /**
  *  protocol which ensures that specific type can return estimated height of view for view model
