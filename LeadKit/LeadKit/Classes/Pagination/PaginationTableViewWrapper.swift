@@ -118,8 +118,6 @@ where Delegate.Cursor == Cursor {
 
     private let applicationCurrentyActive = Variable<Bool>(true)
 
-    private var waitingOperations: [() -> Void] = []
-
     /// Initializer with table view, placeholders container view, cusor and delegate parameters.
     ///
     /// - Parameters:
@@ -284,34 +282,28 @@ where Delegate.Cursor == Cursor {
     }
 
     private func bindViewModelStates() {
-        paginationViewModel.state.drive(onNext: { [weak self] state in
-            let stateHandling = { [weak self] in
-                switch state {
-                case .initial:
-                    self?.onInitialState()
-                case .loading(let after):
-                    self?.onLoadingState(afterState: after)
-                case .loadingMore(let after):
-                    self?.onLoadingMoreState(afterState: after)
-                case .results(let newItems, let cursor, let after):
-                    self?.onResultsState(newItems: newItems, inCursor: cursor, afterState: after)
-                case .error(let error, let after):
-                    self?.onErrorState(error: error, afterState: after)
-                case .empty:
-                    self?.onEmptyState()
-                case .exhausted:
-                    self?.onExhaustedState()
-                }
-            }
-
-            guard let strongSelf = self else {
-                return
-            }
-
-            if strongSelf.applicationCurrentyActive.value {
-                stateHandling()
-            } else {
-                strongSelf.waitingOperations.append(stateHandling)
+        paginationViewModel.state.flatMapLatest { [applicationCurrentyActive] state in
+            return applicationCurrentyActive
+                .asDriver()
+                .filter { $0 }
+                .map { _ in state }
+        }
+        .drive(onNext: { [weak self] state in
+            switch state {
+            case .initial:
+                self?.onInitialState()
+            case .loading(let after):
+                self?.onLoadingState(afterState: after)
+            case .loadingMore(let after):
+                self?.onLoadingMoreState(afterState: after)
+            case .results(let newItems, let cursor, let after):
+                self?.onResultsState(newItems: newItems, inCursor: cursor, afterState: after)
+            case .error(let error, let after):
+                self?.onErrorState(error: error, afterState: after)
+            case .empty:
+                self?.onEmptyState()
+            case .exhausted:
+                self?.onExhaustedState()
             }
         })
         .addDisposableTo(disposeBag)
@@ -360,15 +352,6 @@ where Delegate.Cursor == Cursor {
         notificationCenter.notification(.UIApplicationDidBecomeActive)
             .subscribe(onNext: { [weak self] _ in
                 self?.applicationCurrentyActive.value = true
-            })
-            .addDisposableTo(disposeBag)
-
-        applicationCurrentyActive.asDriver()
-            .drive(onNext: { [weak self] appActive in
-                if appActive {
-                    self?.waitingOperations.forEach { $0() }
-                    self?.waitingOperations = []
-                }
             })
             .addDisposableTo(disposeBag)
     }
