@@ -36,8 +36,9 @@ public extension Support where Base: UIScrollView {
         if #available(iOS 10.0, *) {
             base.refreshControl = newRefreshControl
         } else {
-            if let control = newRefreshControl {
-                base.addSubview(control)
+            if let newControl = newRefreshControl {
+                refreshControl?.removeFromSuperview()
+                base.addSubview(newControl)
             } else {
                 refreshControl?.removeFromSuperview()
             }
