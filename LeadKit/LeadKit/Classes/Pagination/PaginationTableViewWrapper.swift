@@ -291,8 +291,8 @@ where Delegate.Cursor == Cursor {
             } else {
                 return applicationCurrentyActive
                     .asObservable()
-                    .delay(0.5, scheduler: MainScheduler.instance)
                     .filter { $0 }
+                    .delay(0.5, scheduler: MainScheduler.instance)
                     .asDriver(onErrorJustReturn: true)
                     .map { _ in state }
             }
