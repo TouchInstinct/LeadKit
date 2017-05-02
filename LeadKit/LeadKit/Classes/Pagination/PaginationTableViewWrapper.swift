@@ -22,6 +22,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import UIScrollView_InfiniteScroll
 
 /// PaginationTableViewWrapper delegate used for pagination results handling and
@@ -282,11 +283,19 @@ where Delegate.Cursor == Cursor {
     }
 
     private func bindViewModelStates() {
-        paginationViewModel.state.flatMapLatest { [applicationCurrentyActive] state in
-            return applicationCurrentyActive
-                .asDriver()
-                .filter { $0 }
-                .map { _ in state }
+        typealias State = PaginationViewModel<Cursor>.State
+
+        paginationViewModel.state.flatMapLatest { [applicationCurrentyActive] state -> Driver<State> in
+            if applicationCurrentyActive.value {
+                return .just(state)
+            } else {
+                return applicationCurrentyActive
+                    .asObservable()
+                    .delay(0.5, scheduler: MainScheduler.instance)
+                    .filter { $0 }
+                    .asDriver(onErrorJustReturn: true)
+                    .map { _ in state }
+            }
         }
         .drive(onNext: { [weak self] state in
             switch state {
