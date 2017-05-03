@@ -20,9 +20,9 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
-extension UIView {
+public extension UIView {
 
     private static let rotationKeyPath = "transform.rotation.z"
 

@@ -23,13 +23,11 @@
 import RxSwift
 
 /// Paging cursor implementation with enclosed cursor for fetching results
-public class FixedPageCursor<Cursor: CursorType>: CursorType where Cursor.LoadResultType == CountableRange<Int> {
+public class FixedPageCursor<Cursor: CursorType>: CursorType {
 
-    public typealias LoadResultType = CountableRange<Int>
+    fileprivate let cursor: Cursor
 
-    private let cursor: Cursor
-
-    private let pageSize: Int
+    fileprivate let pageSize: Int
 
     /// Initializer with enclosed cursor
     ///
@@ -51,7 +49,7 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType where Cursor.LoadRe
         return cursor[index]
     }
 
-    public func loadNextBatch() -> Observable<LoadResultType> {
+    public func loadNextBatch() -> Observable<[Cursor.Element]> {
         return Observable.deferred {
             if self.exhausted {
                 throw CursorError.exhausted
@@ -63,12 +61,27 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType where Cursor.LoadRe
                 let startIndex = self.count
                 self.count += min(restOfLoaded, self.pageSize)
 
-                return Observable.just(startIndex..<self.count)
+                return .just(self.cursor[startIndex..<self.count])
             }
 
             return self.cursor.loadNextBatch()
-                .flatMap { _ in self.loadNextBatch() }
+                .flatMap { _ in
+                    self.loadNextBatch()
+            }
         }
+    }
+
+}
+
+/// FixedPageCursor subclass with implementation of ResettableType
+public class ResettableFixedPageCursor<Cursor: ResettableCursorType>: FixedPageCursor<Cursor>, ResettableType {
+
+    public override init(cursor: Cursor, pageSize: Int) {
+        super.init(cursor: cursor, pageSize: pageSize)
+    }
+
+    public required init(initialFrom other: ResettableFixedPageCursor) {
+        super.init(cursor: other.cursor.reset(), pageSize: other.pageSize)
     }
 
 }

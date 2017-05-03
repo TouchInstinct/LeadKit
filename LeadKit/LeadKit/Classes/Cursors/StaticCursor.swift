@@ -23,9 +23,7 @@
 import RxSwift
 
 /// Stub cursor implementation for array content type
-public class StaticCursor<Element>: CursorType {
-
-    public typealias LoadResultType = CountableRange<Int>
+public class StaticCursor<Element>: ResettableCursorType {
 
     private let content: [Element]
 
@@ -36,6 +34,10 @@ public class StaticCursor<Element>: CursorType {
         self.content = content
     }
 
+    public required init(initialFrom other: StaticCursor) {
+        self.content = other.content
+    }
+
     public private(set) var exhausted = false
 
     public private(set) var count = 0
@@ -44,7 +46,7 @@ public class StaticCursor<Element>: CursorType {
         return content[index]
     }
 
-    public func loadNextBatch() -> Observable<LoadResultType> {
+    public func loadNextBatch() -> Observable<[Element]> {
         return Observable.deferred {
             if self.exhausted {
                 throw CursorError.exhausted
@@ -54,7 +56,7 @@ public class StaticCursor<Element>: CursorType {
 
             self.exhausted = true
 
-            return Observable.just(0..<self.count)
+            return .just(self.content)
         }
     }
 

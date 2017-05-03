@@ -22,12 +22,10 @@
 
 import Foundation
 
-/**
- *  protocol which ensures that specific type can return nib name of view
- */
-public protocol StaticNibNameProtocol {
-    /**
-     - returns: nib name string
-     */
-    static var nibName: String { get }
+/// Protocol that ensures that specific type can return it's xib name
+public protocol XibNameProtocol {
+
+    /// Name of related xib
+    static var xibName: String { get }
+
 }

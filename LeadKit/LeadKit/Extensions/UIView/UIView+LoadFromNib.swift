@@ -30,8 +30,8 @@ public extension UIView {
     /// - Parameter bundle: The bundle in which to search for the nib file.
     ///                     If you specify nil, this method looks for the nib file in the main bundle.
     /// - Returns: UIView or UIView subclass instance
-    public static func loadFromNib<T>(bundle: Bundle? = nil) -> T where T: StaticNibNameProtocol, T: UIView {
-        return loadFromNib(named: T.nibName, bundle: bundle)
+    public static func loadFromNib<T>(bundle: Bundle? = nil) -> T where T: XibNameProtocol, T: UIView {
+        return loadFromNib(named: T.xibName, bundle: bundle)
     }
 
     /// Method which loads UIView (or subclass) instance from nib using given nib name parameter
@@ -46,7 +46,7 @@ public extension UIView {
         let nib = UINib(nibName: nibName, bundle: bundle)
 
         guard let nibView = nib.instantiate(withOwner: owner, options: nil).first as? T else {
-            fatalError("Can't nstantiate nib view with type \(T.self)")
+            fatalError("Can't instantiate nib view with type \(T.self)")
         }
 
         return nibView

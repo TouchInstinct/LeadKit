@@ -20,39 +20,44 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import XCTest
+import LeadKit
+import RxSwift
 
-/// Class used to instantiate custom view in storyboards
-open class XibView: UIView {
+class PaginationViewModelTests: XCTestCase {
 
-    /// Nib name used to instantiate inner view
-    open var innerViewNibName: String {
-        return type(of: self).xibName
+    let disposeBag = DisposeBag()
+
+    override func setUp() {
+        super.setUp()
     }
 
-    public convenience init() {
-        self.init(frame: .zero)
+    override func tearDown() {
+        super.tearDown()
     }
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
+    func testExample() {
+        let cursor = StubCursor(maxItemsCount: 36, requestDelay: .seconds(1))
+        let viewModel = PaginationViewModel(cursor: cursor)
 
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupView()
-    }
+        let paginationExpectation = expectation(description: "Pagination expectation")
 
-    private func setupView() {
-        let view: UIView = UIView.loadFromNib(named: innerViewNibName, owner: self)
+        viewModel.state.drive(onNext: { state in
+            switch state {
+            case .initial, .loadingMore, .loading:
+                print("PageViewModel state changed to \(state)")
+            case .results(let newItems, _, _):
+                print(newItems.count)
+                paginationExpectation.fulfill()
+            default:
+                XCTFail("Unexpected state: \(state)")
+            }
+        })
+        .addDisposableTo(disposeBag)
 
-        // Make frame size match the size of the content view in the xib
-        frame = CGRect(origin: frame.origin, size: view.frame.size)
+        viewModel.load(.reload)
 
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-        addSubview(view)
+        waitForExpectations(timeout: 10, handler: nil)
     }
 
 }

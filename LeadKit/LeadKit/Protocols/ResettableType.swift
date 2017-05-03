@@ -20,39 +20,25 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import Foundation
 
-/// Class used to instantiate custom view in storyboards
-open class XibView: UIView {
+/// Protocol that ensures that specific type can init new resetted instance from another instance.
+public protocol ResettableType {
 
-    /// Nib name used to instantiate inner view
-    open var innerViewNibName: String {
-        return type(of: self).xibName
-    }
+    /// Initializer with other instance parameter.
+    ///
+    /// - Parameter other: Other instance of specific type.
+    init(initialFrom other: Self)
 
-    public convenience init() {
-        self.init(frame: .zero)
-    }
+}
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
+public extension ResettableType {
 
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupView()
-    }
-
-    private func setupView() {
-        let view: UIView = UIView.loadFromNib(named: innerViewNibName, owner: self)
-
-        // Make frame size match the size of the content view in the xib
-        frame = CGRect(origin: frame.origin, size: view.frame.size)
-
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-        addSubview(view)
+    /// Method that creates new resseted instance of self
+    ///
+    /// - Returns: resseted instance of self
+    func reset() -> Self {
+        return Self(initialFrom: self)
     }
 
 }

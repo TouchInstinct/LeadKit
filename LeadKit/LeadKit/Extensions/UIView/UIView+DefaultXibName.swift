@@ -22,21 +22,10 @@
 
 import UIKit
 
-public extension UICollectionView {
+extension UIView: XibNameProtocol {
 
-    /// Method which register UICollectionViewCell subclass for reusing in UICollectionView with
-    /// reuse identifier provided by ReuseIdentifierProtocol protocol implementation
-    /// and nib name provided by StaticNibNameProtocol protocol implementation
-    ///
-    /// - Parameters:
-    ///   - cellClass: UICollectionViewCell subclass which implements
-    ///                ReuseIdentifierProtocol and StaticNibNameProtocol
-    ///   - bundle: The bundle in which to search for the nib file.
-    ///             If you specify nil, this method looks for the nib file in the main bundle.
-    public func registerNib<T>(forCellClass cellClass: T.Type, bundle: Bundle? = nil)
-        where T: ReuseIdentifierProtocol, T: UICollectionViewCell, T: XibNameProtocol {
-
-            register(UINib(nibName: T.xibName, bundle: bundle), forCellWithReuseIdentifier: T.reuseIdentifier)
+    open class var xibName: String {
+        return className(of: self)
     }
 
 }

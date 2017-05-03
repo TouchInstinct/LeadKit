@@ -27,8 +27,6 @@ public protocol CursorType {
 
     associatedtype Element
 
-    associatedtype LoadResultType
-
     /// Indicates that cursor load all available results
     var exhausted: Bool { get }
 
@@ -40,6 +38,6 @@ public protocol CursorType {
     /// Loads next batch of results
     ///
     /// - Returns: Observable of LoadResultType
-    func loadNextBatch() -> Observable<LoadResultType>
+    func loadNextBatch() -> Observable<[Element]>
 
 }

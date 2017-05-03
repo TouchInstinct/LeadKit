@@ -22,37 +22,23 @@
 
 import UIKit
 
-/// Class used to instantiate custom view in storyboards
-open class XibView: UIView {
+/// Protocol that ensures that specific type support basic animation actions.
+public protocol Animatable {
 
-    /// Nib name used to instantiate inner view
-    open var innerViewNibName: String {
-        return type(of: self).xibName
-    }
+    /// Method that starts animation.
+    func startAnimating()
+    /// Method that stops animation.
+    func stopAnimating()
 
-    public convenience init() {
-        self.init(frame: .zero)
-    }
+}
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
+/// Protocol that describes badic loading indicator.
+public protocol LoadingIndicator {
 
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupView()
-    }
+    /// Type of view. Should be instance of UIView with basic animation actions.
+    associatedtype View: UIView, Animatable
 
-    private func setupView() {
-        let view: UIView = UIView.loadFromNib(named: innerViewNibName, owner: self)
-
-        // Make frame size match the size of the content view in the xib
-        frame = CGRect(origin: frame.origin, size: view.frame.size)
-
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-        addSubview(view)
-    }
+    /// The underlying view.
+    var view: View { get }
 
 }

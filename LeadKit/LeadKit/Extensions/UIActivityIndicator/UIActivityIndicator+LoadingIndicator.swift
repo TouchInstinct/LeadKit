@@ -22,37 +22,6 @@
 
 import UIKit
 
-/// Class used to instantiate custom view in storyboards
-open class XibView: UIView {
+extension UIActivityIndicatorView: Animatable {}
 
-    /// Nib name used to instantiate inner view
-    open var innerViewNibName: String {
-        return type(of: self).xibName
-    }
-
-    public convenience init() {
-        self.init(frame: .zero)
-    }
-
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
-
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupView()
-    }
-
-    private func setupView() {
-        let view: UIView = UIView.loadFromNib(named: innerViewNibName, owner: self)
-
-        // Make frame size match the size of the content view in the xib
-        frame = CGRect(origin: frame.origin, size: view.frame.size)
-
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-        addSubview(view)
-    }
-
-}
+extension UIActivityIndicatorView: LoadingIndicator {}

@@ -22,30 +22,36 @@
 
 import RxSwift
 
-public typealias MapCursorLoadResultType = CountableRange<Int>
-
-public extension CursorType where Self.LoadResultType == MapCursorLoadResultType {
+public extension CursorType {
 
     /// Creates MapCursor with current cursor
     ///
     /// - Parameter transform: closure to transform elements
-    /// - Returns: new MapCursorInstance
+    /// - Returns: new MapCursor instance
     func flatMap<T>(transform: @escaping MapCursor<Self, T>.Transform) -> MapCursor<Self, T> {
         return MapCursor(cursor: self, transform: transform)
+    }
+
+    /// Creates ResettableMapCursor with current cursor
+    ///
+    /// - Parameter transform: closure to transform elements
+    /// - Returns: new ResettableMapCursor instance
+    func flatMap<T>(transform: @escaping ResettableMapCursor<Self, T>.Transform)
+        -> ResettableMapCursor<Self, T> where Self: ResettableCursorType {
+
+        return ResettableMapCursor(cursor: self, transform: transform)
     }
 
 }
 
 /// Map cursor implementation with enclosed cursor for fetching results
-public class MapCursor<Cursor: CursorType, T>: CursorType where Cursor.LoadResultType == MapCursorLoadResultType {
-
-    public typealias LoadResultType = Cursor.LoadResultType
+public class MapCursor<Cursor: CursorType, T>: CursorType {
 
     public typealias Transform = (Cursor.Element) -> T?
 
-    private let cursor: Cursor
+    fileprivate let cursor: Cursor
 
-    private let transform: Transform
+    fileprivate let transform: Transform
 
     private var elements: [T] = []
 
@@ -71,13 +77,26 @@ public class MapCursor<Cursor: CursorType, T>: CursorType where Cursor.LoadResul
         return elements[index]
     }
 
-    public func loadNextBatch() -> Observable<LoadResultType> {
-        return cursor.loadNextBatch().map { loadedRange in
-            let startIndex = self.elements.count
-            self.elements += self.cursor[loadedRange].flatMap(self.transform)
+    public func loadNextBatch() -> Observable<[T]> {
+        return cursor.loadNextBatch().map { newItems in
+            let transformedNewItems = newItems.flatMap(self.transform)
+            self.elements += transformedNewItems
 
-            return startIndex..<self.elements.count
+            return transformedNewItems
         }
+    }
+
+}
+
+/// MapCursor subclass with implementation of ResettableType
+public class ResettableMapCursor<Cursor: ResettableCursorType, T>: MapCursor<Cursor, T>, ResettableType {
+
+    public override init(cursor: Cursor, transform: @escaping Transform) {
+        super.init(cursor: cursor, transform: transform)
+    }
+
+    public required init(initialFrom other: ResettableMapCursor) {
+        super.init(cursor: other.cursor.reset(), transform: other.transform)
     }
 
 }
