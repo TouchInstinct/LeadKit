@@ -22,14 +22,23 @@
 
 import CoreGraphics
 
+extension CGBitmapInfo {
+
+    // The bitmapInfo value are hard-coded to prevent an "unsupported parameter combination" error
+
+    static let alphaBitmapInfo = CGBitmapInfo(rawValue: CGBitmapInfo().rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue)
+    static let opaqueBitmapInfo = CGBitmapInfo(rawValue: CGBitmapInfo().rawValue | CGImageAlphaInfo.none.rawValue)
+
+}
+
 public extension CGContext {
 
-    /**
-     method which creates an instance of CGContext with parameters taken from a given image
-
-     - parameter forCGImage: CGImage instance from which the parameters will be taken
-     - parameter fallbackColorSpace: fallback color space if image doesn't have it
-     */
+    /// Creates a bitmap graphics context with parameters taken from a given image.
+    ///
+    /// - Parameters:
+    ///   - cgImage: CGImage instance from which the parameters will be taken.
+    ///   - fallbackColorSpace: Fallback color space if image doesn't have it.
+    /// - Returns: A new bitmap context, or NULL if a context could not be created.
     public static func create(forCGImage cgImage: CGImage,
                               fallbackColorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()) -> CGContext? {
 
@@ -40,20 +49,20 @@ public extension CGContext {
                       bitsPerComponent: cgImage.bitsPerComponent)
     }
 
-    /**
-     method which creates an instance of CGContext
-
-     - parameter width: The width, in pixels, of the required bitmap.
-     - parameter height: The height, in pixels, of the required bitmap.
-     - parameter bitmapInfo: Constants that specify whether the bitmap should contain an alpha channel,
-     the alpha channel’s relative location in a pixel,
-     and information about whether the pixel components are floating-point or integer values.
-     - parameter colorSpace: The color space to use for the bitmap context.
-     - parameter bitsPerComponent: The number of bits to use for each component of a pixel in memory.
-     */
+    /// Creates a bitmap graphics context.
+    ///
+    /// - Parameters:
+    ///   - width: The width, in pixels, of the required bitmap.
+    ///   - height: The height, in pixels, of the required bitmap.
+    ///   - bitmapInfo: Constants that specify whether the bitmap should contain an alpha channel,
+    /// the alpha channel’s relative location in a pixel,
+    /// and information about whether the pixel components are floating-point or integer values.
+    ///   - colorSpace: The color space to use for the bitmap context.
+    ///   - bitsPerComponent: The number of bits to use for each component of a pixel in memory.
+    /// - Returns: A new bitmap context, or NULL if a context could not be created.
     public static func create(width: Int,
                               height: Int,
-                              bitmapInfo: CGBitmapInfo = alphaBitmapInfo,
+                              bitmapInfo: CGBitmapInfo = .alphaBitmapInfo,
                               colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB(),
                               bitsPerComponent: Int = 8) -> CGContext? {
 

@@ -24,11 +24,9 @@ import CoreGraphics
 
 public extension CGImage {
 
-    /**
-     crop image to square from center
-
-     - returns: cropped image
-     */
+    /// Crop image to square from center.
+    ///
+    /// - Returns: A new cropped image or nil if something goes wrong.
     public func cropFromCenterToSquare() -> CGImage? {
         let shortest = min(width, height)
 
@@ -44,6 +42,27 @@ public extension CGImage {
                               height: height - heightCropSize)
 
         return cropping(to: cropRect)
+    }
+
+    /// Crop image with given margin values.
+    ///
+    /// - Parameters:
+    ///   - top: Top margin.
+    ///   - left: Left margin.
+    ///   - bottom: Bottom margin.
+    ///   - right: Right margin.
+    /// - Returns: A new CGImage cropped with given paddings or nil if something goes wrong.
+    public func crop(top: CGFloat = 0,
+                     left: CGFloat = 0,
+                     bottom: CGFloat = 0,
+                     right: CGFloat = 0) -> CGImage? {
+
+        let rect = CGRect(x: left,
+                          y: top,
+                          width: CGFloat(width) - left - right,
+                          height: CGFloat(height) - top - bottom)
+
+        return cropping(to: rect)
     }
 
 }
