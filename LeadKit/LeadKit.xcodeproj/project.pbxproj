@@ -355,6 +355,10 @@
 		67CDEE421EB3AD1C00895905 /* NetworkService+RxLoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CDEE411EB3AD1C00895905 /* NetworkService+RxLoadImage.swift */; };
 		67CDEE431EB3AD1C00895905 /* NetworkService+RxLoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CDEE411EB3AD1C00895905 /* NetworkService+RxLoadImage.swift */; };
 		67CDEE441EB3AD1C00895905 /* NetworkService+RxLoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CDEE411EB3AD1C00895905 /* NetworkService+RxLoadImage.swift */; };
+		67E6C2351EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
+		67E6C2361EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
+		67E6C2371EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
+		67E6C2381EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
 		BA6C6DB45950382041948FC5 /* Pods_LeadKit_LeadKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE9323150A9760008093F73 /* Pods_LeadKit_LeadKit_iOS.framework */; };
 		D6EE55093E404DEA62B03DDF /* Pods_LeadKit_LeadKit_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8590CA7831555C295C5DC572 /* Pods_LeadKit_LeadKit_watchOS.framework */; };
 		DEE25FE98D40ED1C168F384A /* Pods_LeadKit_LeadKit_iOS_Extensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887F99C5326BD220C2811BD6 /* Pods_LeadKit_LeadKit_iOS_Extensions.framework */; };
@@ -513,6 +517,7 @@
 		67952DDC1EB3280900B3BA1A /* Info-iOS-Extensions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS-Extensions.plist"; sourceTree = "<group>"; };
 		67952DDE1EB3285A00B3BA1A /* Info-iOS-Extensions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS-Extensions.plist"; sourceTree = "<group>"; };
 		67CDEE411EB3AD1C00895905 /* NetworkService+RxLoadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkService+RxLoadImage.swift"; sourceTree = "<group>"; };
+		67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleLoadCursor.swift; sourceTree = "<group>"; };
 		78405D3B3D3C3E17456877FF /* Pods_LeadKit_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8590CA7831555C295C5DC572 /* Pods_LeadKit_LeadKit_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_LeadKit_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		887F99C5326BD220C2811BD6 /* Pods_LeadKit_LeadKit_iOS_Extensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_LeadKit_iOS_Extensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -618,6 +623,7 @@
 				671461C81EB3396E00EAB194 /* FixedPageCursor.swift */,
 				671461C91EB3396E00EAB194 /* MapCursor.swift */,
 				671461CA1EB3396E00EAB194 /* StaticCursor.swift */,
+				67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */,
 			);
 			path = Cursors;
 			sourceTree = "<group>";
@@ -945,6 +951,7 @@
 		671462221EB3396E00EAB194 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				671463A11EB33FF600EAB194 /* Animatable.swift */,
 				671462231EB3396E00EAB194 /* BaseViewModel.swift */,
 				671462241EB3396E00EAB194 /* ConfigurableController.swift */,
 				671462251EB3396E00EAB194 /* CursorType.swift */,
@@ -963,7 +970,6 @@
 				671462321EB3396E00EAB194 /* ViewHeightProtocol.swift */,
 				671462331EB3396E00EAB194 /* ViewModelProtocol.swift */,
 				671462341EB3396E00EAB194 /* XibNameProtocol.swift */,
-				671463A11EB33FF600EAB194 /* Animatable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1909,6 +1915,7 @@
 				671462B81EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */,
 				671463741EB3396E00EAB194 /* BorderDrawingOperation.swift in Sources */,
 				6714633C1EB3396E00EAB194 /* LoadingIndicator.swift in Sources */,
+				67E6C2351EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				671463181EB3396E00EAB194 /* UIWindow+Extensions.swift in Sources */,
 				671462541EB3396E00EAB194 /* App.swift in Sources */,
 				6714635C1EB3396E00EAB194 /* StoryboardProtocol.swift in Sources */,
@@ -1951,6 +1958,7 @@
 				671462CE1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
 				671462821EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
 				671462C61EB3396E00EAB194 /* String+Extensions.swift in Sources */,
+				67E6C2371EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				671463561EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
 				671462AA1EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift in Sources */,
 				671463621EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
@@ -2090,6 +2098,7 @@
 				671462771EB3396E00EAB194 /* LeadKitError.swift in Sources */,
 				671462DB1EB3396E00EAB194 /* TimeInterval+DateComponents.swift in Sources */,
 				6714638F1EB3396E00EAB194 /* SolidFillDrawingOperation.swift in Sources */,
+				67E6C2381EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				671462531EB3396E00EAB194 /* StaticCursor.swift in Sources */,
 				6714629F1EB3396E00EAB194 /* CursorType+Slice.swift in Sources */,
 				6714636B1EB3396E00EAB194 /* ViewModelProtocol.swift in Sources */,
@@ -2120,6 +2129,7 @@
 				671462CD1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
 				671462811EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
 				671462C51EB3396E00EAB194 /* String+Extensions.swift in Sources */,
+				67E6C2361EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				671463551EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
 				671462A91EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift in Sources */,
 				671463611EB3396E00EAB194 /* SupportProtocol.swift in Sources */,

@@ -49,25 +49,23 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType {
         return cursor[index]
     }
 
-    public func loadNextBatch() -> Observable<[Cursor.Element]> {
-        return Observable.deferred {
-            if self.exhausted {
-                throw CursorError.exhausted
-            }
+    public func loadNextBatch() -> Single<[Cursor.Element]> {
+        if exhausted {
+            return .error(CursorError.exhausted)
+        }
 
-            let restOfLoaded = self.cursor.count - self.count
+        let restOfLoaded = cursor.count - count
 
-            if restOfLoaded >= self.pageSize || self.cursor.exhausted {
-                let startIndex = self.count
-                self.count += min(restOfLoaded, self.pageSize)
+        if restOfLoaded >= pageSize || cursor.exhausted {
+            let startIndex = count
+            count += min(restOfLoaded, pageSize)
 
-                return .just(self.cursor[startIndex..<self.count])
-            }
+            return .just(cursor[startIndex..<count])
+        }
 
-            return self.cursor.loadNextBatch()
-                .flatMap { _ in
-                    self.loadNextBatch()
-            }
+        return cursor.loadNextBatch()
+            .flatMap { _ in
+                self.loadNextBatch()
         }
     }
 
