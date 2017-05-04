@@ -76,10 +76,10 @@ Pod::Spec.new do |s|
     ]
 
     ss.dependency "CocoaLumberjack/Swift", '~> 3.1.0'
-    ss.dependency "RxSwift", '3.2.0'
-    ss.dependency "RxCocoa", '3.2.0'
-    ss.dependency "RxAlamofire", '3.0.0'
-    ss.dependency "ObjectMapper", '~> 2.1'
+    ss.dependency "RxSwift", '3.4.0'
+    ss.dependency "RxCocoa", '3.4.0'
+    ss.dependency "RxAlamofire", '3.0.2'
+    ss.dependency "ObjectMapper", '~> 2.2'
 
     ss.ios.dependency "Toast-Swift", '~> 2.0.0'
     ss.ios.dependency "TableKit", '~> 2.3.1'
@@ -102,10 +102,10 @@ Pod::Spec.new do |s|
     ss.pod_target_xcconfig = { 'SWIFT_ACTIVE_COMPILATION_CONDITIONS' => 'LEADKIT_EXTENSION_TARGET' }
 
     ss.dependency "CocoaLumberjack/Swift", '~> 3.1.0'
-    ss.dependency "RxSwift", '3.2.0'
-    ss.dependency "RxCocoa", '3.2.0'
-    ss.dependency "RxAlamofire", '3.0.0'
-    ss.dependency "ObjectMapper", '~> 2.1'
+    ss.dependency "RxSwift", '3.4.0'
+    ss.dependency "RxCocoa", '3.4.0'
+    ss.dependency "RxAlamofire", '3.0.2'
+    ss.dependency "ObjectMapper", '~> 2.2'
   end
 
   s.default_subspec = 'Core'
