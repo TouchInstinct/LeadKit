@@ -116,7 +116,6 @@
 		671462AD1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461F11EB3396E00EAB194 /* Observable+DeferredJust.swift */; };
 		671462AE1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461F11EB3396E00EAB194 /* Observable+DeferredJust.swift */; };
 		671462AF1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461F11EB3396E00EAB194 /* Observable+DeferredJust.swift */; };
-		671462B01EB3396E00EAB194 /* Observable+ToastErrorLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461F21EB3396E00EAB194 /* Observable+ToastErrorLogging.swift */; };
 		671462B41EB3396E00EAB194 /* PaginationTableViewWrapperDelegate+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461F41EB3396E00EAB194 /* PaginationTableViewWrapperDelegate+DefaultImplementation.swift */; };
 		671462B81EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461F61EB3396E00EAB194 /* Sequence+ConcurrentMap.swift */; };
 		671462B91EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461F61EB3396E00EAB194 /* Sequence+ConcurrentMap.swift */; };
@@ -441,7 +440,6 @@
 		671461ED1EB3396E00EAB194 /* IndexPath+ImmutableIndexPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+ImmutableIndexPath.swift"; sourceTree = "<group>"; };
 		671461EF1EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImmutableMappable+ObservableMappable.swift"; sourceTree = "<group>"; };
 		671461F11EB3396E00EAB194 /* Observable+DeferredJust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+DeferredJust.swift"; sourceTree = "<group>"; };
-		671461F21EB3396E00EAB194 /* Observable+ToastErrorLogging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+ToastErrorLogging.swift"; sourceTree = "<group>"; };
 		671461F41EB3396E00EAB194 /* PaginationTableViewWrapperDelegate+DefaultImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PaginationTableViewWrapperDelegate+DefaultImplementation.swift"; sourceTree = "<group>"; };
 		671461F61EB3396E00EAB194 /* Sequence+ConcurrentMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+ConcurrentMap.swift"; sourceTree = "<group>"; };
 		671461F81EB3396E00EAB194 /* StoryboardProtocol+DefaultBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoryboardProtocol+DefaultBundle.swift"; sourceTree = "<group>"; };
@@ -801,7 +799,6 @@
 			isa = PBXGroup;
 			children = (
 				671461F11EB3396E00EAB194 /* Observable+DeferredJust.swift */,
-				671461F21EB3396E00EAB194 /* Observable+ToastErrorLogging.swift */,
 			);
 			path = Observable;
 			sourceTree = "<group>";
@@ -1934,7 +1931,6 @@
 				671463141EB3396E00EAB194 /* UIViewController+TopVisibleViewController.swift in Sources */,
 				671462881EB3396E00EAB194 /* CGFloat+Pixels.swift in Sources */,
 				671462941EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
-				671462B01EB3396E00EAB194 /* Observable+ToastErrorLogging.swift in Sources */,
 				671463641EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
 				671462481EB3396E00EAB194 /* FixedPageCursor.swift in Sources */,
 				671462C81EB3396E00EAB194 /* String+Localization.swift in Sources */,
@@ -2535,7 +2531,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.touchin.LeadKit-iOS-Extensions";
 				PRODUCT_NAME = LeadKit;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG LEADKIT_EXTENSION_TARGET";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -2561,7 +2557,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.touchin.LeadKit-iOS-Extensions";
 				PRODUCT_NAME = LeadKit;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = LEADKIT_EXTENSION_TARGET;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

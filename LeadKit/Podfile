@@ -12,7 +12,6 @@ abstract_target 'LeadKit' do
 
     use_frameworks!
 
-    pod "Toast-Swift", '~> 2.0.0'
     pod "TableKit", '~> 2.3.1'
     pod "UIScrollView-InfiniteScroll", '~> 1.0.0'
 

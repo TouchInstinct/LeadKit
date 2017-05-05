@@ -53,18 +53,8 @@ open class NetworkService {
     public func rxRequest<T: ObservableMappable>(with parameters: ApiRequestParameters)
         -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
 
-            let responseObservable = sessionManager.rx.responseObservableModel(requestParameters: parameters)
-                .counterTracking(for: self) as Observable<(response: HTTPURLResponse, model: T)>
-
-            #if os(iOS)
-                #if LEADKIT_EXTENSION_TARGET
-                    return responseObservable
-                #else
-                    return responseObservable.showErrorsInToastInDebugMode()
-                #endif
-            #else
-                return responseObservable
-            #endif
+            return sessionManager.rx.responseObservableModel(requestParameters: parameters)
+                .counterTracking(for: self)
     }
 
     /// Perform reactive request to get mapped ImmutableMappable model and http response
@@ -74,18 +64,8 @@ open class NetworkService {
     public func rxRequest<T: ImmutableMappable>(with parameters: ApiRequestParameters)
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
-            let responseObservable = sessionManager.rx.responseModel(requestParameters: parameters)
-                .counterTracking(for: self) as Observable<(response: HTTPURLResponse, model: T)>
-
-            #if os(iOS)
-                #if LEADKIT_EXTENSION_TARGET
-                    return responseObservable
-                #else
-                    return responseObservable.showErrorsInToastInDebugMode()
-                #endif
-            #else
-                return responseObservable
-            #endif
+            return sessionManager.rx.responseModel(requestParameters: parameters)
+                .counterTracking(for: self)
     }
 
     fileprivate func increaseRequestCounter() {

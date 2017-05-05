@@ -32,22 +32,12 @@ public extension NetworkService {
     public func rxLoadImage(url: String) -> Observable<(HTTPURLResponse, UIImage?)> {
         let request = RxAlamofire.requestData(.get, url, headers: [:])
 
-        let requestObservable = request
+        return request
             .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .map { (response, data) -> (HTTPURLResponse, UIImage?) in
                 (response, UIImage(data: data))
             }
             .counterTracking(for: self)
-
-        #if os(iOS)
-            #if LEADKIT_EXTENSION_TARGET
-                return requestObservable
-            #else
-                return requestObservable.showErrorsInToastInDebugMode()
-            #endif
-        #else
-            return requestObservable
-        #endif
     }
 
 }
