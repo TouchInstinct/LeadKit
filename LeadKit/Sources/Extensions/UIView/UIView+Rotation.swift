@@ -24,8 +24,6 @@ import UIKit
 
 public extension UIView {
 
-    private static let rotationKeyPath = "transform.rotation.z"
-
     /**
      Starts rotating the view around Z axis.
 
@@ -34,18 +32,15 @@ public extension UIView {
      - parameter clockwise:   Direction of the rotation. Default is clockwise (true).
      */
     public func startZRotation(duration: CFTimeInterval = 1, repeatCount: Float = Float.infinity, clockwise: Bool = true) {
-        let animation = CABasicAnimation(keyPath: UIView.rotationKeyPath)
-        let direction = clockwise ? 1.0 : -1.0
-        animation.toValue = NSNumber(value: .pi * 2 * direction)
-        animation.duration = duration
-        animation.isCumulative = true
-        animation.repeatCount = repeatCount
-        layer.add(animation, forKey: UIView.rotationKeyPath)
+        let animation = CABasicAnimation.zRotationAnimationWith(duration: duration,
+                                                                repeatCount: repeatCount,
+                                                                clockwise: clockwise)
+        layer.add(animation, forKey: CABasicAnimation.rotationKeyPath)
     }
 
     /// Stop rotating the view around Z axis.
     public func stopZRotation() {
-        layer.removeAnimation(forKey: UIView.rotationKeyPath)
+        layer.removeAnimation(forKey: CABasicAnimation.rotationKeyPath)
     }
 
 }

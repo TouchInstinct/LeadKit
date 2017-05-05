@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.5.0"
+  s.version         = "0.5.1"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -42,6 +42,8 @@ Pod::Spec.new do |s|
     ss.watchos.exclude_files = [
       "LeadKit/Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
       "LeadKit/Sources/Classes/Views/XibView.swift",
+      "LeadKit/Sources/Classes/Views/SpinnerView.swift",
+      "LeadKit/Sources/Extensions/CABasicAnimation/*",
       "LeadKit/Sources/Extensions/CGFloat/CGFloat+Pixels.swift",
       "LeadKit/Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
       "LeadKit/Sources/Extensions/NetworkService/NetworkService+RxLoadImage.swift",
