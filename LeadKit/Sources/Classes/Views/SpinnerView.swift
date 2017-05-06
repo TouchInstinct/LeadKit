@@ -34,8 +34,6 @@ class SpinnerView: UIView, Animatable, LoadingIndicator {
     private let animationRepeatCount: Float
     private let clockwiseAnimation: Bool
 
-    private let preferredSize: CGSize
-
     init(image: UIImage,
          animationDuration: CFTimeInterval = 1,
          animationRepeatCount: Float = Float.infinity,
@@ -45,9 +43,7 @@ class SpinnerView: UIView, Animatable, LoadingIndicator {
         self.animationRepeatCount = animationRepeatCount
         self.clockwiseAnimation = clockwiseAnimation
 
-        self.preferredSize = image.size
-
-        super.init(frame: CGRect(origin: .zero, size: preferredSize))
+        super.init(frame: CGRect(origin: .zero, size: image.size))
 
         let imageView = UIImageView(image: image)
         imageView.frame = bounds
