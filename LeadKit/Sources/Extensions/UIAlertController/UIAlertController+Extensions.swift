@@ -22,24 +22,26 @@
 
 import UIKit
 
-public extension String {
+public extension UIAlertController {
 
     /**
-     method returns image with self name
-
-     - returns: image
+     Creates UIAlertController instance
+     
+     - parameter item: information about alert in AlertRepresentable form
+     - parameter actions: actions handlers
+     
+     - returns: UIAlertController instance
      */
-    public var image: UIImage? {
-        return UIImage(named: self)
-    }
+    static func alert(item: AlertRepresentable, actions: (() -> Void)?...) -> UIAlertController {
+        let alert = UIAlertController(title: item.title, message: item.text, preferredStyle: .alert)
 
-    /**
-     Nil if empty representation
+        zip(item.actionTitles, actions + [nil])
+            .map { (title, action) in
+                UIAlertAction(title: title, style: .default, handler: { _ in action?() })
+            }
+            .forEach { alert.addAction($0) }
 
-     - returns: nil if string empty, self otherwise
-     */
-    public var nilIfEmpty: String? {
-        return isEmpty ? nil : self
+        return alert
     }
 
 }

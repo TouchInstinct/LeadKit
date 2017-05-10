@@ -20,26 +20,22 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+/// Protocol describes alert
+public protocol AlertRepresentable {
+    /// Alert title
+    var title: String { get }
+    /// Alert message
+    var text: String { get }
+    /// Single (default, for example - "OK") action title
+    var actionTitle: String { get }
+    /// Actions titles, if there are more than one action
+    var actionTitles: [String] { get }
+}
 
-public extension String {
-
-    /**
-     method returns image with self name
-
-     - returns: image
-     */
-    public var image: UIImage? {
-        return UIImage(named: self)
-    }
-
-    /**
-     Nil if empty representation
-
-     - returns: nil if string empty, self otherwise
-     */
-    public var nilIfEmpty: String? {
-        return isEmpty ? nil : self
+public extension AlertRepresentable {
+    /// By default actionTitles contains single action title
+    var actionTitles: [String] {
+        return [actionTitle]
     }
 
 }
