@@ -51,13 +51,15 @@ public class SingleLoadCursor<Element>: ResettableCursorType {
     }
 
     public func loadNextBatch() -> Single<[Element]> {
-        if exhausted {
-            return .error(CursorError.exhausted)
-        }
+        return Single.deferred {
+            if self.exhausted {
+                return .error(CursorError.exhausted)
+            }
 
-        return loadingObservable.do(onNext: { [weak self] newItems in
-            self?.onGot(result: newItems)
-        })
+            return self.loadingObservable.do(onNext: { [weak self] newItems in
+                self?.onGot(result: newItems)
+            })
+        }
     }
 
     private func onGot(result: [Element]) {

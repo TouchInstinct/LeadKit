@@ -50,22 +50,24 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType {
     }
 
     public func loadNextBatch() -> Single<[Cursor.Element]> {
-        if exhausted {
-            return .error(CursorError.exhausted)
-        }
+        return Single.deferred {
+            if self.exhausted {
+                return .error(CursorError.exhausted)
+            }
 
-        let restOfLoaded = cursor.count - count
+            let restOfLoaded = self.cursor.count - self.count
 
-        if restOfLoaded >= pageSize || cursor.exhausted {
-            let startIndex = count
-            count += min(restOfLoaded, pageSize)
+            if restOfLoaded >= self.pageSize || self.cursor.exhausted {
+                let startIndex = self.count
+                self.count += min(restOfLoaded, self.pageSize)
 
-            return .just(cursor[startIndex..<count])
-        }
+                return .just(self.cursor[startIndex..<self.count])
+            }
 
-        return cursor.loadNextBatch()
-            .flatMap { _ in
-                self.loadNextBatch()
+            return self.cursor.loadNextBatch()
+                .flatMap { _ in
+                    self.loadNextBatch()
+            }
         }
     }
 

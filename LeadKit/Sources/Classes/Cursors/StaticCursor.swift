@@ -47,15 +47,17 @@ public class StaticCursor<Element>: ResettableCursorType {
     }
 
     public func loadNextBatch() -> Single<[Element]> {
-        if exhausted {
-            return .error(CursorError.exhausted)
+        return Single.deferred {
+            if self.exhausted {
+                return .error(CursorError.exhausted)
+            }
+
+            self.count = self.content.count
+
+            self.exhausted = true
+
+            return .just(self.content)
         }
-
-        count = content.count
-
-        exhausted = true
-
-        return .just(content)
     }
 
 }
