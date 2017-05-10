@@ -20,24 +20,27 @@
 //  THE SOFTWARE.
 //
 
-import RxSwift
-import RxAlamofire
+import UIKit
 
-public extension NetworkService {
+public extension UIImage {
 
-    /// Perform reactive request to get UIImage and http response
+    /// Creates AnyLoadingIndicator that rotates as spinner around Z axis.
     ///
-    /// - Parameter url: An object adopting `URLConvertible`
-    /// - Returns: Observable of tuple containing (HTTPURLResponse, UIImage?)
-    public func rxLoadImage(url: String) -> Observable<(HTTPURLResponse, UIImage?)> {
-        let request = RxAlamofire.requestData(.get, url, headers: [:])
+    /// - Parameters:
+    ///   - animationDuration: Duration of one full 360 degrees rotation. One second is default.
+    ///   - animationRepeatCount: How many times the spin should be done. If not provided, the view will spin forever.
+    ///   - clockwiseAnimation: Direction of the rotation. Default is clockwise (true).
+    /// - Returns: Instance of AnyLoadingIndicator.
+    func asSpinner(animationDuration: CFTimeInterval = 1,
+                   animationRepeatCount: Float = Float.infinity,
+                   clockwiseAnimation: Bool = true) -> AnyLoadingIndicator {
 
-        return request
-            .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .map { (response, data) -> (HTTPURLResponse, UIImage?) in
-                (response, UIImage(data: data))
-            }
-            .counterTracking(for: self)
+        let spinner = SpinnerView(image: self,
+                                  animationDuration: animationDuration,
+                                  animationRepeatCount: animationRepeatCount,
+                                  clockwiseAnimation: clockwiseAnimation)
+
+        return AnyLoadingIndicator(spinner)
     }
 
 }

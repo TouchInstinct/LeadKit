@@ -110,7 +110,7 @@ public final class PaginationViewModel<C: ResettableCursorType> {
 
         currentRequest = currentCursor.loadNextBatch()
             .subscribeOn(internalScheduler)
-            .subscribe(onNext: { [weak self] newItems in
+            .subscribe(onSuccess: { [weak self] newItems in
                 self?.onGot(newItems: newItems, using: currentCursor)
             }, onError: { [weak self] error in
                 self?.onGot(error: error)
