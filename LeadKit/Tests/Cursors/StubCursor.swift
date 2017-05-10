@@ -55,10 +55,10 @@ class StubCursor: ResettableCursorType {
         self.requestDelay = other.requestDelay
     }
 
-    func loadNextBatch() -> Observable<[Post]> {
-        return Observable.create { observer -> Disposable in
+    func loadNextBatch() -> Single<[Post]> {
+        return Single.create { observer -> Disposable in
             if self.exhausted {
-                observer.onError(CursorError.exhausted)
+                observer(.error(CursorError.exhausted))
             } else {
                 DispatchQueue.global().asyncAfter(deadline: .now() + self.requestDelay, execute: {
                     let countBefore = self.count
@@ -69,8 +69,7 @@ class StubCursor: ResettableCursorType {
 
                     self.posts = Array((self.posts + newPosts)[0..<maxNewPosts])
 
-                    observer.onNext(self[countBefore..<self.count])
-                    observer.onCompleted()
+                    observer(.success(self[countBefore..<self.count]))
                 })
             }
 

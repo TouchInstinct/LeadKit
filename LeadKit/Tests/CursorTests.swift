@@ -42,7 +42,7 @@ class CursorTests: XCTestCase {
         let cursorExpectation = expectation(description: "Stub cursor expectation")
 
         entityCursor.loadNextBatch()
-            .subscribe(onNext: { _ in
+            .subscribe(onSuccess: { _ in
                 cursorExpectation.fulfill()
             })
             .addDisposableTo(disposeBag)
@@ -55,26 +55,12 @@ class CursorTests: XCTestCase {
         let fixedPageCursor = FixedPageCursor(cursor: stubCursor, pageSize: 16)
 
         let cursorExpectation = expectation(description: "Fixed page cursor expectation")
-        let cursorExpectationError = expectation(description: "Fixed page cursor error expectation")
 
         fixedPageCursor.loadNextBatch()
-            .subscribe(onNext: { loadedItems in
+            .subscribe(onSuccess: { loadedItems in
                 XCTAssertEqual(loadedItems.count, 15)
 
                 cursorExpectation.fulfill()
-            })
-            .addDisposableTo(disposeBag)
-
-        fixedPageCursor.loadNextBatch()
-            .subscribe(onNext: { _ in
-                XCTFail("Cursor should be exhausted!")
-            }, onError: { error in
-                switch try? cast(error) as CursorError {
-                case .exhausted?:
-                    cursorExpectationError.fulfill()
-                default:
-                    XCTFail("Cursor should be exhausted!")
-                }
             })
             .addDisposableTo(disposeBag)
 
@@ -89,7 +75,7 @@ class CursorTests: XCTestCase {
         let cursorExpectation = expectation(description: "Fixed page cursor expectation")
 
         fixedPageCursor.loadNextBatch()
-            .subscribe(onNext: { loadedItems in
+            .subscribe(onSuccess: { loadedItems in
                 XCTAssertEqual(loadedItems.count, 8)
 
                 cursorExpectation.fulfill()

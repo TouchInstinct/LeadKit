@@ -77,7 +77,7 @@ public class MapCursor<Cursor: CursorType, T>: CursorType {
         return elements[index]
     }
 
-    public func loadNextBatch() -> Observable<[T]> {
+    public func loadNextBatch() -> Single<[T]> {
         return cursor.loadNextBatch().map { newItems in
             let transformedNewItems = newItems.flatMap(self.transform)
             self.elements += transformedNewItems

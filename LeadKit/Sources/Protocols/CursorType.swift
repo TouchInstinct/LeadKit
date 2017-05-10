@@ -38,6 +38,6 @@ public protocol CursorType {
     /// Loads next batch of results
     ///
     /// - Returns: Observable of LoadResultType
-    func loadNextBatch() -> Observable<[Element]>
+    func loadNextBatch() -> Single<[Element]>
 
 }

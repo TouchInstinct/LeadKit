@@ -236,7 +236,7 @@ where Delegate.Cursor == Cursor {
             retryButton.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: retryButtonHeigth)
 
             retryButton.rx.controlEvent(.touchUpInside)
-                .bindNext { [weak self] in
+                .bind { [weak self] in
                     self?.paginationViewModel.load(.next)
                 }
                 .addDisposableTo(disposeBag)
@@ -274,7 +274,7 @@ where Delegate.Cursor == Cursor {
     private func createRefreshControl() {
         let refreshControl = UIRefreshControl()
         refreshControl.rx.controlEvent(.valueChanged)
-            .bindNext { [weak self] in
+            .bind { [weak self] in
                 self?.reload()
             }
             .addDisposableTo(disposeBag)

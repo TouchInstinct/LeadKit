@@ -49,10 +49,10 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType {
         return cursor[index]
     }
 
-    public func loadNextBatch() -> Observable<[Cursor.Element]> {
-        return Observable.deferred {
+    public func loadNextBatch() -> Single<[Cursor.Element]> {
+        return Single.deferred {
             if self.exhausted {
-                throw CursorError.exhausted
+                return .error(CursorError.exhausted)
             }
 
             let restOfLoaded = self.cursor.count - self.count
