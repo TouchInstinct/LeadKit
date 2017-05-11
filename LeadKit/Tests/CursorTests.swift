@@ -85,4 +85,21 @@ class CursorTests: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
 
+    func testStaticCursor() {
+        let cursor = StaticCursor(content: Array(1...40).map(String.init))
+
+        let cursorExpectation = expectation(description: "Static cursor expectation")
+
+        cursor.loadNextBatch().subscribe(onSuccess: { loadedItems in
+            XCTAssertEqual(loadedItems.count, 40)
+
+            cursorExpectation.fulfill()
+        }) { error in
+            XCTFail(error.localizedDescription)
+        }
+        .addDisposableTo(disposeBag)
+
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+
 }
