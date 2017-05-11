@@ -178,7 +178,7 @@ where Delegate.Cursor == Cursor {
 
             currentPlaceholderView = loadingIndicatorView
         } else {
-            tableView.finishInfiniteScroll()
+            removeInfiniteScroll()
             tableView.tableFooterView = nil
         }
     }
@@ -224,9 +224,7 @@ where Delegate.Cursor == Cursor {
 
             currentPlaceholderView = errorView
         } else if case .loadingMore = afterState {
-            tableView.finishInfiniteScroll()
-
-            tableView.removeInfiniteScroll()
+            removeInfiniteScroll()
 
             guard let retryButton = delegate?.retryLoadMoreButton(forPaginationWrapper: self),
                 let retryButtonHeigth = delegate?.retryLoadMoreButtonHeight(forPaginationWrapper: self) else {
@@ -260,7 +258,7 @@ where Delegate.Cursor == Cursor {
     // MARK: private stuff
 
     private func onExhaustedState() {
-        tableView.removeInfiniteScroll()
+        removeInfiniteScroll()
     }
 
     private func addInfiniteScroll() {
@@ -269,6 +267,11 @@ where Delegate.Cursor == Cursor {
         }
 
         tableView.infiniteScrollIndicatorView = delegate?.loadingMoreIndicator(forPaginationWrapper: self).view
+    }
+
+    private func removeInfiniteScroll() {
+        tableView.finishInfiniteScroll()
+        tableView.removeInfiniteScroll()
     }
 
     private func createRefreshControl() {
@@ -285,7 +288,7 @@ where Delegate.Cursor == Cursor {
     private func bindViewModelStates() {
         typealias State = PaginationViewModel<Cursor>.State
 
-        paginationViewModel.state.flatMapLatest { [applicationCurrentyActive] state -> Driver<State> in
+        paginationViewModel.state.flatMap { [applicationCurrentyActive] state -> Driver<State> in
             if applicationCurrentyActive.value {
                 return .just(state)
             } else {
