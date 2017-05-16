@@ -42,14 +42,21 @@ extension TimeInterval {
      */
     public init(timeString: String, timeSeparator: String = ":", daySeparator: String = ".") {
         let timeComponents = timeString.components(separatedBy: daySeparator)
-        let fullDays = Double(timeComponents.first ?? "") ?? 0
 
-        let timeValue = (timeComponents.last ?? "")
+        let dayComponent = timeComponents.first ?? ""
+
+        let fullDays = Double(dayComponent) ?? 0
+
+        let timeComponent = timeComponents.last ?? ""
+
+        let timeValue = timeComponent
             .components(separatedBy: timeSeparator)
             .reversed()
             .enumerated()
-            .reduce(0) { interval, part in
-                interval + (Double(part.element) ?? 0) * pow(Double(TimeInterval.secondsInMinute), Double(part.offset))
+            .reduce(0.0) { interval, part in
+                let partElement = Double(part.element) ?? 0
+
+                return interval + partElement * pow(Double(TimeInterval.secondsInMinute), Double(part.offset))
         }
 
         self = (fullDays * Double(TimeInterval.secondsInDay)) + timeValue
