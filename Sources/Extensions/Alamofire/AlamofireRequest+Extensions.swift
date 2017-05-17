@@ -61,7 +61,7 @@ public extension Reactive where Base: DataRequest {
     ///
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
-    func apiResponse<T: ObservableMappable>(mappingQueue: DispatchQueue = .global())
+    func observableApiResponse<T: ObservableMappable>(mappingQueue: DispatchQueue = .global())
         -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
 
             return responseJSONOnQueue(mappingQueue)
@@ -77,7 +77,7 @@ public extension Reactive where Base: DataRequest {
     ///
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and array of target objects
-    func apiResponse<T: ObservableMappable>(mappingQueue: DispatchQueue = .global())
+    func observableApiResponse<T: ObservableMappable>(mappingQueue: DispatchQueue = .global())
         -> Observable<(response: HTTPURLResponse, models: [T])> where T.ModelType == T {
 
             return responseJSONOnQueue(mappingQueue)

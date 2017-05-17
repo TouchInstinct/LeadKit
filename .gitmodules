@@ -1,0 +1,3 @@
+[submodule "code-quality"]
+	path = code-quality
+	url = https://github.com/TouchInstinct/code-quality-ios

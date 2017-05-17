@@ -152,7 +152,7 @@ where Delegate.Cursor == Cursor {
         .addDisposableTo(disposeBag)
     }
 
-    // MARK: States handling
+    // MARK - States handling
 
     private func onInitialState() {
         //
@@ -255,7 +255,7 @@ where Delegate.Cursor == Cursor {
         currentPlaceholderView = emptyView
     }
 
-    // MARK: private stuff
+    // MARK - private stuff
 
     private func onExhaustedState() {
         removeInfiniteScroll()

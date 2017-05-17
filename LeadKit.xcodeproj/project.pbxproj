@@ -1252,6 +1252,7 @@
 			buildConfigurationList = 67186B391EB248F100CFAFFB /* Build configuration list for PBXNativeTarget "LeadKit iOS" */;
 			buildPhases = (
 				8AB4AD16371A6CA62765A6E7 /* [CP] Check Pods Manifest.lock */,
+				67887A0E1ECC856F008A9E1D /* CopyPaste Detection */,
 				67186C2D1EB2537A00CFAFFB /* Tailor */,
 				67186C2E1EB2538E00CFAFFB /* SwiftLint */,
 				67186B231EB248F100CFAFFB /* Sources */,
@@ -1697,6 +1698,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		67887A0E1ECC856F008A9E1D /* CopyPaste Detection */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "CopyPaste Detection";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Running CPD\npmd cpd --files Sources --minimum-tokens 50 --language swift --encoding UTF-8 --format net.sourceforge.pmd.cpd.XMLRenderer > cpd-output.xml --failOnViolation true\n\n# Running script\nphp ./cpd_script.php -cpd-xml cpd-output.xml";
 		};
 		6C0CE35AC797D005DF06F7D5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
