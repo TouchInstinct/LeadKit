@@ -60,19 +60,8 @@ public extension Array where Element: Equatable {
 
     /// Find unique elements in array compared to other arrays
     func subtract(values: [Array.Element]...) -> Array {
-        var result = Array()
-
-        elements: for item in self {
-            for value in values {
-                if value.contains(item) {
-                    continue elements
-                }
-            }
-
-            result.append(item)
-        }
-
-        return result
+        let allValues = values.flatMap { $0 }
+        return filter { !allValues.contains($0) }
     }
 
 }
