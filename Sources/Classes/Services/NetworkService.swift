@@ -28,7 +28,6 @@ import RxAlamofire
 
 /// Base network service implementation build on top of LeadKit extensions for Alamofire.
 /// Has an ability to automatically show / hide network activity indicator
-/// and shows errors in DEBUG mode
 open class NetworkService {
 
     private let requestCountVariable = Variable<Int>(0)
