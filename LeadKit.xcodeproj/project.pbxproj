@@ -360,6 +360,10 @@
 		6771DFE51EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6771DFE31EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift */; };
 		6771DFE61EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6771DFE31EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift */; };
 		6771DFE71EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6771DFE31EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift */; };
+		6771DFEA1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6771DFE91EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift */; };
+		6771DFEB1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6771DFE91EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift */; };
+		6771DFEC1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6771DFE91EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift */; };
+		6771DFED1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6771DFE91EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift */; };
 		6782BBA91EB31D5A0086E0B8 /* LeadKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6782BBA01EB31D590086E0B8 /* LeadKit.framework */; };
 		67952C3C1EB3266100B3BA1A /* LeadKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 67186B201EB247A200CFAFFB /* LeadKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		67952C3D1EB3266200B3BA1A /* LeadKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 67186B201EB247A200CFAFFB /* LeadKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -542,6 +546,7 @@
 		6771DFD71EE99EBA002DCDAE /* DateFormattingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormattingService.swift; sourceTree = "<group>"; };
 		6771DFDD1EE99F6F002DCDAE /* DateFormattingArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormattingArguments.swift; sourceTree = "<group>"; };
 		6771DFE31EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormattingArguments+DateFormatter.swift"; sourceTree = "<group>"; };
+		6771DFE91EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormattingService+MappingTransform.swift"; sourceTree = "<group>"; };
 		6782BB911EB31CFE0086E0B8 /* LeadKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LeadKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6782BBA01EB31D590086E0B8 /* LeadKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LeadKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6782BBA81EB31D5A0086E0B8 /* LeadKit tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LeadKit tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -730,6 +735,7 @@
 				671461E51EB3396E00EAB194 /* CGSize */,
 				671461E81EB3396E00EAB194 /* CursorType */,
 				6771DFE21EE99FF3002DCDAE /* DateFormattingArguments */,
+				6771DFE81EEA7C8F002DCDAE /* DateFormattingService */,
 				671461EA1EB3396E00EAB194 /* Double */,
 				671461EC1EB3396E00EAB194 /* IndexPath */,
 				6714639C1EB33AC200EAB194 /* NetworkService */,
@@ -1150,6 +1156,14 @@
 				6771DFE31EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift */,
 			);
 			path = DateFormattingArguments;
+			sourceTree = "<group>";
+		};
+		6771DFE81EEA7C8F002DCDAE /* DateFormattingService */ = {
+			isa = PBXGroup;
+			children = (
+				6771DFE91EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift */,
+			);
+			path = DateFormattingService;
 			sourceTree = "<group>";
 		};
 		67A1FF921EBCA64A00D6C89F /* CABasicAnimation */ = {
@@ -2005,6 +2019,7 @@
 				671463701EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
 				671462EC1EB3396E00EAB194 /* UIImage+Extensions.swift in Sources */,
 				6714636C1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
+				6771DFEA1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
 				671462A41EB3396E00EAB194 /* IndexPath+ImmutableIndexPath.swift in Sources */,
 				671462BC1EB3396E00EAB194 /* StoryboardProtocol+DefaultBundle.swift in Sources */,
 				671462A01EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
@@ -2080,6 +2095,7 @@
 				6771DFE01EE99F6F002DCDAE /* DateFormattingArguments.swift in Sources */,
 				671462AA1EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift in Sources */,
 				671463621EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
+				6771DFEC1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
 				671462861EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
 				671463221EB3396E00EAB194 /* Any+Cast.swift in Sources */,
 				6714634E1EB3396E00EAB194 /* ReuseIdentifierProtocol.swift in Sources */,
@@ -2186,6 +2202,7 @@
 				6714625B1EB3396E00EAB194 /* Log.swift in Sources */,
 				6714627B1EB3396E00EAB194 /* ResizeContentMode.swift in Sources */,
 				671463071EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
+				6771DFED1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
 				EFBE57E31EC362470040E00A /* AlertRepresentable.swift in Sources */,
 				671463A91EB340C000EAB194 /* UIViewController+ConfigurableController.swift in Sources */,
 				671463731EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
@@ -2259,6 +2276,7 @@
 				671462E51EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
 				671462CD1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
 				6771DFDF1EE99F6F002DCDAE /* DateFormattingArguments.swift in Sources */,
+				6771DFEB1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
 				67A1FF951EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */,
 				671462811EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
 				671462C51EB3396E00EAB194 /* String+Extensions.swift in Sources */,
