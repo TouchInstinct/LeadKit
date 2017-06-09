@@ -21,12 +21,13 @@
 //
 
 import XCTest
+import LeadKit
+import RxSwift
+import CocoaLumberjack
 
-class LoadFromNibTests: XCTestCase {
+class PaginationViewModelTests: XCTestCase {
 
-    static let testText = "This is test text"
-
-    static let bundle = Bundle(for: LoadFromNibTests.self)
+    let disposeBag = DisposeBag()
 
     override func setUp() {
         super.setUp()
@@ -36,13 +37,28 @@ class LoadFromNibTests: XCTestCase {
         super.tearDown()
     }
 
-    /// Note: bundle is required in tests, but not in regular use
-    func testLoadFromNib() {
-        let testView: TestView = TestView.loadFromNib(bundle: LoadFromNibTests.bundle)
+    func testExample() {
+        let cursor = StubCursor(maxItemsCount: 36, requestDelay: .seconds(1))
+        let viewModel = PaginationViewModel(cursor: cursor)
 
-        testView.text = LoadFromNibTests.testText
+        let paginationExpectation = expectation(description: "Pagination expectation")
 
-        XCTAssertEqual(LoadFromNibTests.testText, testView.text)
+        viewModel.state.drive(onNext: { state in
+            switch state {
+            case .initial, .loadingMore, .loading:
+                DDLogDebug("PageViewModel state changed to \(state)")
+            case .results(let newItems, _, _):
+                XCTAssertEqual(newItems.count, 4)
+                paginationExpectation.fulfill()
+            default:
+                XCTFail("Unexpected state: \(state)")
+            }
+        })
+        .addDisposableTo(disposeBag)
+
+        viewModel.load(.reload)
+
+        waitForExpectations(timeout: 10, handler: nil)
     }
 
 }

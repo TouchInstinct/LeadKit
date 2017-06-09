@@ -73,3 +73,5 @@ fastlane/screenshots
 .idea/workspace.xml
 .idea/tasks.xml
 
+cpd-output.xml
+

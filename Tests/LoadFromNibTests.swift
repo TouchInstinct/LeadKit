@@ -20,39 +20,29 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import XCTest
 
-/// Class used to instantiate custom view in storyboards
-open class XibView: UIView {
+class LoadFromNibTests: XCTestCase {
 
-    /// Nib name used to instantiate inner view
-    open var innerViewNibName: String {
-        return type(of: self).xibName
+    static let testText = "This is test text"
+
+    static let bundle = Bundle(for: LoadFromNibTests.self)
+
+    override func setUp() {
+        super.setUp()
     }
 
-    public convenience init() {
-        self.init(frame: .zero)
+    override func tearDown() {
+        super.tearDown()
     }
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
+    /// Note: bundle is required in tests, but not in regular use
+    func testLoadFromNib() {
+        let testView = TestView.loadFromNib(bundle: LoadFromNibTests.bundle) as TestView
 
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupView()
-    }
+        testView.text = LoadFromNibTests.testText
 
-    private func setupView() {
-        let view: UIView = UIView.loadFromNib(named: innerViewNibName, owner: self)
-
-        // Make frame size match the size of the content view in the xib
-        frame = CGRect(origin: frame.origin, size: view.frame.size)
-
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-        addSubview(view)
+        XCTAssertEqual(LoadFromNibTests.testText, testView.text)
     }
 
 }

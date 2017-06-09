@@ -13,7 +13,6 @@ PODS:
     - RxSwift (~> 3.4)
   - RxSwift (3.4.0)
   - TableKit (2.3.1)
-  - Toast-Swift (2.0.0)
   - UIScrollView-InfiniteScroll (1.0.1)
 
 DEPENDENCIES:
@@ -23,7 +22,6 @@ DEPENDENCIES:
   - RxCocoa (= 3.4.0)
   - RxSwift (= 3.4.0)
   - TableKit (~> 2.3.1)
-  - Toast-Swift (~> 2.0.0)
   - UIScrollView-InfiniteScroll (~> 1.0.0)
 
 SPEC CHECKSUMS:
@@ -34,9 +32,8 @@ SPEC CHECKSUMS:
   RxCocoa: d14ef6b6029e1ddc6e966508c09289090de68ff9
   RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
   TableKit: 02e041b443f75fa3e9f1ee6024d4b256305bd904
-  Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
   UIScrollView-InfiniteScroll: a90df4ba4a7ca1926128ade34a850ddbdf74c564
 
-PODFILE CHECKSUM: cf6dcd073cc362b0d897b5b68e5c2c16c982d072
+PODFILE CHECKSUM: 911be4683d2ba9315350d42e9576f7517da3f756
 
 COCOAPODS: 1.2.1
