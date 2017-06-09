@@ -40,5 +40,5 @@ private extension DateFormatter {
         self.locale = locale
         self.timeZone = timeZone
     }
-    
+
 }

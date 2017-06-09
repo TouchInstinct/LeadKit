@@ -53,5 +53,5 @@ public struct DateFormattingArguments: Hashable {
             lhs.locale.identifier == rhs.locale.identifier &&
             lhs.timeZone.identifier == rhs.timeZone.identifier
     }
-    
+
 }

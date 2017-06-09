@@ -68,5 +68,5 @@ open class DateFormattingService {
 
         return dateFormatter.string(from: date)
     }
-    
+
 }
