@@ -22,7 +22,7 @@
 
 import UIKit
 
-extension CGFloat {
+public extension CGFloat {
 
     /// Initializes instance with given number of pixels converted to points
     ///
