@@ -1301,7 +1301,6 @@
 			buildPhases = (
 				8AB4AD16371A6CA62765A6E7 /* [CP] Check Pods Manifest.lock */,
 				67887A0E1ECC856F008A9E1D /* CopyPaste Detection */,
-				67186C2D1EB2537A00CFAFFB /* Tailor */,
 				67186C2E1EB2538E00CFAFFB /* SwiftLint */,
 				67186B231EB248F100CFAFFB /* Sources */,
 				67186B241EB248F100CFAFFB /* Frameworks */,
@@ -1344,7 +1343,6 @@
 			buildConfigurationList = 6782BB961EB31CFE0086E0B8 /* Build configuration list for PBXNativeTarget "LeadKit watchOS" */;
 			buildPhases = (
 				6C0CE35AC797D005DF06F7D5 /* [CP] Check Pods Manifest.lock */,
-				6782BBBB1EB31EB70086E0B8 /* Tailor */,
 				6782BBBC1EB31ED90086E0B8 /* SwiftLint */,
 				6782BB8C1EB31CFE0086E0B8 /* Sources */,
 				6782BB8D1EB31CFE0086E0B8 /* Frameworks */,
@@ -1366,7 +1364,6 @@
 			buildConfigurationList = 6782BBB11EB31D5A0086E0B8 /* Build configuration list for PBXNativeTarget "LeadKit tvOS" */;
 			buildPhases = (
 				BCF262D3C2C3337546F84061 /* [CP] Check Pods Manifest.lock */,
-				6782BBBD1EB31F020086E0B8 /* Tailor */,
 				6782BBBE1EB31F210086E0B8 /* SwiftLint */,
 				6782BB9B1EB31D590086E0B8 /* Sources */,
 				6782BB9C1EB31D590086E0B8 /* Frameworks */,
@@ -1409,7 +1406,6 @@
 			buildConfigurationList = 67952DD61EB327B500B3BA1A /* Build configuration list for PBXNativeTarget "LeadKit iOS Extensions" */;
 			buildPhases = (
 				26ED592391E1816700F06F57 /* [CP] Check Pods Manifest.lock */,
-				671463AA1EB343EF00EAB194 /* Tailor */,
 				671463AB1EB3440D00EAB194 /* SwiftLint */,
 				67952DC01EB327B400B3BA1A /* Sources */,
 				67952DC11EB327B400B3BA1A /* Frameworks */,
@@ -1635,20 +1631,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit-LeadKit tvOS/Pods-LeadKit-LeadKit tvOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		671463AA1EB343EF00EAB194 /* Tailor */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Tailor;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if hash tailor 2>/dev/null; then\n  tailor --except=trailing-whitespace,forced-type-cast\nelse\n  echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
-		};
 		671463AB1EB3440D00EAB194 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
@@ -1662,20 +1644,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		67186C2D1EB2537A00CFAFFB /* Tailor */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Tailor;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if hash tailor 2>/dev/null; then\n  tailor --except=trailing-whitespace,forced-type-cast\nelse\n  echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
 		};
 		67186C2E1EB2538E00CFAFFB /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1691,20 +1659,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
-		6782BBBB1EB31EB70086E0B8 /* Tailor */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Tailor;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if hash tailor 2>/dev/null; then\n  tailor --except=trailing-whitespace,forced-type-cast\nelse\n  echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
-		};
 		6782BBBC1EB31ED90086E0B8 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
@@ -1718,20 +1672,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		6782BBBD1EB31F020086E0B8 /* Tailor */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Tailor;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if hash tailor 2>/dev/null; then\n  tailor --except=trailing-whitespace,forced-type-cast\nelse\n  echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
 		};
 		6782BBBE1EB31F210086E0B8 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -80,7 +80,7 @@ class SpinnerView: UIView, Animatable, LoadingIndicator {
         }
     }
 
-    // MARK - Animatable
+    // MARK: - Animatable
 
     func startAnimating() {
         guard !animating else {
@@ -106,7 +106,7 @@ class SpinnerView: UIView, Animatable, LoadingIndicator {
         removeAnimation()
     }
 
-    // MARK - private stuff
+    // MARK: - private stuff
 
     private func addAnimation() {
         guard let imageView = imageView else {

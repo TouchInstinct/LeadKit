@@ -31,7 +31,7 @@ public struct AnyLoadingIndicator: Animatable {
     /// Initializer with indicator that should be wrapped.
     ///
     /// - Parameter _: indicator for wrapping.
-    public init<Indicator>(_ base: Indicator) where Indicator: LoadingIndicator {
+    public init<Indicator> (_ base: Indicator) where Indicator: LoadingIndicator {
         self.internalView = base.view
         self.animatableView = base.view
     }
