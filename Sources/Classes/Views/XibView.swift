@@ -53,6 +53,13 @@ open class XibView: UIView {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
         addSubview(view)
+
+        configure()
     }
 
+    /// Provide initial configuration. Called once
+    open func configure() {
+        
+    }
+    
 }
