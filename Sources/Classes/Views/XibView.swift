@@ -60,7 +60,7 @@ open class XibView: UIView {
 
     /// Provide initial configuration. Called once
     open func configure() {
-        
+
     }
-    
+
 }

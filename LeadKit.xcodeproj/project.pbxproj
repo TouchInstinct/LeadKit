@@ -383,6 +383,7 @@
 		67E6C2361EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
 		67E6C2371EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
 		67E6C2381EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
+		82F8BB181F5DDED100C1061B /* Single+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */; };
 		BA6C6DB45950382041948FC5 /* Pods_LeadKit_LeadKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE9323150A9760008093F73 /* Pods_LeadKit_LeadKit_iOS.framework */; };
 		D6EE55093E404DEA62B03DDF /* Pods_LeadKit_LeadKit_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8590CA7831555C295C5DC572 /* Pods_LeadKit_LeadKit_watchOS.framework */; };
 		DEE25FE98D40ED1C168F384A /* Pods_LeadKit_LeadKit_iOS_Extensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887F99C5326BD220C2811BD6 /* Pods_LeadKit_LeadKit_iOS_Extensions.framework */; };
@@ -563,6 +564,7 @@
 		67CDEE411EB3AD1C00895905 /* NetworkService+RxLoadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkService+RxLoadImage.swift"; sourceTree = "<group>"; };
 		67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleLoadCursor.swift; sourceTree = "<group>"; };
 		78405D3B3D3C3E17456877FF /* Pods_LeadKit_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Single+DeferredJust.swift"; sourceTree = "<group>"; };
 		8590CA7831555C295C5DC572 /* Pods_LeadKit_LeadKit_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_LeadKit_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		887F99C5326BD220C2811BD6 /* Pods_LeadKit_LeadKit_iOS_Extensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_LeadKit_iOS_Extensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E457F1241D136396FC2420 /* Pods_LeadKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -743,6 +745,7 @@
 				671461F01EB3396E00EAB194 /* Observable */,
 				671461F31EB3396E00EAB194 /* PaginationTableViewWrapperDelegate */,
 				671461F51EB3396E00EAB194 /* Sequence */,
+				82F8BB161F5DDED100C1061B /* Single */,
 				671461F71EB3396E00EAB194 /* StoryboardProtocol */,
 				671461FA1EB3396E00EAB194 /* String */,
 				671461FE1EB3396E00EAB194 /* Support */,
@@ -1198,6 +1201,14 @@
 				67952DCD1EB327B400B3BA1A /* LeadKit iOS ExtensionsTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		82F8BB161F5DDED100C1061B /* Single */ = {
+			isa = PBXGroup;
+			children = (
+				82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */,
+			);
+			path = Single;
 			sourceTree = "<group>";
 		};
 		C90516DF61394D92FF071C0C /* Frameworks */ = {
@@ -1938,6 +1949,7 @@
 				67051ADB1EBC7C36008EADC0 /* SpinnerView.swift in Sources */,
 				671463581EB3396E00EAB194 /* StoryboardIdentifierProtocol.swift in Sources */,
 				67A1FF941EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */,
+				82F8BB181F5DDED100C1061B /* Single+DeferredJust.swift in Sources */,
 				671463301EB3396E00EAB194 /* CursorType.swift in Sources */,
 				6714624C1EB3396E00EAB194 /* MapCursor.swift in Sources */,
 				671463241EB3396E00EAB194 /* Any+TypeName.swift in Sources */,
