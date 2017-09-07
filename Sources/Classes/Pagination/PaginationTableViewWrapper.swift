@@ -142,6 +142,11 @@ where Delegate.Cursor == Cursor {
         paginationViewModel.load(.reload)
     }
 
+    /// Method acts like reload, but shows initial loading view after being invoked.
+    public func retry() {
+        paginationViewModel.load(.retry)
+    }
+
     /// Method that enables placeholders animation due pull-to-refresh interaction.
     ///
     /// - Parameter scrollObservable: Observable that emits content offset as CGPoint.
@@ -204,7 +209,9 @@ where Delegate.Cursor == Cursor {
 
             tableView.support.refreshControl?.endRefreshing()
 
-            addInfiniteScroll()
+            if !(cursor is SingleLoadCursor<Cursor.Element>) {
+                addInfiniteScroll()
+            }
         } else if case .loadingMore = afterState {
             delegate?.paginationWrapper(wrapper: self, didLoad: newItems, usingCursor: cursor)
 
@@ -214,15 +221,15 @@ where Delegate.Cursor == Cursor {
 
     private func onErrorState(error: Error, afterState: PaginationViewModel<Cursor>.State) {
         if case .loading = afterState {
-            enterPlaceholderState()
+            defer {
+                tableView.support.refreshControl?.endRefreshing()
+            }
 
             guard let errorView = delegate?.errorPlaceholder(forPaginationWrapper: self, forError: error) else {
                 return
             }
 
-            preparePlaceholderView(errorView)
-
-            currentPlaceholderView = errorView
+            replacePlaceholderViewIfNeeded(with: errorView)
         } else if case .loadingMore = afterState {
             removeInfiniteScroll()
 
@@ -244,15 +251,23 @@ where Delegate.Cursor == Cursor {
     }
 
     private func onEmptyState() {
-        enterPlaceholderState()
-
+        defer {
+            tableView.support.refreshControl?.endRefreshing()
+        }
         guard let emptyView = delegate?.emptyPlaceholder(forPaginationWrapper: self) else {
             return
         }
+        replacePlaceholderViewIfNeeded(with: emptyView)
+    }
 
-        preparePlaceholderView(emptyView)
-
-        currentPlaceholderView = emptyView
+    private func replacePlaceholderViewIfNeeded(with view: UIView) {
+        // don't update placeholder view if previous placeholder is the same one
+        if currentPlaceholderView === view {
+            return
+        }
+        enterPlaceholderState()
+        preparePlaceholderView(view)
+        currentPlaceholderView = view
     }
 
     // MARK: - private stuff
@@ -322,7 +337,6 @@ where Delegate.Cursor == Cursor {
     }
 
     private func enterPlaceholderState() {
-        tableView.support.refreshControl?.endRefreshing()
         tableView.isUserInteractionEnabled = true
 
         removeCurrentPlaceholderView()
