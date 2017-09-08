@@ -61,13 +61,11 @@ public final class PaginationViewModel<C: ResettableCursorType> {
     ///
     /// - reload: reload all items and reset cursor to initial state.
     /// - next: load next batch of items.
+    /// - retry: reload to initial loading state
     public enum LoadType {
 
-        /// pull-to-refresh
         case reload
-        /// retry button inside placeholder
         case retry
-
         case next
 
     }

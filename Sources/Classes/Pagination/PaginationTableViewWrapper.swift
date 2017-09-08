@@ -209,7 +209,7 @@ where Delegate.Cursor == Cursor {
 
             tableView.support.refreshControl?.endRefreshing()
 
-            if !(cursor is SingleLoadCursor<Cursor.Element>) {
+            if !cursor.exhausted {
                 addInfiniteScroll()
             }
         } else if case .loadingMore = afterState {
@@ -260,14 +260,33 @@ where Delegate.Cursor == Cursor {
         replacePlaceholderViewIfNeeded(with: emptyView)
     }
 
-    private func replacePlaceholderViewIfNeeded(with view: UIView) {
+    private func replacePlaceholderViewIfNeeded(with placeholderView: UIView) {
         // don't update placeholder view if previous placeholder is the same one
-        if currentPlaceholderView === view {
+        if currentPlaceholderView === placeholderView {
             return
         }
-        enterPlaceholderState()
-        preparePlaceholderView(view)
-        currentPlaceholderView = view
+        tableView.isUserInteractionEnabled = true
+        removeCurrentPlaceholderView()
+
+        placeholderView.translatesAutoresizingMaskIntoConstraints = false
+        placeholderView.isHidden = false
+
+        // I was unable to add pull-to-refresh placeholder scroll behaviour without this trick
+        let wrapperView = UIView()
+        wrapperView.addSubview(placeholderView)
+
+        let leadingConstraint = placeholderView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor)
+        let trailingConstraint = placeholderView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor)
+        let topConstraint = placeholderView.topAnchor.constraint(equalTo: wrapperView.topAnchor)
+        let bottomConstraint = placeholderView.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor)
+
+        wrapperView.addConstraints([leadingConstraint, trailingConstraint, topConstraint, bottomConstraint])
+
+        currentPlaceholderViewTopConstraint = topConstraint
+
+        tableView.backgroundView = wrapperView
+
+        currentPlaceholderView = placeholderView
     }
 
     // MARK: - private stuff
@@ -334,32 +353,6 @@ where Delegate.Cursor == Cursor {
             }
         })
         .addDisposableTo(disposeBag)
-    }
-
-    private func enterPlaceholderState() {
-        tableView.isUserInteractionEnabled = true
-
-        removeCurrentPlaceholderView()
-    }
-
-    private func preparePlaceholderView(_ placeholderView: UIView) {
-        placeholderView.translatesAutoresizingMaskIntoConstraints = false
-        placeholderView.isHidden = false
-
-        // I was unable to add pull-to-refresh placeholder scroll behaviour without this trick
-        let wrapperView = UIView()
-        wrapperView.addSubview(placeholderView)
-
-        let leadingConstraint = placeholderView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor)
-        let trailingConstraint = placeholderView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor)
-        let topConstraint = placeholderView.topAnchor.constraint(equalTo: wrapperView.topAnchor)
-        let bottomConstraint = placeholderView.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor)
-
-        wrapperView.addConstraints([leadingConstraint, trailingConstraint, topConstraint, bottomConstraint])
-
-        currentPlaceholderViewTopConstraint = topConstraint
-
-        tableView.backgroundView = wrapperView
     }
 
     private func removeCurrentPlaceholderView() {
