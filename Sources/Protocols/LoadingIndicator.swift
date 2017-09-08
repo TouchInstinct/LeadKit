@@ -22,6 +22,18 @@
 
 import UIKit
 
+/// Protocol that describes placeholder view, containing loading indicator.
+public protocol LoadingIndicatorHolder: class {
+    var loadingIndicator: Animatable { get }
+    var indicatorOwner: UIView { get }
+}
+
+public extension LoadingIndicatorHolder where Self: UIView {
+    public var indicatorOwner: UIView {
+        return self
+    }
+}
+
 /// Protocol that describes badic loading indicator.
 public protocol LoadingIndicator {
 

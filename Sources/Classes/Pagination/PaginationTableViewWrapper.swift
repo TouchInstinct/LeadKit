@@ -142,6 +142,11 @@ where Delegate.Cursor == Cursor {
         paginationViewModel.load(.reload)
     }
 
+    /// Method acts like reload, but shows initial loading view after being invoked.
+    public func retry() {
+        paginationViewModel.load(.retry)
+    }
+
     /// Method that enables placeholders animation due pull-to-refresh interaction.
     ///
     /// - Parameter scrollObservable: Observable that emits content offset as CGPoint.
@@ -204,7 +209,9 @@ where Delegate.Cursor == Cursor {
 
             tableView.support.refreshControl?.endRefreshing()
 
-            addInfiniteScroll()
+            if !cursor.exhausted {
+                addInfiniteScroll()
+            }
         } else if case .loadingMore = afterState {
             delegate?.paginationWrapper(wrapper: self, didLoad: newItems, usingCursor: cursor)
 
@@ -214,15 +221,15 @@ where Delegate.Cursor == Cursor {
 
     private func onErrorState(error: Error, afterState: PaginationViewModel<Cursor>.State) {
         if case .loading = afterState {
-            enterPlaceholderState()
+            defer {
+                tableView.support.refreshControl?.endRefreshing()
+            }
 
             guard let errorView = delegate?.errorPlaceholder(forPaginationWrapper: self, forError: error) else {
                 return
             }
 
-            preparePlaceholderView(errorView)
-
-            currentPlaceholderView = errorView
+            replacePlaceholderViewIfNeeded(with: errorView)
         } else if case .loadingMore = afterState {
             removeInfiniteScroll()
 
@@ -244,15 +251,42 @@ where Delegate.Cursor == Cursor {
     }
 
     private func onEmptyState() {
-        enterPlaceholderState()
-
+        defer {
+            tableView.support.refreshControl?.endRefreshing()
+        }
         guard let emptyView = delegate?.emptyPlaceholder(forPaginationWrapper: self) else {
             return
         }
+        replacePlaceholderViewIfNeeded(with: emptyView)
+    }
 
-        preparePlaceholderView(emptyView)
+    private func replacePlaceholderViewIfNeeded(with placeholderView: UIView) {
+        // don't update placeholder view if previous placeholder is the same one
+        if currentPlaceholderView === placeholderView {
+            return
+        }
+        tableView.isUserInteractionEnabled = true
+        removeCurrentPlaceholderView()
 
-        currentPlaceholderView = emptyView
+        placeholderView.translatesAutoresizingMaskIntoConstraints = false
+        placeholderView.isHidden = false
+
+        // I was unable to add pull-to-refresh placeholder scroll behaviour without this trick
+        let wrapperView = UIView()
+        wrapperView.addSubview(placeholderView)
+
+        let leadingConstraint = placeholderView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor)
+        let trailingConstraint = placeholderView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor)
+        let topConstraint = placeholderView.topAnchor.constraint(equalTo: wrapperView.topAnchor)
+        let bottomConstraint = placeholderView.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor)
+
+        wrapperView.addConstraints([leadingConstraint, trailingConstraint, topConstraint, bottomConstraint])
+
+        currentPlaceholderViewTopConstraint = topConstraint
+
+        tableView.backgroundView = wrapperView
+
+        currentPlaceholderView = placeholderView
     }
 
     // MARK: - private stuff
@@ -319,33 +353,6 @@ where Delegate.Cursor == Cursor {
             }
         })
         .addDisposableTo(disposeBag)
-    }
-
-    private func enterPlaceholderState() {
-        tableView.support.refreshControl?.endRefreshing()
-        tableView.isUserInteractionEnabled = true
-
-        removeCurrentPlaceholderView()
-    }
-
-    private func preparePlaceholderView(_ placeholderView: UIView) {
-        placeholderView.translatesAutoresizingMaskIntoConstraints = false
-        placeholderView.isHidden = false
-
-        // I was unable to add pull-to-refresh placeholder scroll behaviour without this trick
-        let wrapperView = UIView()
-        wrapperView.addSubview(placeholderView)
-
-        let leadingConstraint = placeholderView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor)
-        let trailingConstraint = placeholderView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor)
-        let topConstraint = placeholderView.topAnchor.constraint(equalTo: wrapperView.topAnchor)
-        let bottomConstraint = placeholderView.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor)
-
-        wrapperView.addConstraints([leadingConstraint, trailingConstraint, topConstraint, bottomConstraint])
-
-        currentPlaceholderViewTopConstraint = topConstraint
-
-        tableView.backgroundView = wrapperView
     }
 
     private func removeCurrentPlaceholderView() {
