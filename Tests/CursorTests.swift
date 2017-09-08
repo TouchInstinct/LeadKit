@@ -94,9 +94,9 @@ class CursorTests: XCTestCase {
             XCTAssertEqual(loadedItems.count, 40)
 
             cursorExpectation.fulfill()
-        }, onError: { error in
+        }) { error in
             XCTFail(error.localizedDescription)
-        })
+        }
         .addDisposableTo(disposeBag)
 
         waitForExpectations(timeout: 10, handler: nil)
