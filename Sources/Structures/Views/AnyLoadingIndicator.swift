@@ -25,20 +25,28 @@ import UIKit
 /// Type that performs some kind of type erasure for LoadingIndicator.
 public struct AnyLoadingIndicator: Animatable {
 
-    private let internalView: UIView
+    private let backgroundView: UIView
     private let animatableView: Animatable
 
     /// Initializer with indicator that should be wrapped.
     ///
     /// - Parameter _: indicator for wrapping.
     public init<Indicator> (_ base: Indicator) where Indicator: LoadingIndicator {
-        self.internalView = base.view
+        self.backgroundView = base.view
         self.animatableView = base.view
     }
 
-    /// The indicator view.
+    /// Initializer with placeholder view, that wraps indicator.
+    ///
+    /// - Parameter loadingIndicatorHolder: placeholder view, containing indicator.
+    public init(loadingIndicatorHolder: LoadingIndicatorHolder) {
+        self.backgroundView = loadingIndicatorHolder.indicatorOwner
+        self.animatableView = loadingIndicatorHolder.loadingIndicator
+    }
+
+    /// The background view.
     var view: UIView {
-        return internalView
+        return backgroundView
     }
 
     public func startAnimating() {

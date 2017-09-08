@@ -61,9 +61,11 @@ public final class PaginationViewModel<C: ResettableCursorType> {
     ///
     /// - reload: reload all items and reset cursor to initial state.
     /// - next: load next batch of items.
+    /// - retry: reload to initial loading state
     public enum LoadType {
 
         case reload
+        case retry
         case next
 
     }
@@ -94,10 +96,9 @@ public final class PaginationViewModel<C: ResettableCursorType> {
     public func load(_ loadType: LoadType) {
         switch loadType {
         case .reload:
-            currentRequest?.dispose()
-            cursor = cursor.reset()
-
-            internalState.value = .loading(after: internalState.value)
+            reload()
+        case .retry:
+            reload(isRetry: true)
         case .next:
             if case .exhausted(_) = internalState.value {
                 fatalError("You shouldn't call load(.next) after got .exhausted state!")
@@ -118,6 +119,11 @@ public final class PaginationViewModel<C: ResettableCursorType> {
     }
 
     private func onGot(newItems: [C.Element], using cursor: C) {
+        if newItems.isEmpty {
+            internalState.value = .empty
+            return
+        }
+
         internalState.value = .results(newItems: newItems, inCursor: cursor, after: internalState.value)
 
         if cursor.exhausted {
@@ -136,6 +142,16 @@ public final class PaginationViewModel<C: ResettableCursorType> {
         } else {
             internalState.value = .error(error: error, after: internalState.value)
         }
+    }
+
+    private func reload(isRetry: Bool = false) {
+        currentRequest?.dispose()
+        cursor = cursor.reset()
+
+        if isRetry {
+            internalState.value = .initial
+        }
+        internalState.value = .loading(after: internalState.value)
     }
 
 }
