@@ -263,10 +263,6 @@ where Delegate.Cursor == Cursor {
     }
 
     private func replacePlaceholderViewIfNeeded(with placeholderView: UIView) {
-        // don't update placeholder view if previous placeholder is the same one
-        if currentPlaceholderView === placeholderView {
-            return
-        }
         tableView.isUserInteractionEnabled = true
         removeCurrentPlaceholderView()
 
