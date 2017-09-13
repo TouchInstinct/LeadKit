@@ -91,6 +91,8 @@ public protocol PaginationTableViewWrapperDelegate: class {
     /// - Returns: Preferred height of "retry load more" button.
     func retryLoadMoreButtonHeight(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>) -> CGFloat
 
+    // Delegate method, used to clear tableView if placeholder is shown.
+    func clearTableView()
 }
 
 /// Class that connects PaginationViewModel with UITableView. It handles all non-visual and visual states.
@@ -345,8 +347,10 @@ where Delegate.Cursor == Cursor {
             case .results(let newItems, let cursor, let after):
                 self?.onResultsState(newItems: newItems, inCursor: cursor, afterState: after)
             case .error(let error, let after):
+                self?.delegate?.clearTableView()
                 self?.onErrorState(error: error, afterState: after)
             case .empty:
+                self?.delegate?.clearTableView()
                 self?.onEmptyState()
             case .exhausted:
                 self?.onExhaustedState()
