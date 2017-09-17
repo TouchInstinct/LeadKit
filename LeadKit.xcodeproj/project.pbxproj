@@ -681,8 +681,8 @@
 			children = (
 				671461C81EB3396E00EAB194 /* FixedPageCursor.swift */,
 				671461C91EB3396E00EAB194 /* MapCursor.swift */,
-				671461CA1EB3396E00EAB194 /* StaticCursor.swift */,
 				67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */,
+				671461CA1EB3396E00EAB194 /* StaticCursor.swift */,
 			);
 			path = Cursors;
 			sourceTree = "<group>";
@@ -709,8 +709,8 @@
 		671461D21EB3396E00EAB194 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				671461D31EB3396E00EAB194 /* NetworkService.swift */,
 				6771DFD71EE99EBA002DCDAE /* DateFormattingService.swift */,
+				671461D31EB3396E00EAB194 /* NetworkService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -718,8 +718,8 @@
 		671461D41EB3396E00EAB194 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				671461D51EB3396E00EAB194 /* XibView.swift */,
 				67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */,
+				671461D51EB3396E00EAB194 /* XibView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -888,8 +888,8 @@
 			children = (
 				671461FB1EB3396E00EAB194 /* String+Extensions.swift */,
 				671461FC1EB3396E00EAB194 /* String+Localization.swift */,
-				671461FD1EB3396E00EAB194 /* String+SizeCalculation.swift */,
 				A6F32C071F6EBDAA00AC08EE /* String+LocalizedComponent.swift */,
+				671461FD1EB3396E00EAB194 /* String+SizeCalculation.swift */,
 			);
 			path = String;
 			sourceTree = "<group>";
@@ -946,8 +946,8 @@
 			isa = PBXGroup;
 			children = (
 				6714620D1EB3396E00EAB194 /* UIImage+Extensions.swift */,
-				6714620E1EB3396E00EAB194 /* UIImage+SupportExtensions.swift */,
 				67A1FF8E1EBCA09B00D6C89F /* UIImage+Spinner.swift */,
+				6714620E1EB3396E00EAB194 /* UIImage+SupportExtensions.swift */,
 			);
 			path = UIImage;
 			sourceTree = "<group>";
@@ -976,10 +976,10 @@
 		671462171EB3396E00EAB194 /* UIViewController */ = {
 			isa = PBXGroup;
 			children = (
+				671463A61EB340C000EAB194 /* UIViewController+ConfigurableController.swift */,
 				671462181EB3396E00EAB194 /* UIViewController+DefaultStoryboardIdentifier.swift */,
 				671462191EB3396E00EAB194 /* UIViewController+DefaultXibName.swift */,
 				6714621A1EB3396E00EAB194 /* UIViewController+TopVisibleViewController.swift */,
-				671463A61EB340C000EAB194 /* UIViewController+ConfigurableController.swift */,
 			);
 			path = UIViewController;
 			sourceTree = "<group>";
@@ -1121,10 +1121,10 @@
 				6714621F1EB3396E00EAB194 /* Functions */,
 				671462221EB3396E00EAB194 /* Protocols */,
 				671462351EB3396E00EAB194 /* Structures */,
-				67952C391EB3203F00B3BA1A /* Info-iOS.plist */,
 				67952DDC1EB3280900B3BA1A /* Info-iOS-Extensions.plist */,
-				67952C3A1EB3205D00B3BA1A /* Info-watchOS.plist */,
+				67952C391EB3203F00B3BA1A /* Info-iOS.plist */,
 				67952C3B1EB3208000B3BA1A /* Info-tvOS.plist */,
+				67952C3A1EB3205D00B3BA1A /* Info-watchOS.plist */,
 				67186B201EB247A200CFAFFB /* LeadKit.h */,
 			);
 			path = Sources;
@@ -1133,17 +1133,17 @@
 		67186B401EB24A5B00CFAFFB /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				A6F32C0D1F6EBE7700AC08EE /* Extensions */,
 				671463AD1EB34B1E00EAB194 /* Cursors */,
+				A6F32C0D1F6EBE7700AC08EE /* Extensions */,
 				671463B21EB34B1E00EAB194 /* Models */,
 				671463B51EB34B1E00EAB194 /* Views */,
 				671463AF1EB34B1E00EAB194 /* CursorTests.swift */,
-				671463B01EB34B1E00EAB194 /* LoadFromNibTests.swift */,
-				671463B11EB34B1E00EAB194 /* MappableUserDefaultsTests.swift */,
-				671463B41EB34B1E00EAB194 /* PaginationViewModelTests.swift */,
 				67952DDE1EB3285A00B3BA1A /* Info-iOS-Extensions.plist */,
 				67186C1A1EB24B7800CFAFFB /* Info-iOS.plist */,
 				6782BBB91EB31DD90086E0B8 /* Info-tvOS.plist */,
+				671463B01EB34B1E00EAB194 /* LoadFromNibTests.swift */,
+				671463B11EB34B1E00EAB194 /* MappableUserDefaultsTests.swift */,
+				671463B41EB34B1E00EAB194 /* PaginationViewModelTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1191,12 +1191,12 @@
 		78CFEE201C5C456B00F50370 = {
 			isa = PBXGroup;
 			children = (
+				C90516DF61394D92FF071C0C /* Frameworks */,
+				EE8EDD9378EF7D1B3C4F2147 /* Pods */,
+				78CFEE2B1C5C456B00F50370 /* Products */,
 				67186B1D1EB2475500CFAFFB /* Sources */,
 				67186B401EB24A5B00CFAFFB /* Tests */,
 				67186B411EB24AA000CFAFFB /* iOS.playground */,
-				78CFEE2B1C5C456B00F50370 /* Products */,
-				EE8EDD9378EF7D1B3C4F2147 /* Pods */,
-				C90516DF61394D92FF071C0C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1228,6 +1228,7 @@
 				A6F32C0E1F6EBE8E00AC08EE /* StringExtensionTests.swift */,
 			);
 			name = Extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C90516DF61394D92FF071C0C /* Frameworks */ = {
