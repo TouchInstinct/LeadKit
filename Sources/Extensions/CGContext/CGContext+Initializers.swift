@@ -22,7 +22,7 @@
 
 import CoreGraphics
 
-extension CGBitmapInfo {
+public extension CGBitmapInfo {
 
     // The bitmapInfo value are hard-coded to prevent an "unsupported parameter combination" error
 

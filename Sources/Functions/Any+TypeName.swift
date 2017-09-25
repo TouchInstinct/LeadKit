@@ -26,11 +26,11 @@ import Foundation
 ///
 /// - Parameter type: an object type
 /// - Returns: string representation of object type
-public func className<T>(of type: T) -> String {
-    let clsName = String(describing: type(of: type))
+public func className<T>(of givenType: T) -> String {
+    let clsName = String(describing: type(of: givenType))
 
     if let typeRange = clsName.range(of: ".Type") {
-        return clsName.substring(to: typeRange.lowerBound)
+        return String(clsName[..<typeRange.lowerBound])
     } else {
         return clsName
     }
