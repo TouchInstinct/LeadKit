@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
     ss.dependency "CocoaLumberjack/Swift", '~> 3.1.0'
     ss.dependency "RxSwift", '4.0.0-beta.0'
     ss.dependency "RxCocoa", '4.0.0-beta.0'
-    ss.dependency "RxAlamofire", :git => 'https://github.com/RxSwiftCommunity/RxAlamofire.git', :commit => 'c2fdccf8058d1a61f5fbb540054c21372de1151d'
+    ss.dependency "RxAlamofire", :git => 'https://github.com/RxSwiftCommunity/RxAlamofire.git', :branch => 'master', :commit => 'c2fdccf8058d1a61f5fbb540054c21372de1151d'
     ss.dependency "ObjectMapper", '~> 3.0.0'
 
     ss.ios.dependency "TableKit", '~> 2.5.0'
@@ -101,7 +101,7 @@ Pod::Spec.new do |s|
     ss.dependency "CocoaLumberjack/Swift", '~> 3.1.0'
     ss.dependency "RxSwift", '4.0.0-beta.0'
     ss.dependency "RxCocoa", '4.0.0-beta.0'
-    ss.dependency "RxAlamofire", :git => 'https://github.com/RxSwiftCommunity/RxAlamofire.git', :commit => 'c2fdccf8058d1a61f5fbb540054c21372de1151d'
+    ss.dependency "RxAlamofire", :git => 'https://github.com/RxSwiftCommunity/RxAlamofire.git', :branch => 'master', :commit => 'c2fdccf8058d1a61f5fbb540054c21372de1151d'
     ss.dependency "ObjectMapper", '~> 3.0.0'
   end
 

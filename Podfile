@@ -2,7 +2,7 @@ abstract_target 'LeadKit' do
   pod "CocoaLumberjack/Swift", '~> 3.1.0'
   pod "RxSwift", '4.0.0-beta.0'
   pod "RxCocoa", '4.0.0-beta.0'
-  pod "RxAlamofire", :git => 'https://github.com/RxSwiftCommunity/RxAlamofire.git', :commit => 'c2fdccf8058d1a61f5fbb540054c21372de1151d'
+  pod "RxAlamofire", :git => 'https://github.com/RxSwiftCommunity/RxAlamofire.git', :branch => 'master', :commit => 'c2fdccf8058d1a61f5fbb540054c21372de1151d'
   pod "ObjectMapper", '~> 3.0.0'
 
   inhibit_all_warnings!

@@ -18,7 +18,7 @@ PODS:
 DEPENDENCIES:
   - CocoaLumberjack/Swift (~> 3.1.0)
   - ObjectMapper (~> 3.0.0)
-  - RxAlamofire (from `https://github.com/RxSwiftCommunity/RxAlamofire.git`, commit `c2fdccf8058d1a61f5fbb540054c21372de1151d`)
+  - RxAlamofire (from `https://github.com/RxSwiftCommunity/RxAlamofire.git`, commit `c2fdccf8058d1a61f5fbb540054c21372de1151d`, branch `master`)
   - RxCocoa (= 4.0.0-beta.0)
   - RxSwift (= 4.0.0-beta.0)
   - TableKit (~> 2.5.0)
@@ -26,6 +26,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   RxAlamofire:
+    :branch: master
     :commit: c2fdccf8058d1a61f5fbb540054c21372de1151d
     :git: https://github.com/RxSwiftCommunity/RxAlamofire.git
 
@@ -44,6 +45,6 @@ SPEC CHECKSUMS:
   TableKit: 42d4dff2944f273cdeec2ef6352064eb6a9a355b
   UIScrollView-InfiniteScroll: a90df4ba4a7ca1926128ade34a850ddbdf74c564
 
-PODFILE CHECKSUM: c23a86e5adf05dabfc4d378f98a2fd90a58ad753
+PODFILE CHECKSUM: 7dc5da62d5fcaacd2ad35126235ca1fbf9c0aab8
 
 COCOAPODS: 1.3.1
