@@ -127,9 +127,10 @@ where Delegate.Cursor == Cursor {
     ///   - tableView: UITableView instance to work with.
     ///   - cursor: Cursor object that acts as data source.
     ///   - delegate: Delegate object for data loading events handling and UI customization.
-    public init(tableView: UITableView, cursor: Cursor, delegate: Delegate) {
+    ///   - allowEmptyResults: If true - do not show empty placeholder, pass empty results.
+    public init(tableView: UITableView, cursor: Cursor, delegate: Delegate, allowEmptyResults: Bool = false) {
         self.tableView = tableView
-        self.paginationViewModel = PaginationViewModel(cursor: cursor)
+        self.paginationViewModel = PaginationViewModel(cursor: cursor, allowEmptyResults: allowEmptyResults)
         self.delegate = delegate
 
         bindViewModelStates()
