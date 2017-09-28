@@ -71,6 +71,7 @@ public final class PaginationViewModel<C: ResettableCursorType> {
     }
 
     private var cursor: C
+    private let allowEmptyResults: Bool
 
     private let internalState = Variable<State>(.initial)
 
@@ -86,8 +87,9 @@ public final class PaginationViewModel<C: ResettableCursorType> {
     /// Initializer with enclosed cursor
     ///
     /// - Parameter cursor: cursor to use for pagination
-    public init(cursor: C) {
+    public init(cursor: C, allowEmptyResults: Bool) {
         self.cursor = cursor
+        self.allowEmptyResults = allowEmptyResults
     }
 
     /// Mathod which triggers loading of items.
@@ -119,7 +121,7 @@ public final class PaginationViewModel<C: ResettableCursorType> {
     }
 
     private func onGot(newItems: [C.Element], using cursor: C) {
-        if newItems.isEmpty {
+        if !allowEmptyResults, newItems.isEmpty {
             internalState.value = .empty
             return
         }
