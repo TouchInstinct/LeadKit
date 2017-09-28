@@ -31,10 +31,12 @@ public extension String {
                                    stringTwo: String,
                                    stringMany: String) -> String {
 
-        if (11...14).contains(value) {
+        let lastTwoDigits = value % 100
+
+        if (11...14).contains(lastTwoDigits) {
             return stringMany
         } else {
-            let lastDigit = value % 10
+            let lastDigit = lastTwoDigits % 10
 
             switch lastDigit {
             case 1:
