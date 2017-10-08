@@ -384,6 +384,22 @@
 		67E6C2371EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
 		67E6C2381EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
 		82F8BB181F5DDED100C1061B /* Single+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */; };
+		A6E0DDDE1F8A696F002CA74E /* EmptyCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A71F8A654600C6308D /* EmptyCellRow.swift */; };
+		A6E0DDDF1F8A696F002CA74E /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A61F8A653600C6308D /* BaseCell.swift */; };
+		A6E0DDE01F8A696F002CA74E /* BaseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A51F8A653500C6308D /* BaseCellViewModel.swift */; };
+		A6E0DDE11F8A696F002CA74E /* AnyBaseTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A81F8A655600C6308D /* AnyBaseTableRow.swift */; };
+		A6E0DDE21F8A696F002CA74E /* EmptyCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A71F8A654600C6308D /* EmptyCellRow.swift */; };
+		A6E0DDE31F8A696F002CA74E /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A61F8A653600C6308D /* BaseCell.swift */; };
+		A6E0DDE41F8A696F002CA74E /* BaseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A51F8A653500C6308D /* BaseCellViewModel.swift */; };
+		A6E0DDE51F8A696F002CA74E /* AnyBaseTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A81F8A655600C6308D /* AnyBaseTableRow.swift */; };
+		A6E0DDE61F8A696F002CA74E /* EmptyCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A71F8A654600C6308D /* EmptyCellRow.swift */; };
+		A6E0DDE71F8A696F002CA74E /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A61F8A653600C6308D /* BaseCell.swift */; };
+		A6E0DDE81F8A696F002CA74E /* BaseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A51F8A653500C6308D /* BaseCellViewModel.swift */; };
+		A6E0DDE91F8A696F002CA74E /* AnyBaseTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A81F8A655600C6308D /* AnyBaseTableRow.swift */; };
+		A6E0DDEA1F8A6970002CA74E /* EmptyCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A71F8A654600C6308D /* EmptyCellRow.swift */; };
+		A6E0DDEB1F8A6970002CA74E /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A61F8A653600C6308D /* BaseCell.swift */; };
+		A6E0DDEC1F8A6970002CA74E /* BaseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A51F8A653500C6308D /* BaseCellViewModel.swift */; };
+		A6E0DDED1F8A6970002CA74E /* AnyBaseTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A81F8A655600C6308D /* AnyBaseTableRow.swift */; };
 		A6F32C081F6EBDAA00AC08EE /* String+LocalizedComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F32C071F6EBDAA00AC08EE /* String+LocalizedComponent.swift */; };
 		A6F32C0A1F6EBE5B00AC08EE /* String+LocalizedComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F32C071F6EBDAA00AC08EE /* String+LocalizedComponent.swift */; };
 		A6F32C0B1F6EBE5C00AC08EE /* String+LocalizedComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F32C071F6EBDAA00AC08EE /* String+LocalizedComponent.swift */; };
@@ -576,6 +592,10 @@
 		887F99C5326BD220C2811BD6 /* Pods_LeadKit_LeadKit_iOS_Extensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_LeadKit_iOS_Extensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E457F1241D136396FC2420 /* Pods_LeadKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9966FB938D114F79F71AE037 /* Pods-LeadKit-LeadKit iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit-LeadKit iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit-LeadKit iOS/Pods-LeadKit-LeadKit iOS.release.xcconfig"; sourceTree = "<group>"; };
+		A66428A51F8A653500C6308D /* BaseCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCellViewModel.swift; sourceTree = "<group>"; };
+		A66428A61F8A653600C6308D /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		A66428A71F8A654600C6308D /* EmptyCellRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCellRow.swift; sourceTree = "<group>"; };
+		A66428A81F8A655600C6308D /* AnyBaseTableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyBaseTableRow.swift; sourceTree = "<group>"; };
 		A6F32C071F6EBDAA00AC08EE /* String+LocalizedComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+LocalizedComponent.swift"; sourceTree = "<group>"; };
 		A6F32C0E1F6EBE8E00AC08EE /* StringExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
 		A854A36EB179651E6D0CC9FB /* Pods_LeadKit_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -718,6 +738,7 @@
 		671461D41EB3396E00EAB194 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A66428A41F8A651700C6308D /* BaseCell */,
 				67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */,
 				671461D51EB3396E00EAB194 /* XibView.swift */,
 			);
@@ -1222,12 +1243,22 @@
 			path = Single;
 			sourceTree = "<group>";
 		};
+		A66428A41F8A651700C6308D /* BaseCell */ = {
+			isa = PBXGroup;
+			children = (
+				A66428A71F8A654600C6308D /* EmptyCellRow.swift */,
+				A66428A61F8A653600C6308D /* BaseCell.swift */,
+				A66428A51F8A653500C6308D /* BaseCellViewModel.swift */,
+				A66428A81F8A655600C6308D /* AnyBaseTableRow.swift */,
+			);
+			path = BaseCell;
+			sourceTree = "<group>";
+		};
 		A6F32C0D1F6EBE7700AC08EE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				A6F32C0E1F6EBE8E00AC08EE /* StringExtensionTests.swift */,
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -2042,6 +2073,7 @@
 				671462E01EB3396E00EAB194 /* UICollectionView+CellRegistration.swift in Sources */,
 				671462601EB3396E00EAB194 /* PaginationTableViewWrapper.swift in Sources */,
 				671463281EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
+				A6E0DDDF1F8A696F002CA74E /* BaseCell.swift in Sources */,
 				671462AC1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
 				671463001EB3396E00EAB194 /* UIView+LoadFromNib.swift in Sources */,
 				6714627C1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
@@ -2050,6 +2082,8 @@
 				671462581EB3396E00EAB194 /* Log.swift in Sources */,
 				671462B41EB3396E00EAB194 /* PaginationTableViewWrapperDelegate+DefaultImplementation.swift in Sources */,
 				671462781EB3396E00EAB194 /* ResizeContentMode.swift in Sources */,
+				A6E0DDE11F8A696F002CA74E /* AnyBaseTableRow.swift in Sources */,
+				A6E0DDDE1F8A696F002CA74E /* EmptyCellRow.swift in Sources */,
 				671463041EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
 				EFBE57D61EC3603E0040E00A /* UIAlertController+Extensions.swift in Sources */,
 				671463701EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
@@ -2075,6 +2109,7 @@
 				A6F32C081F6EBDAA00AC08EE /* String+LocalizedComponent.swift in Sources */,
 				671462881EB3396E00EAB194 /* CGFloat+Pixels.swift in Sources */,
 				671462941EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
+				A6E0DDE01F8A696F002CA74E /* BaseCellViewModel.swift in Sources */,
 				671463641EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
 				671462481EB3396E00EAB194 /* FixedPageCursor.swift in Sources */,
 				671462C81EB3396E00EAB194 /* String+Localization.swift in Sources */,
@@ -2110,11 +2145,15 @@
 				671463CA1EB34B1E00EAB194 /* TestView.swift in Sources */,
 				671463C71EB34B1E00EAB194 /* PaginationViewModelTests.swift in Sources */,
 				671463B81EB34B1E00EAB194 /* StubCursor.swift in Sources */,
+				A6E0DDE41F8A696F002CA74E /* BaseCellViewModel.swift in Sources */,
 				671463BB1EB34B1E00EAB194 /* CursorTests.swift in Sources */,
 				A6F32C101F6EBE9600AC08EE /* StringExtensionTests.swift in Sources */,
 				671463C11EB34B1E00EAB194 /* MappableUserDefaultsTests.swift in Sources */,
 				671463BE1EB34B1E00EAB194 /* LoadFromNibTests.swift in Sources */,
+				A6E0DDE21F8A696F002CA74E /* EmptyCellRow.swift in Sources */,
+				A6E0DDE31F8A696F002CA74E /* BaseCell.swift in Sources */,
 				671463C41EB34B1E00EAB194 /* Post.swift in Sources */,
+				A6E0DDE51F8A696F002CA74E /* AnyBaseTableRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2313,6 +2352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6E0DDE61F8A696F002CA74E /* EmptyCellRow.swift in Sources */,
 				671463491EB3396E00EAB194 /* ResettableType.swift in Sources */,
 				671462E51EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
 				671462CD1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
@@ -2352,10 +2392,12 @@
 				671462E11EB3396E00EAB194 /* UICollectionView+CellRegistration.swift in Sources */,
 				A6F32C0A1F6EBE5B00AC08EE /* String+LocalizedComponent.swift in Sources */,
 				671463291EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
+				A6E0DDE71F8A696F002CA74E /* BaseCell.swift in Sources */,
 				671462AD1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
 				671463011EB3396E00EAB194 /* UIView+LoadFromNib.swift in Sources */,
 				6714627D1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
 				671463451EB3396E00EAB194 /* ObservableMappable.swift in Sources */,
+				A6E0DDE91F8A696F002CA74E /* AnyBaseTableRow.swift in Sources */,
 				671462591EB3396E00EAB194 /* Log.swift in Sources */,
 				671462791EB3396E00EAB194 /* ResizeContentMode.swift in Sources */,
 				671463051EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
@@ -2400,6 +2442,7 @@
 				6714628D1EB3396E00EAB194 /* CGImage+Alpha.swift in Sources */,
 				671462751EB3396E00EAB194 /* LeadKitError.swift in Sources */,
 				EFBE57D11EC35EF20040E00A /* Array+Extensions.swift in Sources */,
+				A6E0DDE81F8A696F002CA74E /* BaseCellViewModel.swift in Sources */,
 				67CDEE431EB3AD1C00895905 /* NetworkService+RxLoadImage.swift in Sources */,
 				671462D91EB3396E00EAB194 /* TimeInterval+DateComponents.swift in Sources */,
 				6714638D1EB3396E00EAB194 /* SolidFillDrawingOperation.swift in Sources */,
@@ -2420,11 +2463,15 @@
 				671463C21EB34B1E00EAB194 /* MappableUserDefaultsTests.swift in Sources */,
 				671463BF1EB34B1E00EAB194 /* LoadFromNibTests.swift in Sources */,
 				671463C51EB34B1E00EAB194 /* Post.swift in Sources */,
+				A6E0DDEC1F8A6970002CA74E /* BaseCellViewModel.swift in Sources */,
 				671463CB1EB34B1E00EAB194 /* TestView.swift in Sources */,
 				A6F32C111F6EBE9700AC08EE /* StringExtensionTests.swift in Sources */,
 				671463C81EB34B1E00EAB194 /* PaginationViewModelTests.swift in Sources */,
 				671463BC1EB34B1E00EAB194 /* CursorTests.swift in Sources */,
+				A6E0DDEA1F8A6970002CA74E /* EmptyCellRow.swift in Sources */,
+				A6E0DDEB1F8A6970002CA74E /* BaseCell.swift in Sources */,
 				671463B91EB34B1E00EAB194 /* StubCursor.swift in Sources */,
+				A6E0DDED1F8A6970002CA74E /* AnyBaseTableRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
