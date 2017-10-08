@@ -400,6 +400,8 @@
 		A6E0DDEB1F8A6970002CA74E /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A61F8A653600C6308D /* BaseCell.swift */; };
 		A6E0DDEC1F8A6970002CA74E /* BaseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A51F8A653500C6308D /* BaseCellViewModel.swift */; };
 		A6E0DDED1F8A6970002CA74E /* AnyBaseTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A81F8A655600C6308D /* AnyBaseTableRow.swift */; };
+		A6E0DDEF1F8A6C57002CA74E /* CellSeparatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDEE1F8A6C57002CA74E /* CellSeparatorType.swift */; };
+		A6E0DDF11F8A6C80002CA74E /* SeparatorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDF01F8A6C80002CA74E /* SeparatorConfiguration.swift */; };
 		A6F32C081F6EBDAA00AC08EE /* String+LocalizedComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F32C071F6EBDAA00AC08EE /* String+LocalizedComponent.swift */; };
 		A6F32C0A1F6EBE5B00AC08EE /* String+LocalizedComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F32C071F6EBDAA00AC08EE /* String+LocalizedComponent.swift */; };
 		A6F32C0B1F6EBE5C00AC08EE /* String+LocalizedComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F32C071F6EBDAA00AC08EE /* String+LocalizedComponent.swift */; };
@@ -596,6 +598,8 @@
 		A66428A61F8A653600C6308D /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		A66428A71F8A654600C6308D /* EmptyCellRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCellRow.swift; sourceTree = "<group>"; };
 		A66428A81F8A655600C6308D /* AnyBaseTableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyBaseTableRow.swift; sourceTree = "<group>"; };
+		A6E0DDEE1F8A6C57002CA74E /* CellSeparatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSeparatorType.swift; sourceTree = "<group>"; };
+		A6E0DDF01F8A6C80002CA74E /* SeparatorConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorConfiguration.swift; sourceTree = "<group>"; };
 		A6F32C071F6EBDAA00AC08EE /* String+LocalizedComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+LocalizedComponent.swift"; sourceTree = "<group>"; };
 		A6F32C0E1F6EBE8E00AC08EE /* StringExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
 		A854A36EB179651E6D0CC9FB /* Pods_LeadKit_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1246,10 +1250,12 @@
 		A66428A41F8A651700C6308D /* BaseCell */ = {
 			isa = PBXGroup;
 			children = (
-				A66428A71F8A654600C6308D /* EmptyCellRow.swift */,
+				A66428A81F8A655600C6308D /* AnyBaseTableRow.swift */,
 				A66428A61F8A653600C6308D /* BaseCell.swift */,
 				A66428A51F8A653500C6308D /* BaseCellViewModel.swift */,
-				A66428A81F8A655600C6308D /* AnyBaseTableRow.swift */,
+				A6E0DDEE1F8A6C57002CA74E /* CellSeparatorType.swift */,
+				A66428A71F8A654600C6308D /* EmptyCellRow.swift */,
+				A6E0DDF01F8A6C80002CA74E /* SeparatorConfiguration.swift */,
 			);
 			path = BaseCell;
 			sourceTree = "<group>";
@@ -2042,6 +2048,7 @@
 				671463201EB3396E00EAB194 /* Any+Cast.swift in Sources */,
 				EFBE57DB1EC361620040E00A /* UIView+Layout.swift in Sources */,
 				6714639E1EB33AEB00EAB194 /* NetworkService+ActivityIndicator.swift in Sources */,
+				A6E0DDEF1F8A6C57002CA74E /* CellSeparatorType.swift in Sources */,
 				6714634C1EB3396E00EAB194 /* ReuseIdentifierProtocol.swift in Sources */,
 				671462F01EB3396E00EAB194 /* UIImage+SupportExtensions.swift in Sources */,
 				6771DFDE1EE99F6F002DCDAE /* DateFormattingArguments.swift in Sources */,
@@ -2088,6 +2095,7 @@
 				EFBE57D61EC3603E0040E00A /* UIAlertController+Extensions.swift in Sources */,
 				671463701EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
 				671462EC1EB3396E00EAB194 /* UIImage+Extensions.swift in Sources */,
+				A6E0DDF11F8A6C80002CA74E /* SeparatorConfiguration.swift in Sources */,
 				6714636C1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
 				6771DFEA1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
 				671462A41EB3396E00EAB194 /* IndexPath+ImmutableIndexPath.swift in Sources */,

@@ -26,8 +26,9 @@ import TableKit
 open class BaseCell: UITableViewCell {
 
     func configureSeparator(with viewModel: BaseCellViewModel) {
-        topSeparatorInsets = viewModel.topSeparatorInsets ?? .zero
-        bottomSeparatorInsets = viewModel.bottomSeparatorInsets ?? .zero
+        topView
+        topSeparatorConfiguration = viewModel.topSeparatorInsets ?? .baseConfiguration
+        bottomSeparatorConfiguration = viewModel.bottomSeparatorInsets ?? .baseConfiguration
     }
 
     // MARK: - Private
@@ -46,8 +47,8 @@ open class BaseCell: UITableViewCell {
     private var bottomViewBottomConstraint: NSLayoutConstraint!
 
     // insets
-    private var topSeparatorInsets: UIEdgeInsets    = .zero
-    private var bottomSeparatorInsets: UIEdgeInsets = .zero
+    private var topSeparatorConfiguration = SeparatorConfiguration.baseConfiguration
+    private var bottomSeparatorConfiguration = SeparatorConfiguration.baseConfiguration
 
     override open func updateConstraints() {
         topViewTopConstraint.constant       = topSeparatorInsets.top
@@ -72,6 +73,8 @@ open class BaseCell: UITableViewCell {
         topView.isHidden = separatorType.topIsHidden
         bottomView.isHidden = separatorType.bottomIsHidden
 
+        topView.backgroundColor =
+
         setNeedsUpdateConstraints()
     }
 
@@ -94,7 +97,7 @@ open class BaseCell: UITableViewCell {
     private func createSeparatorView() -> UIView {
         let view = UIView()
         view.isHidden = true
-        view.backgroundColor = .separatorColor
+        view.backgroundColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
         return view

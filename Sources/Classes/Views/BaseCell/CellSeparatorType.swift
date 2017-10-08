@@ -22,35 +22,39 @@
 
 import UIKit
 
-/// By default this class does not provide any searators
-open class BaseCellViewModel {
+public enum CellSeparatorType {
+    case none
+    case top(SeparatorConfiguration)
+    case bottom(SeparatorConfiguration)
 
-    var separatorType = CellSeparatorType.none
+    /// Top than bottom
+    case full(SeparatorConfiguration, SeparatorConfiguration)
 
-    /// NOTE: Bottom dimension is ignored
-    var topSeparatorConfiguration: SeparatorConfiguration?
-
-    /// NOTE: Top dimension is ignored
-    var bottomSeparatorConfiguration: SeparatorConfiguration?
-
-    @discardableResult
-    func with(separatorType: CellSeparatorType) -> Self {
-        self.separatorType = separatorType
-
-        switch separatorType {
-        case .top(let configuration):
-            topSeparatorConfiguration = configuration
-        case .bottom(let configuration):
-            bottomSeparatorConfiguration = configuration
-        case .full(let top, let bottom):
-            topSeparatorConfiguration = top
-            bottomSeparatorConfiguration = bottom
+    var bottomIsHidden: Bool {
+        switch self {
+        case .top, .none:
+            return true
         default:
-            topSeparatorConfiguration = nil
-            bottomSeparatorConfiguration = nil
+            return false
         }
+    }
 
-        return self
+    var topIsHidden: Bool {
+        switch self {
+        case .bottom, .none:
+            return true
+        default:
+            return false
+        }
+    }
+
+    var topConfiguration: SeparatorConfiguration? {
+        switch self {
+        case .top(let configuration), .full(let configuration, _):
+            return configuration
+        default:
+            return nil
+        }
     }
 
 }

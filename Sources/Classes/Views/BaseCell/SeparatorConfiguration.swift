@@ -22,35 +22,16 @@
 
 import UIKit
 
-/// By default this class does not provide any searators
-open class BaseCellViewModel {
+public struct SeparatorConfiguration {
+    let color: UIColor
+    let insets: UIEdgeInsets?
+    let height: CGFloat
 
-    var separatorType = CellSeparatorType.none
-
-    /// NOTE: Bottom dimension is ignored
-    var topSeparatorConfiguration: SeparatorConfiguration?
-
-    /// NOTE: Top dimension is ignored
-    var bottomSeparatorConfiguration: SeparatorConfiguration?
-
-    @discardableResult
-    func with(separatorType: CellSeparatorType) -> Self {
-        self.separatorType = separatorType
-
-        switch separatorType {
-        case .top(let configuration):
-            topSeparatorConfiguration = configuration
-        case .bottom(let configuration):
-            bottomSeparatorConfiguration = configuration
-        case .full(let top, let bottom):
-            topSeparatorConfiguration = top
-            bottomSeparatorConfiguration = bottom
-        default:
-            topSeparatorConfiguration = nil
-            bottomSeparatorConfiguration = nil
-        }
-
-        return self
+    init(color: UIColor, insets: UIEdgeInsets? = .zero, height: CGFloat = CGFloat(pixels: 1)) {
+        self.color  = color
+        self.insets = insets
+        self.height = height
     }
 
+    static let baseConfiguration = SeparatorConfiguration(color: .black, insets: .zero)
 }
