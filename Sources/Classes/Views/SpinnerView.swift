@@ -34,10 +34,10 @@ public final class SpinnerView: UIView, Animatable, LoadingIndicator {
     private let animationRepeatCount: Float
     private let clockwiseAnimation: Bool
 
-    init(image: UIImage,
-         animationDuration: CFTimeInterval = 1,
-         animationRepeatCount: Float = Float.infinity,
-         clockwiseAnimation: Bool = true) {
+    public init(image: UIImage,
+                animationDuration: CFTimeInterval = 1,
+                animationRepeatCount: Float = Float.infinity,
+                clockwiseAnimation: Bool = true) {
 
         self.animationDuration = animationDuration
         self.animationRepeatCount = animationRepeatCount
