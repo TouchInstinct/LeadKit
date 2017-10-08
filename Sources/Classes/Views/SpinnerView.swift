@@ -22,7 +22,7 @@
 
 import UIKit
 
-class SpinnerView: UIView, Animatable, LoadingIndicator {
+public final class SpinnerView: UIView, Animatable, LoadingIndicator {
 
     private(set) var animating: Bool = false
     private var startTime = CFTimeInterval(0)
@@ -72,7 +72,7 @@ class SpinnerView: UIView, Animatable, LoadingIndicator {
         NotificationCenter.default.removeObserver(self)
     }
 
-    override func didMoveToWindow() {
+    override public func didMoveToWindow() {
         super.didMoveToWindow()
 
         if window != nil {
@@ -82,7 +82,7 @@ class SpinnerView: UIView, Animatable, LoadingIndicator {
 
     // MARK: - Animatable
 
-    func startAnimating() {
+    public func startAnimating() {
         guard !animating else {
             return
         }
@@ -94,7 +94,7 @@ class SpinnerView: UIView, Animatable, LoadingIndicator {
         addAnimation()
     }
 
-    func stopAnimating() {
+    public func stopAnimating() {
         guard animating else {
             return
         }
