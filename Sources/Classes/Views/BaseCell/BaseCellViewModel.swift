@@ -33,6 +33,8 @@ open class BaseCellViewModel {
     /// NOTE: Top dimension is ignored
     var bottomSeparatorConfiguration: SeparatorConfiguration?
 
+    public init() {}
+
     @discardableResult
     public func with(separatorType: CellSeparatorType) -> Self {
         self.separatorType = separatorType
