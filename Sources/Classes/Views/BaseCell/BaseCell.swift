@@ -25,17 +25,11 @@ import TableKit
 
 open class BaseCell: UITableViewCell {
 
+    //    public weak var viewModel: BaseCellViewModel?
+
     public func configureSeparator(with viewModel: BaseCellViewModel) {
-        topView.isHidden                    = viewModel.separatorType.topIsHidden
-        bottomView.isHidden                 = viewModel.separatorType.bottomIsHidden
-
-        topView.backgroundColor             = viewModel.topSeparatorConfiguration?.color
-        topViewHeightConstraint.constant    = viewModel.topSeparatorConfiguration?.height ?? CGFloat(pixels: 1)
-        topSeparatorInsets                  = viewModel.topSeparatorConfiguration?.insets ?? .zero
-
-        bottomView.backgroundColor          = viewModel.bottomSeparatorConfiguration?.color
-        bottomViewHeightConstraint.constant = viewModel.bottomSeparatorConfiguration?.height ?? CGFloat(pixels: 1)
-        bottomSeparatorInsets               = viewModel.bottomSeparatorConfiguration?.insets ?? .zero
+        //        self.viewModel = viewModel
+        configureInterface(with: viewModel)
     }
 
     // MARK: - Private
@@ -73,10 +67,33 @@ open class BaseCell: UITableViewCell {
         super.updateConstraints()
     }
 
-    override open func awakeFromNib() {
-        super.awakeFromNib()
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
 
         configureLineViews()
+    }
+
+    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+        configureLineViews()
+    }
+
+    private func configureInterface(with viewModel: BaseCellViewModel?) {
+        guard let viewModel = viewModel else {
+            return
+        }
+
+        topView.isHidden                    = viewModel.separatorType.topIsHidden
+        bottomView.isHidden                 = viewModel.separatorType.bottomIsHidden
+
+        topView.backgroundColor             = viewModel.topSeparatorConfiguration?.color
+        topViewHeightConstraint.constant    = viewModel.topSeparatorConfiguration?.height ?? CGFloat(pixels: 1)
+        topSeparatorInsets                  = viewModel.topSeparatorConfiguration?.insets ?? .zero
+
+        bottomView.backgroundColor          = viewModel.bottomSeparatorConfiguration?.color
+        bottomViewHeightConstraint.constant = viewModel.bottomSeparatorConfiguration?.height ?? CGFloat(pixels: 1)
+        bottomSeparatorInsets               = viewModel.bottomSeparatorConfiguration?.insets ?? .zero
     }
 
     private func configureLineViews() {
@@ -101,6 +118,7 @@ open class BaseCell: UITableViewCell {
         view.backgroundColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
+        contentView.bringSubview(toFront: view)
         return view
     }
 
@@ -138,8 +156,8 @@ open class BaseCell: UITableViewCell {
 public extension TableRow where CellType.T: BaseCellViewModel {
 
     @discardableResult
-    func withSeparatorType(_ separatorType: CellSeparatorType) -> Self {
-        item.separatorType = separatorType
+    func with(separatorType: CellSeparatorType) -> Self {
+        item.with(separatorType: separatorType)
         return self
     }
 

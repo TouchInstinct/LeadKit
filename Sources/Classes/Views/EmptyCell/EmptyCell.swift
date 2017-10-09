@@ -25,20 +25,21 @@ import TableKit
 
 public final class EmptyCell: BaseCell, ConfigurableCell {
 
-    private weak var coloredView: UIView!
+    private lazy var coloredView: UIView = {
+        let newView = UIView()
+        self.addSubview(newView)
 
-    override public func awakeFromNib() {
-        super.awakeFromNib()
+        newView.translatesAutoresizingMaskIntoConstraints = false
+        self.topAnchor.constraint(equalTo: newView.topAnchor).isActive           = true
+        self.bottomAnchor.constraint(equalTo: newView.bottomAnchor).isActive     = true
+        self.leadingAnchor.constraint(equalTo: newView.leadingAnchor).isActive   = true
+        self.trailingAnchor.constraint(equalTo: newView.trailingAnchor).isActive = true
 
-        let view = UIView()
-        addSubview(view)
+        return newView
+    }()
 
-        topAnchor.constraint(equalTo: view.topAnchor).isActive           = true
-        bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive     = true
-        leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive   = true
-        trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-
-        coloredView = view
+    deinit {
+        debugPrint("Deinit")
     }
 
     public func configure(with viewModel: EmptyCellViewModel) {
@@ -47,3 +48,4 @@ public final class EmptyCell: BaseCell, ConfigurableCell {
     }
 
 }
+

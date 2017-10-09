@@ -45,9 +45,9 @@ private final class AnyBaseTableRowBox<T: ConfigurableCell>: AnyBaseTableRowHold
 public final class AnyBaseTableRow {
 
     fileprivate let anyTableRow: AnyBaseTableRowHolder
-    let viewModel: BaseCellViewModel
+    public let viewModel: BaseCellViewModel
 
-    init<T>(tableRow: TableRow<T>) where T: BaseCell, T.T: BaseCellViewModel {
+    public init<T>(tableRow: TableRow<T>) where T: BaseCell, T.T: BaseCellViewModel {
         anyTableRow = AnyBaseTableRowBox(tableRow: tableRow)
         viewModel = tableRow.item
     }
@@ -61,3 +61,4 @@ public extension Array where Element == AnyBaseTableRow {
     }
 
 }
+
