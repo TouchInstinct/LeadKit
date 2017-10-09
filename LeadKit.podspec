@@ -91,7 +91,9 @@ Pod::Spec.new do |s|
     ss.source_files = "Sources/**/*.swift"
 
     ss.exclude_files = [
-      "Sources/Classes/Views/*",
+      "Sources/Classes/Views/AnyBaseTableRow/*",
+      "Sources/Classes/Views/BaseCell/*",
+      "Sources/Classes/Views/EmptyCell/*",
       "Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
       "Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
