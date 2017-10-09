@@ -20,18 +20,32 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import TableKit
 
-public struct SeparatorConfiguration {
-    let color: UIColor
-    let insets: UIEdgeInsets?
-    let height: CGFloat
+/// Row that simulates spacing, can end editing on click, specify this in constructor
+public final class EmptyCellRow: TableRow<EmptyCell> {
 
-    public init(color: UIColor, insets: UIEdgeInsets? = .zero, height: CGFloat = CGFloat(pixels: 1)) {
-        self.color  = color
-        self.insets = insets
-        self.height = height
+    public convenience init(with height: CGFloat,
+                            color: UIColor = .clear,
+                            endEditingOnClick: Bool = false) {
+
+        self.init(item: EmptyCellViewModel(height: height, color: color))
+
+        if endEditingOnClick {
+            self.on(.click) { options in
+                options.cell?.window?.endEditing(true)
+            }
+        }
     }
 
-    public static let baseConfiguration = SeparatorConfiguration(color: .black, insets: .zero)
+    // Used for set custom height to each cell, not for each cell type
+    override public var defaultHeight: CGFloat? {
+        return item.height
+    }
+
+    /// - returns: EmptyCellRow typed as AnyBaseTableRow
+    public var anyRow: AnyBaseTableRow {
+        return AnyBaseTableRow(tableRow: self)
+    }
+
 }

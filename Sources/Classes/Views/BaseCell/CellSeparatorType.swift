@@ -30,7 +30,7 @@ public enum CellSeparatorType {
     /// Top than bottom
     case full(SeparatorConfiguration, SeparatorConfiguration)
 
-    var bottomIsHidden: Bool {
+    public var bottomIsHidden: Bool {
         switch self {
         case .top, .none:
             return true
@@ -39,7 +39,7 @@ public enum CellSeparatorType {
         }
     }
 
-    var topIsHidden: Bool {
+    public var topIsHidden: Bool {
         switch self {
         case .bottom, .none:
             return true
@@ -48,7 +48,7 @@ public enum CellSeparatorType {
         }
     }
 
-    var topConfiguration: SeparatorConfiguration? {
+    public var topConfiguration: SeparatorConfiguration? {
         switch self {
         case .top(let configuration), .full(let configuration, _):
             return configuration

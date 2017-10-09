@@ -25,10 +25,17 @@ import TableKit
 
 open class BaseCell: UITableViewCell {
 
-    func configureSeparator(with viewModel: BaseCellViewModel) {
-        topView
-        topSeparatorConfiguration = viewModel.topSeparatorInsets ?? .baseConfiguration
-        bottomSeparatorConfiguration = viewModel.bottomSeparatorInsets ?? .baseConfiguration
+    public func configureSeparator(with viewModel: BaseCellViewModel) {
+        topView.isHidden                    = viewModel.separatorType.topIsHidden
+        bottomView.isHidden                 = viewModel.separatorType.bottomIsHidden
+
+        topView.backgroundColor             = viewModel.topSeparatorConfiguration?.color
+        topViewHeightConstraint.constant    = viewModel.topSeparatorConfiguration?.height ?? CGFloat(pixels: 1)
+        topSeparatorInsets                  = viewModel.topSeparatorConfiguration?.insets ?? .zero
+
+        bottomView.backgroundColor          = viewModel.bottomSeparatorConfiguration?.color
+        bottomViewHeightConstraint.constant = viewModel.bottomSeparatorConfiguration?.height ?? CGFloat(pixels: 1)
+        bottomSeparatorInsets               = viewModel.bottomSeparatorConfiguration?.insets ?? .zero
     }
 
     // MARK: - Private
@@ -41,14 +48,18 @@ open class BaseCell: UITableViewCell {
     private var topViewRightConstraint: NSLayoutConstraint!
     private var topViewTopConstraint: NSLayoutConstraint!
 
+    private var topViewHeightConstraint: NSLayoutConstraint!
+
     // bottom separator
     private var bottomViewLeftConstraint: NSLayoutConstraint!
     private var bottomViewRightConstraint: NSLayoutConstraint!
     private var bottomViewBottomConstraint: NSLayoutConstraint!
 
+    private var bottomViewHeightConstraint: NSLayoutConstraint!
+
     // insets
-    private var topSeparatorConfiguration = SeparatorConfiguration.baseConfiguration
-    private var bottomSeparatorConfiguration = SeparatorConfiguration.baseConfiguration
+    private var topSeparatorInsets = UIEdgeInsets.zero
+    private var bottomSeparatorInsets = UIEdgeInsets.zero
 
     override open func updateConstraints() {
         topViewTopConstraint.constant       = topSeparatorInsets.top
@@ -66,16 +77,6 @@ open class BaseCell: UITableViewCell {
         super.awakeFromNib()
 
         configureLineViews()
-        configureSeparator(with: .none)
-    }
-
-    private func configureSeparator(with separatorType: CellSeparatorType) {
-        topView.isHidden = separatorType.topIsHidden
-        bottomView.isHidden = separatorType.bottomIsHidden
-
-        topView.backgroundColor =
-
-        setNeedsUpdateConstraints()
     }
 
     private func configureLineViews() {
@@ -104,8 +105,12 @@ open class BaseCell: UITableViewCell {
     }
 
     private func configureConstrains() {
-        topView.heightAnchor.constraint(equalToConstant: .onePixelValue).isActive = true
-        bottomView.heightAnchor.constraint(equalToConstant: .onePixelValue).isActive = true
+        // height
+        topViewHeightConstraint = topView.heightAnchor.constraint(equalToConstant: CGFloat(pixels: 1))
+        topViewHeightConstraint.isActive = true
+
+        bottomViewHeightConstraint = bottomView.heightAnchor.constraint(equalToConstant: CGFloat(pixels: 1))
+        bottomViewHeightConstraint.isActive = true
 
         // top separator
         topViewTopConstraint = topView.topAnchor.constraint(equalTo: contentView.topAnchor)

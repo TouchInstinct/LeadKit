@@ -22,7 +22,7 @@
 
 import UIKit
 
-/// By default this class does not provide any searators
+/// By default this class does not provide any separators
 open class BaseCellViewModel {
 
     var separatorType = CellSeparatorType.none
@@ -34,19 +34,21 @@ open class BaseCellViewModel {
     var bottomSeparatorConfiguration: SeparatorConfiguration?
 
     @discardableResult
-    func with(separatorType: CellSeparatorType) -> Self {
+    public func with(separatorType: CellSeparatorType) -> Self {
         self.separatorType = separatorType
 
         switch separatorType {
         case .top(let configuration):
-            topSeparatorConfiguration = configuration
+            topSeparatorConfiguration    = configuration
+            bottomSeparatorConfiguration = nil
         case .bottom(let configuration):
+            topSeparatorConfiguration    = nil
             bottomSeparatorConfiguration = configuration
         case .full(let top, let bottom):
-            topSeparatorConfiguration = top
+            topSeparatorConfiguration    = top
             bottomSeparatorConfiguration = bottom
         default:
-            topSeparatorConfiguration = nil
+            topSeparatorConfiguration    = nil
             bottomSeparatorConfiguration = nil
         }
 

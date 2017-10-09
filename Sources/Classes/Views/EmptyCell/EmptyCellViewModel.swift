@@ -20,31 +20,15 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
+import UIKit
 
-/// Row that simulates spacing, can end editing on click, specify this in constructor
-public final class EmptyCellRow: TableRow<EmptyCell> {
+public final class EmptyCellViewModel: BaseCellViewModel {
 
-    convenience init(with height: CGFloat,
-                     color: UIColor = .clear,
-                     endEditingOnClick: Bool = false) {
+    let color: UIColor
+    let height: CGFloat
 
-        self.init(item: EmptyCellViewModel(height: height, color: color))
-
-        self.on(.click) { options in
-            if endEditingOnClick {
-                options.cell?.window?.endEditing(true)
-            }
-        }
+    public init(height: CGFloat, color: UIColor = .clear) {
+        self.color = color
+        self.height = height
     }
-
-    // Used for set custom height to each cell, not for each cell type
-    override var defaultHeight: CGFloat? {
-        return item.height
-    }
-
-    var anyRow: AnyBaseTableRow {
-        return AnyBaseTableRow(tableRow: self)
-    }
-
 }

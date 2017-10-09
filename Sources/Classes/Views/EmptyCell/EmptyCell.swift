@@ -21,17 +21,29 @@
 //
 
 import UIKit
+import TableKit
 
-public struct SeparatorConfiguration {
-    let color: UIColor
-    let insets: UIEdgeInsets?
-    let height: CGFloat
+public final class EmptyCell: BaseCell, ConfigurableCell {
 
-    public init(color: UIColor, insets: UIEdgeInsets? = .zero, height: CGFloat = CGFloat(pixels: 1)) {
-        self.color  = color
-        self.insets = insets
-        self.height = height
+    private weak var coloredView: UIView!
+
+    override public func awakeFromNib() {
+        super.awakeFromNib()
+
+        let view = UIView()
+        addSubview(view)
+
+        topAnchor.constraint(equalTo: view.topAnchor).isActive           = true
+        bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive     = true
+        leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive   = true
+        trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+
+        coloredView = view
     }
 
-    public static let baseConfiguration = SeparatorConfiguration(color: .black, insets: .zero)
+    public func configure(with viewModel: EmptyCellViewModel) {
+        configureSeparator(with: viewModel)
+        coloredView.backgroundColor = viewModel.color
+    }
+
 }
