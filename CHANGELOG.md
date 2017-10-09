@@ -15,3 +15,7 @@
 ## 0.5.9
 
 - **Fix**: One-two-many fixed for values more than 99
+
+## 0.5.10
+
+- **Fix**: `Public` modifier for `SpinnerView` 
