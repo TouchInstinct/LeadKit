@@ -386,29 +386,22 @@
 		82F8BB181F5DDED100C1061B /* Single+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */; };
 		A6C9A4FA1F8BBCF2009311CC /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF3B371F8B956F00CDB971 /* EmptyCell.swift */; };
 		A6C9A4FB1F8BBCF2009311CC /* EmptyCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF3B361F8B956E00CDB971 /* EmptyCellViewModel.swift */; };
-		A6C9A4FC1F8BBCF2009311CC /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF3B371F8B956F00CDB971 /* EmptyCell.swift */; };
-		A6C9A4FD1F8BBCF2009311CC /* EmptyCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF3B361F8B956E00CDB971 /* EmptyCellViewModel.swift */; };
-		A6C9A4FE1F8BBCF2009311CC /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF3B371F8B956F00CDB971 /* EmptyCell.swift */; };
-		A6C9A4FF1F8BBCF2009311CC /* EmptyCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF3B361F8B956E00CDB971 /* EmptyCellViewModel.swift */; };
-		A6C9A5001F8BBCF3009311CC /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF3B371F8B956F00CDB971 /* EmptyCell.swift */; };
-		A6C9A5011F8BBCF3009311CC /* EmptyCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF3B361F8B956E00CDB971 /* EmptyCellViewModel.swift */; };
+		A6C9A5041F8BC78F009311CC /* CellSeparatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDEE1F8A6C57002CA74E /* CellSeparatorType.swift */; };
+		A6C9A5051F8BC78F009311CC /* SeparatorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDF01F8A6C80002CA74E /* SeparatorConfiguration.swift */; };
+		A6C9A50C1F8BC799009311CC /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF3B371F8B956F00CDB971 /* EmptyCell.swift */; };
+		A6C9A50D1F8BC799009311CC /* EmptyCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF3B361F8B956E00CDB971 /* EmptyCellViewModel.swift */; };
+		A6C9A50E1F8BC799009311CC /* EmptyCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A71F8A654600C6308D /* EmptyCellRow.swift */; };
+		A6C9A50F1F8BC79D009311CC /* Comparable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D10EAA1F8A9278003E69DD /* Comparable+Extensions.swift */; };
+		A6C9A5101F8BC79D009311CC /* Comparable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D10EAA1F8A9278003E69DD /* Comparable+Extensions.swift */; };
+		A6C9A5111F8BC79D009311CC /* Comparable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D10EAA1F8A9278003E69DD /* Comparable+Extensions.swift */; };
 		A6D10EAB1F8A9278003E69DD /* Comparable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D10EAA1F8A9278003E69DD /* Comparable+Extensions.swift */; };
 		A6E0DDDE1F8A696F002CA74E /* EmptyCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A71F8A654600C6308D /* EmptyCellRow.swift */; };
 		A6E0DDDF1F8A696F002CA74E /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A61F8A653600C6308D /* BaseCell.swift */; };
 		A6E0DDE01F8A696F002CA74E /* BaseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A51F8A653500C6308D /* BaseCellViewModel.swift */; };
 		A6E0DDE11F8A696F002CA74E /* AnyBaseTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A81F8A655600C6308D /* AnyBaseTableRow.swift */; };
-		A6E0DDE21F8A696F002CA74E /* EmptyCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A71F8A654600C6308D /* EmptyCellRow.swift */; };
 		A6E0DDE31F8A696F002CA74E /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A61F8A653600C6308D /* BaseCell.swift */; };
 		A6E0DDE41F8A696F002CA74E /* BaseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A51F8A653500C6308D /* BaseCellViewModel.swift */; };
 		A6E0DDE51F8A696F002CA74E /* AnyBaseTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A81F8A655600C6308D /* AnyBaseTableRow.swift */; };
-		A6E0DDE61F8A696F002CA74E /* EmptyCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A71F8A654600C6308D /* EmptyCellRow.swift */; };
-		A6E0DDE71F8A696F002CA74E /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A61F8A653600C6308D /* BaseCell.swift */; };
-		A6E0DDE81F8A696F002CA74E /* BaseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A51F8A653500C6308D /* BaseCellViewModel.swift */; };
-		A6E0DDE91F8A696F002CA74E /* AnyBaseTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A81F8A655600C6308D /* AnyBaseTableRow.swift */; };
-		A6E0DDEA1F8A6970002CA74E /* EmptyCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A71F8A654600C6308D /* EmptyCellRow.swift */; };
-		A6E0DDEB1F8A6970002CA74E /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A61F8A653600C6308D /* BaseCell.swift */; };
-		A6E0DDEC1F8A6970002CA74E /* BaseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A51F8A653500C6308D /* BaseCellViewModel.swift */; };
-		A6E0DDED1F8A6970002CA74E /* AnyBaseTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A81F8A655600C6308D /* AnyBaseTableRow.swift */; };
 		A6E0DDEF1F8A6C57002CA74E /* CellSeparatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDEE1F8A6C57002CA74E /* CellSeparatorType.swift */; };
 		A6E0DDF11F8A6C80002CA74E /* SeparatorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDF01F8A6C80002CA74E /* SeparatorConfiguration.swift */; };
 		A6F32C081F6EBDAA00AC08EE /* String+LocalizedComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F32C071F6EBDAA00AC08EE /* String+LocalizedComponent.swift */; };
@@ -2208,20 +2201,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6C9A5051F8BC78F009311CC /* SeparatorConfiguration.swift in Sources */,
+				A6C9A50D1F8BC799009311CC /* EmptyCellViewModel.swift in Sources */,
 				671463CA1EB34B1E00EAB194 /* TestView.swift in Sources */,
 				671463C71EB34B1E00EAB194 /* PaginationViewModelTests.swift in Sources */,
+				A6C9A50E1F8BC799009311CC /* EmptyCellRow.swift in Sources */,
+				A6C9A50C1F8BC799009311CC /* EmptyCell.swift in Sources */,
 				671463B81EB34B1E00EAB194 /* StubCursor.swift in Sources */,
 				A6E0DDE41F8A696F002CA74E /* BaseCellViewModel.swift in Sources */,
 				671463BB1EB34B1E00EAB194 /* CursorTests.swift in Sources */,
 				A6F32C101F6EBE9600AC08EE /* StringExtensionTests.swift in Sources */,
-				A6C9A4FC1F8BBCF2009311CC /* EmptyCell.swift in Sources */,
 				671463C11EB34B1E00EAB194 /* MappableUserDefaultsTests.swift in Sources */,
-				A6C9A4FD1F8BBCF2009311CC /* EmptyCellViewModel.swift in Sources */,
 				671463BE1EB34B1E00EAB194 /* LoadFromNibTests.swift in Sources */,
-				A6E0DDE21F8A696F002CA74E /* EmptyCellRow.swift in Sources */,
 				A6E0DDE31F8A696F002CA74E /* BaseCell.swift in Sources */,
+				A6C9A50F1F8BC79D009311CC /* Comparable+Extensions.swift in Sources */,
 				671463C41EB34B1E00EAB194 /* Post.swift in Sources */,
 				A6E0DDE51F8A696F002CA74E /* AnyBaseTableRow.swift in Sources */,
+				A6C9A5041F8BC78F009311CC /* CellSeparatorType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2420,7 +2416,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6E0DDE61F8A696F002CA74E /* EmptyCellRow.swift in Sources */,
 				671463491EB3396E00EAB194 /* ResettableType.swift in Sources */,
 				671462E51EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
 				671462CD1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
@@ -2452,7 +2447,6 @@
 				671462991EB3396E00EAB194 /* CGSize+Resize.swift in Sources */,
 				671462F91EB3396E00EAB194 /* UIView+DefaultReuseIdentifier.swift in Sources */,
 				671463591EB3396E00EAB194 /* StoryboardIdentifierProtocol.swift in Sources */,
-				A6C9A4FF1F8BBCF2009311CC /* EmptyCellViewModel.swift in Sources */,
 				671463311EB3396E00EAB194 /* CursorType.swift in Sources */,
 				6714624D1EB3396E00EAB194 /* MapCursor.swift in Sources */,
 				671463251EB3396E00EAB194 /* Any+TypeName.swift in Sources */,
@@ -2461,12 +2455,10 @@
 				671462E11EB3396E00EAB194 /* UICollectionView+CellRegistration.swift in Sources */,
 				A6F32C0A1F6EBE5B00AC08EE /* String+LocalizedComponent.swift in Sources */,
 				671463291EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
-				A6E0DDE71F8A696F002CA74E /* BaseCell.swift in Sources */,
 				671462AD1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
 				671463011EB3396E00EAB194 /* UIView+LoadFromNib.swift in Sources */,
 				6714627D1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
 				671463451EB3396E00EAB194 /* ObservableMappable.swift in Sources */,
-				A6E0DDE91F8A696F002CA74E /* AnyBaseTableRow.swift in Sources */,
 				671462591EB3396E00EAB194 /* Log.swift in Sources */,
 				671462791EB3396E00EAB194 /* ResizeContentMode.swift in Sources */,
 				671463051EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
@@ -2493,12 +2485,12 @@
 				6771DFD91EE99EBA002DCDAE /* DateFormattingService.swift in Sources */,
 				671462951EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
 				671463651EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
+				A6C9A5101F8BC79D009311CC /* Comparable+Extensions.swift in Sources */,
 				671462491EB3396E00EAB194 /* FixedPageCursor.swift in Sources */,
 				EFBE57E11EC362470040E00A /* AlertRepresentable.swift in Sources */,
 				671462C91EB3396E00EAB194 /* String+Localization.swift in Sources */,
 				671462B91EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */,
 				671463751EB3396E00EAB194 /* BorderDrawingOperation.swift in Sources */,
-				A6C9A4FE1F8BBCF2009311CC /* EmptyCell.swift in Sources */,
 				6714633D1EB3396E00EAB194 /* LoadingIndicator.swift in Sources */,
 				671463191EB3396E00EAB194 /* UIWindow+Extensions.swift in Sources */,
 				EFBE57DC1EC361620040E00A /* UIView+Layout.swift in Sources */,
@@ -2512,7 +2504,6 @@
 				6714628D1EB3396E00EAB194 /* CGImage+Alpha.swift in Sources */,
 				671462751EB3396E00EAB194 /* LeadKitError.swift in Sources */,
 				EFBE57D11EC35EF20040E00A /* Array+Extensions.swift in Sources */,
-				A6E0DDE81F8A696F002CA74E /* BaseCellViewModel.swift in Sources */,
 				67CDEE431EB3AD1C00895905 /* NetworkService+RxLoadImage.swift in Sources */,
 				671462D91EB3396E00EAB194 /* TimeInterval+DateComponents.swift in Sources */,
 				6714638D1EB3396E00EAB194 /* SolidFillDrawingOperation.swift in Sources */,
@@ -2531,19 +2522,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				671463C21EB34B1E00EAB194 /* MappableUserDefaultsTests.swift in Sources */,
+				A6C9A5111F8BC79D009311CC /* Comparable+Extensions.swift in Sources */,
 				671463BF1EB34B1E00EAB194 /* LoadFromNibTests.swift in Sources */,
 				671463C51EB34B1E00EAB194 /* Post.swift in Sources */,
-				A6E0DDEC1F8A6970002CA74E /* BaseCellViewModel.swift in Sources */,
 				671463CB1EB34B1E00EAB194 /* TestView.swift in Sources */,
 				A6F32C111F6EBE9700AC08EE /* StringExtensionTests.swift in Sources */,
-				A6C9A5001F8BBCF3009311CC /* EmptyCell.swift in Sources */,
 				671463C81EB34B1E00EAB194 /* PaginationViewModelTests.swift in Sources */,
-				A6C9A5011F8BBCF3009311CC /* EmptyCellViewModel.swift in Sources */,
 				671463BC1EB34B1E00EAB194 /* CursorTests.swift in Sources */,
-				A6E0DDEA1F8A6970002CA74E /* EmptyCellRow.swift in Sources */,
-				A6E0DDEB1F8A6970002CA74E /* BaseCell.swift in Sources */,
 				671463B91EB34B1E00EAB194 /* StubCursor.swift in Sources */,
-				A6E0DDED1F8A6970002CA74E /* AnyBaseTableRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

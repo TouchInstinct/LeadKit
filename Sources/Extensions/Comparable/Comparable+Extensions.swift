@@ -22,7 +22,7 @@
 
 import Foundation
 
-extension Comparable {
+public extension Comparable {
 
     func `in`(bounds: (lower: Self, upper: Self)) -> Self {
         return min(max(bounds.lower, self), bounds.upper)
