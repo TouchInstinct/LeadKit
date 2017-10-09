@@ -19,3 +19,7 @@
 ## 0.5.10
 
 - **Fix**: `Public` modifier for `SpinnerView` 
+
+## 0.5.11
+
+- **Add**: `BaseCell`, `AnyBaseTableRow`, `EmptyCell`, `EmptyCellRow`
