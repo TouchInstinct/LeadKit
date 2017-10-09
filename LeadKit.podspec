@@ -41,8 +41,7 @@ Pod::Spec.new do |s|
     ss.source_files = "Sources/**/*.swift"
     ss.watchos.exclude_files = [
       "Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
-      "Sources/Classes/Views/XibView.swift",
-      "Sources/Classes/Views/SpinnerView.swift",
+      "Sources/Classes/Views/*",
       "Sources/Extensions/CABasicAnimation/*",
       "Sources/Extensions/CGFloat/CGFloat+Pixels.swift",
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
@@ -92,6 +91,7 @@ Pod::Spec.new do |s|
     ss.source_files = "Sources/**/*.swift"
 
     ss.exclude_files = [
+      "Sources/Classes/Views/*",
       "Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
       "Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
