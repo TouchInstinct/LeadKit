@@ -25,26 +25,11 @@ import TableKit
 
 public final class EmptyCell: BaseCell, ConfigurableCell {
 
-    private lazy var coloredView: UIView = {
-        let newView = UIView()
-        self.addSubview(newView)
-
-        newView.translatesAutoresizingMaskIntoConstraints = false
-        self.topAnchor.constraint(equalTo: newView.topAnchor).isActive           = true
-        self.bottomAnchor.constraint(equalTo: newView.bottomAnchor).isActive     = true
-        self.leadingAnchor.constraint(equalTo: newView.leadingAnchor).isActive   = true
-        self.trailingAnchor.constraint(equalTo: newView.trailingAnchor).isActive = true
-
-        return newView
-    }()
-
-    deinit {
-        debugPrint("Deinit")
-    }
-
     public func configure(with viewModel: EmptyCellViewModel) {
+        backgroundColor = .clear
+        contentView.backgroundColor = viewModel.color
+
         configureSeparator(with: viewModel)
-        coloredView.backgroundColor = viewModel.color
     }
 
 }
