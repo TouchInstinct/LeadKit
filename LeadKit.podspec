@@ -106,7 +106,7 @@ Pod::Spec.new do |s|
       "Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
       "Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
-      "Sources/Extensions/TableDirector/TableDirector+Extensions.swift",
+      "Sources/Extensions/TableDirector/*",
       "Sources/Extensions/Array/Array+AnyBaseTableRow+Extensions.swift"
     ]
 
