@@ -30,6 +30,7 @@ public final class EmptyCell: SeparatorCell, ConfigurableCell {
     public func configure(with viewModel: EmptyCellViewModel) {
         backgroundColor = .clear
         contentView.backgroundColor = viewModel.color
+        selectionStyle = .none
 
         configureSeparator(with: viewModel)
     }
