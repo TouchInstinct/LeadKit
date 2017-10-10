@@ -24,6 +24,9 @@ import Foundation
 
 public extension Comparable {
 
+    /// Use this function to restrict comparable with lower and upper values
+    /// - parameter bounds: Lower and uppper bounds tuple
+    /// - returns: Current value if it fits range, otherwise lower if value is too small or upper if value is too big
     func `in`(bounds: (lower: Self, upper: Self)) -> Self {
         return min(max(bounds.lower, self), bounds.upper)
     }

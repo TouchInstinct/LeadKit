@@ -22,18 +22,39 @@
 
 import UIKit
 
-/// ViewModel for EmptyCell
-public final class EmptyCellViewModel: SeparatorCellViewModel {
+/// Cell self-descriptive separator type
+public enum CellSeparatorType {
 
-    let color: UIColor
-    let height: CGFloat
+    /// All separators for cell hidden
+    case none
 
-    /// Returns configured ViewModel for cell
-    /// - parameter height: Height of cell
-    /// - parameter color: Fill color of cell
-    /// - returns: Configured ViewModel
-    public init(height: CGFloat, color: UIColor = .clear) {
-        self.color = color
-        self.height = height
+    /// Show only top separator
+    case top(SeparatorConfiguration)
+
+    /// Show only bottom separator
+    case bottom(SeparatorConfiguration)
+
+    /// First configuration for top, second for bottom
+    case full(SeparatorConfiguration, SeparatorConfiguration)
+
+    /// Determine if bottom separator is hidden
+    public var bottomIsHidden: Bool {
+        switch self {
+        case .top, .none:
+            return true
+        case .bottom, .full:
+            return false
+        }
     }
+
+    /// Determine if top separator is hidden
+    public var topIsHidden: Bool {
+        switch self {
+        case .bottom, .none:
+            return true
+        case .top, .full:
+            return false
+        }
+    }
+
 }

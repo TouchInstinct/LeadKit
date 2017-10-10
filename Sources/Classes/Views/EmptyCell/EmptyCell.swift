@@ -25,7 +25,7 @@ import TableKit
 
 /// Empty cell class. Do not use it directly.
 /// - see: `EmptyCellRow`
-public final class EmptyCell: BaseCell, ConfigurableCell {
+public final class EmptyCell: SeparatorCell, ConfigurableCell {
 
     public func configure(with viewModel: EmptyCellViewModel) {
         backgroundColor = .clear

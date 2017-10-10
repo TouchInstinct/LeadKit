@@ -32,7 +32,8 @@ private class AnyBaseTableRowHolder {
 }
 
 /// Class used to hold resolved TableRow
-private final class AnyBaseTableRowBox<T: ConfigurableCell>: AnyBaseTableRowHolder where T: BaseCell, T.T: BaseCellViewModel {
+private final class AnyBaseTableRowBox<T: ConfigurableCell>: AnyBaseTableRowHolder
+    where T: SeparatorCell, T.T: SeparatorCellViewModel {
 
     init(tableRow: TableRow<T>) {
         super.init(tableRow: tableRow)
@@ -47,7 +48,7 @@ public final class AnyBaseTableRow {
     fileprivate let anyTableRow: AnyBaseTableRowHolder
 
     /// Row `item`, that typed as BaseCellViewModel
-    public let viewModel: BaseCellViewModel
+    public let viewModel: SeparatorCellViewModel
 
     /// TableRow that typed to generic Row
     public var row: Row {
@@ -56,7 +57,7 @@ public final class AnyBaseTableRow {
 
     /// Initialize AnyBaseTableRow with tableRow
     /// - parameter tableRow: TableRow which `item` conforms to BaseCellViewModel
-    public init<T>(tableRow: TableRow<T>) where T: BaseCell, T.T: BaseCellViewModel {
+    public init<T>(tableRow: TableRow<T>) where T: SeparatorCell, T.T: SeparatorCellViewModel {
         anyTableRow = AnyBaseTableRowBox(tableRow: tableRow)
         viewModel = tableRow.item
     }

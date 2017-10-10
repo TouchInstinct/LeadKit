@@ -23,7 +23,7 @@
 import UIKit
 
 /// By default this class does not provide any separators
-open class BaseCellViewModel {
+open class SeparatorCellViewModel {
 
     internal var separatorType = CellSeparatorType.none
 
@@ -51,7 +51,7 @@ open class BaseCellViewModel {
         case .full(let top, let bottom):
             topSeparatorConfiguration    = top
             bottomSeparatorConfiguration = bottom
-        default:
+        case .none:
             topSeparatorConfiguration    = nil
             bottomSeparatorConfiguration = nil
         }

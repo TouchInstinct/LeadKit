@@ -20,41 +20,14 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import TableKit
 
-/// Cell self-descriptive separator type
-public enum CellSeparatorType {
+public extension TableRow where CellType.T: SeparatorCellViewModel {
 
-    /// All separators for cell hidden
-    case none
-
-    /// Show only top separator
-    case top(SeparatorConfiguration)
-
-    /// Show only bottom separator
-    case bottom(SeparatorConfiguration)
-
-    /// First configuration for top, second for bottom
-    case full(SeparatorConfiguration, SeparatorConfiguration)
-
-    /// Determine if bottom separator is hidden
-    public var bottomIsHidden: Bool {
-        switch self {
-        case .top, .none:
-            return true
-        default:
-            return false
-        }
-    }
-
-    /// Determine if top separator is hidden
-    public var topIsHidden: Bool {
-        switch self {
-        case .bottom, .none:
-            return true
-        default:
-            return false
-        }
+    @discardableResult
+    func with(separatorType: CellSeparatorType) -> Self {
+        item.with(separatorType: separatorType)
+        return self
     }
 
 }

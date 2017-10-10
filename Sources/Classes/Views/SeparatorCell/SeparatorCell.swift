@@ -24,14 +24,29 @@ import UIKit
 import TableKit
 
 /// Base cell that provides separator support
-open class BaseCell: UITableViewCell {
+/// Take note that separators are simple views, that located on contentView,
+/// so if you hide that with another view that fully hide
+/// you can use that method `moveSeparators(to:)`
+open class SeparatorCell: UITableViewCell {
 
     // MARK: - Public
 
     /// Configure separator with viewModel
     /// - parameter viewModel: ViewModel of cell, that inherits from BaseCellViewModel
-    public func configureSeparator(with viewModel: BaseCellViewModel) {
+    public func configureSeparator(with viewModel: SeparatorCellViewModel) {
         configureInterface(with: viewModel)
+    }
+
+    /// Use this function to place separator at hierarchy
+    /// - parameter front: Move separator to front or bottom in heirarchy
+    public func moveSeparators(to front: Bool) {
+        if front {
+            contentView.bringSubview(toFront: topView)
+            contentView.bringSubview(toFront: bottomView)
+        } else {
+            contentView.sendSubview(toBack: topView)
+            contentView.sendSubview(toBack: bottomView)
+        }
     }
 
     // MARK: - Private
@@ -85,7 +100,7 @@ open class BaseCell: UITableViewCell {
         super.updateConstraints()
     }
 
-    private func configureInterface(with viewModel: BaseCellViewModel?) {
+    private func configureInterface(with viewModel: SeparatorCellViewModel?) {
         guard let viewModel = viewModel else {
             return
         }
@@ -103,15 +118,6 @@ open class BaseCell: UITableViewCell {
     }
 
     private func configureLineViews() {
-        let requiredValues: [Any?] = [
-            topView, bottomView,
-            topViewLeftConstraint, topViewRightConstraint, topViewTopConstraint,
-            bottomViewLeftConstraint, bottomViewRightConstraint, bottomViewBottomConstraint]
-
-        if !requiredValues.contains(where: { $0 == nil }) {
-            return
-        }
-
         topView = createSeparatorView()
         bottomView = createSeparatorView()
 
@@ -124,7 +130,6 @@ open class BaseCell: UITableViewCell {
         view.backgroundColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
-//        contentView.bringSubview(toFront: view)
         return view
     }
 
@@ -155,16 +160,6 @@ open class BaseCell: UITableViewCell {
 
         bottomViewBottomConstraint = bottomView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         bottomViewBottomConstraint.isActive = true
-    }
-
-}
-
-public extension TableRow where CellType.T: BaseCellViewModel {
-
-    @discardableResult
-    func with(separatorType: CellSeparatorType) -> Self {
-        item.with(separatorType: separatorType)
-        return self
     }
 
 }
