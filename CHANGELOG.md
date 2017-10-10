@@ -22,4 +22,7 @@
 
 ## 0.5.11
 
-- **Add**: `BaseCell`, `AnyBaseTableRow`, `EmptyCell`, `EmptyCellRow`
+- **[Breaking Change]**: rename initializer from `init(initialFrom:)` to `init(resetFrom:)` in `ResettableType`
+- **Add**: `SeparatorCell` with `SeparatorCellViewModel`
+- **Add**: `AnyBaseTableRow` for type-erasure
+- **Add**: `EmptyCellRow` for empty cell with static height

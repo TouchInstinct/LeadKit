@@ -28,7 +28,7 @@ public protocol ResettableType {
     /// Initializer with other instance parameter.
     ///
     /// - Parameter other: Other instance of specific type.
-    init(initialFrom other: Self)
+    init(resetFrom other: Self)
 
 }
 
@@ -38,7 +38,7 @@ public extension ResettableType {
     ///
     /// - Returns: resseted instance of self
     func reset() -> Self {
-        return Self(initialFrom: self)
+        return Self(resetFrom: self)
     }
 
 }
