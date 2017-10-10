@@ -54,7 +54,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/StoryboardProtocol/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/TableDirector/*",
-      "Sources/Structures/Array/Array+AnyBaseTableRow+Extensions.swift"
+      "Sources/Structures/Array/Array+AnyBaseTableRow+Extensions.swift",
       "Sources/Extensions/UIActivityIndicatorView/*",
       "Sources/Extensions/UIAlertcontroller/*",
       "Sources/Extensions/UICollectionView/*",
