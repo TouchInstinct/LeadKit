@@ -23,6 +23,10 @@
 import UIKit
 import TableKit
 
+private enum Constants {
+    static let defaultSeparatorHeight = CGFloat(pixels: 1)
+}
+
 /// Base cell that provides separator support
 /// Take note that:
 /// - in `configure(with:)` you must call `configureSeparator(with:)`
@@ -70,8 +74,8 @@ open class SeparatorCell: UITableViewCell {
     private var topSeparatorInsets    = UIEdgeInsets.zero
     private var bottomSeparatorInsets = UIEdgeInsets.zero
 
-    private var topSeparatorHeight    = CGFloat(pixels: 1)
-    private var bottomSeparatorHeight = CGFloat(pixels: 1)
+    private var topSeparatorHeight    = Constants.defaultSeparatorHeight
+    private var bottomSeparatorHeight = Constants.defaultSeparatorHeight
 
     // MARK: - Initialization
 
@@ -101,20 +105,18 @@ open class SeparatorCell: UITableViewCell {
         super.updateConstraints()
     }
 
-    private func configureInterface(with viewModel: SeparatorCellViewModel?) {
-        guard let viewModel = viewModel else {
-            return
-        }
+    // MARK: - Private
 
+    private func configureInterface(with viewModel: SeparatorCellViewModel) {
         topView.isHidden           = viewModel.separatorType.topIsHidden
         bottomView.isHidden        = viewModel.separatorType.bottomIsHidden
 
         topView.backgroundColor    = viewModel.topSeparatorConfiguration?.color
-        topSeparatorHeight         = viewModel.topSeparatorConfiguration?.height ?? CGFloat(pixels: 1)
+        topSeparatorHeight         = viewModel.topSeparatorConfiguration?.height ?? Constants.defaultSeparatorHeight
         topSeparatorInsets         = viewModel.topSeparatorConfiguration?.insets ?? .zero
 
         bottomView.backgroundColor = viewModel.bottomSeparatorConfiguration?.color
-        bottomSeparatorHeight      = viewModel.bottomSeparatorConfiguration?.height ?? CGFloat(pixels: 1)
+        bottomSeparatorHeight      = viewModel.bottomSeparatorConfiguration?.height ?? Constants.defaultSeparatorHeight
         bottomSeparatorInsets      = viewModel.bottomSeparatorConfiguration?.insets ?? .zero
     }
 
@@ -139,7 +141,7 @@ open class SeparatorCell: UITableViewCell {
         topViewHeightConstraint = topView.heightAnchor.constraint(equalToConstant: topSeparatorHeight)
         topViewHeightConstraint.isActive = true
 
-        bottomViewHeightConstraint = bottomView.heightAnchor.constraint(equalToConstant: topSeparatorHeight)
+        bottomViewHeightConstraint = bottomView.heightAnchor.constraint(equalToConstant: bottomSeparatorHeight)
         bottomViewHeightConstraint.isActive = true
 
         // top separator

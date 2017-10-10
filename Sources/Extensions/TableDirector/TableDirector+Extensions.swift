@@ -131,11 +131,11 @@ public extension TableDirector {
 
         switch rows.count {
         case 1:
-            rows.first?.viewModel.with(separatorType: .full(extremeSeparatorConfiguration, extremeSeparatorConfiguration))
+            rows.first?.viewModel.set(separatorType: .full(extremeSeparatorConfiguration, extremeSeparatorConfiguration))
         default:
-            rows.forEach { $0.viewModel.with(separatorType: .full(middleSeparatorConfiguration, middleSeparatorConfiguration))}
-            rows.first?.viewModel.with(separatorType: .top(extremeSeparatorConfiguration))
-            rows.last?.viewModel.with(separatorType: .bottom(extremeSeparatorConfiguration))
+            rows.forEach { $0.viewModel.set(separatorType: .full(middleSeparatorConfiguration, middleSeparatorConfiguration))}
+            rows.first?.viewModel.set(separatorType: .top(extremeSeparatorConfiguration))
+            rows.last?.viewModel.set(separatorType: .bottom(extremeSeparatorConfiguration))
         }
     }
 }

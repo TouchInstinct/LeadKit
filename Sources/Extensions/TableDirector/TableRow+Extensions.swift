@@ -24,10 +24,8 @@ import TableKit
 
 public extension TableRow where CellType.T: SeparatorCellViewModel {
 
-    @discardableResult
-    func with(separatorType: CellSeparatorType) -> Self {
-        item.with(separatorType: separatorType)
-        return self
+    func with(separatorType: CellSeparatorType) {
+        item.set(separatorType: separatorType)
     }
 
 }

@@ -36,9 +36,12 @@ public enum CellSeparatorType {
 
     /// First configuration for top, second for bottom
     case full(SeparatorConfiguration, SeparatorConfiguration)
+}
+
+public extension CellSeparatorType {
 
     /// Determine if bottom separator is hidden
-    public var bottomIsHidden: Bool {
+    var bottomIsHidden: Bool {
         switch self {
         case .top, .none:
             return true
@@ -48,7 +51,7 @@ public enum CellSeparatorType {
     }
 
     /// Determine if top separator is hidden
-    public var topIsHidden: Bool {
+    var topIsHidden: Bool {
         switch self {
         case .bottom, .none:
             return true
