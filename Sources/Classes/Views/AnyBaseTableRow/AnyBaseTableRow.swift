@@ -45,7 +45,7 @@ private final class AnyBaseTableRowBox<T: ConfigurableCell>: AnyBaseTableRowHold
 /// Holds TableRow<T> with any model inherited from BaseCellViewModel
 public final class AnyBaseTableRow {
 
-    fileprivate let anyTableRow: AnyBaseTableRowHolder
+    private let anyTableRow: AnyBaseTableRowHolder
 
     /// Row `item`, that typed as BaseCellViewModel
     public let viewModel: SeparatorCellViewModel
@@ -60,14 +60,6 @@ public final class AnyBaseTableRow {
     public init<T>(tableRow: TableRow<T>) where T: SeparatorCell, T.T: SeparatorCellViewModel {
         anyTableRow = AnyBaseTableRowBox(tableRow: tableRow)
         viewModel = tableRow.item
-    }
-
-}
-
-public extension Array where Element == AnyBaseTableRow {
-
-    var rows: [Row] {
-        return map { $0.row }
     }
 
 }

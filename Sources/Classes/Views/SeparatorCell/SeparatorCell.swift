@@ -24,9 +24,10 @@ import UIKit
 import TableKit
 
 /// Base cell that provides separator support
-/// Take note that separators are simple views, that located on contentView,
-/// so if you hide that with another view that fully hide
-/// you can use that method `moveSeparators(to:)`
+/// Take note that:
+/// - in `configure(with:)` you must call `configureSeparator(with:)`
+/// - separators are simple views, that located on `contentView`.
+/// - if you hide that with another view that fully hide you can use that method `moveSeparators(to:)`
 open class SeparatorCell: UITableViewCell {
 
     // MARK: - Public

@@ -53,7 +53,8 @@ Pod::Spec.new do |s|
       "Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
       "Sources/Extensions/StoryboardProtocol/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
-      "Sources/Extensions/TableDirector/TableDirector+Extensions.swift",
+      "Sources/Extensions/TableDirector/*",
+      "Sources/Structures/Array/Array+AnyBaseTableRow+Extensions.swift"
       "Sources/Extensions/UIActivityIndicatorView/*",
       "Sources/Extensions/UIAlertcontroller/*",
       "Sources/Extensions/UICollectionView/*",
@@ -79,7 +80,8 @@ Pod::Spec.new do |s|
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
       "Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
-      "Sources/Extensions/TableDirector/TableDirector+Extensions.swift",
+      "Sources/Extensions/TableDirector/*",
+      "Sources/Structures/Array/Array+AnyBaseTableRow+Extensions.swift"
     ]
 
     ss.dependency "CocoaLumberjack/Swift", '~> 3.1.0'
@@ -105,6 +107,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
       "Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
       "Sources/Extensions/TableDirector/TableDirector+Extensions.swift",
+      "Sources/Structures/Array/Array+AnyBaseTableRow+Extensions.swift"
     ]
 
     ss.dependency "CocoaLumberjack/Swift", '~> 3.1.0'
