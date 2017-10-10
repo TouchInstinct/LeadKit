@@ -42,16 +42,16 @@ open class SeparatorCell: UITableViewCell {
         configureInterface(with: viewModel)
     }
 
-    /// Use this function to place separator at hierarchy
-    /// - parameter front: Move separator to front or bottom in heirarchy
-    public func moveSeparators(to front: Bool) {
-        if front {
-            contentView.bringSubview(toFront: topView)
-            contentView.bringSubview(toFront: bottomView)
-        } else {
-            contentView.sendSubview(toBack: topView)
-            contentView.sendSubview(toBack: bottomView)
-        }
+    /// Move separator upward in hierarchy
+    public func bringSeparatorsToFront() {
+        contentView.bringSubview(toFront: topView)
+        contentView.bringSubview(toFront: bottomView)
+    }
+
+    /// Move separator backward in hierarchy
+    public func sendSeparatorsToBack() {
+        contentView.sendSubview(toBack: topView)
+        contentView.sendSubview(toBack: bottomView)
     }
 
     // MARK: - Private

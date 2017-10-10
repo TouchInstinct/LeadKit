@@ -28,11 +28,11 @@ open class SeparatorCellViewModel {
     internal var separatorType = CellSeparatorType.none
 
     /// Configuration for topSeparator
-    /// - Importnat: Bottom dimension is ignored
+    /// - Important: Bottom dimension is ignored
     internal var topSeparatorConfiguration: SeparatorConfiguration?
 
     /// Configuration for topSeparator
-    /// - Importnat: Top dimension is ignored
+    /// - Important: Top dimension is ignored
     internal var bottomSeparatorConfiguration: SeparatorConfiguration?
 
     public init() {}
