@@ -54,7 +54,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/StoryboardProtocol/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/TableDirector/*",
-      "Sources/Extensions/Array/Array+AnyBaseTableRow+Extensions.swift",
+      "Sources/Extensions/Array/Array+AnyBaseTableRowExtensions.swift",
       "Sources/Extensions/UIActivityIndicatorView/*",
       "Sources/Extensions/UIAlertcontroller/*",
       "Sources/Extensions/UICollectionView/*",
@@ -81,7 +81,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/TableDirector/*",
-      "Sources/Extensions/Array/Array+AnyBaseTableRow+Extensions.swift"
+      "Sources/Extensions/Array/Array+AnyBaseTableRowExtensions.swift"
     ]
 
     ss.dependency "CocoaLumberjack/Swift", '~> 3.1.0'
@@ -107,7 +107,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
       "Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
       "Sources/Extensions/TableDirector/*",
-      "Sources/Extensions/Array/Array+AnyBaseTableRow+Extensions.swift"
+      "Sources/Extensions/Array/Array+AnyBaseTableRowExtensions.swift"
     ]
 
     ss.dependency "CocoaLumberjack/Swift", '~> 3.1.0'

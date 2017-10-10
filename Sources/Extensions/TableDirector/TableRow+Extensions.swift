@@ -24,7 +24,12 @@ import TableKit
 
 public extension TableRow where CellType.T: SeparatorCellViewModel {
 
-    func with(separatorType: CellSeparatorType) {
+    func with(separatorType: CellSeparatorType) -> Self {
+        item.set(separatorType: separatorType)
+        return self
+    }
+
+    func set(separatorType: CellSeparatorType) {
         item.set(separatorType: separatorType)
     }
 

@@ -41,6 +41,11 @@ open class SeparatorCellViewModel {
 
 public extension SeparatorCellViewModel {
 
+    func with(separatorType: CellSeparatorType) -> Self {
+        set(separatorType: separatorType)
+        return self
+    }
+
     func set(separatorType: CellSeparatorType) {
         self.separatorType = separatorType
 
