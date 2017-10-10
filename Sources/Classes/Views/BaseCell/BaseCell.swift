@@ -23,12 +23,14 @@
 import UIKit
 import TableKit
 
+/// Base cell that provides separator support
 open class BaseCell: UITableViewCell {
 
-    //    public weak var viewModel: BaseCellViewModel?
+    // MARK: - Public
 
+    /// Configure separator with viewModel
+    /// - parameter viewModel: ViewModel of cell, that inherits from BaseCellViewModel
     public func configureSeparator(with viewModel: BaseCellViewModel) {
-        //        self.viewModel = viewModel
         configureInterface(with: viewModel)
     }
 
@@ -37,35 +39,25 @@ open class BaseCell: UITableViewCell {
     private var topView: UIView!
     private var bottomView: UIView!
 
-    // top separator
+    // top separator constraints
     private var topViewLeftConstraint: NSLayoutConstraint!
     private var topViewRightConstraint: NSLayoutConstraint!
     private var topViewTopConstraint: NSLayoutConstraint!
-
     private var topViewHeightConstraint: NSLayoutConstraint!
 
-    // bottom separator
+    // bottom separator constraints
     private var bottomViewLeftConstraint: NSLayoutConstraint!
     private var bottomViewRightConstraint: NSLayoutConstraint!
     private var bottomViewBottomConstraint: NSLayoutConstraint!
-
     private var bottomViewHeightConstraint: NSLayoutConstraint!
 
-    // insets
-    private var topSeparatorInsets = UIEdgeInsets.zero
+    private var topSeparatorInsets    = UIEdgeInsets.zero
     private var bottomSeparatorInsets = UIEdgeInsets.zero
 
-    override open func updateConstraints() {
-        topViewTopConstraint.constant       = topSeparatorInsets.top
-        topViewLeftConstraint.constant      = topSeparatorInsets.left
-        topViewRightConstraint.constant     = topSeparatorInsets.right
+    private var topSeparatorHeight    = CGFloat(pixels: 1)
+    private var bottomSeparatorHeight = CGFloat(pixels: 1)
 
-        bottomViewLeftConstraint.constant   = bottomSeparatorInsets.left
-        bottomViewRightConstraint.constant  = bottomSeparatorInsets.right
-        bottomViewBottomConstraint.constant = bottomSeparatorInsets.bottom
-
-        super.updateConstraints()
-    }
+    // MARK: - Initialization
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -79,21 +71,35 @@ open class BaseCell: UITableViewCell {
         configureLineViews()
     }
 
+    override open func updateConstraints() {
+        topViewTopConstraint.constant       = topSeparatorInsets.top
+        topViewLeftConstraint.constant      = topSeparatorInsets.left
+        topViewRightConstraint.constant     = topSeparatorInsets.right
+        topViewHeightConstraint.constant    = topSeparatorHeight
+
+        bottomViewLeftConstraint.constant   = bottomSeparatorInsets.left
+        bottomViewRightConstraint.constant  = bottomSeparatorInsets.right
+        bottomViewBottomConstraint.constant = bottomSeparatorInsets.bottom
+        bottomViewHeightConstraint.constant = bottomSeparatorHeight
+
+        super.updateConstraints()
+    }
+
     private func configureInterface(with viewModel: BaseCellViewModel?) {
         guard let viewModel = viewModel else {
             return
         }
 
-        topView.isHidden                    = viewModel.separatorType.topIsHidden
-        bottomView.isHidden                 = viewModel.separatorType.bottomIsHidden
+        topView.isHidden           = viewModel.separatorType.topIsHidden
+        bottomView.isHidden        = viewModel.separatorType.bottomIsHidden
 
-        topView.backgroundColor             = viewModel.topSeparatorConfiguration?.color
-        topViewHeightConstraint.constant    = viewModel.topSeparatorConfiguration?.height ?? CGFloat(pixels: 1)
-        topSeparatorInsets                  = viewModel.topSeparatorConfiguration?.insets ?? .zero
+        topView.backgroundColor    = viewModel.topSeparatorConfiguration?.color
+        topSeparatorHeight         = viewModel.topSeparatorConfiguration?.height ?? CGFloat(pixels: 1)
+        topSeparatorInsets         = viewModel.topSeparatorConfiguration?.insets ?? .zero
 
-        bottomView.backgroundColor          = viewModel.bottomSeparatorConfiguration?.color
-        bottomViewHeightConstraint.constant = viewModel.bottomSeparatorConfiguration?.height ?? CGFloat(pixels: 1)
-        bottomSeparatorInsets               = viewModel.bottomSeparatorConfiguration?.insets ?? .zero
+        bottomView.backgroundColor = viewModel.bottomSeparatorConfiguration?.color
+        bottomSeparatorHeight      = viewModel.bottomSeparatorConfiguration?.height ?? CGFloat(pixels: 1)
+        bottomSeparatorInsets      = viewModel.bottomSeparatorConfiguration?.insets ?? .zero
     }
 
     private func configureLineViews() {
@@ -109,7 +115,7 @@ open class BaseCell: UITableViewCell {
         topView = createSeparatorView()
         bottomView = createSeparatorView()
 
-        configureConstrains()
+        createConstraints()
     }
 
     private func createSeparatorView() -> UIView {
@@ -118,16 +124,16 @@ open class BaseCell: UITableViewCell {
         view.backgroundColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
-        contentView.bringSubview(toFront: view)
+//        contentView.bringSubview(toFront: view)
         return view
     }
 
-    private func configureConstrains() {
+    private func createConstraints() {
         // height
-        topViewHeightConstraint = topView.heightAnchor.constraint(equalToConstant: CGFloat(pixels: 1))
+        topViewHeightConstraint = topView.heightAnchor.constraint(equalToConstant: topSeparatorHeight)
         topViewHeightConstraint.isActive = true
 
-        bottomViewHeightConstraint = bottomView.heightAnchor.constraint(equalToConstant: CGFloat(pixels: 1))
+        bottomViewHeightConstraint = bottomView.heightAnchor.constraint(equalToConstant: topSeparatorHeight)
         bottomViewHeightConstraint.isActive = true
 
         // top separator

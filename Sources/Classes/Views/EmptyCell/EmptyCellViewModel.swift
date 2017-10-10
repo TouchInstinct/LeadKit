@@ -22,11 +22,16 @@
 
 import UIKit
 
+/// ViewModel for EmptyCell
 public final class EmptyCellViewModel: BaseCellViewModel {
 
     let color: UIColor
     let height: CGFloat
 
+    /// Returns configured ViewModel for cell
+    /// - parameter height: Height of cell
+    /// - parameter color: Fill color of cell
+    /// - returns: Configured ViewModel
     public init(height: CGFloat, color: UIColor = .clear) {
         self.color = color
         self.height = height

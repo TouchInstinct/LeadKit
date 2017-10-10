@@ -22,10 +22,17 @@
 
 import TableKit
 
-/// Row that simulates spacing, can end editing on click, specify this in constructor
+/// Class that
+/// - Simulates spacing with no-breaking constraints
+/// - Can end editing on click
 public final class EmptyCellRow: TableRow<EmptyCell> {
 
-    public convenience init(with height: CGFloat,
+    /// Provide height with color to create row
+    /// - parameter height: Height of row
+    /// - parameter color: Color of row
+    /// - parameter endEditingOnClick: Will cell end editing for neighbour currently active UIControl subclasses
+    /// - returns: Fully configured EmptyCellRow
+    public convenience init(height: CGFloat,
                             color: UIColor = .clear,
                             endEditingOnClick: Bool = false) {
 
@@ -38,12 +45,12 @@ public final class EmptyCellRow: TableRow<EmptyCell> {
         }
     }
 
-    // Used for set custom height to each cell, not for each cell type
+    /// Used for set custom height to each cell, not for each cell type
     override public var defaultHeight: CGFloat? {
         return item.height
     }
 
-    /// - returns: EmptyCellRow typed as AnyBaseTableRow
+    /// EmptyCellRow typed as AnyBaseTableRow
     public var anyRow: AnyBaseTableRow {
         return AnyBaseTableRow(tableRow: self)
     }

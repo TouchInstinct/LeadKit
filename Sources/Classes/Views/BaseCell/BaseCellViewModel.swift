@@ -25,13 +25,15 @@ import UIKit
 /// By default this class does not provide any separators
 open class BaseCellViewModel {
 
-    var separatorType = CellSeparatorType.none
+    internal var separatorType = CellSeparatorType.none
 
-    /// NOTE: Bottom dimension is ignored
-    var topSeparatorConfiguration: SeparatorConfiguration?
+    /// Configuration for topSeparator
+    /// - Importnat: Bottom dimension is ignored
+    internal var topSeparatorConfiguration: SeparatorConfiguration?
 
-    /// NOTE: Top dimension is ignored
-    var bottomSeparatorConfiguration: SeparatorConfiguration?
+    /// Configuration for topSeparator
+    /// - Importnat: Top dimension is ignored
+    internal var bottomSeparatorConfiguration: SeparatorConfiguration?
 
     public init() {}
 

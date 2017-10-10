@@ -22,16 +22,21 @@
 
 import UIKit
 
+/// Separator configuration. Supports positioning, color and height per each separator
 public struct SeparatorConfiguration {
     let color: UIColor
     let insets: UIEdgeInsets?
     let height: CGFloat
 
+    /// Initialize configuration with parameters
+    /// - parameter color: Color must be provided
+    /// - parameter insets: Insets for separator. Default is no insets
+    /// - parameter height: Height for separator. Default is 1 pixel
+    /// - returns: Ready to use separator configuration
     public init(color: UIColor, insets: UIEdgeInsets? = .zero, height: CGFloat = CGFloat(pixels: 1)) {
         self.color  = color
         self.insets = insets
         self.height = height
     }
 
-    public static let baseConfiguration = SeparatorConfiguration(color: .black, insets: .zero)
 }

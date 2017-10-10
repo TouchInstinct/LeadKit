@@ -45,8 +45,17 @@ private final class AnyBaseTableRowBox<T: ConfigurableCell>: AnyBaseTableRowHold
 public final class AnyBaseTableRow {
 
     fileprivate let anyTableRow: AnyBaseTableRowHolder
+
+    /// Row `item`, that typed as BaseCellViewModel
     public let viewModel: BaseCellViewModel
 
+    /// TableRow that typed to generic Row
+    public var row: Row {
+        return anyTableRow.row
+    }
+
+    /// Initialize AnyBaseTableRow with tableRow
+    /// - parameter tableRow: TableRow which `item` conforms to BaseCellViewModel
     public init<T>(tableRow: TableRow<T>) where T: BaseCell, T.T: BaseCellViewModel {
         anyTableRow = AnyBaseTableRowBox(tableRow: tableRow)
         viewModel = tableRow.item
@@ -57,8 +66,7 @@ public final class AnyBaseTableRow {
 public extension Array where Element == AnyBaseTableRow {
 
     var rows: [Row] {
-        return map { $0.anyTableRow.row }
+        return map { $0.row }
     }
 
 }
-

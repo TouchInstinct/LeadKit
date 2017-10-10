@@ -22,14 +22,22 @@
 
 import UIKit
 
+/// Cell self-descriptive separator type
 public enum CellSeparatorType {
+
+    /// All separators for cell hidden
     case none
+
+    /// Show only top separator
     case top(SeparatorConfiguration)
+
+    /// Show only bottom separator
     case bottom(SeparatorConfiguration)
 
-    /// Top than bottom
+    /// First configuration for top, second for bottom
     case full(SeparatorConfiguration, SeparatorConfiguration)
 
+    /// Determine if bottom separator is hidden
     public var bottomIsHidden: Bool {
         switch self {
         case .top, .none:
@@ -39,21 +47,13 @@ public enum CellSeparatorType {
         }
     }
 
+    /// Determine if top separator is hidden
     public var topIsHidden: Bool {
         switch self {
         case .bottom, .none:
             return true
         default:
             return false
-        }
-    }
-
-    public var topConfiguration: SeparatorConfiguration? {
-        switch self {
-        case .top(let configuration), .full(let configuration, _):
-            return configuration
-        default:
-            return nil
         }
     }
 
