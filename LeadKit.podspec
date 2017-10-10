@@ -42,7 +42,7 @@ Pod::Spec.new do |s|
     ss.watchos.exclude_files = [
       "Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
       "Sources/Classes/Views/AnyBaseTableRow/*",
-      "Sources/Classes/Views/BaseCell/*",
+      "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
       "Sources/Classes/Views/XibView/*",
       "Sources/Classes/Views/SpinnerView/*",
@@ -73,7 +73,7 @@ Pod::Spec.new do |s|
     ]
     ss.tvos.exclude_files = [
       "Sources/Classes/Views/AnyBaseTableRow/*",
-      "Sources/Classes/Views/BaseCell/*",
+      "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
       "Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
       "Sources/Structures/Drawing/CALayerDrawingOperation.swift",
@@ -101,7 +101,7 @@ Pod::Spec.new do |s|
 
     ss.exclude_files = [
       "Sources/Classes/Views/AnyBaseTableRow/*",
-      "Sources/Classes/Views/BaseCell/*",
+      "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
       "Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
