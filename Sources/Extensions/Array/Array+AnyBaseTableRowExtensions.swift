@@ -20,25 +20,13 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import TableKit
 
-/// Protocol that ensures that specific type can init new resetted instance from another instance.
-public protocol ResettableType {
+public extension Array where Element == AnyBaseTableRow {
 
-    /// Initializer with other instance parameter.
-    ///
-    /// - Parameter other: Other instance of specific type.
-    init(resetFrom other: Self)
-
-}
-
-public extension ResettableType {
-
-    /// Method that creates new resseted instance of self
-    ///
-    /// - Returns: resseted instance of self
-    func reset() -> Self {
-        return Self(resetFrom: self)
+    /// Create rows from anyBaseTableRow array
+    var rows: [Row] {
+        return map { $0.row }
     }
 
 }

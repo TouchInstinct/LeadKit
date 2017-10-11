@@ -20,25 +20,23 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
-/// Protocol that ensures that specific type can init new resetted instance from another instance.
-public protocol ResettableType {
+/// Separator configuration. Supports positioning, color and height per each separator
+public struct SeparatorConfiguration {
+    let color: UIColor
+    let insets: UIEdgeInsets?
+    let height: CGFloat
 
-    /// Initializer with other instance parameter.
-    ///
-    /// - Parameter other: Other instance of specific type.
-    init(resetFrom other: Self)
-
-}
-
-public extension ResettableType {
-
-    /// Method that creates new resseted instance of self
-    ///
-    /// - Returns: resseted instance of self
-    func reset() -> Self {
-        return Self(resetFrom: self)
+    /// Initialize configuration with parameters
+    /// - parameter color: Color must be provided
+    /// - parameter insets: Insets for separator. Default is no insets
+    /// - parameter height: Height for separator. Default is 1 pixel
+    /// - returns: Ready to use separator configuration
+    public init(color: UIColor, insets: UIEdgeInsets? = .zero, height: CGFloat = CGFloat(pixels: 1)) {
+        self.color  = color
+        self.insets = insets
+        self.height = height
     }
 
 }

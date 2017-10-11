@@ -36,7 +36,7 @@ public class SingleLoadCursor<Element>: ResettableCursorType {
         self.loadingObservable = loadingObservable
     }
 
-    public required init(initialFrom other: SingleLoadCursor) {
+    public required init(resetFrom other: SingleLoadCursor) {
         self.loadingObservable = other.loadingObservable
     }
 

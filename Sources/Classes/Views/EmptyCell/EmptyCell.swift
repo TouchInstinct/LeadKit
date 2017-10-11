@@ -20,25 +20,19 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import UIKit
+import TableKit
 
-/// Protocol that ensures that specific type can init new resetted instance from another instance.
-public protocol ResettableType {
+/// Empty cell class. Do not use it directly.
+/// - see: `EmptyCellRow`
+public final class EmptyCell: SeparatorCell, ConfigurableCell {
 
-    /// Initializer with other instance parameter.
-    ///
-    /// - Parameter other: Other instance of specific type.
-    init(resetFrom other: Self)
+    public func configure(with viewModel: EmptyCellViewModel) {
+        backgroundColor = .clear
+        contentView.backgroundColor = viewModel.color
+        selectionStyle = .none
 
-}
-
-public extension ResettableType {
-
-    /// Method that creates new resseted instance of self
-    ///
-    /// - Returns: resseted instance of self
-    func reset() -> Self {
-        return Self(resetFrom: self)
+        configureSeparator(with: viewModel)
     }
 
 }

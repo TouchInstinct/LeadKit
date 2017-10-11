@@ -19,3 +19,10 @@
 ## 0.5.10
 
 - **Fix**: `Public` modifier for `SpinnerView` 
+
+## 0.5.11
+
+- **[Breaking Change]**: rename initializer from `init(initialFrom:)` to `init(resetFrom:)` in `ResettableType`
+- **Add**: `SeparatorCell` with `SeparatorCellViewModel`
+- **Add**: `AnyBaseTableRow` for type-erasure
+- **Add**: `EmptyCellRow` for empty cell with static height

@@ -20,25 +20,17 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import TableKit
 
-/// Protocol that ensures that specific type can init new resetted instance from another instance.
-public protocol ResettableType {
+public extension TableRow where CellType.T: SeparatorCellViewModel {
 
-    /// Initializer with other instance parameter.
-    ///
-    /// - Parameter other: Other instance of specific type.
-    init(resetFrom other: Self)
+    func with(separatorType: CellSeparatorType) -> Self {
+        item.set(separatorType: separatorType)
+        return self
+    }
 
-}
-
-public extension ResettableType {
-
-    /// Method that creates new resseted instance of self
-    ///
-    /// - Returns: resseted instance of self
-    func reset() -> Self {
-        return Self(resetFrom: self)
+    func set(separatorType: CellSeparatorType) {
+        item.set(separatorType: separatorType)
     }
 
 }

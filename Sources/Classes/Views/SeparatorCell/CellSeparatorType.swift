@@ -20,25 +20,44 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
-/// Protocol that ensures that specific type can init new resetted instance from another instance.
-public protocol ResettableType {
+/// Cell self-descriptive separator type
+public enum CellSeparatorType {
 
-    /// Initializer with other instance parameter.
-    ///
-    /// - Parameter other: Other instance of specific type.
-    init(resetFrom other: Self)
+    /// All separators for cell hidden
+    case none
 
+    /// Show only top separator
+    case top(SeparatorConfiguration)
+
+    /// Show only bottom separator
+    case bottom(SeparatorConfiguration)
+
+    /// First configuration for top, second for bottom
+    case full(SeparatorConfiguration, SeparatorConfiguration)
 }
 
-public extension ResettableType {
+public extension CellSeparatorType {
 
-    /// Method that creates new resseted instance of self
-    ///
-    /// - Returns: resseted instance of self
-    func reset() -> Self {
-        return Self(resetFrom: self)
+    /// Determine if bottom separator is hidden
+    var bottomIsHidden: Bool {
+        switch self {
+        case .top, .none:
+            return true
+        case .bottom, .full:
+            return false
+        }
+    }
+
+    /// Determine if top separator is hidden
+    var topIsHidden: Bool {
+        switch self {
+        case .bottom, .none:
+            return true
+        case .top, .full:
+            return false
+        }
     }
 
 }

@@ -20,25 +20,39 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import TableKit
 
-/// Protocol that ensures that specific type can init new resetted instance from another instance.
-public protocol ResettableType {
+/// Class that
+/// - Simulates spacing with no-breaking constraints
+/// - Can end editing on click
+public final class EmptyCellRow: TableRow<EmptyCell> {
 
-    /// Initializer with other instance parameter.
-    ///
-    /// - Parameter other: Other instance of specific type.
-    init(resetFrom other: Self)
+    /// Provide height with color to create row
+    /// - parameter height: Height of row
+    /// - parameter color: Color of row
+    /// - parameter endEditingOnClick: Will cell end editing for neighbour currently active UIControl subclasses
+    /// - returns: Fully configured EmptyCellRow
+    public convenience init(height: CGFloat,
+                            color: UIColor = .clear,
+                            endEditingOnClick: Bool = false) {
 
-}
+        self.init(item: EmptyCellViewModel(height: height, color: color))
 
-public extension ResettableType {
+        if endEditingOnClick {
+            self.on(.click) { options in
+                options.cell?.window?.endEditing(true)
+            }
+        }
+    }
 
-    /// Method that creates new resseted instance of self
-    ///
-    /// - Returns: resseted instance of self
-    func reset() -> Self {
-        return Self(resetFrom: self)
+    /// Used for set custom height to each cell, not for each cell type
+    override public var defaultHeight: CGFloat? {
+        return item.height
+    }
+
+    /// EmptyCellRow typed as AnyBaseTableRow
+    public var anyRow: AnyBaseTableRow {
+        return AnyBaseTableRow(tableRow: self)
     }
 
 }
