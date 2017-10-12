@@ -30,7 +30,7 @@ public extension Support where Base: UIImage {
     ///   - color: The color to fill
     ///   - size: The size of an new image.
     /// - Returns: A new instanse of UIImage with given size and color or nil if something goes wrong.
-    public static func imageWith(color: UIColor, size: CGSize) -> Support<UIImage>? {
+    static func imageWith(color: UIColor, size: CGSize) -> Support<UIImage>? {
         let width = Int(ceil(size.width))
         let height = Int(ceil(size.height))
 
@@ -43,7 +43,7 @@ public extension Support where Base: UIImage {
     ///
     /// - Parameter fromView: The source view.
     /// - Returns: A new instance of UIImage or nil if something goes wrong.
-    public static func imageFrom(view: UIView) -> Support<UIImage>? {
+    static func imageFrom(view: UIView) -> Support<UIImage>? {
         let layerDrawingOperation = CALayerDrawingOperation(layer: view.layer, size: view.bounds.size)
 
         return layerDrawingOperation.imageFromNewContext(scale: UIScreen.main.scale)?.support.flipY()
@@ -53,7 +53,7 @@ public extension Support where Base: UIImage {
     ///
     /// - Parameter color: Color to fill template image.
     /// - Returns: A new UIImage rendered with given color or nil if something goes wrong.
-    public func renderTemplate(withColor color: UIColor) -> Support<UIImage>? {
+    func renderTemplate(withColor color: UIColor) -> Support<UIImage>? {
         guard let image = base.cgImage else {
             return Support<UIImage>(base)
         }
@@ -73,10 +73,10 @@ public extension Support where Base: UIImage {
     ///   - color: The color of the border.
     ///   - extendSize: Extend result image size and don't overlap source image by border.
     /// - Returns: A new image with rounded corners or nil if something goes wrong.
-    public func roundCorners(cornerRadius: CGFloat,
-                             borderWidth: CGFloat,
-                             color: UIColor,
-                             extendSize: Bool = false) -> Support<UIImage>? {
+    func roundCorners(cornerRadius: CGFloat,
+                      borderWidth: CGFloat,
+                      color: UIColor,
+                      extendSize: Bool = false) -> Support<UIImage>? {
 
         guard let image = base.cgImage else {
             return Support<UIImage>(base)
@@ -103,7 +103,7 @@ public extension Support where Base: UIImage {
     /// Creates a new circle image.
     ///
     /// - Returns: A new circled image or nil if something goes wrong.
-    public func roundCornersToCircle() -> Support<UIImage>? {
+    func roundCornersToCircle() -> Support<UIImage>? {
         guard let image = base.cgImage else {
             return Support<UIImage>(base)
         }
@@ -124,9 +124,9 @@ public extension Support where Base: UIImage {
     ///   - borderColor: The color of the border.
     ///   - extendSize: Extend result image size and don't overlap source image by border (default = false).
     /// - Returns: A new image with rounded corners or nil if something goes wrong.
-    public func roundCornersToCircle(borderWidth: CGFloat,
-                                     borderColor: UIColor,
-                                     extendSize: Bool = false) -> Support<UIImage>? {
+    func roundCornersToCircle(borderWidth: CGFloat,
+                              borderColor: UIColor,
+                              extendSize: Bool = false) -> Support<UIImage>? {
 
         guard let image = base.cgImage else {
             return Support<UIImage>(base)
@@ -160,9 +160,9 @@ public extension Support where Base: UIImage {
     ///   - cropToImageBounds: Should output image size match resized image size.
     /// Note: If passed true with ResizeMode.scaleAspectFit content mode it will give the original image.
     /// - Returns: A new image scaled to new size.
-    public func resize(newSize: CGSize,
-                       contentMode: ResizeMode = .scaleToFill,
-                       cropToImageBounds: Bool = false) -> Support<UIImage>? {
+    func resize(newSize: CGSize,
+                contentMode: ResizeMode = .scaleToFill,
+                cropToImageBounds: Bool = false) -> Support<UIImage>? {
 
         guard let image = base.cgImage else {
             return Support<UIImage>(base)
@@ -180,7 +180,7 @@ public extension Support where Base: UIImage {
     /// Adds an alpha channel if UIImage doesn't already have one.
     ///
     /// - Returns: A copy of the given image, adding an alpha channel if it doesn't already have one.
-    public func applyAlpha() -> Support<UIImage>? {
+    func applyAlpha() -> Support<UIImage>? {
         guard let image = base.cgImage, !image.hasAlpha else {
             return Support<UIImage>(base)
         }
@@ -196,7 +196,7 @@ public extension Support where Base: UIImage {
     ///
     /// - Parameter padding: The padding amount.
     /// - Returns: A new padded image or nil if something goes wrong.
-    public func applyPadding(_ padding: CGFloat) -> Support<UIImage>? {
+    func applyPadding(_ padding: CGFloat) -> Support<UIImage>? {
         guard let image = base.cgImage else {
             return Support<UIImage>(base)
         }

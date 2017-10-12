@@ -29,7 +29,7 @@ ViewControllerIdentifier: RawRepresentable, ViewControllerIdentifier.RawValue ==
     /**
      - returns: UIStoryboradInstance with StoryboardIdentifier name
      */
-    public static var uiStoryboard: UIStoryboard {
+    static var uiStoryboard: UIStoryboard {
         return UIStoryboard(name: storyboardIdentifier.rawValue, bundle: bundle)
     }
 
@@ -40,7 +40,7 @@ ViewControllerIdentifier: RawRepresentable, ViewControllerIdentifier.RawValue ==
 
      - returns: UIViewController instance
      */
-    public static func instantiateViewController(_ viewController: ViewControllerIdentifier) -> UIViewController {
+    static func instantiateViewController(_ viewController: ViewControllerIdentifier) -> UIViewController {
         return uiStoryboard.instantiateViewController(withIdentifier: viewController.rawValue)
     }
 

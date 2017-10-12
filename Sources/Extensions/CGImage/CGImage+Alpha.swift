@@ -25,7 +25,7 @@ import CoreGraphics
 public extension CGImage {
 
     /// A Boolean value indicating whether the image data has an alpha channel.
-    public var hasAlpha: Bool {
+    var hasAlpha: Bool {
         switch alphaInfo {
         case .first, .last, .premultipliedFirst, .premultipliedLast:
             return true

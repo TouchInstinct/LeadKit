@@ -29,7 +29,7 @@ public extension NetworkService {
     ///
     /// - Parameter url: An object adopting `URLConvertible`
     /// - Returns: Observable of tuple containing (HTTPURLResponse, UIImage?)
-    public func rxLoadImage(url: String) -> Observable<(HTTPURLResponse, UIImage?)> {
+    func rxLoadImage(url: String) -> Observable<(HTTPURLResponse, UIImage?)> {
         let request = RxAlamofire.requestData(.get, url, headers: [:])
 
         return request

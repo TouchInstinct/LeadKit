@@ -33,7 +33,7 @@ public extension UICollectionView {
     ///                ReuseIdentifierProtocol and StaticNibNameProtocol
     ///   - bundle: The bundle in which to search for the nib file.
     ///             If you specify nil, this method looks for the nib file in the main bundle.
-    public func registerNib<T>(forCellClass cellClass: T.Type, bundle: Bundle? = nil)
+    func registerNib<T>(forCellClass cellClass: T.Type, bundle: Bundle? = nil)
         where T: ReuseIdentifierProtocol, T: UICollectionViewCell, T: XibNameProtocol {
 
             register(UINib(nibName: T.xibName, bundle: bundle), forCellWithReuseIdentifier: T.reuseIdentifier)
