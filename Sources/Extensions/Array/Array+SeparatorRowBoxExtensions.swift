@@ -29,8 +29,7 @@ public extension Array where Element == SeparatorRowBox {
         return map { $0.row }
     }
 
-    /// Configure separators for bunch of rows in array
-    /// - parameter rows: Rows for configuration
+    /// Configure separators from SeparatorRowBox array
     /// - parameter extreme: Configuration that will be used for extreme values, for first or last row
     /// - parameter middle: Configuration for intermediate rows
     func configureSeparators(extreme extremeSeparatorConfiguration: SeparatorConfiguration,
