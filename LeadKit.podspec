@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.5.11"
+  s.version         = "0.5.12"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -41,7 +41,7 @@ Pod::Spec.new do |s|
     ss.source_files = "Sources/**/*.swift"
     ss.watchos.exclude_files = [
       "Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
-      "Sources/Classes/Views/AnyBaseTableRow/*",
+      "Sources/Classes/Views/SeparatorRowBox/*",
       "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
       "Sources/Classes/Views/XibView/*",
@@ -54,7 +54,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/StoryboardProtocol/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/TableDirector/*",
-      "Sources/Extensions/Array/Array+AnyBaseTableRowExtensions.swift",
+      "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
       "Sources/Extensions/UIActivityIndicatorView/*",
       "Sources/Extensions/UIAlertcontroller/*",
       "Sources/Extensions/UICollectionView/*",
@@ -72,7 +72,7 @@ Pod::Spec.new do |s|
       "Sources/Structures/DrawingOperations/BorderDrawingOperation.swift",
     ]
     ss.tvos.exclude_files = [
-      "Sources/Classes/Views/AnyBaseTableRow/*",
+      "Sources/Classes/Views/SeparatorRowBox/*",
       "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
       "Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
@@ -81,7 +81,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/TableDirector/*",
-      "Sources/Extensions/Array/Array+AnyBaseTableRowExtensions.swift"
+      "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
     ]
 
     ss.dependency "CocoaLumberjack/Swift", '~> 3.1.0'
@@ -100,14 +100,14 @@ Pod::Spec.new do |s|
     ss.source_files = "Sources/**/*.swift"
 
     ss.exclude_files = [
-      "Sources/Classes/Views/AnyBaseTableRow/*",
+      "Sources/Classes/Views/SeparatorRowBox/*",
       "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
       "Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
       "Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
       "Sources/Extensions/TableDirector/*",
-      "Sources/Extensions/Array/Array+AnyBaseTableRowExtensions.swift"
+      "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
     ]
 
     ss.dependency "CocoaLumberjack/Swift", '~> 3.1.0'
