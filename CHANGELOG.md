@@ -29,6 +29,10 @@
 
 ## 0.5.12
 
+- **Fix**: Update type of `viewModel` in `ConfigurableController` to `ImplicitlyUwrappedOptional<ViewModelT>` instead of `ViewModelT`
+
+## 0.5.13
+
 - **Change**: Remove type erasure behavior from `AnyBaseTableRow`
 - **Change**: Rename `AnyBaseTableRow` class to `SeparatorRowBox`
 - **Change**: Move `anyRow` property from `EmptyCellRow` to `TableRow` extension and rename it to `separatorRowBox`.
