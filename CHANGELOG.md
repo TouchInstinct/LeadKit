@@ -26,3 +26,7 @@
 - **Add**: `SeparatorCell` with `SeparatorCellViewModel`
 - **Add**: `AnyBaseTableRow` for type-erasure
 - **Add**: `EmptyCellRow` for empty cell with static height
+
+## 0.5.12
+
+- **Fix**: Update type of `viewModel` in `ConfigurableController` to `ImplicitlyUwrappedOptional<ViewModelT>` instead of `ViewModelT`

@@ -26,7 +26,7 @@ public protocol ConfigurableController {
 
     associatedtype ViewModelT
 
-    var viewModel: ViewModelT { get }
+    var viewModel: ViewModelT! { get }
 
     func bindViews()
 
