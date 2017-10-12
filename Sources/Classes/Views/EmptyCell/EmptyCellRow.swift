@@ -50,9 +50,4 @@ public final class EmptyCellRow: TableRow<EmptyCell> {
         return item.height
     }
 
-    /// EmptyCellRow typed as SeparatorRowBox
-    public var separatorRowBox: SeparatorRowBox {
-        return SeparatorRowBox(tableRow: self)
-    }
-
 }
