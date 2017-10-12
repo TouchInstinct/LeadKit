@@ -39,4 +39,8 @@ public extension TableRow where CellType: AppearanceProtocol {
         return self
     }
 
+    func set(appearance: CellType.Appearance) {
+        _ = with(appearance: appearance)
+    }
+
 }
