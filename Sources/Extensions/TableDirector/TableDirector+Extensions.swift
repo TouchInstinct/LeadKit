@@ -112,30 +112,3 @@ public extension TableDirector {
     }
 
 }
-
-// MARK: - Separator Configuration
-
-public extension TableDirector {
-
-    /// Configure separators for bunch of rows in array
-    /// - parameter rows: Rows for configuration
-    /// - parameter extreme: Configuration that will be used for extreme values, for first or last row
-    /// - parameter middle: Configuration for intermediate rows
-    func configure(rows: [SeparatorRowBox],
-                   extreme extremeSeparatorConfiguration: SeparatorConfiguration,
-                   middle middleSeparatorConfiguration: SeparatorConfiguration) {
-
-        if rows.isEmpty {
-            return
-        }
-
-        switch rows.count {
-        case 1:
-            rows.first?.viewModel.set(separatorType: .full(extremeSeparatorConfiguration, extremeSeparatorConfiguration))
-        default:
-            rows.forEach { $0.viewModel.set(separatorType: .full(middleSeparatorConfiguration, middleSeparatorConfiguration))}
-            rows.first?.viewModel.set(separatorType: .top(extremeSeparatorConfiguration))
-            rows.last?.viewModel.set(separatorType: .bottom(extremeSeparatorConfiguration))
-        }
-    }
-}

@@ -29,4 +29,25 @@ public extension Array where Element == SeparatorRowBox {
         return map { $0.row }
     }
 
+    /// Configure separators for bunch of rows in array
+    /// - parameter rows: Rows for configuration
+    /// - parameter extreme: Configuration that will be used for extreme values, for first or last row
+    /// - parameter middle: Configuration for intermediate rows
+    func configureSeparators(extreme extremeSeparatorConfiguration: SeparatorConfiguration,
+                             middle middleSeparatorConfiguration: SeparatorConfiguration) {
+
+        if isEmpty {
+            return
+        }
+
+        switch count {
+        case 1:
+            first?.viewModel.set(separatorType: .full(extremeSeparatorConfiguration, extremeSeparatorConfiguration))
+        default:
+            forEach { $0.viewModel.set(separatorType: .full(middleSeparatorConfiguration, middleSeparatorConfiguration))}
+            first?.viewModel.set(separatorType: .top(extremeSeparatorConfiguration))
+            last?.viewModel.set(separatorType: .bottom(extremeSeparatorConfiguration))
+        }
+    }
+
 }
