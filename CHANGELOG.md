@@ -29,8 +29,7 @@
 
 ## 0.5.12
 
-- **Change**: Remove type erasure behavior from `AnyBaseTableRow`.
-- **Change**: Rename `AnyBaseTableRow` to `SeparatorRowBox`.
-- **Change**: Move `separatorRowBox` property from `EmptyCellRow` to `TableRow` extension
-- **Change**: Move `configure(extreme: middle:)` method from `TableDirector` extension to `Array` extension
-- **Change**: Rename `configure(extreme: middle:)` method to `configureSeparators(extreme: middle:)`
+- **Change**: Remove type erasure behavior from `AnyBaseTableRow`
+- **Change**: Rename `AnyBaseTableRow` class to `SeparatorRowBox`
+- **Change**: Move `anyRow` property from `EmptyCellRow` to `TableRow` extension and rename it to `separatorRowBox`.
+- **Change**: Move `configure(extreme: middle:)` method from `TableDirector` extension to `Array` extension and rename it to `configureSeparators(extreme: middle:)`
