@@ -26,3 +26,11 @@
 - **Add**: `SeparatorCell` with `SeparatorCellViewModel`
 - **Add**: `AnyBaseTableRow` for type-erasure
 - **Add**: `EmptyCellRow` for empty cell with static height
+
+## 0.5.12
+
+- **Change**: Remove type erasure behavior from `AnyBaseTableRow`.
+- **Change**: Rename `AnyBaseTableRow` to `SeparatorRowBox`.
+- **Change**: Move `separatorRowBox` property from `EmptyCellRow` to `TableRow` extension
+- **Change**: Move `configure(extreme: middle:)` method from `TableDirector` extension to `Array` extension
+- **Change**: Rename `configure(extreme: middle:)` method to `configureSeparators(extreme: middle:)`
