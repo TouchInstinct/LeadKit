@@ -39,8 +39,8 @@ public extension CGContext {
     ///   - cgImage: CGImage instance from which the parameters will be taken.
     ///   - fallbackColorSpace: Fallback color space if image doesn't have it.
     /// - Returns: A new bitmap context, or NULL if a context could not be created.
-    public static func create(forCGImage cgImage: CGImage,
-                              fallbackColorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()) -> CGContext? {
+    static func create(forCGImage cgImage: CGImage,
+                       fallbackColorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()) -> CGContext? {
 
         return create(width: cgImage.width,
                       height: cgImage.height,
@@ -60,11 +60,11 @@ public extension CGContext {
     ///   - colorSpace: The color space to use for the bitmap context.
     ///   - bitsPerComponent: The number of bits to use for each component of a pixel in memory.
     /// - Returns: A new bitmap context, or NULL if a context could not be created.
-    public static func create(width: Int,
-                              height: Int,
-                              bitmapInfo: CGBitmapInfo = .alphaBitmapInfo,
-                              colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB(),
-                              bitsPerComponent: Int = 8) -> CGContext? {
+    static func create(width: Int,
+                       height: Int,
+                       bitmapInfo: CGBitmapInfo = .alphaBitmapInfo,
+                       colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB(),
+                       bitsPerComponent: Int = 8) -> CGContext? {
 
         return CGContext(data: nil,
                          width: width,

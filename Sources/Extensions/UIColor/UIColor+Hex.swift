@@ -31,7 +31,7 @@ public extension UIColor {
      - parameter hex3:  Three-digit hexadecimal value.
      - parameter alpha: 0.0 - 1.0. The default is 1.0.
      */
-    public convenience init(hex3: UInt16, alpha: CGFloat = 1) {
+    convenience init(hex3: UInt16, alpha: CGFloat = 1) {
         let red     = CGFloat((hex3 & 0xF00) >> 8) / 0xF
         let green   = CGFloat((hex3 & 0x0F0) >> 4) / 0xF
         let blue    = CGFloat((hex3 & 0x00F) >> 0) / 0xF
@@ -44,7 +44,7 @@ public extension UIColor {
 
      - parameter hex4: Four-digit hexadecimal value.
      */
-    public convenience init(hex4: UInt16) {
+    convenience init(hex4: UInt16) {
         let red     = CGFloat((hex4 & 0xF000) >> 12) / 0xF
         let green   = CGFloat((hex4 & 0x0F00) >>  8) / 0xF
         let blue    = CGFloat((hex4 & 0x00F0) >>  4) / 0xF
@@ -59,7 +59,7 @@ public extension UIColor {
      - parameter hex6:  Six-digit hexadecimal value.
      - parameter alpha: alpha: 0.0 - 1.0. The default is 1.0.
      */
-    public convenience init(hex6: UInt32, alpha: CGFloat = 1) {
+    convenience init(hex6: UInt32, alpha: CGFloat = 1) {
         let red     = CGFloat((hex6 & 0xFF0000) >> 16) / 0xFF
         let green   = CGFloat((hex6 & 0x00FF00) >>  8) / 0xFF
         let blue    = CGFloat((hex6 & 0x0000FF) >>  0) / 0xFF
@@ -72,7 +72,7 @@ public extension UIColor {
 
      - parameter hex8: Eight-digit hexadecimal value.
      */
-    public convenience init(hex8: UInt32) {
+    convenience init(hex8: UInt32) {
         let red     = CGFloat((hex8 & 0xFF000000) >> 24) / 0xFF
         let green   = CGFloat((hex8 & 0x00FF0000) >> 16) / 0xFF
         let blue    = CGFloat((hex8 & 0x0000FF00) >>  8) / 0xFF
@@ -87,7 +87,7 @@ public extension UIColor {
      - parameter hexString: hex string with red green and blue values (can have `#` sign)
      - parameter alpha: alpha component used if not given in hexString
      */
-    public convenience init?(hexString: String, alpha: CGFloat = 1) {
+    convenience init?(hexString: String, alpha: CGFloat = 1) {
         let hexStr: String
 
         if hexString.hasPrefix("#") {

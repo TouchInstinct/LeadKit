@@ -27,7 +27,7 @@ public extension CGImage {
     /// Crop image to square from center.
     ///
     /// - Returns: A new cropped image or nil if something goes wrong.
-    public func cropFromCenterToSquare() -> CGImage? {
+    func cropFromCenterToSquare() -> CGImage? {
         let shortest = min(width, height)
 
         let widthCropSize = width > shortest ? (width - shortest) : 0
@@ -52,10 +52,10 @@ public extension CGImage {
     ///   - bottom: Bottom margin.
     ///   - right: Right margin.
     /// - Returns: A new CGImage cropped with given paddings or nil if something goes wrong.
-    public func crop(top: CGFloat = 0,
-                     left: CGFloat = 0,
-                     bottom: CGFloat = 0,
-                     right: CGFloat = 0) -> CGImage? {
+    func crop(top: CGFloat = 0,
+              left: CGFloat = 0,
+              bottom: CGFloat = 0,
+              right: CGFloat = 0) -> CGImage? {
 
         let rect = CGRect(x: left,
                           y: top,

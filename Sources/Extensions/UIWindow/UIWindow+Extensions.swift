@@ -32,7 +32,7 @@ public extension UIWindow {
     /// Method changes root controller in window.
     ///
     /// - Parameter controller: New root controller.
-    public func changeRootController(controller: UIViewController) {
+    func changeRootController(controller: UIViewController) {
         animateRootViewControllerChanging(controller: controller)
 
         rootViewController?.dismiss(animated: false, completion: nil)

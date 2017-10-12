@@ -34,11 +34,11 @@ public struct StringSizeCalculationResult {
 
 public extension StringSizeCalculationResult {
 
-    public var height: CGFloat { return size.height }
+    var height: CGFloat { return size.height }
 
-    public var width: CGFloat { return size.width }
+    var width: CGFloat { return size.width }
 
-    public var numberOfLines: UInt? {
+    var numberOfLines: UInt? {
         if let lineHeight = fontLineHeight {
             let lineHeightRounded = Double(lineHeight).roundValue(withPersicion: 2)
 
@@ -65,9 +65,9 @@ public extension String {
 
      - returns: string size calculation result
      */
-    public func size(withAttributes attributes: [String: AnyObject]?,
-                     maxWidth: CGFloat = CGFloat.greatestFiniteMagnitude,
-                     maxHeight: CGFloat = CGFloat.greatestFiniteMagnitude) -> StringSizeCalculationResult {
+    func size(withAttributes attributes: [String: AnyObject]?,
+              maxWidth: CGFloat = CGFloat.greatestFiniteMagnitude,
+              maxHeight: CGFloat = CGFloat.greatestFiniteMagnitude) -> StringSizeCalculationResult {
 
         let size = self.boundingRect(with: CGSize(width: maxWidth, height: maxHeight),
                                              options: [.usesLineFragmentOrigin, .usesFontLeading],

@@ -38,7 +38,7 @@ public extension TableRow where CellType.T: SeparatorCellViewModel {
 public extension TableRow where CellType: SeparatorCell, CellType.T: SeparatorCellViewModel {
 
     /// TableRow typed as SeparatorRowBox
-    public var separatorRowBox: SeparatorRowBox {
+    var separatorRowBox: SeparatorRowBox {
         return SeparatorRowBox(tableRow: self)
     }
 

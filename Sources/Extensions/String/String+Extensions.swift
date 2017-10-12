@@ -29,7 +29,7 @@ public extension String {
 
      - returns: image
      */
-    public var image: UIImage? {
+    var image: UIImage? {
         return UIImage(named: self)
     }
 
@@ -38,7 +38,7 @@ public extension String {
 
      - returns: nil if string empty, self otherwise
      */
-    public var nilIfEmpty: String? {
+    var nilIfEmpty: String? {
         return isEmpty ? nil : self
     }
 

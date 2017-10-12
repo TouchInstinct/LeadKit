@@ -34,7 +34,7 @@ public extension TableDirector {
      - returns: self
      */
     @discardableResult
-    public func replace(section: TableSection, atIndex index: Int, reload: Bool = true) -> Self {
+    func replace(section: TableSection, atIndex index: Int, reload: Bool = true) -> Self {
         if index < sections.count {
             remove(sectionAt: index)
         }
@@ -54,7 +54,7 @@ public extension TableDirector {
      - returns: self
      */
     @discardableResult
-    public func reload(sectionAtIndex index: Int, with animation: UITableViewRowAnimation = .none) -> Self {
+    func reload(sectionAtIndex index: Int, with animation: UITableViewRowAnimation = .none) -> Self {
         let action = { [tableView] in
             guard let tableView = tableView else {
                 return
@@ -82,7 +82,7 @@ public extension TableDirector {
      - returns: self
      */
     @discardableResult
-    public func replace(withSections sections: [TableSection]) -> Self {
+    func replace(withSections sections: [TableSection]) -> Self {
         clear().append(sections: sections).reload()
         return self
     }
@@ -95,7 +95,7 @@ public extension TableDirector {
      - returns: self
      */
     @discardableResult
-    public func replace(withSection section: TableSection) -> Self {
+    func replace(withSection section: TableSection) -> Self {
         return replace(withSections: [section])
     }
 
@@ -107,7 +107,7 @@ public extension TableDirector {
      - returns: self
      */
     @discardableResult
-    public func replace(withRows rows: [Row]) -> Self {
+    func replace(withRows rows: [Row]) -> Self {
         return replace(withSection: TableSection(rows: rows))
     }
 

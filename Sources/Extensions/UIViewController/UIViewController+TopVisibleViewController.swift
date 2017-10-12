@@ -25,7 +25,7 @@ import UIKit
 public extension UIViewController {
 
     /// Return top visible controller even if we have inner UI(Navigation/TabBar)Controller's inside
-    public var topVisibleViewController: UIViewController {
+    var topVisibleViewController: UIViewController {
         switch self {
         case let navController as UINavigationController:
             return navController.visibleViewController?.topVisibleViewController ?? navController

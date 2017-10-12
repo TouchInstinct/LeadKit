@@ -30,7 +30,7 @@ public extension CGSize {
     ///   - newSize: Requested new size.
     ///   - resizeMode: Resize mode to use.
     /// - Returns: A new CGRect instance matching request parameters.
-    public func resizeRect(forNewSize newSize: CGSize, resizeMode: ResizeMode) -> CGRect {
+    func resizeRect(forNewSize newSize: CGSize, resizeMode: ResizeMode) -> CGRect {
         let horizontalRatio = newSize.width / width
         let verticalRatio = newSize.height / height
 

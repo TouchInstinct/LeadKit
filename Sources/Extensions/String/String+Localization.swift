@@ -29,7 +29,7 @@ public extension String {
 
      - returns: localized string
      */
-    public func localized() -> String {
+    func localized() -> String {
         return NSLocalizedString(self, comment: "")
     }
 
