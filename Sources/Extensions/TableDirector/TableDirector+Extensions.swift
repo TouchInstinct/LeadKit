@@ -121,7 +121,7 @@ public extension TableDirector {
     /// - parameter rows: Rows for configuration
     /// - parameter extreme: Configuration that will be used for extreme values, for first or last row
     /// - parameter middle: Configuration for intermediate rows
-    func configure(rows: [AnyBaseTableRow],
+    func configure(rows: [SeparatorRowBox],
                    extreme extremeSeparatorConfiguration: SeparatorConfiguration,
                    middle middleSeparatorConfiguration: SeparatorConfiguration) {
 

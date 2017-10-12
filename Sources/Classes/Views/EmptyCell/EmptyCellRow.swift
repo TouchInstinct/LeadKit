@@ -50,9 +50,9 @@ public final class EmptyCellRow: TableRow<EmptyCell> {
         return item.height
     }
 
-    /// EmptyCellRow typed as AnyBaseTableRow
-    public var anyRow: AnyBaseTableRow {
-        return AnyBaseTableRow(tableRow: self)
+    /// EmptyCellRow typed as SeparatorRowBox
+    public var separatorRowBox: SeparatorRowBox {
+        return SeparatorRowBox(tableRow: self)
     }
 
 }

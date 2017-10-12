@@ -22,43 +22,19 @@
 
 import TableKit
 
-/// Class used as general placeholder for type-erasured in TableRow<T>
-private class AnyBaseTableRowHolder {
-    let row: Row
-
-    init(tableRow: Row) {
-        row = tableRow
-    }
-}
-
-/// Class used to hold resolved TableRow
-private final class AnyBaseTableRowBox<T: ConfigurableCell>: AnyBaseTableRowHolder
-    where T: SeparatorCell, T.T: SeparatorCellViewModel {
-
-    init(tableRow: TableRow<T>) {
-        super.init(tableRow: tableRow)
-    }
-
-}
-
 /// Class that used to configure separators when multiply cells presented in one section
 /// Holds TableRow<T> with any model inherited from BaseCellViewModel
-public final class AnyBaseTableRow {
-
-    private let anyTableRow: AnyBaseTableRowHolder
-
+public final class SeparatorRowBox {
     /// Row `item`, that typed as BaseCellViewModel
     public let viewModel: SeparatorCellViewModel
 
     /// TableRow that typed to generic Row
-    public var row: Row {
-        return anyTableRow.row
-    }
+    public let row: Row
 
     /// Initialize AnyBaseTableRow with tableRow
     /// - parameter tableRow: TableRow which `item` conforms to BaseCellViewModel
     public init<T>(tableRow: TableRow<T>) where T: SeparatorCell, T.T: SeparatorCellViewModel {
-        anyTableRow = AnyBaseTableRowBox(tableRow: tableRow)
+        row = tableRow
         viewModel = tableRow.item
     }
 
