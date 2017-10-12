@@ -22,11 +22,20 @@
 
 import TableKit
 
-public extension Array where Element == AnyBaseTableRow {
+/// Class that used to configure separators when multiply cells presented in one section
+/// Holds TableRow<T> with any model inherited from BaseCellViewModel
+public final class SeparatorRowBox {
+    /// Row `item`, that typed as BaseCellViewModel
+    public let viewModel: SeparatorCellViewModel
 
-    /// Create rows from anyBaseTableRow array
-    var rows: [Row] {
-        return map { $0.row }
+    /// TableRow that typed to generic Row
+    public let row: Row
+
+    /// Initialize AnyBaseTableRow with tableRow
+    /// - parameter tableRow: TableRow which `item` conforms to BaseCellViewModel
+    public init<T>(tableRow: TableRow<T>) where T: SeparatorCell, T.T: SeparatorCellViewModel {
+        row = tableRow
+        viewModel = tableRow.item
     }
 
 }

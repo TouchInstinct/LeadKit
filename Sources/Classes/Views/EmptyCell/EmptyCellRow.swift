@@ -50,9 +50,4 @@ public final class EmptyCellRow: TableRow<EmptyCell> {
         return item.height
     }
 
-    /// EmptyCellRow typed as AnyBaseTableRow
-    public var anyRow: AnyBaseTableRow {
-        return AnyBaseTableRow(tableRow: self)
-    }
-
 }

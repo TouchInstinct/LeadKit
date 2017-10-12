@@ -22,24 +22,31 @@
 
 import TableKit
 
-public extension TableRow where CellType.T: SeparatorCellViewModel {
+public extension Array where Element == SeparatorRowBox {
 
-    func with(separatorType: CellSeparatorType) -> Self {
-        item.set(separatorType: separatorType)
-        return self
+    /// Create rows from SeparatorRowBox array
+    var rows: [Row] {
+        return map { $0.row }
     }
 
-    func set(separatorType: CellSeparatorType) {
-        item.set(separatorType: separatorType)
-    }
+    /// Configure separators from SeparatorRowBox array
+    /// - parameter extreme: Configuration that will be used for extreme values, for first or last row
+    /// - parameter middle: Configuration for intermediate rows
+    func configureSeparators(extreme extremeSeparatorConfiguration: SeparatorConfiguration,
+                             middle middleSeparatorConfiguration: SeparatorConfiguration) {
 
-}
+        if isEmpty {
+            return
+        }
 
-public extension TableRow where CellType: SeparatorCell, CellType.T: SeparatorCellViewModel {
-
-    /// TableRow typed as SeparatorRowBox
-    public var separatorRowBox: SeparatorRowBox {
-        return SeparatorRowBox(tableRow: self)
+        switch count {
+        case 1:
+            first?.viewModel.set(separatorType: .full(extremeSeparatorConfiguration, extremeSeparatorConfiguration))
+        default:
+            forEach { $0.viewModel.set(separatorType: .full(middleSeparatorConfiguration, middleSeparatorConfiguration))}
+            first?.viewModel.set(separatorType: .top(extremeSeparatorConfiguration))
+            last?.viewModel.set(separatorType: .bottom(extremeSeparatorConfiguration))
+        }
     }
 
 }
