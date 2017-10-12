@@ -22,24 +22,34 @@
 
 import TableKit
 
-public extension TableRow where CellType.T: SeparatorCellViewModel {
+fileprivate let configureSeparatorActionId = "TableRowConfigureSeparatorActionId"
+
+public extension TableRow where CellType: SeparatorCell {
 
     func with(separatorType: CellSeparatorType) -> Self {
-        item.set(separatorType: separatorType)
+        removeAction(forActionId: configureSeparatorActionId)
+
+        let action = TableRowAction<CellType>(.configure) { options in
+            options.cell?.configureSeparator(with: separatorType)
+        }
+
+        action.id = configureSeparatorActionId
+        on(action)
+
         return self
     }
 
     func set(separatorType: CellSeparatorType) {
-        item.set(separatorType: separatorType)
+        _ = with(separatorType: separatorType)
     }
 
 }
 
-public extension TableRow where CellType: SeparatorCell, CellType.T: SeparatorCellViewModel {
+public extension TableRow where CellType: SeparatorCell {
 
     /// TableRow typed as SeparatorRowBox
     var separatorRowBox: SeparatorRowBox {
-        return SeparatorRowBox(tableRow: self)
+        return SeparatorRowBox(row: self)
     }
 
 }

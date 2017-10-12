@@ -26,17 +26,19 @@ import TableKit
 /// - Simulates spacing with no-breaking constraints
 /// - Can end editing on click
 public final class EmptyCellRow: TableRow<EmptyCell> {
+    private let rowHeight: CGFloat
 
     /// Provide height with color to create row
     /// - parameter height: Height of row
     /// - parameter color: Color of row
     /// - parameter endEditingOnClick: Will cell end editing for neighbour currently active UIControl subclasses
     /// - returns: Fully configured EmptyCellRow
-    public convenience init(height: CGFloat,
-                            color: UIColor = .clear,
-                            endEditingOnClick: Bool = false) {
+    public init(height: CGFloat,
+                color: UIColor = .clear,
+                endEditingOnClick: Bool = false) {
+        rowHeight = height
 
-        self.init(item: EmptyCellViewModel(height: height, color: color))
+        super.init(item: ())
 
         if endEditingOnClick {
             self.on(.click) { options in
@@ -47,7 +49,7 @@ public final class EmptyCellRow: TableRow<EmptyCell> {
 
     /// Used for set custom height to each cell, not for each cell type
     override public var defaultHeight: CGFloat? {
-        return item.height
+        return rowHeight
     }
 
 }

@@ -22,18 +22,15 @@
 
 import UIKit
 
-/// ViewModel for EmptyCell
-public final class EmptyCellViewModel: SeparatorCellViewModel {
+/// Appearance for EmptyCell
+public final class EmptyCellAppearance {
 
     let color: UIColor
-    let height: CGFloat
 
-    /// Returns configured ViewModel for cell
-    /// - parameter height: Height of cell
+    /// Returns configured appearance for cell
     /// - parameter color: Fill color of cell
-    /// - returns: Configured ViewModel
-    public init(height: CGFloat, color: UIColor = .clear) {
+    /// - returns: Configured appearance
+    public init(color: UIColor = .clear) {
         self.color = color
-        self.height = height
     }
 }

@@ -25,17 +25,19 @@ import TableKit
 /// Class that used to configure separators when multiply cells presented in one section
 /// Holds TableRow<T> with any model inherited from BaseCellViewModel
 public final class SeparatorRowBox {
-    /// Row `item`, that typed as BaseCellViewModel
-    public let viewModel: SeparatorCellViewModel
+    private let setSeparatorHandler: (CellSeparatorType) -> Void
 
-    /// TableRow that typed to generic Row
+    public func set(separatorType: CellSeparatorType) {
+        setSeparatorHandler(separatorType)
+    }
+
     public let row: Row
 
     /// Initialize AnyBaseTableRow with tableRow
-    /// - parameter tableRow: TableRow which `item` conforms to BaseCellViewModel
-    public init<T>(tableRow: TableRow<T>) where T: SeparatorCell, T.T: SeparatorCellViewModel {
-        row = tableRow
-        viewModel = tableRow.item
+    /// - parameter row: TableRow which `cell` conforms to SeparatorCell
+    public init<T>(row: TableRow<T>) where T: SeparatorCell {
+        self.row = row
+        setSeparatorHandler = row.set
     }
 
 }
