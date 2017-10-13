@@ -36,7 +36,7 @@ public final class EmptyCell: SeparatorCell, AppearanceProtocol, ConfigurableCel
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func update(appearance: EmptyCellAppearance) {
+    public func configure(appearance: EmptyCellAppearance) {
         contentView.backgroundColor = appearance.color
     }
 

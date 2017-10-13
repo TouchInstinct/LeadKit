@@ -23,5 +23,5 @@
 public protocol AppearanceProtocol {
     associatedtype Appearance
 
-    func update(appearance: Appearance)
+    func configure(appearance: Appearance)
 }

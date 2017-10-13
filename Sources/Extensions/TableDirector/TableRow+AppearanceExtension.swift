@@ -30,7 +30,7 @@ public extension TableRow where CellType: AppearanceProtocol {
         removeAction(forActionId: updateAppearanceActionId)
 
         let action = TableRowAction<CellType>(.configure) { options in
-            options.cell?.update(appearance: appearance)
+            options.cell?.configure(appearance: appearance)
         }
 
         action.id = updateAppearanceActionId
