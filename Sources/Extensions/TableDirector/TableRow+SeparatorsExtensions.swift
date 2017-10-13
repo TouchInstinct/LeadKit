@@ -22,7 +22,7 @@
 
 import TableKit
 
-fileprivate let configureSeparatorActionId = "TableRowConfigureSeparatorActionId"
+private let configureSeparatorActionId = "TableRowConfigureSeparatorActionId"
 
 public extension TableRow where CellType: SeparatorCell {
 
