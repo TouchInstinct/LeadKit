@@ -53,5 +53,7 @@ public final class EmptyCell: SeparatorCell, AppearanceProtocol, ConfigurableCel
     private func setup() {
         backgroundColor = .clear
         selectionStyle = .none
+
+        configure(appearance: Appearance())
     }
 }
