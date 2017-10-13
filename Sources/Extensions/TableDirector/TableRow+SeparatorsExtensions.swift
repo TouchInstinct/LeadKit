@@ -22,11 +22,16 @@
 
 import TableKit
 
-private let configureSeparatorActionId = "TableRowConfigureSeparatorActionId"
+fileprivate let configureSeparatorActionId = "TableRowConfigureSeparatorActionId"
 
 public extension TableRow where CellType: SeparatorCell {
 
-    @discardableResult func set(separatorType: CellSeparatorType) -> Self {
+    func with(separatorType: CellSeparatorType) -> Self {
+        set(separatorType: separatorType)
+        return self
+    }
+
+    func set(separatorType: CellSeparatorType) {
         removeAction(forActionId: configureSeparatorActionId)
 
         let action = TableRowAction<CellType>(.configure) { options in
@@ -35,8 +40,6 @@ public extension TableRow where CellType: SeparatorCell {
 
         action.id = configureSeparatorActionId
         on(action)
-
-        return self
     }
 
 }

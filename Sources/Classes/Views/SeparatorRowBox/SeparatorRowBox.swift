@@ -37,9 +37,7 @@ public final class SeparatorRowBox {
     /// - parameter row: TableRow which `cell` conforms to SeparatorCell
     public init<T>(row: TableRow<T>) where T: SeparatorCell {
         self.row = row
-        setSeparatorHandler = { separatorType in
-            row.set(separatorType: separatorType)
-        }
+        setSeparatorHandler = row.set
     }
 
 }
