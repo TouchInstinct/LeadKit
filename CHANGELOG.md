@@ -41,6 +41,6 @@
 ## 0.5.15
 
 - **Add**: `AppearanceProtocol` which ensures that specific type can apply appearance to itself
-- **Add**: `with(appearance:)`,  `set(appearance:)`  methods to TableRow extansion
+- **Add**: `with(appearance:)`,  `set(appearance:)`  methods to TableRow extension
 - **Add**: `Appearance` to `EmptyCell`
 - **Remove**: `SeparatorCellViewModel`.
