@@ -22,7 +22,7 @@
 
 import TableKit
 
-fileprivate let updateAppearanceActionId = "TableRowUpdateAppearanceActionId"
+private let updateAppearanceActionId = "TableRowUpdateAppearanceActionId"
 
 public extension TableRow where CellType: AppearanceProtocol {
 
