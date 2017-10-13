@@ -26,7 +26,7 @@ fileprivate let updateAppearanceActionId = "TableRowUpdateAppearanceActionId"
 
 public extension TableRow where CellType: AppearanceProtocol {
 
-    func with(appearance: CellType.Appearance) -> Self {
+    @discardableResult func set(appearance: CellType.Appearance) -> Self {
         removeAction(forActionId: updateAppearanceActionId)
 
         let action = TableRowAction<CellType>(.configure) { options in
@@ -37,10 +37,6 @@ public extension TableRow where CellType: AppearanceProtocol {
         on(action)
 
         return self
-    }
-
-    func set(appearance: CellType.Appearance) {
-        _ = with(appearance: appearance)
     }
 
 }
