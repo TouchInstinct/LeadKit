@@ -20,6 +20,7 @@
 //  THE SOFTWARE.
 //
 
+ //Protocol which ensures that specific type can apply appearance to itself
 public protocol AppearanceProtocol {
     associatedtype Appearance
 
