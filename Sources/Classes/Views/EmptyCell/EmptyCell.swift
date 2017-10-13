@@ -26,6 +26,14 @@ import TableKit
 /// Empty cell class. Do not use it directly.
 /// - see: `EmptyCellRow`
 public final class EmptyCell: SeparatorCell, AppearanceProtocol, ConfigurableCell {
+    public struct Appearance {
+        let color: UIColor
+
+        public init(color: UIColor = .clear) {
+            self.color = color
+        }
+    }
+
     public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -36,7 +44,7 @@ public final class EmptyCell: SeparatorCell, AppearanceProtocol, ConfigurableCel
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func configure(appearance: EmptyCellAppearance) {
+    public func configure(appearance: Appearance) {
         contentView.backgroundColor = appearance.color
     }
 

@@ -391,11 +391,9 @@
 		A658E5501F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54F1F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift */; };
 		A658E5511F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54F1F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift */; };
 		A6C9A4FA1F8BBCF2009311CC /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF3B371F8B956F00CDB971 /* EmptyCell.swift */; };
-		A6C9A4FB1F8BBCF2009311CC /* EmptyCellAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF3B361F8B956E00CDB971 /* EmptyCellAppearance.swift */; };
 		A6C9A5041F8BC78F009311CC /* CellSeparatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDEE1F8A6C57002CA74E /* CellSeparatorType.swift */; };
 		A6C9A5051F8BC78F009311CC /* SeparatorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDF01F8A6C80002CA74E /* SeparatorConfiguration.swift */; };
 		A6C9A50C1F8BC799009311CC /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF3B371F8B956F00CDB971 /* EmptyCell.swift */; };
-		A6C9A50D1F8BC799009311CC /* EmptyCellAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF3B361F8B956E00CDB971 /* EmptyCellAppearance.swift */; };
 		A6C9A50E1F8BC799009311CC /* EmptyCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A71F8A654600C6308D /* EmptyCellRow.swift */; };
 		A6C9A50F1F8BC79D009311CC /* Comparable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D10EAA1F8A9278003E69DD /* Comparable+Extensions.swift */; };
 		A6C9A5101F8BC79D009311CC /* Comparable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D10EAA1F8A9278003E69DD /* Comparable+Extensions.swift */; };
@@ -607,7 +605,6 @@
 		A66428A61F8A653600C6308D /* SeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
 		A66428A71F8A654600C6308D /* EmptyCellRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCellRow.swift; sourceTree = "<group>"; };
 		A66428A81F8A655600C6308D /* SeparatorRowBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorRowBox.swift; sourceTree = "<group>"; };
-		A6AF3B361F8B956E00CDB971 /* EmptyCellAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCellAppearance.swift; sourceTree = "<group>"; };
 		A6AF3B371F8B956F00CDB971 /* EmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
 		A6D10EAA1F8A9278003E69DD /* Comparable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Extensions.swift"; sourceTree = "<group>"; };
 		A6E0DDEE1F8A6C57002CA74E /* CellSeparatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSeparatorType.swift; sourceTree = "<group>"; };
@@ -1287,7 +1284,6 @@
 			isa = PBXGroup;
 			children = (
 				A6AF3B371F8B956F00CDB971 /* EmptyCell.swift */,
-				A6AF3B361F8B956E00CDB971 /* EmptyCellAppearance.swift */,
 				A66428A71F8A654600C6308D /* EmptyCellRow.swift */,
 			);
 			path = EmptyCell;
@@ -2152,7 +2148,6 @@
 				671462781EB3396E00EAB194 /* ResizeContentMode.swift in Sources */,
 				A6E0DDE11F8A696F002CA74E /* SeparatorRowBox.swift in Sources */,
 				A6E0DDDE1F8A696F002CA74E /* EmptyCellRow.swift in Sources */,
-				A6C9A4FB1F8BBCF2009311CC /* EmptyCellAppearance.swift in Sources */,
 				671463041EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
 				EFBE57D61EC3603E0040E00A /* UIAlertController+Extensions.swift in Sources */,
 				40F118491F8FF223004AADAF /* TableRow+AppearanceExtension.swift in Sources */,
@@ -2215,7 +2210,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6C9A5051F8BC78F009311CC /* SeparatorConfiguration.swift in Sources */,
-				A6C9A50D1F8BC799009311CC /* EmptyCellAppearance.swift in Sources */,
 				671463CA1EB34B1E00EAB194 /* TestView.swift in Sources */,
 				671463C71EB34B1E00EAB194 /* PaginationViewModelTests.swift in Sources */,
 				A6C9A50E1F8BC799009311CC /* EmptyCellRow.swift in Sources */,
