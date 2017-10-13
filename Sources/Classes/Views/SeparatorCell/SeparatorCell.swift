@@ -37,9 +37,26 @@ open class SeparatorCell: UITableViewCell {
     // MARK: - Public
 
     /// Configure separator with viewModel
-    /// - parameter viewModel: ViewModel of cell, that inherits from BaseCellViewModel
-    public func configureSeparator(with viewModel: SeparatorCellViewModel) {
-        configureInterface(with: viewModel)
+    /// - parameter separatorType: type of separators
+    public func configureSeparator(with separatorType: CellSeparatorType) {
+        switch separatorType {
+        case .none:
+            topView.isHidden = true
+            bottomView.isHidden = true
+        case .bottom(let configuration):
+            topView.isHidden = true
+            bottomView.isHidden = false
+            updateBottomSeparator(with: configuration)
+        case .top(let configuration):
+            topView.isHidden = false
+            bottomView.isHidden = true
+            updateTopSeparator(with: configuration)
+        case .full(let topConfiguration, let bottomConfiguration):
+            topView.isHidden = false
+            bottomView.isHidden = false
+            updateTopSeparator(with: topConfiguration)
+            updateBottomSeparator(with: bottomConfiguration)
+        }
     }
 
     /// Move separator upward in hierarchy
@@ -107,19 +124,6 @@ open class SeparatorCell: UITableViewCell {
 
     // MARK: - Private
 
-    private func configureInterface(with viewModel: SeparatorCellViewModel) {
-        topView.isHidden           = viewModel.separatorType.topIsHidden
-        bottomView.isHidden        = viewModel.separatorType.bottomIsHidden
-
-        topView.backgroundColor    = viewModel.topSeparatorConfiguration?.color
-        topSeparatorHeight         = viewModel.topSeparatorConfiguration?.height ?? Constants.defaultSeparatorHeight
-        topSeparatorInsets         = viewModel.topSeparatorConfiguration?.insets ?? .zero
-
-        bottomView.backgroundColor = viewModel.bottomSeparatorConfiguration?.color
-        bottomSeparatorHeight      = viewModel.bottomSeparatorConfiguration?.height ?? Constants.defaultSeparatorHeight
-        bottomSeparatorInsets      = viewModel.bottomSeparatorConfiguration?.insets ?? .zero
-    }
-
     private func configureLineViews() {
         topView = createSeparatorView()
         bottomView = createSeparatorView()
@@ -134,6 +138,18 @@ open class SeparatorCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
         return view
+    }
+
+    private func updateTopSeparator(with configuration: SeparatorConfiguration) {
+        topView.backgroundColor = configuration.color
+        topSeparatorHeight = configuration.height
+        topSeparatorInsets = configuration.insets ?? .zero
+    }
+
+    private func updateBottomSeparator(with configuration: SeparatorConfiguration) {
+        bottomView.backgroundColor = configuration.color
+        bottomSeparatorHeight      = configuration.height
+        bottomSeparatorInsets      = configuration.insets ?? .zero
     }
 
     private func createConstraints() {

@@ -37,3 +37,10 @@
 - **Change**: Rename `AnyBaseTableRow` class to `SeparatorRowBox`
 - **Change**: Move `anyRow` property from `EmptyCellRow` to `TableRow` extension and rename it to `separatorRowBox`.
 - **Change**: Move `configure(extreme: middle:)` method from `TableDirector` extension to `Array` extension and rename it to `configureSeparators(extreme: middle:)`
+
+## 0.5.15
+
+- **Add**: `AppearanceProtocol` which ensures that specific type can apply appearance to itself
+- **Add**: `with(appearance:)`,  `set(appearance:)`  methods to TableRow extension
+- **Add**: `Appearance` to `EmptyCell`
+- **Remove**: `SeparatorCellViewModel`.

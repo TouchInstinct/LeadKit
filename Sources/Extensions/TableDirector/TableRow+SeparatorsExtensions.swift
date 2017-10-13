@@ -20,26 +20,11 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import TableKit
 
-/// By default this class does not provide any separators
-open class SeparatorCellViewModel {
+private let configureSeparatorActionId = "TableRowConfigureSeparatorActionId"
 
-    internal var separatorType = CellSeparatorType.none
-
-    /// Configuration for topSeparator
-    /// - Important: Bottom dimension is ignored
-    internal var topSeparatorConfiguration: SeparatorConfiguration?
-
-    /// Configuration for topSeparator
-    /// - Important: Top dimension is ignored
-    internal var bottomSeparatorConfiguration: SeparatorConfiguration?
-
-    public init() {}
-
-}
-
-public extension SeparatorCellViewModel {
+public extension TableRow where CellType: SeparatorCell {
 
     func with(separatorType: CellSeparatorType) -> Self {
         set(separatorType: separatorType)
@@ -47,22 +32,23 @@ public extension SeparatorCellViewModel {
     }
 
     func set(separatorType: CellSeparatorType) {
-        self.separatorType = separatorType
+        removeAction(forActionId: configureSeparatorActionId)
 
-        switch separatorType {
-        case .top(let configuration):
-            topSeparatorConfiguration    = configuration
-            bottomSeparatorConfiguration = nil
-        case .bottom(let configuration):
-            topSeparatorConfiguration    = nil
-            bottomSeparatorConfiguration = configuration
-        case .full(let top, let bottom):
-            topSeparatorConfiguration    = top
-            bottomSeparatorConfiguration = bottom
-        case .none:
-            topSeparatorConfiguration    = nil
-            bottomSeparatorConfiguration = nil
+        let action = TableRowAction<CellType>(.configure) { options in
+            options.cell?.configureSeparator(with: separatorType)
         }
+
+        action.id = configureSeparatorActionId
+        on(action)
+    }
+
+}
+
+public extension TableRow where CellType: SeparatorCell {
+
+    /// TableRow typed as SeparatorRowBox
+    var separatorRowBox: SeparatorRowBox {
+        return SeparatorRowBox(row: self)
     }
 
 }

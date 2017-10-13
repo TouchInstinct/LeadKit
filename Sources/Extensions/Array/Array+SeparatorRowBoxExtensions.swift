@@ -41,11 +41,11 @@ public extension Array where Element == SeparatorRowBox {
 
         switch count {
         case 1:
-            first?.viewModel.set(separatorType: .full(extremeSeparatorConfiguration, extremeSeparatorConfiguration))
+            first?.set(separatorType: .full(extremeSeparatorConfiguration, extremeSeparatorConfiguration))
         default:
-            forEach { $0.viewModel.set(separatorType: .full(middleSeparatorConfiguration, middleSeparatorConfiguration))}
-            first?.viewModel.set(separatorType: .top(extremeSeparatorConfiguration))
-            last?.viewModel.set(separatorType: .bottom(extremeSeparatorConfiguration))
+            forEach { $0.set(separatorType: .full(middleSeparatorConfiguration, middleSeparatorConfiguration))}
+            first?.set(separatorType: .top(extremeSeparatorConfiguration))
+            last?.set(separatorType: .bottom(extremeSeparatorConfiguration))
         }
     }
 

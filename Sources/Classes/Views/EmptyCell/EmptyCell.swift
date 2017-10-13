@@ -25,14 +25,33 @@ import TableKit
 
 /// Empty cell class. Do not use it directly.
 /// - see: `EmptyCellRow`
-public final class EmptyCell: SeparatorCell, ConfigurableCell {
+public final class EmptyCell: SeparatorCell, AppearanceProtocol, ConfigurableCell {
+    public struct Appearance {
+        let color: UIColor
 
-    public func configure(with viewModel: EmptyCellViewModel) {
-        backgroundColor = .clear
-        contentView.backgroundColor = viewModel.color
-        selectionStyle = .none
-
-        configureSeparator(with: viewModel)
+        public init(color: UIColor = .clear) {
+            self.color = color
+        }
     }
 
+    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+        setup()
+    }
+
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    public func configure(appearance: Appearance) {
+        selectionStyle = .none
+        contentView.backgroundColor = appearance.color
+    }
+
+    public func configure(with _: Void) { }
+
+    private func setup() {
+        configure(appearance: Appearance())
+    }
 }
