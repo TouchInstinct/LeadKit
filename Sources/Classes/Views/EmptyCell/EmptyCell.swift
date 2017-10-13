@@ -45,15 +45,13 @@ public final class EmptyCell: SeparatorCell, AppearanceProtocol, ConfigurableCel
     }
 
     public func configure(appearance: Appearance) {
+        selectionStyle = .none
         contentView.backgroundColor = appearance.color
     }
 
     public func configure(with _: Void) { }
 
     private func setup() {
-        backgroundColor = .clear
-        selectionStyle = .none
-
         configure(appearance: Appearance())
     }
 }
