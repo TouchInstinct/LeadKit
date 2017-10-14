@@ -24,7 +24,7 @@ import TableKit
 
 private let updateAppearanceActionId = "TableRowUpdateAppearanceActionId"
 
-public extension TableRow where CellType: AppearanceProtocol {
+public extension TableRow where CellType: AppearanceConfigurable {
 
     func with(appearance: CellType.Appearance) -> Self {
         set(appearance: appearance)

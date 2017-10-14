@@ -34,7 +34,6 @@ public final class EmptyCellRow: TableRow<EmptyCell> {
     /// - parameter endEditingOnClick: Will cell end editing for neighbour currently active UIControl subclasses
     /// - returns: Fully configured EmptyCellRow
     public init(height: CGFloat,
-                color: UIColor = .clear,
                 endEditingOnClick: Bool = false) {
         rowHeight = height
 

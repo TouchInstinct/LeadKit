@@ -10,7 +10,7 @@
 		2D6A0E6105F4A9BF22BF4BB1 /* Pods_LeadKit_iOS_ExtensionsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C88ED8C9373F85C06697849 /* Pods_LeadKit_iOS_ExtensionsTests.framework */; };
 		2D96F18874B9519F5AD74003 /* Pods_LeadKit_LeadKit_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F8D0002B21A4F31981F1ED /* Pods_LeadKit_LeadKit_tvOS.framework */; };
 		3614FEACB9E8313C87F7C393 /* Pods_LeadKit_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB1CCAB1EAAACD3AC42C795 /* Pods_LeadKit_tvOSTests.framework */; };
-		40F118471F8FEF97004AADAF /* AppearanceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceProtocol.swift */; };
+		40F118471F8FEF97004AADAF /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
 		40F118491F8FF223004AADAF /* TableRow+AppearanceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118481F8FF223004AADAF /* TableRow+AppearanceExtension.swift */; };
 		67051ADB1EBC7C36008EADC0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */; };
 		67051ADC1EBC7C36008EADC0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */; };
@@ -466,7 +466,7 @@
 		2BD6FE790236CFF8D2CD505E /* Pods-LeadKit-LeadKit iOS Extensions.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit-LeadKit iOS Extensions.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit-LeadKit iOS Extensions/Pods-LeadKit-LeadKit iOS Extensions.release.xcconfig"; sourceTree = "<group>"; };
 		381DF859FC4E26D499123014 /* Pods-LeadKit iOS ExtensionsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit iOS ExtensionsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit iOS ExtensionsTests/Pods-LeadKit iOS ExtensionsTests.release.xcconfig"; sourceTree = "<group>"; };
 		3C88ED8C9373F85C06697849 /* Pods_LeadKit_iOS_ExtensionsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOS_ExtensionsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		40F118461F8FEF97004AADAF /* AppearanceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceProtocol.swift; sourceTree = "<group>"; };
+		40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceConfigurable.swift; sourceTree = "<group>"; };
 		40F118481F8FF223004AADAF /* TableRow+AppearanceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableRow+AppearanceExtension.swift"; sourceTree = "<group>"; };
 		4B8CD4D99A5B9CDB08308679 /* Pods-LeadKit-LeadKit iOS Extensions.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit-LeadKit iOS Extensions.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit-LeadKit iOS Extensions/Pods-LeadKit-LeadKit iOS Extensions.debug.xcconfig"; sourceTree = "<group>"; };
 		4DB1CCAB1EAAACD3AC42C795 /* Pods_LeadKit_tvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_tvOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1071,7 +1071,7 @@
 				671462321EB3396E00EAB194 /* ViewHeightProtocol.swift */,
 				671462331EB3396E00EAB194 /* ViewModelProtocol.swift */,
 				671462341EB3396E00EAB194 /* XibNameProtocol.swift */,
-				40F118461F8FEF97004AADAF /* AppearanceProtocol.swift */,
+				40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -2183,7 +2183,7 @@
 				671463741EB3396E00EAB194 /* BorderDrawingOperation.swift in Sources */,
 				6714633C1EB3396E00EAB194 /* LoadingIndicator.swift in Sources */,
 				67E6C2351EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
-				40F118471F8FEF97004AADAF /* AppearanceProtocol.swift in Sources */,
+				40F118471F8FEF97004AADAF /* AppearanceConfigurable.swift in Sources */,
 				671463181EB3396E00EAB194 /* UIWindow+Extensions.swift in Sources */,
 				671462541EB3396E00EAB194 /* App.swift in Sources */,
 				6714635C1EB3396E00EAB194 /* StoryboardProtocol.swift in Sources */,
