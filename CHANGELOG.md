@@ -44,3 +44,7 @@
 - **Add**: `with(appearance:)`,  `set(appearance:)`  methods to TableRow extension
 - **Add**: `Appearance` to `EmptyCell`
 - **Remove**: `SeparatorCellViewModel`.
+
+## 0.5.16
+
+- **Change**: Rename `AppearanceProtocol` to `AppearanceConfigurable`
