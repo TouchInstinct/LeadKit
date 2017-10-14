@@ -46,6 +46,7 @@ public final class EmptyCell: SeparatorCell, AppearanceConfigurable, Configurabl
 
     public func configure(appearance: Appearance) {
         selectionStyle = .none
+        backgroundColor = .clear
         contentView.backgroundColor = appearance.color
     }
 
