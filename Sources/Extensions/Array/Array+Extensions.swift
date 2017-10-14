@@ -64,4 +64,9 @@ public extension Array where Element: Equatable {
         return filter { !allValues.contains($0) }
     }
 
+    // Subscript for safe access to element by index
+    subscript(safe index: Int) -> Element? {
+        return index < count ? self[index] : nil
+    }
+
 }

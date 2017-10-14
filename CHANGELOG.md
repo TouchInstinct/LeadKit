@@ -48,3 +48,4 @@
 ## 0.5.16
 
 - **Change**: Rename `AppearanceProtocol` to `AppearanceConfigurable`
+- **Add**: `subscript(safe:)` subscript to `Array` extension for safe access to element by index
