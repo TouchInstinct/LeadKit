@@ -26,6 +26,7 @@ import TableKit
 /// - Simulates spacing with no-breaking constraints
 /// - Can end editing on click
 public final class EmptyCellRow: TableRow<EmptyCell> {
+
     private let rowHeight: CGFloat
 
     /// Provide height with color to create row
@@ -33,8 +34,7 @@ public final class EmptyCellRow: TableRow<EmptyCell> {
     /// - parameter color: Color of row
     /// - parameter endEditingOnClick: Will cell end editing for neighbour currently active UIControl subclasses
     /// - returns: Fully configured EmptyCellRow
-    public init(height: CGFloat,
-                endEditingOnClick: Bool = false) {
+    public init(height: CGFloat, endEditingOnClick: Bool = false) {
         rowHeight = height
 
         super.init(item: ())
