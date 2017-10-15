@@ -25,7 +25,7 @@ import TableKit
 
 /// Empty cell class. Do not use it directly.
 /// - see: `EmptyCellRow`
-public final class EmptyCell: SeparatorCell, AppearanceProtocol, ConfigurableCell {
+public final class EmptyCell: SeparatorCell, AppearanceConfigurable, ConfigurableCell {
     public struct Appearance {
         let color: UIColor
 
@@ -46,6 +46,7 @@ public final class EmptyCell: SeparatorCell, AppearanceProtocol, ConfigurableCel
 
     public func configure(appearance: Appearance) {
         selectionStyle = .none
+        backgroundColor = .clear
         contentView.backgroundColor = appearance.color
     }
 
