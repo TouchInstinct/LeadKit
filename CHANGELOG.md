@@ -49,3 +49,7 @@
 
 - **Change**: Rename `AppearanceProtocol` to `AppearanceConfigurable`
 - **Add**: `subscript(safe:)` subscript to `Array` extension for safe access to element by index
+
+## 0.5.17
+- **Fix**: EmptyCell reusing appearance fix
+- **Fix**: SeparatorCell reusing separators fix
