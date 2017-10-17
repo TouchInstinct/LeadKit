@@ -34,6 +34,16 @@ public final class EmptyCell: SeparatorCell, AppearanceConfigurable, Configurabl
         }
     }
 
+    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+        resetAppearance()
+    }
+
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     public func configure(appearance: Appearance) {
         selectionStyle = .none
         backgroundColor = .clear
@@ -44,6 +54,11 @@ public final class EmptyCell: SeparatorCell, AppearanceConfigurable, Configurabl
 
     public override func prepareForReuse() {
         super.prepareForReuse()
+
+        resetAppearance()
+    }
+
+    private func resetAppearance() {
         configure(appearance: Appearance())
     }
 

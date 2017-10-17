@@ -53,3 +53,6 @@
 ## 0.5.17
 - **Fix**: EmptyCell reusing appearance fix
 - **Fix**: SeparatorCell reusing separators fix
+
+## 0.5.18
+- **Fix**: EmptyCell first appearance setup fix
