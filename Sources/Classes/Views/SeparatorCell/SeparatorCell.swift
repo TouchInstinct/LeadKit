@@ -180,7 +180,7 @@ open class SeparatorCell: UITableViewCell {
         bottomViewBottomConstraint = bottomView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         bottomViewBottomConstraint.isActive = true
     }
-    
+
     open override func prepareForReuse() {
         super.prepareForReuse()
         configureSeparator(with: .none)

@@ -39,11 +39,12 @@ public final class EmptyCell: SeparatorCell, AppearanceConfigurable, Configurabl
         backgroundColor = .clear
         contentView.backgroundColor = appearance.color
     }
-    
+
     public func configure(with _: Void) { }
-    
+
     public override func prepareForReuse() {
         super.prepareForReuse()
         configure(appearance: Appearance())
     }
+
 }
