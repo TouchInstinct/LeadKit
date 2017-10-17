@@ -181,4 +181,9 @@ open class SeparatorCell: UITableViewCell {
         bottomViewBottomConstraint.isActive = true
     }
 
+    open override func prepareForReuse() {
+        super.prepareForReuse()
+        configureSeparator(with: .none)
+    }
+
 }
