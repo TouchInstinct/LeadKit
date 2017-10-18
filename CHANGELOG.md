@@ -8,6 +8,7 @@
 - **Remove**: String+Extensions
 - **Remove**: UICollectionView+CellRegistration
 - **Remove**: UIStoryboard+InstantiateViewController
+- **Remove**: `Array` extensions with `Set Algebra`
 
 ## 0.5.18
 - **Fix**: EmptyCell first appearance setup fix
