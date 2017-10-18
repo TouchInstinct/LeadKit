@@ -363,6 +363,10 @@
 		A658E54E1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54C1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift */; };
 		A658E5501F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54F1F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift */; };
 		A658E5511F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54F1F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift */; };
+		A676AE481F97D28A001F9214 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE471F97D28A001F9214 /* String+Extensions.swift */; };
+		A676AE491F97D28A001F9214 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE471F97D28A001F9214 /* String+Extensions.swift */; };
+		A676AE4A1F97D28A001F9214 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE471F97D28A001F9214 /* String+Extensions.swift */; };
+		A676AE4B1F97D28A001F9214 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE471F97D28A001F9214 /* String+Extensions.swift */; };
 		A6C9A4FA1F8BBCF2009311CC /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF3B371F8B956F00CDB971 /* EmptyCell.swift */; };
 		A6C9A5041F8BC78F009311CC /* CellSeparatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDEE1F8A6C57002CA74E /* CellSeparatorType.swift */; };
 		A6C9A5051F8BC78F009311CC /* SeparatorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDF01F8A6C80002CA74E /* SeparatorConfiguration.swift */; };
@@ -568,6 +572,7 @@
 		A66428A61F8A653600C6308D /* SeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
 		A66428A71F8A654600C6308D /* EmptyCellRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCellRow.swift; sourceTree = "<group>"; };
 		A66428A81F8A655600C6308D /* SeparatorRowBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorRowBox.swift; sourceTree = "<group>"; };
+		A676AE471F97D28A001F9214 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		A6AF3B371F8B956F00CDB971 /* EmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
 		A6D10EAA1F8A9278003E69DD /* Comparable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Extensions.swift"; sourceTree = "<group>"; };
 		A6E0DDEE1F8A6C57002CA74E /* CellSeparatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSeparatorType.swift; sourceTree = "<group>"; };
@@ -856,6 +861,7 @@
 		671461FA1EB3396E00EAB194 /* String */ = {
 			isa = PBXGroup;
 			children = (
+				A676AE471F97D28A001F9214 /* String+Extensions.swift */,
 				671461FC1EB3396E00EAB194 /* String+Localization.swift */,
 				A6F32C071F6EBDAA00AC08EE /* String+LocalizedComponent.swift */,
 				671461FD1EB3396E00EAB194 /* String+SizeCalculation.swift */,
@@ -2089,6 +2095,7 @@
 				671462C81EB3396E00EAB194 /* String+Localization.swift in Sources */,
 				671462B81EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */,
 				671463741EB3396E00EAB194 /* BorderDrawingOperation.swift in Sources */,
+				A676AE4B1F97D28A001F9214 /* String+Extensions.swift in Sources */,
 				6714633C1EB3396E00EAB194 /* LoadingIndicator.swift in Sources */,
 				67E6C2351EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				40F118471F8FEF97004AADAF /* AppearanceConfigurable.swift in Sources */,
@@ -2177,6 +2184,7 @@
 				671463721EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
 				6714636E1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
 				67CDEE401EB369BF00895905 /* ConfigurableController.swift in Sources */,
+				A676AE481F97D28A001F9214 /* String+Extensions.swift in Sources */,
 				671462A21EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
 				6714625E1EB3396E00EAB194 /* LogFormatter.swift in Sources */,
 				6714637E1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
@@ -2240,6 +2248,7 @@
 				671463271EB3396E00EAB194 /* Any+TypeName.swift in Sources */,
 				EFBE57D31EC35EF20040E00A /* Array+Extensions.swift in Sources */,
 				6714638B1EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
+				A676AE4A1F97D28A001F9214 /* String+Extensions.swift in Sources */,
 				671463831EB3396E00EAB194 /* PaddingDrawingOperation.swift in Sources */,
 				6714632B1EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
 				A6F32C0C1F6EBE5C00AC08EE /* String+LocalizedComponent.swift in Sources */,
@@ -2319,6 +2328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				671463491EB3396E00EAB194 /* ResettableType.swift in Sources */,
+				A676AE491F97D28A001F9214 /* String+Extensions.swift in Sources */,
 				671462E51EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
 				671462CD1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
 				6771DFDF1EE99F6F002DCDAE /* DateFormattingArguments.swift in Sources */,
