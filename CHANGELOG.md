@@ -12,6 +12,7 @@
 - **Remove**: `NetworkService` extension for loading images
 - **Remove**: `Observable` creation for `ImmutableMappable`
 - **Remove**: Drop `UIAlertController` extensions
+- **Remove**: `UIView` and `UsedDefaults` extensions, `EstimatedViewHeightProtocol`, `StaticEstimatedViewHeightProtocol`, `StoryboardIdentifierProtocol`
 
 ## 0.5.18
 - **Fix**: EmptyCell first appearance setup fix

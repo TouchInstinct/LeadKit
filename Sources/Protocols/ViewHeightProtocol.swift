@@ -35,5 +35,5 @@ public protocol ViewHeightProtocol {
      
      - returns: view height
      */
-    static func viewHeight(forViewModel viewModel: ViewModelType) -> CGFloat
+    static func viewHeight(for viewModel: ViewModelType) -> CGFloat
 }

@@ -20,13 +20,20 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import Foundation
 
-public extension UIDevice {
+/**
+ *  protocol which ensures that specific type can create view model and can apply new view state with view model
+ */
+public protocol AbstractViewModelProtocol {
+    associatedtype ViewModelType
 
-    /// Returns true if the current device is simulator
-    static var isSimulator: Bool {
-        return ProcessInfo.processInfo.environment["SIMULATOR_DEVICE_NAME"] != nil
-    }
-
+    /**
+     method which applies new view state with view model object
+     
+     - parameter viewModel: view model to apply new view state
+     
+     - returns: nothing
+     */
+    func set(viewModel: ViewModelType)
 }
