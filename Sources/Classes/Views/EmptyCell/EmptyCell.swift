@@ -20,25 +20,46 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import UIKit
+import TableKit
 
-/// Protocol that ensures that specific type can init new resetted instance from another instance.
-public protocol ResettableType {
+/// Empty cell class. Do not use it directly.
+/// - see: `EmptyCellRow`
+public final class EmptyCell: SeparatorCell, AppearanceConfigurable, ConfigurableCell {
+    public struct Appearance {
+        let color: UIColor
 
-    /// Initializer with other instance parameter.
-    ///
-    /// - Parameter other: Other instance of specific type.
-    init(resetFrom other: Self)
+        public init(color: UIColor = .clear) {
+            self.color = color
+        }
+    }
 
-}
+    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-public extension ResettableType {
+        resetAppearance()
+    }
 
-    /// Method that creates new resseted instance of self
-    ///
-    /// - Returns: resseted instance of self
-    func reset() -> Self {
-        return Self(resetFrom: self)
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    public func configure(appearance: Appearance) {
+        selectionStyle = .none
+        backgroundColor = .clear
+        contentView.backgroundColor = appearance.color
+    }
+
+    public func configure(with _: Void) { }
+
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+
+        resetAppearance()
+    }
+
+    private func resetAppearance() {
+        configure(appearance: Appearance())
     }
 
 }

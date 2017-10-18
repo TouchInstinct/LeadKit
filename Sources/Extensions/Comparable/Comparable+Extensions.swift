@@ -22,37 +22,13 @@
 
 import Foundation
 
-public extension Double {
+public extension Comparable {
 
-    /**
-     Type of rounding double value
-
-     - Normal: From 167.567 you will get 167.6
-     - Down:   From 167.567 you will get 167.5
-     */
-    enum RoundingType {
-        case normal
-        case down
-    }
-
-    /**
-     Rounding of double value
-
-     - parameter persicion: important number of digits after comma
-     - parameter roundType: rounding type
-
-     - returns: rounded value
-     */
-    func roundValue(withPersicion persicion: UInt,
-                    roundType: RoundingType = .normal) -> Double {
-        let divider = pow(10.0, Double(persicion))
-
-        switch roundType {
-        case .normal:
-            return (self * divider).rounded(.up) / divider
-        case .down:
-            return (self * divider).rounded(.down) / divider
-        }
+    /// Use this function to restrict comparable with lower and upper values
+    /// - parameter bounds: Lower and uppper bounds tuple
+    /// - returns: Current value if it fits range, otherwise lower if value is too small or upper if value is too big
+    func `in`(bounds: (lower: Self, upper: Self)) -> Self {
+        return min(max(bounds.lower, self), bounds.upper)
     }
 
 }

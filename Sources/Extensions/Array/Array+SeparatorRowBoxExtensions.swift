@@ -20,25 +20,33 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import TableKit
 
-/// Protocol that ensures that specific type can init new resetted instance from another instance.
-public protocol ResettableType {
+public extension Array where Element == SeparatorRowBox {
 
-    /// Initializer with other instance parameter.
-    ///
-    /// - Parameter other: Other instance of specific type.
-    init(resetFrom other: Self)
+    /// Create rows from SeparatorRowBox array
+    var rows: [Row] {
+        return map { $0.row }
+    }
 
-}
+    /// Configure separators from SeparatorRowBox array
+    /// - parameter extreme: Configuration that will be used for extreme values, for first or last row
+    /// - parameter middle: Configuration for intermediate rows
+    func configureSeparators(extreme extremeSeparatorConfiguration: SeparatorConfiguration,
+                             middle middleSeparatorConfiguration: SeparatorConfiguration) {
 
-public extension ResettableType {
+        if isEmpty {
+            return
+        }
 
-    /// Method that creates new resseted instance of self
-    ///
-    /// - Returns: resseted instance of self
-    func reset() -> Self {
-        return Self(resetFrom: self)
+        switch count {
+        case 1:
+            first?.set(separatorType: .full(extremeSeparatorConfiguration, extremeSeparatorConfiguration))
+        default:
+            forEach { $0.set(separatorType: .full(middleSeparatorConfiguration, middleSeparatorConfiguration))}
+            first?.set(separatorType: .top(extremeSeparatorConfiguration))
+            last?.set(separatorType: .bottom(extremeSeparatorConfiguration))
+        }
     }
 
 }

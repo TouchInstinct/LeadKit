@@ -63,7 +63,7 @@ public protocol SupportCompatible {
 
 public extension SupportCompatible {
     /// Support extensions.
-    public static var support: Support<Self>.Type {
+    static var support: Support<Self>.Type {
         get {
             return Support<Self>.self
         }
@@ -73,7 +73,7 @@ public extension SupportCompatible {
     }
 
     /// Support extensions.
-    public var support: Support<Self> {
+    var support: Support<Self> {
         get {
             return Support(self)
         }

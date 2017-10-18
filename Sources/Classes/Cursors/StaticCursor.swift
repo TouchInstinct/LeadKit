@@ -34,7 +34,7 @@ public class StaticCursor<Element>: ResettableCursorType {
         self.content = content
     }
 
-    public required init(initialFrom other: StaticCursor) {
+    public required init(resetFrom other: StaticCursor) {
         self.content = other.content
     }
 

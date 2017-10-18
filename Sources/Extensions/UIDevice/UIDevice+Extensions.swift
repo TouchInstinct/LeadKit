@@ -25,7 +25,7 @@ import UIKit
 public extension UIDevice {
 
     /// Returns true if the current device is simulator
-    public static var isSimulator: Bool {
+    static var isSimulator: Bool {
         return ProcessInfo.processInfo.environment["SIMULATOR_DEVICE_NAME"] != nil
     }
 

@@ -20,39 +20,9 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+// Protocol which ensures that specific type can apply appearance to itself
+public protocol AppearanceConfigurable {
+    associatedtype Appearance
 
-public extension Double {
-
-    /**
-     Type of rounding double value
-
-     - Normal: From 167.567 you will get 167.6
-     - Down:   From 167.567 you will get 167.5
-     */
-    enum RoundingType {
-        case normal
-        case down
-    }
-
-    /**
-     Rounding of double value
-
-     - parameter persicion: important number of digits after comma
-     - parameter roundType: rounding type
-
-     - returns: rounded value
-     */
-    func roundValue(withPersicion persicion: UInt,
-                    roundType: RoundingType = .normal) -> Double {
-        let divider = pow(10.0, Double(persicion))
-
-        switch roundType {
-        case .normal:
-            return (self * divider).rounded(.up) / divider
-        case .down:
-            return (self * divider).rounded(.down) / divider
-        }
-    }
-
+    func configure(appearance: Appearance)
 }

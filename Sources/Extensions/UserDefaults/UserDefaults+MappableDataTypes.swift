@@ -56,7 +56,7 @@ public extension UserDefaults {
     ///
     /// - returns: The object with specified type associated with the specified key,
     /// or throw exception if the key was not found.
-    public func object<T>(forKey key: String) throws -> T where T: ImmutableMappable {
+    func object<T>(forKey key: String) throws -> T where T: ImmutableMappable {
         let jsonObject = try storedValue(forKey: key) as JSONObject
 
         do {
@@ -74,7 +74,7 @@ public extension UserDefaults {
     ///
     /// - returns: The array of objects with specified type associated with the specified key,
     /// or throw exception if the key was not found.
-    public func objects<T>(forKey key: String) throws -> [T] where T: ImmutableMappable {
+    func objects<T>(forKey key: String) throws -> [T] where T: ImmutableMappable {
         let jsonArray = try storedValue(forKey: key) as [JSONObject]
 
         do {
@@ -92,7 +92,7 @@ public extension UserDefaults {
     ///
     /// - returns: The object with specified type associated with the specified key, or passed default value
     /// if there is no such value for specified key or if error occurred during mapping.
-    public func object<T>(forKey key: String, defaultValue: T) -> T where T: ImmutableMappable {
+    func object<T>(forKey key: String, defaultValue: T) -> T where T: ImmutableMappable {
         return (try? object(forKey: key)) ?? defaultValue
     }
 
@@ -104,7 +104,7 @@ public extension UserDefaults {
     ///
     /// - returns: The array of objects with specified type associated with the specified key, or passed default value
     /// if there is no such value for specified key or if error occurred during mapping.
-    public func objects<T>(forKey key: String, defaultValue: [T]) -> [T] where T: ImmutableMappable {
+    func objects<T>(forKey key: String, defaultValue: [T]) -> [T] where T: ImmutableMappable {
         return (try? objects(forKey: key)) ?? defaultValue
     }
 
@@ -113,7 +113,7 @@ public extension UserDefaults {
     /// - Parameters:
     ///   - model: The object with specified type to store or nil to remove it from the defaults database.
     ///   - key:   The key with which to associate with the value.
-    public func set<T>(model: T?, forKey key: String) where T: ImmutableMappable {
+    func set<T>(model: T?, forKey key: String) where T: ImmutableMappable {
         if let model = model {
             set(model.toJSON(), forKey: key)
         } else {
@@ -126,7 +126,7 @@ public extension UserDefaults {
     /// - Parameters:
     ///   - models: The array of object with specified type to store or nil to remove it from the defaults database.
     ///   - key:    The key with which to associate with the value.
-    public func set<T, S>(models: S?, forKey key: String) where T: ImmutableMappable, S: Sequence, S.Iterator.Element == T {
+    func set<T, S>(models: S?, forKey key: String) where T: ImmutableMappable, S: Sequence, S.Iterator.Element == T {
         if let models = models {
             set(models.map { $0.toJSON() }, forKey: key)
         } else {

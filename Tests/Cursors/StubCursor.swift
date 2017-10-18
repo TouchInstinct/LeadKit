@@ -50,7 +50,7 @@ class StubCursor: ResettableCursorType {
         self.requestDelay = requestDelay
     }
 
-    required init(initialFrom other: StubCursor) {
+    required init(resetFrom other: StubCursor) {
         self.maxItemsCount = other.maxItemsCount
         self.requestDelay = other.requestDelay
     }

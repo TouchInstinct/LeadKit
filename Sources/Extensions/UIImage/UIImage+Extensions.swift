@@ -32,7 +32,7 @@ public extension UIImage {
     ///   - size: The size of an new image.
     ///   - scale: The scale of image.
     /// - Returns: A new instanse of UIImage with given size and color.
-    public static func imageWith(color: UIColor, size: CGSize) -> UIImage {
+    static func imageWith(color: UIColor, size: CGSize) -> UIImage {
         let width = Int(ceil(size.width))
         let height = Int(ceil(size.height))
 
@@ -45,7 +45,7 @@ public extension UIImage {
     ///
     /// - Parameter fromView: The source view.
     /// - Returns: A new instance of UIImage or nil if something goes wrong.
-    public static func imageFrom(view: UIView) -> UIImage {
+    static func imageFrom(view: UIView) -> UIImage {
         let operation = CALayerDrawingOperation(layer: view.layer, size: view.bounds.size)
 
         return operation.imageFromNewRenderer(scale: UIScreen.main.scale)
@@ -55,7 +55,7 @@ public extension UIImage {
     ///
     /// - Parameter color: Color to fill template image.
     /// - Returns: A new UIImage rendered with given color.
-    public func renderTemplate(withColor color: UIColor) -> UIImage {
+    func renderTemplate(withColor color: UIColor) -> UIImage {
         guard let image = cgImage else {
             return self
         }
@@ -75,10 +75,10 @@ public extension UIImage {
     ///   - color: The color of the border.
     ///   - extendSize: Extend result image size and don't overlap source image by border.
     /// - Returns: A new image with rounded corners.
-    public func roundCorners(cornerRadius: CGFloat,
-                             borderWidth: CGFloat,
-                             color: UIColor,
-                             extendSize: Bool = false) -> UIImage {
+    func roundCorners(cornerRadius: CGFloat,
+                      borderWidth: CGFloat,
+                      color: UIColor,
+                      extendSize: Bool = false) -> UIImage {
 
         guard let image = cgImage else {
             return self
@@ -105,7 +105,7 @@ public extension UIImage {
     /// Creates a new circle image.
     ///
     /// - Returns: A new circled image.
-    public func roundCornersToCircle() -> UIImage {
+    func roundCornersToCircle() -> UIImage {
         guard let image = cgImage else {
             return self
         }
@@ -126,9 +126,9 @@ public extension UIImage {
     ///   - borderColor: The color of the border.
     ///   - extendSize: Extend result image size and don't overlap source image by border (default = false).
     /// - Returns: A new image with rounded corners or nil if something goes wrong.
-    public func roundCornersToCircle(borderWidth: CGFloat,
-                                     borderColor: UIColor,
-                                     extendSize: Bool = false) -> UIImage {
+    func roundCornersToCircle(borderWidth: CGFloat,
+                              borderColor: UIColor,
+                              extendSize: Bool = false) -> UIImage {
 
         guard let image = cgImage else {
             return self
@@ -162,9 +162,9 @@ public extension UIImage {
     ///   - cropToImageBounds: Should output image size match resized image size.
     /// Note: If passed true with ResizeMode.scaleAspectFit content mode it will give the original image.
     /// - Returns: A new image scaled to new size.
-    public func resize(newSize: CGSize,
-                       contentMode: ResizeMode = .scaleToFill,
-                       cropToImageBounds: Bool = false) -> UIImage {
+    func resize(newSize: CGSize,
+                contentMode: ResizeMode = .scaleToFill,
+                cropToImageBounds: Bool = false) -> UIImage {
 
         guard let image = cgImage else {
             return self
@@ -182,7 +182,7 @@ public extension UIImage {
     /// Adds an alpha channel if UIImage doesn't already have one.
     ///
     /// - Returns: A copy of the given image, adding an alpha channel if it doesn't already have one.
-    public func applyAlpha() -> UIImage {
+    func applyAlpha() -> UIImage {
         guard let image = cgImage, !image.hasAlpha else {
             return self
         }
@@ -198,7 +198,7 @@ public extension UIImage {
     ///
     /// - Parameter padding: The padding amount.
     /// - Returns: A new padded image or nil if something goes wrong.
-    public func applyPadding(_ padding: CGFloat) -> UIImage {
+    func applyPadding(_ padding: CGFloat) -> UIImage {
         guard let image = cgImage else {
             return self
         }

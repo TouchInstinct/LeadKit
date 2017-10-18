@@ -2,7 +2,7 @@
 //  Copyright (c) 2017 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
+//  of this software and associated documentation files (the Software), to deal
 //  in the Software without restriction, including without limitation the rights
 //  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 //  copies of the Software, and to permit persons to whom the Software is
@@ -11,7 +11,7 @@
 //  The above copyright notice and this permission notice shall be included in
 //  all copies or substantial portions of the Software.
 //
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 //  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 //  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 //  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -20,39 +20,26 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import TableKit
 
-public extension Double {
+private let updateAppearanceActionId = "TableRowUpdateAppearanceActionId"
 
-    /**
-     Type of rounding double value
+public extension TableRow where CellType: AppearanceConfigurable {
 
-     - Normal: From 167.567 you will get 167.6
-     - Down:   From 167.567 you will get 167.5
-     */
-    enum RoundingType {
-        case normal
-        case down
+    func with(appearance: CellType.Appearance) -> Self {
+        set(appearance: appearance)
+        return self
     }
 
-    /**
-     Rounding of double value
+    func set(appearance: CellType.Appearance) {
+        removeAction(forActionId: updateAppearanceActionId)
 
-     - parameter persicion: important number of digits after comma
-     - parameter roundType: rounding type
-
-     - returns: rounded value
-     */
-    func roundValue(withPersicion persicion: UInt,
-                    roundType: RoundingType = .normal) -> Double {
-        let divider = pow(10.0, Double(persicion))
-
-        switch roundType {
-        case .normal:
-            return (self * divider).rounded(.up) / divider
-        case .down:
-            return (self * divider).rounded(.down) / divider
+        let action = TableRowAction<CellType>(.configure) { options in
+            options.cell?.configure(appearance: appearance)
         }
+
+        action.id = updateAppearanceActionId
+        on(action)
     }
 
 }

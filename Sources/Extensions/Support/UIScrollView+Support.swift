@@ -24,7 +24,7 @@ import UIKit
 
 public extension Support where Base: UIScrollView {
 
-    public var refreshControl: UIRefreshControl? {
+    var refreshControl: UIRefreshControl? {
         if #available(iOS 10.0, *) {
             return base.refreshControl
         } else {
@@ -32,7 +32,7 @@ public extension Support where Base: UIScrollView {
         }
     }
 
-    public func setRefreshControl(_ newRefreshControl: UIRefreshControl?) {
+    func setRefreshControl(_ newRefreshControl: UIRefreshControl?) {
         if #available(iOS 10.0, *) {
             base.refreshControl = newRefreshControl
         } else {

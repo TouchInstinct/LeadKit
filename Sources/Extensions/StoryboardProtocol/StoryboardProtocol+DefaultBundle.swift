@@ -27,7 +27,7 @@ public extension StoryboardProtocol {
     /**
      - returns: default bundle for storyboard initialization
      */
-    public static var bundle: Bundle? {
+    static var bundle: Bundle? {
         return Bundle.main
     }
 

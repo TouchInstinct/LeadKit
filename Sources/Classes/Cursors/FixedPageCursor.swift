@@ -80,7 +80,7 @@ public class ResettableFixedPageCursor<Cursor: ResettableCursorType>: FixedPageC
         super.init(cursor: cursor, pageSize: pageSize)
     }
 
-    public required init(initialFrom other: ResettableFixedPageCursor) {
+    public required init(resetFrom other: ResettableFixedPageCursor) {
         super.init(cursor: other.cursor.reset(), pageSize: other.pageSize)
     }
 

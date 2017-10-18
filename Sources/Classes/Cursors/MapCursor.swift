@@ -95,7 +95,7 @@ public class ResettableMapCursor<Cursor: ResettableCursorType, T>: MapCursor<Cur
         super.init(cursor: cursor, transform: transform)
     }
 
-    public required init(initialFrom other: ResettableMapCursor) {
+    public required init(resetFrom other: ResettableMapCursor) {
         super.init(cursor: other.cursor.reset(), transform: other.transform)
     }
 

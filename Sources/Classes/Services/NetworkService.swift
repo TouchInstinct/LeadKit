@@ -30,6 +30,9 @@ import RxAlamofire
 /// Has an ability to automatically show / hide network activity indicator
 open class NetworkService {
 
+    /// Enable synchronization for setting variable from different thread
+    private let lock = NSRecursiveLock()
+
     private let requestCountVariable = Variable<Int>(0)
 
     public let sessionManager: Alamofire.SessionManager
@@ -68,11 +71,15 @@ open class NetworkService {
     }
 
     fileprivate func increaseRequestCounter() {
+        lock.lock()
         requestCountVariable.value += 1
+        lock.unlock()
     }
 
     fileprivate func decreaseRequestCounter() {
+        lock.lock()
         requestCountVariable.value -= 1
+        lock.unlock()
     }
 
 }
