@@ -1,50 +1,39 @@
 PODS:
   - Alamofire (4.5.1)
-  - CocoaLumberjack/Default (3.1.0)
-  - CocoaLumberjack/Swift (3.1.0):
+  - CocoaLumberjack/Default (3.3.0)
+  - CocoaLumberjack/Swift (3.3.0):
     - CocoaLumberjack/Default
   - ObjectMapper (3.0.0)
   - RxAlamofire (4.0.0):
     - RxAlamofire/Core (= 4.0.0)
   - RxAlamofire/Core (4.0.0):
-    - Alamofire (~> 4.5.1)
-    - RxSwift (~> 4.0.0-beta.0)
-  - RxCocoa (4.0.0-beta.0):
-    - RxSwift (~> 4.0.0-beta.0)
-  - RxSwift (4.0.0-beta.0)
+    - Alamofire (~> 4.5)
+    - RxSwift (~> 4.0)
+  - RxCocoa (4.0.0):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.0.0)
   - TableKit (2.5.0)
-  - UIScrollView-InfiniteScroll (1.0.1)
+  - UIScrollView-InfiniteScroll (1.0.2)
 
 DEPENDENCIES:
-  - CocoaLumberjack/Swift (~> 3.1.0)
+  - CocoaLumberjack/Swift (~> 3.3.0)
   - ObjectMapper (~> 3.0.0)
-  - RxAlamofire (from `https://github.com/RxSwiftCommunity/RxAlamofire.git`, commit `c2fdccf8058d1a61f5fbb540054c21372de1151d`, branch `master`)
-  - RxCocoa (= 4.0.0-beta.0)
-  - RxSwift (= 4.0.0-beta.0)
+  - RxAlamofire (= 4.0.0)
+  - RxCocoa (= 4.0.0)
+  - RxSwift (= 4.0.0)
   - TableKit (~> 2.5.0)
   - UIScrollView-InfiniteScroll (~> 1.0.0)
 
-EXTERNAL SOURCES:
-  RxAlamofire:
-    :branch: master
-    :commit: c2fdccf8058d1a61f5fbb540054c21372de1151d
-    :git: https://github.com/RxSwiftCommunity/RxAlamofire.git
-
-CHECKOUT OPTIONS:
-  RxAlamofire:
-    :commit: c2fdccf8058d1a61f5fbb540054c21372de1151d
-    :git: https://github.com/RxSwiftCommunity/RxAlamofire.git
-
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  CocoaLumberjack: 8311463ddf9ee86a06ef92a071dd656c89244500
+  CocoaLumberjack: 3c8c74683302f9012bb168e1c4b7ae3c0b558431
   ObjectMapper: 92230db59bf8f341a5c3a3cf0b9fbdde3cf0d87f
-  RxAlamofire: c50217ed8ebd04888e2ab4b995d0eaeb178895fd
-  RxCocoa: 8d809675f4e89c5c4c5a6900bbd11fe632ad5d86
-  RxSwift: e0899fae37065c16db976cc5e3c957e4e388869c
+  RxAlamofire: 6ea579ac53bf14cb4bc7049a3866e5a769989b1d
+  RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
+  RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
   TableKit: 42d4dff2944f273cdeec2ef6352064eb6a9a355b
-  UIScrollView-InfiniteScroll: a90df4ba4a7ca1926128ade34a850ddbdf74c564
+  UIScrollView-InfiniteScroll: c132d6d5851daff229ab4a1060ccf70a05a051c9
 
-PODFILE CHECKSUM: 7dc5da62d5fcaacd2ad35126235ca1fbf9c0aab8
+PODFILE CHECKSUM: ef8520adc4869bbbf0cf4cf70ab5757b0c95be1f
 
 COCOAPODS: 1.3.1
