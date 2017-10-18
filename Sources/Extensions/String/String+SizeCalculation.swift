@@ -65,7 +65,7 @@ public extension String {
 
      - returns: string size calculation result
      */
-    func size(withAttributes attributes: [String: AnyObject]?,
+    func size(withAttributes attributes: [NSAttributedStringKey: AnyObject]?,
               maxWidth: CGFloat = CGFloat.greatestFiniteMagnitude,
               maxHeight: CGFloat = CGFloat.greatestFiniteMagnitude) -> StringSizeCalculationResult {
 
@@ -74,7 +74,7 @@ public extension String {
                                              attributes: attributes,
                                              context: nil).size
 
-        let fontLineHeight = (attributes?[NSFontAttributeName] as? UIFont)?.lineHeight
+        let fontLineHeight = (attributes?[NSAttributedStringKey.font] as? UIFont)?.lineHeight
 
         return StringSizeCalculationResult(size: size, fontLineHeight: fontLineHeight)
     }

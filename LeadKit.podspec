@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.5.18"
+  s.version         = "0.6.0"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -84,13 +84,13 @@ Pod::Spec.new do |s|
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
     ]
 
-    ss.dependency "CocoaLumberjack/Swift", '~> 3.1.0'
-    ss.dependency "RxSwift", '3.4.0'
-    ss.dependency "RxCocoa", '3.4.0'
-    ss.dependency "RxAlamofire", '3.0.2'
-    ss.dependency "ObjectMapper", '~> 2.2'
+    ss.dependency "CocoaLumberjack/Swift", '~> 3.3.0'
+    ss.dependency "RxSwift", '4.0.0'
+    ss.dependency "RxCocoa", '4.0.0'
+    ss.dependency "RxAlamofire", '4.0.0'
+    ss.dependency "ObjectMapper", '~> 3.0.0'
 
-    ss.ios.dependency "TableKit", '~> 2.3.1'
+    ss.ios.dependency "TableKit", '~> 2.5.0'
     ss.ios.dependency "UIScrollView-InfiniteScroll", '~> 1.0.0'
   end
 
@@ -110,11 +110,11 @@ Pod::Spec.new do |s|
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
     ]
 
-    ss.dependency "CocoaLumberjack/Swift", '~> 3.1.0'
-    ss.dependency "RxSwift", '3.4.0'
-    ss.dependency "RxCocoa", '3.4.0'
-    ss.dependency "RxAlamofire", '3.0.2'
-    ss.dependency "ObjectMapper", '~> 2.2'
+    ss.dependency "CocoaLumberjack/Swift", '~> 3.3.0'
+    ss.dependency "RxSwift", '4.0.0'
+    ss.dependency "RxCocoa", '4.0.0'
+    ss.dependency "RxAlamofire", '4.0.0'
+    ss.dependency "ObjectMapper", '~> 3.0.0'
   end
 
   s.default_subspec = 'Core'

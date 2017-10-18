@@ -100,7 +100,7 @@ public final class PaginationViewModel<C: ResettableCursorType> {
         case .retry:
             reload(isRetry: true)
         case .next:
-            if case .exhausted(_) = internalState.value {
+            if case .exhausted = internalState.value {
                 fatalError("You shouldn't call load(.next) after got .exhausted state!")
             }
 

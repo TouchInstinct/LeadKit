@@ -1,9 +1,9 @@
 abstract_target 'LeadKit' do
-  pod "CocoaLumberjack/Swift", '~> 3.1.0'
-  pod "RxSwift", '3.4.0'
-  pod "RxCocoa", '3.4.0'
-  pod "RxAlamofire", '3.0.2'
-  pod "ObjectMapper", '~> 2.2'
+  pod "CocoaLumberjack/Swift", '~> 3.3.0'
+  pod "RxSwift", '4.0.0'
+  pod "RxCocoa", '4.0.0'
+  pod "RxAlamofire", '4.0.0'
+  pod "ObjectMapper", '~> 3.0.0'
 
   inhibit_all_warnings!
 
@@ -12,7 +12,7 @@ abstract_target 'LeadKit' do
 
     use_frameworks!
 
-    pod "TableKit", '~> 2.3.1'
+    pod "TableKit", '~> 2.5.0'
     pod "UIScrollView-InfiniteScroll", '~> 1.0.0'
 
     target 'LeadKit iOSTests' do

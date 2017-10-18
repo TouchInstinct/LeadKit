@@ -59,7 +59,7 @@ public extension Sequence {
                     .map { (idx: $0.idx, results: try array[$0.range].map(transform)) }
             }
             .toArray()
-            .map { $0.sorted { $0.0.idx < $0.1.idx }.flatMap { $0.results } }
+            .map { $0.sorted { $0.idx < $1.idx }.flatMap { $0.results } }
     }
 
 }
