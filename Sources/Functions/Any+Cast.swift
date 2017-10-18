@@ -22,10 +22,15 @@
 
 import Foundation
 
-/// Function which returns string representation of class type
+/// Function which attempts to cast given value to specific type
 ///
-/// - Parameter type: an class type
-/// - Returns: string representation of class type
-public func typeName<T>(of type: T.Type) -> String {
-    return String(describing: type)
+/// - Parameter value: value to cast
+/// - Returns: value casted to specific type
+/// - Throws: LeadKitError.failedToCastValue cast fails
+public func cast<T>(_ value: Any?) throws -> T {
+    guard let val = value as? T else {
+        throw LeadKitError.failedToCastValue(expectedType: T.self, givenType: type(of: value))
+    }
+
+    return val
 }

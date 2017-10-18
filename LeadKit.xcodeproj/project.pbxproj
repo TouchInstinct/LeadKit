@@ -330,6 +330,14 @@
 		A676AE491F97D28A001F9214 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE471F97D28A001F9214 /* String+Extensions.swift */; };
 		A676AE4A1F97D28A001F9214 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE471F97D28A001F9214 /* String+Extensions.swift */; };
 		A676AE4B1F97D28A001F9214 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE471F97D28A001F9214 /* String+Extensions.swift */; };
+		A676AE4D1F9810C1001F9214 /* Any+Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE4C1F9810C1001F9214 /* Any+Cast.swift */; };
+		A676AE4E1F9810C1001F9214 /* Any+Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE4C1F9810C1001F9214 /* Any+Cast.swift */; };
+		A676AE4F1F9810C1001F9214 /* Any+Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE4C1F9810C1001F9214 /* Any+Cast.swift */; };
+		A676AE501F9810C1001F9214 /* Any+Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE4C1F9810C1001F9214 /* Any+Cast.swift */; };
+		A676AE551F98112E001F9214 /* ObservableMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE541F981121001F9214 /* ObservableMappable.swift */; };
+		A676AE561F98112F001F9214 /* ObservableMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE541F981121001F9214 /* ObservableMappable.swift */; };
+		A676AE571F981130001F9214 /* ObservableMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE541F981121001F9214 /* ObservableMappable.swift */; };
+		A676AE581F981131001F9214 /* ObservableMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE541F981121001F9214 /* ObservableMappable.swift */; };
 		A6C9A4FA1F8BBCF2009311CC /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF3B371F8B956F00CDB971 /* EmptyCell.swift */; };
 		A6C9A5041F8BC78F009311CC /* CellSeparatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDEE1F8A6C57002CA74E /* CellSeparatorType.swift */; };
 		A6C9A5051F8BC78F009311CC /* SeparatorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDF01F8A6C80002CA74E /* SeparatorConfiguration.swift */; };
@@ -518,6 +526,8 @@
 		A66428A71F8A654600C6308D /* EmptyCellRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCellRow.swift; sourceTree = "<group>"; };
 		A66428A81F8A655600C6308D /* SeparatorRowBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorRowBox.swift; sourceTree = "<group>"; };
 		A676AE471F97D28A001F9214 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		A676AE4C1F9810C1001F9214 /* Any+Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Any+Cast.swift"; sourceTree = "<group>"; };
+		A676AE541F981121001F9214 /* ObservableMappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableMappable.swift; sourceTree = "<group>"; };
 		A6AF3B371F8B956F00CDB971 /* EmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
 		A6D10EAA1F8A9278003E69DD /* Comparable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Extensions.swift"; sourceTree = "<group>"; };
 		A6E0DDEE1F8A6C57002CA74E /* CellSeparatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSeparatorType.swift; sourceTree = "<group>"; };
@@ -877,6 +887,7 @@
 		6714621F1EB3396E00EAB194 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
+				A676AE4C1F9810C1001F9214 /* Any+Cast.swift */,
 				671462211EB3396E00EAB194 /* Any+TypeName.swift */,
 			);
 			path = Functions;
@@ -885,21 +896,22 @@
 		671462221EB3396E00EAB194 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				671462331EB3396E00EAB194 /* AbstractViewModelProtocol.swift */,
 				671463A11EB33FF600EAB194 /* Animatable.swift */,
+				40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */,
 				671462231EB3396E00EAB194 /* BaseViewModel.swift */,
 				671462241EB3396E00EAB194 /* ConfigurableController.swift */,
 				671462251EB3396E00EAB194 /* CursorType.swift */,
 				671462261EB3396E00EAB194 /* DrawingOperation.swift */,
 				671462281EB3396E00EAB194 /* LoadingIndicator.swift */,
 				671462291EB3396E00EAB194 /* ModuleConfigurator.swift */,
+				A676AE541F981121001F9214 /* ObservableMappable.swift */,
 				6714622B1EB3396E00EAB194 /* ResettableType.swift */,
 				6714622C1EB3396E00EAB194 /* ReuseIdentifierProtocol.swift */,
 				6714622E1EB3396E00EAB194 /* StaticViewHeightProtocol.swift */,
 				671462311EB3396E00EAB194 /* SupportProtocol.swift */,
 				671462321EB3396E00EAB194 /* ViewHeightProtocol.swift */,
-				671462331EB3396E00EAB194 /* AbstractViewModelProtocol.swift */,
 				671462341EB3396E00EAB194 /* XibNameProtocol.swift */,
-				40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1951,11 +1963,13 @@
 				A6E0DDDF1F8A696F002CA74E /* SeparatorCell.swift in Sources */,
 				671462AC1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
 				671463001EB3396E00EAB194 /* UIView+LoadFromNib.swift in Sources */,
+				A676AE501F9810C1001F9214 /* Any+Cast.swift in Sources */,
 				6714627C1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
 				671462D41EB3396E00EAB194 /* TableDirector+Extensions.swift in Sources */,
 				671462581EB3396E00EAB194 /* Log.swift in Sources */,
 				671462B41EB3396E00EAB194 /* PaginationTableViewWrapperDelegate+DefaultImplementation.swift in Sources */,
 				671462781EB3396E00EAB194 /* ResizeMode.swift in Sources */,
+				A676AE551F98112E001F9214 /* ObservableMappable.swift in Sources */,
 				A6E0DDE11F8A696F002CA74E /* SeparatorRowBox.swift in Sources */,
 				A6E0DDDE1F8A696F002CA74E /* EmptyCellRow.swift in Sources */,
 				671463041EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
@@ -2033,6 +2047,7 @@
 				6714634A1EB3396E00EAB194 /* ResettableType.swift in Sources */,
 				671462E61EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
 				671462CE1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
+				A676AE4D1F9810C1001F9214 /* Any+Cast.swift in Sources */,
 				EFBE57D21EC35EF20040E00A /* Array+Extensions.swift in Sources */,
 				671462821EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
 				67E6C2371EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
@@ -2051,6 +2066,7 @@
 				6714629A1EB3396E00EAB194 /* CGSize+Resize.swift in Sources */,
 				671463321EB3396E00EAB194 /* CursorType.swift in Sources */,
 				6714624E1EB3396E00EAB194 /* MapCursor.swift in Sources */,
+				A676AE571F981130001F9214 /* ObservableMappable.swift in Sources */,
 				671463261EB3396E00EAB194 /* Any+TypeName.swift in Sources */,
 				6714638A1EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
 				671463821EB3396E00EAB194 /* PaddingDrawingOperation.swift in Sources */,
@@ -2125,6 +2141,7 @@
 				6714632B1EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
 				A6F32C0C1F6EBE5C00AC08EE /* String+LocalizedComponent.swift in Sources */,
 				671462AF1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
+				A676AE4F1F9810C1001F9214 /* Any+Cast.swift in Sources */,
 				671463031EB3396E00EAB194 /* UIView+LoadFromNib.swift in Sources */,
 				6714627F1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
 				6771DFDB1EE99EBA002DCDAE /* DateFormattingService.swift in Sources */,
@@ -2133,6 +2150,7 @@
 				671463071EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
 				6771DFED1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
 				671463A91EB340C000EAB194 /* UIViewController+ConfigurableController.swift in Sources */,
+				A676AE581F981131001F9214 /* ObservableMappable.swift in Sources */,
 				671463731EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
 				671462EF1EB3396E00EAB194 /* UIImage+Extensions.swift in Sources */,
 				6714636F1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
@@ -2248,6 +2266,7 @@
 				671462891EB3396E00EAB194 /* CGFloat+Pixels.swift in Sources */,
 				674AF55D1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */,
 				6771DFD91EE99EBA002DCDAE /* DateFormattingService.swift in Sources */,
+				A676AE4E1F9810C1001F9214 /* Any+Cast.swift in Sources */,
 				671462951EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
 				671463651EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
 				A6C9A5101F8BC79D009311CC /* Comparable+Extensions.swift in Sources */,
@@ -2262,6 +2281,7 @@
 				67A1FF901EBCA09B00D6C89F /* UIImage+Spinner.swift in Sources */,
 				671463791EB3396E00EAB194 /* CALayerDrawingOperation.swift in Sources */,
 				6714632D1EB3396E00EAB194 /* ConfigurableController.swift in Sources */,
+				A676AE561F98112F001F9214 /* ObservableMappable.swift in Sources */,
 				6714628D1EB3396E00EAB194 /* CGImage+Alpha.swift in Sources */,
 				671462751EB3396E00EAB194 /* LeadKitError.swift in Sources */,
 				EFBE57D11EC35EF20040E00A /* Array+Extensions.swift in Sources */,

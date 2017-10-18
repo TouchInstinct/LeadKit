@@ -25,7 +25,7 @@ import UIKit
 extension UIView: XibNameProtocol {
 
     open class var xibName: String {
-        return className(of: self)
+        return typeName(of: self)
     }
 
 }

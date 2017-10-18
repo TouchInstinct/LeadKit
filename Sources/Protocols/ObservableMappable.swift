@@ -20,12 +20,14 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import ObjectMapper
+import RxSwift
 
-/// Function which returns string representation of class type
-///
-/// - Parameter type: an class type
-/// - Returns: string representation of class type
-public func typeName<T>(of type: T.Type) -> String {
-    return String(describing: type)
+/// Protocol for concurrent model mapping
+public protocol ObservableMappable {
+
+    associatedtype ModelType
+
+    static func createFrom(map: Map) -> Observable<ModelType>
+
 }
