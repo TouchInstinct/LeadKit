@@ -351,9 +351,6 @@
 		67A1FF951EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */; };
 		67A1FF971EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */; };
 		67CDEE401EB369BF00895905 /* ConfigurableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462241EB3396E00EAB194 /* ConfigurableController.swift */; };
-		67CDEE421EB3AD1C00895905 /* NetworkService+RxLoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CDEE411EB3AD1C00895905 /* NetworkService+RxLoadImage.swift */; };
-		67CDEE431EB3AD1C00895905 /* NetworkService+RxLoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CDEE411EB3AD1C00895905 /* NetworkService+RxLoadImage.swift */; };
-		67CDEE441EB3AD1C00895905 /* NetworkService+RxLoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CDEE411EB3AD1C00895905 /* NetworkService+RxLoadImage.swift */; };
 		67E6C2351EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
 		67E6C2361EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
 		67E6C2371EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
@@ -559,7 +556,6 @@
 		67952DDE1EB3285A00B3BA1A /* Info-iOS-Extensions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS-Extensions.plist"; sourceTree = "<group>"; };
 		67A1FF8E1EBCA09B00D6C89F /* UIImage+Spinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Spinner.swift"; sourceTree = "<group>"; };
 		67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CABasicAnimation+Rotation.swift"; sourceTree = "<group>"; };
-		67CDEE411EB3AD1C00895905 /* NetworkService+RxLoadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkService+RxLoadImage.swift"; sourceTree = "<group>"; };
 		67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleLoadCursor.swift; sourceTree = "<group>"; };
 		78405D3B3D3C3E17456877FF /* Pods_LeadKit_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Single+DeferredJust.swift"; sourceTree = "<group>"; };
@@ -1043,7 +1039,6 @@
 			isa = PBXGroup;
 			children = (
 				6714639D1EB33AEB00EAB194 /* NetworkService+ActivityIndicator.swift */,
-				67CDEE411EB3AD1C00895905 /* NetworkService+RxLoadImage.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -2080,7 +2075,6 @@
 				6714626C1EB3396E00EAB194 /* XibView.swift in Sources */,
 				6714637C1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				6714631C1EB3396E00EAB194 /* UserDefaults+MappableDataTypes.swift in Sources */,
-				67CDEE421EB3AD1C00895905 /* NetworkService+RxLoadImage.swift in Sources */,
 				671463341EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
 				671462701EB3396E00EAB194 /* CursorError.swift in Sources */,
 				671463981EB3396E00EAB194 /* AnyLoadingIndicator.swift in Sources */,
@@ -2225,7 +2219,6 @@
 				671462AB1EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift in Sources */,
 				671463631EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
 				671462871EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
-				67CDEE441EB3AD1C00895905 /* NetworkService+RxLoadImage.swift in Sources */,
 				671463231EB3396E00EAB194 /* Any+Cast.swift in Sources */,
 				6714634F1EB3396E00EAB194 /* ReuseIdentifierProtocol.swift in Sources */,
 				671462F31EB3396E00EAB194 /* UIImage+SupportExtensions.swift in Sources */,
@@ -2408,7 +2401,6 @@
 				6714628D1EB3396E00EAB194 /* CGImage+Alpha.swift in Sources */,
 				671462751EB3396E00EAB194 /* LeadKitError.swift in Sources */,
 				EFBE57D11EC35EF20040E00A /* Array+Extensions.swift in Sources */,
-				67CDEE431EB3AD1C00895905 /* NetworkService+RxLoadImage.swift in Sources */,
 				671462D91EB3396E00EAB194 /* TimeInterval+DateComponents.swift in Sources */,
 				6714638D1EB3396E00EAB194 /* SolidFillDrawingOperation.swift in Sources */,
 				671463A31EB33FF600EAB194 /* Animatable.swift in Sources */,
