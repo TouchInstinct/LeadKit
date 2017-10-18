@@ -1,7 +1,13 @@
 # Changelog
 
 ## 0.6.0
-- **New**: Swift 4 support & dependencies update
+- **New**: Swift 4 support & dependencies update.
+- **Remove**: Mutex
+- **Remove**: IndexPath+ImmutableIndexPath
+- **Remove**: StoryboardProtocol, StoryboardProtocol+Extensions, StoryboardProtocol+DefaultBundle
+- **Remove**: String+Extensions
+- **Remove**: UICollectionView+CellRegistration
+- **Remove**: UIStoryboard+InstantiateViewController
 
 ## 0.5.18
 - **Fix**: EmptyCell first appearance setup fix

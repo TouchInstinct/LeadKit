@@ -84,7 +84,7 @@ class MappableUserDefaultsTests: XCTestCase {
             }, onError: { error in
                 XCTFail(error.localizedDescription)
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
 
     func testRxPostsSave() {
@@ -97,7 +97,7 @@ class MappableUserDefaultsTests: XCTestCase {
             }, onError: { error in
                 XCTFail(error.localizedDescription)
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
 
 }

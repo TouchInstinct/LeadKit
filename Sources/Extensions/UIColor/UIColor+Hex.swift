@@ -91,7 +91,7 @@ public extension UIColor {
         let hexStr: String
 
         if hexString.hasPrefix("#") {
-            hexStr = hexString.substring(from: hexString.characters.index(hexString.startIndex, offsetBy: 1))
+            hexStr = String(hexString[hexString.index(hexString.startIndex, offsetBy: 1)...])
         } else {
             hexStr = hexString
         }

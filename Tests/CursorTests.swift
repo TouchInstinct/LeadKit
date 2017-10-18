@@ -45,7 +45,7 @@ class CursorTests: XCTestCase {
             .subscribe(onSuccess: { _ in
                 cursorExpectation.fulfill()
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         waitForExpectations(timeout: 10, handler: nil)
     }
@@ -62,7 +62,7 @@ class CursorTests: XCTestCase {
 
                 cursorExpectation.fulfill()
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         waitForExpectations(timeout: 10, handler: nil)
     }
@@ -80,7 +80,7 @@ class CursorTests: XCTestCase {
 
                 cursorExpectation.fulfill()
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         waitForExpectations(timeout: 10, handler: nil)
     }
@@ -97,7 +97,7 @@ class CursorTests: XCTestCase {
         }, onError: { error in
             XCTFail(error.localizedDescription)
         })
-        .addDisposableTo(disposeBag)
+        .disposed(by: disposeBag)
 
         waitForExpectations(timeout: 10, handler: nil)
     }
