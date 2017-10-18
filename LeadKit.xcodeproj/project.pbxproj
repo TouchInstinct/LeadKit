@@ -102,10 +102,6 @@
 		671462A11EB3396E00EAB194 /* Double+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461EB1EB3396E00EAB194 /* Double+Rounding.swift */; };
 		671462A21EB3396E00EAB194 /* Double+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461EB1EB3396E00EAB194 /* Double+Rounding.swift */; };
 		671462A31EB3396E00EAB194 /* Double+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461EB1EB3396E00EAB194 /* Double+Rounding.swift */; };
-		671462A81EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461EF1EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift */; };
-		671462A91EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461EF1EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift */; };
-		671462AA1EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461EF1EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift */; };
-		671462AB1EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461EF1EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift */; };
 		671462AC1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461F11EB3396E00EAB194 /* Observable+DeferredJust.swift */; };
 		671462AD1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461F11EB3396E00EAB194 /* Observable+DeferredJust.swift */; };
 		671462AE1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461F11EB3396E00EAB194 /* Observable+DeferredJust.swift */; };
@@ -470,7 +466,6 @@
 		671461E71EB3396E00EAB194 /* CGSize+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+Resize.swift"; sourceTree = "<group>"; };
 		671461E91EB3396E00EAB194 /* CursorType+Slice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CursorType+Slice.swift"; sourceTree = "<group>"; };
 		671461EB1EB3396E00EAB194 /* Double+Rounding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Rounding.swift"; sourceTree = "<group>"; };
-		671461EF1EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImmutableMappable+ObservableMappable.swift"; sourceTree = "<group>"; };
 		671461F11EB3396E00EAB194 /* Observable+DeferredJust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+DeferredJust.swift"; sourceTree = "<group>"; };
 		671461F41EB3396E00EAB194 /* PaginationTableViewWrapperDelegate+DefaultImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PaginationTableViewWrapperDelegate+DefaultImplementation.swift"; sourceTree = "<group>"; };
 		671461F61EB3396E00EAB194 /* Sequence+ConcurrentMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+ConcurrentMap.swift"; sourceTree = "<group>"; };
@@ -741,7 +736,6 @@
 				6771DFE81EEA7C8F002DCDAE /* DateFormattingService */,
 				671461EA1EB3396E00EAB194 /* Double */,
 				6714639C1EB33AC200EAB194 /* NetworkService */,
-				671461EE1EB3396E00EAB194 /* ObjectMapper */,
 				671461F01EB3396E00EAB194 /* Observable */,
 				671461F31EB3396E00EAB194 /* PaginationTableViewWrapperDelegate */,
 				671461F51EB3396E00EAB194 /* Sequence */,
@@ -820,14 +814,6 @@
 				671461EB1EB3396E00EAB194 /* Double+Rounding.swift */,
 			);
 			path = Double;
-			sourceTree = "<group>";
-		};
-		671461EE1EB3396E00EAB194 /* ObjectMapper */ = {
-			isa = PBXGroup;
-			children = (
-				671461EF1EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift */,
-			);
-			path = ObjectMapper;
 			sourceTree = "<group>";
 		};
 		671461F01EB3396E00EAB194 /* Observable */ = {
@@ -2011,7 +1997,6 @@
 				671462CC1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
 				671462801EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
 				671463541EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
-				671462A81EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift in Sources */,
 				671463601EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
 				671462841EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
 				671463201EB3396E00EAB194 /* Any+Cast.swift in Sources */,
@@ -2146,7 +2131,6 @@
 				67E6C2371EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				671463561EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
 				6771DFE01EE99F6F002DCDAE /* DateFormattingArguments.swift in Sources */,
-				671462AA1EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift in Sources */,
 				671463621EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
 				6771DFEC1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
 				671462861EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
@@ -2216,7 +2200,6 @@
 				671462CF1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
 				671462831EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
 				671463571EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
-				671462AB1EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift in Sources */,
 				671463631EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
 				671462871EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
 				671463231EB3396E00EAB194 /* Any+Cast.swift in Sources */,
@@ -2330,7 +2313,6 @@
 				671462811EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
 				67E6C2361EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				671463551EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
-				671462A91EB3396E00EAB194 /* ImmutableMappable+ObservableMappable.swift in Sources */,
 				671463611EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
 				671462851EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
 				671463211EB3396E00EAB194 /* Any+Cast.swift in Sources */,

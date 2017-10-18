@@ -10,6 +10,7 @@
 - **Remove**: UIStoryboard+InstantiateViewController
 - **Remove**: `Array` extensions with `Set Algebra`
 - **Remove**: `NetworkService` extension for loading images
+- **Remove**: `Observable` creation for `ImmutableMappable`
 
 ## 0.5.18
 - **Fix**: EmptyCell first appearance setup fix
