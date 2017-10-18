@@ -59,10 +59,10 @@
 		671462751EB3396E00EAB194 /* LeadKitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D81EB3396E00EAB194 /* LeadKitError.swift */; };
 		671462761EB3396E00EAB194 /* LeadKitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D81EB3396E00EAB194 /* LeadKitError.swift */; };
 		671462771EB3396E00EAB194 /* LeadKitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D81EB3396E00EAB194 /* LeadKitError.swift */; };
-		671462781EB3396E00EAB194 /* ResizeContentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D91EB3396E00EAB194 /* ResizeContentMode.swift */; };
-		671462791EB3396E00EAB194 /* ResizeContentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D91EB3396E00EAB194 /* ResizeContentMode.swift */; };
-		6714627A1EB3396E00EAB194 /* ResizeContentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D91EB3396E00EAB194 /* ResizeContentMode.swift */; };
-		6714627B1EB3396E00EAB194 /* ResizeContentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D91EB3396E00EAB194 /* ResizeContentMode.swift */; };
+		671462781EB3396E00EAB194 /* ResizeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D91EB3396E00EAB194 /* ResizeMode.swift */; };
+		671462791EB3396E00EAB194 /* ResizeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D91EB3396E00EAB194 /* ResizeMode.swift */; };
+		6714627A1EB3396E00EAB194 /* ResizeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D91EB3396E00EAB194 /* ResizeMode.swift */; };
+		6714627B1EB3396E00EAB194 /* ResizeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D91EB3396E00EAB194 /* ResizeMode.swift */; };
 		6714627C1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DC1EB3396E00EAB194 /* AlamofireManager+Extensions.swift */; };
 		6714627D1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DC1EB3396E00EAB194 /* AlamofireManager+Extensions.swift */; };
 		6714627E1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DC1EB3396E00EAB194 /* AlamofireManager+Extensions.swift */; };
@@ -462,7 +462,7 @@
 		671461D51EB3396E00EAB194 /* XibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		671461D71EB3396E00EAB194 /* CursorError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CursorError.swift; sourceTree = "<group>"; };
 		671461D81EB3396E00EAB194 /* LeadKitError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadKitError.swift; sourceTree = "<group>"; };
-		671461D91EB3396E00EAB194 /* ResizeContentMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizeContentMode.swift; sourceTree = "<group>"; };
+		671461D91EB3396E00EAB194 /* ResizeMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizeMode.swift; sourceTree = "<group>"; };
 		671461DC1EB3396E00EAB194 /* AlamofireManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireManager+Extensions.swift"; sourceTree = "<group>"; };
 		671461DD1EB3396E00EAB194 /* AlamofireRequest+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireRequest+Extensions.swift"; sourceTree = "<group>"; };
 		671461DF1EB3396E00EAB194 /* CGContext+Initializers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGContext+Initializers.swift"; sourceTree = "<group>"; };
@@ -724,7 +724,7 @@
 			children = (
 				671461D71EB3396E00EAB194 /* CursorError.swift */,
 				671461D81EB3396E00EAB194 /* LeadKitError.swift */,
-				671461D91EB3396E00EAB194 /* ResizeContentMode.swift */,
+				671461D91EB3396E00EAB194 /* ResizeMode.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -2062,7 +2062,7 @@
 				671462D41EB3396E00EAB194 /* TableDirector+Extensions.swift in Sources */,
 				671462581EB3396E00EAB194 /* Log.swift in Sources */,
 				671462B41EB3396E00EAB194 /* PaginationTableViewWrapperDelegate+DefaultImplementation.swift in Sources */,
-				671462781EB3396E00EAB194 /* ResizeContentMode.swift in Sources */,
+				671462781EB3396E00EAB194 /* ResizeMode.swift in Sources */,
 				A6E0DDE11F8A696F002CA74E /* SeparatorRowBox.swift in Sources */,
 				A6E0DDDE1F8A696F002CA74E /* EmptyCellRow.swift in Sources */,
 				671463041EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
@@ -2179,7 +2179,7 @@
 				671463461EB3396E00EAB194 /* ObservableMappable.swift in Sources */,
 				6771DFDA1EE99EBA002DCDAE /* DateFormattingService.swift in Sources */,
 				6714625A1EB3396E00EAB194 /* Log.swift in Sources */,
-				6714627A1EB3396E00EAB194 /* ResizeContentMode.swift in Sources */,
+				6714627A1EB3396E00EAB194 /* ResizeMode.swift in Sources */,
 				671463A41EB33FF600EAB194 /* Animatable.swift in Sources */,
 				671463721EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
 				6714636E1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
@@ -2258,7 +2258,7 @@
 				6771DFDB1EE99EBA002DCDAE /* DateFormattingService.swift in Sources */,
 				671463471EB3396E00EAB194 /* ObservableMappable.swift in Sources */,
 				6714625B1EB3396E00EAB194 /* Log.swift in Sources */,
-				6714627B1EB3396E00EAB194 /* ResizeContentMode.swift in Sources */,
+				6714627B1EB3396E00EAB194 /* ResizeMode.swift in Sources */,
 				671463071EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
 				6771DFED1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
 				EFBE57E31EC362470040E00A /* AlertRepresentable.swift in Sources */,
@@ -2369,7 +2369,7 @@
 				6714627D1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
 				671463451EB3396E00EAB194 /* ObservableMappable.swift in Sources */,
 				671462591EB3396E00EAB194 /* Log.swift in Sources */,
-				671462791EB3396E00EAB194 /* ResizeContentMode.swift in Sources */,
+				671462791EB3396E00EAB194 /* ResizeMode.swift in Sources */,
 				671463051EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
 				671463711EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
 				671462ED1EB3396E00EAB194 /* UIImage+Extensions.swift in Sources */,
