@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
     ss.watchos.deployment_target = '2.0'
 
     ss.source_files = [
-      "Sources/Enums/ResizeContentMode.swift",
+      "Sources/Enums/ResizeMode.swift",
       "Sources/Extensions/{CGContext,CGImage,CGSize,UIImage}/*",
       "Sources/Protocols/{DrawingOperation,SupportProtocol}.swift",
       "Sources/Structures/Drawing/*",
