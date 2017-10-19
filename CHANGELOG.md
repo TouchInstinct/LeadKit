@@ -5,13 +5,11 @@
 - **Remove**: `Mutex`
 - **Remove**: `IndexPath+ImmutableIndexPath`
 - **Remove**: `StoryboardProtocol`, `StoryboardProtocol+Extensions`, `StoryboardProtocol+DefaultBundle`
-- **Remove**: `String+Extensions`
+- **Remove**: `String+Extensions` image property
 - **Remove**: `UICollectionView+CellRegistration`
 - **Remove**: `UIStoryboard+InstantiateViewController`
-- **Remove**: `Array` extensions with `Set Algebra`
 - **Remove**: `NetworkService` extension for loading images
 - **Remove**: `Observable` creation for `ImmutableMappable`
-- **Remove**: Drop `UIAlertController` extensions
 - **Remove**: `UIView` and `UsedDefaults` extensions, `EstimatedViewHeightProtocol`, `StaticEstimatedViewHeightProtocol`, `StoryboardIdentifierProtocol`
 
 ## 0.5.18
