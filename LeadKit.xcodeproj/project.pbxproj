@@ -511,6 +511,8 @@
 		67952DCD1EB327B400B3BA1A /* LeadKit iOS ExtensionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LeadKit iOS ExtensionsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67952DDC1EB3280900B3BA1A /* Info-iOS-Extensions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS-Extensions.plist"; sourceTree = "<group>"; };
 		67952DDE1EB3285A00B3BA1A /* Info-iOS-Extensions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS-Extensions.plist"; sourceTree = "<group>"; };
+		679C77D41F98F78E0094BE10 /* AlertRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRepresentable.swift; sourceTree = "<group>"; };
+		679C77D61F98F7A60094BE10 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		67A1FF8E1EBCA09B00D6C89F /* UIImage+Spinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Spinner.swift"; sourceTree = "<group>"; };
 		67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CABasicAnimation+Rotation.swift"; sourceTree = "<group>"; };
 		67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleLoadCursor.swift; sourceTree = "<group>"; };
@@ -685,7 +687,6 @@
 		671461DA1EB3396E00EAB194 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A6D10EA91F8A9269003E69DD /* Comparable */,
 				671461DB1EB3396E00EAB194 /* Alamofire */,
 				EFBE57CE1EC35ED90040E00A /* Array */,
 				67A1FF921EBCA64A00D6C89F /* CABasicAnimation */,
@@ -693,6 +694,7 @@
 				671461E01EB3396E00EAB194 /* CGFloat */,
 				671461E21EB3396E00EAB194 /* CGImage */,
 				671461E51EB3396E00EAB194 /* CGSize */,
+				A6D10EA91F8A9269003E69DD /* Comparable */,
 				671461E81EB3396E00EAB194 /* CursorType */,
 				6771DFE21EE99FF3002DCDAE /* DateFormattingArguments */,
 				6771DFE81EEA7C8F002DCDAE /* DateFormattingService */,
@@ -707,6 +709,7 @@
 				671462001EB3396E00EAB194 /* TableDirector */,
 				671462021EB3396E00EAB194 /* TimeInterval */,
 				674AF55A1EC45B1600038A8F /* UIActivityIndicatorView */,
+				679C77D51F98F7A60094BE10 /* UIAlertController */,
 				671462081EB3396E00EAB194 /* UIColor */,
 				6714620C1EB3396E00EAB194 /* UIImage */,
 				671462111EB3396E00EAB194 /* UIView */,
@@ -897,6 +900,7 @@
 			isa = PBXGroup;
 			children = (
 				671462331EB3396E00EAB194 /* AbstractViewModelProtocol.swift */,
+				679C77D41F98F78E0094BE10 /* AlertRepresentable.swift */,
 				671463A11EB33FF600EAB194 /* Animatable.swift */,
 				40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */,
 				671462231EB3396E00EAB194 /* BaseViewModel.swift */,
@@ -1057,6 +1061,14 @@
 				6771DFE91EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift */,
 			);
 			path = DateFormattingService;
+			sourceTree = "<group>";
+		};
+		679C77D51F98F7A60094BE10 /* UIAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				679C77D61F98F7A60094BE10 /* UIAlertController+Extensions.swift */,
+			);
+			path = UIAlertController;
 			sourceTree = "<group>";
 		};
 		67A1FF921EBCA64A00D6C89F /* CABasicAnimation */ = {
