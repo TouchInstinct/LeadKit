@@ -2,12 +2,12 @@
 
 ## 0.6.0
 - **New**: Swift 4 support & dependencies update.
-- **Remove**: Mutex
-- **Remove**: IndexPath+ImmutableIndexPath
-- **Remove**: StoryboardProtocol, StoryboardProtocol+Extensions, StoryboardProtocol+DefaultBundle
-- **Remove**: String+Extensions
-- **Remove**: UICollectionView+CellRegistration
-- **Remove**: UIStoryboard+InstantiateViewController
+- **Remove**: `Mutex`
+- **Remove**: `IndexPath+ImmutableIndexPath`
+- **Remove**: `StoryboardProtocol`, `StoryboardProtocol+Extensions`, `StoryboardProtocol+DefaultBundle`
+- **Remove**: `String+Extensions`
+- **Remove**: `UICollectionView+CellRegistration`
+- **Remove**: `UIStoryboard+InstantiateViewController`
 - **Remove**: `Array` extensions with `Set Algebra`
 - **Remove**: `NetworkService` extension for loading images
 - **Remove**: `Observable` creation for `ImmutableMappable`
