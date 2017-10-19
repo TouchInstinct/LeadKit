@@ -266,9 +266,6 @@
 		671463BE1EB34B1E00EAB194 /* LoadFromNibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B01EB34B1E00EAB194 /* LoadFromNibTests.swift */; };
 		671463BF1EB34B1E00EAB194 /* LoadFromNibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B01EB34B1E00EAB194 /* LoadFromNibTests.swift */; };
 		671463C01EB34B1E00EAB194 /* LoadFromNibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B01EB34B1E00EAB194 /* LoadFromNibTests.swift */; };
-		671463C11EB34B1E00EAB194 /* MappableUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B11EB34B1E00EAB194 /* MappableUserDefaultsTests.swift */; };
-		671463C21EB34B1E00EAB194 /* MappableUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B11EB34B1E00EAB194 /* MappableUserDefaultsTests.swift */; };
-		671463C31EB34B1E00EAB194 /* MappableUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B11EB34B1E00EAB194 /* MappableUserDefaultsTests.swift */; };
 		671463C41EB34B1E00EAB194 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B31EB34B1E00EAB194 /* Post.swift */; };
 		671463C51EB34B1E00EAB194 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B31EB34B1E00EAB194 /* Post.swift */; };
 		671463C61EB34B1E00EAB194 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B31EB34B1E00EAB194 /* Post.swift */; };
@@ -485,7 +482,6 @@
 		671463AE1EB34B1E00EAB194 /* StubCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCursor.swift; sourceTree = "<group>"; };
 		671463AF1EB34B1E00EAB194 /* CursorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CursorTests.swift; sourceTree = "<group>"; };
 		671463B01EB34B1E00EAB194 /* LoadFromNibTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadFromNibTests.swift; sourceTree = "<group>"; };
-		671463B11EB34B1E00EAB194 /* MappableUserDefaultsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappableUserDefaultsTests.swift; sourceTree = "<group>"; };
 		671463B31EB34B1E00EAB194 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		671463B41EB34B1E00EAB194 /* PaginationViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationViewModelTests.swift; sourceTree = "<group>"; };
 		671463B61EB34B1E00EAB194 /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
@@ -1025,7 +1021,6 @@
 				67186C1A1EB24B7800CFAFFB /* Info-iOS.plist */,
 				6782BBB91EB31DD90086E0B8 /* Info-tvOS.plist */,
 				671463B01EB34B1E00EAB194 /* LoadFromNibTests.swift */,
-				671463B11EB34B1E00EAB194 /* MappableUserDefaultsTests.swift */,
 				671463B41EB34B1E00EAB194 /* PaginationViewModelTests.swift */,
 			);
 			path = Tests;
@@ -2042,7 +2037,6 @@
 				A658E5511F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift in Sources */,
 				671463BB1EB34B1E00EAB194 /* CursorTests.swift in Sources */,
 				A6F32C101F6EBE9600AC08EE /* StringExtensionTests.swift in Sources */,
-				671463C11EB34B1E00EAB194 /* MappableUserDefaultsTests.swift in Sources */,
 				671463BE1EB34B1E00EAB194 /* LoadFromNibTests.swift in Sources */,
 				A6E0DDE31F8A696F002CA74E /* SeparatorCell.swift in Sources */,
 				A6C9A50F1F8BC79D009311CC /* Comparable+Extensions.swift in Sources */,
@@ -2213,7 +2207,6 @@
 				671463BA1EB34B1E00EAB194 /* StubCursor.swift in Sources */,
 				671463BD1EB34B1E00EAB194 /* CursorTests.swift in Sources */,
 				A6F32C121F6EBE9800AC08EE /* StringExtensionTests.swift in Sources */,
-				671463C31EB34B1E00EAB194 /* MappableUserDefaultsTests.swift in Sources */,
 				671463C01EB34B1E00EAB194 /* LoadFromNibTests.swift in Sources */,
 				671463C61EB34B1E00EAB194 /* Post.swift in Sources */,
 			);
@@ -2311,7 +2304,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				671463C21EB34B1E00EAB194 /* MappableUserDefaultsTests.swift in Sources */,
 				A6C9A5111F8BC79D009311CC /* Comparable+Extensions.swift in Sources */,
 				671463BF1EB34B1E00EAB194 /* LoadFromNibTests.swift in Sources */,
 				671463C51EB34B1E00EAB194 /* Post.swift in Sources */,
