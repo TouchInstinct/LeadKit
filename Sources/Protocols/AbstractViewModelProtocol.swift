@@ -20,45 +20,20 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import Foundation
 
 /**
- *  protocol which helps us organize storyboards and view controllers creation
+ *  protocol which ensures that specific type can create view model and can apply new view state with view model
  */
-public protocol StoryboardProtocol {
-
-    associatedtype StoryboardIdentifier
-    associatedtype ViewControllerIdentifier
+public protocol AbstractViewModelProtocol {
+    associatedtype ViewModelType
 
     /**
-     - returns: storyboard identifier with associatedtype type
+     method which applies new view state with view model object
+     
+     - parameter viewModel: view model to apply new view state
+     
+     - returns: nothing
      */
-    static var storyboardIdentifier: StoryboardIdentifier { get }
-
-    /**
-     - returns: bundle for storyboard initialization
-     */
-    static var bundle: Bundle? { get }
-
-    /**
-     method which instantiate UIViewControlle instance for specific view controller identifier
-
-     - parameter _: object which represents view controller identifier
-
-     - returns: UIViewController instance
-     */
-    static func instantiateViewController(_: ViewControllerIdentifier) -> UIViewController
-
-}
-
-public extension StoryboardProtocol {
-
-    static func instantiate<T: UIViewController>(_ identificator: Self.ViewControllerIdentifier) -> T {
-        guard let controller = instantiateViewController(identificator) as? T else {
-            assertionFailure("\(T.self) not created")
-            return T()
-        }
-        return controller
-    }
-
+    func set(viewModel: ViewModelType)
 }

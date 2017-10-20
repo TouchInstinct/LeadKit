@@ -1,7 +1,16 @@
 # Changelog
 
 ## 0.6.0
-- **New**: Swift 4 support & dependencies update
+- **New**: Swift 4 support & dependencies update.
+- **Remove**: `Mutex`
+- **Remove**: `IndexPath+ImmutableIndexPath`
+- **Remove**: `StoryboardProtocol`, `StoryboardProtocol+Extensions`, `StoryboardProtocol+DefaultBundle`
+- **Remove**: `String+Extensions` image property
+- **Remove**: `UICollectionView+CellRegistration`
+- **Remove**: `UIStoryboard+InstantiateViewController`
+- **Remove**: `NetworkService` extension for loading images
+- **Remove**: `Observable` creation for `ImmutableMappable`
+- **Remove**: `UIView` and `UsedDefaults` extensions, `EstimatedViewHeightProtocol`, `StaticEstimatedViewHeightProtocol`, `StoryboardIdentifierProtocol`
 
 ## 0.5.18
 - **Fix**: EmptyCell first appearance setup fix

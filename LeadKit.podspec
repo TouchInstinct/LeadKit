@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
     ss.watchos.deployment_target = '2.0'
 
     ss.source_files = [
-      "Sources/Enums/ResizeContentMode.swift",
+      "Sources/Enums/ResizeMode.swift",
       "Sources/Extensions/{CGContext,CGImage,CGSize,UIImage}/*",
       "Sources/Protocols/{DrawingOperation,SupportProtocol}.swift",
       "Sources/Structures/Drawing/*",
@@ -51,7 +51,6 @@ Pod::Spec.new do |s|
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
       "Sources/Extensions/NetworkService/NetworkService+RxLoadImage.swift",
       "Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
-      "Sources/Extensions/StoryboardProtocol/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/TableDirector/*",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
@@ -60,12 +59,10 @@ Pod::Spec.new do |s|
       "Sources/Extensions/UICollectionView/*",
       "Sources/Extensions/UIDevice/*",
       "Sources/Extensions/UIImage/*",
-      "Sources/Extensions/UIStoryboard/*",
       "Sources/Extensions/UIView/*",
       "Sources/Extensions/UIViewController/*",
       "Sources/Extensions/UIWindow/*",
       "Sources/Protocols/LoadingIndicator.swift",
-      "Sources/Protocols/StoryboardProtocol.swift",
       "Sources/Structures/Views/AnyLoadingIndicator.swift",
       "Sources/Structures/DrawingOperations/CALayerDrawingOperation.swift",
       "Sources/Structures/DrawingOperations/RoundDrawingOperation.swift",

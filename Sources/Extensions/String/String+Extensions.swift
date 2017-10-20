@@ -25,15 +25,6 @@ import UIKit
 public extension String {
 
     /**
-     method returns image with self name
-
-     - returns: image
-     */
-    var image: UIImage? {
-        return UIImage(named: self)
-    }
-
-    /**
      Nil if empty representation
 
      - returns: nil if string empty, self otherwise

@@ -54,7 +54,7 @@ class PaginationViewModelTests: XCTestCase {
                 XCTFail("Unexpected state: \(state)")
             }
         })
-        .addDisposableTo(disposeBag)
+        .disposed(by: disposeBag)
 
         viewModel.load(.reload)
 

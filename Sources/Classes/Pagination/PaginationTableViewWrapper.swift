@@ -96,7 +96,7 @@ public protocol PaginationTableViewWrapperDelegate: class {
 }
 
 /// Class that connects PaginationViewModel with UITableView. It handles all non-visual and visual states.
-final public class PaginationTableViewWrapper<Cursor: ResettableCursorType, Delegate: PaginationTableViewWrapperDelegate>
+final public class PaginationTableViewWrapper<Cursor, Delegate: PaginationTableViewWrapperDelegate>
 where Delegate.Cursor == Cursor {
 
     private let tableView: UITableView
@@ -156,7 +156,7 @@ where Delegate.Cursor == Cursor {
         scrollObservable.subscribe(onNext: { [weak self] offset in
             self?.currentPlaceholderViewTopConstraint?.constant = -offset.y
         })
-        .addDisposableTo(disposeBag)
+        .disposed(by: disposeBag)
     }
 
     // MARK: - States handling
@@ -246,7 +246,7 @@ where Delegate.Cursor == Cursor {
                 .bind { [weak self] in
                     self?.paginationViewModel.load(.next)
                 }
-                .addDisposableTo(disposeBag)
+                .disposed(by: disposeBag)
 
             tableView.tableFooterView = retryButton
         }
@@ -312,7 +312,7 @@ where Delegate.Cursor == Cursor {
             .bind { [weak self] in
                 self?.reload()
             }
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         tableView.support.setRefreshControl(refreshControl)
     }
@@ -352,7 +352,7 @@ where Delegate.Cursor == Cursor {
                 self?.onExhaustedState()
             }
         })
-        .addDisposableTo(disposeBag)
+        .disposed(by: disposeBag)
     }
 
     private func removeCurrentPlaceholderView() {
@@ -366,13 +366,13 @@ where Delegate.Cursor == Cursor {
             .subscribe(onNext: { [weak self] _ in
                 self?.applicationCurrentyActive.value = false
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         notificationCenter.notification(.UIApplicationDidBecomeActive)
             .subscribe(onNext: { [weak self] _ in
                 self?.applicationCurrentyActive.value = true
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
 
 }

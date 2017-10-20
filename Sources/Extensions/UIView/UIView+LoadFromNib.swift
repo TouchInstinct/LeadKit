@@ -30,7 +30,7 @@ public extension UIView {
     /// - Parameter bundle: The bundle in which to search for the nib file.
     ///                     If you specify nil, this method looks for the nib file in the main bundle.
     /// - Returns: UIView or UIView subclass instance
-    static func loadFromNib<T>(bundle: Bundle? = nil) -> T where T: XibNameProtocol, T: UIView {
+    static func loadFromNib<T>(bundle: Bundle? = nil) -> T where T: UIView {
         return loadFromNib(named: T.xibName, bundle: bundle)
     }
 
