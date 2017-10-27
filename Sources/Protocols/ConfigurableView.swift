@@ -23,17 +23,17 @@
 import Foundation
 
 /**
- *  protocol which ensures that specific type can create view model and can apply new view state with view model
+ *  Protocol that ensures that specific type can create view model and can apply new view state with view model
  */
-public protocol AbstractViewModelProtocol {
+public protocol ConfigurableView {
     associatedtype ViewModelType
 
     /**
-     method which applies new view state with view model object
+     Applies new view state with view model object
      
      - parameter viewModel: view model to apply new view state
      
      - returns: nothing
      */
-    func set(viewModel: ViewModelType)
+    func configure(with _: ViewModelType)
 }
