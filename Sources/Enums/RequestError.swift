@@ -22,9 +22,16 @@
 
 import Alamofire
 
+/// Enum that represents general api request errors
+///
+/// - noConnection: No connection to the server (no internet connection, or connection timed out error)
+/// - network: Unknown network-related error.
+/// - invalidResponse: Invalid server response (response serialization or validation errors).
+///   This includes unacceptable status codes (500, etc), json serialization errors, etc.
+/// - mapping: Errors that occurs during mapping json into model.
 public enum RequestError: Error {
 
-    case noConnection // no connection to the server
+    case noConnection
     case network(error: Error)
     case invalidResponse(error: AFError)
     case mapping(error: Error, response: Any)

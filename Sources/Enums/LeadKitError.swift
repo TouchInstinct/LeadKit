@@ -22,7 +22,7 @@
 
 import Foundation
 
-/// Enum which represents common errors in LeadKit framework
+/// Enum that represents common errors in LeadKit framework
 ///
 /// - failedToCastValue: attempt to cast was failed
 public enum LeadKitError: Error {
