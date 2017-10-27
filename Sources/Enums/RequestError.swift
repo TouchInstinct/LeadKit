@@ -20,10 +20,13 @@
 //  THE SOFTWARE.
 //
 
+import Alamofire
+
 public enum RequestError: Error {
 
     case noConnection // no connection to the server
     case network(error: Error)
+    case invalidResponse(error: AFError)
     case mapping(error: Error, response: Any)
 
 }

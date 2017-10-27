@@ -106,7 +106,14 @@ public extension Reactive where Base: DataRequest {
                     case .notConnectedToInternet, .timedOut:
                         throw RequestError.noConnection
                     default:
-                        throw RequestError.network(error: $0)
+                        throw RequestError.network(error: urlError)
+                    }
+                case let afError as AFError:
+                    switch afError {
+                    case .responseSerializationFailed, .responseValidationFailed:
+                        throw RequestError.invalidResponse(error: afError)
+                    default:
+                        throw RequestError.network(error: afError)
                     }
                 default:
                     throw RequestError.network(error: $0)
