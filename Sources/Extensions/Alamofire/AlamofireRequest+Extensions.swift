@@ -25,7 +25,7 @@ import RxSwift
 import ObjectMapper
 import RxAlamofire
 
-typealias ServerResponse = (HTTPURLResponse, Any)
+typealias ServerResponse = (response: HTTPURLResponse, result: Any)
 
 public extension Reactive where Base: DataRequest {
 
@@ -99,6 +99,7 @@ public extension Reactive where Base: DataRequest {
         let responseSerializer = DataRequest.jsonResponseSerializer(options: .allowFragments)
 
         return responseResult(queue: queue, responseSerializer: responseSerializer)
+            .map { ServerResponse(response: $0.0, result: $0.1) }
             .catchError {
                 switch $0 {
                 case let urlError as URLError:
@@ -140,10 +141,10 @@ private extension ObservableType where E == ServerResponse {
             do {
                 return try transform(response)
                     .catchError {
-                        throw RequestError.mapping(error: $0, response: response.1)
+                        throw RequestError.mapping(error: $0, response: response.result)
                     }
             } catch {
-                throw RequestError.mapping(error: error, response: response.1)
+                throw RequestError.mapping(error: error, response: response.result)
             }
         }
     }

@@ -23,7 +23,7 @@
 import Foundation
 
 /**
- *  Protocol that ensures that specific type can create view model and can apply new view state with view model
+ *  Protocol that ensures that specific type can can apply new view state with view model
  */
 public protocol ConfigurableView {
     associatedtype ViewModelType
