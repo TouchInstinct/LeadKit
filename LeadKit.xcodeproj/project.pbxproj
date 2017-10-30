@@ -203,10 +203,10 @@
 		671463651EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462321EB3396E00EAB194 /* ViewHeightProtocol.swift */; };
 		671463661EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462321EB3396E00EAB194 /* ViewHeightProtocol.swift */; };
 		671463671EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462321EB3396E00EAB194 /* ViewHeightProtocol.swift */; };
-		671463681EB3396E00EAB194 /* AbstractViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462331EB3396E00EAB194 /* AbstractViewModelProtocol.swift */; };
-		671463691EB3396E00EAB194 /* AbstractViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462331EB3396E00EAB194 /* AbstractViewModelProtocol.swift */; };
-		6714636A1EB3396E00EAB194 /* AbstractViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462331EB3396E00EAB194 /* AbstractViewModelProtocol.swift */; };
-		6714636B1EB3396E00EAB194 /* AbstractViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462331EB3396E00EAB194 /* AbstractViewModelProtocol.swift */; };
+		671463681EB3396E00EAB194 /* ConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462331EB3396E00EAB194 /* ConfigurableView.swift */; };
+		671463691EB3396E00EAB194 /* ConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462331EB3396E00EAB194 /* ConfigurableView.swift */; };
+		6714636A1EB3396E00EAB194 /* ConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462331EB3396E00EAB194 /* ConfigurableView.swift */; };
+		6714636B1EB3396E00EAB194 /* ConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462331EB3396E00EAB194 /* ConfigurableView.swift */; };
 		6714636C1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462341EB3396E00EAB194 /* XibNameProtocol.swift */; };
 		6714636D1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462341EB3396E00EAB194 /* XibNameProtocol.swift */; };
 		6714636E1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462341EB3396E00EAB194 /* XibNameProtocol.swift */; };
@@ -318,6 +318,10 @@
 		67E6C2361EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
 		67E6C2371EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
 		67E6C2381EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
+		67FDC25F1FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
+		67FDC2601FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
+		67FDC2611FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
+		67FDC2621FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
 		82F8BB181F5DDED100C1061B /* Single+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */; };
 		A658E54D1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54C1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift */; };
 		A658E54E1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54C1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift */; };
@@ -464,7 +468,7 @@
 		6714622E1EB3396E00EAB194 /* StaticViewHeightProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticViewHeightProtocol.swift; sourceTree = "<group>"; };
 		671462311EB3396E00EAB194 /* SupportProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportProtocol.swift; sourceTree = "<group>"; };
 		671462321EB3396E00EAB194 /* ViewHeightProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewHeightProtocol.swift; sourceTree = "<group>"; };
-		671462331EB3396E00EAB194 /* AbstractViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractViewModelProtocol.swift; sourceTree = "<group>"; };
+		671462331EB3396E00EAB194 /* ConfigurableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableView.swift; sourceTree = "<group>"; };
 		671462341EB3396E00EAB194 /* XibNameProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibNameProtocol.swift; sourceTree = "<group>"; };
 		671462371EB3396E00EAB194 /* ApiRequestParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequestParameters.swift; sourceTree = "<group>"; };
 		671462391EB3396E00EAB194 /* BorderDrawingOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderDrawingOperation.swift; sourceTree = "<group>"; };
@@ -512,6 +516,7 @@
 		67A1FF8E1EBCA09B00D6C89F /* UIImage+Spinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Spinner.swift"; sourceTree = "<group>"; };
 		67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CABasicAnimation+Rotation.swift"; sourceTree = "<group>"; };
 		67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleLoadCursor.swift; sourceTree = "<group>"; };
+		67FDC25E1FA310EA00C76A77 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		78405D3B3D3C3E17456877FF /* Pods_LeadKit_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Single+DeferredJust.swift"; sourceTree = "<group>"; };
 		8590CA7831555C295C5DC572 /* Pods_LeadKit_LeadKit_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_LeadKit_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -676,6 +681,7 @@
 				671461D71EB3396E00EAB194 /* CursorError.swift */,
 				671461D81EB3396E00EAB194 /* LeadKitError.swift */,
 				671461D91EB3396E00EAB194 /* ResizeMode.swift */,
+				67FDC25E1FA310EA00C76A77 /* RequestError.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -895,7 +901,7 @@
 		671462221EB3396E00EAB194 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				671462331EB3396E00EAB194 /* AbstractViewModelProtocol.swift */,
+				671462331EB3396E00EAB194 /* ConfigurableView.swift */,
 				679C77D41F98F78E0094BE10 /* AlertRepresentable.swift */,
 				671463A11EB33FF600EAB194 /* Animatable.swift */,
 				40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */,
@@ -1959,6 +1965,7 @@
 				67A1FF941EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */,
 				82F8BB181F5DDED100C1061B /* Single+DeferredJust.swift in Sources */,
 				671463301EB3396E00EAB194 /* CursorType.swift in Sources */,
+				67FDC25F1FA310EA00C76A77 /* RequestError.swift in Sources */,
 				6714624C1EB3396E00EAB194 /* MapCursor.swift in Sources */,
 				A6C9A4FA1F8BBCF2009311CC /* EmptyCell.swift in Sources */,
 				671463241EB3396E00EAB194 /* Any+TypeName.swift in Sources */,
@@ -2020,7 +2027,7 @@
 				671463A21EB33FF600EAB194 /* Animatable.swift in Sources */,
 				671462501EB3396E00EAB194 /* StaticCursor.swift in Sources */,
 				6714629C1EB3396E00EAB194 /* CursorType+Slice.swift in Sources */,
-				671463681EB3396E00EAB194 /* AbstractViewModelProtocol.swift in Sources */,
+				671463681EB3396E00EAB194 /* ConfigurableView.swift in Sources */,
 				6771DFE41EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2106,9 +2113,10 @@
 				671462761EB3396E00EAB194 /* LeadKitError.swift in Sources */,
 				671462DA1EB3396E00EAB194 /* TimeInterval+DateComponents.swift in Sources */,
 				6714638E1EB3396E00EAB194 /* SolidFillDrawingOperation.swift in Sources */,
+				67FDC2611FA310EA00C76A77 /* RequestError.swift in Sources */,
 				671462521EB3396E00EAB194 /* StaticCursor.swift in Sources */,
 				6714629E1EB3396E00EAB194 /* CursorType+Slice.swift in Sources */,
-				6714636A1EB3396E00EAB194 /* AbstractViewModelProtocol.swift in Sources */,
+				6714636A1EB3396E00EAB194 /* ConfigurableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2132,6 +2140,7 @@
 				671462671EB3396E00EAB194 /* PaginationViewModel.swift in Sources */,
 				671462931EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
 				671462FF1EB3396E00EAB194 /* UIView+XibNameProtocol.swift in Sources */,
+				67FDC2621FA310EA00C76A77 /* RequestError.swift in Sources */,
 				671463871EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
 				671463931EB3396E00EAB194 /* TemplateDrawingOperation.swift in Sources */,
 				674AF55E1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */,
@@ -2194,7 +2203,7 @@
 				67E6C2381EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				671462531EB3396E00EAB194 /* StaticCursor.swift in Sources */,
 				6714629F1EB3396E00EAB194 /* CursorType+Slice.swift in Sources */,
-				6714636B1EB3396E00EAB194 /* AbstractViewModelProtocol.swift in Sources */,
+				6714636B1EB3396E00EAB194 /* ConfigurableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2264,6 +2273,7 @@
 				6714626D1EB3396E00EAB194 /* XibView.swift in Sources */,
 				6714637D1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				671463351EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
+				67FDC2601FA310EA00C76A77 /* RequestError.swift in Sources */,
 				671462711EB3396E00EAB194 /* CursorError.swift in Sources */,
 				671463991EB3396E00EAB194 /* AnyLoadingIndicator.swift in Sources */,
 				671463A81EB340C000EAB194 /* UIViewController+ConfigurableController.swift in Sources */,
@@ -2296,7 +2306,7 @@
 				6771DFE51EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift in Sources */,
 				671462511EB3396E00EAB194 /* StaticCursor.swift in Sources */,
 				6714629D1EB3396E00EAB194 /* CursorType+Slice.swift in Sources */,
-				671463691EB3396E00EAB194 /* AbstractViewModelProtocol.swift in Sources */,
+				671463691EB3396E00EAB194 /* ConfigurableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

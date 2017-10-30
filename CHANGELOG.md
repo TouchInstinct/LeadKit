@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.1
+- **New**: `RequestError`. Represents general api request errors
+- **Change**: All api methods now throws `RequestError` when fails.
+
 ## 0.6.0
 - **New**: Swift 4 support & dependencies update.
 - **Remove**: `Mutex`

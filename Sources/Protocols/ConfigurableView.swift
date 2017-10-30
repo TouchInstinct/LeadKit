@@ -22,11 +22,18 @@
 
 import Foundation
 
-/// Enum that represents common errors in LeadKit framework
-///
-/// - failedToCastValue: attempt to cast was failed
-public enum LeadKitError: Error {
+/**
+ *  Protocol that ensures that specific type can can apply new view state with view model
+ */
+public protocol ConfigurableView {
+    associatedtype ViewModelType
 
-    case failedToCastValue(expectedType: Any.Type, givenType: Any.Type)
-
+    /**
+     Applies new view state with view model object
+     
+     - parameter viewModel: view model to apply new view state
+     
+     - returns: nothing
+     */
+    func configure(with _: ViewModelType)
 }

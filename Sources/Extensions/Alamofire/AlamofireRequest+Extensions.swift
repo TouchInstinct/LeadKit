@@ -25,6 +25,8 @@ import RxSwift
 import ObjectMapper
 import RxAlamofire
 
+typealias ServerResponse = (response: HTTPURLResponse, result: Any)
+
 public extension Reactive where Base: DataRequest {
 
     /// Method which serializes response into target object
@@ -35,7 +37,7 @@ public extension Reactive where Base: DataRequest {
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
         return responseJSONOnQueue(mappingQueue)
-            .map { resp, value in
+            .tryMapResult { resp, value in
                 let json = try cast(value) as [String: Any]
 
                 return (resp, try T(JSON: json))
@@ -50,11 +52,11 @@ public extension Reactive where Base: DataRequest {
         -> Observable<(response: HTTPURLResponse, models: [T])> {
 
             return responseJSONOnQueue(mappingQueue)
-                .map { resp, value in
+                .tryMapResult { resp, value in
                     let jsonArray = try cast(value) as [[String: Any]]
 
                     return (resp, try Mapper<T>().mapArray(JSONArray: jsonArray))
-            }
+                }
     }
 
     /// Method which serializes response into target object
@@ -65,12 +67,12 @@ public extension Reactive where Base: DataRequest {
         -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
 
             return responseJSONOnQueue(mappingQueue)
-                .flatMap { resp, value -> Observable<(response: HTTPURLResponse, model: T)> in
-                let json = try cast(value) as [String: Any]
+                .tryMapObservableResult { resp, value in
+                    let json = try cast(value) as [String: Any]
 
-                return T.createFrom(map: Map(mappingType: .fromJSON, JSON: json))
-                    .map { (resp, $0) }
-            }
+                    return T.createFrom(map: Map(mappingType: .fromJSON, JSON: json))
+                        .map { (resp, $0) }
+                }
     }
 
     /// Method which serializes response into array of target objects
@@ -81,7 +83,7 @@ public extension Reactive where Base: DataRequest {
         -> Observable<(response: HTTPURLResponse, models: [T])> where T.ModelType == T {
 
             return responseJSONOnQueue(mappingQueue)
-                .flatMap { resp, value -> Observable<(response: HTTPURLResponse, models: [T])> in
+                .tryMapObservableResult { resp, value in
                     let jsonArray = try cast(value) as [[String: Any]]
 
                     let createFromList = jsonArray.map {
@@ -90,11 +92,61 @@ public extension Reactive where Base: DataRequest {
 
                     return Observable.zip(createFromList) { $0 }
                         .map { (resp, $0) }
+                }
+    }
+
+    internal func responseJSONOnQueue(_ queue: DispatchQueue) -> Observable<ServerResponse> {
+        let responseSerializer = DataRequest.jsonResponseSerializer(options: .allowFragments)
+
+        return responseResult(queue: queue, responseSerializer: responseSerializer)
+            .map { ServerResponse(response: $0.0, result: $0.1) }
+            .catchError {
+                switch $0 {
+                case let urlError as URLError:
+                    switch urlError.code {
+                    case .notConnectedToInternet, .timedOut:
+                        throw RequestError.noConnection
+                    default:
+                        throw RequestError.network(error: urlError)
+                    }
+                case let afError as AFError:
+                    switch afError {
+                    case .responseSerializationFailed, .responseValidationFailed:
+                        throw RequestError.invalidResponse(error: afError)
+                    default:
+                        throw RequestError.network(error: afError)
+                    }
+                default:
+                    throw RequestError.network(error: $0)
+                }
             }
     }
 
-    internal func responseJSONOnQueue(_ queue: DispatchQueue) -> Observable<(HTTPURLResponse, Any)> {
-        return responseResult(queue: queue, responseSerializer: DataRequest.jsonResponseSerializer(options: .allowFragments))
+}
+
+private extension ObservableType where E == ServerResponse {
+
+    func tryMapResult<R>(_ transform: @escaping (E) throws -> R) -> Observable<R> {
+        return map {
+            do {
+                return try transform($0)
+            } catch {
+                throw RequestError.mapping(error: error, response: $0.1)
+            }
+        }
+    }
+
+    func tryMapObservableResult<R>(_ transform: @escaping (E) throws -> Observable<R>) -> Observable<R> {
+        return flatMap { response -> Observable<R> in
+            do {
+                return try transform(response)
+                    .catchError {
+                        throw RequestError.mapping(error: $0, response: response.result)
+                    }
+            } catch {
+                throw RequestError.mapping(error: error, response: response.result)
+            }
+        }
     }
 
 }
