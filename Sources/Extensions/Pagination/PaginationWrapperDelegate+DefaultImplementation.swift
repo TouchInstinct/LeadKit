@@ -22,9 +22,9 @@
 
 import UIKit
 
-public extension PaginationTableViewWrapperDelegate {
+public extension PaginationWrapperDelegate {
 
-    func emptyPlaceholder(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>) -> UIView {
+    func emptyPlaceholder() -> UIView {
         let placeholder = UIView()
 
         let label = UILabel()
@@ -38,8 +38,7 @@ public extension PaginationTableViewWrapperDelegate {
         return placeholder
     }
 
-    func errorPlaceholder(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>,
-                          forError error: Error) -> UIView {
+    func errorPlaceholder(forError error: Error) -> UIView {
 
         let placeholder = UIView()
 
@@ -54,8 +53,7 @@ public extension PaginationTableViewWrapperDelegate {
         return placeholder
     }
 
-    func initialLoadingIndicator(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>)
-        -> AnyLoadingIndicator {
+    func initialLoadingIndicator() -> AnyLoadingIndicator {
 
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         indicator.color = .gray
@@ -63,15 +61,14 @@ public extension PaginationTableViewWrapperDelegate {
         return AnyLoadingIndicator(indicator)
     }
 
-    func loadingMoreIndicator(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>)
-        -> AnyLoadingIndicator {
+    func loadingMoreIndicator() -> AnyLoadingIndicator {
 
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
 
         return AnyLoadingIndicator(indicator)
     }
 
-    func retryLoadMoreButton(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>) -> UIButton {
+    func retryLoadMoreButton() -> UIButton {
         let retryButton = UIButton(type: .custom)
         retryButton.backgroundColor = .lightGray
         retryButton.setTitle("Retry load more", for: .normal)
@@ -79,7 +76,7 @@ public extension PaginationTableViewWrapperDelegate {
         return retryButton
     }
 
-    func retryLoadMoreButtonHeight(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>) -> CGFloat {
+    func retryLoadMoreButtonHeight() -> CGFloat {
         return 44
     }
 

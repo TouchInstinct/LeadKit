@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.6.1"
+  s.version         = "0.7.0"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -100,9 +100,8 @@ Pod::Spec.new do |s|
       "Sources/Classes/Views/SeparatorRowBox/*",
       "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
-      "Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
+      "Sources/Classes/Pagination/PaginationWrapper.swift",
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
-      "Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
       "Sources/Extensions/TableDirector/*",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
     ]

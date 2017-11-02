@@ -1,0 +1,72 @@
+//
+//  Copyright (c) 2017 Touch Instinct
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the Software), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+//
+
+import RxSwift
+import RxCocoa
+
+public final class PaginationLoadingViewModelConfiguration<C: ResettableCursorType>: LoadingConfiguration {
+
+    public typealias DataSourceType = C
+    public typealias ResultType = [C.Element]
+    public typealias LoadingStateType = PaginationLoadingState<C.Element>
+
+    public private(set) var dataSource: DataSourceType
+    private let stateVariable = Variable<LoadingStateType>(.initialState)
+    public let scheduler = SerialDispatchQueueScheduler(qos: .default)
+
+    private var currentRequestDisposable: Disposable?
+
+    public init(dataSource: DataSourceType) {
+        self.dataSource = dataSource
+    }
+
+    public var loadingObservable: Single<ResultType> {
+        return dataSource.loadNextBatch()
+    }
+
+    public func isEmptyResult(result: ResultType) -> Bool {
+        return result.isEmpty
+    }
+
+    public var stateDriver: Driver<LoadingStateType> {
+        return stateVariable.asDriver()
+    }
+
+    public var state: LoadingStateType {
+        get {
+            return stateVariable.value
+        }
+        set {
+            stateVariable.value = newValue
+        }
+    }
+
+    public func resetDataSource() {
+        currentRequestDisposable?.dispose()
+        dataSource = dataSource.reset()
+    }
+
+    public func storeCurrentRequestDisposable(_ disposable: Disposable) {
+        currentRequestDisposable = disposable
+    }
+
+}

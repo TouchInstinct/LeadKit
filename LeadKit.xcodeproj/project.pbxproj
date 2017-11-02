@@ -39,7 +39,6 @@
 		6714625D1EB3396E00EAB194 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CE1EB3396E00EAB194 /* LogFormatter.swift */; };
 		6714625E1EB3396E00EAB194 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CE1EB3396E00EAB194 /* LogFormatter.swift */; };
 		6714625F1EB3396E00EAB194 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CE1EB3396E00EAB194 /* LogFormatter.swift */; };
-		671462601EB3396E00EAB194 /* PaginationTableViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D01EB3396E00EAB194 /* PaginationTableViewWrapper.swift */; };
 		671462641EB3396E00EAB194 /* PaginationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D11EB3396E00EAB194 /* PaginationViewModel.swift */; };
 		671462651EB3396E00EAB194 /* PaginationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D11EB3396E00EAB194 /* PaginationViewModel.swift */; };
 		671462661EB3396E00EAB194 /* PaginationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D11EB3396E00EAB194 /* PaginationViewModel.swift */; };
@@ -106,7 +105,6 @@
 		671462AD1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461F11EB3396E00EAB194 /* Observable+DeferredJust.swift */; };
 		671462AE1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461F11EB3396E00EAB194 /* Observable+DeferredJust.swift */; };
 		671462AF1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461F11EB3396E00EAB194 /* Observable+DeferredJust.swift */; };
-		671462B41EB3396E00EAB194 /* PaginationTableViewWrapperDelegate+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461F41EB3396E00EAB194 /* PaginationTableViewWrapperDelegate+DefaultImplementation.swift */; };
 		671462B81EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461F61EB3396E00EAB194 /* Sequence+ConcurrentMap.swift */; };
 		671462B91EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461F61EB3396E00EAB194 /* Sequence+ConcurrentMap.swift */; };
 		671462BA1EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461F61EB3396E00EAB194 /* Sequence+ConcurrentMap.swift */; };
@@ -283,6 +281,12 @@
 		674AF55C1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */; };
 		674AF55D1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */; };
 		674AF55E1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */; };
+		674CC1DA1FAB8D06007B0EAE /* UICollectionView+PaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB1BFD1FAB79EE0089D1B1 /* UICollectionView+PaginationWrappable.swift */; };
+		674CC1DB1FAB8D09007B0EAE /* PaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB1BF11FAB78770089D1B1 /* PaginationWrappable.swift */; };
+		674CC1DD1FAB8D0A007B0EAE /* PaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB1BF11FAB78770089D1B1 /* PaginationWrappable.swift */; };
+		674CC1DE1FAB8D1B007B0EAE /* Single+CursorExhausted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A071FAB50BB008175B4 /* Single+CursorExhausted.swift */; };
+		674CC1DF1FAB8D1C007B0EAE /* Single+CursorExhausted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A071FAB50BB008175B4 /* Single+CursorExhausted.swift */; };
+		674CC1E01FAB8D1D007B0EAE /* Single+CursorExhausted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A071FAB50BB008175B4 /* Single+CursorExhausted.swift */; };
 		675C1FB41F97CA32007D5249 /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
 		675C1FB51F97CA33007D5249 /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
 		675C1FB61F97CA33007D5249 /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
@@ -313,11 +317,73 @@
 		67A1FF941EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */; };
 		67A1FF951EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */; };
 		67A1FF971EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */; };
+		67CB1BF21FAB78770089D1B1 /* PaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB1BF11FAB78770089D1B1 /* PaginationWrappable.swift */; };
+		67CB1BF61FAB78DC0089D1B1 /* AnyPaginationWrappableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB1BF51FAB78DC0089D1B1 /* AnyPaginationWrappableView.swift */; };
+		67CB1BFA1FAB79530089D1B1 /* UITableView+PaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB1BF91FAB79530089D1B1 /* UITableView+PaginationWrappable.swift */; };
+		67CB1BFB1FAB79530089D1B1 /* UITableView+PaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB1BF91FAB79530089D1B1 /* UITableView+PaginationWrappable.swift */; };
+		67CB1BFC1FAB79530089D1B1 /* UITableView+PaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB1BF91FAB79530089D1B1 /* UITableView+PaginationWrappable.swift */; };
+		67CB1BFE1FAB79EE0089D1B1 /* UICollectionView+PaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB1BFD1FAB79EE0089D1B1 /* UICollectionView+PaginationWrappable.swift */; };
+		67CB1C001FAB79EE0089D1B1 /* UICollectionView+PaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB1BFD1FAB79EE0089D1B1 /* UICollectionView+PaginationWrappable.swift */; };
+		67CB1C021FAB7A640089D1B1 /* PaginationWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB1C011FAB7A640089D1B1 /* PaginationWrapperDelegate.swift */; };
+		67CB1C031FAB7A640089D1B1 /* PaginationWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB1C011FAB7A640089D1B1 /* PaginationWrapperDelegate.swift */; };
+		67CB1C041FAB7A640089D1B1 /* PaginationWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB1C011FAB7A640089D1B1 /* PaginationWrapperDelegate.swift */; };
+		67CB1C061FAB7AE00089D1B1 /* PaginationWrapperDelegate+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB1C051FAB7AE00089D1B1 /* PaginationWrapperDelegate+DefaultImplementation.swift */; };
+		67CB1C071FAB7AE00089D1B1 /* PaginationWrapperDelegate+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB1C051FAB7AE00089D1B1 /* PaginationWrapperDelegate+DefaultImplementation.swift */; };
+		67CB1C0A1FAB7B4D0089D1B1 /* PaginationWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB1C091FAB7B4D0089D1B1 /* PaginationWrapper.swift */; };
 		67CDEE401EB369BF00895905 /* ConfigurableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462241EB3396E00EAB194 /* ConfigurableController.swift */; };
-		67E6C2351EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
-		67E6C2361EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
-		67E6C2371EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
-		67E6C2381EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
+		67F139F51FAB4F22008175B4 /* TotalCountCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F139F41FAB4F22008175B4 /* TotalCountCursor.swift */; };
+		67F139F61FAB4F22008175B4 /* TotalCountCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F139F41FAB4F22008175B4 /* TotalCountCursor.swift */; };
+		67F139F71FAB4F22008175B4 /* TotalCountCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F139F41FAB4F22008175B4 /* TotalCountCursor.swift */; };
+		67F139F81FAB4F22008175B4 /* TotalCountCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F139F41FAB4F22008175B4 /* TotalCountCursor.swift */; };
+		67F139FB1FAB4F7E008175B4 /* TotalCountCursorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F139FA1FAB4F7E008175B4 /* TotalCountCursorConfiguration.swift */; };
+		67F139FC1FAB4F7E008175B4 /* TotalCountCursorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F139FA1FAB4F7E008175B4 /* TotalCountCursorConfiguration.swift */; };
+		67F139FD1FAB4F7E008175B4 /* TotalCountCursorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F139FA1FAB4F7E008175B4 /* TotalCountCursorConfiguration.swift */; };
+		67F139FE1FAB4F7E008175B4 /* TotalCountCursorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F139FA1FAB4F7E008175B4 /* TotalCountCursorConfiguration.swift */; };
+		67F13A021FAB5024008175B4 /* SharedSequence+FilterEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A011FAB5024008175B4 /* SharedSequence+FilterEmpty.swift */; };
+		67F13A031FAB5024008175B4 /* SharedSequence+FilterEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A011FAB5024008175B4 /* SharedSequence+FilterEmpty.swift */; };
+		67F13A041FAB5024008175B4 /* SharedSequence+FilterEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A011FAB5024008175B4 /* SharedSequence+FilterEmpty.swift */; };
+		67F13A051FAB5024008175B4 /* SharedSequence+FilterEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A011FAB5024008175B4 /* SharedSequence+FilterEmpty.swift */; };
+		67F13A081FAB50BB008175B4 /* Single+CursorExhausted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A071FAB50BB008175B4 /* Single+CursorExhausted.swift */; };
+		67F13A151FAB5A87008175B4 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A141FAB5A87008175B4 /* LoadingState.swift */; };
+		67F13A161FAB5A87008175B4 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A141FAB5A87008175B4 /* LoadingState.swift */; };
+		67F13A171FAB5A87008175B4 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A141FAB5A87008175B4 /* LoadingState.swift */; };
+		67F13A181FAB5A87008175B4 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A141FAB5A87008175B4 /* LoadingState.swift */; };
+		67F13A1A1FAB5ABB008175B4 /* LoadingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A191FAB5ABB008175B4 /* LoadingProtocol.swift */; };
+		67F13A1B1FAB5ABB008175B4 /* LoadingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A191FAB5ABB008175B4 /* LoadingProtocol.swift */; };
+		67F13A1C1FAB5ABB008175B4 /* LoadingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A191FAB5ABB008175B4 /* LoadingProtocol.swift */; };
+		67F13A1D1FAB5ABB008175B4 /* LoadingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A191FAB5ABB008175B4 /* LoadingProtocol.swift */; };
+		67F13A1F1FAB5AE8008175B4 /* LoadingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A1E1FAB5AE8008175B4 /* LoadingConfiguration.swift */; };
+		67F13A201FAB5AE8008175B4 /* LoadingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A1E1FAB5AE8008175B4 /* LoadingConfiguration.swift */; };
+		67F13A211FAB5AE8008175B4 /* LoadingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A1E1FAB5AE8008175B4 /* LoadingConfiguration.swift */; };
+		67F13A221FAB5AE8008175B4 /* LoadingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A1E1FAB5AE8008175B4 /* LoadingConfiguration.swift */; };
+		67F13A241FAB5B25008175B4 /* GeneralLoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A231FAB5B25008175B4 /* GeneralLoadingState.swift */; };
+		67F13A251FAB5B25008175B4 /* GeneralLoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A231FAB5B25008175B4 /* GeneralLoadingState.swift */; };
+		67F13A261FAB5B25008175B4 /* GeneralLoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A231FAB5B25008175B4 /* GeneralLoadingState.swift */; };
+		67F13A271FAB5B25008175B4 /* GeneralLoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A231FAB5B25008175B4 /* GeneralLoadingState.swift */; };
+		67F13A2A1FAB5FE0008175B4 /* PaginationLoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A291FAB5FE0008175B4 /* PaginationLoadingState.swift */; };
+		67F13A2B1FAB5FE0008175B4 /* PaginationLoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A291FAB5FE0008175B4 /* PaginationLoadingState.swift */; };
+		67F13A2C1FAB5FE0008175B4 /* PaginationLoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A291FAB5FE0008175B4 /* PaginationLoadingState.swift */; };
+		67F13A2D1FAB5FE0008175B4 /* PaginationLoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A291FAB5FE0008175B4 /* PaginationLoadingState.swift */; };
+		67F13A2F1FAB6053008175B4 /* LoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A2E1FAB6053008175B4 /* LoadingViewModel.swift */; };
+		67F13A301FAB6053008175B4 /* LoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A2E1FAB6053008175B4 /* LoadingViewModel.swift */; };
+		67F13A311FAB6053008175B4 /* LoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A2E1FAB6053008175B4 /* LoadingViewModel.swift */; };
+		67F13A321FAB6053008175B4 /* LoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A2E1FAB6053008175B4 /* LoadingViewModel.swift */; };
+		67F13A341FAB60C0008175B4 /* GeneralLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A331FAB60C0008175B4 /* GeneralLoadingViewModel.swift */; };
+		67F13A351FAB60C0008175B4 /* GeneralLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A331FAB60C0008175B4 /* GeneralLoadingViewModel.swift */; };
+		67F13A361FAB60C0008175B4 /* GeneralLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A331FAB60C0008175B4 /* GeneralLoadingViewModel.swift */; };
+		67F13A371FAB60C0008175B4 /* GeneralLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A331FAB60C0008175B4 /* GeneralLoadingViewModel.swift */; };
+		67F13A391FAB60DE008175B4 /* GeneralLoadingViewModelConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A381FAB60DE008175B4 /* GeneralLoadingViewModelConfiguration.swift */; };
+		67F13A3A1FAB60DE008175B4 /* GeneralLoadingViewModelConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A381FAB60DE008175B4 /* GeneralLoadingViewModelConfiguration.swift */; };
+		67F13A3B1FAB60DE008175B4 /* GeneralLoadingViewModelConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A381FAB60DE008175B4 /* GeneralLoadingViewModelConfiguration.swift */; };
+		67F13A3C1FAB60DE008175B4 /* GeneralLoadingViewModelConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A381FAB60DE008175B4 /* GeneralLoadingViewModelConfiguration.swift */; };
+		67F13A3E1FAB614D008175B4 /* PaginationLoadingViewModelConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A3D1FAB614D008175B4 /* PaginationLoadingViewModelConfiguration.swift */; };
+		67F13A3F1FAB614D008175B4 /* PaginationLoadingViewModelConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A3D1FAB614D008175B4 /* PaginationLoadingViewModelConfiguration.swift */; };
+		67F13A401FAB614D008175B4 /* PaginationLoadingViewModelConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A3D1FAB614D008175B4 /* PaginationLoadingViewModelConfiguration.swift */; };
+		67F13A411FAB614D008175B4 /* PaginationLoadingViewModelConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A3D1FAB614D008175B4 /* PaginationLoadingViewModelConfiguration.swift */; };
+		67F13A431FAB6256008175B4 /* PaginationLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A421FAB6256008175B4 /* PaginationLoadingViewModel.swift */; };
+		67F13A441FAB6256008175B4 /* PaginationLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A421FAB6256008175B4 /* PaginationLoadingViewModel.swift */; };
+		67F13A451FAB6256008175B4 /* PaginationLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A421FAB6256008175B4 /* PaginationLoadingViewModel.swift */; };
+		67F13A461FAB6256008175B4 /* PaginationLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F13A421FAB6256008175B4 /* PaginationLoadingViewModel.swift */; };
 		67FDC25F1FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
 		67FDC2601FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
 		67FDC2611FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
@@ -421,7 +487,6 @@
 		671461CC1EB3396E00EAB194 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		671461CD1EB3396E00EAB194 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		671461CE1EB3396E00EAB194 /* LogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFormatter.swift; sourceTree = "<group>"; };
-		671461D01EB3396E00EAB194 /* PaginationTableViewWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationTableViewWrapper.swift; sourceTree = "<group>"; };
 		671461D11EB3396E00EAB194 /* PaginationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationViewModel.swift; sourceTree = "<group>"; };
 		671461D31EB3396E00EAB194 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		671461D51EB3396E00EAB194 /* XibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
@@ -439,7 +504,6 @@
 		671461E91EB3396E00EAB194 /* CursorType+Slice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CursorType+Slice.swift"; sourceTree = "<group>"; };
 		671461EB1EB3396E00EAB194 /* Double+Rounding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Rounding.swift"; sourceTree = "<group>"; };
 		671461F11EB3396E00EAB194 /* Observable+DeferredJust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+DeferredJust.swift"; sourceTree = "<group>"; };
-		671461F41EB3396E00EAB194 /* PaginationTableViewWrapperDelegate+DefaultImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PaginationTableViewWrapperDelegate+DefaultImplementation.swift"; sourceTree = "<group>"; };
 		671461F61EB3396E00EAB194 /* Sequence+ConcurrentMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+ConcurrentMap.swift"; sourceTree = "<group>"; };
 		671461FC1EB3396E00EAB194 /* String+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		671461FD1EB3396E00EAB194 /* String+SizeCalculation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SizeCalculation.swift"; sourceTree = "<group>"; };
@@ -515,7 +579,27 @@
 		679C77D61F98F7A60094BE10 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		67A1FF8E1EBCA09B00D6C89F /* UIImage+Spinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Spinner.swift"; sourceTree = "<group>"; };
 		67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CABasicAnimation+Rotation.swift"; sourceTree = "<group>"; };
-		67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleLoadCursor.swift; sourceTree = "<group>"; };
+		67CB1BF11FAB78770089D1B1 /* PaginationWrappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationWrappable.swift; sourceTree = "<group>"; };
+		67CB1BF51FAB78DC0089D1B1 /* AnyPaginationWrappableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPaginationWrappableView.swift; sourceTree = "<group>"; };
+		67CB1BF91FAB79530089D1B1 /* UITableView+PaginationWrappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+PaginationWrappable.swift"; sourceTree = "<group>"; };
+		67CB1BFD1FAB79EE0089D1B1 /* UICollectionView+PaginationWrappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+PaginationWrappable.swift"; sourceTree = "<group>"; };
+		67CB1C011FAB7A640089D1B1 /* PaginationWrapperDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationWrapperDelegate.swift; sourceTree = "<group>"; };
+		67CB1C051FAB7AE00089D1B1 /* PaginationWrapperDelegate+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaginationWrapperDelegate+DefaultImplementation.swift"; sourceTree = "<group>"; };
+		67CB1C091FAB7B4D0089D1B1 /* PaginationWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationWrapper.swift; sourceTree = "<group>"; };
+		67F139F41FAB4F22008175B4 /* TotalCountCursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCountCursor.swift; sourceTree = "<group>"; };
+		67F139FA1FAB4F7E008175B4 /* TotalCountCursorConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCountCursorConfiguration.swift; sourceTree = "<group>"; };
+		67F13A011FAB5024008175B4 /* SharedSequence+FilterEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SharedSequence+FilterEmpty.swift"; sourceTree = "<group>"; };
+		67F13A071FAB50BB008175B4 /* Single+CursorExhausted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Single+CursorExhausted.swift"; sourceTree = "<group>"; };
+		67F13A141FAB5A87008175B4 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
+		67F13A191FAB5ABB008175B4 /* LoadingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProtocol.swift; sourceTree = "<group>"; };
+		67F13A1E1FAB5AE8008175B4 /* LoadingConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingConfiguration.swift; sourceTree = "<group>"; };
+		67F13A231FAB5B25008175B4 /* GeneralLoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralLoadingState.swift; sourceTree = "<group>"; };
+		67F13A291FAB5FE0008175B4 /* PaginationLoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationLoadingState.swift; sourceTree = "<group>"; };
+		67F13A2E1FAB6053008175B4 /* LoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewModel.swift; sourceTree = "<group>"; };
+		67F13A331FAB60C0008175B4 /* GeneralLoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralLoadingViewModel.swift; sourceTree = "<group>"; };
+		67F13A381FAB60DE008175B4 /* GeneralLoadingViewModelConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralLoadingViewModelConfiguration.swift; sourceTree = "<group>"; };
+		67F13A3D1FAB614D008175B4 /* PaginationLoadingViewModelConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationLoadingViewModelConfiguration.swift; sourceTree = "<group>"; };
+		67F13A421FAB6256008175B4 /* PaginationLoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationLoadingViewModel.swift; sourceTree = "<group>"; };
 		67FDC25E1FA310EA00C76A77 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		78405D3B3D3C3E17456877FF /* Pods_LeadKit_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Single+DeferredJust.swift"; sourceTree = "<group>"; };
@@ -615,6 +699,7 @@
 		671461C41EB3396E00EAB194 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				67F13A0C1FAB5266008175B4 /* GeneralLoading */,
 				671461C71EB3396E00EAB194 /* Cursors */,
 				671461CB1EB3396E00EAB194 /* Logging */,
 				671461CF1EB3396E00EAB194 /* Pagination */,
@@ -629,8 +714,8 @@
 			children = (
 				671461C81EB3396E00EAB194 /* FixedPageCursor.swift */,
 				671461C91EB3396E00EAB194 /* MapCursor.swift */,
-				67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */,
 				671461CA1EB3396E00EAB194 /* StaticCursor.swift */,
+				67F139F41FAB4F22008175B4 /* TotalCountCursor.swift */,
 			);
 			path = Cursors;
 			sourceTree = "<group>";
@@ -648,8 +733,8 @@
 		671461CF1EB3396E00EAB194 /* Pagination */ = {
 			isa = PBXGroup;
 			children = (
-				671461D01EB3396E00EAB194 /* PaginationTableViewWrapper.swift */,
 				671461D11EB3396E00EAB194 /* PaginationViewModel.swift */,
+				67CB1C091FAB7B4D0089D1B1 /* PaginationWrapper.swift */,
 			);
 			path = Pagination;
 			sourceTree = "<group>";
@@ -689,6 +774,8 @@
 		671461DA1EB3396E00EAB194 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				67CB1BF81FAB793F0089D1B1 /* Pagination */,
+				67F139FF1FAB4FCC008175B4 /* Rx */,
 				671461DB1EB3396E00EAB194 /* Alamofire */,
 				EFBE57CE1EC35ED90040E00A /* Array */,
 				67A1FF921EBCA64A00D6C89F /* CABasicAnimation */,
@@ -702,10 +789,7 @@
 				6771DFE81EEA7C8F002DCDAE /* DateFormattingService */,
 				671461EA1EB3396E00EAB194 /* Double */,
 				6714639C1EB33AC200EAB194 /* NetworkService */,
-				671461F01EB3396E00EAB194 /* Observable */,
-				671461F31EB3396E00EAB194 /* PaginationTableViewWrapperDelegate */,
 				671461F51EB3396E00EAB194 /* Sequence */,
-				82F8BB161F5DDED100C1061B /* Single */,
 				671461FA1EB3396E00EAB194 /* String */,
 				671461FE1EB3396E00EAB194 /* Support */,
 				671462001EB3396E00EAB194 /* TableDirector */,
@@ -786,14 +870,6 @@
 				671461F11EB3396E00EAB194 /* Observable+DeferredJust.swift */,
 			);
 			path = Observable;
-			sourceTree = "<group>";
-		};
-		671461F31EB3396E00EAB194 /* PaginationTableViewWrapperDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				671461F41EB3396E00EAB194 /* PaginationTableViewWrapperDelegate+DefaultImplementation.swift */,
-			);
-			path = PaginationTableViewWrapperDelegate;
 			sourceTree = "<group>";
 		};
 		671461F51EB3396E00EAB194 /* Sequence */ = {
@@ -901,15 +977,15 @@
 		671462221EB3396E00EAB194 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				67CB1BEE1FAB78280089D1B1 /* Views */,
+				67F13A0D1FAB5A5C008175B4 /* Loading */,
+				67F139F91FAB4F66008175B4 /* Cursors */,
 				671462331EB3396E00EAB194 /* ConfigurableView.swift */,
 				679C77D41F98F78E0094BE10 /* AlertRepresentable.swift */,
-				671463A11EB33FF600EAB194 /* Animatable.swift */,
 				40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */,
 				671462231EB3396E00EAB194 /* BaseViewModel.swift */,
 				671462241EB3396E00EAB194 /* ConfigurableController.swift */,
-				671462251EB3396E00EAB194 /* CursorType.swift */,
 				671462261EB3396E00EAB194 /* DrawingOperation.swift */,
-				671462281EB3396E00EAB194 /* LoadingIndicator.swift */,
 				671462291EB3396E00EAB194 /* ModuleConfigurator.swift */,
 				A676AE541F981121001F9214 /* ObservableMappable.swift */,
 				6714622B1EB3396E00EAB194 /* ResettableType.swift */,
@@ -959,7 +1035,8 @@
 		671462421EB3396E00EAB194 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				671462431EB3396E00EAB194 /* AnyLoadingIndicator.swift */,
+				67CB1BF41FAB78B90089D1B1 /* Pagination */,
+				67CB1BF31FAB78B10089D1B1 /* LoadingIndicator */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1080,6 +1157,134 @@
 			path = CABasicAnimation;
 			sourceTree = "<group>";
 		};
+		67CB1BEE1FAB78280089D1B1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				67CB1BF01FAB784E0089D1B1 /* Pagination */,
+				67CB1BEF1FAB78460089D1B1 /* LoadingIndicator */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		67CB1BEF1FAB78460089D1B1 /* LoadingIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				671462281EB3396E00EAB194 /* LoadingIndicator.swift */,
+				671463A11EB33FF600EAB194 /* Animatable.swift */,
+			);
+			path = LoadingIndicator;
+			sourceTree = "<group>";
+		};
+		67CB1BF01FAB784E0089D1B1 /* Pagination */ = {
+			isa = PBXGroup;
+			children = (
+				67CB1BF11FAB78770089D1B1 /* PaginationWrappable.swift */,
+				67CB1C011FAB7A640089D1B1 /* PaginationWrapperDelegate.swift */,
+			);
+			path = Pagination;
+			sourceTree = "<group>";
+		};
+		67CB1BF31FAB78B10089D1B1 /* LoadingIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				671462431EB3396E00EAB194 /* AnyLoadingIndicator.swift */,
+			);
+			path = LoadingIndicator;
+			sourceTree = "<group>";
+		};
+		67CB1BF41FAB78B90089D1B1 /* Pagination */ = {
+			isa = PBXGroup;
+			children = (
+				67CB1BF51FAB78DC0089D1B1 /* AnyPaginationWrappableView.swift */,
+			);
+			path = Pagination;
+			sourceTree = "<group>";
+		};
+		67CB1BF81FAB793F0089D1B1 /* Pagination */ = {
+			isa = PBXGroup;
+			children = (
+				67CB1BF91FAB79530089D1B1 /* UITableView+PaginationWrappable.swift */,
+				67CB1BFD1FAB79EE0089D1B1 /* UICollectionView+PaginationWrappable.swift */,
+				67CB1C051FAB7AE00089D1B1 /* PaginationWrapperDelegate+DefaultImplementation.swift */,
+			);
+			path = Pagination;
+			sourceTree = "<group>";
+		};
+		67F139F91FAB4F66008175B4 /* Cursors */ = {
+			isa = PBXGroup;
+			children = (
+				671462251EB3396E00EAB194 /* CursorType.swift */,
+				67F139FA1FAB4F7E008175B4 /* TotalCountCursorConfiguration.swift */,
+			);
+			path = Cursors;
+			sourceTree = "<group>";
+		};
+		67F139FF1FAB4FCC008175B4 /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				67F13A061FAB5098008175B4 /* PrimitiveSequence */,
+				67F13A001FAB5011008175B4 /* SharedSequence */,
+				671461F01EB3396E00EAB194 /* Observable */,
+			);
+			path = Rx;
+			sourceTree = "<group>";
+		};
+		67F13A001FAB5011008175B4 /* SharedSequence */ = {
+			isa = PBXGroup;
+			children = (
+				67F13A011FAB5024008175B4 /* SharedSequence+FilterEmpty.swift */,
+			);
+			path = SharedSequence;
+			sourceTree = "<group>";
+		};
+		67F13A061FAB5098008175B4 /* PrimitiveSequence */ = {
+			isa = PBXGroup;
+			children = (
+				82F8BB161F5DDED100C1061B /* Single */,
+			);
+			path = PrimitiveSequence;
+			sourceTree = "<group>";
+		};
+		67F13A0C1FAB5266008175B4 /* GeneralLoading */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GeneralLoading;
+			sourceTree = "<group>";
+		};
+		67F13A0D1FAB5A5C008175B4 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				67F13A281FAB5FD3008175B4 /* PaginationLoading */,
+				67F13A0E1FAB5A64008175B4 /* GeneralLoading */,
+				67F13A141FAB5A87008175B4 /* LoadingState.swift */,
+				67F13A191FAB5ABB008175B4 /* LoadingProtocol.swift */,
+				67F13A1E1FAB5AE8008175B4 /* LoadingConfiguration.swift */,
+				67F13A2E1FAB6053008175B4 /* LoadingViewModel.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		67F13A0E1FAB5A64008175B4 /* GeneralLoading */ = {
+			isa = PBXGroup;
+			children = (
+				67F13A231FAB5B25008175B4 /* GeneralLoadingState.swift */,
+				67F13A331FAB60C0008175B4 /* GeneralLoadingViewModel.swift */,
+				67F13A381FAB60DE008175B4 /* GeneralLoadingViewModelConfiguration.swift */,
+			);
+			path = GeneralLoading;
+			sourceTree = "<group>";
+		};
+		67F13A281FAB5FD3008175B4 /* PaginationLoading */ = {
+			isa = PBXGroup;
+			children = (
+				67F13A291FAB5FE0008175B4 /* PaginationLoadingState.swift */,
+				67F13A3D1FAB614D008175B4 /* PaginationLoadingViewModelConfiguration.swift */,
+				67F13A421FAB6256008175B4 /* PaginationLoadingViewModel.swift */,
+			);
+			path = PaginationLoading;
+			sourceTree = "<group>";
+		};
 		78CFEE201C5C456B00F50370 = {
 			isa = PBXGroup;
 			children = (
@@ -1109,6 +1314,7 @@
 		82F8BB161F5DDED100C1061B /* Single */ = {
 			isa = PBXGroup;
 			children = (
+				67F13A071FAB50BB008175B4 /* Single+CursorExhausted.swift */,
 				82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */,
 			);
 			path = Single;
@@ -1934,12 +2140,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				671463481EB3396E00EAB194 /* ResettableType.swift in Sources */,
+				67F139F51FAB4F22008175B4 /* TotalCountCursor.swift in Sources */,
 				EFBE57D01EC35EF20040E00A /* Array+Extensions.swift in Sources */,
 				671462E41EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
 				671462CC1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
 				671462801EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
+				67CB1BF21FAB78770089D1B1 /* PaginationWrappable.swift in Sources */,
 				671463541EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
 				671463601EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
+				67F13A3E1FAB614D008175B4 /* PaginationLoadingViewModelConfiguration.swift in Sources */,
 				671462841EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
 				EFBE57DB1EC361620040E00A /* UIView+Layout.swift in Sources */,
 				6714639E1EB33AEB00EAB194 /* NetworkService+ActivityIndicator.swift in Sources */,
@@ -1949,10 +2158,14 @@
 				6771DFDE1EE99F6F002DCDAE /* DateFormattingArguments.swift in Sources */,
 				671462681EB3396E00EAB194 /* NetworkService.swift in Sources */,
 				671463101EB3396E00EAB194 /* UIViewController+DefaultXibName.swift in Sources */,
+				67CB1BF61FAB78DC0089D1B1 /* AnyPaginationWrappableView.swift in Sources */,
+				67F13A2F1FAB6053008175B4 /* LoadingViewModel.swift in Sources */,
 				674AF55C1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */,
 				671463401EB3396E00EAB194 /* ModuleConfigurator.swift in Sources */,
 				671462641EB3396E00EAB194 /* PaginationViewModel.swift in Sources */,
+				67F13A431FAB6256008175B4 /* PaginationLoadingViewModel.swift in Sources */,
 				67A1FF8F1EBCA09B00D6C89F /* UIImage+Spinner.swift in Sources */,
+				67CB1BFE1FAB79EE0089D1B1 /* UICollectionView+PaginationWrappable.swift in Sources */,
 				671462901EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
 				671462FC1EB3396E00EAB194 /* UIView+XibNameProtocol.swift in Sources */,
 				671463841EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
@@ -1968,11 +2181,13 @@
 				67FDC25F1FA310EA00C76A77 /* RequestError.swift in Sources */,
 				6714624C1EB3396E00EAB194 /* MapCursor.swift in Sources */,
 				A6C9A4FA1F8BBCF2009311CC /* EmptyCell.swift in Sources */,
+				67CB1C061FAB7AE00089D1B1 /* PaginationWrapperDelegate+DefaultImplementation.swift in Sources */,
 				671463241EB3396E00EAB194 /* Any+TypeName.swift in Sources */,
 				671463881EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
 				A6D10EAB1F8A9278003E69DD /* Comparable+Extensions.swift in Sources */,
+				67F139FB1FAB4F7E008175B4 /* TotalCountCursorConfiguration.swift in Sources */,
+				67F13A2A1FAB5FE0008175B4 /* PaginationLoadingState.swift in Sources */,
 				671463801EB3396E00EAB194 /* PaddingDrawingOperation.swift in Sources */,
-				671462601EB3396E00EAB194 /* PaginationTableViewWrapper.swift in Sources */,
 				671463281EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
 				A6E0DDDF1F8A696F002CA74E /* SeparatorCell.swift in Sources */,
 				671462AC1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
@@ -1981,27 +2196,34 @@
 				6714627C1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
 				671462D41EB3396E00EAB194 /* TableDirector+Extensions.swift in Sources */,
 				671462581EB3396E00EAB194 /* Log.swift in Sources */,
-				671462B41EB3396E00EAB194 /* PaginationTableViewWrapperDelegate+DefaultImplementation.swift in Sources */,
+				67F13A1A1FAB5ABB008175B4 /* LoadingProtocol.swift in Sources */,
+				67F13A391FAB60DE008175B4 /* GeneralLoadingViewModelConfiguration.swift in Sources */,
 				671462781EB3396E00EAB194 /* ResizeMode.swift in Sources */,
 				A676AE551F98112E001F9214 /* ObservableMappable.swift in Sources */,
 				A6E0DDE11F8A696F002CA74E /* SeparatorRowBox.swift in Sources */,
 				A6E0DDDE1F8A696F002CA74E /* EmptyCellRow.swift in Sources */,
+				67F13A341FAB60C0008175B4 /* GeneralLoadingViewModel.swift in Sources */,
 				671463041EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
+				67F13A1F1FAB5AE8008175B4 /* LoadingConfiguration.swift in Sources */,
 				40F118491F8FF223004AADAF /* TableRow+AppearanceExtension.swift in Sources */,
 				671463701EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
 				A658E5501F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift in Sources */,
 				671462EC1EB3396E00EAB194 /* UIImage+Extensions.swift in Sources */,
+				67F13A241FAB5B25008175B4 /* GeneralLoadingState.swift in Sources */,
 				A6E0DDF11F8A6C80002CA74E /* SeparatorConfiguration.swift in Sources */,
 				6714636C1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
 				6771DFEA1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
 				671462A01EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
 				6714625C1EB3396E00EAB194 /* LogFormatter.swift in Sources */,
+				67F13A081FAB50BB008175B4 /* Single+CursorExhausted.swift in Sources */,
 				671463081EB3396E00EAB194 /* UIView+Rotation.swift in Sources */,
 				6714626C1EB3396E00EAB194 /* XibView.swift in Sources */,
 				6714637C1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				671463341EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
 				671462701EB3396E00EAB194 /* CursorError.swift in Sources */,
 				671463981EB3396E00EAB194 /* AnyLoadingIndicator.swift in Sources */,
+				67F13A151FAB5A87008175B4 /* LoadingState.swift in Sources */,
+				67CB1BFA1FAB79530089D1B1 /* UITableView+PaginationWrappable.swift in Sources */,
 				671463A71EB340C000EAB194 /* UIViewController+ConfigurableController.swift in Sources */,
 				671463141EB3396E00EAB194 /* UIViewController+TopVisibleViewController.swift in Sources */,
 				A6F32C081F6EBDAA00AC08EE /* String+LocalizedComponent.swift in Sources */,
@@ -2010,14 +2232,15 @@
 				671463641EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
 				671462481EB3396E00EAB194 /* FixedPageCursor.swift in Sources */,
 				671462C81EB3396E00EAB194 /* String+Localization.swift in Sources */,
+				67CB1C0A1FAB7B4D0089D1B1 /* PaginationWrapper.swift in Sources */,
 				671462B81EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */,
 				671463741EB3396E00EAB194 /* BorderDrawingOperation.swift in Sources */,
 				A676AE4B1F97D28A001F9214 /* String+Extensions.swift in Sources */,
 				6714633C1EB3396E00EAB194 /* LoadingIndicator.swift in Sources */,
-				67E6C2351EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				40F118471F8FEF97004AADAF /* AppearanceConfigurable.swift in Sources */,
 				671463181EB3396E00EAB194 /* UIWindow+Extensions.swift in Sources */,
 				671462541EB3396E00EAB194 /* App.swift in Sources */,
+				67F13A021FAB5024008175B4 /* SharedSequence+FilterEmpty.swift in Sources */,
 				671463781EB3396E00EAB194 /* CALayerDrawingOperation.swift in Sources */,
 				6714632C1EB3396E00EAB194 /* ConfigurableController.swift in Sources */,
 				6714628C1EB3396E00EAB194 /* CGImage+Alpha.swift in Sources */,
@@ -2028,6 +2251,7 @@
 				671462501EB3396E00EAB194 /* StaticCursor.swift in Sources */,
 				6714629C1EB3396E00EAB194 /* CursorType+Slice.swift in Sources */,
 				671463681EB3396E00EAB194 /* ConfigurableView.swift in Sources */,
+				67CB1C021FAB7A640089D1B1 /* PaginationWrapperDelegate.swift in Sources */,
 				6771DFE41EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2057,21 +2281,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67F13A1C1FAB5ABB008175B4 /* LoadingProtocol.swift in Sources */,
 				6714634A1EB3396E00EAB194 /* ResettableType.swift in Sources */,
 				671462E61EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
 				671462CE1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
 				A676AE4D1F9810C1001F9214 /* Any+Cast.swift in Sources */,
+				67F13A3B1FAB60DE008175B4 /* GeneralLoadingViewModelConfiguration.swift in Sources */,
 				EFBE57D21EC35EF20040E00A /* Array+Extensions.swift in Sources */,
+				67F139F71FAB4F22008175B4 /* TotalCountCursor.swift in Sources */,
 				671462821EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
-				67E6C2371EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				671463561EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
 				6771DFE01EE99F6F002DCDAE /* DateFormattingArguments.swift in Sources */,
 				671463621EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
+				67F13A361FAB60C0008175B4 /* GeneralLoadingViewModel.swift in Sources */,
 				6771DFEC1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
+				67F13A211FAB5AE8008175B4 /* LoadingConfiguration.swift in Sources */,
 				671462861EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
 				6714634E1EB3396E00EAB194 /* ReuseIdentifierProtocol.swift in Sources */,
 				6714626A1EB3396E00EAB194 /* NetworkService.swift in Sources */,
 				671463421EB3396E00EAB194 /* ModuleConfigurator.swift in Sources */,
+				67F13A171FAB5A87008175B4 /* LoadingState.swift in Sources */,
 				671462661EB3396E00EAB194 /* PaginationViewModel.swift in Sources */,
 				671462921EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
 				671463861EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
@@ -2080,11 +2309,14 @@
 				671463321EB3396E00EAB194 /* CursorType.swift in Sources */,
 				6714624E1EB3396E00EAB194 /* MapCursor.swift in Sources */,
 				A676AE571F981130001F9214 /* ObservableMappable.swift in Sources */,
+				67F13A041FAB5024008175B4 /* SharedSequence+FilterEmpty.swift in Sources */,
 				671463261EB3396E00EAB194 /* Any+TypeName.swift in Sources */,
+				67F13A451FAB6256008175B4 /* PaginationLoadingViewModel.swift in Sources */,
 				6714638A1EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
 				671463821EB3396E00EAB194 /* PaddingDrawingOperation.swift in Sources */,
 				6714632A1EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
 				671462AE1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
+				67F13A2C1FAB5FE0008175B4 /* PaginationLoadingState.swift in Sources */,
 				A6F32C0B1F6EBE5C00AC08EE /* String+LocalizedComponent.swift in Sources */,
 				6714627E1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
 				6771DFDA1EE99EBA002DCDAE /* DateFormattingService.swift in Sources */,
@@ -2095,12 +2327,16 @@
 				6714636E1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
 				67CDEE401EB369BF00895905 /* ConfigurableController.swift in Sources */,
 				A676AE481F97D28A001F9214 /* String+Extensions.swift in Sources */,
+				67F13A311FAB6053008175B4 /* LoadingViewModel.swift in Sources */,
 				671462A21EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
 				6714625E1EB3396E00EAB194 /* LogFormatter.swift in Sources */,
+				67F13A401FAB614D008175B4 /* PaginationLoadingViewModelConfiguration.swift in Sources */,
 				6714637E1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
+				67F13A261FAB5B25008175B4 /* GeneralLoadingState.swift in Sources */,
 				671463361EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
 				671462721EB3396E00EAB194 /* CursorError.swift in Sources */,
 				671462961EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
+				67F139FD1FAB4F7E008175B4 /* TotalCountCursorConfiguration.swift in Sources */,
 				671463661EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
 				6771DFE61EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift in Sources */,
 				6714624A1EB3396E00EAB194 /* FixedPageCursor.swift in Sources */,
@@ -2108,6 +2344,7 @@
 				671462BA1EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */,
 				671463761EB3396E00EAB194 /* BorderDrawingOperation.swift in Sources */,
 				671462561EB3396E00EAB194 /* App.swift in Sources */,
+				674CC1DF1FAB8D1C007B0EAE /* Single+CursorExhausted.swift in Sources */,
 				675C1FB51F97CA33007D5249 /* AppearanceConfigurable.swift in Sources */,
 				6714628E1EB3396E00EAB194 /* CGImage+Alpha.swift in Sources */,
 				671462761EB3396E00EAB194 /* LeadKitError.swift in Sources */,
@@ -2129,10 +2366,14 @@
 				671462CF1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
 				671462831EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
 				671463571EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
+				67F13A371FAB60C0008175B4 /* GeneralLoadingViewModel.swift in Sources */,
+				67F139FE1FAB4F7E008175B4 /* TotalCountCursorConfiguration.swift in Sources */,
 				671463631EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
 				671462871EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
 				6714634F1EB3396E00EAB194 /* ReuseIdentifierProtocol.swift in Sources */,
+				67F13A2D1FAB5FE0008175B4 /* PaginationLoadingState.swift in Sources */,
 				671462F31EB3396E00EAB194 /* UIImage+SupportExtensions.swift in Sources */,
+				67F13A321FAB6053008175B4 /* LoadingViewModel.swift in Sources */,
 				6771DFE71EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift in Sources */,
 				6714626B1EB3396E00EAB194 /* NetworkService.swift in Sources */,
 				671463131EB3396E00EAB194 /* UIViewController+DefaultXibName.swift in Sources */,
@@ -2142,6 +2383,8 @@
 				671462FF1EB3396E00EAB194 /* UIView+XibNameProtocol.swift in Sources */,
 				67FDC2621FA310EA00C76A77 /* RequestError.swift in Sources */,
 				671463871EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
+				674CC1DD1FAB8D0A007B0EAE /* PaginationWrappable.swift in Sources */,
+				67F13A461FAB6256008175B4 /* PaginationLoadingViewModel.swift in Sources */,
 				671463931EB3396E00EAB194 /* TemplateDrawingOperation.swift in Sources */,
 				674AF55E1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */,
 				671463A51EB33FF600EAB194 /* Animatable.swift in Sources */,
@@ -2162,11 +2405,16 @@
 				6771DFDB1EE99EBA002DCDAE /* DateFormattingService.swift in Sources */,
 				6714625B1EB3396E00EAB194 /* Log.swift in Sources */,
 				6714627B1EB3396E00EAB194 /* ResizeMode.swift in Sources */,
+				67CB1C001FAB79EE0089D1B1 /* UICollectionView+PaginationWrappable.swift in Sources */,
 				671463071EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
+				67F13A411FAB614D008175B4 /* PaginationLoadingViewModelConfiguration.swift in Sources */,
+				67F13A1D1FAB5ABB008175B4 /* LoadingProtocol.swift in Sources */,
 				6771DFED1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
 				671463A91EB340C000EAB194 /* UIViewController+ConfigurableController.swift in Sources */,
+				67CB1BFC1FAB79530089D1B1 /* UITableView+PaginationWrappable.swift in Sources */,
 				A676AE581F981131001F9214 /* ObservableMappable.swift in Sources */,
 				671463731EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
+				67F139F81FAB4F22008175B4 /* TotalCountCursor.swift in Sources */,
 				671462EF1EB3396E00EAB194 /* UIImage+Extensions.swift in Sources */,
 				6714636F1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
 				EFBE57DE1EC361620040E00A /* UIView+Layout.swift in Sources */,
@@ -2177,16 +2425,22 @@
 				6714626F1EB3396E00EAB194 /* XibView.swift in Sources */,
 				6714637F1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				671463371EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
+				67F13A051FAB5024008175B4 /* SharedSequence+FilterEmpty.swift in Sources */,
+				67F13A221FAB5AE8008175B4 /* LoadingConfiguration.swift in Sources */,
 				671462731EB3396E00EAB194 /* CursorError.swift in Sources */,
 				6714639B1EB3396E00EAB194 /* AnyLoadingIndicator.swift in Sources */,
 				6771DFE11EE99F6F002DCDAE /* DateFormattingArguments.swift in Sources */,
+				67F13A181FAB5A87008175B4 /* LoadingState.swift in Sources */,
+				67F13A3C1FAB60DE008175B4 /* GeneralLoadingViewModelConfiguration.swift in Sources */,
 				671463171EB3396E00EAB194 /* UIViewController+TopVisibleViewController.swift in Sources */,
 				6714628B1EB3396E00EAB194 /* CGFloat+Pixels.swift in Sources */,
 				671462971EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
 				671463671EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
+				67CB1C041FAB7A640089D1B1 /* PaginationWrapperDelegate.swift in Sources */,
 				67A1FF911EBCA09B00D6C89F /* UIImage+Spinner.swift in Sources */,
 				6714624B1EB3396E00EAB194 /* FixedPageCursor.swift in Sources */,
 				671462CB1EB3396E00EAB194 /* String+Localization.swift in Sources */,
+				67F13A271FAB5B25008175B4 /* GeneralLoadingState.swift in Sources */,
 				671462BB1EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */,
 				671463771EB3396E00EAB194 /* BorderDrawingOperation.swift in Sources */,
 				6714633F1EB3396E00EAB194 /* LoadingIndicator.swift in Sources */,
@@ -2197,10 +2451,10 @@
 				6714632F1EB3396E00EAB194 /* ConfigurableController.swift in Sources */,
 				6714628F1EB3396E00EAB194 /* CGImage+Alpha.swift in Sources */,
 				67051ADD1EBC7C36008EADC0 /* SpinnerView.swift in Sources */,
+				674CC1E01FAB8D1D007B0EAE /* Single+CursorExhausted.swift in Sources */,
 				671462771EB3396E00EAB194 /* LeadKitError.swift in Sources */,
 				671462DB1EB3396E00EAB194 /* TimeInterval+DateComponents.swift in Sources */,
 				6714638F1EB3396E00EAB194 /* SolidFillDrawingOperation.swift in Sources */,
-				67E6C2381EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				671462531EB3396E00EAB194 /* StaticCursor.swift in Sources */,
 				6714629F1EB3396E00EAB194 /* CursorType+Slice.swift in Sources */,
 				6714636B1EB3396E00EAB194 /* ConfigurableView.swift in Sources */,
@@ -2226,21 +2480,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				671463491EB3396E00EAB194 /* ResettableType.swift in Sources */,
+				67F13A251FAB5B25008175B4 /* GeneralLoadingState.swift in Sources */,
 				A676AE491F97D28A001F9214 /* String+Extensions.swift in Sources */,
+				67CB1C031FAB7A640089D1B1 /* PaginationWrapperDelegate.swift in Sources */,
 				671462E51EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
 				671462CD1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
+				67F139F61FAB4F22008175B4 /* TotalCountCursor.swift in Sources */,
 				6771DFDF1EE99F6F002DCDAE /* DateFormattingArguments.swift in Sources */,
 				6771DFEB1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
+				67F13A3F1FAB614D008175B4 /* PaginationLoadingViewModelConfiguration.swift in Sources */,
 				67A1FF951EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */,
 				671462811EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
-				67E6C2361EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				671463551EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
 				671463611EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
 				671462851EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
+				67F13A351FAB60C0008175B4 /* GeneralLoadingViewModel.swift in Sources */,
 				6714634D1EB3396E00EAB194 /* ReuseIdentifierProtocol.swift in Sources */,
 				671462F11EB3396E00EAB194 /* UIImage+SupportExtensions.swift in Sources */,
 				671462691EB3396E00EAB194 /* NetworkService.swift in Sources */,
 				671463111EB3396E00EAB194 /* UIViewController+DefaultXibName.swift in Sources */,
+				67F13A301FAB6053008175B4 /* LoadingViewModel.swift in Sources */,
 				671463411EB3396E00EAB194 /* ModuleConfigurator.swift in Sources */,
 				671462651EB3396E00EAB194 /* PaginationViewModel.swift in Sources */,
 				671462911EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
@@ -2249,10 +2508,13 @@
 				671463851EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
 				671462D11EB3396E00EAB194 /* UIScrollView+Support.swift in Sources */,
 				671463911EB3396E00EAB194 /* TemplateDrawingOperation.swift in Sources */,
+				67F13A201FAB5AE8008175B4 /* LoadingConfiguration.swift in Sources */,
+				67F139FC1FAB4F7E008175B4 /* TotalCountCursorConfiguration.swift in Sources */,
 				671462991EB3396E00EAB194 /* CGSize+Resize.swift in Sources */,
 				671463311EB3396E00EAB194 /* CursorType.swift in Sources */,
 				6714624D1EB3396E00EAB194 /* MapCursor.swift in Sources */,
 				671463251EB3396E00EAB194 /* Any+TypeName.swift in Sources */,
+				67F13A3A1FAB60DE008175B4 /* GeneralLoadingViewModelConfiguration.swift in Sources */,
 				671463891EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
 				675C1FB61F97CA33007D5249 /* AppearanceConfigurable.swift in Sources */,
 				671463811EB3396E00EAB194 /* PaddingDrawingOperation.swift in Sources */,
@@ -2271,13 +2533,18 @@
 				6714625D1EB3396E00EAB194 /* LogFormatter.swift in Sources */,
 				671463091EB3396E00EAB194 /* UIView+Rotation.swift in Sources */,
 				6714626D1EB3396E00EAB194 /* XibView.swift in Sources */,
+				67CB1C071FAB7AE00089D1B1 /* PaginationWrapperDelegate+DefaultImplementation.swift in Sources */,
+				67F13A031FAB5024008175B4 /* SharedSequence+FilterEmpty.swift in Sources */,
 				6714637D1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				671463351EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
 				67FDC2601FA310EA00C76A77 /* RequestError.swift in Sources */,
 				671462711EB3396E00EAB194 /* CursorError.swift in Sources */,
+				67F13A161FAB5A87008175B4 /* LoadingState.swift in Sources */,
 				671463991EB3396E00EAB194 /* AnyLoadingIndicator.swift in Sources */,
 				671463A81EB340C000EAB194 /* UIViewController+ConfigurableController.swift in Sources */,
 				671463151EB3396E00EAB194 /* UIViewController+TopVisibleViewController.swift in Sources */,
+				67F13A441FAB6256008175B4 /* PaginationLoadingViewModel.swift in Sources */,
+				674CC1DE1FAB8D1B007B0EAE /* Single+CursorExhausted.swift in Sources */,
 				671462891EB3396E00EAB194 /* CGFloat+Pixels.swift in Sources */,
 				674AF55D1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */,
 				6771DFD91EE99EBA002DCDAE /* DateFormattingService.swift in Sources */,
@@ -2287,10 +2554,12 @@
 				A6C9A5101F8BC79D009311CC /* Comparable+Extensions.swift in Sources */,
 				671462491EB3396E00EAB194 /* FixedPageCursor.swift in Sources */,
 				671462C91EB3396E00EAB194 /* String+Localization.swift in Sources */,
+				67F13A2B1FAB5FE0008175B4 /* PaginationLoadingState.swift in Sources */,
 				671462B91EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */,
 				671463751EB3396E00EAB194 /* BorderDrawingOperation.swift in Sources */,
 				6714633D1EB3396E00EAB194 /* LoadingIndicator.swift in Sources */,
 				671463191EB3396E00EAB194 /* UIWindow+Extensions.swift in Sources */,
+				674CC1DB1FAB8D09007B0EAE /* PaginationWrappable.swift in Sources */,
 				EFBE57DC1EC361620040E00A /* UIView+Layout.swift in Sources */,
 				671462551EB3396E00EAB194 /* App.swift in Sources */,
 				67A1FF901EBCA09B00D6C89F /* UIImage+Spinner.swift in Sources */,
@@ -2306,7 +2575,10 @@
 				6771DFE51EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift in Sources */,
 				671462511EB3396E00EAB194 /* StaticCursor.swift in Sources */,
 				6714629D1EB3396E00EAB194 /* CursorType+Slice.swift in Sources */,
+				67F13A1B1FAB5ABB008175B4 /* LoadingProtocol.swift in Sources */,
+				67CB1BFB1FAB79530089D1B1 /* UITableView+PaginationWrappable.swift in Sources */,
 				671463691EB3396E00EAB194 /* ConfigurableView.swift in Sources */,
+				674CC1DA1FAB8D06007B0EAE /* UICollectionView+PaginationWrappable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
