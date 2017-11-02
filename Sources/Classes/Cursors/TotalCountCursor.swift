@@ -70,10 +70,9 @@ public final class TotalCountCursor<LT, ET, CC: TotalCountCursorConfiguration>: 
 
         let newProductsObservable = sharedProductsListing
             .map { $0.results }
-            .filterEmpty()
 
         Driver
-            .combineLatest(newProductsObservable, Driver.just(elementsVariable.value)) {
+            .combineLatest(newProductsObservable.filterEmpty(), Driver.just(elementsVariable.value)) {
                 $0 + $1
             }
             .drive(elementsVariable)
