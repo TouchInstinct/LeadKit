@@ -61,29 +61,33 @@ public final class TotalCountCursor<LT, ET, CC: TotalCountCursorConfiguration>: 
     }
 
     public func loadNextBatch() -> Single<[ET]> {
-        let sharedProductsListing = configuration.nextBatchObservable()
+        let sharedListing = configuration.nextBatchObservable()
             .map { [configuration] listing in
                 configuration.getResult(fromListing: listing)
             }
+
+        let driverListing = sharedListing
             .asDriver(onErrorJustReturn: CC.ResultTuple([], .max))
 
-        sharedProductsListing
+        driverListing
             .map { $0.totalCount }
             .filter { $0 != .max }
             .drive(totalCountVariable)
             .disposed(by: disposeBag)
 
-        let newProductsObservable = sharedProductsListing
+        let newProductsDriver = driverListing
             .map { $0.results }
+            .filterEmpty()
 
         Driver
-            .combineLatest(newProductsObservable.filterEmpty(), Driver.just(elementsVariable.value)) {
+            .combineLatest(newProductsDriver, Driver.just(elementsVariable.value)) {
                 $0 + $1
             }
             .drive(elementsVariable)
             .disposed(by: disposeBag)
 
-        return newProductsObservable
+        return sharedListing
+            .map { $0.results }
             .asObservable()
             .asSingle()
             .exhaustedIfEmpty()
