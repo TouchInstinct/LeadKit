@@ -22,8 +22,12 @@
 
 import RxSwift
 
-public final class PaginationLoadingViewModel<C: ResettableCursorType>:
-    LoadingViewModel<PaginationLoadingViewModelConfiguration<C>> {
+public typealias ResettableCursorType = CursorType & ResettableType
+public typealias ResettableCursorDataSource = ResettableCursorType & DataSourceProtocol
+
+public final class PaginationLoadingViewModel<C: ResettableCursorDataSource>:
+    LoadingViewModel<PaginationLoadingViewModelConfiguration<C>>
+    where C.ResultType == [C.Element] {
 
     private enum LoadType {
 
@@ -80,7 +84,7 @@ public final class PaginationLoadingViewModel<C: ResettableCursorType>:
         configuration.storeCurrentRequestDisposable(currentRequestDisposable)
     }
 
-    override func onGot(result: ResultType, from dataSource: DataSourceType) {
+    override func onGot(result: DataSourceType.ResultType, from dataSource: DataSourceType) {
         super.onGot(result: result, from: dataSource)
 
         if !configuration.isEmptyResult(result: result) && dataSource.exhausted {

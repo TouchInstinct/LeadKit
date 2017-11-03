@@ -23,11 +23,11 @@
 import RxSwift
 import RxCocoa
 
-public final class PaginationLoadingViewModelConfiguration<C: ResettableCursorType>: LoadingConfiguration {
+public final class PaginationLoadingViewModelConfiguration<C: ResettableCursorDataSource>: LoadingConfiguration
+    where C.ResultType == [C.Element] {
 
     public typealias DataSourceType = C
-    public typealias ResultType = [C.Element]
-    public typealias LoadingStateType = PaginationLoadingState<C.Element>
+    public typealias LoadingStateType = PaginationLoadingState<DataSourceType>
 
     public private(set) var dataSource: DataSourceType
     private let stateVariable = Variable<LoadingStateType>(.initialState)
@@ -39,11 +39,11 @@ public final class PaginationLoadingViewModelConfiguration<C: ResettableCursorTy
         self.dataSource = dataSource
     }
 
-    public var loadingObservable: Single<ResultType> {
+    public var loadingObservable: Single<C.ResultType> {
         return dataSource.loadNextBatch()
     }
 
-    public func isEmptyResult(result: ResultType) -> Bool {
+    public func isEmptyResult(result: C.ResultType) -> Bool {
         return result.isEmpty
     }
 

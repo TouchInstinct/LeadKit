@@ -22,6 +22,12 @@
 
 import UIKit
 
+public protocol ScrollViewHolder {
+
+    var scrollView: UIScrollView { get }
+
+}
+
 public protocol BackgroundViewHolder {
 
     var backgroundView: UIView? { get set }
@@ -34,10 +40,4 @@ public protocol FooterViewHolder {
 
 }
 
-public protocol PaginationWrappable: class {
-
-    associatedtype WrappableViewType: UIScrollView, BackgroundViewHolder, FooterViewHolder
-
-    var scrollView: WrappableViewType { get }
-
-}
+public typealias PaginationWrappable = ScrollViewHolder & BackgroundViewHolder & FooterViewHolder

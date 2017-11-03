@@ -21,27 +21,9 @@
 //
 
 import RxSwift
-import RxCocoa
 
-public protocol LoadingConfiguration: class {
+extension Single: DataSourceProtocol {
 
-    associatedtype DataSourceType: DataSourceProtocol
-    associatedtype LoadingStateType: LoadingState
-
-    var dataSource: DataSourceType { get }
-
-    var scheduler: SerialDispatchQueueScheduler { get }
-
-    var loadingObservable: Single<DataSourceType.ResultType> { get }
-
-    var stateDriver: Driver<LoadingStateType> { get }
-
-    var state: LoadingStateType { get set }
-
-    func resetDataSource()
-
-    func storeCurrentRequestDisposable(_ disposable: Disposable)
-
-    func isEmptyResult(result: DataSourceType.ResultType) -> Bool
+    public typealias ResultType = ElementType
 
 }

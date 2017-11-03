@@ -20,12 +20,12 @@
 //  THE SOFTWARE.
 //
 
-public indirect enum PaginationLoadingState<T> {
+public indirect enum PaginationLoadingState<DS: DataSourceProtocol> {
 
     case initial
     case loading(after: PaginationLoadingState)
     case loadingMore(after: PaginationLoadingState)
-    case results(newItems: [T], after: PaginationLoadingState)
+    case results(newItems: DS.ResultType, from: DS, after: PaginationLoadingState)
     case error(error: Error, after: PaginationLoadingState)
     case empty
     case exhausted
@@ -34,25 +34,30 @@ public indirect enum PaginationLoadingState<T> {
 
 extension PaginationLoadingState: LoadingState {
 
-    public typealias ResultType = [T]
+    public typealias DataSourceType = DS
 
-    public static var initialState: PaginationLoadingState<T> {
+    public static var initialState: PaginationLoadingState<DS> {
         return .initial
     }
 
-    public static var emptyState: PaginationLoadingState<T> {
+    public static var emptyState: PaginationLoadingState<DS> {
         return .empty
     }
 
-    public static func loadingState(after: PaginationLoadingState<T>) -> PaginationLoadingState<T> {
+    public static func loadingState(after: PaginationLoadingState<DS>) -> PaginationLoadingState<DS> {
         return .loading(after: after)
     }
 
-    public static func resultState(result: [T], after: PaginationLoadingState<T>) -> PaginationLoadingState<T> {
-        return .results(newItems: result, after: after)
+    public static func resultState(result: DS.ResultType,
+                                   from: DataSourceType,
+                                   after: PaginationLoadingState<DS>) -> PaginationLoadingState<DS> {
+
+        return .results(newItems: result, from: from, after: after)
     }
 
-    public static func errorState(error: Error, after: PaginationLoadingState<T>) -> PaginationLoadingState<T> {
+    public static func errorState(error: Error,
+                                  after: PaginationLoadingState<DS>) -> PaginationLoadingState<DS> {
+
         return .error(error: error, after: after)
     }
 

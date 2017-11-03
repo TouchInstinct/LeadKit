@@ -26,7 +26,7 @@ import UIKit
 /// customization of bound states (loading, empty, error, etc.).
 public protocol PaginationWrapperDelegate: class {
 
-    associatedtype Element
+    associatedtype DataSourceType: DataSourceProtocol
 
     /// Delegate method that handles loading new chunk of data.
     ///
@@ -34,7 +34,8 @@ public protocol PaginationWrapperDelegate: class {
     ///   - wrapper: Wrapper object that loaded new items.
     ///   - newItems: New items.
     ///   - cursor: Cursor used to load items
-    func paginationWrapper(didLoad newItems: [Element])
+    func paginationWrapper(didLoad newItems: DataSourceType.ResultType,
+                           using dataSource: DataSourceType)
 
     /// Delegate method that handles reloading or initial loading of data.
     ///
@@ -42,7 +43,8 @@ public protocol PaginationWrapperDelegate: class {
     ///   - wrapper: Wrapper object that reload items.
     ///   - allItems: New items.
     ///   - cursor: Cursor used to load items
-    func paginationWrapper(didReload allItems: [Element])
+    func paginationWrapper(didReload allItems: DataSourceType.ResultType,
+                           using dataSource: DataSourceType)
 
     /// Delegate method that returns placeholder view for empty state.
     ///

@@ -24,11 +24,10 @@ import RxSwift
 import RxCocoa
 
 class LoadingViewModel<VMC: LoadingConfiguration>: LoadingProtocol
-    where VMC.LoadingStateType.ResultType == VMC.ResultType {
+    where VMC.DataSourceType == VMC.LoadingStateType.DataSourceType {
 
     typealias DataSourceType = VMC.DataSourceType
     typealias LoadingStateType = VMC.LoadingStateType
-    typealias ResultType = VMC.ResultType
     typealias LoadingConfigurationType = VMC
 
     private let configuration: VMC
@@ -74,16 +73,17 @@ class LoadingViewModel<VMC: LoadingConfiguration>: LoadingProtocol
                                           after: configuration.state)
     }
 
-    func onGot(result: ResultType, from dataSource: DataSourceType) {
+    func onGot(result: DataSourceType.ResultType, from dataSource: DataSourceType) {
         if configuration.isEmptyResult(result: result) {
             configuration.state = .emptyState
         } else {
             configuration.state = .resultState(result: result,
+                                               from: dataSource,
                                                after: configuration.state)
         }
     }
 
-    private func onGot(result: ResultType) {
+    private func onGot(result: DataSourceType.ResultType) {
         onGot(result: result, from: configuration.dataSource)
     }
 

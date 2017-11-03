@@ -23,20 +23,25 @@
 import RxSwift
 import RxCocoa
 
-public final class TotalCountCursor<LT, ET, CC: TotalCountCursorConfiguration>: ResettableCursorType
+public final class TotalCountCursor<LT, ET, CC: TotalCountCursorConfiguration>: ResettableCursorDataSource
     where CC.ListingType == LT, CC.ElementType == ET {
 
     public typealias Element = ET
+    public typealias ResultType = [ET]
 
     private let configuration: CC
 
     private let elementsVariable = Variable<[ET]>([])
     private let totalCountVariable = Variable<Int>(.max)
 
+    public var totalCount: Int {
+        return totalCountVariable.value
+    }
+
     private let disposeBag = DisposeBag()
 
     public var exhausted: Bool {
-        return count >= totalCountVariable.value
+        return count >= totalCount
     }
 
     public var count: Int {

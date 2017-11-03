@@ -24,9 +24,8 @@ import RxCocoa
 
 public protocol LoadingProtocol {
 
-    associatedtype DataSourceType
+    associatedtype DataSourceType: DataSourceProtocol
     associatedtype LoadingStateType: LoadingState
-    associatedtype ResultType
     associatedtype LoadingConfigurationType: LoadingConfiguration
 
     var stateDriver: Driver<LoadingStateType> { get }

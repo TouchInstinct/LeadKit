@@ -54,16 +54,16 @@ public struct AnyPaginationWrappableView: BackgroundViewHolder, FooterViewHolder
 
     public init<View>(view: View) where View: PaginationWrappable {
         self.scrollView = view.scrollView
-        self.backgroundViewBacking = view.scrollView.backgroundView
-        self.footerViewBacking = view.scrollView.footerView
+        self.backgroundViewBacking = view.backgroundView
+        self.footerViewBacking = view.footerView
 
-        var localScrollView = view.scrollView
+        var localView = view
 
         self.backgroundViewSetter = {
-            localScrollView.backgroundView = $0
+            localView.backgroundView = $0
         }
         self.footerViewSetter = {
-            localScrollView.footerView = $0
+            localView.footerView = $0
         }
     }
 

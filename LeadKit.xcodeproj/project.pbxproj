@@ -39,10 +39,6 @@
 		6714625D1EB3396E00EAB194 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CE1EB3396E00EAB194 /* LogFormatter.swift */; };
 		6714625E1EB3396E00EAB194 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CE1EB3396E00EAB194 /* LogFormatter.swift */; };
 		6714625F1EB3396E00EAB194 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CE1EB3396E00EAB194 /* LogFormatter.swift */; };
-		671462641EB3396E00EAB194 /* PaginationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D11EB3396E00EAB194 /* PaginationViewModel.swift */; };
-		671462651EB3396E00EAB194 /* PaginationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D11EB3396E00EAB194 /* PaginationViewModel.swift */; };
-		671462661EB3396E00EAB194 /* PaginationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D11EB3396E00EAB194 /* PaginationViewModel.swift */; };
-		671462671EB3396E00EAB194 /* PaginationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D11EB3396E00EAB194 /* PaginationViewModel.swift */; };
 		671462681EB3396E00EAB194 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D31EB3396E00EAB194 /* NetworkService.swift */; };
 		671462691EB3396E00EAB194 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D31EB3396E00EAB194 /* NetworkService.swift */; };
 		6714626A1EB3396E00EAB194 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D31EB3396E00EAB194 /* NetworkService.swift */; };
@@ -278,6 +274,14 @@
 		671463CF1EB34B1E00EAB194 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671463B71EB34B1E00EAB194 /* TestView.xib */; };
 		67186B311EB248F100CFAFFB /* LeadKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67186B281EB248F100CFAFFB /* LeadKit.framework */; };
 		67186B3F1EB24A1900CFAFFB /* LeadKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 67186B201EB247A200CFAFFB /* LeadKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6740D5D21FABDA46006BB7C0 /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6740D5D11FABDA46006BB7C0 /* DataSourceProtocol.swift */; };
+		6740D5D31FABDA46006BB7C0 /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6740D5D11FABDA46006BB7C0 /* DataSourceProtocol.swift */; };
+		6740D5D41FABDA46006BB7C0 /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6740D5D11FABDA46006BB7C0 /* DataSourceProtocol.swift */; };
+		6740D5D51FABDA47006BB7C0 /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6740D5D11FABDA46006BB7C0 /* DataSourceProtocol.swift */; };
+		6740D5D71FABDBE3006BB7C0 /* Single+DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6740D5D61FABDBE3006BB7C0 /* Single+DataSourceProtocol.swift */; };
+		6740D5D81FABDBE3006BB7C0 /* Single+DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6740D5D61FABDBE3006BB7C0 /* Single+DataSourceProtocol.swift */; };
+		6740D5D91FABDBE3006BB7C0 /* Single+DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6740D5D61FABDBE3006BB7C0 /* Single+DataSourceProtocol.swift */; };
+		6740D5DA1FABDBE3006BB7C0 /* Single+DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6740D5D61FABDBE3006BB7C0 /* Single+DataSourceProtocol.swift */; };
 		674AF55C1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */; };
 		674AF55D1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */; };
 		674AF55E1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */; };
@@ -487,7 +491,6 @@
 		671461CC1EB3396E00EAB194 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		671461CD1EB3396E00EAB194 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		671461CE1EB3396E00EAB194 /* LogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFormatter.swift; sourceTree = "<group>"; };
-		671461D11EB3396E00EAB194 /* PaginationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationViewModel.swift; sourceTree = "<group>"; };
 		671461D31EB3396E00EAB194 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		671461D51EB3396E00EAB194 /* XibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		671461D71EB3396E00EAB194 /* CursorError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CursorError.swift; sourceTree = "<group>"; };
@@ -559,6 +562,8 @@
 		67186B301EB248F100CFAFFB /* LeadKit iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LeadKit iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67186B411EB24AA000CFAFFB /* iOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = iOS.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		67186C1A1EB24B7800CFAFFB /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		6740D5D11FABDA46006BB7C0 /* DataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceProtocol.swift; sourceTree = "<group>"; };
+		6740D5D61FABDBE3006BB7C0 /* Single+DataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Single+DataSourceProtocol.swift"; sourceTree = "<group>"; };
 		674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+LoadingIndicator.swift"; sourceTree = "<group>"; };
 		6771DFD71EE99EBA002DCDAE /* DateFormattingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormattingService.swift; sourceTree = "<group>"; };
 		6771DFDD1EE99F6F002DCDAE /* DateFormattingArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormattingArguments.swift; sourceTree = "<group>"; };
@@ -733,7 +738,6 @@
 		671461CF1EB3396E00EAB194 /* Pagination */ = {
 			isa = PBXGroup;
 			children = (
-				671461D11EB3396E00EAB194 /* PaginationViewModel.swift */,
 				67CB1C091FAB7B4D0089D1B1 /* PaginationWrapper.swift */,
 			);
 			path = Pagination;
@@ -1261,6 +1265,7 @@
 				67F13A191FAB5ABB008175B4 /* LoadingProtocol.swift */,
 				67F13A1E1FAB5AE8008175B4 /* LoadingConfiguration.swift */,
 				67F13A2E1FAB6053008175B4 /* LoadingViewModel.swift */,
+				6740D5D11FABDA46006BB7C0 /* DataSourceProtocol.swift */,
 			);
 			path = Loading;
 			sourceTree = "<group>";
@@ -1316,6 +1321,7 @@
 			children = (
 				67F13A071FAB50BB008175B4 /* Single+CursorExhausted.swift */,
 				82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */,
+				6740D5D61FABDBE3006BB7C0 /* Single+DataSourceProtocol.swift */,
 			);
 			path = Single;
 			sourceTree = "<group>";
@@ -2162,7 +2168,6 @@
 				67F13A2F1FAB6053008175B4 /* LoadingViewModel.swift in Sources */,
 				674AF55C1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */,
 				671463401EB3396E00EAB194 /* ModuleConfigurator.swift in Sources */,
-				671462641EB3396E00EAB194 /* PaginationViewModel.swift in Sources */,
 				67F13A431FAB6256008175B4 /* PaginationLoadingViewModel.swift in Sources */,
 				67A1FF8F1EBCA09B00D6C89F /* UIImage+Spinner.swift in Sources */,
 				67CB1BFE1FAB79EE0089D1B1 /* UICollectionView+PaginationWrappable.swift in Sources */,
@@ -2211,11 +2216,13 @@
 				671462EC1EB3396E00EAB194 /* UIImage+Extensions.swift in Sources */,
 				67F13A241FAB5B25008175B4 /* GeneralLoadingState.swift in Sources */,
 				A6E0DDF11F8A6C80002CA74E /* SeparatorConfiguration.swift in Sources */,
+				6740D5D71FABDBE3006BB7C0 /* Single+DataSourceProtocol.swift in Sources */,
 				6714636C1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
 				6771DFEA1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
 				671462A01EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
 				6714625C1EB3396E00EAB194 /* LogFormatter.swift in Sources */,
 				67F13A081FAB50BB008175B4 /* Single+CursorExhausted.swift in Sources */,
+				6740D5D21FABDA46006BB7C0 /* DataSourceProtocol.swift in Sources */,
 				671463081EB3396E00EAB194 /* UIView+Rotation.swift in Sources */,
 				6714626C1EB3396E00EAB194 /* XibView.swift in Sources */,
 				6714637C1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
@@ -2301,7 +2308,7 @@
 				6714626A1EB3396E00EAB194 /* NetworkService.swift in Sources */,
 				671463421EB3396E00EAB194 /* ModuleConfigurator.swift in Sources */,
 				67F13A171FAB5A87008175B4 /* LoadingState.swift in Sources */,
-				671462661EB3396E00EAB194 /* PaginationViewModel.swift in Sources */,
+				6740D5D91FABDBE3006BB7C0 /* Single+DataSourceProtocol.swift in Sources */,
 				671462921EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
 				671463861EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
 				671463921EB3396E00EAB194 /* TemplateDrawingOperation.swift in Sources */,
@@ -2329,6 +2336,7 @@
 				A676AE481F97D28A001F9214 /* String+Extensions.swift in Sources */,
 				67F13A311FAB6053008175B4 /* LoadingViewModel.swift in Sources */,
 				671462A21EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
+				6740D5D41FABDA46006BB7C0 /* DataSourceProtocol.swift in Sources */,
 				6714625E1EB3396E00EAB194 /* LogFormatter.swift in Sources */,
 				67F13A401FAB614D008175B4 /* PaginationLoadingViewModelConfiguration.swift in Sources */,
 				6714637E1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
@@ -2378,7 +2386,6 @@
 				6714626B1EB3396E00EAB194 /* NetworkService.swift in Sources */,
 				671463131EB3396E00EAB194 /* UIViewController+DefaultXibName.swift in Sources */,
 				671463431EB3396E00EAB194 /* ModuleConfigurator.swift in Sources */,
-				671462671EB3396E00EAB194 /* PaginationViewModel.swift in Sources */,
 				671462931EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
 				671462FF1EB3396E00EAB194 /* UIView+XibNameProtocol.swift in Sources */,
 				67FDC2621FA310EA00C76A77 /* RequestError.swift in Sources */,
@@ -2427,12 +2434,14 @@
 				671463371EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
 				67F13A051FAB5024008175B4 /* SharedSequence+FilterEmpty.swift in Sources */,
 				67F13A221FAB5AE8008175B4 /* LoadingConfiguration.swift in Sources */,
+				6740D5DA1FABDBE3006BB7C0 /* Single+DataSourceProtocol.swift in Sources */,
 				671462731EB3396E00EAB194 /* CursorError.swift in Sources */,
 				6714639B1EB3396E00EAB194 /* AnyLoadingIndicator.swift in Sources */,
 				6771DFE11EE99F6F002DCDAE /* DateFormattingArguments.swift in Sources */,
 				67F13A181FAB5A87008175B4 /* LoadingState.swift in Sources */,
 				67F13A3C1FAB60DE008175B4 /* GeneralLoadingViewModelConfiguration.swift in Sources */,
 				671463171EB3396E00EAB194 /* UIViewController+TopVisibleViewController.swift in Sources */,
+				6740D5D51FABDA47006BB7C0 /* DataSourceProtocol.swift in Sources */,
 				6714628B1EB3396E00EAB194 /* CGFloat+Pixels.swift in Sources */,
 				671462971EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
 				671463671EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
@@ -2501,7 +2510,6 @@
 				671463111EB3396E00EAB194 /* UIViewController+DefaultXibName.swift in Sources */,
 				67F13A301FAB6053008175B4 /* LoadingViewModel.swift in Sources */,
 				671463411EB3396E00EAB194 /* ModuleConfigurator.swift in Sources */,
-				671462651EB3396E00EAB194 /* PaginationViewModel.swift in Sources */,
 				671462911EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
 				67051ADC1EBC7C36008EADC0 /* SpinnerView.swift in Sources */,
 				671462FD1EB3396E00EAB194 /* UIView+XibNameProtocol.swift in Sources */,
@@ -2539,6 +2547,7 @@
 				671463351EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
 				67FDC2601FA310EA00C76A77 /* RequestError.swift in Sources */,
 				671462711EB3396E00EAB194 /* CursorError.swift in Sources */,
+				6740D5D81FABDBE3006BB7C0 /* Single+DataSourceProtocol.swift in Sources */,
 				67F13A161FAB5A87008175B4 /* LoadingState.swift in Sources */,
 				671463991EB3396E00EAB194 /* AnyLoadingIndicator.swift in Sources */,
 				671463A81EB340C000EAB194 /* UIViewController+ConfigurableController.swift in Sources */,
@@ -2551,6 +2560,7 @@
 				A676AE4E1F9810C1001F9214 /* Any+Cast.swift in Sources */,
 				671462951EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
 				671463651EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
+				6740D5D31FABDA46006BB7C0 /* DataSourceProtocol.swift in Sources */,
 				A6C9A5101F8BC79D009311CC /* Comparable+Extensions.swift in Sources */,
 				671462491EB3396E00EAB194 /* FixedPageCursor.swift in Sources */,
 				671462C91EB3396E00EAB194 /* String+Localization.swift in Sources */,

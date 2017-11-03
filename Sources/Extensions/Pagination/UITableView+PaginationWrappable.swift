@@ -22,6 +22,14 @@
 
 import UIKit
 
+extension UITableView: ScrollViewHolder {
+
+    public var scrollView: UIScrollView {
+        return self
+    }
+
+}
+
 extension UITableView: BackgroundViewHolder {}
 
 extension UITableView: FooterViewHolder {
@@ -33,14 +41,6 @@ extension UITableView: FooterViewHolder {
         set {
             tableFooterView = newValue
         }
-    }
-
-}
-
-extension UITableView: PaginationWrappable {
-
-    public var scrollView: UITableView {
-        return self
     }
 
 }

@@ -20,39 +20,41 @@
 //  THE SOFTWARE.
 //
 
-public enum GeneralLoadingState<T> {
+public enum GeneralLoadingState<DS: DataSourceProtocol> {
 
     case initial
     case loading
-    case result(newResult: T)
+    case result(newResult: DS.ResultType, from: DS)
     case error(error: Error)
     case empty
 
 }
 
 extension GeneralLoadingState: LoadingState {
-    public typealias ResultType = T
 
-    public static var initialState: GeneralLoadingState<T> {
+    public typealias DataSourceType = DS
+
+    public static var initialState: GeneralLoadingState<DS> {
         return .initial
     }
 
-    public static var emptyState: GeneralLoadingState<T> {
+    public static var emptyState: GeneralLoadingState<DS> {
         return .empty
     }
 
-    public static func loadingState(after: GeneralLoadingState<T>) -> GeneralLoadingState<T> {
+    public static func loadingState(after: GeneralLoadingState<DS>) -> GeneralLoadingState<DS> {
         return .loading
     }
 
-    public static func resultState(result: T,
-                                   after: GeneralLoadingState<T>) -> GeneralLoadingState<T> {
+    public static func resultState(result: DS.ResultType,
+                                   from: DS,
+                                   after: GeneralLoadingState<DS>) -> GeneralLoadingState<DS> {
 
-        return .result(newResult: result)
+        return .result(newResult: result, from: from)
     }
 
     public static func errorState(error: Error,
-                                  after: GeneralLoadingState<T>) -> GeneralLoadingState<T> {
+                                  after: GeneralLoadingState<DS>) -> GeneralLoadingState<DS> {
 
         return .error(error: error)
     }

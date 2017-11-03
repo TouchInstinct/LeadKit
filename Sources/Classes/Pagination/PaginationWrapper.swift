@@ -26,7 +26,7 @@ import UIScrollView_InfiniteScroll
 
 /// Class that connects PaginationViewModel with UIScrollView. It handles all non-visual and visual states.
 final public class PaginationWrapper<Cursor: ResettableCursorType, Delegate: PaginationWrapperDelegate>
-    where Cursor.Element == Delegate.Element {
+    where Cursor == Delegate.DataSourceType, Cursor.ResultType == [Cursor.Element] {
 
     private typealias LoadingState = PaginationLoadingViewModel<Cursor>.LoadingStateType
 
@@ -42,6 +42,16 @@ final public class PaginationWrapper<Cursor: ResettableCursorType, Delegate: Pag
         }
         set {
             wrappedView.scrollView.infiniteScrollTriggerOffset = newValue
+        }
+    }
+
+    public var pullToRefreshEnabled: Bool = true {
+        didSet {
+            if pullToRefreshEnabled {
+                createRefreshControl()
+            } else {
+                removeRefreshControl()
+            }
         }
     }
 
@@ -89,7 +99,7 @@ final public class PaginationWrapper<Cursor: ResettableCursorType, Delegate: Pag
         scrollObservable.subscribe(onNext: { [weak self] offset in
             self?.currentPlaceholderViewTopConstraint?.constant = -offset.y
         })
-            .disposed(by: disposeBag)
+        .disposed(by: disposeBag)
     }
 
     // MARK: - States handling
@@ -132,12 +142,13 @@ final public class PaginationWrapper<Cursor: ResettableCursorType, Delegate: Pag
     }
 
     private func onResultsState(newItems: [Cursor.Element],
+                                from cursor: Cursor,
                                 afterState: LoadingState) {
 
         wrappedView.scrollView.isUserInteractionEnabled = true
 
         if case .loading = afterState {
-            delegate?.paginationWrapper(didReload: newItems)
+            delegate?.paginationWrapper(didReload: newItems, using: cursor)
 
             removeCurrentPlaceholderView()
 
@@ -145,7 +156,7 @@ final public class PaginationWrapper<Cursor: ResettableCursorType, Delegate: Pag
 
             addInfiniteScroll()
         } else if case .loadingMore = afterState {
-            delegate?.paginationWrapper(didLoad: newItems)
+            delegate?.paginationWrapper(didLoad: newItems, using: cursor)
 
             wrappedView.scrollView.finishInfiniteScroll()
         }
@@ -247,6 +258,10 @@ final public class PaginationWrapper<Cursor: ResettableCursorType, Delegate: Pag
         wrappedView.scrollView.support.setRefreshControl(refreshControl)
     }
 
+    private func removeRefreshControl() {
+        wrappedView.scrollView.support.setRefreshControl(nil)
+    }
+
     private func bindViewModelStates() {
         typealias State = PaginationLoadingViewModel<Cursor>.LoadingStateType
 
@@ -271,8 +286,8 @@ final public class PaginationWrapper<Cursor: ResettableCursorType, Delegate: Pag
                     self?.onLoadingState(afterState: after)
                 case .loadingMore(let after):
                     self?.onLoadingMoreState(afterState: after)
-                case .results(let newItems, let after):
-                    self?.onResultsState(newItems: newItems, afterState: after)
+                case .results(let newItems, let from, let after):
+                    self?.onResultsState(newItems: newItems, from: from, afterState: after)
                 case .error(let error, let after):
                     self?.delegate?.clearView()
                     self?.onErrorState(error: error, afterState: after)

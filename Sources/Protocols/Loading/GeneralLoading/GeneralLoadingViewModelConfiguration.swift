@@ -26,9 +26,8 @@ import RxCocoa
 public final class GeneralLoadingViewModelConfiguration<T>: LoadingConfiguration {
 
     public typealias DataSourceType = Single<T>
-    public typealias ResultType = T
     public typealias EmptyResultChecker = (T) -> Bool
-    public typealias LoadingStateType = GeneralLoadingState<T>
+    public typealias LoadingStateType = GeneralLoadingState<DataSourceType>
 
     private let stateVariable = Variable<LoadingStateType>(.initialState)
     private var currentRequestDisposable: Disposable?
@@ -54,7 +53,7 @@ public final class GeneralLoadingViewModelConfiguration<T>: LoadingConfiguration
         return stateVariable.asDriver()
     }
 
-    public var state: GeneralLoadingState<T> {
+    public var state: GeneralLoadingState<DataSourceType> {
         get {
             return stateVariable.value
         }

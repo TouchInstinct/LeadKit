@@ -22,6 +22,14 @@
 
 import UIKit
 
+extension UICollectionView: ScrollViewHolder {
+
+    public var scrollView: UIScrollView {
+        return self
+    }
+
+}
+
 extension UICollectionView: BackgroundViewHolder {}
 
 extension UICollectionView: FooterViewHolder {
@@ -33,14 +41,6 @@ extension UICollectionView: FooterViewHolder {
         set {
             // nothing
         }
-    }
-
-}
-
-extension UICollectionView: PaginationWrappable {
-
-    public var scrollView: UICollectionView {
-        return self
     }
 
 }

@@ -22,13 +22,13 @@
 
 public protocol LoadingState {
 
-    associatedtype ResultType
+    associatedtype DataSourceType: DataSourceProtocol
 
     static var initialState: Self { get }
     static var emptyState: Self { get }
 
     static func loadingState(after: Self) -> Self
-    static func resultState(result: ResultType, after: Self) -> Self
+    static func resultState(result: DataSourceType.ResultType, from: DataSourceType, after: Self) -> Self
     static func errorState(error: Error, after: Self) -> Self
 
 }
