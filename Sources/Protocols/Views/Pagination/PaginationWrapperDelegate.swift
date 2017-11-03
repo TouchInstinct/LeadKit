@@ -58,7 +58,7 @@ public protocol PaginationWrapperDelegate: class {
     ///   - wrapper: Wrapper object that requests error placeholder view.
     ///   - error: Error that occured due data loading.
     /// - Returns: Configured instace of UIView.
-    func errorPlaceholder(forError error: Error) -> UIView
+    func errorPlaceholder(for error: Error) -> UIView
 
     /// Delegate method that returns loading idicator for initial loading state.
     /// This indicator will appear at center of the placeholders container.

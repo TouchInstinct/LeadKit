@@ -168,7 +168,7 @@ final public class PaginationWrapper<Cursor: ResettableCursorType, Delegate: Pag
                 wrappedView.scrollView.support.refreshControl?.endRefreshing()
             }
 
-            guard let errorView = delegate?.errorPlaceholder(forError: error) else {
+            guard let errorView = delegate?.errorPlaceholder(for: error) else {
                 return
             }
 

@@ -38,7 +38,7 @@ public extension PaginationWrapperDelegate {
         return placeholder
     }
 
-    func errorPlaceholder(forError error: Error) -> UIView {
+    func errorPlaceholder(for error: Error) -> UIView {
 
         let placeholder = UIView()
 
