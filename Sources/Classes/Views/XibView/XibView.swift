@@ -55,11 +55,13 @@ open class XibView: UIView {
 
         addSubview(view)
 
-        configure()
+        backgroundColor = .clear
+
+        configure(xibView: view)
     }
 
     /// Provide initial configuration. Called once
-    open func configure() {
+    open func configure(xibView: UIView) {
 
     }
 
