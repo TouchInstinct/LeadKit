@@ -31,6 +31,6 @@ public protocol TotalCountCursorConfiguration: class, ResettableType {
 
     func nextBatchObservable() -> Single<ListingType>
 
-    func getResult(fromListing listing: ListingType) -> ResultTuple
+    func getResult(from listing: ListingType) -> ResultTuple
 
 }

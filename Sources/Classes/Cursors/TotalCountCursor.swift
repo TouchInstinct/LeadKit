@@ -63,7 +63,7 @@ public final class TotalCountCursor<LT, ET, CC: TotalCountCursorConfiguration>: 
     public func loadNextBatch() -> Single<[ET]> {
         let sharedListing = configuration.nextBatchObservable()
             .map { [configuration] listing in
-                configuration.getResult(fromListing: listing)
+                configuration.getResult(from: listing)
             }
 
         let driverListing = sharedListing
