@@ -45,11 +45,11 @@ public final class PaginationLoadingViewModel<C: ResettableCursorDataSource>:
         super.init(configuration: configuration)
     }
 
-    override func reload() {
+    override public func reload() {
         load(.reload)
     }
 
-    override func retry() {
+    override public func retry() {
         load(.retry)
     }
 

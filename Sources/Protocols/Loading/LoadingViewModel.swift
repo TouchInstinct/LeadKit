@@ -23,12 +23,12 @@
 import RxSwift
 import RxCocoa
 
-class LoadingViewModel<VMC: LoadingConfiguration>: LoadingProtocol
+public class LoadingViewModel<VMC: LoadingConfiguration>: LoadingProtocol
     where VMC.DataSourceType == VMC.LoadingStateType.DataSourceType {
 
-    typealias DataSourceType = VMC.DataSourceType
-    typealias LoadingStateType = VMC.LoadingStateType
-    typealias LoadingConfigurationType = VMC
+    public typealias DataSourceType = VMC.DataSourceType
+    public typealias LoadingStateType = VMC.LoadingStateType
+    public typealias LoadingConfigurationType = VMC
 
     private let configuration: VMC
 
@@ -40,11 +40,11 @@ class LoadingViewModel<VMC: LoadingConfiguration>: LoadingProtocol
         self.configuration = configuration
     }
 
-    func reload() {
+    public func reload() {
         load(isRetry: false)
     }
 
-    func retry() {
+    public func retry() {
         load(isRetry: true)
     }
 
