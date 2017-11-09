@@ -56,3 +56,7 @@
 
 ## 0.5.18
 - **Fix**: EmptyCell first appearance setup fix
+
+## 0.5.19
+
+- **Fix**: AlamofireManager extension no longer performs requests with default manager
