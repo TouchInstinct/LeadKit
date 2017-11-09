@@ -175,7 +175,7 @@ final public class PaginationWrapper<Cursor: ResettableCursorType, Delegate: Pag
 
             replacePlaceholderViewIfNeeded(with: errorView)
 
-            self?.delegate?.clearView()
+            delegate?.clearView()
         } else if case .loadingMore = afterState {
             removeInfiniteScroll()
 
