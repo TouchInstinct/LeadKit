@@ -135,6 +135,7 @@ final public class PaginationWrapper<Cursor: ResettableCursorType, Delegate: Pag
 
     private func onLoadingMoreState(afterState: LoadingState) {
         if case .error = afterState { // user tap retry button in table footer
+            delegate?.retryLoadMoreButtonIsAboutToHide()
             wrappedView.footerView = nil
             addInfiniteScroll()
             wrappedView.scrollView.beginInfiniteScroll(true)
@@ -173,6 +174,8 @@ final public class PaginationWrapper<Cursor: ResettableCursorType, Delegate: Pag
             }
 
             replacePlaceholderViewIfNeeded(with: errorView)
+
+            self?.delegate?.clearView()
         } else if case .loadingMore = afterState {
             removeInfiniteScroll()
 
@@ -188,6 +191,8 @@ final public class PaginationWrapper<Cursor: ResettableCursorType, Delegate: Pag
                     self?.paginationViewModel.loadMore()
                 }
                 .disposed(by: disposeBag)
+
+            delegate?.retryLoadMoreButtonIsAboutToShow()
 
             wrappedView.footerView = retryButton
         }
@@ -289,7 +294,6 @@ final public class PaginationWrapper<Cursor: ResettableCursorType, Delegate: Pag
                 case .results(let newItems, let from, let after):
                     self?.onResultsState(newItems: newItems, from: from, afterState: after)
                 case .error(let error, let after):
-                    self?.delegate?.clearView()
                     self?.onErrorState(error: error, afterState: after)
                 case .empty:
                     self?.delegate?.clearView()
