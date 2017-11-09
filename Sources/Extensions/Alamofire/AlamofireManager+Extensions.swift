@@ -32,11 +32,11 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Parameter requestParameters: api parameters to pass Alamofire
     /// - Returns: Observable with request
     func apiRequest(requestParameters: ApiRequestParameters) -> Observable<DataRequest> {
-        return RxAlamofire.request(requestParameters.method,
-                                   requestParameters.url,
-                                   parameters: requestParameters.parameters,
-                                   encoding: requestParameters.encoding,
-                                   headers: requestParameters.headers)
+        return request(requestParameters.method,
+                       requestParameters.url,
+                       parameters: requestParameters.parameters,
+                       encoding: requestParameters.encoding,
+                       headers: requestParameters.headers)
     }
 
     /// Method which executes request and serializes response into target object

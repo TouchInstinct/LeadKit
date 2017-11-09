@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.6.2
+- **Fix**: AlamofireManager extension no longer performs requests with default manager
+
 ## 0.6.1
 - **New**: `RequestError`. Represents general api request errors
 - **Change**: All api methods now throws `RequestError` when fails.
