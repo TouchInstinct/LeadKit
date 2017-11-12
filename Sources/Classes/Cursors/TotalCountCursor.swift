@@ -65,18 +65,19 @@ public final class TotalCountCursor<LT, ET, CC: TotalCountCursorConfiguration>: 
             .map { [configuration] listing in
                 configuration.getResult(from: listing)
             }
+            .asObservable()
+            .share()
 
-        let driverListing = sharedListing
-            .asDriver(onErrorJustReturn: CC.ResultTuple([], .max))
-
-        driverListing
+        sharedListing
             .map { $0.totalCount }
+            .asDriver(onErrorJustReturn: .max)
             .filter { $0 != .max }
             .drive(totalCountVariable)
             .disposed(by: disposeBag)
 
-        let newProductsDriver = driverListing
+        let newProductsDriver = sharedListing
             .map { $0.results }
+            .asDriver(onErrorJustReturn: [])
             .filterEmpty()
 
         Driver
