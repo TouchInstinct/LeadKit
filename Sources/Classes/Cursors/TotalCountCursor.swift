@@ -31,12 +31,9 @@ public final class TotalCountCursor<LT, ET, CC: TotalCountCursorConfiguration>: 
 
     private let configuration: CC
 
-    private let elementsVariable = Variable<[ET]>([])
-    private let totalCountVariable = Variable<Int>(.max)
+    private var elements: [ET] = []
 
-    public var totalCount: Int {
-        return totalCountVariable.value
-    }
+    public private(set) var totalCount: Int = .max
 
     private let disposeBag = DisposeBag()
 
@@ -45,11 +42,11 @@ public final class TotalCountCursor<LT, ET, CC: TotalCountCursorConfiguration>: 
     }
 
     public var count: Int {
-        return elementsVariable.value.count
+        return elements.count
     }
 
     public subscript(index: Int) -> ET {
-        return elementsVariable.value[index]
+        return elements[index]
     }
 
     public init(configuration: CC) {
@@ -61,37 +58,17 @@ public final class TotalCountCursor<LT, ET, CC: TotalCountCursorConfiguration>: 
     }
 
     public func loadNextBatch() -> Single<[ET]> {
-        let sharedListing = configuration.nextBatchObservable()
+        return configuration.nextBatchObservable()
             .map { [configuration] listing in
                 configuration.getResult(from: listing)
             }
-            .asObservable()
-            .share()
-
-        sharedListing
-            .map { $0.totalCount }
-            .asDriver(onErrorJustReturn: .max)
-            .filter { $0 != .max }
-            .drive(totalCountVariable)
-            .disposed(by: disposeBag)
-
-        let newProductsDriver = sharedListing
-            .map { $0.results }
-            .asDriver(onErrorJustReturn: [])
-            .filterEmpty()
-
-        Driver
-            .combineLatest(newProductsDriver, Driver.just(elementsVariable.value)) {
-                $0 + $1
+            .do(onNext: { listingResult in
+                self.totalCount = listingResult.totalCount
+                self.elements += listingResult.results
+            })
+            .map {
+                $0.results
             }
-            .drive(elementsVariable)
-            .disposed(by: disposeBag)
-
-        return sharedListing
-            .map { $0.results }
-            .asObservable()
-            .asSingle()
-            .exhaustedIfEmpty()
     }
 
 }
