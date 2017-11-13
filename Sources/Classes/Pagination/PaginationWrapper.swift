@@ -137,7 +137,7 @@ final public class PaginationWrapper<Cursor: ResettableCursorType, Delegate: Pag
         if case .error = afterState { // user tap retry button in table footer
             delegate?.retryLoadMoreButtonIsAboutToHide()
             wrappedView.footerView = nil
-            addInfiniteScroll()
+            addInfiniteScroll(withHandler: false)
             wrappedView.scrollView.beginInfiniteScroll(true)
         }
     }
@@ -155,11 +155,11 @@ final public class PaginationWrapper<Cursor: ResettableCursorType, Delegate: Pag
 
             wrappedView.scrollView.support.refreshControl?.endRefreshing()
 
-            addInfiniteScroll()
+            addInfiniteScroll(withHandler: true)
         } else if case .loadingMore = afterState {
             delegate?.paginationWrapper(didLoad: newItems, using: cursor)
 
-            wrappedView.scrollView.finishInfiniteScroll()
+            readdInfiniteScrollWithHandler()
         }
     }
 
@@ -239,9 +239,18 @@ final public class PaginationWrapper<Cursor: ResettableCursorType, Delegate: Pag
         removeInfiniteScroll()
     }
 
-    private func addInfiniteScroll() {
-        wrappedView.scrollView.addInfiniteScroll { [weak paginationViewModel] _ in
-            paginationViewModel?.loadMore()
+    private func readdInfiniteScrollWithHandler() {
+        removeInfiniteScroll()
+        addInfiniteScroll(withHandler: true)
+    }
+
+    private func addInfiniteScroll(withHandler: Bool) {
+        if withHandler {
+            wrappedView.scrollView.addInfiniteScroll { [weak paginationViewModel] _ in
+                paginationViewModel?.loadMore()
+            }
+        } else {
+            wrappedView.scrollView.addInfiniteScroll { _ in }
         }
 
         wrappedView.scrollView.infiniteScrollIndicatorView = delegate?.loadingMoreIndicator().view
