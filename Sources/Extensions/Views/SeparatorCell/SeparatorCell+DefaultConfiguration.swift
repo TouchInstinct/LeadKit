@@ -20,35 +20,31 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
+import Foundation
 
-private let configureSeparatorActionId = "TableRowConfigureSeparatorActionId"
+public extension SeparatorCell {
 
-public extension TableRow where CellType: SeparatorTableCell {
-
-    func with(separatorType: CellSeparatorType) -> Self {
-        set(separatorType: separatorType)
-        return self
-    }
-
-    func set(separatorType: CellSeparatorType) {
-        removeAction(forActionId: configureSeparatorActionId)
-
-        let action = TableRowAction<CellType>(.configure) { options in
-            options.cell?.configureSeparator(with: separatorType)
+    /// Configure separator with viewModel
+    /// - parameter separatorType: type of separators
+    func configureSeparator(with separatorType: CellSeparatorType) {
+        switch separatorType {
+        case .none:
+            topView?.isHidden = true
+            bottomView?.isHidden = true
+        case .bottom(let configuration):
+            topView?.isHidden = true
+            bottomView?.isHidden = false
+            updateBottomSeparator(with: configuration)
+        case .top(let configuration):
+            topView?.isHidden = false
+            bottomView?.isHidden = true
+            updateTopSeparator(with: configuration)
+        case .full(let topConfiguration, let bottomConfiguration):
+            topView?.isHidden = false
+            bottomView?.isHidden = false
+            updateTopSeparator(with: topConfiguration)
+            updateBottomSeparator(with: bottomConfiguration)
         }
-
-        action.id = configureSeparatorActionId
-        on(action)
-    }
-
-}
-
-public extension TableRow where CellType: SeparatorTableCell {
-
-    /// TableRow typed as SeparatorRowBox
-    var separatorRowBox: SeparatorRowBox {
-        return SeparatorRowBox(row: self)
     }
 
 }

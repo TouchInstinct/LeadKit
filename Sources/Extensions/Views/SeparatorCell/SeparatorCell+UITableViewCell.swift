@@ -20,35 +20,32 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
+import UIKit
 
-private let configureSeparatorActionId = "TableRowConfigureSeparatorActionId"
+public extension SeparatorCell where Self: UITableViewCell {
 
-public extension TableRow where CellType: SeparatorTableCell {
-
-    func with(separatorType: CellSeparatorType) -> Self {
-        set(separatorType: separatorType)
-        return self
+    /// Move separator upward in hierarchy
+    func bringSeparatorsToFront() {
+        topView?.bringToFront(in: contentView)
+        bottomView?.bringToFront(in: contentView)
     }
 
-    func set(separatorType: CellSeparatorType) {
-        removeAction(forActionId: configureSeparatorActionId)
-
-        let action = TableRowAction<CellType>(.configure) { options in
-            options.cell?.configureSeparator(with: separatorType)
-        }
-
-        action.id = configureSeparatorActionId
-        on(action)
+    /// Move separator backward in hierarchy
+    func sendSeparatorsToBack() {
+        topView?.sendToBack(in: contentView)
+        bottomView?.sendToBack(in: contentView)
     }
 
 }
 
-public extension TableRow where CellType: SeparatorTableCell {
+private extension UIView {
 
-    /// TableRow typed as SeparatorRowBox
-    var separatorRowBox: SeparatorRowBox {
-        return SeparatorRowBox(row: self)
+    func bringToFront(in view: UIView) {
+        view.bringSubview(toFront: self)
+    }
+
+    func sendToBack(in view: UIView) {
+        view.sendSubview(toBack: self)
     }
 
 }

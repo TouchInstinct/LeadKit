@@ -25,7 +25,7 @@ import TableKit
 
 /// Empty cell class. Do not use it directly.
 /// - see: `EmptyCellRow`
-public final class EmptyCell: SeparatorCell, AppearanceConfigurable, ConfigurableCell {
+public final class EmptyCell: SeparatorTableCell, AppearanceConfigurable, ConfigurableCell {
     public struct Appearance {
         let color: UIColor
 

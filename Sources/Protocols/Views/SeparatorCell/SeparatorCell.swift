@@ -20,35 +20,14 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
+import UIKit
 
-private let configureSeparatorActionId = "TableRowConfigureSeparatorActionId"
+public protocol SeparatorCell {
 
-public extension TableRow where CellType: SeparatorTableCell {
+    var topView: UIView? { get }
+    var bottomView: UIView? { get }
 
-    func with(separatorType: CellSeparatorType) -> Self {
-        set(separatorType: separatorType)
-        return self
-    }
-
-    func set(separatorType: CellSeparatorType) {
-        removeAction(forActionId: configureSeparatorActionId)
-
-        let action = TableRowAction<CellType>(.configure) { options in
-            options.cell?.configureSeparator(with: separatorType)
-        }
-
-        action.id = configureSeparatorActionId
-        on(action)
-    }
-
-}
-
-public extension TableRow where CellType: SeparatorTableCell {
-
-    /// TableRow typed as SeparatorRowBox
-    var separatorRowBox: SeparatorRowBox {
-        return SeparatorRowBox(row: self)
-    }
+    func updateTopSeparator(with configuration: SeparatorConfiguration)
+    func updateBottomSeparator(with configuration: SeparatorConfiguration)
 
 }
