@@ -60,3 +60,7 @@
 ## 0.5.19
 
 - **Fix**: AlamofireManager extension no longer performs requests with default manager
+
+## 0.5.20
+
+- **Fix**: SeparatorCell updates constraints after setting separator insets

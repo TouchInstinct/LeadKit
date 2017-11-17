@@ -47,15 +47,18 @@ open class SeparatorCell: UITableViewCell {
             topView.isHidden = true
             bottomView.isHidden = false
             updateBottomSeparator(with: configuration)
+            setNeedsUpdateConstraints()
         case .top(let configuration):
             topView.isHidden = false
             bottomView.isHidden = true
             updateTopSeparator(with: configuration)
+            setNeedsUpdateConstraints()
         case .full(let topConfiguration, let bottomConfiguration):
             topView.isHidden = false
             bottomView.isHidden = false
             updateTopSeparator(with: topConfiguration)
             updateBottomSeparator(with: bottomConfiguration)
+            setNeedsUpdateConstraints()
         }
     }
 
