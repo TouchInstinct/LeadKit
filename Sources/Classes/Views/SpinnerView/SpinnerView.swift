@@ -82,7 +82,7 @@ public final class SpinnerView: UIView, Animatable, LoadingIndicator {
 
     // MARK: - Animatable
 
-    public func startAnimating() {
+    @objc public func startAnimating() {
         guard !animating else {
             return
         }
@@ -94,7 +94,7 @@ public final class SpinnerView: UIView, Animatable, LoadingIndicator {
         addAnimation()
     }
 
-    public func stopAnimating() {
+    @objc public func stopAnimating() {
         guard animating else {
             return
         }
