@@ -88,7 +88,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
                                                         acceptableStatusCodes: [Int] = Base.defaultAcceptableStatusCodes)
         -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
 
-        return apiRequest(requestParameters: requestParameters)
+        return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: acceptableStatusCodes)
             .flatMap { $0.rx.observableApiResponse(mappingQueue: mappingQueue) }
     }
 
