@@ -37,6 +37,8 @@ open class NetworkService {
 
     public let sessionManager: Alamofire.SessionManager
 
+    private let acceptableStatusCodes: [Int]
+
     var requestCount: Driver<Int> {
         return requestCountVariable.asDriver()
     }
@@ -44,8 +46,11 @@ open class NetworkService {
     /// Creates new instance of NetworkService with given Alamofire session manager
     ///
     /// - Parameter sessionManager: Alamofire.SessionManager to use for requests
-    public init(sessionManager: Alamofire.SessionManager) {
+    public init(sessionManager: Alamofire.SessionManager,
+                acceptableStatusCodes: [Int] = Alamofire.SessionManager.defaultAcceptableStatusCodes) {
+
         self.sessionManager = sessionManager
+        self.acceptableStatusCodes = acceptableStatusCodes
     }
 
     /// Perform reactive request to get mapped ObservableMappable model and http response
@@ -55,7 +60,8 @@ open class NetworkService {
     public func rxRequest<T: ObservableMappable>(with parameters: ApiRequestParameters)
         -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
 
-            return sessionManager.rx.responseObservableModel(requestParameters: parameters)
+            return sessionManager.rx.responseObservableModel(requestParameters: parameters,
+                                                             acceptableStatusCodes: acceptableStatusCodes)
                 .counterTracking(for: self)
     }
 
@@ -66,7 +72,8 @@ open class NetworkService {
     public func rxRequest<T: ImmutableMappable>(with parameters: ApiRequestParameters)
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
-            return sessionManager.rx.responseModel(requestParameters: parameters)
+            return sessionManager.rx.responseModel(requestParameters: parameters,
+                                                   acceptableStatusCodes: acceptableStatusCodes)
                 .counterTracking(for: self)
     }
 
