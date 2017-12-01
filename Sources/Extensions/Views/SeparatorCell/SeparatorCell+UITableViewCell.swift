@@ -26,14 +26,14 @@ public extension SeparatorCell where Self: UITableViewCell {
 
     /// Move separator upward in hierarchy
     func bringSeparatorsToFront() {
-        topView?.bringToFront(in: contentView)
-        bottomView?.bringToFront(in: contentView)
+        topView.bringToFront(in: contentView)
+        bottomView.bringToFront(in: contentView)
     }
 
     /// Move separator backward in hierarchy
     func sendSeparatorsToBack() {
-        topView?.sendToBack(in: contentView)
-        bottomView?.sendToBack(in: contentView)
+        topView.sendToBack(in: contentView)
+        bottomView.sendToBack(in: contentView)
     }
 
 }

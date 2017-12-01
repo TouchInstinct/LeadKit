@@ -22,12 +22,22 @@
 
 import UIKit
 
-public protocol SeparatorCell {
+public protocol TopSeparatorCell {
 
-    var topView: UIView? { get }
-    var bottomView: UIView? { get }
+    var topView: UIView! { get }
 
     func updateTopSeparator(with configuration: SeparatorConfiguration)
+
+}
+
+public protocol BottomSeparatorCell {
+
+    var bottomView: UIView! { get }
+
     func updateBottomSeparator(with configuration: SeparatorConfiguration)
 
+}
+
+public protocol SeparatorCell: TopSeparatorCell, BottomSeparatorCell {
+    //
 }

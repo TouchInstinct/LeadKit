@@ -36,8 +36,8 @@ open class SeparatorTableCell: UITableViewCell, SeparatorCell {
 
     // MARK: - Private
 
-    private(set) public var topView: UIView?
-    private(set) public var bottomView: UIView?
+    private(set) public var topView: UIView!
+    private(set) public var bottomView: UIView!
 
     // top separator constraints
     private var topViewLeftConstraint: NSLayoutConstraint!
@@ -104,40 +104,40 @@ open class SeparatorTableCell: UITableViewCell, SeparatorCell {
     }
 
     public func updateTopSeparator(with configuration: SeparatorConfiguration) {
-        topView?.backgroundColor = configuration.color
+        topView.backgroundColor = configuration.color
         topSeparatorHeight = configuration.height
         topSeparatorInsets = configuration.insets ?? .zero
     }
 
     public func updateBottomSeparator(with configuration: SeparatorConfiguration) {
-        bottomView?.backgroundColor = configuration.color
+        bottomView.backgroundColor = configuration.color
         bottomSeparatorHeight      = configuration.height
         bottomSeparatorInsets      = configuration.insets ?? .zero
     }
 
     private func createConstraints() {
         // height
-        topViewHeightConstraint = topView?.heightAnchor.constraint(equalToConstant: topSeparatorHeight)
+        topViewHeightConstraint = topView.heightAnchor.constraint(equalToConstant: topSeparatorHeight)
 
-        bottomViewHeightConstraint = bottomView?.heightAnchor.constraint(equalToConstant: bottomSeparatorHeight)
+        bottomViewHeightConstraint = bottomView.heightAnchor.constraint(equalToConstant: bottomSeparatorHeight)
 
         // top separator
-        topViewTopConstraint = topView?.topAnchor.constraint(equalTo: contentView.topAnchor)
+        topViewTopConstraint = topView.topAnchor.constraint(equalTo: contentView.topAnchor)
 
         if let topView = topView {
             topViewRightConstraint = contentView.rightAnchor.constraint(equalTo: topView.rightAnchor)
         }
 
-        topViewLeftConstraint = topView?.leftAnchor.constraint(equalTo: contentView.leftAnchor)
+        topViewLeftConstraint = topView.leftAnchor.constraint(equalTo: contentView.leftAnchor)
 
         // bottom separator
         if let bottomView = bottomView {
             bottomViewRightConstraint = contentView.rightAnchor.constraint(equalTo: bottomView.rightAnchor)
         }
 
-        bottomViewLeftConstraint = bottomView?.leftAnchor.constraint(equalTo: contentView.leftAnchor)
+        bottomViewLeftConstraint = bottomView.leftAnchor.constraint(equalTo: contentView.leftAnchor)
 
-        bottomViewBottomConstraint = bottomView?.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        bottomViewBottomConstraint = bottomView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
 
         let allConstraints = [
             topViewHeightConstraint,

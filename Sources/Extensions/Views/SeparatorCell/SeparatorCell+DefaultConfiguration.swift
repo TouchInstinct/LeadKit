@@ -29,21 +29,23 @@ public extension SeparatorCell {
     func configureSeparator(with separatorType: CellSeparatorType) {
         switch separatorType {
         case .none:
-            topView?.isHidden = true
-            bottomView?.isHidden = true
+            topView.isHidden = true
+            bottomView.isHidden = true
         case .bottom(let configuration):
-            topView?.isHidden = true
-            bottomView?.isHidden = false
+            topView.isHidden = true
+            bottomView.isHidden = false
             updateBottomSeparator(with: configuration)
         case .top(let configuration):
-            topView?.isHidden = false
-            bottomView?.isHidden = true
+            topView.isHidden = false
+            bottomView.isHidden = true
             updateTopSeparator(with: configuration)
+            topView.superview?.setNeedsUpdateConstraints()
         case .full(let topConfiguration, let bottomConfiguration):
-            topView?.isHidden = false
-            bottomView?.isHidden = false
+            topView.isHidden = false
+            bottomView.isHidden = false
             updateTopSeparator(with: topConfiguration)
             updateBottomSeparator(with: bottomConfiguration)
+            bottomView.superview?.setNeedsUpdateConstraints()
         }
     }
 
