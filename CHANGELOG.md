@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.6.5
+
+- **Add**: Ability to handle responses with non-default status codes.
+
 ### 0.6.4
 
 - **Fix**: SpinnerView bug(no animation) in Swift 4.
