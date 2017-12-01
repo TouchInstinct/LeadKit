@@ -26,12 +26,9 @@ extension NetworkService {
 
     /// Let netwrok service automatically show / hide activity indicator
     public func bindActivityIndicator() -> Disposable {
-        // Fatal error: `drive*` family of methods can be only called from `MainThread`
-        return DispatchQueue.main.sync {
-            requestCount
-                .map { $0 != 0 }
-                .drive(UIApplication.shared.rx.isNetworkActivityIndicatorVisible)
-        }
+        return requestCount
+            .map { $0 != 0 }
+            .drive(UIApplication.shared.rx.isNetworkActivityIndicatorVisible)
     }
 
 }
