@@ -25,18 +25,29 @@ import RxSwift
 import RxAlamofire
 import ObjectMapper
 
+public extension Alamofire.SessionManager {
+
+    /// The default acceptable range 200...299
+    static let defaultAcceptableStatusCodes = Array(200..<300)
+
+}
+
 public extension Reactive where Base: Alamofire.SessionManager {
 
     /// Method which executes request with given api parameters
     ///
     /// - Parameter requestParameters: api parameters to pass Alamofire
     /// - Returns: Observable with request
-    func apiRequest(requestParameters: ApiRequestParameters) -> Observable<DataRequest> {
+    func apiRequest(requestParameters: ApiRequestParameters,
+                    acceptableStatusCodes: [Int] = Base.defaultAcceptableStatusCodes)
+        -> Observable<DataRequest> {
+
         return request(requestParameters.method,
                        requestParameters.url,
                        parameters: requestParameters.parameters,
                        encoding: requestParameters.encoding,
                        headers: requestParameters.headers)
+            .map { $0.validate(statusCode: acceptableStatusCodes) }
     }
 
     /// Method which executes request and serializes response into target object
@@ -45,11 +56,12 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func responseModel<T: ImmutableMappable>(requestParameters: ApiRequestParameters,
-                                             mappingQueue: DispatchQueue = .global())
+                                             mappingQueue: DispatchQueue = .global(),
+                                             acceptableStatusCodes: [Int] = Base.defaultAcceptableStatusCodes)
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
-        return apiRequest(requestParameters: requestParameters)
-            .flatMap { $0.validate().rx.apiResponse(mappingQueue: mappingQueue) }
+        return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: acceptableStatusCodes)
+            .flatMap { $0.rx.apiResponse(mappingQueue: mappingQueue) }
     }
 
     /// Method which executes request and serializes response into array of target objects
@@ -58,11 +70,12 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and array of target objects
     func responseModel<T: ImmutableMappable>(requestParameters: ApiRequestParameters,
-                                             mappingQueue: DispatchQueue = .global())
+                                             mappingQueue: DispatchQueue = .global(),
+                                             acceptableStatusCodes: [Int] = Base.defaultAcceptableStatusCodes)
         -> Observable<(response: HTTPURLResponse, models: [T])> {
 
-        return apiRequest(requestParameters: requestParameters)
-            .flatMap { $0.validate().rx.apiResponse(mappingQueue: mappingQueue) }
+        return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: acceptableStatusCodes)
+            .flatMap { $0.rx.apiResponse(mappingQueue: mappingQueue) }
     }
 
     /// Method which executes request and serializes response into target object
@@ -71,11 +84,12 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func responseObservableModel<T: ObservableMappable>(requestParameters: ApiRequestParameters,
-                                                        mappingQueue: DispatchQueue = .global())
+                                                        mappingQueue: DispatchQueue = .global(),
+                                                        acceptableStatusCodes: [Int] = Base.defaultAcceptableStatusCodes)
         -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
 
-        return apiRequest(requestParameters: requestParameters)
-            .flatMap { $0.validate().rx.observableApiResponse(mappingQueue: mappingQueue) }
+        return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: acceptableStatusCodes)
+            .flatMap { $0.rx.observableApiResponse(mappingQueue: mappingQueue) }
     }
 
     /// Method which executes request and serializes response into array of target objects
@@ -84,11 +98,12 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and array of target objects
     func responseObservableModel<T: ObservableMappable>(requestParameters: ApiRequestParameters,
-                                                        mappingQueue: DispatchQueue = .global())
+                                                        mappingQueue: DispatchQueue = .global(),
+                                                        acceptableStatusCodes: [Int] = Base.defaultAcceptableStatusCodes)
         -> Observable<(response: HTTPURLResponse, models: [T])> where T.ModelType == T {
 
-            return apiRequest(requestParameters: requestParameters)
-                .flatMap { $0.validate().rx.observableApiResponse(mappingQueue: mappingQueue) }
+            return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: acceptableStatusCodes)
+                .flatMap { $0.rx.observableApiResponse(mappingQueue: mappingQueue) }
     }
 
 }
