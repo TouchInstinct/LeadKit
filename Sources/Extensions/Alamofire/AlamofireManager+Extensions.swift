@@ -50,7 +50,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
             .map { $0.validate(statusCode: acceptableStatusCodes) }
     }
 
-    /// Method which executes request and serializes response into target object
+    /// Method that executes request and serializes response into target object
     ///
     /// - Parameter requestParameters: api parameters to pass Alamofire
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
@@ -64,7 +64,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
             .flatMap { $0.rx.apiResponse(mappingQueue: mappingQueue) }
     }
 
-    /// Method which executes request and serializes response into array of target objects
+    /// Method that executes request and serializes response into array of target objects
     ///
     /// - Parameter requestParameters: api parameters to pass Alamofire
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
@@ -78,7 +78,21 @@ public extension Reactive where Base: Alamofire.SessionManager {
             .flatMap { $0.rx.apiResponse(mappingQueue: mappingQueue) }
     }
 
-    /// Method which executes request and serializes response into target object
+    /// Method that executes request and serializes response into target type
+    ///
+    /// - Parameter requestParameters: api parameters to pass Alamofire
+    /// - Parameter mappingQueue: The dispatch queue to use for mapping
+    /// - Returns: Observable with HTTP URL Response and target object
+    func responseObject<T>(requestParameters: ApiRequestParameters,
+                           mappingQueue: DispatchQueue = .global(),
+                           acceptableStatusCodes: [Int] = Base.defaultAcceptableStatusCodes)
+        -> Observable<(response: HTTPURLResponse, object: T)> {
+
+            return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: acceptableStatusCodes)
+                .flatMap { $0.rx.apiResponse(mappingQueue: mappingQueue) }
+    }
+
+    /// Method that executes request and serializes response into target object
     ///
     /// - Parameter requestParameters: api parameters to pass Alamofire
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
@@ -92,7 +106,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
             .flatMap { $0.rx.observableApiResponse(mappingQueue: mappingQueue) }
     }
 
-    /// Method which executes request and serializes response into array of target objects
+    /// Method that executes request and serializes response into array of target objects
     ///
     /// - Parameter requestParameters: api parameters to pass Alamofire
     /// - Parameter mappingQueue: The dispatch queue to use for mapping

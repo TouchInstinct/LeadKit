@@ -29,7 +29,9 @@ typealias ServerResponse = (response: HTTPURLResponse, result: Any)
 
 public extension Reactive where Base: DataRequest {
 
-    /// Method which serializes response into target object
+    private typealias JSON = [String: Any]
+
+    /// Method that serializes response into target object
     ///
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
@@ -38,13 +40,13 @@ public extension Reactive where Base: DataRequest {
 
         return responseJSONOnQueue(mappingQueue)
             .tryMapResult { resp, value in
-                let json = try cast(value) as [String: Any]
+                let json = try cast(value) as JSON
 
                 return (resp, try T(JSON: json))
             }
     }
 
-    /// Method which serializes response into array of target objects
+    /// Method that serializes response into array of target objects
     ///
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and array of target objects
@@ -53,13 +55,26 @@ public extension Reactive where Base: DataRequest {
 
             return responseJSONOnQueue(mappingQueue)
                 .tryMapResult { resp, value in
-                    let jsonArray = try cast(value) as [[String: Any]]
+                    let jsonArray = try cast(value) as [JSON]
 
                     return (resp, try Mapper<T>().mapArray(JSONArray: jsonArray))
                 }
     }
 
-    /// Method which serializes response into target object
+    /// Method that serializes response into target type
+    ///
+    /// - Parameter mappingQueue: The dispatch queue to use for mapping
+    /// - Returns: Observable with HTTP URL Response and target object
+    func apiResponse<T>(mappingQueue: DispatchQueue = .global())
+        -> Observable<(response: HTTPURLResponse, object: T)> {
+
+            return responseJSONOnQueue(mappingQueue)
+                .tryMapResult { resp, value in
+                    return (resp, try cast(value) as T)
+            }
+    }
+
+    /// Method that serializes response into target object
     ///
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
@@ -68,14 +83,14 @@ public extension Reactive where Base: DataRequest {
 
             return responseJSONOnQueue(mappingQueue)
                 .tryMapObservableResult { resp, value in
-                    let json = try cast(value) as [String: Any]
+                    let json = try cast(value) as JSON
 
                     return T.createFrom(map: Map(mappingType: .fromJSON, JSON: json))
                         .map { (resp, $0) }
                 }
     }
 
-    /// Method which serializes response into array of target objects
+    /// Method that serializes response into array of target objects
     ///
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and array of target objects
@@ -84,7 +99,7 @@ public extension Reactive where Base: DataRequest {
 
             return responseJSONOnQueue(mappingQueue)
                 .tryMapObservableResult { resp, value in
-                    let jsonArray = try cast(value) as [[String: Any]]
+                    let jsonArray = try cast(value) as [JSON]
 
                     let createFromList = jsonArray.map {
                         T.createFrom(map: Map(mappingType: .fromJSON, JSON: $0))
