@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.6.6
+
+- **Add**: Ability to map primitive response types (`String`, `Int`, `[String]`, etc.).
+
 ### 0.6.5
 
 - **Add**: Ability to handle responses with non-default status codes.
