@@ -62,7 +62,7 @@ public extension Support where Base: UIImage {
                                                  imageSize: base.size,
                                                  color: color.cgColor)
 
-        return operation.imageFromNewContext(scale: base.scale)?.support
+        return operation.imageFromNewContext(scale: base.scale)?.support.flipY()
     }
 
     /// Creates a new image with rounded corners and border.
