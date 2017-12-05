@@ -84,8 +84,8 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func responseObject<T>(requestParameters: ApiRequestParameters,
-                          mappingQueue: DispatchQueue = .global(),
-                          acceptableStatusCodes: [Int] = Base.defaultAcceptableStatusCodes)
+                           mappingQueue: DispatchQueue = .global(),
+                           acceptableStatusCodes: [Int] = Base.defaultAcceptableStatusCodes)
         -> Observable<(response: HTTPURLResponse, object: T)> {
 
             return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: acceptableStatusCodes)
