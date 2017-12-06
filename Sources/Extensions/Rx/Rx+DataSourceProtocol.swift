@@ -20,12 +20,23 @@
 //  THE SOFTWARE.
 //
 
+import RxSwift
 import RxCocoa
 
-public extension SharedSequence where Element: Collection {
+extension Observable: DataSourceProtocol {
 
-    func filterEmpty() -> SharedSequence<SharingStrategy, E> {
-        return filter { !$0.isEmpty }
-    }
+    public typealias ResultType = Element
+
+}
+
+extension PrimitiveSequence: DataSourceProtocol {
+
+    public typealias ResultType = Element
+
+}
+
+extension SharedSequence: DataSourceProtocol {
+
+    public typealias ResultType = Element
 
 }
