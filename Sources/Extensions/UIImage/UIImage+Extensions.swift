@@ -44,7 +44,7 @@ public extension UIImage {
     /// Creates an image from a UIView.
     ///
     /// - Parameter fromView: The source view.
-    /// - Returns: A new instance of UIImage or nil if something goes wrong.
+    /// - Returns: A new instance of UIImage.
     static func imageFrom(view: UIView) -> UIImage {
         let operation = CALayerDrawingOperation(layer: view.layer, size: view.bounds.size)
 
@@ -54,17 +54,15 @@ public extension UIImage {
     /// Render current template UIImage into new image using given color.
     ///
     /// - Parameter color: Color to fill template image.
-    /// - Returns: A new UIImage rendered with given color.
+    /// - Returns: A new UIImage rendered with given color or original image if something goes wrong.
     func renderTemplate(withColor color: UIColor) -> UIImage {
-        guard let image = cgImage else {
-            return self
+        return withCGImage { image in
+            let operation = TemplateDrawingOperation(image: image,
+                                                     imageSize: size,
+                                                     color: color.cgColor)
+
+            return operation.imageFromNewRenderer(scale: scale)
         }
-
-        let operation = TemplateDrawingOperation(image: image,
-                                                 imageSize: size,
-                                                 color: color.cgColor)
-
-        return operation.imageFromNewRenderer(scale: scale)
     }
 
     /// Creates a new image with rounded corners and border.
@@ -74,49 +72,45 @@ public extension UIImage {
     ///   - borderWidth: The size of the border.
     ///   - color: The color of the border.
     ///   - extendSize: Extend result image size and don't overlap source image by border.
-    /// - Returns: A new image with rounded corners.
+    /// - Returns: A new image with rounded corners or original image if something goes wrong.
     func roundCorners(cornerRadius: CGFloat,
                       borderWidth: CGFloat,
                       color: UIColor,
                       extendSize: Bool = false) -> UIImage {
 
-        guard let image = cgImage else {
-            return self
+        return withCGImage { image in
+            let roundOperation = RoundDrawingOperation(image: image,
+                                                       imageSize: size,
+                                                       radius: cornerRadius)
+
+            guard let roundImage = roundOperation.imageFromNewRenderer(scale: scale).cgImage else {
+                return self
+            }
+
+            let borderOperation = BorderDrawingOperation(image: roundImage,
+                                                         imageSize: size,
+                                                         border: borderWidth,
+                                                         color: color.cgColor,
+                                                         radius: cornerRadius,
+                                                         extendSize: extendSize)
+
+            return borderOperation.imageFromNewRenderer(scale: scale)
         }
-
-        let roundOperation = RoundDrawingOperation(image: image,
-                                                   imageSize: size,
-                                                   radius: cornerRadius)
-
-        guard let roundImage = roundOperation.imageFromNewRenderer(scale: scale).cgImage else {
-            return self
-        }
-
-        let borderOperation = BorderDrawingOperation(image: roundImage,
-                                                     imageSize: size,
-                                                     border: borderWidth,
-                                                     color: color.cgColor,
-                                                     radius: cornerRadius,
-                                                     extendSize: extendSize)
-
-        return borderOperation.imageFromNewRenderer(scale: scale)
     }
 
     /// Creates a new circle image.
     ///
-    /// - Returns: A new circled image.
+    /// - Returns: A new circled image or original image if something goes wrong.
     func roundCornersToCircle() -> UIImage {
-        guard let image = cgImage else {
-            return self
+        return withCGImage { image in
+            let radius = CGFloat(min(size.width, size.height) / 2)
+
+            let operation = RoundDrawingOperation(image: image,
+                                                  imageSize: size,
+                                                  radius: radius)
+
+            return operation.imageFromNewRenderer(scale: scale).redraw()
         }
-
-        let radius = CGFloat(min(size.width, size.height) / 2)
-
-        let operation = RoundDrawingOperation(image: image,
-                                              imageSize: size,
-                                              radius: radius)
-
-        return operation.imageFromNewRenderer(scale: scale).redraw()
     }
 
     /// Creates a new circle image with a border.
@@ -125,33 +119,31 @@ public extension UIImage {
     ///   - borderWidth: The size of the border.
     ///   - borderColor: The color of the border.
     ///   - extendSize: Extend result image size and don't overlap source image by border (default = false).
-    /// - Returns: A new image with rounded corners or nil if something goes wrong.
+    /// - Returns: A new image with rounded corners or original image if something goes wrong.
     func roundCornersToCircle(borderWidth: CGFloat,
                               borderColor: UIColor,
                               extendSize: Bool = false) -> UIImage {
 
-        guard let image = cgImage else {
-            return self
+        return withCGImage { image in
+            let radius = CGFloat(min(size.width, size.height) / 2)
+
+            let roundOperation = RoundDrawingOperation(image: image,
+                                                       imageSize: size,
+                                                       radius: radius)
+
+            guard let roundImage = roundOperation.imageFromNewRenderer(scale: scale).cgImage else {
+                return self
+            }
+
+            let borderOperation = BorderDrawingOperation(image: roundImage,
+                                                         imageSize: size,
+                                                         border: borderWidth,
+                                                         color: borderColor.cgColor,
+                                                         radius: radius,
+                                                         extendSize: extendSize)
+
+            return borderOperation.imageFromNewRenderer(scale: scale)
         }
-
-        let radius = CGFloat(min(size.width, size.height) / 2)
-
-        let roundOperation = RoundDrawingOperation(image: image,
-                                                   imageSize: size,
-                                                   radius: radius)
-
-        guard let roundImage = roundOperation.imageFromNewRenderer(scale: scale).cgImage else {
-            return self
-        }
-
-        let borderOperation = BorderDrawingOperation(image: roundImage,
-                                                     imageSize: size,
-                                                     border: borderWidth,
-                                                     color: borderColor.cgColor,
-                                                     radius: radius,
-                                                     extendSize: extendSize)
-
-        return borderOperation.imageFromNewRenderer(scale: scale)
     }
 
     /// Creates a resized copy of an image.
@@ -161,62 +153,85 @@ public extension UIImage {
     ///   - contentMode: The way to handle the content in the new size.
     ///   - cropToImageBounds: Should output image size match resized image size.
     /// Note: If passed true with ResizeMode.scaleAspectFit content mode it will give the original image.
-    /// - Returns: A new image scaled to new size.
+    /// - Returns: A new image scaled to new size or original image if something goes wrong.
     func resize(newSize: CGSize,
                 contentMode: ResizeMode = .scaleToFill,
                 cropToImageBounds: Bool = false) -> UIImage {
 
-        guard let image = cgImage else {
-            return self
+        return withCGImage { image in
+            let operation = ResizeDrawingOperation(image: image,
+                                                   imageSize: size,
+                                                   preferredNewSize: newSize,
+                                                   resizeMode: contentMode,
+                                                   cropToImageBounds: cropToImageBounds)
+
+            return operation.imageFromNewRenderer(scale: scale).redraw()
         }
-
-        let operation = ResizeDrawingOperation(image: image,
-                                               imageSize: size,
-                                               preferredNewSize: newSize,
-                                               resizeMode: contentMode,
-                                               cropToImageBounds: cropToImageBounds)
-
-        return operation.imageFromNewRenderer(scale: scale).redraw()
     }
 
     /// Adds an alpha channel if UIImage doesn't already have one.
     ///
     /// - Returns: A copy of the given image, adding an alpha channel if it doesn't already have one.
     func applyAlpha() -> UIImage {
-        guard let image = cgImage, !image.hasAlpha else {
-            return self
+        return withCGImage { image in
+            guard !image.hasAlpha else {
+                return self
+            }
+
+            let operation = ImageDrawingOperation(image: image,
+                                                  newSize: size,
+                                                  opaque: false)
+
+            return operation.imageFromNewRenderer(scale: scale).redraw()
         }
-
-        let operation = ImageDrawingOperation(image: image,
-                                              newSize: size,
-                                              opaque: false)
-
-        return operation.imageFromNewRenderer(scale: scale).redraw()
     }
 
     /// Creates a copy of the image with border of the given size added around its edges.
     ///
     /// - Parameter padding: The padding amount.
-    /// - Returns: A new padded image or nil if something goes wrong.
+    /// - Returns: A new padded image or original image if something goes wrong.
     func applyPadding(_ padding: CGFloat) -> UIImage {
-        guard let image = cgImage else {
-            return self
+        return withCGImage { image in
+            let operation = PaddingDrawingOperation(image: image, imageSize: size, padding: padding)
+
+            return operation.imageFromNewRenderer(scale: scale).redraw()
         }
+    }
 
-        let operation = PaddingDrawingOperation(image: image, imageSize: size, padding: padding)
+    /// Creates a copy of the image rotated by the given amount of degrees.
+    ///
+    /// - Parameters:
+    ///   - degrees: The number of degrees.
+    ///   - clockwise: Should rotate image clockwise.
+    /// - Returns: A new rotated image or original image if something goes wrong.
+    func rotate(degrees: CGFloat, clockwise: Bool = true) -> UIImage {
+        return withCGImage { image in
+            let radians = degrees.degreesToRadians()
 
-        return operation.imageFromNewRenderer(scale: scale).redraw()
+            let operation = RotateDrawingOperation(image: image,
+                                                   imageSize: size,
+                                                   radians: radians,
+                                                   clockwise: clockwise)
+
+            return operation.imageFromNewRenderer(scale: scale)
+        }
     }
 
     /// Workaround to fix flipped image rendering (by Y)
     private func redraw() -> UIImage {
+        return withCGImage { image in
+            let operation = ImageDrawingOperation(image: image, newSize: size)
+
+            return operation.imageFromNewRenderer(scale: scale)
+        }
+    }
+
+    private func withCGImage(_ actionClosure: (CGImage) -> UIImage) -> UIImage {
         guard let image = cgImage else {
             return self
         }
 
-        let operation = ImageDrawingOperation(image: image, newSize: size)
-
-        return operation.imageFromNewRenderer(scale: scale)
+        return actionClosure(image)
     }
 
 }

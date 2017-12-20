@@ -274,6 +274,14 @@
 		671463CF1EB34B1E00EAB194 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671463B71EB34B1E00EAB194 /* TestView.xib */; };
 		67186B311EB248F100CFAFFB /* LeadKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67186B281EB248F100CFAFFB /* LeadKit.framework */; };
 		67186B3F1EB24A1900CFAFFB /* LeadKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 67186B201EB247A200CFAFFB /* LeadKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		672CC2A81FEA6A6A00EBFB0A /* RotateDrawingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672CC2A71FEA6A6A00EBFB0A /* RotateDrawingOperation.swift */; };
+		672CC2A91FEA6A7400EBFB0A /* RotateDrawingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672CC2A71FEA6A6A00EBFB0A /* RotateDrawingOperation.swift */; };
+		672CC2AA1FEA6A7500EBFB0A /* RotateDrawingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672CC2A71FEA6A6A00EBFB0A /* RotateDrawingOperation.swift */; };
+		672CC2AB1FEA6A7600EBFB0A /* RotateDrawingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672CC2A71FEA6A6A00EBFB0A /* RotateDrawingOperation.swift */; };
+		672CC2B31FEA72A000EBFB0A /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672CC2B21FEA72A000EBFB0A /* FloatingPoint+DegreesRadiansConvertion.swift */; };
+		672CC2B41FEA72A000EBFB0A /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672CC2B21FEA72A000EBFB0A /* FloatingPoint+DegreesRadiansConvertion.swift */; };
+		672CC2B51FEA72A000EBFB0A /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672CC2B21FEA72A000EBFB0A /* FloatingPoint+DegreesRadiansConvertion.swift */; };
+		672CC2B61FEA72A000EBFB0A /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672CC2B21FEA72A000EBFB0A /* FloatingPoint+DegreesRadiansConvertion.swift */; };
 		6740D5D21FABDA46006BB7C0 /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6740D5D11FABDA46006BB7C0 /* DataSourceProtocol.swift */; };
 		6740D5D31FABDA46006BB7C0 /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6740D5D11FABDA46006BB7C0 /* DataSourceProtocol.swift */; };
 		6740D5D41FABDA46006BB7C0 /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6740D5D11FABDA46006BB7C0 /* DataSourceProtocol.swift */; };
@@ -558,6 +566,8 @@
 		67186B301EB248F100CFAFFB /* LeadKit iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LeadKit iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67186B411EB24AA000CFAFFB /* iOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = iOS.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		67186C1A1EB24B7800CFAFFB /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		672CC2A71FEA6A6A00EBFB0A /* RotateDrawingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateDrawingOperation.swift; sourceTree = "<group>"; };
+		672CC2B21FEA72A000EBFB0A /* FloatingPoint+DegreesRadiansConvertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+DegreesRadiansConvertion.swift"; sourceTree = "<group>"; };
 		6740D5D11FABDA46006BB7C0 /* DataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceProtocol.swift; sourceTree = "<group>"; };
 		674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+LoadingIndicator.swift"; sourceTree = "<group>"; };
 		6771DFD71EE99EBA002DCDAE /* DateFormattingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormattingService.swift; sourceTree = "<group>"; };
@@ -776,6 +786,7 @@
 		671461DA1EB3396E00EAB194 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				672CC2B11FEA727D00EBFB0A /* FloatingPoint */,
 				678B43F41FBA3D7C00D1F77D /* Views */,
 				67CB1BF81FAB793F0089D1B1 /* Pagination */,
 				67F139FF1FAB4FCC008175B4 /* Rx */,
@@ -1028,6 +1039,7 @@
 				6714623B1EB3396E00EAB194 /* ImageDrawingOperation.swift */,
 				6714623C1EB3396E00EAB194 /* PaddingDrawingOperation.swift */,
 				6714623D1EB3396E00EAB194 /* ResizeDrawingOperation.swift */,
+				672CC2A71FEA6A6A00EBFB0A /* RotateDrawingOperation.swift */,
 				6714623E1EB3396E00EAB194 /* RoundDrawingOperation.swift */,
 				6714623F1EB3396E00EAB194 /* SolidFillDrawingOperation.swift */,
 				671462401EB3396E00EAB194 /* TemplateDrawingOperation.swift */,
@@ -1110,6 +1122,14 @@
 				671463B41EB34B1E00EAB194 /* PaginationViewModelTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		672CC2B11FEA727D00EBFB0A /* FloatingPoint */ = {
+			isa = PBXGroup;
+			children = (
+				672CC2B21FEA72A000EBFB0A /* FloatingPoint+DegreesRadiansConvertion.swift */,
+			);
+			path = FloatingPoint;
 			sourceTree = "<group>";
 		};
 		674AF55A1EC45B1600038A8F /* UIActivityIndicatorView */ = {
@@ -2184,6 +2204,7 @@
 				6714639E1EB33AEB00EAB194 /* NetworkService+ActivityIndicator.swift in Sources */,
 				A6E0DDEF1F8A6C57002CA74E /* CellSeparatorType.swift in Sources */,
 				6714634C1EB3396E00EAB194 /* ReuseIdentifierProtocol.swift in Sources */,
+				672CC2A81FEA6A6A00EBFB0A /* RotateDrawingOperation.swift in Sources */,
 				671462F01EB3396E00EAB194 /* UIImage+SupportExtensions.swift in Sources */,
 				6771DFDE1EE99F6F002DCDAE /* DateFormattingArguments.swift in Sources */,
 				671462681EB3396E00EAB194 /* NetworkService.swift in Sources */,
@@ -2195,6 +2216,7 @@
 				67F13A431FAB6256008175B4 /* PaginationLoadingViewModel.swift in Sources */,
 				67A1FF8F1EBCA09B00D6C89F /* UIImage+Spinner.swift in Sources */,
 				67CB1BFE1FAB79EE0089D1B1 /* UICollectionView+PaginationWrappable.swift in Sources */,
+				672CC2B31FEA72A000EBFB0A /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */,
 				671462901EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
 				671462FC1EB3396E00EAB194 /* UIView+XibNameProtocol.swift in Sources */,
 				671463841EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
@@ -2321,6 +2343,7 @@
 				A676AE4D1F9810C1001F9214 /* Any+Cast.swift in Sources */,
 				67F13A3B1FAB60DE008175B4 /* GeneralLoadingViewModelConfiguration.swift in Sources */,
 				EFBE57D21EC35EF20040E00A /* Array+Extensions.swift in Sources */,
+				672CC2A91FEA6A7400EBFB0A /* RotateDrawingOperation.swift in Sources */,
 				67F139F71FAB4F22008175B4 /* TotalCountCursor.swift in Sources */,
 				671462821EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
 				671463561EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
@@ -2333,6 +2356,7 @@
 				6714634E1EB3396E00EAB194 /* ReuseIdentifierProtocol.swift in Sources */,
 				6714626A1EB3396E00EAB194 /* NetworkService.swift in Sources */,
 				671463421EB3396E00EAB194 /* ModuleConfigurator.swift in Sources */,
+				672CC2B51FEA72A000EBFB0A /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */,
 				67F13A171FAB5A87008175B4 /* LoadingState.swift in Sources */,
 				671462921EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
 				671463861EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
@@ -2399,6 +2423,7 @@
 				671462831EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
 				671463571EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
 				67F13A371FAB60C0008175B4 /* GeneralLoadingViewModel.swift in Sources */,
+				672CC2B61FEA72A000EBFB0A /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */,
 				67F139FE1FAB4F7E008175B4 /* TotalCountCursorConfiguration.swift in Sources */,
 				671463631EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
 				671462871EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
@@ -2454,6 +2479,7 @@
 				6714625F1EB3396E00EAB194 /* LogFormatter.swift in Sources */,
 				6714630B1EB3396E00EAB194 /* UIView+Rotation.swift in Sources */,
 				6714626F1EB3396E00EAB194 /* XibView.swift in Sources */,
+				672CC2AA1FEA6A7500EBFB0A /* RotateDrawingOperation.swift in Sources */,
 				6714637F1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				671463371EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
 				67F13A221FAB5AE8008175B4 /* LoadingConfiguration.swift in Sources */,
@@ -2521,6 +2547,7 @@
 				6771DFEB1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
 				67F13A3F1FAB614D008175B4 /* PaginationLoadingViewModelConfiguration.swift in Sources */,
 				67A1FF951EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */,
+				672CC2AB1FEA6A7600EBFB0A /* RotateDrawingOperation.swift in Sources */,
 				671462811EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
 				671463551EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
 				671463611EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
@@ -2536,6 +2563,7 @@
 				67051ADC1EBC7C36008EADC0 /* SpinnerView.swift in Sources */,
 				671462FD1EB3396E00EAB194 /* UIView+XibNameProtocol.swift in Sources */,
 				671463851EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
+				672CC2B41FEA72A000EBFB0A /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */,
 				671462D11EB3396E00EAB194 /* UIScrollView+Support.swift in Sources */,
 				671463911EB3396E00EAB194 /* TemplateDrawingOperation.swift in Sources */,
 				67F13A201FAB5AE8008175B4 /* LoadingConfiguration.swift in Sources */,
