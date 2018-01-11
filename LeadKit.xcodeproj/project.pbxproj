@@ -10,6 +10,7 @@
 		2D6A0E6105F4A9BF22BF4BB1 /* Pods_LeadKit_iOS_ExtensionsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C88ED8C9373F85C06697849 /* Pods_LeadKit_iOS_ExtensionsTests.framework */; };
 		2D96F18874B9519F5AD74003 /* Pods_LeadKit_LeadKit_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F8D0002B21A4F31981F1ED /* Pods_LeadKit_LeadKit_tvOS.framework */; };
 		3614FEACB9E8313C87F7C393 /* Pods_LeadKit_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB1CCAB1EAAACD3AC42C795 /* Pods_LeadKit_tvOSTests.framework */; };
+		36DAAF512007CC920090BE0D /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
 		40F118471F8FEF97004AADAF /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
 		40F118491F8FF223004AADAF /* TableRow+AppearanceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118481F8FF223004AADAF /* TableRow+AppearanceExtension.swift */; };
 		67051ADB1EBC7C36008EADC0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */; };
@@ -404,6 +405,7 @@
 		1DA955AE397186D4042066E0 /* Pods-LeadKit-LeadKit iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit-LeadKit iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit-LeadKit iOS/Pods-LeadKit-LeadKit iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		287AC0683207753A363152CB /* Pods_LeadKit_watchOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_watchOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD6FE790236CFF8D2CD505E /* Pods-LeadKit-LeadKit iOS Extensions.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit-LeadKit iOS Extensions.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit-LeadKit iOS Extensions/Pods-LeadKit-LeadKit iOS Extensions.release.xcconfig"; sourceTree = "<group>"; };
+		36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		381DF859FC4E26D499123014 /* Pods-LeadKit iOS ExtensionsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit iOS ExtensionsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit iOS ExtensionsTests/Pods-LeadKit iOS ExtensionsTests.release.xcconfig"; sourceTree = "<group>"; };
 		3C88ED8C9373F85C06697849 /* Pods_LeadKit_iOS_ExtensionsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOS_ExtensionsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceConfigurable.swift; sourceTree = "<group>"; };
@@ -612,6 +614,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36DAAF4F2007CC330090BE0D /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */,
+			);
+			path = UITableView;
+			sourceTree = "<group>";
+		};
 		671461C41EB3396E00EAB194 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -714,6 +724,7 @@
 				679C77D51F98F7A60094BE10 /* UIAlertController */,
 				671462081EB3396E00EAB194 /* UIColor */,
 				6714620C1EB3396E00EAB194 /* UIImage */,
+				36DAAF4F2007CC330090BE0D /* UITableView */,
 				671462111EB3396E00EAB194 /* UIView */,
 				671462171EB3396E00EAB194 /* UIViewController */,
 				6714621B1EB3396E00EAB194 /* UIWindow */,
@@ -1955,6 +1966,7 @@
 				67A1FF8F1EBCA09B00D6C89F /* UIImage+Spinner.swift in Sources */,
 				671462901EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
 				671462FC1EB3396E00EAB194 /* UIView+XibNameProtocol.swift in Sources */,
+				36DAAF512007CC920090BE0D /* UITableView+Extensions.swift in Sources */,
 				671463841EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
 				6771DFD81EE99EBA002DCDAE /* DateFormattingService.swift in Sources */,
 				671462D01EB3396E00EAB194 /* UIScrollView+Support.swift in Sources */,
