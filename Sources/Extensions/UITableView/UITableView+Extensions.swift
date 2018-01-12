@@ -22,7 +22,7 @@
 
 import UIKit
 
-extension UITableView {
+public extension UITableView {
 
     /// Adds colored background to the top of the tableview.
     /// Use when you need a colored bounce area with a color
