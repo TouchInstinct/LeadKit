@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.6.7
+
+- **Add**: UITableView extension to add colored background for tableview bounce area.
+
 ### 0.6.6
 
 - **Add**: Ability to map primitive response types (`String`, `Int`, `[String]`, etc.).
