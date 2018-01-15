@@ -33,9 +33,9 @@ public extension UITableView {
         backgroundView.backgroundColor = color
         addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([ backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                                      backgroundView.bottomAnchor.constraint(equalTo: topAnchor),
-                                      backgroundView.widthAnchor.constraint(equalTo: widthAnchor),
-                                      backgroundView.heightAnchor.constraint(equalTo: heightAnchor)])
+        NSLayoutConstraint.activate([backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                                     backgroundView.bottomAnchor.constraint(equalTo: topAnchor),
+                                     backgroundView.widthAnchor.constraint(equalTo: widthAnchor),
+                                     backgroundView.heightAnchor.constraint(equalTo: heightAnchor)])
     }
 }
