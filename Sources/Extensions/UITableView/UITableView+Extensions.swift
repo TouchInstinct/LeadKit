@@ -27,14 +27,15 @@ public extension UITableView {
     /// Adds colored background to the top of the tableview.
     ///
     /// - Parameters:
-    ///   - color: background color
+    ///   - color: header background color
     func addHeaderBackground(with color: UIColor) {
-        let backgroundFrame = CGRect(x: frame.origin.x,
-                                     y: -bounds.height,
-                                     width: UIScreen.main.bounds.width,
-                                     height: bounds.height)
-        let backgroundView = UIView(frame: backgroundFrame)
+        let backgroundView = UIView()
         backgroundView.backgroundColor = color
         addSubview(backgroundView)
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        backgroundView.bottomAnchor.constraint(equalTo: topAnchor).isActive = true
+        backgroundView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        backgroundView.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
     }
 }
