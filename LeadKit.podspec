@@ -59,6 +59,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/UICollectionView/*",
       "Sources/Extensions/UIDevice/*",
       "Sources/Extensions/UIImage/*",
+      "Sources/Extensions/UITableView/*",      
       "Sources/Extensions/UIView/*",
       "Sources/Extensions/UIViewController/*",
       "Sources/Extensions/UIWindow/*",
