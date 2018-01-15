@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2017 Touch Instinct
+//  Copyright (c) 2018 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -25,14 +25,16 @@ import UIKit
 public extension UITableView {
 
     /// Adds colored background to the top of the tableview.
-    /// Use when you need a colored bounce area with a color
-    /// different from tableview background
+    ///
+    /// - Parameters:
+    ///   - color: background color
     func addHeaderBackground(with color: UIColor) {
-        let backgroundFrame = CGRect(x: frame.origin.x, y: -bounds.height,
+        let backgroundFrame = CGRect(x: frame.origin.x,
+                                     y: -bounds.height,
                                      width: UIScreen.main.bounds.width,
                                      height: bounds.height)
-        let backGroundview = UIView(frame: backgroundFrame)
-        backGroundview.backgroundColor = color
-        addSubview(backGroundview)
+        let backgroundView = UIView(frame: backgroundFrame)
+        backgroundView.backgroundColor = color
+        addSubview(backgroundView)
     }
 }
