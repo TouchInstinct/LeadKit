@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.6.6"
+  s.version         = "0.6.7"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -59,6 +59,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/UICollectionView/*",
       "Sources/Extensions/UIDevice/*",
       "Sources/Extensions/UIImage/*",
+      "Sources/Extensions/UITableView/*",      
       "Sources/Extensions/UIView/*",
       "Sources/Extensions/UIViewController/*",
       "Sources/Extensions/UIWindow/*",
