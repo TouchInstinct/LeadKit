@@ -23,15 +23,14 @@
 import RxSwift
 import RxCocoa
 
-public final class TotalCountCursor<LT, ET, CC: TotalCountCursorConfiguration>: ResettableCursorDataSource
-    where CC.ListingType == LT, CC.ElementType == ET {
+public final class TotalCountCursor<CC: TotalCountCursorConfiguration>: ResettableCursorDataSource {
 
-    public typealias Element = ET
-    public typealias ResultType = [ET]
+    public typealias Element = CC.ElementType
+    public typealias ResultType = [CC.ElementType]
 
     private let configuration: CC
 
-    private var elements: [ET] = []
+    private var elements: [Element] = []
 
     public private(set) var totalCount: Int = .max
 
@@ -45,7 +44,7 @@ public final class TotalCountCursor<LT, ET, CC: TotalCountCursorConfiguration>: 
         return elements.count
     }
 
-    public subscript(index: Int) -> ET {
+    public subscript(index: Int) -> Element {
         return elements[index]
     }
 
@@ -57,7 +56,7 @@ public final class TotalCountCursor<LT, ET, CC: TotalCountCursorConfiguration>: 
         self.configuration = other.configuration.reset()
     }
 
-    public func loadNextBatch() -> Single<[ET]> {
+    public func loadNextBatch() -> Single<[Element]> {
         return configuration.nextBatchObservable()
             .map { [configuration] listing in
                 configuration.getResult(from: listing)
