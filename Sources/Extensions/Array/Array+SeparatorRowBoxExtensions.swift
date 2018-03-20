@@ -43,7 +43,7 @@ public extension Array where Element == SeparatorRowBox {
         case 1:
             first?.set(separatorType: .full(extremeSeparatorConfiguration, extremeSeparatorConfiguration))
         default:
-            forEach { $0.set(separatorType: .full(middleSeparatorConfiguration, middleSeparatorConfiguration))}
+            forEach { $0.set(separatorType: .full(middleSeparatorConfiguration, middleSeparatorConfiguration)) }
             first?.set(separatorType: .top(extremeSeparatorConfiguration))
             last?.set(separatorType: .bottom(extremeSeparatorConfiguration))
         }

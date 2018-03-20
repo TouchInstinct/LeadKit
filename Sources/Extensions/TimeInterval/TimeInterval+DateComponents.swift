@@ -57,7 +57,7 @@ extension TimeInterval {
                 let partElement = Double(part.element) ?? 0
 
                 return interval + partElement * pow(Double(TimeInterval.secondsInMinute), Double(part.offset))
-        }
+            }
 
         self = (fullDays * Double(TimeInterval.secondsInDay)) + timeValue
     }

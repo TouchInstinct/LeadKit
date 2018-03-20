@@ -56,7 +56,7 @@ public class SingleLoadCursor<Element>: ResettableCursorType {
                 return .error(CursorError.exhausted)
             }
 
-            return self.loadingObservable.do(onNext: { [weak self] newItems in
+            return self.loadingObservable.do(onSuccess: { [weak self] newItems in
                 self?.onGot(result: newItems)
             })
         }
