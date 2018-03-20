@@ -23,9 +23,6 @@
 import RxSwift
 import RxCocoa
 
-/// Cursor type which can be resetted
-public typealias ResettableCursorType = CursorType & ResettableType
-
 /// Class that encapsulate all pagination logic
 public final class PaginationViewModel<C: ResettableCursorType> {
 
