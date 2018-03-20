@@ -67,7 +67,7 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType {
             return self.cursor.loadNextBatch()
                 .flatMap { _ in
                     self.loadNextBatch()
-            }
+                }
         }
     }
 

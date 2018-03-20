@@ -1321,6 +1321,7 @@
 			buildConfigurationList = 6782BB961EB31CFE0086E0B8 /* Build configuration list for PBXNativeTarget "LeadKit watchOS" */;
 			buildPhases = (
 				6C0CE35AC797D005DF06F7D5 /* [CP] Check Pods Manifest.lock */,
+				67EB7FCC2061538D00BDD9FB /* CopyPaste Detection */,
 				6782BBBC1EB31ED90086E0B8 /* SwiftLint */,
 				6782BB8C1EB31CFE0086E0B8 /* Sources */,
 				6782BB8D1EB31CFE0086E0B8 /* Frameworks */,
@@ -1342,6 +1343,7 @@
 			buildConfigurationList = 6782BBB11EB31D5A0086E0B8 /* Build configuration list for PBXNativeTarget "LeadKit tvOS" */;
 			buildPhases = (
 				BCF262D3C2C3337546F84061 /* [CP] Check Pods Manifest.lock */,
+				67EB7FCD2061539500BDD9FB /* CopyPaste Detection */,
 				6782BBBE1EB31F210086E0B8 /* SwiftLint */,
 				6782BB9B1EB31D590086E0B8 /* Sources */,
 				6782BB9C1EB31D590086E0B8 /* Frameworks */,
@@ -1384,6 +1386,7 @@
 			buildConfigurationList = 67952DD61EB327B500B3BA1A /* Build configuration list for PBXNativeTarget "LeadKit iOS Extensions" */;
 			buildPhases = (
 				26ED592391E1816700F06F57 /* [CP] Check Pods Manifest.lock */,
+				67EB7FCB2061537600BDD9FB /* CopyPaste Detection */,
 				671463AB1EB3440D00EAB194 /* SwiftLint */,
 				67952DC01EB327B400B3BA1A /* Sources */,
 				67952DC11EB327B400B3BA1A /* Frameworks */,
@@ -1627,7 +1630,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = ". build-scripts/xcode/build_phases/swiftlint.sh Sources";
 		};
 		67186C2E1EB2538E00CFAFFB /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1641,7 +1644,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = ". build-scripts/xcode/build_phases/swiftlint.sh Sources";
 		};
 		6782BBBC1EB31ED90086E0B8 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1655,7 +1658,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = ". build-scripts/xcode/build_phases/swiftlint.sh Sources";
 		};
 		6782BBBE1EB31F210086E0B8 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1669,7 +1672,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = ". build-scripts/xcode/build_phases/swiftlint.sh Sources";
 		};
 		67887A0E1ECC856F008A9E1D /* CopyPaste Detection */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1683,7 +1686,49 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Running CPD\npmd cpd --files Sources --minimum-tokens 50 --language swift --encoding UTF-8 --format net.sourceforge.pmd.cpd.XMLRenderer > cpd-output.xml --failOnViolation true\n\n# Running script\nphp ./cpd_script.php -cpd-xml cpd-output.xml";
+			shellScript = ". build-scripts/xcode/build_phases/copy_paste_detection.sh Sources";
+		};
+		67EB7FCB2061537600BDD9FB /* CopyPaste Detection */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "CopyPaste Detection";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ". build-scripts/xcode/build_phases/copy_paste_detection.sh Sources";
+		};
+		67EB7FCC2061538D00BDD9FB /* CopyPaste Detection */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "CopyPaste Detection";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ". build-scripts/xcode/build_phases/copy_paste_detection.sh Sources";
+		};
+		67EB7FCD2061539500BDD9FB /* CopyPaste Detection */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "CopyPaste Detection";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ". build-scripts/xcode/build_phases/copy_paste_detection.sh Sources";
 		};
 		6C0CE35AC797D005DF06F7D5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -22,9 +22,9 @@
 
 import UIKit
 
-extension LoadingIndicator where Self: UIView {
+public extension LoadingIndicator where Self: UIView {
 
-    public var view: Self {
+    var view: Self {
         return self
     }
 

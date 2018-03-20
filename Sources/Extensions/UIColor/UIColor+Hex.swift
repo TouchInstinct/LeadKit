@@ -96,7 +96,7 @@ public extension UIColor {
             hexStr = hexString
         }
 
-        let charactersCount = hexStr.characters.count
+        let charactersCount = hexStr.count
 
         switch charactersCount {
         case 3, 4:

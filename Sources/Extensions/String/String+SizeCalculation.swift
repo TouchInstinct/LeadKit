@@ -70,9 +70,9 @@ public extension String {
               maxHeight: CGFloat = CGFloat.greatestFiniteMagnitude) -> StringSizeCalculationResult {
 
         let size = self.boundingRect(with: CGSize(width: maxWidth, height: maxHeight),
-                                             options: [.usesLineFragmentOrigin, .usesFontLeading],
-                                             attributes: attributes,
-                                             context: nil).size
+                                     options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                     attributes: attributes,
+                                     context: nil).size
 
         let fontLineHeight = (attributes?[NSAttributedStringKey.font] as? UIFont)?.lineHeight
 

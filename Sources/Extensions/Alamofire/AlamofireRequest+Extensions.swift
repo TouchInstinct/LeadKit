@@ -70,8 +70,8 @@ public extension Reactive where Base: DataRequest {
 
             return responseJSONOnQueue(mappingQueue)
                 .tryMapResult { resp, value in
-                    return (resp, try cast(value) as T)
-            }
+                    (resp, try cast(value) as T)
+                }
     }
 
     /// Method that serializes response into target object

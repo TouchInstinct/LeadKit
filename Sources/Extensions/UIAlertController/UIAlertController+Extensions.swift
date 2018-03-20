@@ -36,7 +36,7 @@ public extension UIAlertController {
         let alert = UIAlertController(title: item.title, message: item.text, preferredStyle: .alert)
 
         zip(item.actionTitles, actions + [nil])
-            .map { (title, action) in
+            .map { title, action in
                 UIAlertAction(title: title, style: .default, handler: { _ in action?() })
             }
             .forEach { alert.addAction($0) }
