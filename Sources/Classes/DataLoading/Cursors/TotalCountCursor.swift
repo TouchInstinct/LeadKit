@@ -23,7 +23,7 @@
 import RxSwift
 import RxCocoa
 
-public final class TotalCountCursor<CursorConfiguration: TotalCountCursorConfiguration>: ResettableCursorType {
+public final class TotalCountCursor<CursorConfiguration: TotalCountCursorConfiguration>: ResettableRxDataSourceCursor {
 
     public typealias Element = CursorConfiguration.ResultType.ElementType
     public typealias ResultType = [Element]

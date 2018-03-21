@@ -45,7 +45,9 @@ public extension CursorType {
 }
 
 /// Map cursor implementation with enclosed cursor for fetching results
-public class MapCursor<Cursor: CursorType, T>: CursorType {
+public class MapCursor<Cursor: CursorType, T>: CursorType, RxDataSource {
+
+    public typealias ResultType = [Element]
 
     public typealias Transform = (Cursor.Element) -> T?
 
@@ -90,6 +92,8 @@ public class MapCursor<Cursor: CursorType, T>: CursorType {
 
 /// MapCursor subclass with implementation of ResettableType
 public class ResettableMapCursor<Cursor: ResettableCursorType, T>: MapCursor<Cursor, T>, ResettableType {
+
+    public typealias ResultType = [Cursor.Element]
 
     public override init(cursor: Cursor, transform: @escaping Transform) {
         super.init(cursor: cursor, transform: transform)

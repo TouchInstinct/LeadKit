@@ -23,7 +23,9 @@
 import RxSwift
 
 /// Stub cursor implementation for array content type
-public class StaticCursor<Element>: ResettableCursorType {
+public class StaticCursor<Element>: ResettableRxDataSourceCursor {
+
+    public typealias ResultType = [Element]
 
     private let content: [Element]
 

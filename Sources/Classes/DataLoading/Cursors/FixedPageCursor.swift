@@ -23,7 +23,9 @@
 import RxSwift
 
 /// Paging cursor implementation with enclosed cursor for fetching results
-public class FixedPageCursor<Cursor: CursorType>: CursorType {
+public class FixedPageCursor<Cursor: CursorType>: CursorType, RxDataSource {
+
+    public typealias ResultType = [Element]
 
     fileprivate let cursor: Cursor
 
@@ -75,6 +77,8 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType {
 
 /// FixedPageCursor subclass with implementation of ResettableType
 public class ResettableFixedPageCursor<Cursor: ResettableCursorType>: FixedPageCursor<Cursor>, ResettableType {
+
+    public typealias ResultType = [Element]
 
     public override init(cursor: Cursor, pageSize: Int) {
         super.init(cursor: cursor, pageSize: pageSize)
