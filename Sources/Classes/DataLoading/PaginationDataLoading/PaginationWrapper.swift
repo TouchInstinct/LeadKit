@@ -24,7 +24,7 @@ import RxSwift
 import RxCocoa
 import UIScrollView_InfiniteScroll
 
-/// Class that connects PaginationViewModel with UIScrollView. It handles all non-visual and visual states.
+/// Class that connects PaginationDataLoadingModel with UIScrollView. It handles all non-visual and visual states.
 final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Delegate: PaginationWrapperDelegate>
     // "Segmentation fault: 11" in Xcode 9.2 without redundant same-type constraint :(
     where Cursor == Delegate.DataSourceType, Cursor.ResultType == [Cursor.Element] {
