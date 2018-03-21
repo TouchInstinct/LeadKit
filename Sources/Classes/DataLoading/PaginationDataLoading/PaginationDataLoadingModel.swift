@@ -33,6 +33,15 @@ public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCurs
 
     }
 
+    // Additional init with closure typealias fixes swift
+    // runtime crash inside emptyResultChecker.
+
+    public typealias PaginationEmptyResultChecker = (Cursor.ResultType) -> Bool
+
+    public override init(dataSource: Cursor, emptyResultChecker: @escaping PaginationEmptyResultChecker) {
+        super.init(dataSource: dataSource, emptyResultChecker: emptyResultChecker)
+    }
+
     override public func reload() {
         load(.reload)
     }
