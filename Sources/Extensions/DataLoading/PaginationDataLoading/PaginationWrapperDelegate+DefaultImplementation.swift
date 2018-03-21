@@ -87,11 +87,11 @@ public extension PaginationWrapperDelegate {
         return 44
     }
 
-    func retryLoadMoreButtonIsAboutToShow() {
+    func retryLoadMoreButtonWillBeShown() {
         // by default - nothing will happen
     }
 
-    func retryLoadMoreButtonIsAboutToHide() {
+    func retryLoadMoreButtonWillBeHidden() {
         // by default - nothing will happen
     }
 

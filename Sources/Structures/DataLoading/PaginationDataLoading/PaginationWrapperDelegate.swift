@@ -85,11 +85,11 @@ public protocol PaginationWrapperDelegate: class {
 
     /// Method is called before "retry load more" will be shown.
     /// Typically, it's used when you need to show custom footer view.
-    func retryLoadMoreButtonIsAboutToShow()
+    func retryLoadMoreButtonWillBeShown()
 
     /// Method is called before "retry load more" will be hidden.
     /// Typically, it's used when you need to hide custom footer view.
-    func retryLoadMoreButtonIsAboutToHide()
+    func retryLoadMoreButtonWillBeHidden()
 
     /// Delegate method, used to clear view if placeholder is shown.
     func clearView()
