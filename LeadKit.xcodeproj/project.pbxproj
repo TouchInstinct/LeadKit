@@ -320,6 +320,38 @@
 		67E6C2361EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
 		67E6C2371EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
 		67E6C2381EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
+		67EB7FC0206140E600BDD9FB /* TotalCountCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FBF206140E600BDD9FB /* TotalCountCursor.swift */; };
+		67EB7FC1206140E600BDD9FB /* TotalCountCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FBF206140E600BDD9FB /* TotalCountCursor.swift */; };
+		67EB7FC2206140E600BDD9FB /* TotalCountCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FBF206140E600BDD9FB /* TotalCountCursor.swift */; };
+		67EB7FC3206140E600BDD9FB /* TotalCountCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FBF206140E600BDD9FB /* TotalCountCursor.swift */; };
+		67EB7FC7206148D000BDD9FB /* TotalCountCursorListingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FC6206148D000BDD9FB /* TotalCountCursorListingResult.swift */; };
+		67EB7FC8206148D000BDD9FB /* TotalCountCursorListingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FC6206148D000BDD9FB /* TotalCountCursorListingResult.swift */; };
+		67EB7FC9206148D000BDD9FB /* TotalCountCursorListingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FC6206148D000BDD9FB /* TotalCountCursorListingResult.swift */; };
+		67EB7FCA206148D000BDD9FB /* TotalCountCursorListingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FC6206148D000BDD9FB /* TotalCountCursorListingResult.swift */; };
+		67EB7FCF20615B8900BDD9FB /* TotalCountCursorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FCE20615B8900BDD9FB /* TotalCountCursorConfiguration.swift */; };
+		67EB7FD020615B8900BDD9FB /* TotalCountCursorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FCE20615B8900BDD9FB /* TotalCountCursorConfiguration.swift */; };
+		67EB7FD120615B8900BDD9FB /* TotalCountCursorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FCE20615B8900BDD9FB /* TotalCountCursorConfiguration.swift */; };
+		67EB7FD220615B8900BDD9FB /* TotalCountCursorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FCE20615B8900BDD9FB /* TotalCountCursorConfiguration.swift */; };
+		67EB7FD420615D1700BDD9FB /* ResettableCursorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FD320615D1700BDD9FB /* ResettableCursorType.swift */; };
+		67EB7FD520615D1700BDD9FB /* ResettableCursorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FD320615D1700BDD9FB /* ResettableCursorType.swift */; };
+		67EB7FD620615D1700BDD9FB /* ResettableCursorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FD320615D1700BDD9FB /* ResettableCursorType.swift */; };
+		67EB7FD720615D1700BDD9FB /* ResettableCursorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FD320615D1700BDD9FB /* ResettableCursorType.swift */; };
+		67EB7FDA20615D5B00BDD9FB /* ResettableCursorDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FD920615D5B00BDD9FB /* ResettableCursorDataSource.swift */; };
+		67EB7FDB20615D5B00BDD9FB /* ResettableCursorDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FD920615D5B00BDD9FB /* ResettableCursorDataSource.swift */; };
+		67EB7FDC20615D5B00BDD9FB /* ResettableCursorDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FD920615D5B00BDD9FB /* ResettableCursorDataSource.swift */; };
+		67EB7FDD20615D5B00BDD9FB /* ResettableCursorDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FD920615D5B00BDD9FB /* ResettableCursorDataSource.swift */; };
+		67EB7FE420615DE000BDD9FB /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FE320615DE000BDD9FB /* DataSourceProtocol.swift */; };
+		67EB7FE520615DE000BDD9FB /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FE320615DE000BDD9FB /* DataSourceProtocol.swift */; };
+		67EB7FE620615DE000BDD9FB /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FE320615DE000BDD9FB /* DataSourceProtocol.swift */; };
+		67EB7FE720615DE000BDD9FB /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FE320615DE000BDD9FB /* DataSourceProtocol.swift */; };
+		67EB7FEB2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FEA2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift */; };
+		67EB7FEC2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FEA2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift */; };
+		67EB7FED2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FEA2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift */; };
+		67EB7FEE2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FEA2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift */; };
+		67EB7FF12061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FF02061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift */; };
+		67EB7FF22061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FF02061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift */; };
+		67EB7FF32061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FF02061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift */; };
+		67EB7FF42061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FF02061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift */; };
 		67FDC25F1FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
 		67FDC2601FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
 		67FDC2611FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
@@ -519,6 +551,14 @@
 		67A1FF8E1EBCA09B00D6C89F /* UIImage+Spinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Spinner.swift"; sourceTree = "<group>"; };
 		67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CABasicAnimation+Rotation.swift"; sourceTree = "<group>"; };
 		67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleLoadCursor.swift; sourceTree = "<group>"; };
+		67EB7FBF206140E600BDD9FB /* TotalCountCursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCountCursor.swift; sourceTree = "<group>"; };
+		67EB7FC6206148D000BDD9FB /* TotalCountCursorListingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCountCursorListingResult.swift; sourceTree = "<group>"; };
+		67EB7FCE20615B8900BDD9FB /* TotalCountCursorConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCountCursorConfiguration.swift; sourceTree = "<group>"; };
+		67EB7FD320615D1700BDD9FB /* ResettableCursorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResettableCursorType.swift; sourceTree = "<group>"; };
+		67EB7FD920615D5B00BDD9FB /* ResettableCursorDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResettableCursorDataSource.swift; sourceTree = "<group>"; };
+		67EB7FE320615DE000BDD9FB /* DataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceProtocol.swift; sourceTree = "<group>"; };
+		67EB7FEA2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTotalCountCursorListingResult.swift; sourceTree = "<group>"; };
+		67EB7FF02061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift"; sourceTree = "<group>"; };
 		67FDC25E1FA310EA00C76A77 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		78405D3B3D3C3E17456877FF /* Pods_LeadKit_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Single+DeferredJust.swift"; sourceTree = "<group>"; };
@@ -642,6 +682,7 @@
 				671461C91EB3396E00EAB194 /* MapCursor.swift */,
 				67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */,
 				671461CA1EB3396E00EAB194 /* StaticCursor.swift */,
+				67EB7FBF206140E600BDD9FB /* TotalCountCursor.swift */,
 			);
 			path = Cursors;
 			sourceTree = "<group>";
@@ -708,6 +749,7 @@
 				671461E21EB3396E00EAB194 /* CGImage */,
 				671461E51EB3396E00EAB194 /* CGSize */,
 				A6D10EA91F8A9269003E69DD /* Comparable */,
+				67EB7FEF2061681A00BDD9FB /* Cursors */,
 				671461E81EB3396E00EAB194 /* CursorType */,
 				6771DFE21EE99FF3002DCDAE /* DateFormattingArguments */,
 				6771DFE81EEA7C8F002DCDAE /* DateFormattingService */,
@@ -913,6 +955,8 @@
 		671462221EB3396E00EAB194 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				67EB7FE820615E5000BDD9FB /* Cursors */,
+				67EB7FC5206148C400BDD9FB /* Loading */,
 				671462331EB3396E00EAB194 /* ConfigurableView.swift */,
 				679C77D41F98F78E0094BE10 /* AlertRepresentable.swift */,
 				671463A11EB33FF600EAB194 /* Animatable.swift */,
@@ -937,6 +981,7 @@
 		671462351EB3396E00EAB194 /* Structures */ = {
 			isa = PBXGroup;
 			children = (
+				67EB7FE92061666900BDD9FB /* Cursors */,
 				671462361EB3396E00EAB194 /* Api */,
 				6771DFDC1EE99F52002DCDAE /* DateFormatting */,
 				671462381EB3396E00EAB194 /* DrawingOperations */,
@@ -1090,6 +1135,49 @@
 				67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */,
 			);
 			path = CABasicAnimation;
+			sourceTree = "<group>";
+		};
+		67EB7FC5206148C400BDD9FB /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				67EB7FD820615D3100BDD9FB /* Pagination */,
+				67EB7FE320615DE000BDD9FB /* DataSourceProtocol.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		67EB7FD820615D3100BDD9FB /* Pagination */ = {
+			isa = PBXGroup;
+			children = (
+				67EB7FCE20615B8900BDD9FB /* TotalCountCursorConfiguration.swift */,
+				67EB7FC6206148D000BDD9FB /* TotalCountCursorListingResult.swift */,
+			);
+			path = Pagination;
+			sourceTree = "<group>";
+		};
+		67EB7FE820615E5000BDD9FB /* Cursors */ = {
+			isa = PBXGroup;
+			children = (
+				67EB7FD920615D5B00BDD9FB /* ResettableCursorDataSource.swift */,
+				67EB7FD320615D1700BDD9FB /* ResettableCursorType.swift */,
+			);
+			path = Cursors;
+			sourceTree = "<group>";
+		};
+		67EB7FE92061666900BDD9FB /* Cursors */ = {
+			isa = PBXGroup;
+			children = (
+				67EB7FEA2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift */,
+			);
+			path = Cursors;
+			sourceTree = "<group>";
+		};
+		67EB7FEF2061681A00BDD9FB /* Cursors */ = {
+			isa = PBXGroup;
+			children = (
+				67EB7FF02061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift */,
+			);
+			path = Cursors;
 			sourceTree = "<group>";
 		};
 		78CFEE201C5C456B00F50370 = {
@@ -1993,6 +2081,7 @@
 				671463481EB3396E00EAB194 /* ResettableType.swift in Sources */,
 				EFBE57D01EC35EF20040E00A /* Array+Extensions.swift in Sources */,
 				671462E41EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
+				67EB7FF12061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift in Sources */,
 				671462CC1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
 				671462801EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
 				671463541EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
@@ -2012,12 +2101,14 @@
 				67A1FF8F1EBCA09B00D6C89F /* UIImage+Spinner.swift in Sources */,
 				671462901EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
 				671462FC1EB3396E00EAB194 /* UIView+XibNameProtocol.swift in Sources */,
+				67EB7FC0206140E600BDD9FB /* TotalCountCursor.swift in Sources */,
 				36DAAF512007CC920090BE0D /* UITableView+Extensions.swift in Sources */,
 				671463841EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
 				6771DFD81EE99EBA002DCDAE /* DateFormattingService.swift in Sources */,
 				671462D01EB3396E00EAB194 /* UIScrollView+Support.swift in Sources */,
 				671463901EB3396E00EAB194 /* TemplateDrawingOperation.swift in Sources */,
 				A658E54D1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift in Sources */,
+				67EB7FCF20615B8900BDD9FB /* TotalCountCursorConfiguration.swift in Sources */,
 				671462981EB3396E00EAB194 /* CGSize+Resize.swift in Sources */,
 				67051ADB1EBC7C36008EADC0 /* SpinnerView.swift in Sources */,
 				67A1FF941EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */,
@@ -2050,6 +2141,7 @@
 				A658E5501F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift in Sources */,
 				671462EC1EB3396E00EAB194 /* UIImage+Extensions.swift in Sources */,
 				A6E0DDF11F8A6C80002CA74E /* SeparatorConfiguration.swift in Sources */,
+				67EB7FEB2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */,
 				6714636C1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
 				6771DFEA1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
 				671462A01EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
@@ -2066,6 +2158,7 @@
 				671462881EB3396E00EAB194 /* CGFloat+Pixels.swift in Sources */,
 				671462941EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
 				671463641EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
+				67EB7FDA20615D5B00BDD9FB /* ResettableCursorDataSource.swift in Sources */,
 				671462481EB3396E00EAB194 /* FixedPageCursor.swift in Sources */,
 				671462C81EB3396E00EAB194 /* String+Localization.swift in Sources */,
 				671462B81EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */,
@@ -2084,6 +2177,9 @@
 				6714638C1EB3396E00EAB194 /* SolidFillDrawingOperation.swift in Sources */,
 				671463A21EB33FF600EAB194 /* Animatable.swift in Sources */,
 				671462501EB3396E00EAB194 /* StaticCursor.swift in Sources */,
+				67EB7FC7206148D000BDD9FB /* TotalCountCursorListingResult.swift in Sources */,
+				67EB7FE420615DE000BDD9FB /* DataSourceProtocol.swift in Sources */,
+				67EB7FD420615D1700BDD9FB /* ResettableCursorType.swift in Sources */,
 				6714629C1EB3396E00EAB194 /* CursorType+Slice.swift in Sources */,
 				671463681EB3396E00EAB194 /* ConfigurableView.swift in Sources */,
 				6771DFE41EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift in Sources */,
@@ -2115,11 +2211,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67EB7FE620615DE000BDD9FB /* DataSourceProtocol.swift in Sources */,
 				6714634A1EB3396E00EAB194 /* ResettableType.swift in Sources */,
 				671462E61EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
 				671462CE1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
 				A676AE4D1F9810C1001F9214 /* Any+Cast.swift in Sources */,
 				EFBE57D21EC35EF20040E00A /* Array+Extensions.swift in Sources */,
+				67EB7FC2206140E600BDD9FB /* TotalCountCursor.swift in Sources */,
 				671462821EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
 				67E6C2371EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				671463561EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
@@ -2143,9 +2241,11 @@
 				671463821EB3396E00EAB194 /* PaddingDrawingOperation.swift in Sources */,
 				6714632A1EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
 				671462AE1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
+				67EB7FDC20615D5B00BDD9FB /* ResettableCursorDataSource.swift in Sources */,
 				A6F32C0B1F6EBE5C00AC08EE /* String+LocalizedComponent.swift in Sources */,
 				6714627E1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
 				6771DFDA1EE99EBA002DCDAE /* DateFormattingService.swift in Sources */,
+				67EB7FD620615D1700BDD9FB /* ResettableCursorType.swift in Sources */,
 				6714625A1EB3396E00EAB194 /* Log.swift in Sources */,
 				6714627A1EB3396E00EAB194 /* ResizeMode.swift in Sources */,
 				671463A41EB33FF600EAB194 /* Animatable.swift in Sources */,
@@ -2154,12 +2254,16 @@
 				67CDEE401EB369BF00895905 /* ConfigurableController.swift in Sources */,
 				A676AE481F97D28A001F9214 /* String+Extensions.swift in Sources */,
 				671462A21EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
+				67EB7FF32061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift in Sources */,
 				6714625E1EB3396E00EAB194 /* LogFormatter.swift in Sources */,
+				67EB7FED2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */,
 				6714637E1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				671463361EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
 				671462721EB3396E00EAB194 /* CursorError.swift in Sources */,
 				671462961EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
 				671463661EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
+				67EB7FD120615B8900BDD9FB /* TotalCountCursorConfiguration.swift in Sources */,
+				67EB7FC9206148D000BDD9FB /* TotalCountCursorListingResult.swift in Sources */,
 				6771DFE61EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift in Sources */,
 				6714624A1EB3396E00EAB194 /* FixedPageCursor.swift in Sources */,
 				671462CA1EB3396E00EAB194 /* String+Localization.swift in Sources */,
@@ -2197,6 +2301,7 @@
 				671463431EB3396E00EAB194 /* ModuleConfigurator.swift in Sources */,
 				671462671EB3396E00EAB194 /* PaginationViewModel.swift in Sources */,
 				671462931EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
+				67EB7FE720615DE000BDD9FB /* DataSourceProtocol.swift in Sources */,
 				671462FF1EB3396E00EAB194 /* UIView+XibNameProtocol.swift in Sources */,
 				67FDC2621FA310EA00C76A77 /* RequestError.swift in Sources */,
 				671463871EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
@@ -2207,6 +2312,7 @@
 				671463331EB3396E00EAB194 /* CursorType.swift in Sources */,
 				6714624F1EB3396E00EAB194 /* MapCursor.swift in Sources */,
 				671463271EB3396E00EAB194 /* Any+TypeName.swift in Sources */,
+				67EB7FD220615B8900BDD9FB /* TotalCountCursorConfiguration.swift in Sources */,
 				EFBE57D31EC35EF20040E00A /* Array+Extensions.swift in Sources */,
 				6714638B1EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
 				A676AE4A1F97D28A001F9214 /* String+Extensions.swift in Sources */,
@@ -2234,11 +2340,14 @@
 				6714630B1EB3396E00EAB194 /* UIView+Rotation.swift in Sources */,
 				6714626F1EB3396E00EAB194 /* XibView.swift in Sources */,
 				6714637F1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
+				67EB7FD720615D1700BDD9FB /* ResettableCursorType.swift in Sources */,
 				671463371EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
 				671462731EB3396E00EAB194 /* CursorError.swift in Sources */,
+				67EB7FDD20615D5B00BDD9FB /* ResettableCursorDataSource.swift in Sources */,
 				6714639B1EB3396E00EAB194 /* AnyLoadingIndicator.swift in Sources */,
 				6771DFE11EE99F6F002DCDAE /* DateFormattingArguments.swift in Sources */,
 				671463171EB3396E00EAB194 /* UIViewController+TopVisibleViewController.swift in Sources */,
+				67EB7FCA206148D000BDD9FB /* TotalCountCursorListingResult.swift in Sources */,
 				6714628B1EB3396E00EAB194 /* CGFloat+Pixels.swift in Sources */,
 				671462971EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
 				671463671EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
@@ -2247,6 +2356,7 @@
 				671462CB1EB3396E00EAB194 /* String+Localization.swift in Sources */,
 				36977763200CF12100ED9C6E /* UITableView+Extensions.swift in Sources */,
 				671462BB1EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */,
+				67EB7FEE2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */,
 				671463771EB3396E00EAB194 /* BorderDrawingOperation.swift in Sources */,
 				6714633F1EB3396E00EAB194 /* LoadingIndicator.swift in Sources */,
 				675C1FB41F97CA32007D5249 /* AppearanceConfigurable.swift in Sources */,
@@ -2254,10 +2364,12 @@
 				671462571EB3396E00EAB194 /* App.swift in Sources */,
 				6714637B1EB3396E00EAB194 /* CALayerDrawingOperation.swift in Sources */,
 				6714632F1EB3396E00EAB194 /* ConfigurableController.swift in Sources */,
+				67EB7FF42061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift in Sources */,
 				6714628F1EB3396E00EAB194 /* CGImage+Alpha.swift in Sources */,
 				67051ADD1EBC7C36008EADC0 /* SpinnerView.swift in Sources */,
 				671462771EB3396E00EAB194 /* LeadKitError.swift in Sources */,
 				671462DB1EB3396E00EAB194 /* TimeInterval+DateComponents.swift in Sources */,
+				67EB7FC3206140E600BDD9FB /* TotalCountCursor.swift in Sources */,
 				6714638F1EB3396E00EAB194 /* SolidFillDrawingOperation.swift in Sources */,
 				67E6C2381EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				671462531EB3396E00EAB194 /* StaticCursor.swift in Sources */,
@@ -2284,10 +2396,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67EB7FE520615DE000BDD9FB /* DataSourceProtocol.swift in Sources */,
 				671463491EB3396E00EAB194 /* ResettableType.swift in Sources */,
 				A676AE491F97D28A001F9214 /* String+Extensions.swift in Sources */,
 				671462E51EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
 				671462CD1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
+				67EB7FC1206140E600BDD9FB /* TotalCountCursor.swift in Sources */,
 				6771DFDF1EE99F6F002DCDAE /* DateFormattingArguments.swift in Sources */,
 				6771DFEB1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
 				67A1FF951EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */,
@@ -2308,13 +2422,16 @@
 				671463851EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
 				671462D11EB3396E00EAB194 /* UIScrollView+Support.swift in Sources */,
 				671463911EB3396E00EAB194 /* TemplateDrawingOperation.swift in Sources */,
+				67EB7FEC2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */,
 				671462991EB3396E00EAB194 /* CGSize+Resize.swift in Sources */,
 				671463311EB3396E00EAB194 /* CursorType.swift in Sources */,
 				6714624D1EB3396E00EAB194 /* MapCursor.swift in Sources */,
+				67EB7FD520615D1700BDD9FB /* ResettableCursorType.swift in Sources */,
 				671463251EB3396E00EAB194 /* Any+TypeName.swift in Sources */,
 				671463891EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
 				675C1FB61F97CA33007D5249 /* AppearanceConfigurable.swift in Sources */,
 				671463811EB3396E00EAB194 /* PaddingDrawingOperation.swift in Sources */,
+				67EB7FDB20615D5B00BDD9FB /* ResettableCursorDataSource.swift in Sources */,
 				A6F32C0A1F6EBE5B00AC08EE /* String+LocalizedComponent.swift in Sources */,
 				671463291EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
 				671462AD1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
@@ -2342,6 +2459,7 @@
 				6771DFD91EE99EBA002DCDAE /* DateFormattingService.swift in Sources */,
 				A676AE4E1F9810C1001F9214 /* Any+Cast.swift in Sources */,
 				671462951EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
+				67EB7FF22061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift in Sources */,
 				671463651EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
 				A6C9A5101F8BC79D009311CC /* Comparable+Extensions.swift in Sources */,
 				671462491EB3396E00EAB194 /* FixedPageCursor.swift in Sources */,
@@ -2357,6 +2475,7 @@
 				6714632D1EB3396E00EAB194 /* ConfigurableController.swift in Sources */,
 				A676AE561F98112F001F9214 /* ObservableMappable.swift in Sources */,
 				6714628D1EB3396E00EAB194 /* CGImage+Alpha.swift in Sources */,
+				67EB7FC8206148D000BDD9FB /* TotalCountCursorListingResult.swift in Sources */,
 				671462751EB3396E00EAB194 /* LeadKitError.swift in Sources */,
 				EFBE57D11EC35EF20040E00A /* Array+Extensions.swift in Sources */,
 				671462D91EB3396E00EAB194 /* TimeInterval+DateComponents.swift in Sources */,
@@ -2366,6 +2485,7 @@
 				671462511EB3396E00EAB194 /* StaticCursor.swift in Sources */,
 				6714629D1EB3396E00EAB194 /* CursorType+Slice.swift in Sources */,
 				671463691EB3396E00EAB194 /* ConfigurableView.swift in Sources */,
+				67EB7FD020615B8900BDD9FB /* TotalCountCursorConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
