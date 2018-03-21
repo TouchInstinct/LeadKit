@@ -20,14 +20,39 @@
 //  THE SOFTWARE.
 //
 
-import RxSwift
+public enum GeneralDataLoadingState<DS: DataSource>: DataLoadingState {
 
-/// Protocol that requests class to conform ResettableType
-/// and return next batch of data on nextBatchObservable call
-public protocol TotalCountCursorConfiguration: class, ResettableType {
+    case initial
+    case loading
+    case result(newResult: DS.ResultType, from: DS)
+    case error(error: Error)
+    case empty
 
-    associatedtype ListingType: TotalCountCursorListingResult
+    public typealias DataSourceType = DS
 
-    func nextBatchObservable() -> Single<ListingType>
+    public static var initialState: GeneralDataLoadingState<DS> {
+        return .initial
+    }
+
+    public static var emptyState: GeneralDataLoadingState<DS> {
+        return .empty
+    }
+
+    public static func loadingState(after: GeneralDataLoadingState<DS>) -> GeneralDataLoadingState<DS> {
+        return .loading
+    }
+
+    public static func resultState(result: DS.ResultType,
+                                   from: DS,
+                                   after: GeneralDataLoadingState<DS>) -> GeneralDataLoadingState<DS> {
+
+        return .result(newResult: result, from: from)
+    }
+
+    public static func errorState(error: Error,
+                                  after: GeneralDataLoadingState<DS>) -> GeneralDataLoadingState<DS> {
+
+        return .error(error: error)
+    }
 
 }

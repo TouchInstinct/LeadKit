@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2017 Touch Instinct
+//  Copyright (c) 2018 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -22,9 +22,9 @@
 
 import UIKit
 
-public extension PaginationTableViewWrapperDelegate {
+public extension PaginationWrapperDelegate {
 
-    func emptyPlaceholder(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>) -> UIView {
+    func emptyPlaceholder() -> UIView {
         let placeholder = UIView()
 
         let label = UILabel()
@@ -32,15 +32,20 @@ public extension PaginationTableViewWrapperDelegate {
         label.text = "There is nothing here"
 
         placeholder.addSubview(label)
-        label.centerXAnchor.constraint(equalTo: placeholder.centerXAnchor).isActive = true
-        label.centerYAnchor.constraint(equalTo: placeholder.centerYAnchor).isActive = true
+
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: placeholder.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: placeholder.centerYAnchor)
+        ])
 
         return placeholder
     }
 
-    func errorPlaceholder(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>,
-                          forError error: Error) -> UIView {
+    func customInitialLoadingErrorHandling(for error: Error) -> Bool {
+        return false
+    }
 
+    func errorPlaceholder(for error: Error) -> UIView {
         let placeholder = UIView()
 
         let label = UILabel()
@@ -48,30 +53,29 @@ public extension PaginationTableViewWrapperDelegate {
         label.text = "An error has occurred"
 
         placeholder.addSubview(label)
-        label.centerXAnchor.constraint(equalTo: placeholder.centerXAnchor).isActive = true
-        label.centerYAnchor.constraint(equalTo: placeholder.centerYAnchor).isActive = true
+
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: placeholder.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: placeholder.centerYAnchor)
+        ])
 
         return placeholder
     }
 
-    func initialLoadingIndicator(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>)
-        -> AnyLoadingIndicator {
-
+    func initialLoadingIndicator() -> AnyLoadingIndicator {
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         indicator.color = .gray
 
         return AnyLoadingIndicator(indicator)
     }
 
-    func loadingMoreIndicator(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>)
-        -> AnyLoadingIndicator {
-
+    func loadingMoreIndicator() -> AnyLoadingIndicator {
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
 
         return AnyLoadingIndicator(indicator)
     }
 
-    func retryLoadMoreButton(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>) -> UIButton {
+    func retryLoadMoreButton() -> UIButton {
         let retryButton = UIButton(type: .custom)
         retryButton.backgroundColor = .lightGray
         retryButton.setTitle("Retry load more", for: .normal)
@@ -79,8 +83,16 @@ public extension PaginationTableViewWrapperDelegate {
         return retryButton
     }
 
-    func retryLoadMoreButtonHeight(forPaginationWrapper wrapper: PaginationTableViewWrapper<Cursor, Self>) -> CGFloat {
+    func retryLoadMoreButtonHeight() -> CGFloat {
         return 44
+    }
+
+    func retryLoadMoreButtonIsAboutToShow() {
+        // by default - nothing will happen
+    }
+
+    func retryLoadMoreButtonIsAboutToHide() {
+        // by default - nothing will happen
     }
 
 }

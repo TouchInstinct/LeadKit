@@ -20,5 +20,7 @@
 //  THE SOFTWARE.
 //
 
-/// Ressetable cursor type that conforms to DataSourceProtocol
-public typealias ResettableCursorDataSource = ResettableCursorType & DataSourceProtocol
+import RxSwift
+
+public final class GeneralDataLoadingModel<T>: RxDataLoadingModel<GeneralDataLoadingState<Single<T>>> {
+}

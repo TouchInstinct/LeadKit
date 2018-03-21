@@ -20,9 +20,21 @@
 //  THE SOFTWARE.
 //
 
-/// Protocol for data sources that has type of loaded result
-public protocol DataSourceProtocol {
+import UIKit.UITableView
 
-    associatedtype ResultType
+extension UITableView: PaginationWrappable {
+
+    public var scrollView: UIScrollView {
+        return self
+    }
+
+    public var footerView: UIView? {
+        get {
+            return tableFooterView
+        }
+        set {
+            tableFooterView = newValue
+        }
+    }
 
 }
