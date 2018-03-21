@@ -23,12 +23,12 @@
 import RxSwift
 import RxCocoa
 
-public final class TotalCountCursor<CC: TotalCountCursorConfiguration>: ResettableCursorType {
+public final class TotalCountCursor<CursorConfiguration: TotalCountCursorConfiguration>: ResettableCursorType {
 
-    public typealias Element = CC.ResultType.ElementType
+    public typealias Element = CursorConfiguration.ResultType.ElementType
     public typealias ResultType = [Element]
 
-    private let configuration: CC
+    private let configuration: CursorConfiguration
 
     private var elements: [Element] = []
 
@@ -46,12 +46,12 @@ public final class TotalCountCursor<CC: TotalCountCursorConfiguration>: Resettab
         return elements[index]
     }
 
-    public init(configuration: CC) {
+    public init(configuration: CursorConfiguration) {
         self.configuration = configuration
     }
 
     public required init(resetFrom other: TotalCountCursor) {
-        self.configuration = other.configuration.reset()
+        configuration = other.configuration.reset()
     }
 
     public func loadNextBatch() -> Single<[Element]> {
