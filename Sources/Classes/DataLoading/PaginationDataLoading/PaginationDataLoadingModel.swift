@@ -50,6 +50,10 @@ public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCurs
         case .reload, .retry:
             dataSource = dataSource.reset()
 
+            if loadType == .retry {
+                state = .initial
+            }
+
             state = .loading(after: state)
         case .next:
             if case .exhausted = state {
