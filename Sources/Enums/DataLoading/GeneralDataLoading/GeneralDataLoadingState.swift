@@ -38,7 +38,7 @@ public enum GeneralDataLoadingState<DS: DataSource>: DataLoadingState {
         return .empty
     }
 
-    public static func loadingState(after: GeneralDataLoadingState<DS>) -> GeneralDataLoadingState<DS> {
+    public static func initialLoadingState(after: GeneralDataLoadingState<DS>) -> GeneralDataLoadingState<DS> {
         return .loading
     }
 

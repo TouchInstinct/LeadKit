@@ -150,7 +150,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
         wrappedView.scrollView.isUserInteractionEnabled = true
 
-        if case .loading = afterState {
+        if case .initialLoading = afterState {
             delegate?.paginationWrapper(didReload: newItems, using: cursor)
 
             removeCurrentPlaceholderView()
@@ -166,7 +166,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
     }
 
     private func onErrorState(error: Error, afterState: LoadingState) {
-        if case .loading = afterState {
+        if case .initialLoading = afterState {
             defer {
                 wrappedView.scrollView.support.refreshControl?.endRefreshing()
             }
@@ -334,7 +334,7 @@ private extension PaginationWrapper {
             switch value {
             case .initial:
                 base.onInitialState()
-            case .loading(let after):
+            case .initialLoading(let after):
                 base.onLoadingState(afterState: after)
             case .loadingMore(let after):
                 base.onLoadingMoreState(afterState: after)

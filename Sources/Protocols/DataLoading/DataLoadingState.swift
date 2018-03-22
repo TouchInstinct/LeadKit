@@ -35,7 +35,7 @@ public protocol DataLoadingState {
     ///
     /// - Parameter after: Previous state of data loading process.
     /// - Returns: Instance of loading state with given argument.
-    static func loadingState(after: Self) -> Self
+    static func initialLoadingState(after: Self) -> Self
 
     /// Method that returns result state from a specific data source after a given state.
     ///

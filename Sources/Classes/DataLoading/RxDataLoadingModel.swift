@@ -35,7 +35,6 @@ open class RxDataLoadingModel<DLS: DataLoadingState>: DataLoadingModel
 
     private let stateVariable = Variable<LoadingStateType>(.initialState)
     var currentRequestDisposable: Disposable?
-    let scheduler = SerialDispatchQueueScheduler(qos: .default)
 
     var dataSource: DataSourceType
     let emptyResultChecker: EmptyResultChecker
@@ -64,7 +63,7 @@ open class RxDataLoadingModel<DLS: DataLoadingState>: DataLoadingModel
             state = .initialState
         }
 
-        state = .loadingState(after: state)
+        state = .initialLoadingState(after: state)
 
         requestResult(from: dataSource)
     }
@@ -89,7 +88,6 @@ open class RxDataLoadingModel<DLS: DataLoadingState>: DataLoadingModel
     func requestResult(from dataSource: DataSourceType) {
         currentRequestDisposable = dataSource
             .resultSingle()
-            .observeOn(scheduler)
             .subscribe(onSuccess: { [weak self] result in
                 self?.onGot(result: result, from: dataSource)
             }, onError: { [weak self] error in

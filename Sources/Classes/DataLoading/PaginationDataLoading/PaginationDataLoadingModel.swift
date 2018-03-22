@@ -63,7 +63,7 @@ public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCurs
                 state = .initial
             }
 
-            state = .loading(after: state)
+            state = .initialLoading(after: state)
         case .next:
             if case .exhausted = state {
                 fatalError("You shouldn't call load(.next) after got .exhausted state!")
@@ -76,7 +76,7 @@ public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCurs
     }
 
     override func onGot(error: Error) {
-        if case .exhausted? = error as? CursorError, case .loading(let after) = state {
+        if case .exhausted? = error as? CursorError, case .initialLoading(let after) = state {
             switch after {
             case .initial, .empty: // cursor exhausted after creation
                 state = .empty

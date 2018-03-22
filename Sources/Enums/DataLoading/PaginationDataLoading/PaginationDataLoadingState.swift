@@ -23,7 +23,7 @@
 public indirect enum PaginationDataLoadingState<DS: DataSource>: DataLoadingState {
 
     case initial
-    case loading(after: PaginationDataLoadingState)
+    case initialLoading(after: PaginationDataLoadingState)
     case loadingMore(after: PaginationDataLoadingState)
     case results(newItems: DS.ResultType, from: DS, after: PaginationDataLoadingState)
     case error(error: Error, after: PaginationDataLoadingState)
@@ -40,8 +40,8 @@ public indirect enum PaginationDataLoadingState<DS: DataSource>: DataLoadingStat
         return .empty
     }
 
-    public static func loadingState(after: PaginationDataLoadingState<DS>) -> PaginationDataLoadingState<DS> {
-        return .loading(after: after)
+    public static func initialLoadingState(after: PaginationDataLoadingState<DS>) -> PaginationDataLoadingState<DS> {
+        return .initialLoading(after: after)
     }
 
     public static func resultState(result: DS.ResultType,
