@@ -29,11 +29,11 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
     // "Segmentation fault: 11" in Xcode 9.2 without redundant same-type constraint :(
     where Cursor == Delegate.DataSourceType, Cursor.ResultType == [Cursor.Element] {
 
-    fileprivate typealias DataLoadingModel = PaginationDataLoadingModel<Cursor>
+    private typealias DataLoadingModel = PaginationDataLoadingModel<Cursor>
 
-    fileprivate typealias LoadingState = DataLoadingModel.LoadingStateType
+    private typealias LoadingState = DataLoadingModel.LoadingStateType
 
-    private var wrappedView: AnyPaginationWrappableView
+    private var wrappedView: AnyPaginationWrappable
     private let paginationViewModel: DataLoadingModel
     private weak var delegate: Delegate?
 
@@ -71,7 +71,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
     ///   - wrappedView: UIScrollView instance to work with.
     ///   - cursor: Cursor object that acts as data source.
     ///   - delegate: Delegate object for data loading events handling and UI customization.
-    public init(wrappedView: AnyPaginationWrappableView, cursor: Cursor, delegate: Delegate) {
+    public init(wrappedView: AnyPaginationWrappable, cursor: Cursor, delegate: Delegate) {
         self.wrappedView = wrappedView
         self.delegate = delegate
 
@@ -137,7 +137,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
     private func onLoadingMoreState(afterState: LoadingState) {
         if case .error = afterState { // user tap retry button in table footer
-            delegate?.retryLoadMoreButtonWillBeHidden()
+            delegate?.footerRetryButtonWillDisappear()
             wrappedView.footerView = nil
             addInfiniteScroll(withHandler: false)
             wrappedView.scrollView.beginInfiniteScroll(true)
@@ -183,8 +183,8 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
         } else if case .loadingMore = afterState {
             removeInfiniteScroll()
 
-            guard let retryButton = delegate?.retryLoadMoreButton(),
-                let retryButtonHeigth = delegate?.retryLoadMoreButtonHeight() else {
+            guard let retryButton = delegate?.footerRetryButton(),
+                let retryButtonHeigth = delegate?.footerRetryButtonHeight() else {
                     return
             }
 
@@ -196,7 +196,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
                 .drive(reloadEvent)
                 .disposed(by: disposeBag)
 
-            delegate?.retryLoadMoreButtonWillBeShown()
+            delegate?.footerRetryButtonWillAppear()
 
             wrappedView.footerView = retryButton
         }
@@ -224,13 +224,13 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
         placeholderView.isHidden = false
 
         // I was unable to add pull-to-refresh placeholder scroll behaviour without this trick
-        let wrapperView = UIView()
-        wrapperView.addSubview(placeholderView)
+        let placeholderWrapperView = UIView()
+        placeholderWrapperView.addSubview(placeholderView)
 
-        let leadingConstraint = placeholderView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor)
-        let trailingConstraint = placeholderView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor)
-        let topConstraint = placeholderView.topAnchor.constraint(equalTo: wrapperView.topAnchor)
-        let bottomConstraint = placeholderView.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor)
+        let leadingConstraint = placeholderView.leadingAnchor.constraint(equalTo: placeholderWrapperView.leadingAnchor)
+        let trailingConstraint = placeholderView.trailingAnchor.constraint(equalTo: placeholderWrapperView.trailingAnchor)
+        let topConstraint = placeholderView.topAnchor.constraint(equalTo: placeholderWrapperView.topAnchor)
+        let bottomConstraint = placeholderView.bottomAnchor.constraint(equalTo: placeholderWrapperView.bottomAnchor)
 
         NSLayoutConstraint.activate([leadingConstraint,
                                      trailingConstraint,
@@ -239,7 +239,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
         currentPlaceholderViewTopConstraint = topConstraint
 
-        wrappedView.backgroundView = wrapperView
+        wrappedView.backgroundView = placeholderWrapperView
 
         currentPlaceholderView = placeholderView
     }
@@ -329,7 +329,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
 private extension PaginationWrapper {
 
-    var stateChanged: Binder<LoadingState> {
+    private var stateChanged: Binder<LoadingState> {
         return Binder(self) { base, value in
             switch value {
             case .initial:

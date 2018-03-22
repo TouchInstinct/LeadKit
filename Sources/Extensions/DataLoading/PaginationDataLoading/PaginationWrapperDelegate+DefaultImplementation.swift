@@ -75,7 +75,7 @@ public extension PaginationWrapperDelegate {
         return AnyLoadingIndicator(indicator)
     }
 
-    func retryLoadMoreButton() -> UIButton {
+    func footerRetryButton() -> UIButton {
         let retryButton = UIButton(type: .custom)
         retryButton.backgroundColor = .lightGray
         retryButton.setTitle("Retry load more", for: .normal)
@@ -83,15 +83,15 @@ public extension PaginationWrapperDelegate {
         return retryButton
     }
 
-    func retryLoadMoreButtonHeight() -> CGFloat {
+    func footerRetryButtonHeight() -> CGFloat {
         return 44
     }
 
-    func retryLoadMoreButtonWillBeShown() {
+    func footerRetryButtonWillAppear() {
         // by default - nothing will happen
     }
 
-    func retryLoadMoreButtonWillBeHidden() {
+    func footerRetryButtonWillDisappear() {
         // by default - nothing will happen
     }
 

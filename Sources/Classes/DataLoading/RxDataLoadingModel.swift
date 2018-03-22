@@ -23,12 +23,10 @@
 import RxSwift
 import RxCocoa
 
-open class RxDataLoadingModel<DLS: DataLoadingState>: DataLoadingModel
-    where DLS.DataSourceType: RxDataSource {
+open class RxDataLoadingModel<LoadingStateType: DataLoadingState>: DataLoadingModel
+    where LoadingStateType.DataSourceType: RxDataSource {
 
-    public typealias LoadingStateType = DLS
-
-    public typealias DataSourceType = DLS.DataSourceType
+    public typealias DataSourceType = LoadingStateType.DataSourceType
     public typealias ResultType = DataSourceType.ResultType
 
     public typealias EmptyResultChecker = (ResultType) -> Bool
@@ -69,8 +67,7 @@ open class RxDataLoadingModel<DLS: DataLoadingState>: DataLoadingModel
     }
 
     func onGot(error: Error) {
-        state = .errorState(error: error,
-                            after: state)
+        state = .errorState(error: error, after: state)
     }
 
     private func onGot(result: ResultType, from dataSource: DataSourceType) {

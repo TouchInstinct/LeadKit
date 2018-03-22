@@ -23,7 +23,7 @@
 import UIKit
 
 /// Type that performs some kind of type erasure for PaginationWrappable.
-public struct AnyPaginationWrappableView: PaginationWrappable {
+public final class AnyPaginationWrappable: PaginationWrappable {
 
     private typealias ViewSetter = (UIView?) -> Void
 

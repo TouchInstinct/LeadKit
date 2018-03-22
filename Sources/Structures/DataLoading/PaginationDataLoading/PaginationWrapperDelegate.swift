@@ -26,7 +26,7 @@ public protocol PaginationWrapperDelegate: class {
 
     associatedtype DataSourceType: DataSource
 
-    /// Delegate method that handles loading new chunk of data.
+    /// Handles loading new chunk of data.
     ///
     /// - Parameters:
     ///   - newItems: New items.
@@ -34,7 +34,7 @@ public protocol PaginationWrapperDelegate: class {
     func paginationWrapper(didLoad newItems: DataSourceType.ResultType,
                            using dataSource: DataSourceType)
 
-    /// Delegate method that handles reloading or initial loading of data.
+    /// Handles reloading or initial loading of data.
     ///
     /// - Parameters:
     ///   - allItems: New items.
@@ -42,12 +42,12 @@ public protocol PaginationWrapperDelegate: class {
     func paginationWrapper(didReload allItems: DataSourceType.ResultType,
                            using dataSource: DataSourceType)
 
-    /// Delegate method that returns placeholder view for empty state.
+    /// Returns placeholder view for empty state.
     ///
     /// - Returns: Configured instace of UIView.
     func emptyPlaceholder() -> UIView
 
-    /// Delegate method that is called when initial loading error is occured.
+    /// Called when initial loading error is occured.
     /// It should return true if error is handled and false if it doesn't.
     ///
     /// - Parameters:
@@ -55,42 +55,43 @@ public protocol PaginationWrapperDelegate: class {
     /// - Returns: Bool value. If true - then error placeholder wouldn't be shown.
     func customInitialLoadingErrorHandling(for error: Error) -> Bool
 
-    /// Delegate method that returns placeholder view for error state.
+    /// Returns placeholder view for error state.
     ///
     /// - Parameters:
     ///   - error: Error that occured due data loading.
     /// - Returns: Configured instace of UIView.
     func errorPlaceholder(for error: Error) -> UIView
 
-    /// Delegate method that returns loading idicator for initial loading state.
+    /// Returns loading idicator for initial loading state.
     /// This indicator will appear at center of the placeholders container.
     ///
     /// - Returns: Configured instace of AnyLoadingIndicator.
     func initialLoadingIndicator() -> AnyLoadingIndicator
 
-    /// Delegate method that returns loading idicator for initial loading state.
+    /// Returns loading idicator for initial loading state.
     ///
     /// - Returns: Configured instace of AnyLoadingIndicator.
     func loadingMoreIndicator() -> AnyLoadingIndicator
 
-    /// Delegate method that returns instance of UIButton for "retry load more" action.
+    /// Returns instance of UIButton for "retry load more" action.
     ///
     /// - Returns: Configured instace of AnyLoadingIndicator.
-    func retryLoadMoreButton() -> UIButton
+    func footerRetryButton() -> UIButton
 
-    /// Delegate method that returns preferred height for "retry load more" button.
+    /// Returns height for "retry load more" button.
     ///
-    /// - Returns: Preferred height of "retry load more" button.
-    func retryLoadMoreButtonHeight() -> CGFloat
+    /// - Returns: Height of "retry load more" button.
+    func footerRetryButtonHeight() -> CGFloat
 
     /// Method is called before "retry load more" will be shown.
     /// Typically, it's used when you need to show custom footer view.
-    func retryLoadMoreButtonWillBeShown()
+    func footerRetryButtonWillAppear()
 
     /// Method is called before "retry load more" will be hidden.
     /// Typically, it's used when you need to hide custom footer view.
-    func retryLoadMoreButtonWillBeHidden()
+    func footerRetryButtonWillDisappear()
 
-    /// Delegate method, used to clear view if placeholder is shown.
+    /// Clears view when placeholder is shown.
     func clearView()
+
 }
