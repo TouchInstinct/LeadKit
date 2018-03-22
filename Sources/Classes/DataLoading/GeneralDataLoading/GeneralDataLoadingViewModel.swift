@@ -78,7 +78,7 @@ open class GeneralDataLoadingViewModel<ResultType>: BaseViewModel {
     }
 
     /// Manually update loading state.
-    /// Should only be used only in specific situations on your own risk!
+    /// Should be used only in specific situations on your own risk!
     ///
     /// - Parameter newState: New loading state.
     public func updateStateManually(to newState: LoadingState) {

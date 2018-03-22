@@ -22,6 +22,7 @@
 
 import UIKit
 
+/// For internal use only!
 final class TextWithButtonPlaceholder: UIView {
 
     typealias TapHandler = () -> Void

@@ -32,7 +32,6 @@ public extension GeneralDataLoadingController where Self: UIViewController {
 
     // MARK: - GeneralDataLoadingController default implementation
 
-    /// Call this method in viewDidLoad instead of initialLoadView.
     func initialLoadDataLoadingView() {
         addViews()
         setAppearance()
@@ -60,8 +59,8 @@ public extension GeneralDataLoadingController where Self: UIViewController {
             switch value {
             case .loading:
                 base.onLoadingState()
-            case .result:
-                base.onResultsState()
+            case .result(let newResult, _):
+                base.onResultsState(result: newResult)
             case .empty:
                 base.onEmptyState()
             case .error(let error):

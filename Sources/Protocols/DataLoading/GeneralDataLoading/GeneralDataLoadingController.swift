@@ -50,7 +50,7 @@ public protocol GeneralDataLoadingController: class, ConfigurableController
     func onLoadingState()
 
     /// Called when data loading has finished with non-empty result.
-    func onResultsState()
+    func onResultsState(result: ViewModelResultType)
 
     /// Called when data loading did finished with empty result.
     func onEmptyState()
