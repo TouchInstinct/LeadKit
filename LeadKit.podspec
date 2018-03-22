@@ -40,17 +40,17 @@ Pod::Spec.new do |s|
 
     ss.source_files = "Sources/**/*.swift"
     ss.watchos.exclude_files = [
-      "Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
       "Sources/Classes/Views/SeparatorRowBox/*",
       "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
+      "Sources/Classes/DataLoading/PaginationDataLoading/PaginationWrapper.swift",
       "Sources/Classes/Views/XibView/*",
       "Sources/Classes/Views/SpinnerView/*",
       "Sources/Extensions/CABasicAnimation/*",
       "Sources/Extensions/CGFloat/CGFloat+Pixels.swift",
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
       "Sources/Extensions/NetworkService/NetworkService+RxLoadImage.swift",
-      "Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
+      "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/TableDirector/*",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
@@ -59,36 +59,40 @@ Pod::Spec.new do |s|
       "Sources/Extensions/UICollectionView/*",
       "Sources/Extensions/UIDevice/*",
       "Sources/Extensions/UIImage/*",
-      "Sources/Extensions/UITableView/*",      
+      "Sources/Extensions/UITableView/*",
       "Sources/Extensions/UIView/*",
       "Sources/Extensions/UIViewController/*",
       "Sources/Extensions/UIWindow/*",
       "Sources/Protocols/LoadingIndicator.swift",
+      "Sources/Protocols/DataLoading/PaginationDataLoading/PaginationWrappable.swift",
       "Sources/Structures/Views/AnyLoadingIndicator.swift",
       "Sources/Structures/DrawingOperations/CALayerDrawingOperation.swift",
       "Sources/Structures/DrawingOperations/RoundDrawingOperation.swift",
       "Sources/Structures/DrawingOperations/BorderDrawingOperation.swift",
+      "Sources/Structures/DataLoading/PaginationDataLoading/*"
     ]
     ss.tvos.exclude_files = [
       "Sources/Classes/Views/SeparatorRowBox/*",
       "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
-      "Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
+      "Sources/Classes/DataLoading/PaginationDataLoading/PaginationWrapper.swift",
       "Sources/Structures/Drawing/CALayerDrawingOperation.swift",
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
-      "Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
+      "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/TableDirector/*",
-      "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
+      "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
+      "Sources/Protocols/DataLoading/PaginationDataLoading/PaginationWrappable.swift",
+      "Sources/Structures/DataLoading/PaginationDataLoading/*"
     ]
 
-    ss.dependency "CocoaLumberjack/Swift", '~> 3.3.0'
-    ss.dependency "RxSwift", '4.0.0'
-    ss.dependency "RxCocoa", '4.0.0'
-    ss.dependency "RxAlamofire", '4.0.0'
-    ss.dependency "ObjectMapper", '~> 3.0.0'
+    ss.dependency "CocoaLumberjack/Swift", '~> 3.4'
+    ss.dependency "RxSwift", '~> 4.1'
+    ss.dependency "RxCocoa", '~> 4.1'
+    ss.dependency "RxAlamofire", '~> 4.1'
+    ss.dependency "ObjectMapper", '~> 3.0'
 
-    ss.ios.dependency "TableKit", '~> 2.5.0'
+    ss.ios.dependency "TableKit", '~> 2.6'
     ss.ios.dependency "UIScrollView-InfiniteScroll", '~> 1.0.0'
   end
 
@@ -101,18 +105,18 @@ Pod::Spec.new do |s|
       "Sources/Classes/Views/SeparatorRowBox/*",
       "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
-      "Sources/Classes/Pagination/PaginationTableViewWrapper.swift",
+      "Sources/Classes/DataLoading/PaginationDataLoading/PaginationWrapper.swift",
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
-      "Sources/Extensions/PaginationTableViewWrapperDelegate/PaginationTableViewWrapperDelegate+DefaultImplementation.swift",
+      "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/TableDirector/*",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
     ]
 
-    ss.dependency "CocoaLumberjack/Swift", '~> 3.3.0'
-    ss.dependency "RxSwift", '4.0.0'
-    ss.dependency "RxCocoa", '4.0.0'
-    ss.dependency "RxAlamofire", '4.0.0'
-    ss.dependency "ObjectMapper", '~> 3.0.0'
+    ss.dependency "CocoaLumberjack/Swift", '~> 3.4'
+    ss.dependency "RxSwift", '~> 4.1'
+    ss.dependency "RxCocoa", '~> 4.1'
+    ss.dependency "RxAlamofire", '~> 4.1'
+    ss.dependency "ObjectMapper", '~> 3.0'
   end
 
   s.default_subspec = 'Core'

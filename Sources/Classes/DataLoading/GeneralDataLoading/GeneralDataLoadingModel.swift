@@ -22,12 +22,5 @@
 
 import RxSwift
 
-/// Protocol that requests class to conform ResettableType
-/// and return next batch of data on nextBatchObservable call
-public protocol TotalCountCursorConfiguration: class, ResettableType {
-
-    associatedtype ListingType: TotalCountCursorListingResult
-
-    func nextBatchObservable() -> Single<ListingType>
-
+public final class GeneralDataLoadingModel<T>: RxDataLoadingModel<GeneralDataLoadingState<Single<T>>> {
 }

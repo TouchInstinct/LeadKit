@@ -23,18 +23,16 @@
 import RxSwift
 import RxCocoa
 
-public final class TotalCountCursor<CC: TotalCountCursorConfiguration>: ResettableCursorDataSource {
+public final class TotalCountCursor<CursorConfiguration: TotalCountCursorConfiguration>: ResettableRxDataSourceCursor {
 
-    public typealias Element = CC.ListingType.ElementType
-    public typealias ResultType = [CC.ListingType.ElementType]
+    public typealias Element = CursorConfiguration.ResultType.ElementType
+    public typealias ResultType = [Element]
 
-    private let configuration: CC
+    private let configuration: CursorConfiguration
 
     private var elements: [Element] = []
 
     public private(set) var totalCount: Int = .max
-
-    private let disposeBag = DisposeBag()
 
     public var exhausted: Bool {
         return count >= totalCount
@@ -48,16 +46,16 @@ public final class TotalCountCursor<CC: TotalCountCursorConfiguration>: Resettab
         return elements[index]
     }
 
-    public init(configuration: CC) {
+    public init(configuration: CursorConfiguration) {
         self.configuration = configuration
     }
 
     public required init(resetFrom other: TotalCountCursor) {
-        self.configuration = other.configuration.reset()
+        configuration = other.configuration.reset()
     }
 
     public func loadNextBatch() -> Single<[Element]> {
-        return configuration.nextBatchObservable()
+        return configuration.resultSingle()
             .do(onSuccess: { [weak self] listingResult in
                 self?.totalCount = listingResult.totalCount
                 self?.elements = (self?.elements ?? []) + listingResult.results
