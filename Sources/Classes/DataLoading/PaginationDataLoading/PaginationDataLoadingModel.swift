@@ -42,11 +42,11 @@ public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCurs
         super.init(dataSource: dataSource, emptyResultChecker: emptyResultChecker)
     }
 
-    override public func reload() {
+    override open func reload() {
         load(.reload)
     }
 
-    override public func retry() {
+    override open func retry() {
         load(.retry)
     }
 

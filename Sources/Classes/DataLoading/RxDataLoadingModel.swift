@@ -23,13 +23,13 @@
 import RxSwift
 import RxCocoa
 
-class RxDataLoadingModel<DLS: DataLoadingState>: DataLoadingModel
+open class RxDataLoadingModel<DLS: DataLoadingState>: DataLoadingModel
     where DLS.DataSourceType: RxDataSource {
 
     public typealias LoadingStateType = DLS
 
-    typealias DataSourceType = DLS.DataSourceType
-    typealias ResultType = DataSourceType.ResultType
+    public typealias DataSourceType = DLS.DataSourceType
+    public typealias ResultType = DataSourceType.ResultType
 
     public typealias EmptyResultChecker = (ResultType) -> Bool
 
@@ -40,7 +40,7 @@ class RxDataLoadingModel<DLS: DataLoadingState>: DataLoadingModel
     var dataSource: DataSourceType
     let emptyResultChecker: EmptyResultChecker
 
-    public var stateDriver: Driver<LoadingStateType> {
+    open var stateDriver: Driver<LoadingStateType> {
         return stateVariable.asDriver()
     }
 
@@ -49,11 +49,11 @@ class RxDataLoadingModel<DLS: DataLoadingState>: DataLoadingModel
         self.emptyResultChecker = emptyResultChecker
     }
 
-    public func reload() {
+    open func reload() {
         load(isRetry: false)
     }
 
-    public func retry() {
+    open func retry() {
         load(isRetry: true)
     }
 
