@@ -20,28 +20,11 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import RxSwift
 
-/// Protocol that contains scroll view property.
-public protocol ScrollViewHolder {
+/// Protocol that contains dispose bag property.
+public protocol DisposeBagHolder {
 
-    var scrollView: UIScrollView { get }
-
-}
-
-/// Protocol that contains background view property.
-public protocol BackgroundViewHolder {
-
-    var backgroundView: UIView? { get set }
+    var disposeBag: DisposeBag { get }
 
 }
-
-/// Protocol that contains footer view property.
-public protocol FooterViewHolder {
-
-    var footerView: UIView? { get set }
-
-}
-
-/// Protocol that conforms to ScrollViewHolder, BackgroundViewHolder and FooterViewHolder protocols.
-public typealias PaginationWrappable = ScrollViewHolder & BackgroundViewHolder & FooterViewHolder

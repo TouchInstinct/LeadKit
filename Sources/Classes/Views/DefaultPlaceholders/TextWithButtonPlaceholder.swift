@@ -22,26 +22,39 @@
 
 import UIKit
 
-/// Protocol that contains scroll view property.
-public protocol ScrollViewHolder {
+final class TextWithButtonPlaceholder: UIView {
 
-    var scrollView: UIScrollView { get }
+    typealias TapHandler = () -> Void
+
+    private let tapHandler: TapHandler
+
+    init(title: TextPlaceholderView.PlaceholderText,
+         buttonTitle: TextPlaceholderView.PlaceholderText,
+         tapHandler: @escaping TapHandler) {
+
+        self.tapHandler = tapHandler
+
+        super.init(frame: .zero)
+
+        let textPlaceholder = TextPlaceholderView(title: title)
+
+        let button = UIButton(type: .custom)
+        button.backgroundColor = .lightGray
+        button.setTitle(buttonTitle.rawValue, for: .normal)
+        button.addTarget(self, action: #selector(buttonDidTapped(_:)), for: .touchUpInside)
+
+        let stackView = UIStackView(arrangedSubviews: [textPlaceholder, button])
+        stackView.axis = .vertical
+
+        addSubview(stackView)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    @objc private func buttonDidTapped(_ button: UIButton) {
+        tapHandler()
+    }
 
 }
-
-/// Protocol that contains background view property.
-public protocol BackgroundViewHolder {
-
-    var backgroundView: UIView? { get set }
-
-}
-
-/// Protocol that contains footer view property.
-public protocol FooterViewHolder {
-
-    var footerView: UIView? { get set }
-
-}
-
-/// Protocol that conforms to ScrollViewHolder, BackgroundViewHolder and FooterViewHolder protocols.
-public typealias PaginationWrappable = ScrollViewHolder & BackgroundViewHolder & FooterViewHolder

@@ -47,19 +47,7 @@ open class RxDataLoadingModel<LoadingStateType: DataLoadingState>: DataLoadingMo
     }
 
     open func reload() {
-        load(isRetry: false)
-    }
-
-    open func retry() {
-        load(isRetry: true)
-    }
-
-    private func load(isRetry: Bool) {
         currentRequestDisposable?.dispose()
-
-        if isRetry {
-            state = .initialState
-        }
 
         state = .initialLoadingState(after: state)
 

@@ -46,7 +46,8 @@ public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCurs
         load(.reload)
     }
 
-    override open func retry() {
+    /// Attempt to load data again.
+    open func retry() {
         load(.retry)
     }
 

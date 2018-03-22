@@ -20,28 +20,26 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+public extension GeneralDataLoadingState {
 
-/// Protocol that contains scroll view property.
-public protocol ScrollViewHolder {
+    /// Returns true if self == .result.
+    var hasResult: Bool {
+        switch self {
+        case .result:
+            return true
+        default:
+            return false
+        }
+    }
 
-    var scrollView: UIScrollView { get }
+    /// Returns result if state == .result. Otherwise returns nil.
+    var currentResult: DS.ResultType? {
+        switch self {
+        case .result(let newResult, _):
+            return newResult
+        default:
+            return nil
+        }
+    }
 
 }
-
-/// Protocol that contains background view property.
-public protocol BackgroundViewHolder {
-
-    var backgroundView: UIView? { get set }
-
-}
-
-/// Protocol that contains footer view property.
-public protocol FooterViewHolder {
-
-    var footerView: UIView? { get set }
-
-}
-
-/// Protocol that conforms to ScrollViewHolder, BackgroundViewHolder and FooterViewHolder protocols.
-public typealias PaginationWrappable = ScrollViewHolder & BackgroundViewHolder & FooterViewHolder
