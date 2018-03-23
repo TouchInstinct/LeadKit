@@ -245,7 +245,7 @@
 		671463981EB3396E00EAB194 /* AnyLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462431EB3396E00EAB194 /* AnyLoadingIndicator.swift */; };
 		671463991EB3396E00EAB194 /* AnyLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462431EB3396E00EAB194 /* AnyLoadingIndicator.swift */; };
 		6714639B1EB3396E00EAB194 /* AnyLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462431EB3396E00EAB194 /* AnyLoadingIndicator.swift */; };
-		6714639E1EB33AEB00EAB194 /* NetworkService+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6714639D1EB33AEB00EAB194 /* NetworkService+ActivityIndicator.swift */; };
+		6714639E1EB33AEB00EAB194 /* NetworkService+ActivityIndicator-UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6714639D1EB33AEB00EAB194 /* NetworkService+ActivityIndicator-UIApplication.swift */; };
 		671463A21EB33FF600EAB194 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463A11EB33FF600EAB194 /* Animatable.swift */; };
 		671463A31EB33FF600EAB194 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463A11EB33FF600EAB194 /* Animatable.swift */; };
 		671463A41EB33FF600EAB194 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463A11EB33FF600EAB194 /* Animatable.swift */; };
@@ -385,6 +385,17 @@
 		67A1FF941EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */; };
 		67A1FF951EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */; };
 		67A1FF971EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */; };
+		67CAF8AC2065189C00527085 /* NetworkService+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CAF8AB2065189C00527085 /* NetworkService+ActivityIndicator.swift */; };
+		67CAF8AD2065189C00527085 /* NetworkService+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CAF8AB2065189C00527085 /* NetworkService+ActivityIndicator.swift */; };
+		67CAF8AE2065189C00527085 /* NetworkService+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CAF8AB2065189C00527085 /* NetworkService+ActivityIndicator.swift */; };
+		67CAF8B120651E1E00527085 /* ConfigurableNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CAF8B020651E1E00527085 /* ConfigurableNetworkService.swift */; };
+		67CAF8B220651E1E00527085 /* ConfigurableNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CAF8B020651E1E00527085 /* ConfigurableNetworkService.swift */; };
+		67CAF8B320651E1E00527085 /* ConfigurableNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CAF8B020651E1E00527085 /* ConfigurableNetworkService.swift */; };
+		67CAF8B420651E1E00527085 /* ConfigurableNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CAF8B020651E1E00527085 /* ConfigurableNetworkService.swift */; };
+		67CAF8B620651E4F00527085 /* ConfigurableNetworkService+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CAF8B520651E4F00527085 /* ConfigurableNetworkService+DefaultImplementation.swift */; };
+		67CAF8B720651E4F00527085 /* ConfigurableNetworkService+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CAF8B520651E4F00527085 /* ConfigurableNetworkService+DefaultImplementation.swift */; };
+		67CAF8B820651E4F00527085 /* ConfigurableNetworkService+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CAF8B520651E4F00527085 /* ConfigurableNetworkService+DefaultImplementation.swift */; };
+		67CAF8B920651E4F00527085 /* ConfigurableNetworkService+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CAF8B520651E4F00527085 /* ConfigurableNetworkService+DefaultImplementation.swift */; };
 		67CDEE401EB369BF00895905 /* ConfigurableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462241EB3396E00EAB194 /* ConfigurableController.swift */; };
 		67E6C2351EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
 		67E6C2361EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */; };
@@ -589,7 +600,7 @@
 		6714623F1EB3396E00EAB194 /* SolidFillDrawingOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolidFillDrawingOperation.swift; sourceTree = "<group>"; };
 		671462401EB3396E00EAB194 /* TemplateDrawingOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateDrawingOperation.swift; sourceTree = "<group>"; };
 		671462431EB3396E00EAB194 /* AnyLoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyLoadingIndicator.swift; sourceTree = "<group>"; };
-		6714639D1EB33AEB00EAB194 /* NetworkService+ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkService+ActivityIndicator.swift"; sourceTree = "<group>"; };
+		6714639D1EB33AEB00EAB194 /* NetworkService+ActivityIndicator-UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkService+ActivityIndicator-UIApplication.swift"; sourceTree = "<group>"; };
 		671463A11EB33FF600EAB194 /* Animatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		671463A61EB340C000EAB194 /* UIViewController+ConfigurableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ConfigurableController.swift"; sourceTree = "<group>"; };
 		671463AE1EB34B1E00EAB194 /* StubCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCursor.swift; sourceTree = "<group>"; };
@@ -645,6 +656,9 @@
 		679C77D61F98F7A60094BE10 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		67A1FF8E1EBCA09B00D6C89F /* UIImage+Spinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Spinner.swift"; sourceTree = "<group>"; };
 		67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CABasicAnimation+Rotation.swift"; sourceTree = "<group>"; };
+		67CAF8AB2065189C00527085 /* NetworkService+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+ActivityIndicator.swift"; sourceTree = "<group>"; };
+		67CAF8B020651E1E00527085 /* ConfigurableNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableNetworkService.swift; sourceTree = "<group>"; };
+		67CAF8B520651E4F00527085 /* ConfigurableNetworkService+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConfigurableNetworkService+DefaultImplementation.swift"; sourceTree = "<group>"; };
 		67E6C2341EBB32F5007842A6 /* SingleLoadCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleLoadCursor.swift; sourceTree = "<group>"; };
 		67EB7FBF206140E600BDD9FB /* TotalCountCursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCountCursor.swift; sourceTree = "<group>"; };
 		67EB7FC6206148D000BDD9FB /* TotalCountCursorListingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCountCursorListingResult.swift; sourceTree = "<group>"; };
@@ -1045,6 +1059,7 @@
 			isa = PBXGroup;
 			children = (
 				67EB7FC5206148C400BDD9FB /* DataLoading */,
+				67CAF8AF20651E0F00527085 /* NetworkService */,
 				673CF4202063D8EB00C329F6 /* Rx */,
 				67EB7FF5206175CD00BDD9FB /* Views */,
 				679C77D41F98F78E0094BE10 /* AlertRepresentable.swift */,
@@ -1113,7 +1128,9 @@
 		6714639C1EB33AC200EAB194 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
-				6714639D1EB33AEB00EAB194 /* NetworkService+ActivityIndicator.swift */,
+				67CAF8B520651E4F00527085 /* ConfigurableNetworkService+DefaultImplementation.swift */,
+				6714639D1EB33AEB00EAB194 /* NetworkService+ActivityIndicator-UIApplication.swift */,
+				67CAF8AB2065189C00527085 /* NetworkService+ActivityIndicator.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -1344,6 +1361,14 @@
 				67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */,
 			);
 			path = CABasicAnimation;
+			sourceTree = "<group>";
+		};
+		67CAF8AF20651E0F00527085 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				67CAF8B020651E1E00527085 /* ConfigurableNetworkService.swift */,
+			);
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 		67EB7FC5206148C400BDD9FB /* DataLoading */ = {
@@ -2315,8 +2340,9 @@
 				673CF42C2063DE5900C329F6 /* TextPlaceholderView.swift in Sources */,
 				671463601EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
 				671462841EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
+				67CAF8B120651E1E00527085 /* ConfigurableNetworkService.swift in Sources */,
 				EFBE57DB1EC361620040E00A /* UIView+Layout.swift in Sources */,
-				6714639E1EB33AEB00EAB194 /* NetworkService+ActivityIndicator.swift in Sources */,
+				6714639E1EB33AEB00EAB194 /* NetworkService+ActivityIndicator-UIApplication.swift in Sources */,
 				A6E0DDEF1F8A6C57002CA74E /* CellSeparatorType.swift in Sources */,
 				6714634C1EB3396E00EAB194 /* ReuseIdentifierProtocol.swift in Sources */,
 				671462F01EB3396E00EAB194 /* UIImage+SupportExtensions.swift in Sources */,
@@ -2360,6 +2386,7 @@
 				671462581EB3396E00EAB194 /* Log.swift in Sources */,
 				671462781EB3396E00EAB194 /* ResizeMode.swift in Sources */,
 				A676AE551F98112E001F9214 /* ObservableMappable.swift in Sources */,
+				67CAF8B620651E4F00527085 /* ConfigurableNetworkService+DefaultImplementation.swift in Sources */,
 				A6E0DDE11F8A696F002CA74E /* SeparatorRowBox.swift in Sources */,
 				A6E0DDDE1F8A696F002CA74E /* EmptyCellRow.swift in Sources */,
 				67EB7FFD206176C900BDD9FB /* AnyPaginationWrappable.swift in Sources */,
@@ -2465,6 +2492,8 @@
 				671462821EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
 				67745288206259CF0024EEEF /* Rx+RxDataSourceProtocol.swift in Sources */,
 				67E6C2371EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
+				67CAF8B320651E1E00527085 /* ConfigurableNetworkService.swift in Sources */,
+				67CAF8B820651E4F00527085 /* ConfigurableNetworkService+DefaultImplementation.swift in Sources */,
 				671463561EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
 				6771DFE01EE99F6F002DCDAE /* DateFormattingArguments.swift in Sources */,
 				671463621EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
@@ -2502,6 +2531,7 @@
 				671463721EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
 				6714636E1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
 				67CDEE401EB369BF00895905 /* ConfigurableController.swift in Sources */,
+				67CAF8AD2065189C00527085 /* NetworkService+ActivityIndicator.swift in Sources */,
 				A676AE481F97D28A001F9214 /* String+Extensions.swift in Sources */,
 				673CF4242063D90600C329F6 /* DisposeBagHolder.swift in Sources */,
 				671462A21EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
@@ -2575,6 +2605,7 @@
 				671463271EB3396E00EAB194 /* Any+TypeName.swift in Sources */,
 				67EB7FD220615B8900BDD9FB /* TotalCountCursorConfiguration.swift in Sources */,
 				EFBE57D31EC35EF20040E00A /* Array+Extensions.swift in Sources */,
+				67CAF8AE2065189C00527085 /* NetworkService+ActivityIndicator.swift in Sources */,
 				6714638B1EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
 				67EB7FFF206176C900BDD9FB /* AnyPaginationWrappable.swift in Sources */,
 				A676AE4A1F97D28A001F9214 /* String+Extensions.swift in Sources */,
@@ -2635,6 +2666,7 @@
 				675C1FB41F97CA32007D5249 /* AppearanceConfigurable.swift in Sources */,
 				6714631B1EB3396E00EAB194 /* UIWindow+Extensions.swift in Sources */,
 				671462571EB3396E00EAB194 /* App.swift in Sources */,
+				67CAF8B420651E1E00527085 /* ConfigurableNetworkService.swift in Sources */,
 				673CF4252063D90600C329F6 /* DisposeBagHolder.swift in Sources */,
 				6714637B1EB3396E00EAB194 /* CALayerDrawingOperation.swift in Sources */,
 				6774529520625D170024EEEF /* GeneralDataLoadingModel.swift in Sources */,
@@ -2649,6 +2681,7 @@
 				6774529020625C9E0024EEEF /* GeneralDataLoadingState.swift in Sources */,
 				67EB7FC3206140E600BDD9FB /* TotalCountCursor.swift in Sources */,
 				6714638F1EB3396E00EAB194 /* SolidFillDrawingOperation.swift in Sources */,
+				67CAF8B920651E4F00527085 /* ConfigurableNetworkService+DefaultImplementation.swift in Sources */,
 				67E6C2381EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				671462531EB3396E00EAB194 /* StaticCursor.swift in Sources */,
 				6714629F1EB3396E00EAB194 /* CursorType+Slice.swift in Sources */,
@@ -2768,6 +2801,7 @@
 				671462551EB3396E00EAB194 /* App.swift in Sources */,
 				67A1FF901EBCA09B00D6C89F /* UIImage+Spinner.swift in Sources */,
 				6774529B20625E5B0024EEEF /* PaginationDataLoadingState.swift in Sources */,
+				67CAF8B220651E1E00527085 /* ConfigurableNetworkService.swift in Sources */,
 				671463791EB3396E00EAB194 /* CALayerDrawingOperation.swift in Sources */,
 				6714632D1EB3396E00EAB194 /* ConfigurableController.swift in Sources */,
 				67745287206259CF0024EEEF /* Rx+RxDataSourceProtocol.swift in Sources */,
@@ -2783,9 +2817,11 @@
 				671463A31EB33FF600EAB194 /* Animatable.swift in Sources */,
 				6771DFE51EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift in Sources */,
 				671462511EB3396E00EAB194 /* StaticCursor.swift in Sources */,
+				67CAF8B720651E4F00527085 /* ConfigurableNetworkService+DefaultImplementation.swift in Sources */,
 				6714629D1EB3396E00EAB194 /* CursorType+Slice.swift in Sources */,
 				671463691EB3396E00EAB194 /* ConfigurableView.swift in Sources */,
 				67EB7FD020615B8900BDD9FB /* TotalCountCursorConfiguration.swift in Sources */,
+				67CAF8AC2065189C00527085 /* NetworkService+ActivityIndicator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
