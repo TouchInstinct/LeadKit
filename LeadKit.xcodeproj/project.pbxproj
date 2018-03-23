@@ -276,6 +276,31 @@
 		671463CF1EB34B1E00EAB194 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671463B71EB34B1E00EAB194 /* TestView.xib */; };
 		67186B311EB248F100CFAFFB /* LeadKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67186B281EB248F100CFAFFB /* LeadKit.framework */; };
 		67186B3F1EB24A1900CFAFFB /* LeadKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 67186B201EB247A200CFAFFB /* LeadKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		673CF40B2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF40A2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift */; };
+		673CF40C2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF40A2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift */; };
+		673CF40D2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF40A2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift */; };
+		673CF40E2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF40A2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift */; };
+		673CF4112063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4102063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift */; };
+		673CF4122063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4102063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift */; };
+		673CF4132063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4102063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift */; };
+		673CF4142063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4102063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift */; };
+		673CF4182063D50700C329F6 /* GeneralDataLoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4172063D50700C329F6 /* GeneralDataLoadingController.swift */; };
+		673CF4192063D50700C329F6 /* GeneralDataLoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4172063D50700C329F6 /* GeneralDataLoadingController.swift */; };
+		673CF4222063D90600C329F6 /* DisposeBagHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4212063D90600C329F6 /* DisposeBagHolder.swift */; };
+		673CF4232063D90600C329F6 /* DisposeBagHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4212063D90600C329F6 /* DisposeBagHolder.swift */; };
+		673CF4242063D90600C329F6 /* DisposeBagHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4212063D90600C329F6 /* DisposeBagHolder.swift */; };
+		673CF4252063D90600C329F6 /* DisposeBagHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4212063D90600C329F6 /* DisposeBagHolder.swift */; };
+		673CF42C2063DE5900C329F6 /* TextPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF42B2063DE5900C329F6 /* TextPlaceholderView.swift */; };
+		673CF42D2063DE5900C329F6 /* TextPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF42B2063DE5900C329F6 /* TextPlaceholderView.swift */; };
+		673CF42E2063DE5900C329F6 /* TextPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF42B2063DE5900C329F6 /* TextPlaceholderView.swift */; };
+		673CF4342063E29B00C329F6 /* TextWithButtonPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4332063E29B00C329F6 /* TextWithButtonPlaceholder.swift */; };
+		673CF4352063E29B00C329F6 /* TextWithButtonPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4332063E29B00C329F6 /* TextWithButtonPlaceholder.swift */; };
+		673CF4362063E29B00C329F6 /* TextWithButtonPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4332063E29B00C329F6 /* TextWithButtonPlaceholder.swift */; };
+		673CF4382063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4372063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift */; };
+		673CF4392063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4372063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift */; };
+		673CF43A2063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4372063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift */; };
+		673CF43B2063E80B00C329F6 /* GeneralDataLoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4172063D50700C329F6 /* GeneralDataLoadingController.swift */; };
+		673CF43C2063E80B00C329F6 /* GeneralDataLoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4172063D50700C329F6 /* GeneralDataLoadingController.swift */; };
 		674AF55C1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */; };
 		674AF55D1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */; };
 		674AF55E1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */; };
@@ -579,6 +604,13 @@
 		67186B301EB248F100CFAFFB /* LeadKit iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LeadKit iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67186B411EB24AA000CFAFFB /* iOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = iOS.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		67186C1A1EB24B7800CFAFFB /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		673CF40A2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralDataLoadingViewModel.swift; sourceTree = "<group>"; };
+		673CF4102063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralDataLoadingState+Extensions.swift"; sourceTree = "<group>"; };
+		673CF4172063D50700C329F6 /* GeneralDataLoadingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralDataLoadingController.swift; sourceTree = "<group>"; };
+		673CF4212063D90600C329F6 /* DisposeBagHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposeBagHolder.swift; sourceTree = "<group>"; };
+		673CF42B2063DE5900C329F6 /* TextPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPlaceholderView.swift; sourceTree = "<group>"; };
+		673CF4332063E29B00C329F6 /* TextWithButtonPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWithButtonPlaceholder.swift; sourceTree = "<group>"; };
+		673CF4372063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralDataLoadingController+DefaultImplementation.swift"; sourceTree = "<group>"; };
 		674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+LoadingIndicator.swift"; sourceTree = "<group>"; };
 		6771DFD71EE99EBA002DCDAE /* DateFormattingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormattingService.swift; sourceTree = "<group>"; };
 		6771DFDD1EE99F6F002DCDAE /* DateFormattingArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormattingArguments.swift; sourceTree = "<group>"; };
@@ -783,6 +815,7 @@
 		671461D41EB3396E00EAB194 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				673CF42A2063DE3A00C329F6 /* DefaultPlaceholders */,
 				A6AF3B381F8B957400CDB971 /* SeparatorRowBox */,
 				A66428A41F8A651700C6308D /* SeparatorCell */,
 				A6C9A4F71F8BBC0F009311CC /* EmptyCell */,
@@ -1012,6 +1045,7 @@
 			isa = PBXGroup;
 			children = (
 				67EB7FC5206148C400BDD9FB /* DataLoading */,
+				673CF4202063D8EB00C329F6 /* Rx */,
 				67EB7FF5206175CD00BDD9FB /* Views */,
 				679C77D41F98F78E0094BE10 /* AlertRepresentable.swift */,
 				671463A11EB33FF600EAB194 /* Animatable.swift */,
@@ -1144,6 +1178,40 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		673CF4152063AC0000C329F6 /* GeneralDataLoading */ = {
+			isa = PBXGroup;
+			children = (
+				673CF4372063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift */,
+				673CF4102063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift */,
+			);
+			path = GeneralDataLoading;
+			sourceTree = "<group>";
+		};
+		673CF4202063D8EB00C329F6 /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				673CF4212063D90600C329F6 /* DisposeBagHolder.swift */,
+			);
+			path = Rx;
+			sourceTree = "<group>";
+		};
+		673CF42A2063DE3A00C329F6 /* DefaultPlaceholders */ = {
+			isa = PBXGroup;
+			children = (
+				673CF42B2063DE5900C329F6 /* TextPlaceholderView.swift */,
+				673CF4332063E29B00C329F6 /* TextWithButtonPlaceholder.swift */,
+			);
+			path = DefaultPlaceholders;
+			sourceTree = "<group>";
+		};
+		673CF43D2063E81200C329F6 /* GeneralDataLoading */ = {
+			isa = PBXGroup;
+			children = (
+				673CF4172063D50700C329F6 /* GeneralDataLoadingController.swift */,
+			);
+			path = GeneralDataLoading;
+			sourceTree = "<group>";
+		};
 		674AF55A1EC45B1600038A8F /* UIActivityIndicatorView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1200,6 +1268,7 @@
 		67745284206259C20024EEEF /* DataLoading */ = {
 			isa = PBXGroup;
 			children = (
+				673CF4152063AC0000C329F6 /* GeneralDataLoading */,
 				67EB7FEF2061681A00BDD9FB /* Cursors */,
 				671461E81EB3396E00EAB194 /* CursorType */,
 				67745266206248F00024EEEF /* PaginationDataLoading */,
@@ -1230,6 +1299,7 @@
 			isa = PBXGroup;
 			children = (
 				6774529120625D170024EEEF /* GeneralDataLoadingModel.swift */,
+				673CF40A2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift */,
 			);
 			path = GeneralDataLoading;
 			sourceTree = "<group>";
@@ -1280,10 +1350,11 @@
 			isa = PBXGroup;
 			children = (
 				67EB7FE820615E5000BDD9FB /* Cursors */,
+				673CF43D2063E81200C329F6 /* GeneralDataLoading */,
 				67EB7FD820615D3100BDD9FB /* PaginationDataLoading */,
-				67EB7FE320615DE000BDD9FB /* DataSource.swift */,
 				6774527320624E820024EEEF /* DataLoadingModel.swift */,
 				67745278206252020024EEEF /* DataLoadingState.swift */,
+				67EB7FE320615DE000BDD9FB /* DataSource.swift */,
 				677452A320625FA90024EEEF /* RxDataSource.swift */,
 			);
 			path = DataLoading;
@@ -2240,6 +2311,8 @@
 				671462801EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
 				67EB7FF8206175F700BDD9FB /* PaginationWrappable.swift in Sources */,
 				671463541EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
+				673CF4112063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */,
+				673CF42C2063DE5900C329F6 /* TextPlaceholderView.swift in Sources */,
 				671463601EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
 				671462841EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
 				EFBE57DB1EC361620040E00A /* UIView+Layout.swift in Sources */,
@@ -2299,6 +2372,8 @@
 				677452AE206274630024EEEF /* PaginationWrapper.swift in Sources */,
 				A6E0DDF11F8A6C80002CA74E /* SeparatorConfiguration.swift in Sources */,
 				67EB7FEB2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */,
+				673CF4382063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift in Sources */,
+				673CF40B2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */,
 				6714636C1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
 				6771DFEA1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
 				671462A01EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
@@ -2308,6 +2383,7 @@
 				6774529220625D170024EEEF /* GeneralDataLoadingModel.swift in Sources */,
 				6714637C1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				671463341EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
+				673CF4182063D50700C329F6 /* GeneralDataLoadingController.swift in Sources */,
 				671462701EB3396E00EAB194 /* CursorError.swift in Sources */,
 				671463981EB3396E00EAB194 /* AnyLoadingIndicator.swift in Sources */,
 				671463A71EB340C000EAB194 /* UIViewController+ConfigurableController.swift in Sources */,
@@ -2347,6 +2423,8 @@
 				67EB7FD420615D1700BDD9FB /* ResettableCursorType.swift in Sources */,
 				6714629C1EB3396E00EAB194 /* CursorType+Slice.swift in Sources */,
 				6774529F20625EEE0024EEEF /* PaginationDataLoadingModel.swift in Sources */,
+				673CF4342063E29B00C329F6 /* TextWithButtonPlaceholder.swift in Sources */,
+				673CF4222063D90600C329F6 /* DisposeBagHolder.swift in Sources */,
 				671463681EB3396E00EAB194 /* ConfigurableView.swift in Sources */,
 				6771DFE41EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift in Sources */,
 			);
@@ -2395,6 +2473,7 @@
 				6774527B206252020024EEEF /* DataLoadingState.swift in Sources */,
 				6714634E1EB3396E00EAB194 /* ReuseIdentifierProtocol.swift in Sources */,
 				6714626A1EB3396E00EAB194 /* NetworkService.swift in Sources */,
+				673CF4132063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */,
 				671463421EB3396E00EAB194 /* ModuleConfigurator.swift in Sources */,
 				671462921EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
 				671463861EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
@@ -2424,6 +2503,7 @@
 				6714636E1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
 				67CDEE401EB369BF00895905 /* ConfigurableController.swift in Sources */,
 				A676AE481F97D28A001F9214 /* String+Extensions.swift in Sources */,
+				673CF4242063D90600C329F6 /* DisposeBagHolder.swift in Sources */,
 				671462A21EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
 				67EB7FF32061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift in Sources */,
 				6714625E1EB3396E00EAB194 /* LogFormatter.swift in Sources */,
@@ -2433,7 +2513,9 @@
 				671462721EB3396E00EAB194 /* CursorError.swift in Sources */,
 				671462961EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
 				671463661EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
+				673CF43C2063E80B00C329F6 /* GeneralDataLoadingController.swift in Sources */,
 				67EB7FD120615B8900BDD9FB /* TotalCountCursorConfiguration.swift in Sources */,
+				673CF40D2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */,
 				67EB7FC9206148D000BDD9FB /* TotalCountCursorListingResult.swift in Sources */,
 				6774527620624E820024EEEF /* DataLoadingModel.swift in Sources */,
 				6771DFE61EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift in Sources */,
@@ -2466,6 +2548,7 @@
 				671462CF1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
 				671462831EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
 				677452B820627FE00024EEEF /* PaginationWrappable.swift in Sources */,
+				673CF40E2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */,
 				67745283206256A20024EEEF /* RxDataLoadingModel.swift in Sources */,
 				67EB8003206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */,
 				671463571EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
@@ -2475,6 +2558,7 @@
 				671462F31EB3396E00EAB194 /* UIImage+SupportExtensions.swift in Sources */,
 				6771DFE71EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift in Sources */,
 				6714626B1EB3396E00EAB194 /* NetworkService.swift in Sources */,
+				673CF43A2063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift in Sources */,
 				671463131EB3396E00EAB194 /* UIViewController+DefaultXibName.swift in Sources */,
 				671463431EB3396E00EAB194 /* ModuleConfigurator.swift in Sources */,
 				671462931EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
@@ -2499,6 +2583,7 @@
 				677452AC206263360024EEEF /* CursorType+RxDataSourceDefaultImplementation.swift in Sources */,
 				6714632B1EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
 				677452A220625EEE0024EEEF /* PaginationDataLoadingModel.swift in Sources */,
+				673CF4362063E29B00C329F6 /* TextWithButtonPlaceholder.swift in Sources */,
 				A6F32C0C1F6EBE5C00AC08EE /* String+LocalizedComponent.swift in Sources */,
 				671462AF1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
 				A676AE4F1F9810C1001F9214 /* Any+Cast.swift in Sources */,
@@ -2522,10 +2607,12 @@
 				671462A31EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
 				6714625F1EB3396E00EAB194 /* LogFormatter.swift in Sources */,
 				6714630B1EB3396E00EAB194 /* UIView+Rotation.swift in Sources */,
+				673CF4192063D50700C329F6 /* GeneralDataLoadingController.swift in Sources */,
 				6714626F1EB3396E00EAB194 /* XibView.swift in Sources */,
 				6714637F1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				67EB7FD720615D1700BDD9FB /* ResettableCursorType.swift in Sources */,
 				671463371EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
+				673CF42E2063DE5900C329F6 /* TextPlaceholderView.swift in Sources */,
 				671462731EB3396E00EAB194 /* CursorError.swift in Sources */,
 				67EB7FDD20615D5B00BDD9FB /* ResettableRxCursorDataSource.swift in Sources */,
 				677452A720625FA90024EEEF /* RxDataSource.swift in Sources */,
@@ -2548,6 +2635,7 @@
 				675C1FB41F97CA32007D5249 /* AppearanceConfigurable.swift in Sources */,
 				6714631B1EB3396E00EAB194 /* UIWindow+Extensions.swift in Sources */,
 				671462571EB3396E00EAB194 /* App.swift in Sources */,
+				673CF4252063D90600C329F6 /* DisposeBagHolder.swift in Sources */,
 				6714637B1EB3396E00EAB194 /* CALayerDrawingOperation.swift in Sources */,
 				6774529520625D170024EEEF /* GeneralDataLoadingModel.swift in Sources */,
 				6774529D20625E5B0024EEEF /* PaginationDataLoadingState.swift in Sources */,
@@ -2556,6 +2644,7 @@
 				6714628F1EB3396E00EAB194 /* CGImage+Alpha.swift in Sources */,
 				67051ADD1EBC7C36008EADC0 /* SpinnerView.swift in Sources */,
 				671462771EB3396E00EAB194 /* LeadKitError.swift in Sources */,
+				673CF4142063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */,
 				671462DB1EB3396E00EAB194 /* TimeInterval+DateComponents.swift in Sources */,
 				6774529020625C9E0024EEEF /* GeneralDataLoadingState.swift in Sources */,
 				67EB7FC3206140E600BDD9FB /* TotalCountCursor.swift in Sources */,
@@ -2631,14 +2720,17 @@
 				6774526D206249E30024EEEF /* UICollectionView+PaginationWrappable.swift in Sources */,
 				6714627D1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
 				671462591EB3396E00EAB194 /* Log.swift in Sources */,
+				673CF4352063E29B00C329F6 /* TextWithButtonPlaceholder.swift in Sources */,
 				6774527120624A2A0024EEEF /* PaginationWrapperDelegate+DefaultImplementation.swift in Sources */,
 				67EB8002206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */,
+				673CF4232063D90600C329F6 /* DisposeBagHolder.swift in Sources */,
 				677452AA206263360024EEEF /* CursorType+RxDataSourceDefaultImplementation.swift in Sources */,
 				671462791EB3396E00EAB194 /* ResizeMode.swift in Sources */,
 				671463051EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
 				671463711EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
 				671462ED1EB3396E00EAB194 /* UIImage+Extensions.swift in Sources */,
 				6714636D1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
+				673CF42D2063DE5900C329F6 /* TextPlaceholderView.swift in Sources */,
 				671462A11EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
 				6714625D1EB3396E00EAB194 /* LogFormatter.swift in Sources */,
 				671463091EB3396E00EAB194 /* UIView+Rotation.swift in Sources */,
@@ -2650,6 +2742,7 @@
 				6774529320625D170024EEEF /* GeneralDataLoadingModel.swift in Sources */,
 				671462711EB3396E00EAB194 /* CursorError.swift in Sources */,
 				671463991EB3396E00EAB194 /* AnyLoadingIndicator.swift in Sources */,
+				673CF4392063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift in Sources */,
 				671463A81EB340C000EAB194 /* UIViewController+ConfigurableController.swift in Sources */,
 				671463151EB3396E00EAB194 /* UIViewController+TopVisibleViewController.swift in Sources */,
 				671462891EB3396E00EAB194 /* CGFloat+Pixels.swift in Sources */,
@@ -2664,8 +2757,11 @@
 				677452A520625FA90024EEEF /* RxDataSource.swift in Sources */,
 				671462491EB3396E00EAB194 /* FixedPageCursor.swift in Sources */,
 				671462C91EB3396E00EAB194 /* String+Localization.swift in Sources */,
+				673CF43B2063E80B00C329F6 /* GeneralDataLoadingController.swift in Sources */,
+				673CF40C2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */,
 				671462B91EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */,
 				671463751EB3396E00EAB194 /* BorderDrawingOperation.swift in Sources */,
+				673CF4122063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */,
 				6714633D1EB3396E00EAB194 /* LoadingIndicator.swift in Sources */,
 				671463191EB3396E00EAB194 /* UIWindow+Extensions.swift in Sources */,
 				EFBE57DC1EC361620040E00A /* UIView+Layout.swift in Sources */,

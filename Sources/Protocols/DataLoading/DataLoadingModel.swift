@@ -34,7 +34,4 @@ public protocol DataLoadingModel {
     /// Perform (re)load data.
     func reload()
 
-    /// Attempt to load data again.
-    func retry()
-
 }

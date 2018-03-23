@@ -25,20 +25,7 @@ import UIKit
 public extension PaginationWrapperDelegate {
 
     func emptyPlaceholder() -> UIView {
-        let placeholder = UIView()
-
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "There is nothing here"
-
-        placeholder.addSubview(label)
-
-        NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: placeholder.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: placeholder.centerYAnchor)
-        ])
-
-        return placeholder
+        return TextPlaceholderView(title: .empty)
     }
 
     func customInitialLoadingErrorHandling(for error: Error) -> Bool {
@@ -46,20 +33,7 @@ public extension PaginationWrapperDelegate {
     }
 
     func errorPlaceholder(for error: Error) -> UIView {
-        let placeholder = UIView()
-
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "An error has occurred"
-
-        placeholder.addSubview(label)
-
-        NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: placeholder.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: placeholder.centerYAnchor)
-        ])
-
-        return placeholder
+        return TextPlaceholderView(title: .error)
     }
 
     func initialLoadingIndicator() -> AnyLoadingIndicator {
