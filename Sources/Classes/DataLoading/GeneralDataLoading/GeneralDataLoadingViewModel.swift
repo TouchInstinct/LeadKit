@@ -33,7 +33,7 @@ open class GeneralDataLoadingViewModel<ResultType>: BaseViewModel {
 
     private let loadingStateVariable = Variable<LoadingState>(.initial)
 
-    private let disposeBag = DisposeBag()
+    public let disposeBag = DisposeBag()
 
     /// Initializer with single result sequence and empty result checker closure.
     ///

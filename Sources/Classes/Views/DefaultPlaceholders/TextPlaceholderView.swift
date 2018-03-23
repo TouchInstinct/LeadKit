@@ -22,8 +22,7 @@
 
 import UIKit
 
-/// For internal use only!
-final class TextPlaceholderView: UIView {
+internal final class TextPlaceholderView: UIView {
 
     enum PlaceholderText: String {
 

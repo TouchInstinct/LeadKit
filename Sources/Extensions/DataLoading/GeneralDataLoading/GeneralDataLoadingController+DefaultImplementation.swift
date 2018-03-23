@@ -20,9 +20,16 @@
 //  THE SOFTWARE.
 //
 
+import RxSwift
 import RxCocoa
 
 public extension GeneralDataLoadingController where Self: UIViewController {
+
+    // MARK: - DisposeBagHolder default implementation
+
+    var disposeBag: DisposeBag {
+        return viewModel.disposeBag
+    }
 
     // MARK: - StatefulViewController default implementation
 
