@@ -112,7 +112,7 @@ Pod::Spec.new do |s|
       "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
       "Sources/Classes/DataLoading/PaginationDataLoading/PaginationWrapper.swift",
-      "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
+      "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/TableDirector/*",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"

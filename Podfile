@@ -4,7 +4,7 @@ abstract_target 'LeadKit' do
   pod "RxCocoa", '~> 4.1'
   pod "RxAlamofire", '~> 4.1'
   pod "ObjectMapper", '~> 3.0'
-  pod 'SwiftLint', '~> 0.25'
+  pod "SwiftLint", '~> 0.25'
 
   inhibit_all_warnings!
 
