@@ -276,6 +276,14 @@
 		671463CF1EB34B1E00EAB194 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671463B71EB34B1E00EAB194 /* TestView.xib */; };
 		67186B311EB248F100CFAFFB /* LeadKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67186B281EB248F100CFAFFB /* LeadKit.framework */; };
 		67186B3F1EB24A1900CFAFFB /* LeadKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 67186B201EB247A200CFAFFB /* LeadKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		673564F12068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673564F02068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift */; };
+		673564F22068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673564F02068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift */; };
+		673564F32068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673564F02068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift */; };
+		673564F42068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673564F02068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift */; };
+		673564F62068C68D00F0CBED /* NumberFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673564F52068C68D00F0CBED /* NumberFormat.swift */; };
+		673564F72068C68D00F0CBED /* NumberFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673564F52068C68D00F0CBED /* NumberFormat.swift */; };
+		673564F82068C68D00F0CBED /* NumberFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673564F52068C68D00F0CBED /* NumberFormat.swift */; };
+		673564F92068C68D00F0CBED /* NumberFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673564F52068C68D00F0CBED /* NumberFormat.swift */; };
 		673CF40B2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF40A2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift */; };
 		673CF40C2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF40A2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift */; };
 		673CF40D2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF40A2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift */; };
@@ -385,6 +393,10 @@
 		67A1FF941EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */; };
 		67A1FF951EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */; };
 		67A1FF971EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */; };
+		67C7B1792068BB1C00C9EDA3 /* NumberFormattingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C7B1782068BB1C00C9EDA3 /* NumberFormattingService.swift */; };
+		67C7B17A2068BB1C00C9EDA3 /* NumberFormattingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C7B1782068BB1C00C9EDA3 /* NumberFormattingService.swift */; };
+		67C7B17B2068BB1C00C9EDA3 /* NumberFormattingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C7B1782068BB1C00C9EDA3 /* NumberFormattingService.swift */; };
+		67C7B17C2068BB1C00C9EDA3 /* NumberFormattingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C7B1782068BB1C00C9EDA3 /* NumberFormattingService.swift */; };
 		67CAF8AC2065189C00527085 /* NetworkService+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CAF8AB2065189C00527085 /* NetworkService+ActivityIndicator.swift */; };
 		67CAF8AD2065189C00527085 /* NetworkService+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CAF8AB2065189C00527085 /* NetworkService+ActivityIndicator.swift */; };
 		67CAF8AE2065189C00527085 /* NetworkService+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CAF8AB2065189C00527085 /* NetworkService+ActivityIndicator.swift */; };
@@ -615,6 +627,8 @@
 		67186B301EB248F100CFAFFB /* LeadKit iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LeadKit iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67186B411EB24AA000CFAFFB /* iOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = iOS.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		67186C1A1EB24B7800CFAFFB /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		673564F02068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormattingService+DefaultImplementation.swift"; sourceTree = "<group>"; };
+		673564F52068C68D00F0CBED /* NumberFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormat.swift; sourceTree = "<group>"; };
 		673CF40A2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralDataLoadingViewModel.swift; sourceTree = "<group>"; };
 		673CF4102063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralDataLoadingState+Extensions.swift"; sourceTree = "<group>"; };
 		673CF4172063D50700C329F6 /* GeneralDataLoadingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralDataLoadingController.swift; sourceTree = "<group>"; };
@@ -656,6 +670,7 @@
 		679C77D61F98F7A60094BE10 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		67A1FF8E1EBCA09B00D6C89F /* UIImage+Spinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Spinner.swift"; sourceTree = "<group>"; };
 		67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CABasicAnimation+Rotation.swift"; sourceTree = "<group>"; };
+		67C7B1782068BB1C00C9EDA3 /* NumberFormattingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormattingService.swift; sourceTree = "<group>"; };
 		67CAF8AB2065189C00527085 /* NetworkService+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+ActivityIndicator.swift"; sourceTree = "<group>"; };
 		67CAF8B020651E1E00527085 /* ConfigurableNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableNetworkService.swift; sourceTree = "<group>"; };
 		67CAF8B520651E4F00527085 /* ConfigurableNetworkService+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConfigurableNetworkService+DefaultImplementation.swift"; sourceTree = "<group>"; };
@@ -853,6 +868,7 @@
 		671461DA1EB3396E00EAB194 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				673564EF2068C29100F0CBED /* NumberFormattingService */,
 				671461DB1EB3396E00EAB194 /* Alamofire */,
 				EFBE57CE1EC35ED90040E00A /* Array */,
 				67A1FF921EBCA64A00D6C89F /* CABasicAnimation */,
@@ -1058,6 +1074,7 @@
 		671462221EB3396E00EAB194 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				67C7B1772068BADA00C9EDA3 /* NumberFormattingService */,
 				67EB7FC5206148C400BDD9FB /* DataLoading */,
 				67CAF8AF20651E0F00527085 /* NetworkService */,
 				673CF4202063D8EB00C329F6 /* Rx */,
@@ -1193,6 +1210,14 @@
 				671463B41EB34B1E00EAB194 /* PaginationViewModelTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		673564EF2068C29100F0CBED /* NumberFormattingService */ = {
+			isa = PBXGroup;
+			children = (
+				673564F02068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift */,
+			);
+			path = NumberFormattingService;
 			sourceTree = "<group>";
 		};
 		673CF4152063AC0000C329F6 /* GeneralDataLoading */ = {
@@ -1361,6 +1386,15 @@
 				67A1FF931EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift */,
 			);
 			path = CABasicAnimation;
+			sourceTree = "<group>";
+		};
+		67C7B1772068BADA00C9EDA3 /* NumberFormattingService */ = {
+			isa = PBXGroup;
+			children = (
+				673564F52068C68D00F0CBED /* NumberFormat.swift */,
+				67C7B1782068BB1C00C9EDA3 /* NumberFormattingService.swift */,
+			);
+			path = NumberFormattingService;
 			sourceTree = "<group>";
 		};
 		67CAF8AF20651E0F00527085 /* NetworkService */ = {
@@ -2352,6 +2386,7 @@
 				674AF55C1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */,
 				671463401EB3396E00EAB194 /* ModuleConfigurator.swift in Sources */,
 				67A1FF8F1EBCA09B00D6C89F /* UIImage+Spinner.swift in Sources */,
+				673564F62068C68D00F0CBED /* NumberFormat.swift in Sources */,
 				671462901EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
 				671462FC1EB3396E00EAB194 /* UIView+XibNameProtocol.swift in Sources */,
 				67EB7FC0206140E600BDD9FB /* TotalCountCursor.swift in Sources */,
@@ -2395,6 +2430,7 @@
 				40F118491F8FF223004AADAF /* TableRow+AppearanceExtension.swift in Sources */,
 				671463701EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
 				A658E5501F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift in Sources */,
+				673564F12068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */,
 				671462EC1EB3396E00EAB194 /* UIImage+Extensions.swift in Sources */,
 				677452AE206274630024EEEF /* PaginationWrapper.swift in Sources */,
 				A6E0DDF11F8A6C80002CA74E /* SeparatorConfiguration.swift in Sources */,
@@ -2523,6 +2559,7 @@
 				A6F32C0B1F6EBE5C00AC08EE /* String+LocalizedComponent.swift in Sources */,
 				6714627E1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
 				677452AB206263360024EEEF /* CursorType+RxDataSourceDefaultImplementation.swift in Sources */,
+				673564F32068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */,
 				6771DFDA1EE99EBA002DCDAE /* DateFormattingService.swift in Sources */,
 				67EB7FD620615D1700BDD9FB /* ResettableCursorType.swift in Sources */,
 				6714625A1EB3396E00EAB194 /* Log.swift in Sources */,
@@ -2534,6 +2571,7 @@
 				67CAF8AD2065189C00527085 /* NetworkService+ActivityIndicator.swift in Sources */,
 				A676AE481F97D28A001F9214 /* String+Extensions.swift in Sources */,
 				673CF4242063D90600C329F6 /* DisposeBagHolder.swift in Sources */,
+				67C7B17B2068BB1C00C9EDA3 /* NumberFormattingService.swift in Sources */,
 				671462A21EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
 				67EB7FF32061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift in Sources */,
 				6714625E1EB3396E00EAB194 /* LogFormatter.swift in Sources */,
@@ -2550,6 +2588,7 @@
 				6774527620624E820024EEEF /* DataLoadingModel.swift in Sources */,
 				6771DFE61EE9A00A002DCDAE /* DateFormattingArguments+DateFormatter.swift in Sources */,
 				6714624A1EB3396E00EAB194 /* FixedPageCursor.swift in Sources */,
+				673564F82068C68D00F0CBED /* NumberFormat.swift in Sources */,
 				671462CA1EB3396E00EAB194 /* String+Localization.swift in Sources */,
 				677452A620625FA90024EEEF /* RxDataSource.swift in Sources */,
 				671462BA1EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */,
@@ -2613,6 +2652,7 @@
 				6774527C206252020024EEEF /* DataLoadingState.swift in Sources */,
 				677452AC206263360024EEEF /* CursorType+RxDataSourceDefaultImplementation.swift in Sources */,
 				6714632B1EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
+				673564F42068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */,
 				677452A220625EEE0024EEEF /* PaginationDataLoadingModel.swift in Sources */,
 				673CF4362063E29B00C329F6 /* TextWithButtonPlaceholder.swift in Sources */,
 				A6F32C0C1F6EBE5C00AC08EE /* String+LocalizedComponent.swift in Sources */,
@@ -2628,6 +2668,7 @@
 				6774526E206249E30024EEEF /* UICollectionView+PaginationWrappable.swift in Sources */,
 				6771DFED1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
 				671463A91EB340C000EAB194 /* UIViewController+ConfigurableController.swift in Sources */,
+				673564F92068C68D00F0CBED /* NumberFormat.swift in Sources */,
 				A676AE581F981131001F9214 /* ObservableMappable.swift in Sources */,
 				671463731EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
 				671462EF1EB3396E00EAB194 /* UIImage+Extensions.swift in Sources */,
@@ -2683,6 +2724,7 @@
 				6714638F1EB3396E00EAB194 /* SolidFillDrawingOperation.swift in Sources */,
 				67CAF8B920651E4F00527085 /* ConfigurableNetworkService+DefaultImplementation.swift in Sources */,
 				67E6C2381EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
+				67C7B17C2068BB1C00C9EDA3 /* NumberFormattingService.swift in Sources */,
 				671462531EB3396E00EAB194 /* StaticCursor.swift in Sources */,
 				6714629F1EB3396E00EAB194 /* CursorType+Slice.swift in Sources */,
 				6714636B1EB3396E00EAB194 /* ConfigurableView.swift in Sources */,
@@ -2730,9 +2772,11 @@
 				671463111EB3396E00EAB194 /* UIViewController+DefaultXibName.swift in Sources */,
 				671463411EB3396E00EAB194 /* ModuleConfigurator.swift in Sources */,
 				671462911EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
+				673564F72068C68D00F0CBED /* NumberFormat.swift in Sources */,
 				67051ADC1EBC7C36008EADC0 /* SpinnerView.swift in Sources */,
 				671462FD1EB3396E00EAB194 /* UIView+XibNameProtocol.swift in Sources */,
 				671463851EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
+				673564F22068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */,
 				671462D11EB3396E00EAB194 /* UIScrollView+Support.swift in Sources */,
 				6774528E20625C9E0024EEEF /* GeneralDataLoadingState.swift in Sources */,
 				671463911EB3396E00EAB194 /* TemplateDrawingOperation.swift in Sources */,
@@ -2794,6 +2838,7 @@
 				673CF40C2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */,
 				671462B91EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */,
 				671463751EB3396E00EAB194 /* BorderDrawingOperation.swift in Sources */,
+				67C7B17A2068BB1C00C9EDA3 /* NumberFormattingService.swift in Sources */,
 				673CF4122063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */,
 				6714633D1EB3396E00EAB194 /* LoadingIndicator.swift in Sources */,
 				671463191EB3396E00EAB194 /* UIWindow+Extensions.swift in Sources */,
