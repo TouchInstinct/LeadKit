@@ -70,7 +70,7 @@ public extension Array {
 
     // Subscript for safe access to element by index
     subscript(safe index: Index) -> Element? {
-        return indices.contains(index) ? self[index] : nil
+        return (index < count && index >= 0) ? self[index] : nil
     }
 
 }
