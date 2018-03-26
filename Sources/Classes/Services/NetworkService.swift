@@ -34,23 +34,28 @@ open class NetworkService {
     private let lock = NSRecursiveLock()
 
     private let requestCountVariable = Variable<Int>(0)
-
-    public let sessionManager: Alamofire.SessionManager
+    private var disposeBag = DisposeBag()
 
     private let acceptableStatusCodes: [Int]
+    public let sessionManager: Alamofire.SessionManager
 
     var requestCount: Driver<Int> {
         return requestCountVariable.asDriver()
     }
 
+    /// - Parameter sessionManager: Alamofire.SessionManager to use for requests
     /// Creates new instance of NetworkService with given Alamofire session manager
     ///
-    /// - Parameter sessionManager: Alamofire.SessionManager to use for requests
+    /// - Parameters:
+    ///   - sessionManager: Alamofire.SessionManager to use for requests.
+    ///   - acceptableStatusCodes: Validates that the response has a status code in the specified sequence.
     public init(sessionManager: Alamofire.SessionManager,
                 acceptableStatusCodes: [Int] = Alamofire.SessionManager.defaultAcceptableStatusCodes) {
 
         self.sessionManager = sessionManager
         self.acceptableStatusCodes = acceptableStatusCodes
+
+        bindToApplicationActivityIndicator()
     }
 
     /// Perform reactive request to get mapped ObservableMappable model and http response
@@ -77,13 +82,27 @@ open class NetworkService {
                 .counterTracking(for: self)
     }
 
-    fileprivate func increaseRequestCounter() {
+    /// Shows network activity indicator when requests in executed. Works only on iOS.
+    public func bindToApplicationActivityIndicator() {
+        bindActivityIndicator()?.disposed(by: disposeBag)
+    }
+
+    /// Disable showing network activity indicator.
+    public func unbindToApplicationActivityIndicator() {
+        disposeBag = DisposeBag()
+    }
+
+}
+
+private extension NetworkService {
+
+    func increaseRequestCounter() {
         lock.lock()
         requestCountVariable.value += 1
         lock.unlock()
     }
 
-    fileprivate func decreaseRequestCounter() {
+    func decreaseRequestCounter() {
         lock.lock()
         requestCountVariable.value -= 1
         lock.unlock()

@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2018 Touch Instinct
+//  Copyright (c) 2017 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -26,7 +26,9 @@ public extension NetworkService {
 
     /// Let netwrok service automatically show / hide activity indicator
     func bindActivityIndicator() -> Disposable? {
-        return nil
+        return requestCount
+            .map { $0 != 0 }
+            .drive(UIApplication.shared.rx.isNetworkActivityIndicatorVisible)
     }
 
 }

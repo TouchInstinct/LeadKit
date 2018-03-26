@@ -20,13 +20,31 @@
 //  THE SOFTWARE.
 //
 
-import RxSwift
+import Alamofire
 
-public extension NetworkService {
+public extension ConfigurableNetworkService {
 
-    /// Let netwrok service automatically show / hide activity indicator
-    func bindActivityIndicator() -> Disposable? {
-        return nil
+    static var timeoutInterval: TimeInterval {
+        return 20
+    }
+
+    static var serverTrustPolicies: [String: ServerTrustPolicy] {
+        return [
+            baseUrl: .disableEvaluation
+        ]
+    }
+
+    static var sessionConfiguration: URLSessionConfiguration {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = timeoutInterval
+        configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
+
+        return configuration
+    }
+
+    static var sessionManager: SessionManager {
+        return SessionManager(configuration: sessionConfiguration,
+                              serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies))
     }
 
 }

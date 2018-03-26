@@ -39,6 +39,9 @@ Pod::Spec.new do |s|
     ss.watchos.deployment_target = '2.0'
 
     ss.source_files = "Sources/**/*.swift"
+    ss.ios.exclude_files = [
+      "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
+    ]
     ss.watchos.exclude_files = [
       "Sources/Classes/Views/SeparatorRowBox/*",
       "Sources/Classes/Views/SeparatorCell/*",
@@ -49,7 +52,7 @@ Pod::Spec.new do |s|
       "Sources/Classes/Views/DefaultPlaceholders/*",
       "Sources/Extensions/CABasicAnimation/*",
       "Sources/Extensions/CGFloat/CGFloat+Pixels.swift",
-      "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
+      "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
       "Sources/Extensions/NetworkService/NetworkService+RxLoadImage.swift",
       "Sources/Extensions/DataLoading/GeneralDataLoading/GeneralDataLoadingController+DefaultImplementation.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
@@ -80,7 +83,7 @@ Pod::Spec.new do |s|
       "Sources/Classes/Views/EmptyCell/*",
       "Sources/Classes/DataLoading/PaginationDataLoading/PaginationWrapper.swift",
       "Sources/Structures/Drawing/CALayerDrawingOperation.swift",
-      "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
+      "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/TableDirector/*",

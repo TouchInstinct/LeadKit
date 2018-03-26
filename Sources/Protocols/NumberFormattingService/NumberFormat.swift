@@ -20,13 +20,15 @@
 //  THE SOFTWARE.
 //
 
-import RxSwift
+import Foundation
 
-public extension NetworkService {
+/// Protocol for describing number format.
+public protocol NumberFormat: Hashable {
 
-    /// Let netwrok service automatically show / hide activity indicator
-    func bindActivityIndicator() -> Disposable? {
-        return nil
-    }
+    /// All available options.
+    static var allOptions: [Self] { get }
+
+    /// A NumberFormatter instance for this format.
+    var numberFormatter: NumberFormatter { get }
 
 }

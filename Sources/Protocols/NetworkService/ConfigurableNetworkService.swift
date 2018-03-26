@@ -20,13 +20,24 @@
 //  THE SOFTWARE.
 //
 
-import RxSwift
+import Alamofire
 
-public extension NetworkService {
+/// Protocol with some basic settings for network service configuration.
+public protocol ConfigurableNetworkService {
 
-    /// Let netwrok service automatically show / hide activity indicator
-    func bindActivityIndicator() -> Disposable? {
-        return nil
-    }
+    /// Base api url string.
+    static var baseUrl: String { get }
+
+    /// Timeout interval for requests.
+    static var timeoutInterval: TimeInterval { get }
+
+    /// Server trust policies.
+    static var serverTrustPolicies: [String: ServerTrustPolicy] { get }
+
+    /// Session configuration to use in SessionManager.
+    static var sessionConfiguration: URLSessionConfiguration { get }
+
+    /// Session manager.
+    static var sessionManager: SessionManager { get }
 
 }
