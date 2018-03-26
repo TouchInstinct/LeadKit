@@ -1077,7 +1077,6 @@
 				67EB7FC5206148C400BDD9FB /* DataLoading */,
 				67CAF8AF20651E0F00527085 /* NetworkService */,
 				673CF4202063D8EB00C329F6 /* Rx */,
-				67EB7FF5206175CD00BDD9FB /* Views */,
 				679C77D41F98F78E0094BE10 /* AlertRepresentable.swift */,
 				671463A11EB33FF600EAB194 /* Animatable.swift */,
 				40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */,
@@ -1452,13 +1451,6 @@
 				67EB7FF02061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift */,
 			);
 			path = Cursors;
-			sourceTree = "<group>";
-		};
-		67EB7FF5206175CD00BDD9FB /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		78CFEE201C5C456B00F50370 = {
