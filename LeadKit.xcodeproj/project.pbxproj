@@ -308,7 +308,6 @@
 		673CF4392063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4372063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift */; };
 		673CF43A2063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4372063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift */; };
 		673CF43B2063E80B00C329F6 /* GeneralDataLoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4172063D50700C329F6 /* GeneralDataLoadingController.swift */; };
-		673CF43C2063E80B00C329F6 /* GeneralDataLoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4172063D50700C329F6 /* GeneralDataLoadingController.swift */; };
 		674AF55C1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */; };
 		674AF55D1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */; };
 		674AF55E1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */; };
@@ -2582,7 +2581,6 @@
 				671462721EB3396E00EAB194 /* CursorError.swift in Sources */,
 				671462961EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
 				671463661EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
-				673CF43C2063E80B00C329F6 /* GeneralDataLoadingController.swift in Sources */,
 				67EB7FD120615B8900BDD9FB /* TotalCountCursorConfiguration.swift in Sources */,
 				673CF40D2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */,
 				67EB7FC9206148D000BDD9FB /* TotalCountCursorListingResult.swift in Sources */,
