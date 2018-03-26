@@ -25,8 +25,8 @@ import Foundation
 /// Protocol for describing number format.
 public protocol NumberFormat: Hashable {
 
-    /// All available options
-    static var allValues: [Self] { get }
+    /// All available options.
+    static var allOptions: [Self] { get }
 
     /// A NumberFormatter instance for this format.
     var numberFormatter: NumberFormatter { get }
