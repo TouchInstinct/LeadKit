@@ -25,10 +25,10 @@ import Foundation.NSAttributedString
 public extension NSAttributedString {
 
     static func + (left: NSAttributedString, right: NSAttributedString) -> NSAttributedString {
-        let mutableAttributedString = NSMutableAttributedString(attributedString: left)
+        let mutableAttributedString = left.mutable
         mutableAttributedString += right
 
-        return NSAttributedString(attributedString: mutableAttributedString)
+        return mutableAttributedString.immutable
     }
 
     /// Mutable copy of attributed string.
