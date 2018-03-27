@@ -84,7 +84,10 @@ open class NetworkService {
 
     /// Shows network activity indicator when requests in executed. Works only on iOS.
     public func bindToApplicationActivityIndicator() {
-        bindActivityIndicator()?.disposed(by: disposeBag)
+        // Fatal error: `drive*` family of methods can be only called from `MainThread`
+        DispatchQueue.main.async {
+            bindActivityIndicator()?.disposed(by: self.disposeBag)
+        }
     }
 
     /// Disable showing network activity indicator.
