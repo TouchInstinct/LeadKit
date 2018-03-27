@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.7.0
+- **Add**: `TotalCountCursor` for total count based pagination and related stuff.
+- **[Breaking Change]**: `PaginationTableViewWrapper` and `PaginationTableViewWrapperDelegate` was renamed to `PaginationWrapper` and `PaginationWrapperDelegate `. Also there is significant changes in api
+- **Add**: `GeneralDataLoadingModel` and `PaginationDataLoadingModel` for regular and paginated data loading with state handling.
+- **Add**: `GeneralDataLoadingViewModel` and `GeneralDataLoadingController` for regular data loading and state handling in UI.
+- **Add**: `ConfigurableNetworkService` - replacement of `DefaultNetworkService` from LeadKitAdditions.
+- **Add**: `NumberFormattingService` and `NumberFormat` protocols with default implementation for creating per-project number formatters.
+- **Add**: Very flexible in configuration `TextFieldViewModel` with build-in two-side data model binding.
+- **Add**: `SingleLoadCursorConfiguration` as a replacement of `SingleLoadCursor`.
+- **Add**: `UIApplication` extensions for making phone calls.
+- **Add**: `NSAttributedString` extensions for appending attributed strings using `+` operator.
+- **Change**: Lots of fixes and enhancements.
+- **Update**: Update dependecies versions.
+
 ### 0.6.7
 
 - **Add**: UITableView extension to add colored background for tableview bounce area.
@@ -16,13 +30,13 @@
 
 - **Fix**: SpinnerView bug(no animation) in Swift 4.
 
-## 0.6.3
+### 0.6.3
 - **Fix**: SeparatorCell updates constraints after setting separator insets
 
-## 0.6.2
+### 0.6.2
 - **Fix**: AlamofireManager extension no longer performs requests with default manager
 
-## 0.6.1
+### 0.6.1
 - **New**: `RequestError`. Represents general api request errors
 - **Change**: All api methods now throws `RequestError` when fails.
 
@@ -38,60 +52,60 @@
 - **Remove**: `Observable` creation for `ImmutableMappable`
 - **Remove**: `UIView` and `UsedDefaults` extensions, `EstimatedViewHeightProtocol`, `StaticEstimatedViewHeightProtocol`, `StoryboardIdentifierProtocol`
 
-## 0.5.18
+### 0.5.18
 - **Fix**: EmptyCell first appearance setup fix
 
-## 0.5.17
+### 0.5.17
 - **Fix**: EmptyCell reusing appearance fix
 - **Fix**: SeparatorCell reusing separators fix
 
-## 0.5.16
+### 0.5.16
 
 - **Change**: Rename `AppearanceProtocol` to `AppearanceConfigurable`
 - **Add**: `subscript(safe:)` subscript to `Array` extension for safe access to element by index
 
-## 0.5.15
+### 0.5.15
 
 - **Add**: `AppearanceProtocol` which ensures that specific type can apply appearance to itself
 - **Add**: `with(appearance:)`,  `set(appearance:)`  methods to TableRow extension
 - **Add**: `Appearance` to `EmptyCell`
 - **Remove**: `SeparatorCellViewModel`.
 
-## 0.5.13
+### 0.5.13
 
 - **Change**: Remove type erasure behavior from `AnyBaseTableRow`
 - **Change**: Rename `AnyBaseTableRow` class to `SeparatorRowBox`
 - **Change**: Move `anyRow` property from `EmptyCellRow` to `TableRow` extension and rename it to `separatorRowBox`.
 - **Change**: Move `configure(extreme: middle:)` method from `TableDirector` extension to `Array` extension and rename it to `configureSeparators(extreme: middle:)`
 
-## 0.5.12
+### 0.5.12
 
 - **Fix**: Update type of `viewModel` in `ConfigurableController` to `ImplicitlyUwrappedOptional<ViewModelT>` instead of `ViewModelT`
 
-## 0.5.11
+### 0.5.11
 
 - **[Breaking Change]**: rename initializer from `init(initialFrom:)` to `init(resetFrom:)` in `ResettableType`
 - **Add**: `SeparatorCell` with `SeparatorCellViewModel`
 - **Add**: `AnyBaseTableRow` for type-erasure
 - **Add**: `EmptyCellRow` for empty cell with static height
 
-## 0.5.10
+### 0.5.10
 
 - **Fix**: `Public` modifier for `SpinnerView` 
 
-## 0.5.9
+### 0.5.9
 
 - **Fix**: One-two-many fixed for values more than 99
 
-## 0.5.8
+### 0.5.8
 
 - **Fix**: Synchronization over `NSRecursiveLock` for request count tracker in NetworkService
 
-## 0.5.7
+### 0.5.7
 
 - **Add**: String extension `localizedComponent(value:stringOne:stringTwo:stringMany:)`
 
-## 0.5.6
+### 0.5.6
 
 - **Fix**: Clear tableview if placeholder is shown
 

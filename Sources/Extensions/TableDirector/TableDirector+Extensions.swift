@@ -111,4 +111,9 @@ public extension TableDirector {
         return replace(withSection: TableSection(rows: rows))
     }
 
+    /// Clear table view and reload it within empty section
+    func safeClear() {
+        clear().append(section: TableSection()).reload()
+    }
+
 }

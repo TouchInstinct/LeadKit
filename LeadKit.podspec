@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.6.7"
+  s.version         = "0.7.0"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -61,6 +61,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
       "Sources/Extensions/UIActivityIndicatorView/*",
       "Sources/Extensions/UIAlertcontroller/*",
+      "Sources/Extensions/UIApplication/*",
       "Sources/Extensions/UICollectionView/*",
       "Sources/Extensions/UIDevice/*",
       "Sources/Extensions/UIImage/*",
@@ -87,6 +88,8 @@ Pod::Spec.new do |s|
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/TableDirector/*",
+      "Sources/Extensions/UIApplication/UIApplication+OpenUrlSupport.swift",
+      "Sources/Extensions/UIApplication/UIApplication+Cellular.swift",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
       "Sources/Protocols/DataLoading/PaginationDataLoading/PaginationWrappable.swift",
       "Sources/Structures/DataLoading/PaginationDataLoading/*"
@@ -112,7 +115,7 @@ Pod::Spec.new do |s|
       "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
       "Sources/Classes/DataLoading/PaginationDataLoading/PaginationWrapper.swift",
-      "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
+      "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/TableDirector/*",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
