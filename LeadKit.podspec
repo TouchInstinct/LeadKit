@@ -61,6 +61,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
       "Sources/Extensions/UIActivityIndicatorView/*",
       "Sources/Extensions/UIAlertcontroller/*",
+      "Sources/Extensions/UIApplication/*",
       "Sources/Extensions/UICollectionView/*",
       "Sources/Extensions/UIDevice/*",
       "Sources/Extensions/UIImage/*",
@@ -87,6 +88,8 @@ Pod::Spec.new do |s|
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/TableDirector/*",
+      "Sources/Extensions/UIApplication/UIApplication+OpenUrlSupport.swift",
+      "Sources/Extensions/UIApplication/UIApplication+Cellular.swift",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
       "Sources/Protocols/DataLoading/PaginationDataLoading/PaginationWrappable.swift",
       "Sources/Structures/DataLoading/PaginationDataLoading/*"
