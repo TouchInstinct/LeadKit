@@ -86,7 +86,7 @@ open class NetworkService {
     public func bindToApplicationActivityIndicator() {
         // Fatal error: `drive*` family of methods can be only called from `MainThread`
         DispatchQueue.main.async {
-            bindActivityIndicator()?.disposed(by: self.disposeBag)
+            self.bindActivityIndicator()?.disposed(by: self.disposeBag)
         }
     }
 

@@ -284,6 +284,10 @@
 		671AD265206A35EC00EAF887 /* UIApplication+Cellular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671AD261206A35EC00EAF887 /* UIApplication+Cellular.swift */; };
 		671AD267206A365100EAF887 /* UIApplication+OpenUrlSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671AD266206A365100EAF887 /* UIApplication+OpenUrlSupport.swift */; };
 		671AD269206A365100EAF887 /* UIApplication+OpenUrlSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671AD266206A365100EAF887 /* UIApplication+OpenUrlSupport.swift */; };
+		671AD26C206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671AD26B206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift */; };
+		671AD26D206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671AD26B206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift */; };
+		671AD26E206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671AD26B206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift */; };
+		671AD26F206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671AD26B206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift */; };
 		673564F12068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673564F02068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift */; };
 		673564F22068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673564F02068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift */; };
 		673564F32068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673564F02068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift */; };
@@ -653,6 +657,7 @@
 		671AD25B206A343300EAF887 /* VoidBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidBlock.swift; sourceTree = "<group>"; };
 		671AD261206A35EC00EAF887 /* UIApplication+Cellular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Cellular.swift"; sourceTree = "<group>"; };
 		671AD266206A365100EAF887 /* UIApplication+OpenUrlSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+OpenUrlSupport.swift"; sourceTree = "<group>"; };
+		671AD26B206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+TotalCountCursorListingResult.swift"; sourceTree = "<group>"; };
 		673564F02068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormattingService+DefaultImplementation.swift"; sourceTree = "<group>"; };
 		673564F52068C68D00F0CBED /* NumberFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormat.swift; sourceTree = "<group>"; };
 		673CF40A2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralDataLoadingViewModel.swift; sourceTree = "<group>"; };
@@ -1662,6 +1667,7 @@
 			children = (
 				EFBE57CF1EC35EF20040E00A /* Array+Extensions.swift */,
 				A658E54F1F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift */,
+				671AD26B206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift */,
 			);
 			path = Array;
 			sourceTree = "<group>";
@@ -2500,6 +2506,7 @@
 				677452AE206274630024EEEF /* PaginationWrapper.swift in Sources */,
 				A6E0DDF11F8A6C80002CA74E /* SeparatorConfiguration.swift in Sources */,
 				67EB7FEB2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */,
+				671AD26C206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift in Sources */,
 				673CF4382063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift in Sources */,
 				671AD267206A365100EAF887 /* UIApplication+OpenUrlSupport.swift in Sources */,
 				673CF40B2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */,
@@ -2608,6 +2615,7 @@
 				6774527B206252020024EEEF /* DataLoadingState.swift in Sources */,
 				6714634E1EB3396E00EAB194 /* ReuseIdentifierProtocol.swift in Sources */,
 				6714626A1EB3396E00EAB194 /* NetworkService.swift in Sources */,
+				671AD26E206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift in Sources */,
 				673CF4132063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */,
 				671463421EB3396E00EAB194 /* ModuleConfigurator.swift in Sources */,
 				671462921EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
@@ -2718,6 +2726,7 @@
 				6714624F1EB3396E00EAB194 /* MapCursor.swift in Sources */,
 				671463271EB3396E00EAB194 /* Any+TypeName.swift in Sources */,
 				67EB7FD220615B8900BDD9FB /* TotalCountCursorConfiguration.swift in Sources */,
+				671AD26F206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift in Sources */,
 				EFBE57D31EC35EF20040E00A /* Array+Extensions.swift in Sources */,
 				67CAF8AE2065189C00527085 /* NetworkService+ActivityIndicator.swift in Sources */,
 				6714638B1EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
@@ -2862,6 +2871,7 @@
 				673564F22068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */,
 				671462D11EB3396E00EAB194 /* UIScrollView+Support.swift in Sources */,
 				671AD25D206A343300EAF887 /* VoidBlock.swift in Sources */,
+				671AD26D206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift in Sources */,
 				6774528E20625C9E0024EEEF /* GeneralDataLoadingState.swift in Sources */,
 				671463911EB3396E00EAB194 /* TemplateDrawingOperation.swift in Sources */,
 				67EB7FEC2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */,

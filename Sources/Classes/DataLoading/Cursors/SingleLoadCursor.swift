@@ -22,7 +22,32 @@
 
 import RxSwift
 
+/// Single load cursor configuration for single load operation
+public final class SingleLoadCursorConfiguration<Element>: TotalCountCursorConfiguration {
+
+    public typealias ResultType = [Element]
+
+    private let loadingSingle: Single<ResultType>
+
+    /// Initializer for Single with array result type.
+    ///
+    /// - Parameter loadingSingle: Single that will emit array of result type.
+    public init(loadingSingle: Single<ResultType>) {
+        self.loadingSingle = loadingSingle
+    }
+
+    public func resultSingle() -> Single<ResultType> {
+        return loadingSingle
+    }
+
+    public init(resetFrom other: SingleLoadCursorConfiguration) {
+        self.loadingSingle = other.loadingSingle
+    }
+
+}
+
 /// Cursor implementation for single load operation
+@available(*, deprecated, message: "Use SingleLoadCursorConfiguration with TotalCountCursor.")
 public class SingleLoadCursor<Element>: ResettableCursorType {
 
     private let loadingObservable: Single<[Element]>
