@@ -34,10 +34,14 @@ public extension ConfigurableNetworkService {
         ]
     }
 
+    static var additionalHttpHeaders: HTTPHeaders {
+        return SessionManager.defaultHTTPHeaders
+    }
+
     static var sessionConfiguration: URLSessionConfiguration {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = timeoutInterval
-        configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
+        configuration.httpAdditionalHeaders = additionalHttpHeaders
 
         return configuration
     }
@@ -45,6 +49,15 @@ public extension ConfigurableNetworkService {
     static var sessionManager: SessionManager {
         return SessionManager(configuration: sessionConfiguration,
                               serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies))
+    }
+
+}
+
+public extension ConfigurableNetworkService where Self: NetworkService {
+
+    /// Convenience initializer with default session manager.
+    init() {
+        self.init(sessionManager: Self.sessionManager)
     }
 
 }

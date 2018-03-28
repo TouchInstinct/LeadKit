@@ -482,6 +482,10 @@
 		67EB8001206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB8000206177D600BDD9FB /* PaginationWrapperDelegate.swift */; };
 		67EB8002206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB8000206177D600BDD9FB /* PaginationWrapperDelegate.swift */; };
 		67EB8003206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB8000206177D600BDD9FB /* PaginationWrapperDelegate.swift */; };
+		67FD4382206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */; };
+		67FD4383206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */; };
+		67FD4384206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */; };
+		67FD4385206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */; };
 		67FDC25F1FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
 		67FDC2601FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
 		67FDC2611FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
@@ -725,6 +729,7 @@
 		67EB7FF7206175F700BDD9FB /* PaginationWrappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationWrappable.swift; sourceTree = "<group>"; };
 		67EB7FFC206176C900BDD9FB /* AnyPaginationWrappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPaginationWrappable.swift; sourceTree = "<group>"; };
 		67EB8000206177D600BDD9FB /* PaginationWrapperDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationWrapperDelegate.swift; sourceTree = "<group>"; };
+		67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqutableOptionalArray.swift; sourceTree = "<group>"; };
 		67FDC25E1FA310EA00C76A77 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		78405D3B3D3C3E17456877FF /* Pods_LeadKit_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Single+DeferredJust.swift"; sourceTree = "<group>"; };
@@ -1109,6 +1114,7 @@
 			children = (
 				A676AE4C1F9810C1001F9214 /* Any+Cast.swift */,
 				671462211EB3396E00EAB194 /* Any+TypeName.swift */,
+				67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */,
 				671AD25B206A343300EAF887 /* VoidBlock.swift */,
 			);
 			path = Functions;
@@ -2445,6 +2451,7 @@
 				671462E41EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
 				67EB7FF12061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift in Sources */,
 				67EB8001206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */,
+				67FD4382206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */,
 				671462CC1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
 				6774529A20625E5B0024EEEF /* PaginationDataLoadingState.swift in Sources */,
 				678D26A020692BFF00B05B93 /* TextFieldViewEvents.swift in Sources */,
@@ -2613,6 +2620,7 @@
 				671462E61EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
 				671462CE1EB3396E00EAB194 /* String+SizeCalculation.swift in Sources */,
 				A676AE4D1F9810C1001F9214 /* Any+Cast.swift in Sources */,
+				67FD4384206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */,
 				EFBE57D21EC35EF20040E00A /* Array+Extensions.swift in Sources */,
 				67EB7FC2206140E600BDD9FB /* TotalCountCursor.swift in Sources */,
 				671462821EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
@@ -2743,6 +2751,7 @@
 				67EB7FD220615B8900BDD9FB /* TotalCountCursorConfiguration.swift in Sources */,
 				671AD26F206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift in Sources */,
 				EFBE57D31EC35EF20040E00A /* Array+Extensions.swift in Sources */,
+				67FD4385206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */,
 				67CAF8AE2065189C00527085 /* NetworkService+ActivityIndicator.swift in Sources */,
 				6714638B1EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
 				67EB7FFF206176C900BDD9FB /* AnyPaginationWrappable.swift in Sources */,
@@ -2898,6 +2907,7 @@
 				671463251EB3396E00EAB194 /* Any+TypeName.swift in Sources */,
 				671463891EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
 				675C1FB61F97CA33007D5249 /* AppearanceConfigurable.swift in Sources */,
+				67FD4383206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */,
 				671463811EB3396E00EAB194 /* PaddingDrawingOperation.swift in Sources */,
 				67EB7FDB20615D5B00BDD9FB /* ResettableRxCursorDataSource.swift in Sources */,
 				A6F32C0A1F6EBE5B00AC08EE /* String+LocalizedComponent.swift in Sources */,

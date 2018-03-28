@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.7.1
+- **Add**: Extension for comparing optional arrays (`[T]?`) with `Equatable` elements.
+- **Add**: `additionalHttpHeaders` static field in `ConfigurableNetworkService` protocol.
+- **Add**: Default initializer for Network service that conforms to `ConfigurableNetworkService` protocol.
+
 ## 0.7.0
 - **Add**: `TotalCountCursor` for total count based pagination and related stuff.
 - **[Breaking Change]**: `PaginationTableViewWrapper` and `PaginationTableViewWrapperDelegate` was renamed to `PaginationWrapper` and `PaginationWrapperDelegate `. Also there is significant changes in api
