@@ -26,7 +26,7 @@
 ///   - lhs: First collection.
 ///   - rhs: Second collection.
 /// - Returns: True if both parameters are nil or if first collection is equal to second.
-func ==<T: Equatable>(lhs: [T]?, rhs: [T]?) -> Bool {
+public func ==<T: Equatable>(lhs: [T]?, rhs: [T]?) -> Bool {
     switch (lhs, rhs) {
     case (let lhs?, let rhs?):
         return lhs == rhs
