@@ -20,27 +20,19 @@
 //  THE SOFTWARE.
 //
 
-import Alamofire
-
-/// Protocol with some basic settings for network service configuration.
-public protocol ConfigurableNetworkService {
-
-    /// Base api url string.
-    static var baseUrl: String { get }
-
-    /// Timeout interval for requests.
-    static var timeoutInterval: TimeInterval { get }
-
-    /// Server trust policies.
-    static var serverTrustPolicies: [String: ServerTrustPolicy] { get }
-
-    /// A dictionary of additional headers to send with requests.
-    static var additionalHttpHeaders: HTTPHeaders { get }
-
-    /// Session configuration to use in SessionManager.
-    static var sessionConfiguration: URLSessionConfiguration { get }
-
-    /// Session manager.
-    static var sessionManager: SessionManager { get }
-
+/// Compares two optional collections with Equtable elements.
+///
+/// - Parameters:
+///   - lhs: First collection.
+///   - rhs: Second collection.
+/// - Returns: True if both parameters are nil or if first collection is equal to second.
+func ==<T: Equatable>(lhs: [T]?, rhs: [T]?) -> Bool {
+    switch (lhs, rhs) {
+    case (let lhs?, let rhs?):
+        return lhs == rhs
+    case (nil, nil):
+        return true
+    default:
+        return false
+    }
 }
