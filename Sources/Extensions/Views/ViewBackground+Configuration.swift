@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2017 Touch Instinct
+//  Copyright (c) 2018 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,38 +20,24 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
-/// Structure describes "context" for date formatting.
-public struct DateFormattingArguments: Hashable {
+public extension ViewBackground {
 
-    let dateFormat: String
-    let locale: Locale
-    let timeZone: TimeZone
-
-    /// Default initializer
+    /// Configures view subviews to current background.
     ///
     /// - Parameters:
-    ///   - dateFormat: Date format to be used for formatting.
-    ///   - locale: Locale to be used for formatting.
-    ///   - timeZone: Time zone to be used for formatting.
-    public init(dateFormat: String,
-                locale: Locale = Locale.current,
-                timeZone: TimeZone = TimeZone.current) {
-
-        self.dateFormat = dateFormat
-        self.locale = locale
-        self.timeZone = timeZone
-    }
-
-    public var hashValue: Int {
-        return dateFormat.hashValue ^ locale.hashValue ^ timeZone.hashValue
-    }
-
-    public static func == (lhs: DateFormattingArguments, rhs: DateFormattingArguments) -> Bool {
-        return lhs.dateFormat == rhs.dateFormat &&
-            lhs.locale.identifier == rhs.locale.identifier &&
-            lhs.timeZone.identifier == rhs.timeZone.identifier
+    ///   - backgroundView: Background view that should be used in case of solid color.
+    ///   - backgroundImageView: Background image view that should be used in case of background image.
+    func configure(backgroundView: UIView, backgroundImageView: UIImageView) {
+        switch self {
+        case .color(let color):
+            backgroundView.backgroundColor = color
+            backgroundImageView.image = nil
+        case .image(let image):
+            backgroundView.backgroundColor = nil
+            backgroundImageView.image = image
+        }
     }
 
 }

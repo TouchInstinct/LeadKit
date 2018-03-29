@@ -5,6 +5,7 @@ abstract_target 'LeadKit' do
   pod "RxAlamofire", '~> 4.1'
   pod "ObjectMapper", '~> 3.0'
   pod "SwiftLint", '~> 0.25'
+  pod "SwiftDate", '~> 4.5'
 
   inhibit_all_warnings!
 

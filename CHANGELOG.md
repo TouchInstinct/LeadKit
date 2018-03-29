@@ -1,5 +1,12 @@
 # Changelog
 
+### 0.7.2 
+- **[Breaking Change]**: `DateFormattingService` class replaced with protocol.
+- **Add**: `SwiftDate` dependency for `DateFormattingService`.
+- **Add**: `ViewBackground` enum that describes possible view backgrounds.
+- **Add**: `ViewText` enum that describes text with appearance options.
+- **Removed**: `String+SizeCalculation` extension.
+
 ### 0.7.1
 - **Add**: Extension for comparing optional arrays (`[T]?`) with `Equatable` elements.
 - **Add**: `additionalHttpHeaders` static field in `ConfigurableNetworkService` protocol.
