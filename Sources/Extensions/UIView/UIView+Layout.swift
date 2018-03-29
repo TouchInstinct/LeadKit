@@ -47,7 +47,12 @@ public extension UIView {
         widthAnchor.constraint(equalToConstant: size.width).isActive     = true
     }
 
-    func setToCenter(wtih insets: UIEdgeInsets = .zero) {
+    /**
+     Place and fix view to parent view's center with insets
+
+     - parameter insets: desired view insets, by default is zero
+     */
+    func setToCenter(wtihInsets insets: UIEdgeInsets = .zero) {
         guard let superview = superview else {
             return
         }
