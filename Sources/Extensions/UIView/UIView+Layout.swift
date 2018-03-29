@@ -47,15 +47,46 @@ public extension UIView {
         widthAnchor.constraint(equalToConstant: size.width).isActive     = true
     }
 
+    func setToCenter(wtih insets: UIEdgeInsets = .zero) {
+        guard let superview = superview else {
+            return
+        }
+
+        translatesAutoresizingMaskIntoConstraints = false
+
+        if #available(iOS 11, *) {
+            topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor,
+                                 constant: insets.top).isActive = true
+            leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor,
+                                     constant: insets.left).isActive = true
+            bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor,
+                                    constant: -insets.bottom).isActive = true
+            trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor,
+                                      constant: -insets.right).isActive = true
+        } else {
+            topAnchor.constraint(equalTo: superview.topAnchor, constant: insets.top).isActive = true
+            leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: insets.left).isActive = true
+            bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -insets.bottom).isActive = true
+            trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -insets.right).isActive = true
+        }
+    }
+
     private func scaleToFill() {
         guard let superview = superview else {
             return
         }
 
-        topAnchor.constraint(equalTo: superview.topAnchor).isActive       = true
-        bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
-        leftAnchor.constraint(equalTo: superview.leftAnchor).isActive     = true
-        rightAnchor.constraint(equalTo: superview.rightAnchor).isActive   = true
+        if #available(iOS 11, *) {
+            topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor).isActive       = true
+            bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor).isActive = true
+            leftAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leftAnchor).isActive     = true
+            rightAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.rightAnchor).isActive   = true
+        } else {
+            topAnchor.constraint(equalTo: superview.topAnchor).isActive       = true
+            bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
+            leftAnchor.constraint(equalTo: superview.leftAnchor).isActive     = true
+            rightAnchor.constraint(equalTo: superview.rightAnchor).isActive   = true
+        }
     }
 
 }
