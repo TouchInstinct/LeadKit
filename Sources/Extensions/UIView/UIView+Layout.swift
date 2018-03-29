@@ -41,10 +41,14 @@ public extension UIView {
             return
         }
 
-        centerXAnchor.constraint(equalTo: parent.centerXAnchor).isActive = true
-        centerYAnchor.constraint(equalTo: parent.centerYAnchor).isActive = true
-        heightAnchor.constraint(equalToConstant: size.height).isActive   = true
-        widthAnchor.constraint(equalToConstant: size.width).isActive     = true
+        let constraints = [
+            centerXAnchor.constraint(equalTo: parent.centerXAnchor),
+            centerYAnchor.constraint(equalTo: parent.centerYAnchor),
+            heightAnchor.constraint(equalToConstant: size.height),
+            widthAnchor.constraint(equalToConstant: size.width)
+        ]
+
+        NSLayoutConstraint.activate(constraints)
     }
 
     /**
@@ -59,21 +63,24 @@ public extension UIView {
 
         translatesAutoresizingMaskIntoConstraints = false
 
+        let constraints: [NSLayoutConstraint]
         if #available(iOS 11, *) {
-            topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor,
-                                 constant: insets.top).isActive = true
-            leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor,
-                                     constant: insets.left).isActive = true
-            bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor,
-                                    constant: -insets.bottom).isActive = true
-            trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor,
-                                      constant: -insets.right).isActive = true
+            constraints = [
+                topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor, constant: insets.top),
+                leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor, constant: insets.left),
+                bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -insets.bottom),
+                trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: -insets.right)
+            ]
         } else {
-            topAnchor.constraint(equalTo: superview.topAnchor, constant: insets.top).isActive = true
-            leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: insets.left).isActive = true
-            bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -insets.bottom).isActive = true
-            trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -insets.right).isActive = true
+            constraints = [
+                topAnchor.constraint(equalTo: superview.topAnchor, constant: insets.top),
+                leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: insets.left),
+                bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -insets.bottom),
+                trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -insets.right)
+            ]
         }
+
+        NSLayoutConstraint.activate(constraints)
     }
 
     private func scaleToFill() {
@@ -81,17 +88,24 @@ public extension UIView {
             return
         }
 
+        let constraints: [NSLayoutConstraint]
         if #available(iOS 11, *) {
-            topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor).isActive       = true
-            bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor).isActive = true
-            leftAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leftAnchor).isActive     = true
-            rightAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.rightAnchor).isActive   = true
+            constraints = [
+                topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor),
+                bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor),
+                leftAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leftAnchor),
+                rightAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.rightAnchor)
+            ]
         } else {
-            topAnchor.constraint(equalTo: superview.topAnchor).isActive       = true
-            bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
-            leftAnchor.constraint(equalTo: superview.leftAnchor).isActive     = true
-            rightAnchor.constraint(equalTo: superview.rightAnchor).isActive   = true
+            constraints = [
+                topAnchor.constraint(equalTo: superview.topAnchor),
+                bottomAnchor.constraint(equalTo: superview.bottomAnchor),
+                leftAnchor.constraint(equalTo: superview.leftAnchor),
+                rightAnchor.constraint(equalTo: superview.rightAnchor)
+            ]
         }
+
+        NSLayoutConstraint.activate(constraints)
     }
 
 }
