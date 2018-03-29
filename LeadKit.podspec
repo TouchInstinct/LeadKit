@@ -70,6 +70,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/UIViewController/*",
       "Sources/Extensions/UIWindow/*",
       "Sources/Extensions/Views/UILabel/*",
+      "Sources/Extensions/Views/ViewBackground+Configuration.swift",
       "Sources/Protocols/LoadingIndicator.swift",
       "Sources/Protocols/DataLoading/PaginationDataLoading/PaginationWrappable.swift",
       "Sources/Protocols/DataLoading/GeneralDataLoading/GeneralDataLoadingController.swift",
