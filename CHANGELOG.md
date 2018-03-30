@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.7.2
+
+- **Fixed**: Change root controller for window
+
 ### 0.7.1
 - **Add**: Extension for comparing optional arrays (`[T]?`) with `Equatable` elements.
 - **Add**: `additionalHttpHeaders` static field in `ConfigurableNetworkService` protocol.

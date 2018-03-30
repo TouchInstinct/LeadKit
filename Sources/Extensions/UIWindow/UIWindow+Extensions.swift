@@ -35,7 +35,11 @@ public extension UIWindow {
     func changeRootController(controller: UIViewController) {
         animateRootViewControllerChanging(controller: controller)
 
-        rootViewController?.dismiss(animated: false, completion: nil)
+        let previousRoot = rootViewController
+        previousRoot?.dismiss(animated: false) {
+            previousRoot?.view.removeFromSuperview()
+        }
+
         rootViewController = controller
         makeKeyAndVisible()
     }
