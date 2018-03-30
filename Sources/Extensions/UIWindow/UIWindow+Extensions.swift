@@ -32,10 +32,17 @@ public extension UIWindow {
     /// Method changes root controller in window.
     ///
     /// - Parameter controller: New root controller.
-    func changeRootController(controller: UIViewController) {
-        animateRootViewControllerChanging(controller: controller)
+    /// - Parameter animated: Indicates whether to use animation or not.
+    func changeRootController(controller: UIViewController, animated: Bool = true) {
+        if animated {
+            animateRootViewControllerChanging(controller: controller)
+        }
 
-        rootViewController?.dismiss(animated: false, completion: nil)
+        let previousRoot = rootViewController
+        previousRoot?.dismiss(animated: false) {
+            previousRoot?.view.removeFromSuperview()
+        }
+
         rootViewController = controller
         makeKeyAndVisible()
     }
