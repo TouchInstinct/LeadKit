@@ -38,8 +38,9 @@ public extension UIWindow {
             animateRootViewControllerChanging(controller: controller)
         }
 
-        rootViewController?.dismiss(animated: false) { [weak self] in
-            self?.rootViewController?.view.removeFromSuperview()
+        let previousRoot = rootViewController
+        previousRoot?.dismiss(animated: false) {
+            previousRoot?.view.removeFromSuperview()
         }
 
         rootViewController = controller
