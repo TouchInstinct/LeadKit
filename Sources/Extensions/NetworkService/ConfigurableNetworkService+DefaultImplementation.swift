@@ -52,12 +52,3 @@ public extension ConfigurableNetworkService {
     }
 
 }
-
-public extension ConfigurableNetworkService where Self: NetworkService {
-
-    /// Convenience initializer with default session manager.
-    init() {
-        self.init(sessionManager: Self.sessionManager)
-    }
-
-}

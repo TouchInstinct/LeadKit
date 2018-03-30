@@ -64,7 +64,7 @@ public extension UIView {
         translatesAutoresizingMaskIntoConstraints = false
 
         let constraints: [NSLayoutConstraint]
-        if #available(iOS 11, *) {
+        if #available(iOS 11, tvOS 11, *) {
             constraints = [
                 topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor, constant: insets.top),
                 leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor, constant: insets.left),
@@ -89,7 +89,7 @@ public extension UIView {
         }
 
         let constraints: [NSLayoutConstraint]
-        if #available(iOS 11, *) {
+        if #available(iOS 11, tvOS 11, *) {
             constraints = [
                 topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor),
                 bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor),

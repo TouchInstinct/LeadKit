@@ -1,6 +1,8 @@
 # Changelog
 
 ### 0.7.2 
+- **Update**: Xcode 9.3 migration.
+- **Remove**: Default initializer for Network service that conforms to `ConfigurableNetworkService` protocol.
 - **[Breaking Change]**: `DateFormattingService` class replaced with protocol.
 - **Add**: `SwiftDate` dependency for `DateFormattingService`.
 - **Add**: `ViewBackground` enum that describes possible view backgrounds.
