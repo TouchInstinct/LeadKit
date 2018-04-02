@@ -21,6 +21,7 @@
 //
 
 import ObjectMapper
+import SwiftDate
 
 public extension DateFormattingService {
 
@@ -28,20 +29,32 @@ public extension DateFormattingService {
     ///
     /// - Parameter arguments: A formatting arguments structure.
     /// - Returns: A transform for given formatting arguments.
-    func mappingTransform(for arguments: DateFormattingArguments) -> TransformOf<Date, String> {
-        return TransformOf<Date, String>(fromJSON: { stringValue in
+    func mappingTransform(with format: DateFormatType) -> TransformOf<DateInRegion, String> {
+        return TransformOf(fromJSON: { stringValue in
             if let stringValue = stringValue {
-                return self.date(from: stringValue, arguments: arguments)
+                return self.date(from: stringValue, format: format)
             } else {
                 return nil
             }
         }, toJSON: { dateValue in
             if let dateValue = dateValue {
-                return self.string(from: dateValue, arguments: arguments)
+                return self.string(from: dateValue, format: format)
             } else {
                 return nil
             }
         })
+    }
+
+}
+
+public extension DateFormattingService where Self: Singleton {
+
+    /// Creates transform for date to string and string to date mapping.
+    ///
+    /// - Parameter arguments: A formatting arguments structure.
+    /// - Returns: A transform for given formatting arguments.
+    static func mappingTransform(with format: DateFormatType) -> TransformOf<DateInRegion, String> {
+        return shared.mappingTransform(with: format)
     }
 
 }

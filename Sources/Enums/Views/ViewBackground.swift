@@ -20,35 +20,15 @@
 //  THE SOFTWARE.
 //
 
-import Alamofire
+import UIKit
 
-public extension ConfigurableNetworkService {
+/// Enum that describes possible view backgrounds.
+///
+/// - color: Solid color background.
+/// - image: Image background.
+public enum ViewBackground {
 
-    static var timeoutInterval: TimeInterval {
-        return 20
-    }
-
-    static var serverTrustPolicies: [String: ServerTrustPolicy] {
-        return [
-            baseUrl: .disableEvaluation
-        ]
-    }
-
-    static var additionalHttpHeaders: HTTPHeaders {
-        return SessionManager.defaultHTTPHeaders
-    }
-
-    static var sessionConfiguration: URLSessionConfiguration {
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = timeoutInterval
-        configuration.httpAdditionalHeaders = additionalHttpHeaders
-
-        return configuration
-    }
-
-    static var sessionManager: SessionManager {
-        return SessionManager(configuration: sessionConfiguration,
-                              serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies))
-    }
+    case color(UIColor)
+    case image(UIImage)
 
 }

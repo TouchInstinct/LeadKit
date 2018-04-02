@@ -67,14 +67,14 @@ extension TimeInterval {
      Supported components: days, hours, minutes, seconds
      */
     public var timeComponents: TimeComponents {
-        var ti = Int(self)
-        let days = (ti / TimeInterval.secondsInDay) % TimeInterval.secondsInDay
-        ti -= days * TimeInterval.secondsInDay
+        var timeInterval = Int(self)
+        let days = (timeInterval / TimeInterval.secondsInDay) % TimeInterval.secondsInDay
+        timeInterval -= days * TimeInterval.secondsInDay
         return (
             days,
-            (ti / TimeInterval.secondsInHour) % TimeInterval.secondsInHour,
-            (ti / TimeInterval.secondsInMinute) % TimeInterval.secondsInMinute,
-            ti % TimeInterval.secondsInMinute
+            (timeInterval / TimeInterval.secondsInHour) % TimeInterval.secondsInHour,
+            (timeInterval / TimeInterval.secondsInMinute) % TimeInterval.secondsInMinute,
+            timeInterval % TimeInterval.secondsInMinute
         )
     }
 

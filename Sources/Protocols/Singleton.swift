@@ -20,35 +20,10 @@
 //  THE SOFTWARE.
 //
 
-import Alamofire
+/// Protocol that describes type with single instance across the app.
+public protocol Singleton {
 
-public extension ConfigurableNetworkService {
-
-    static var timeoutInterval: TimeInterval {
-        return 20
-    }
-
-    static var serverTrustPolicies: [String: ServerTrustPolicy] {
-        return [
-            baseUrl: .disableEvaluation
-        ]
-    }
-
-    static var additionalHttpHeaders: HTTPHeaders {
-        return SessionManager.defaultHTTPHeaders
-    }
-
-    static var sessionConfiguration: URLSessionConfiguration {
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = timeoutInterval
-        configuration.httpAdditionalHeaders = additionalHttpHeaders
-
-        return configuration
-    }
-
-    static var sessionManager: SessionManager {
-        return SessionManager(configuration: sessionConfiguration,
-                              serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies))
-    }
+    /// Shared instance of this type.
+    static var shared: Self { get }
 
 }

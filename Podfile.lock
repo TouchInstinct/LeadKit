@@ -12,6 +12,7 @@ PODS:
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
+  - SwiftDate (4.5.1)
   - SwiftLint (0.25.0)
   - TableKit (2.6.0)
   - UIScrollView-InfiniteScroll (1.0.2)
@@ -22,6 +23,7 @@ DEPENDENCIES:
   - RxAlamofire (~> 4.1)
   - RxCocoa (~> 4.1)
   - RxSwift (~> 4.1)
+  - SwiftDate (~> 4.5)
   - SwiftLint (~> 0.25)
   - TableKit (~> 2.6)
   - UIScrollView-InfiniteScroll (~> 1.0.0)
@@ -33,10 +35,11 @@ SPEC CHECKSUMS:
   RxAlamofire: 96a2bff4694a1609bb59c57b53d99ea7a0ddc64a
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
+  SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
   SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
   TableKit: 61880e4c13ac0ba396a308fcb1ae48f6dec8b458
   UIScrollView-InfiniteScroll: c132d6d5851daff229ab4a1060ccf70a05a051c9
 
-PODFILE CHECKSUM: ab838edfaeaa5ec185764a2fa042a9b61be1da2a
+PODFILE CHECKSUM: a266374cd31534965884702e73d8360ce3cdd274
 
 COCOAPODS: 1.4.0

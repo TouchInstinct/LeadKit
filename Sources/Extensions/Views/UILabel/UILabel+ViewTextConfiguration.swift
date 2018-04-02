@@ -20,35 +20,23 @@
 //  THE SOFTWARE.
 //
 
-import Alamofire
+import UIKit.UILabel
 
-public extension ConfigurableNetworkService {
+public extension UILabel {
 
-    static var timeoutInterval: TimeInterval {
-        return 20
-    }
-
-    static var serverTrustPolicies: [String: ServerTrustPolicy] {
-        return [
-            baseUrl: .disableEvaluation
-        ]
-    }
-
-    static var additionalHttpHeaders: HTTPHeaders {
-        return SessionManager.defaultHTTPHeaders
-    }
-
-    static var sessionConfiguration: URLSessionConfiguration {
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = timeoutInterval
-        configuration.httpAdditionalHeaders = additionalHttpHeaders
-
-        return configuration
-    }
-
-    static var sessionManager: SessionManager {
-        return SessionManager(configuration: sessionConfiguration,
-                              serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies))
+    /// Configures label with given ViewText.
+    ///
+    /// - Parameter viewText: ViewText to set.
+    func configure(with viewText: ViewText) {
+        switch viewText {
+        case .string(let string, let font, let color, let alignment):
+            self.font = font
+            self.textColor = color
+            self.textAlignment = alignment
+            self.text = string
+        case .attributedString(let attributedString):
+            attributedText = attributedString
+        }
     }
 
 }

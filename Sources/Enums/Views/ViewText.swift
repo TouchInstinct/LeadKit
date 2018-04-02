@@ -20,35 +20,15 @@
 //  THE SOFTWARE.
 //
 
-import Alamofire
+import UIKit
 
-public extension ConfigurableNetworkService {
+/// Enum that describes text with appearance options.
+///
+/// - string: Regular string with common and often-used text attributes.
+/// - attributedString: Attributed string.
+public enum ViewText {
 
-    static var timeoutInterval: TimeInterval {
-        return 20
-    }
-
-    static var serverTrustPolicies: [String: ServerTrustPolicy] {
-        return [
-            baseUrl: .disableEvaluation
-        ]
-    }
-
-    static var additionalHttpHeaders: HTTPHeaders {
-        return SessionManager.defaultHTTPHeaders
-    }
-
-    static var sessionConfiguration: URLSessionConfiguration {
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = timeoutInterval
-        configuration.httpAdditionalHeaders = additionalHttpHeaders
-
-        return configuration
-    }
-
-    static var sessionManager: SessionManager {
-        return SessionManager(configuration: sessionConfiguration,
-                              serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies))
-    }
+    case string(String, font: UIFont, color: UIColor, alignment: NSTextAlignment)
+    case attributedString(NSAttributedString)
 
 }

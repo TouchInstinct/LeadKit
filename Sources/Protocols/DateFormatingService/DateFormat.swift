@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2017 Touch Instinct
+//  Copyright (c) 2018 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,25 +20,12 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import SwiftDate
 
-public extension DateFormattingArguments {
+/// Protocol for describing date format.
+public protocol DateFormat {
 
-    /// Date formatter for formatting arguments.
-    var dateFormatter: DateFormatter {
-        return DateFormatter(dateFormat: dateFormat, locale: locale, timeZone: timeZone)
-    }
-
-}
-
-private extension DateFormatter {
-
-    convenience init(dateFormat: String, locale: Locale, timeZone: TimeZone) {
-        self.init()
-
-        self.dateFormat = dateFormat
-        self.locale = locale
-        self.timeZone = timeZone
-    }
+    /// SwiftDate.DateFormat for current format.
+    var swiftDateFormat: SwiftDate.DateFormat { get }
 
 }

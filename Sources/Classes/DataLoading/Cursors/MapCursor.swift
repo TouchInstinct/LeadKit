@@ -81,7 +81,7 @@ public class MapCursor<Cursor: CursorType, T>: CursorType, RxDataSource {
 
     public func loadNextBatch() -> Single<[T]> {
         return cursor.loadNextBatch().map { newItems in
-            let transformedNewItems = newItems.flatMap(self.transform)
+            let transformedNewItems = newItems.compactMap(self.transform)
             self.elements += transformedNewItems
 
             return transformedNewItems
