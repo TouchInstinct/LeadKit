@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.7.4
+- **Update**: Exclude UIApplication extensions from iOS-Extension subspec.
+
 ### 0.7.3
 - **Update**: Xcode 9.3 migration.
 - **Remove**: Default initializer for Network service that conforms to `ConfigurableNetworkService` protocol.
@@ -110,7 +113,7 @@
 
 ### 0.5.10
 
-- **Fix**: `Public` modifier for `SpinnerView` 
+- **Fix**: `Public` modifier for `SpinnerView`
 
 ### 0.5.9
 

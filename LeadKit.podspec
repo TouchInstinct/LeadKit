@@ -121,6 +121,8 @@ Pod::Spec.new do |s|
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/TableDirector/*",
+      "Sources/Extensions/UIApplication/UIApplication+OpenUrlSupport.swift",
+      "Sources/Extensions/UIApplication/UIApplication+Cellular.swift",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
     ]
 
