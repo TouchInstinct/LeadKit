@@ -49,7 +49,7 @@ public struct Support<Base> {
     }
 }
 
-/// A type that has reactive extensions.
+/// A type that has support extensions.
 public protocol SupportCompatible {
     /// Extended type
     associatedtype CompatibleType

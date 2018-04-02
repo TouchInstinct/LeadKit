@@ -39,23 +39,19 @@ open class SeparatorCell: UITableViewCell {
     /// Configure separator with viewModel
     /// - parameter separatorType: type of separators
     public func configureSeparator(with separatorType: CellSeparatorType) {
+        topView.isHidden = separatorType.topIsHidden
+        bottomView.isHidden = separatorType.bottomIsHidden
+
         switch separatorType {
         case .none:
-            topView.isHidden = true
-            bottomView.isHidden = true
+            break
         case .bottom(let configuration):
-            topView.isHidden = true
-            bottomView.isHidden = false
             updateBottomSeparator(with: configuration)
             setNeedsUpdateConstraints()
         case .top(let configuration):
-            topView.isHidden = false
-            bottomView.isHidden = true
             updateTopSeparator(with: configuration)
             setNeedsUpdateConstraints()
         case .full(let topConfiguration, let bottomConfiguration):
-            topView.isHidden = false
-            bottomView.isHidden = false
             updateTopSeparator(with: topConfiguration)
             updateBottomSeparator(with: bottomConfiguration)
             setNeedsUpdateConstraints()
@@ -146,13 +142,13 @@ open class SeparatorCell: UITableViewCell {
     private func updateTopSeparator(with configuration: SeparatorConfiguration) {
         topView.backgroundColor = configuration.color
         topSeparatorHeight = configuration.height
-        topSeparatorInsets = configuration.insets ?? .zero
+        topSeparatorInsets = configuration.insets
     }
 
     private func updateBottomSeparator(with configuration: SeparatorConfiguration) {
         bottomView.backgroundColor = configuration.color
         bottomSeparatorHeight      = configuration.height
-        bottomSeparatorInsets      = configuration.insets ?? .zero
+        bottomSeparatorInsets      = configuration.insets
     }
 
     private func createConstraints() {

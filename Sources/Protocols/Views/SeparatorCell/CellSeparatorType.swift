@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2017 Touch Instinct
+//  Copyright (c) 2018 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,8 +20,6 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
-
 /// Cell self-descriptive separator type
 public enum CellSeparatorType {
 
@@ -36,28 +34,4 @@ public enum CellSeparatorType {
 
     /// First configuration for top, second for bottom
     case full(SeparatorConfiguration, SeparatorConfiguration)
-}
-
-public extension CellSeparatorType {
-
-    /// Determine if bottom separator is hidden
-    var bottomIsHidden: Bool {
-        switch self {
-        case .top, .none:
-            return true
-        case .bottom, .full:
-            return false
-        }
-    }
-
-    /// Determine if top separator is hidden
-    var topIsHidden: Bool {
-        switch self {
-        case .bottom, .none:
-            return true
-        case .top, .full:
-            return false
-        }
-    }
-
 }

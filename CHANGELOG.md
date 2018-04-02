@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.7.5
+- **Add**: `topConfiguration` and `bottomConfiguration` properties, methods to configure top and bottom separators in `CellSeparatorType` extension.
+- **Add**: `totalHeight` property in `SeparatorConfiguration` extension.
+
 ### 0.7.4
 - **Update**: Exclude UIApplication extensions from iOS-Extension subspec.
 
@@ -15,7 +19,6 @@
 ### 0.7.2
 
 - **Fixed**: Change root controller for window
-
 
 ### 0.7.1
 - **Add**: Extension for comparing optional arrays (`[T]?`) with `Equatable` elements.
