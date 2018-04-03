@@ -1333,7 +1333,6 @@
 				674AF55A1EC45B1600038A8F /* UIActivityIndicatorView */,
 				679C77D51F98F7A60094BE10 /* UIAlertController */,
 				671AD260206A35C500EAF887 /* UIApplication */,
-				672947E1206EA3B200AC6B6B /* UIEdgeInsets */,
 				672947E4206EA67B00AC6B6B /* UIImage */,
 				67274776206CD07B00725163 /* UILabel */,
 				36DAAF4F2007CC330090BE0D /* UITableView */,
@@ -1342,13 +1341,6 @@
 				6714621B1EB3396E00EAB194 /* UIWindow */,
 			);
 			path = UIKit;
-			sourceTree = "<group>";
-		};
-		672947E1206EA3B200AC6B6B /* UIEdgeInsets */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UIEdgeInsets;
 			sourceTree = "<group>";
 		};
 		672947E2206EA59E00AC6B6B /* Drawing */ = {
