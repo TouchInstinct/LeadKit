@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2017 Touch Instinct
+//  Copyright (c) 2018 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,24 +20,13 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import CoreGraphics.CGBase
 
-/// Separator configuration. Supports positioning, color and height per each separator
-public struct SeparatorConfiguration {
+public extension SeparatorConfiguration {
 
-    public let color: UIColor
-    public let insets: UIEdgeInsets
-    public let height: CGFloat
-
-    /// Initialize configuration with parameters
-    /// - parameter color: Color must be provided
-    /// - parameter insets: Insets for separator. Default is no insets
-    /// - parameter height: Height for separator. Default is 1 pixel
-    /// - returns: Ready to use separator configuration
-    public init(color: UIColor, insets: UIEdgeInsets = .zero, height: CGFloat = CGFloat(pixels: 1)) {
-        self.color  = color
-        self.insets = insets
-        self.height = height
+    /// Total height of separator top inset + height + bottom inset.
+    var totalHeight: CGFloat {
+        return height + insets.top + insets.bottom
     }
 
 }

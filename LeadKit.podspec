@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.7.3"
+  s.version         = "0.7.5"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -14,23 +14,6 @@ Pod::Spec.new do |s|
     ss.watchos.deployment_target = '2.0'
 
     ss.source_files = "Sources/Extensions/UIColor/UIColor+Hex.swift"
-  end
-
-  s.subspec 'Drawing' do |ss|
-    # ss.ios.deployment_target = '8.0' # can't get it work: DrawingOperation.swift:29:17: note: did you mean 'DrawingOperation'?
-    # ss.tvos.deployment_target = '9.0' # can't get it work: DrawingOperation.swift:29:17: note: did you mean 'DrawingOperation'?
-    ss.watchos.deployment_target = '2.0'
-
-    ss.source_files = [
-      "Sources/Enums/ResizeMode.swift",
-      "Sources/Extensions/{CGContext,CGImage,CGSize,UIImage}/*",
-      "Sources/Protocols/{DrawingOperation,SupportProtocol}.swift",
-      "Sources/Structures/Drawing/*",
-    ]
-    ss.watchos.exclude_files = [
-      "Sources/Structures/Drawing/CALayerDrawingOperation.swift",
-      "Sources/Extensions/UIImage/*",
-    ]
   end
 
   s.subspec 'Core' do |ss|
@@ -59,21 +42,14 @@ Pod::Spec.new do |s|
       "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/TableDirector/*",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
-      "Sources/Extensions/UIActivityIndicatorView/*",
-      "Sources/Extensions/UIAlertcontroller/*",
-      "Sources/Extensions/UIApplication/*",
-      "Sources/Extensions/UICollectionView/*",
-      "Sources/Extensions/UIDevice/*",
-      "Sources/Extensions/UIImage/*",
-      "Sources/Extensions/UITableView/*",
-      "Sources/Extensions/UIView/*",
-      "Sources/Extensions/UIViewController/*",
-      "Sources/Extensions/UIWindow/*",
-      "Sources/Extensions/Views/UILabel/*",
+      "Sources/Extensions/Drawing/UIImage/*",
+      "Sources/Extensions/UIKit/**/*.swift",
       "Sources/Extensions/Views/ViewBackground+Configuration.swift",
+      "Sources/Extensions/Views/SeparatorCell/*",
       "Sources/Protocols/LoadingIndicator.swift",
       "Sources/Protocols/DataLoading/PaginationDataLoading/PaginationWrappable.swift",
       "Sources/Protocols/DataLoading/GeneralDataLoading/GeneralDataLoadingController.swift",
+      "Sources/Protocols/Views/SeparatorCell/*",
       "Sources/Structures/Views/AnyLoadingIndicator.swift",
       "Sources/Structures/DrawingOperations/CALayerDrawingOperation.swift",
       "Sources/Structures/DrawingOperations/RoundDrawingOperation.swift",
@@ -90,10 +66,12 @@ Pod::Spec.new do |s|
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/TableDirector/*",
-      "Sources/Extensions/UIApplication/UIApplication+OpenUrlSupport.swift",
-      "Sources/Extensions/UIApplication/UIApplication+Cellular.swift",
+      "Sources/Extensions/UIKit/UIApplication/UIApplication+OpenUrlSupport.swift",
+      "Sources/Extensions/UIKit/UIApplication/UIApplication+Cellular.swift",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
+      "Sources/Extensions/Views/SeparatorCell/*",
       "Sources/Protocols/DataLoading/PaginationDataLoading/PaginationWrappable.swift",
+      "Sources/Protocols/Views/SeparatorCell/*",
       "Sources/Structures/DataLoading/PaginationDataLoading/*"
     ]
 
@@ -123,7 +101,9 @@ Pod::Spec.new do |s|
       "Sources/Extensions/TableDirector/*",
       "Sources/Extensions/UIApplication/UIApplication+OpenUrlSupport.swift",
       "Sources/Extensions/UIApplication/UIApplication+Cellular.swift",
-      "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
+      "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
+      "Sources/Extensions/Views/SeparatorCell/*",
+      "Sources/Protocols/Views/SeparatorCell/*"
     ]
 
     ss.dependency "CocoaLumberjack/Swift", '~> 3.4'
