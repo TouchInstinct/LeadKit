@@ -64,8 +64,9 @@ public struct NetworkServiceConfiguration {
 
 }
 
-extension NetworkServiceConfiguration {
+public extension NetworkServiceConfiguration {
 
+    /// SessionManager constructed with given parameters (session configuration and trust policies)
     var sessionManager: SessionManager {
         return SessionManager(configuration: sessionConfiguration,
                               serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies))

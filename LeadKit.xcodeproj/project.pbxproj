@@ -547,10 +547,10 @@
 		BA6C6DB45950382041948FC5 /* Pods_LeadKit_LeadKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE9323150A9760008093F73 /* Pods_LeadKit_LeadKit_iOS.framework */; };
 		D6EE55093E404DEA62B03DDF /* Pods_LeadKit_LeadKit_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8590CA7831555C295C5DC572 /* Pods_LeadKit_LeadKit_watchOS.framework */; };
 		DEE25FE98D40ED1C168F384A /* Pods_LeadKit_LeadKit_iOS_Extensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887F99C5326BD220C2811BD6 /* Pods_LeadKit_LeadKit_iOS_Extensions.framework */; };
-		EF24213420769CB800FA9BE6 /* NetworkServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24213320769CB800FA9BE6 /* NetworkServiceConfiguration.swift */; };
-		EF24213520769CBF00FA9BE6 /* NetworkServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24213320769CB800FA9BE6 /* NetworkServiceConfiguration.swift */; };
-		EF24213620769CC000FA9BE6 /* NetworkServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24213320769CB800FA9BE6 /* NetworkServiceConfiguration.swift */; };
-		EF24213720769CC000FA9BE6 /* NetworkServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24213320769CB800FA9BE6 /* NetworkServiceConfiguration.swift */; };
+		EF24213A2076D5BD00FA9BE6 /* NetworkServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2421392076D5BD00FA9BE6 /* NetworkServiceConfiguration.swift */; };
+		EF24213B2076D5C700FA9BE6 /* NetworkServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2421392076D5BD00FA9BE6 /* NetworkServiceConfiguration.swift */; };
+		EF24213C2076D5C900FA9BE6 /* NetworkServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2421392076D5BD00FA9BE6 /* NetworkServiceConfiguration.swift */; };
+		EF24213D2076D5CA00FA9BE6 /* NetworkServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2421392076D5BD00FA9BE6 /* NetworkServiceConfiguration.swift */; };
 		EFBE57D01EC35EF20040E00A /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE57CF1EC35EF20040E00A /* Array+Extensions.swift */; };
 		EFBE57D11EC35EF20040E00A /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE57CF1EC35EF20040E00A /* Array+Extensions.swift */; };
 		EFBE57D21EC35EF20040E00A /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE57CF1EC35EF20040E00A /* Array+Extensions.swift */; };
@@ -784,7 +784,7 @@
 		D0F8D0002B21A4F31981F1ED /* Pods_LeadKit_LeadKit_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_LeadKit_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D840E55867DC9BB63460B856 /* Pods-LeadKit tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit tvOSTests/Pods-LeadKit tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		DF1148A279C7AC7A42B0A0F8 /* Pods_LeadKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF24213320769CB800FA9BE6 /* NetworkServiceConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceConfiguration.swift; sourceTree = "<group>"; };
+		EF2421392076D5BD00FA9BE6 /* NetworkServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceConfiguration.swift; sourceTree = "<group>"; };
 		EFBE57CF1EC35EF20040E00A /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		EFBE57DA1EC361620040E00A /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1167,9 +1167,10 @@
 		671462351EB3396E00EAB194 /* Structures */ = {
 			isa = PBXGroup;
 			children = (
-				677452B620627F9E0024EEEF /* DataLoading */,
 				671462361EB3396E00EAB194 /* Api */,
+				677452B620627F9E0024EEEF /* DataLoading */,
 				671462381EB3396E00EAB194 /* DrawingOperations */,
+				EF2421382076D5BD00FA9BE6 /* NetworkService */,
 				671462421EB3396E00EAB194 /* Views */,
 			);
 			path = Structures;
@@ -1252,7 +1253,6 @@
 				67952C3B1EB3208000B3BA1A /* Info-tvOS.plist */,
 				67952C3A1EB3205D00B3BA1A /* Info-watchOS.plist */,
 				67186B201EB247A200CFAFFB /* LeadKit.h */,
-				EF24213220769C9C00FA9BE6 /* Models */,
 				671462221EB3396E00EAB194 /* Protocols */,
 				671462351EB3396E00EAB194 /* Structures */,
 			);
@@ -1769,12 +1769,12 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		EF24213220769C9C00FA9BE6 /* Models */ = {
+		EF2421382076D5BD00FA9BE6 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
-				EF24213320769CB800FA9BE6 /* NetworkServiceConfiguration.swift */,
+				EF2421392076D5BD00FA9BE6 /* NetworkServiceConfiguration.swift */,
 			);
-			path = Models;
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 		EFBE57CE1EC35ED90040E00A /* Array */ = {
@@ -2576,7 +2576,6 @@
 				67386A8C206CF3F6004EDA6C /* DateFormattingService+DefaultImplementation.swift in Sources */,
 				674AF55C1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */,
 				671463401EB3396E00EAB194 /* ModuleConfigurator.swift in Sources */,
-				EF24213420769CB800FA9BE6 /* NetworkServiceConfiguration.swift in Sources */,
 				67A1FF8F1EBCA09B00D6C89F /* UIImage+Spinner.swift in Sources */,
 				673564F62068C68D00F0CBED /* NumberFormat.swift in Sources */,
 				671462901EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
@@ -2647,6 +2646,7 @@
 				671463341EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
 				673CF4182063D50700C329F6 /* GeneralDataLoadingController.swift in Sources */,
 				671462701EB3396E00EAB194 /* CursorError.swift in Sources */,
+				EF24213A2076D5BD00FA9BE6 /* NetworkServiceConfiguration.swift in Sources */,
 				671463981EB3396E00EAB194 /* AnyLoadingIndicator.swift in Sources */,
 				671463A71EB340C000EAB194 /* UIViewController+ConfigurableController.swift in Sources */,
 				671463141EB3396E00EAB194 /* UIViewController+TopVisibleViewController.swift in Sources */,
@@ -2753,7 +2753,7 @@
 				671463321EB3396E00EAB194 /* CursorType.swift in Sources */,
 				6714624E1EB3396E00EAB194 /* MapCursor.swift in Sources */,
 				A676AE571F981130001F9214 /* ObservableMappable.swift in Sources */,
-				EF24213620769CC000FA9BE6 /* NetworkServiceConfiguration.swift in Sources */,
+				EF24213C2076D5C900FA9BE6 /* NetworkServiceConfiguration.swift in Sources */,
 				6774528F20625C9E0024EEEF /* GeneralDataLoadingState.swift in Sources */,
 				671463261EB3396E00EAB194 /* Any+TypeName.swift in Sources */,
 				6714638A1EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
@@ -2895,7 +2895,6 @@
 				671462EF1EB3396E00EAB194 /* UIImage+Extensions.swift in Sources */,
 				671AD269206A365100EAF887 /* UIApplication+OpenUrlSupport.swift in Sources */,
 				671AD25F206A343300EAF887 /* VoidBlock.swift in Sources */,
-				EF24213720769CC000FA9BE6 /* NetworkServiceConfiguration.swift in Sources */,
 				6774526A206249360024EEEF /* UITableView+PaginationWrappable.swift in Sources */,
 				6714636F1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
 				EFBE57DE1EC361620040E00A /* UIView+Layout.swift in Sources */,
@@ -2951,6 +2950,7 @@
 				671462DB1EB3396E00EAB194 /* TimeInterval+DateComponents.swift in Sources */,
 				6774529020625C9E0024EEEF /* GeneralDataLoadingState.swift in Sources */,
 				67EB7FC3206140E600BDD9FB /* TotalCountCursor.swift in Sources */,
+				EF24213D2076D5CA00FA9BE6 /* NetworkServiceConfiguration.swift in Sources */,
 				6714638F1EB3396E00EAB194 /* SolidFillDrawingOperation.swift in Sources */,
 				67E6C2381EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				67C7B17C2068BB1C00C9EDA3 /* NumberFormattingService.swift in Sources */,
@@ -3007,6 +3007,7 @@
 				671462911EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
 				673564F72068C68D00F0CBED /* NumberFormat.swift in Sources */,
 				67051ADC1EBC7C36008EADC0 /* SpinnerView.swift in Sources */,
+				EF24213B2076D5C700FA9BE6 /* NetworkServiceConfiguration.swift in Sources */,
 				671462FD1EB3396E00EAB194 /* UIView+XibNameProtocol.swift in Sources */,
 				671463851EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
 				673564F22068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */,
@@ -3079,7 +3080,6 @@
 				67C7B17A2068BB1C00C9EDA3 /* NumberFormattingService.swift in Sources */,
 				673CF4122063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */,
 				6714633D1EB3396E00EAB194 /* LoadingIndicator.swift in Sources */,
-				EF24213520769CBF00FA9BE6 /* NetworkServiceConfiguration.swift in Sources */,
 				671463191EB3396E00EAB194 /* UIWindow+Extensions.swift in Sources */,
 				6727478B206CD83600725163 /* DateFormat.swift in Sources */,
 				EFBE57DC1EC361620040E00A /* UIView+Layout.swift in Sources */,
