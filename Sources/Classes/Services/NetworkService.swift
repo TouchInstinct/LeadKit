@@ -36,7 +36,7 @@ open class NetworkService {
     private let requestCountVariable = Variable<Int>(0)
     private var disposeBag = DisposeBag()
 
-    private let acceptableStatusCodes: [Int]
+    public let configuration: NetworkServiceConfiguration
     public let sessionManager: Alamofire.SessionManager
 
     var requestCount: Driver<Int> {
@@ -47,14 +47,11 @@ open class NetworkService {
     /// Creates new instance of NetworkService with given Alamofire session manager
     ///
     /// - Parameters:
-    ///   - sessionManager: Alamofire.SessionManager to use for requests.
-    ///   - acceptableStatusCodes: Validates that the response has a status code in the specified sequence.
-    public init(sessionManager: Alamofire.SessionManager,
-                acceptableStatusCodes: [Int] = Alamofire.SessionManager.defaultAcceptableStatusCodes) {
+    ///   - configuration: instance of NetworkServiceConfiguration to configure network service.
+    public init(configuration: NetworkServiceConfiguration) {
 
-        self.sessionManager = sessionManager
-        self.acceptableStatusCodes = acceptableStatusCodes
-
+        self.configuration = configuration
+        self.sessionManager = configuration.sessionManager
         bindToApplicationActivityIndicator()
     }
 
@@ -66,7 +63,7 @@ open class NetworkService {
         -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
 
             return sessionManager.rx.responseObservableModel(requestParameters: parameters,
-                                                             acceptableStatusCodes: acceptableStatusCodes)
+                                                             acceptableStatusCodes: configuration.acceptableStatusCodes)
                 .counterTracking(for: self)
     }
 
@@ -78,7 +75,7 @@ open class NetworkService {
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
             return sessionManager.rx.responseModel(requestParameters: parameters,
-                                                   acceptableStatusCodes: acceptableStatusCodes)
+                                                   acceptableStatusCodes: configuration.acceptableStatusCodes)
                 .counterTracking(for: self)
     }
 
