@@ -28,7 +28,7 @@ import ObjectMapper
 public extension Alamofire.SessionManager {
 
     /// The default acceptable range 200...299
-    static let defaultAcceptableStatusCodes = Array(200..<300)
+    static let defaultAcceptableStatusCodes = Set(200..<300)
 
 }
 
@@ -39,7 +39,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Parameter requestParameters: api parameters to pass Alamofire
     /// - Returns: Observable with request
     func apiRequest(requestParameters: ApiRequestParameters,
-                    acceptableStatusCodes: [Int] = Base.defaultAcceptableStatusCodes)
+                    acceptableStatusCodes: Set<Int> = Base.defaultAcceptableStatusCodes)
         -> Observable<DataRequest> {
 
         return request(requestParameters.method,
@@ -57,7 +57,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Returns: Observable with HTTP URL Response and target object
     func responseModel<T: ImmutableMappable>(requestParameters: ApiRequestParameters,
                                              mappingQueue: DispatchQueue = .global(),
-                                             acceptableStatusCodes: [Int] = Base.defaultAcceptableStatusCodes)
+                                             acceptableStatusCodes: Set<Int> = Base.defaultAcceptableStatusCodes)
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
         return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: acceptableStatusCodes)
@@ -71,7 +71,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Returns: Observable with HTTP URL Response and array of target objects
     func responseModel<T: ImmutableMappable>(requestParameters: ApiRequestParameters,
                                              mappingQueue: DispatchQueue = .global(),
-                                             acceptableStatusCodes: [Int] = Base.defaultAcceptableStatusCodes)
+                                             acceptableStatusCodes: Set<Int> = Base.defaultAcceptableStatusCodes)
         -> Observable<(response: HTTPURLResponse, models: [T])> {
 
         return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: acceptableStatusCodes)
@@ -85,7 +85,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Returns: Observable with HTTP URL Response and target object
     func responseObject<T>(requestParameters: ApiRequestParameters,
                            mappingQueue: DispatchQueue = .global(),
-                           acceptableStatusCodes: [Int] = Base.defaultAcceptableStatusCodes)
+                           acceptableStatusCodes: Set<Int> = Base.defaultAcceptableStatusCodes)
         -> Observable<(response: HTTPURLResponse, object: T)> {
 
             return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: acceptableStatusCodes)
@@ -99,7 +99,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Returns: Observable with HTTP URL Response and target object
     func responseObservableModel<T: ObservableMappable>(requestParameters: ApiRequestParameters,
                                                         mappingQueue: DispatchQueue = .global(),
-                                                        acceptableStatusCodes: [Int] = Base.defaultAcceptableStatusCodes)
+                                                        acceptableStatusCodes: Set<Int> = Base.defaultAcceptableStatusCodes)
         -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
 
         return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: acceptableStatusCodes)
@@ -113,7 +113,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Returns: Observable with HTTP URL Response and array of target objects
     func responseObservableModel<T: ObservableMappable>(requestParameters: ApiRequestParameters,
                                                         mappingQueue: DispatchQueue = .global(),
-                                                        acceptableStatusCodes: [Int] = Base.defaultAcceptableStatusCodes)
+                                                        acceptableStatusCodes: Set<Int> = Base.defaultAcceptableStatusCodes)
         -> Observable<(response: HTTPURLResponse, models: [T])> where T.ModelType == T {
 
             return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: acceptableStatusCodes)

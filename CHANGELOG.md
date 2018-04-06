@@ -1,5 +1,11 @@
 # Changelog
 
+### 0.7.6
+
+- **Add**: `NetworkServiceConfiguration` to configure NetworkService instance
+- **Remove**: `ConfigurableNetworkSevice` protocol
+- **Update**: Acceptable status codes in SessionManager become `Set<Int>`
+
 ### 0.7.5
 - **Add**: `topConfiguration` and `bottomConfiguration` properties, methods to configure top and bottom separators in `CellSeparatorType` extension.
 - **Add**: `totalHeight` property in `SeparatorConfiguration` extension.
