@@ -57,7 +57,7 @@ public extension UIView {
      - parameter insets: desired view insets, by default is zero
      - parameter edges: edges to which no constraints are needed
      */
-    func pinToSuperview(withInsets insets: UIEdgeInsets = .zero, excluding edges: UIRectEdge = []) {
+    func pinToSuperview(with insets: UIEdgeInsets = .zero, excluding edges: UIRectEdge = []) {
         guard let superview = superview else {
             return
         }
