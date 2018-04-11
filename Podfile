@@ -1,9 +1,8 @@
 abstract_target 'LeadKit' do
-  pod "CocoaLumberjack/Swift", '~> 3.4'
   pod "RxSwift", '~> 4.1'
   pod "RxCocoa", '~> 4.1'
   pod "RxAlamofire", '~> 4.1'
-  pod "ObjectMapper", '~> 3.0'
+  pod "ObjectMapper", '~> 3.1'
   pod "SwiftLint", '~> 0.25'
   pod "SwiftDate", '~> 4.5'
 

@@ -1,4 +1,15 @@
 # Changelog
+
+### 0.7.8
+- **Remove**: `App`, `Log` and `LogFormatter`.
+- **Remove**: `CocoaLumberjack` dependency.
+- **Add**: Rotate operation for image drawing.
+- **Add**: `mapViewEvents` overload with closure that returns array of disposables. 
+- **Update**: Update `ObjectMapper` to 3.1.
+- **Add**: `apiRequestParameters` method to `NetworkServiceConfiguration` extension.
+- **Update**: Rename setToCenter(withInsets:) to pintToSuperview(withInsets:excluding:)
+- **Update**: Added parameter "edges" with label "excluding" to aforementioned method
+
 ### 0.7.7
 - **Fix**: Fix doubling separator line issue
 
@@ -141,6 +152,3 @@
 ### 0.5.6
 
 - **Fix**: Clear tableview if placeholder is shown
-
-
-

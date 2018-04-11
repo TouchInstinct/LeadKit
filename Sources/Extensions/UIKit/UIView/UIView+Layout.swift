@@ -55,32 +55,35 @@ public extension UIView {
      Place and fix view to parent view's center with insets
 
      - parameter insets: desired view insets, by default is zero
+     - parameter edges: edges to which no constraints are needed
      */
-    func setToCenter(wtihInsets insets: UIEdgeInsets = .zero) {
+    func pinToSuperview(wtihInsets insets: UIEdgeInsets = .zero, excluding edges: UIRectEdge = []) {
         guard let superview = superview else {
             return
         }
 
+        let topActive = !edges.contains(.top)
+        let leadingActive = !edges.contains(.left)
+        let bottomActive = !edges.contains(.bottom)
+        let trailingActive = !edges.contains(.right)
+
         translatesAutoresizingMaskIntoConstraints = false
 
-        let constraints: [NSLayoutConstraint]
         if #available(iOS 11, tvOS 11, *) {
-            constraints = [
-                topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor, constant: insets.top),
-                leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor, constant: insets.left),
-                bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -insets.bottom),
+                topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor, constant: insets.top)
+                    .isActive = topActive
+                leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor, constant: insets.left)
+                    .isActive = leadingActive
+                bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -insets.bottom)
+                    .isActive = bottomActive
                 trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: -insets.right)
-            ]
+                    .isActive = trailingActive
         } else {
-            constraints = [
-                topAnchor.constraint(equalTo: superview.topAnchor, constant: insets.top),
-                leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: insets.left),
-                bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -insets.bottom),
-                trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -insets.right)
-            ]
+                topAnchor.constraint(equalTo: superview.topAnchor, constant: insets.top).isActive = topActive
+                leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: insets.left).isActive = leadingActive
+                bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -insets.bottom).isActive = bottomActive
+                trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -insets.right).isActive = trailingActive
         }
-
-        NSLayoutConstraint.activate(constraints)
     }
 
     private func scaleToFill() {

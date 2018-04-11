@@ -44,7 +44,7 @@ struct TemplateDrawingOperation: DrawingOperation {
         context.setFillColor(color)
 
         context.translateBy(x: 0, y: imageSize.height)
-        context.scaleBy(x: 1.0, y: -1.0)
+        context.scaleBy(x: 1, y: -1)
         context.clip(to: imageRect, mask: image)
         context.fill(imageRect)
 

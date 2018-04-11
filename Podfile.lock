@@ -1,14 +1,11 @@
 PODS:
-  - Alamofire (4.7.0)
-  - CocoaLumberjack/Default (3.4.1)
-  - CocoaLumberjack/Swift (3.4.1):
-    - CocoaLumberjack/Default
+  - Alamofire (4.7.1)
   - ObjectMapper (3.1.0)
-  - RxAlamofire (4.1.0):
-    - RxAlamofire/Core (= 4.1.0)
-  - RxAlamofire/Core (4.1.0):
+  - RxAlamofire (4.2.0):
+    - RxAlamofire/Core (= 4.2.0)
+  - RxAlamofire/Core (4.2.0):
     - Alamofire (~> 4.5)
-    - RxSwift (~> 4.0)
+    - RxSwift (~> 4)
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
@@ -18,8 +15,7 @@ PODS:
   - UIScrollView-InfiniteScroll (1.0.2)
 
 DEPENDENCIES:
-  - CocoaLumberjack/Swift (~> 3.4)
-  - ObjectMapper (~> 3.0)
+  - ObjectMapper (~> 3.1)
   - RxAlamofire (~> 4.1)
   - RxCocoa (~> 4.1)
   - RxSwift (~> 4.1)
@@ -29,10 +25,9 @@ DEPENDENCIES:
   - UIScrollView-InfiniteScroll (~> 1.0.0)
 
 SPEC CHECKSUMS:
-  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
-  CocoaLumberjack: 2e258a064cacc8eb9a2aca318e24d02a0a7fd56d
+  Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
-  RxAlamofire: 96a2bff4694a1609bb59c57b53d99ea7a0ddc64a
+  RxAlamofire: 87a9c588541210cc3e4a1f843ccc3ecf3eb98b31
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
@@ -40,6 +35,6 @@ SPEC CHECKSUMS:
   TableKit: 61880e4c13ac0ba396a308fcb1ae48f6dec8b458
   UIScrollView-InfiniteScroll: c132d6d5851daff229ab4a1060ccf70a05a051c9
 
-PODFILE CHECKSUM: a266374cd31534965884702e73d8360ce3cdd274
+PODFILE CHECKSUM: c664ef2965e7a828be2da9711aaa145b256e7d99
 
 COCOAPODS: 1.4.0
