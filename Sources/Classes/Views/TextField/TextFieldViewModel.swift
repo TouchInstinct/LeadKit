@@ -78,14 +78,7 @@ public extension TextFieldViewModel {
     /// - Parameter closure: Closure that takes a view events parameter and returns Disposable.
     /// - Returns: Disposable object that can be used to unsubscribe the observer from the binding.
     func mapViewEvents(_ closure: @escaping MapViewEventClosure) -> Disposable {
-        return viewEventsDriver
-            .map { [weak self] in
-                guard let strongSelf = self else {
-                    return
-                }
-                closure($0).disposed(by: strongSelf.disposeBag)
-            }
-            .drive()
+        return mapViewEvents { [closure($0)] }
     }
 
     typealias MapViewEventsClosure = (ViewEvents) -> [Disposable]
