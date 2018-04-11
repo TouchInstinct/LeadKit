@@ -55,6 +55,7 @@ public extension UIView {
      Place and fix view to parent view's center with insets
 
      - parameter insets: desired view insets, by default is zero
+     - parameter edges: edges to which no constraints are needed
      */
     func pinToSuperview(wtihInsets insets: UIEdgeInsets = .zero, excluding edges: UIRectEdge = []) {
         guard let superview = superview else {

@@ -1,4 +1,8 @@
 # Changelog
+### 0.7.8
+- **Update**: Rename setToCenter(withInsets:) to pintToSuperview(withInsets:excluding:)
+- **Update**: Added parameter "edges" with label "excluding" to aforementioned method"
+
 ### 0.7.7
 - **Fix**: Fix doubling separator line issue
 
