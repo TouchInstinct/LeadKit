@@ -49,7 +49,7 @@ struct RotateDrawingOperation: DrawingOperation {
         context.translateBy(x: translateRect.midX, y: translateRect.midY)
         context.rotate(by: radians)
 
-        context.scaleBy(x: 1.0, y: -1.0)
+        context.scaleBy(x: 1, y: -1)
 
         let imageLocation = CGRect(origin: CGPoint(x: -imageSize.width / 2, y: -imageSize.height / 2),
                                    size: imageSize)

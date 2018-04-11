@@ -50,7 +50,7 @@ struct ImageDrawingOperation: DrawingOperation {
     public func apply(in context: CGContext) {
         if flipY {
             context.translateBy(x: 0, y: newSize.height)
-            context.scaleBy(x: 1.0, y: -1.0)
+            context.scaleBy(x: 1, y: -1)
         }
 
         context.interpolationQuality = .high
