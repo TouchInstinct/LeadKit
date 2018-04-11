@@ -69,10 +69,14 @@ public extension UIView {
         translatesAutoresizingMaskIntoConstraints = false
 
         if #available(iOS 11, tvOS 11, *) {
-                topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor, constant: insets.top).isActive = topActive
-                leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor, constant: insets.left).isActive = leadingActive
-                bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -insets.bottom).isActive = bottomActive
-                trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: -insets.right).isActive = trailingActive
+                topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor, constant: insets.top)
+                    .isActive = topActive
+                leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor, constant: insets.left)
+                    .isActive = leadingActive
+                bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -insets.bottom)
+                    .isActive = bottomActive
+                trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: -insets.right)
+                    .isActive = trailingActive
         } else {
                 topAnchor.constraint(equalTo: superview.topAnchor, constant: insets.top).isActive = topActive
                 leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: insets.left).isActive = leadingActive
