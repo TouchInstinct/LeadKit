@@ -6,6 +6,7 @@
 - **Add**: Rotate operation for image drawing.
 - **Add**: `mapViewEvents` overload with closure that returns array of disposables. 
 - **Update**: Update `ObjectMapper` to 3.1.
+- **Add**: `apiRequestParameters` method to `NetworkServiceConfiguration` extension.
 
 ### 0.7.6
 
