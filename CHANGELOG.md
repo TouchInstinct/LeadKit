@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.7.10
+- **Fix**: `wtihInsets` renamed to `with insets`
+
 ### 0.7.9
 - **Fix**: timeoutInterval is set to another URLSessionConfiguration property in NetworkServiceConfiguration
 
