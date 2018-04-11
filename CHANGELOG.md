@@ -1,4 +1,6 @@
 # Changelog
+### 0.7.7
+- **Fix**: Fix doubling separator line issue
 
 ### 0.7.6
 
