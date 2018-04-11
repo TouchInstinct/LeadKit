@@ -56,7 +56,7 @@ public struct NetworkServiceConfiguration {
         self.additionalHttpHeaders = additionalHttpHeaders
 
         sessionConfiguration = URLSessionConfiguration.default
-        sessionConfiguration.timeoutIntervalForRequest = timeoutInterval
+        sessionConfiguration.timeoutIntervalForResource = timeoutInterval
         sessionConfiguration.httpAdditionalHeaders = additionalHttpHeaders
 
         serverTrustPolicies = [baseUrl: .disableEvaluation]

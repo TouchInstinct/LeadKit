@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.7.9
+-**Fix**: timeoutInterval is set to another URLSessionConfiguration property in NetworkServiceConfiguration
+
 ### 0.7.8
 - **Remove**: `App`, `Log` and `LogFormatter`.
 - **Remove**: `CocoaLumberjack` dependency.
