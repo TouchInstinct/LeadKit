@@ -71,11 +71,28 @@ open class TextFieldViewModel<ViewEvents: TextFieldViewEvents,
 
 public extension TextFieldViewModel {
 
-    typealias MapViewEventsClosure = (ViewEvents) -> Disposable
+    typealias MapViewEventClosure = (ViewEvents) -> Disposable
 
     /// Convenient method for binding to the current view events structure.
     ///
     /// - Parameter closure: Closure that takes a view events parameter and returns Disposable.
+    /// - Returns: Disposable object that can be used to unsubscribe the observer from the binding.
+    func mapViewEvents(_ closure: @escaping MapViewEventClosure) -> Disposable {
+        return viewEventsDriver
+            .map { [weak self] in
+                guard let strongSelf = self else {
+                    return
+                }
+                closure($0).disposed(by: strongSelf.disposeBag)
+            }
+            .drive()
+    }
+
+    typealias MapViewEventsClosure = (ViewEvents) -> [Disposable]
+
+    /// Convenient method for binding to the current view events structure.
+    ///
+    /// - Parameter closure: Closure that takes a view events parameter and returns [Disposable].
     /// - Returns: Disposable object that can be used to unsubscribe the observer from the binding.
     func mapViewEvents(_ closure: @escaping MapViewEventsClosure) -> Disposable {
         return viewEventsDriver
@@ -83,7 +100,7 @@ public extension TextFieldViewModel {
                 guard let strongSelf = self else {
                     return
                 }
-                closure($0).disposed(by: strongSelf.disposeBag)
+                closure($0).forEach { $0.disposed(by: strongSelf.disposeBag) }
             }
             .drive()
     }

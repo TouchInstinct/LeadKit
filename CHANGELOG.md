@@ -1,5 +1,12 @@
 # Changelog
 
+### 0.7.7
+- **Remove**: `App`, `Log` and `LogFormatter`.
+- **Remove**: `CocoaLumberjack` dependency.
+- **Add**: Rotate operation for image drawing.
+- **Add**: `mapViewEvents` overload with closure that returns array of disposables. 
+- **Update**: Update `ObjectMapper` to 3.1.
+
 ### 0.7.6
 
 - **Add**: `NetworkServiceConfiguration` to configure NetworkService instance
