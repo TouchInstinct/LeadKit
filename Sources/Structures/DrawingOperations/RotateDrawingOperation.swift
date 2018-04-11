@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2017 Touch Instinct
+//  Copyright (c) 2018 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -22,39 +22,39 @@
 
 import CoreGraphics
 
-struct ImageDrawingOperation: DrawingOperation {
+struct RotateDrawingOperation: DrawingOperation {
 
     private let image: CGImage
-    private let newSize: CGSize
-    private let origin: CGPoint
-    public let opaque: Bool
-    private let flipY: Bool
+    private let imageSize: CGSize
+    private let radians: CGFloat
 
-    public init(image: CGImage,
-                newSize: CGSize,
-                origin: CGPoint = .zero,
-                opaque: Bool = false,
-                flipY: Bool = false) {
+    private let translateRect: CGRect
 
+    public init(image: CGImage, imageSize: CGSize, radians: CGFloat, clockwise: Bool = true) {
         self.image = image
-        self.newSize = newSize
-        self.origin = origin
-        self.opaque = opaque
-        self.flipY = flipY
+        self.imageSize = imageSize
+        self.radians = clockwise ? radians : -radians
+
+        let transform = CGAffineTransform(rotationAngle: radians)
+        let imageRect = CGRect(origin: .zero, size: imageSize)
+
+        translateRect = CGRect(origin: .zero, size: imageRect.applying(transform).size)
     }
 
     public var contextSize: CGContextSize {
-        return newSize.ceiledContextSize
+        return translateRect.size.ceiledContextSize
     }
 
     public func apply(in context: CGContext) {
-        if flipY {
-            context.translateBy(x: 0, y: newSize.height)
-            context.scaleBy(x: 1, y: -1)
-        }
+        context.translateBy(x: translateRect.midX, y: translateRect.midY)
+        context.rotate(by: radians)
 
-        context.interpolationQuality = .high
-        context.draw(image, in: CGRect(origin: origin, size: newSize))
+        context.scaleBy(x: 1, y: -1)
+
+        let imageLocation = CGRect(origin: CGPoint(x: -imageSize.width / 2, y: -imageSize.height / 2),
+                                   size: imageSize)
+
+        context.draw(image, in: imageLocation)
     }
 
 }

@@ -44,9 +44,15 @@ public extension Support where Base: UIImage {
     /// - Parameter fromView: The source view.
     /// - Returns: A new instance of UIImage or nil if something goes wrong.
     static func imageFrom(view: UIView) -> Support<UIImage>? {
-        let layerDrawingOperation = CALayerDrawingOperation(layer: view.layer, size: view.bounds.size)
+        let operation = CALayerDrawingOperation(layer: view.layer, size: view.bounds.size)
 
-        return layerDrawingOperation.imageFromNewContext(scale: UIScreen.main.scale)?.support.flipY()
+        guard let rotatedImage = operation.imageFromNewContext(scale: UIScreen.main.scale) else {
+            return nil
+        }
+
+        let flipOperation = rotatedImage.cgImage?.flipYOperation(size: rotatedImage.size)
+
+        return flipOperation?.imageFromNewContext(scale: rotatedImage.scale)?.support
     }
 
     /// Render current template UIImage into new image using given color.
@@ -54,15 +60,19 @@ public extension Support where Base: UIImage {
     /// - Parameter color: Color to fill template image.
     /// - Returns: A new UIImage rendered with given color or nil if something goes wrong.
     func renderTemplate(withColor color: UIColor) -> Support<UIImage>? {
-        guard let image = base.cgImage else {
-            return Support<UIImage>(base)
+        return withCGImage { image in
+            let operation = TemplateDrawingOperation(image: image,
+                                                     imageSize: base.size,
+                                                     color: color.cgColor)
+
+            guard let templateImage = operation.imageFromNewContext(scale: base.scale) else {
+                return nil
+            }
+
+            let flipOperation = templateImage.cgImage?.flipYOperation(size: templateImage.size)
+
+            return flipOperation?.imageFromNewContext(scale: templateImage.scale)
         }
-
-        let operation = TemplateDrawingOperation(image: image,
-                                                 imageSize: base.size,
-                                                 color: color.cgColor)
-
-        return operation.imageFromNewContext(scale: base.scale)?.support
     }
 
     /// Creates a new image with rounded corners and border.
@@ -78,43 +88,39 @@ public extension Support where Base: UIImage {
                       color: UIColor,
                       extendSize: Bool = false) -> Support<UIImage>? {
 
-        guard let image = base.cgImage else {
-            return Support<UIImage>(base)
+        return withCGImage { image in
+            let roundOperation = RoundDrawingOperation(image: image,
+                                                       imageSize: base.size,
+                                                       radius: cornerRadius)
+
+            guard let roundImage = roundOperation.cgImageFromNewContext(scale: base.scale) else {
+                return nil
+            }
+
+            let borderOperation = BorderDrawingOperation(image: roundImage,
+                                                         imageSize: base.size,
+                                                         border: borderWidth,
+                                                         color: color.cgColor,
+                                                         radius: cornerRadius,
+                                                         extendSize: extendSize)
+
+            return borderOperation.imageFromNewContext(scale: base.scale)
         }
-
-        let roundOperation = RoundDrawingOperation(image: image,
-                                                   imageSize: base.size,
-                                                   radius: cornerRadius)
-
-        guard let roundImage = roundOperation.cgImageFromNewContext(scale: base.scale) else {
-            return nil
-        }
-
-        let borderOperation = BorderDrawingOperation(image: roundImage,
-                                                     imageSize: base.size,
-                                                     border: borderWidth,
-                                                     color: color.cgColor,
-                                                     radius: cornerRadius,
-                                                     extendSize: extendSize)
-
-        return borderOperation.imageFromNewContext(scale: base.scale)?.support
     }
 
     /// Creates a new circle image.
     ///
     /// - Returns: A new circled image or nil if something goes wrong.
     func roundCornersToCircle() -> Support<UIImage>? {
-        guard let image = base.cgImage else {
-            return Support<UIImage>(base)
+        return withCGImage { image in
+            let radius = CGFloat(min(base.size.width, base.size.height) / 2)
+
+            let operation = RoundDrawingOperation(image: image,
+                                                  imageSize: base.size,
+                                                  radius: radius)
+
+            return operation.imageFromNewContext(scale: base.scale)
         }
-
-        let radius = CGFloat(min(base.size.width, base.size.height) / 2)
-
-        let operation = RoundDrawingOperation(image: image,
-                                              imageSize: base.size,
-                                              radius: radius)
-
-        return operation.imageFromNewContext(scale: base.scale)?.support
     }
 
     /// Creates a new circle image with a border.
@@ -128,28 +134,26 @@ public extension Support where Base: UIImage {
                               borderColor: UIColor,
                               extendSize: Bool = false) -> Support<UIImage>? {
 
-        guard let image = base.cgImage else {
-            return Support<UIImage>(base)
+        return withCGImage { image in
+            let radius = CGFloat(min(base.size.width, base.size.height) / 2)
+
+            let roundOperation = RoundDrawingOperation(image: image,
+                                                       imageSize: base.size,
+                                                       radius: radius)
+
+            guard let roundImage = roundOperation.cgImageFromNewContext(scale: base.scale) else {
+                return nil
+            }
+
+            let borderOperation = BorderDrawingOperation(image: roundImage,
+                                                         imageSize: base.size,
+                                                         border: borderWidth,
+                                                         color: borderColor.cgColor,
+                                                         radius: radius,
+                                                         extendSize: extendSize)
+
+            return borderOperation.imageFromNewContext(scale: base.scale)
         }
-
-        let radius = CGFloat(min(base.size.width, base.size.height) / 2)
-
-        let roundOperation = RoundDrawingOperation(image: image,
-                                                   imageSize: base.size,
-                                                   radius: radius)
-
-        guard let roundImage = roundOperation.cgImageFromNewContext(scale: base.scale) else {
-            return nil
-        }
-
-        let borderOperation = BorderDrawingOperation(image: roundImage,
-                                                     imageSize: base.size,
-                                                     border: borderWidth,
-                                                     color: borderColor.cgColor,
-                                                     radius: radius,
-                                                     extendSize: extendSize)
-
-        return borderOperation.imageFromNewContext(scale: base.scale)?.support
     }
 
     /// Creates a resized copy of an image.
@@ -164,32 +168,28 @@ public extension Support where Base: UIImage {
                 contentMode: ResizeMode = .scaleToFill,
                 cropToImageBounds: Bool = false) -> Support<UIImage>? {
 
-        guard let image = base.cgImage else {
-            return Support<UIImage>(base)
+        return withCGImage { image in
+            let operation = ResizeDrawingOperation(image: image,
+                                                   imageSize: base.size,
+                                                   preferredNewSize: newSize,
+                                                   resizeMode: contentMode,
+                                                   cropToImageBounds: cropToImageBounds)
+
+            return operation.imageFromNewContext(scale: base.scale)
         }
-
-        let operation = ResizeDrawingOperation(image: image,
-                                               imageSize: base.size,
-                                               preferredNewSize: newSize,
-                                               resizeMode: contentMode,
-                                               cropToImageBounds: cropToImageBounds)
-
-        return operation.imageFromNewContext(scale: base.scale)?.support
     }
 
     /// Adds an alpha channel if UIImage doesn't already have one.
     ///
     /// - Returns: A copy of the given image, adding an alpha channel if it doesn't already have one.
     func applyAlpha() -> Support<UIImage>? {
-        guard let image = base.cgImage, !image.hasAlpha else {
-            return Support<UIImage>(base)
+        return withCGImage { image in
+            let operation = ImageDrawingOperation(image: image,
+                                                  newSize: base.size,
+                                                  opaque: false)
+
+            return operation.imageFromNewContext(scale: base.scale)
         }
-
-        let operation = ImageDrawingOperation(image: image,
-                                              newSize: base.size,
-                                              opaque: false)
-
-        return operation.imageFromNewContext(scale: base.scale)?.support
     }
 
     /// Creates a copy of the image with border of the given size added around its edges.
@@ -197,29 +197,58 @@ public extension Support where Base: UIImage {
     /// - Parameter padding: The padding amount.
     /// - Returns: A new padded image or nil if something goes wrong.
     func applyPadding(_ padding: CGFloat) -> Support<UIImage>? {
-        guard let image = base.cgImage else {
-            return Support<UIImage>(base)
+        return withCGImage { image in
+            let operation = PaddingDrawingOperation(image: image,
+                                                    imageSize: base.size,
+                                                    padding: padding)
+
+            return operation.imageFromNewContext(scale: base.scale)
         }
-
-        let operation = PaddingDrawingOperation(image: image,
-                                                imageSize: base.size,
-                                                padding: padding)
-
-        return operation.imageFromNewContext(scale: base.scale)?.support
     }
 
-    private func flipY() -> Support<UIImage>? {
+    /// Creates a copy of the image rotated by the given amount of degrees.
+    ///
+    /// - Parameters:
+    ///   - degrees: The number of degrees.
+    ///   - clockwise: Should rotate image clockwise.
+    /// - Returns: A new rotated image or nil if something goes wrong.
+    func rotate(degrees: CGFloat, clockwise: Bool = true) -> Support<UIImage>? {
+        return withCGImage { image in
+            let radians = degrees.degreesToRadians()
+
+            let operation = RotateDrawingOperation(image: image,
+                                                   imageSize: base.size,
+                                                   radians: radians,
+                                                   clockwise: clockwise)
+
+            guard let rotatedImage = operation.imageFromNewContext(scale: base.scale) else {
+                return nil
+            }
+
+            let flipOperation = rotatedImage.cgImage?.flipYOperation(size: rotatedImage.size)
+
+            return flipOperation?.imageFromNewContext(scale: rotatedImage.scale)
+        }
+    }
+
+    private func withCGImage(_ actionClosure: (CGImage) -> UIImage?) -> Support<UIImage>? {
         guard let image = base.cgImage else {
             return Support<UIImage>(base)
         }
 
-        let flipOperation = ImageDrawingOperation(image: image,
-                                                  newSize: base.size,
-                                                  origin: .zero,
-                                                  opaque: false,
-                                                  flipY: true)
+        return actionClosure(image)?.support
+    }
 
-        return flipOperation.imageFromNewContext(scale: base.scale)?.support
+}
+
+private extension CGImage {
+
+    func flipYOperation(size: CGSize) -> ImageDrawingOperation {
+        return ImageDrawingOperation(image: self,
+                                     newSize: size,
+                                     origin: .zero,
+                                     opaque: false,
+                                     flipY: true)
     }
 
 }

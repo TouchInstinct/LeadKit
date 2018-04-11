@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2017 Touch Instinct
+//  Copyright (c) 2018 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,41 +20,20 @@
 //  THE SOFTWARE.
 //
 
-import CoreGraphics
+public extension FloatingPoint {
 
-struct ImageDrawingOperation: DrawingOperation {
-
-    private let image: CGImage
-    private let newSize: CGSize
-    private let origin: CGPoint
-    public let opaque: Bool
-    private let flipY: Bool
-
-    public init(image: CGImage,
-                newSize: CGSize,
-                origin: CGPoint = .zero,
-                opaque: Bool = false,
-                flipY: Bool = false) {
-
-        self.image = image
-        self.newSize = newSize
-        self.origin = origin
-        self.opaque = opaque
-        self.flipY = flipY
+    /// Converts degrees to radians
+    ///
+    /// - Returns: radians
+    func degreesToRadians() -> Self {
+        return self * .pi / 180
     }
 
-    public var contextSize: CGContextSize {
-        return newSize.ceiledContextSize
-    }
-
-    public func apply(in context: CGContext) {
-        if flipY {
-            context.translateBy(x: 0, y: newSize.height)
-            context.scaleBy(x: 1, y: -1)
-        }
-
-        context.interpolationQuality = .high
-        context.draw(image, in: CGRect(origin: origin, size: newSize))
+    /// Converts radians to degrees
+    ///
+    /// - Returns: degrees
+    func radiansToDegrees() -> Self {
+        return self * 180 / .pi
     }
 
 }

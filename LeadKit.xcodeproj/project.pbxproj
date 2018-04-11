@@ -29,18 +29,6 @@
 		671462511EB3396E00EAB194 /* StaticCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CA1EB3396E00EAB194 /* StaticCursor.swift */; };
 		671462521EB3396E00EAB194 /* StaticCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CA1EB3396E00EAB194 /* StaticCursor.swift */; };
 		671462531EB3396E00EAB194 /* StaticCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CA1EB3396E00EAB194 /* StaticCursor.swift */; };
-		671462541EB3396E00EAB194 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CC1EB3396E00EAB194 /* App.swift */; };
-		671462551EB3396E00EAB194 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CC1EB3396E00EAB194 /* App.swift */; };
-		671462561EB3396E00EAB194 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CC1EB3396E00EAB194 /* App.swift */; };
-		671462571EB3396E00EAB194 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CC1EB3396E00EAB194 /* App.swift */; };
-		671462581EB3396E00EAB194 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CD1EB3396E00EAB194 /* Log.swift */; };
-		671462591EB3396E00EAB194 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CD1EB3396E00EAB194 /* Log.swift */; };
-		6714625A1EB3396E00EAB194 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CD1EB3396E00EAB194 /* Log.swift */; };
-		6714625B1EB3396E00EAB194 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CD1EB3396E00EAB194 /* Log.swift */; };
-		6714625C1EB3396E00EAB194 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CE1EB3396E00EAB194 /* LogFormatter.swift */; };
-		6714625D1EB3396E00EAB194 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CE1EB3396E00EAB194 /* LogFormatter.swift */; };
-		6714625E1EB3396E00EAB194 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CE1EB3396E00EAB194 /* LogFormatter.swift */; };
-		6714625F1EB3396E00EAB194 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461CE1EB3396E00EAB194 /* LogFormatter.swift */; };
 		671462681EB3396E00EAB194 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D31EB3396E00EAB194 /* NetworkService.swift */; };
 		671462691EB3396E00EAB194 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D31EB3396E00EAB194 /* NetworkService.swift */; };
 		6714626A1EB3396E00EAB194 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D31EB3396E00EAB194 /* NetworkService.swift */; };
@@ -261,15 +249,20 @@
 		671463C41EB34B1E00EAB194 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B31EB34B1E00EAB194 /* Post.swift */; };
 		671463C51EB34B1E00EAB194 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B31EB34B1E00EAB194 /* Post.swift */; };
 		671463C61EB34B1E00EAB194 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B31EB34B1E00EAB194 /* Post.swift */; };
-		671463C71EB34B1E00EAB194 /* PaginationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B41EB34B1E00EAB194 /* PaginationViewModelTests.swift */; };
-		671463C81EB34B1E00EAB194 /* PaginationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B41EB34B1E00EAB194 /* PaginationViewModelTests.swift */; };
-		671463C91EB34B1E00EAB194 /* PaginationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B41EB34B1E00EAB194 /* PaginationViewModelTests.swift */; };
 		671463CA1EB34B1E00EAB194 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B61EB34B1E00EAB194 /* TestView.swift */; };
 		671463CB1EB34B1E00EAB194 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B61EB34B1E00EAB194 /* TestView.swift */; };
 		671463CC1EB34B1E00EAB194 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671463B61EB34B1E00EAB194 /* TestView.swift */; };
 		671463CD1EB34B1E00EAB194 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671463B71EB34B1E00EAB194 /* TestView.xib */; };
 		671463CE1EB34B1E00EAB194 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671463B71EB34B1E00EAB194 /* TestView.xib */; };
 		671463CF1EB34B1E00EAB194 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671463B71EB34B1E00EAB194 /* TestView.xib */; };
+		67153E3A207DFADA0049D8C0 /* RotateDrawingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67153E39207DFADA0049D8C0 /* RotateDrawingOperation.swift */; };
+		67153E3B207DFADA0049D8C0 /* RotateDrawingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67153E39207DFADA0049D8C0 /* RotateDrawingOperation.swift */; };
+		67153E3C207DFADA0049D8C0 /* RotateDrawingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67153E39207DFADA0049D8C0 /* RotateDrawingOperation.swift */; };
+		67153E3D207DFADA0049D8C0 /* RotateDrawingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67153E39207DFADA0049D8C0 /* RotateDrawingOperation.swift */; };
+		67153E40207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67153E3F207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift */; };
+		67153E41207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67153E3F207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift */; };
+		67153E42207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67153E3F207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift */; };
+		67153E43207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67153E3F207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift */; };
 		67186B311EB248F100CFAFFB /* LeadKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67186B281EB248F100CFAFFB /* LeadKit.framework */; };
 		67186B3F1EB24A1900CFAFFB /* LeadKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 67186B201EB247A200CFAFFB /* LeadKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		671AD25C206A343300EAF887 /* VoidBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671AD25B206A343300EAF887 /* VoidBlock.swift */; };
@@ -607,9 +600,6 @@
 		671461C81EB3396E00EAB194 /* FixedPageCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedPageCursor.swift; sourceTree = "<group>"; };
 		671461C91EB3396E00EAB194 /* MapCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCursor.swift; sourceTree = "<group>"; };
 		671461CA1EB3396E00EAB194 /* StaticCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticCursor.swift; sourceTree = "<group>"; };
-		671461CC1EB3396E00EAB194 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		671461CD1EB3396E00EAB194 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		671461CE1EB3396E00EAB194 /* LogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFormatter.swift; sourceTree = "<group>"; };
 		671461D31EB3396E00EAB194 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		671461D51EB3396E00EAB194 /* XibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		671461D71EB3396E00EAB194 /* CursorError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CursorError.swift; sourceTree = "<group>"; };
@@ -672,9 +662,10 @@
 		671463AF1EB34B1E00EAB194 /* CursorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CursorTests.swift; sourceTree = "<group>"; };
 		671463B01EB34B1E00EAB194 /* LoadFromNibTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadFromNibTests.swift; sourceTree = "<group>"; };
 		671463B31EB34B1E00EAB194 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		671463B41EB34B1E00EAB194 /* PaginationViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationViewModelTests.swift; sourceTree = "<group>"; };
 		671463B61EB34B1E00EAB194 /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		671463B71EB34B1E00EAB194 /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
+		67153E39207DFADA0049D8C0 /* RotateDrawingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateDrawingOperation.swift; sourceTree = "<group>"; };
+		67153E3F207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+DegreesRadiansConvertion.swift"; sourceTree = "<group>"; };
 		67186B201EB247A200CFAFFB /* LeadKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeadKit.h; sourceTree = "<group>"; };
 		67186B281EB248F100CFAFFB /* LeadKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LeadKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67186B301EB248F100CFAFFB /* LeadKit iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LeadKit iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -864,7 +855,6 @@
 			isa = PBXGroup;
 			children = (
 				6774527E2062566D0024EEEF /* DataLoading */,
-				671461CB1EB3396E00EAB194 /* Logging */,
 				671461D21EB3396E00EAB194 /* Services */,
 				671461D41EB3396E00EAB194 /* Views */,
 			);
@@ -881,16 +871,6 @@
 				67EB7FBF206140E600BDD9FB /* TotalCountCursor.swift */,
 			);
 			path = Cursors;
-			sourceTree = "<group>";
-		};
-		671461CB1EB3396E00EAB194 /* Logging */ = {
-			isa = PBXGroup;
-			children = (
-				671461CC1EB3396E00EAB194 /* App.swift */,
-				671461CD1EB3396E00EAB194 /* Log.swift */,
-				671461CE1EB3396E00EAB194 /* LogFormatter.swift */,
-			);
-			path = Logging;
 			sourceTree = "<group>";
 		};
 		671461CF1EB3396E00EAB194 /* PaginationDataLoading */ = {
@@ -939,6 +919,7 @@
 		671461DA1EB3396E00EAB194 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				67153E3E207DFB980049D8C0 /* FloatingPoint */,
 				671461DB1EB3396E00EAB194 /* Alamofire */,
 				EFBE57CE1EC35ED90040E00A /* Array */,
 				67A1FF921EBCA64A00D6C89F /* CABasicAnimation */,
@@ -1192,6 +1173,7 @@
 				6714623B1EB3396E00EAB194 /* ImageDrawingOperation.swift */,
 				6714623C1EB3396E00EAB194 /* PaddingDrawingOperation.swift */,
 				6714623D1EB3396E00EAB194 /* ResizeDrawingOperation.swift */,
+				67153E39207DFADA0049D8C0 /* RotateDrawingOperation.swift */,
 				6714623E1EB3396E00EAB194 /* RoundDrawingOperation.swift */,
 				6714623F1EB3396E00EAB194 /* SolidFillDrawingOperation.swift */,
 				671462401EB3396E00EAB194 /* TemplateDrawingOperation.swift */,
@@ -1241,6 +1223,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		67153E3E207DFB980049D8C0 /* FloatingPoint */ = {
+			isa = PBXGroup;
+			children = (
+				67153E3F207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift */,
+			);
+			path = FloatingPoint;
+			sourceTree = "<group>";
+		};
 		67186B1D1EB2475500CFAFFB /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1271,7 +1261,6 @@
 				67186C1A1EB24B7800CFAFFB /* Info-iOS.plist */,
 				6782BBB91EB31DD90086E0B8 /* Info-tvOS.plist */,
 				671463B01EB34B1E00EAB194 /* LoadFromNibTests.swift */,
-				671463B41EB34B1E00EAB194 /* PaginationViewModelTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2422,7 +2411,6 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit iOSTests/Pods-LeadKit iOSTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack-iOS/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper-iOS/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire-iOS/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa-iOS/RxCocoa.framework",
@@ -2434,7 +2422,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -2489,7 +2476,6 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit tvOSTests/Pods-LeadKit tvOSTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire-tvOS/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack-tvOS/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper-tvOS/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire-tvOS/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa-tvOS/RxCocoa.framework",
@@ -2499,7 +2485,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -2519,7 +2504,6 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit iOS ExtensionsTests/Pods-LeadKit iOS ExtensionsTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack-iOS/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper-iOS/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire-iOS/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa-iOS/RxCocoa.framework",
@@ -2529,7 +2513,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -2605,12 +2588,12 @@
 				671463281EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
 				671AD25C206A343300EAF887 /* VoidBlock.swift in Sources */,
 				A6E0DDDF1F8A696F002CA74E /* SeparatorCell.swift in Sources */,
+				67153E40207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */,
 				671462AC1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
 				671463001EB3396E00EAB194 /* UIView+LoadFromNib.swift in Sources */,
 				A676AE501F9810C1001F9214 /* Any+Cast.swift in Sources */,
 				6714627C1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
 				671462D41EB3396E00EAB194 /* TableDirector+Extensions.swift in Sources */,
-				671462581EB3396E00EAB194 /* Log.swift in Sources */,
 				671462781EB3396E00EAB194 /* ResizeMode.swift in Sources */,
 				A676AE551F98112E001F9214 /* ObservableMappable.swift in Sources */,
 				A6E0DDE11F8A696F002CA74E /* SeparatorRowBox.swift in Sources */,
@@ -2635,9 +2618,9 @@
 				673CF40B2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */,
 				6714636C1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
 				67274772206CCF1200725163 /* ViewText.swift in Sources */,
+				67153E3A207DFADA0049D8C0 /* RotateDrawingOperation.swift in Sources */,
 				6771DFEA1EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift in Sources */,
 				671462A01EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
-				6714625C1EB3396E00EAB194 /* LogFormatter.swift in Sources */,
 				671463081EB3396E00EAB194 /* UIView+Rotation.swift in Sources */,
 				6714626C1EB3396E00EAB194 /* XibView.swift in Sources */,
 				67274778206CD0B500725163 /* UILabel+ViewTextConfiguration.swift in Sources */,
@@ -2670,7 +2653,6 @@
 				67E6C2351EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				40F118471F8FEF97004AADAF /* AppearanceConfigurable.swift in Sources */,
 				671463181EB3396E00EAB194 /* UIWindow+Extensions.swift in Sources */,
-				671462541EB3396E00EAB194 /* App.swift in Sources */,
 				67274769206CCC9D00725163 /* ViewBackground.swift in Sources */,
 				671463781EB3396E00EAB194 /* CALayerDrawingOperation.swift in Sources */,
 				6714632C1EB3396E00EAB194 /* ConfigurableController.swift in Sources */,
@@ -2704,7 +2686,6 @@
 			files = (
 				A6C9A5051F8BC78F009311CC /* SeparatorConfiguration.swift in Sources */,
 				671463CA1EB34B1E00EAB194 /* TestView.swift in Sources */,
-				671463C71EB34B1E00EAB194 /* PaginationViewModelTests.swift in Sources */,
 				671463B81EB34B1E00EAB194 /* StubCursor.swift in Sources */,
 				A658E54E1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift in Sources */,
 				A658E5511F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift in Sources */,
@@ -2757,6 +2738,7 @@
 				6774528F20625C9E0024EEEF /* GeneralDataLoadingState.swift in Sources */,
 				671463261EB3396E00EAB194 /* Any+TypeName.swift in Sources */,
 				6714638A1EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
+				67153E3C207DFADA0049D8C0 /* RotateDrawingOperation.swift in Sources */,
 				6774529C20625E5B0024EEEF /* PaginationDataLoadingState.swift in Sources */,
 				671463821EB3396E00EAB194 /* PaddingDrawingOperation.swift in Sources */,
 				6714632A1EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
@@ -2767,7 +2749,6 @@
 				677452AB206263360024EEEF /* CursorType+RxDataSourceDefaultImplementation.swift in Sources */,
 				673564F32068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */,
 				67EB7FD620615D1700BDD9FB /* ResettableCursorType.swift in Sources */,
-				6714625A1EB3396E00EAB194 /* Log.swift in Sources */,
 				67274791206CD88600725163 /* DateFormattingService.swift in Sources */,
 				6714627A1EB3396E00EAB194 /* ResizeMode.swift in Sources */,
 				67CAF8C820652E2A00527085 /* TextFieldViewModel.swift in Sources */,
@@ -2784,7 +2765,6 @@
 				671462A21EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
 				67955D54206D216B0021ECD2 /* Singleton.swift in Sources */,
 				67EB7FF32061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift in Sources */,
-				6714625E1EB3396E00EAB194 /* LogFormatter.swift in Sources */,
 				67EB7FED2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */,
 				6714637E1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				671463361EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
@@ -2802,10 +2782,10 @@
 				673564F82068C68D00F0CBED /* NumberFormat.swift in Sources */,
 				671462CA1EB3396E00EAB194 /* String+Localization.swift in Sources */,
 				677452A620625FA90024EEEF /* RxDataSource.swift in Sources */,
+				67153E42207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */,
 				671462BA1EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */,
 				671463761EB3396E00EAB194 /* BorderDrawingOperation.swift in Sources */,
 				677452A120625EEE0024EEEF /* PaginationDataLoadingModel.swift in Sources */,
-				671462561EB3396E00EAB194 /* App.swift in Sources */,
 				675C1FB51F97CA33007D5249 /* AppearanceConfigurable.swift in Sources */,
 				6714628E1EB3396E00EAB194 /* CGImage+Alpha.swift in Sources */,
 				671462761EB3396E00EAB194 /* LeadKitError.swift in Sources */,
@@ -2833,6 +2813,7 @@
 				673CF40E2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */,
 				67274770206CCDDB00725163 /* ViewBackground+Configuration.swift in Sources */,
 				678D26A320692BFF00B05B93 /* TextFieldViewEvents.swift in Sources */,
+				67153E43207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */,
 				67745283206256A20024EEEF /* RxDataLoadingModel.swift in Sources */,
 				67EB8003206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */,
 				671463571EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
@@ -2879,7 +2860,6 @@
 				A676AE4F1F9810C1001F9214 /* Any+Cast.swift in Sources */,
 				671463031EB3396E00EAB194 /* UIView+LoadFromNib.swift in Sources */,
 				6714627F1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
-				6714625B1EB3396E00EAB194 /* Log.swift in Sources */,
 				6737CFA5207220960063E056 /* SeparatorConfiguration+Extensions.swift in Sources */,
 				6714627B1EB3396E00EAB194 /* ResizeMode.swift in Sources */,
 				67745289206259CF0024EEEF /* Rx+RxDataSourceProtocol.swift in Sources */,
@@ -2901,7 +2881,6 @@
 				671AD265206A35EC00EAF887 /* UIApplication+Cellular.swift in Sources */,
 				67A1FF971EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */,
 				671462A31EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
-				6714625F1EB3396E00EAB194 /* LogFormatter.swift in Sources */,
 				6714630B1EB3396E00EAB194 /* UIView+Rotation.swift in Sources */,
 				673CF4192063D50700C329F6 /* GeneralDataLoadingController.swift in Sources */,
 				6792623E206EB0EC00308E62 /* CellSeparatorType+Extensions.swift in Sources */,
@@ -2909,6 +2888,7 @@
 				6714637F1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				67EB7FD720615D1700BDD9FB /* ResettableCursorType.swift in Sources */,
 				671463371EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
+				67153E3D207DFADA0049D8C0 /* RotateDrawingOperation.swift in Sources */,
 				67274782206CD3BD00725163 /* ViewText+Extensions.swift in Sources */,
 				673CF42E2063DE5900C329F6 /* TextPlaceholderView.swift in Sources */,
 				671462731EB3396E00EAB194 /* CursorError.swift in Sources */,
@@ -2935,7 +2915,6 @@
 				6714633F1EB3396E00EAB194 /* LoadingIndicator.swift in Sources */,
 				675C1FB41F97CA32007D5249 /* AppearanceConfigurable.swift in Sources */,
 				6714631B1EB3396E00EAB194 /* UIWindow+Extensions.swift in Sources */,
-				671462571EB3396E00EAB194 /* App.swift in Sources */,
 				673CF4252063D90600C329F6 /* DisposeBagHolder.swift in Sources */,
 				6714637B1EB3396E00EAB194 /* CALayerDrawingOperation.swift in Sources */,
 				6774529520625D170024EEEF /* GeneralDataLoadingModel.swift in Sources */,
@@ -2965,7 +2944,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				671463CC1EB34B1E00EAB194 /* TestView.swift in Sources */,
-				671463C91EB34B1E00EAB194 /* PaginationViewModelTests.swift in Sources */,
 				671463BA1EB34B1E00EAB194 /* StubCursor.swift in Sources */,
 				671463BD1EB34B1E00EAB194 /* CursorTests.swift in Sources */,
 				A6F32C121F6EBE9800AC08EE /* StringExtensionTests.swift in Sources */,
@@ -3004,6 +2982,7 @@
 				671462691EB3396E00EAB194 /* NetworkService.swift in Sources */,
 				671463111EB3396E00EAB194 /* UIViewController+DefaultXibName.swift in Sources */,
 				671463411EB3396E00EAB194 /* ModuleConfigurator.swift in Sources */,
+				67153E41207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */,
 				671462911EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
 				673564F72068C68D00F0CBED /* NumberFormat.swift in Sources */,
 				67051ADC1EBC7C36008EADC0 /* SpinnerView.swift in Sources */,
@@ -3034,7 +3013,6 @@
 				671463011EB3396E00EAB194 /* UIView+LoadFromNib.swift in Sources */,
 				6774526D206249E30024EEEF /* UICollectionView+PaginationWrappable.swift in Sources */,
 				6714627D1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
-				671462591EB3396E00EAB194 /* Log.swift in Sources */,
 				673CF4352063E29B00C329F6 /* TextWithButtonPlaceholder.swift in Sources */,
 				67EB8002206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */,
 				6727476F206CCDDB00725163 /* ViewBackground+Configuration.swift in Sources */,
@@ -3047,7 +3025,6 @@
 				6714636D1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
 				673CF42D2063DE5900C329F6 /* TextPlaceholderView.swift in Sources */,
 				671462A11EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
-				6714625D1EB3396E00EAB194 /* LogFormatter.swift in Sources */,
 				671463091EB3396E00EAB194 /* UIView+Rotation.swift in Sources */,
 				6714626D1EB3396E00EAB194 /* XibView.swift in Sources */,
 				6714637D1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
@@ -3070,6 +3047,7 @@
 				671463651EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
 				6774527520624E820024EEEF /* DataLoadingModel.swift in Sources */,
 				A6C9A5101F8BC79D009311CC /* Comparable+Extensions.swift in Sources */,
+				67153E3B207DFADA0049D8C0 /* RotateDrawingOperation.swift in Sources */,
 				677452A520625FA90024EEEF /* RxDataSource.swift in Sources */,
 				671462491EB3396E00EAB194 /* FixedPageCursor.swift in Sources */,
 				671462C91EB3396E00EAB194 /* String+Localization.swift in Sources */,
@@ -3083,7 +3061,6 @@
 				671463191EB3396E00EAB194 /* UIWindow+Extensions.swift in Sources */,
 				6727478B206CD83600725163 /* DateFormat.swift in Sources */,
 				EFBE57DC1EC361620040E00A /* UIView+Layout.swift in Sources */,
-				671462551EB3396E00EAB194 /* App.swift in Sources */,
 				67A1FF901EBCA09B00D6C89F /* UIImage+Spinner.swift in Sources */,
 				6774529B20625E5B0024EEEF /* PaginationDataLoadingState.swift in Sources */,
 				671463791EB3396E00EAB194 /* CALayerDrawingOperation.swift in Sources */,
@@ -3122,7 +3099,6 @@
 				671463C51EB34B1E00EAB194 /* Post.swift in Sources */,
 				671463CB1EB34B1E00EAB194 /* TestView.swift in Sources */,
 				A6F32C111F6EBE9700AC08EE /* StringExtensionTests.swift in Sources */,
-				671463C81EB34B1E00EAB194 /* PaginationViewModelTests.swift in Sources */,
 				671463BC1EB34B1E00EAB194 /* CursorTests.swift in Sources */,
 				671463B91EB34B1E00EAB194 /* StubCursor.swift in Sources */,
 			);
