@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.7.11
+- **Fix**: `addHeaderBackground` cells overlapping.
+
 ### 0.7.10
 - **Fix**: `wtihInsets` renamed to `with insets`
 
