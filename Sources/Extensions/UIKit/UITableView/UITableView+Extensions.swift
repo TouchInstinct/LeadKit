@@ -32,6 +32,8 @@ public extension UITableView {
         let backgroundView = UIView()
         backgroundView.backgroundColor = color
         addSubview(backgroundView)
+        // don't overlap cells that has out of bounds content
+        backgroundView.layer.zPosition = -CGFloat(Float.greatestFiniteMagnitude)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
                                      backgroundView.bottomAnchor.constraint(equalTo: topAnchor),
