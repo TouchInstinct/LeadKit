@@ -41,8 +41,7 @@ extension Float80: UniversalMappable {}     // aka extended
 public extension BinaryInteger where Self: UniversalMappable {
 
     static func decode(from map: Map, key: String) throws -> Self {
-        let result: Self = try map.value(key)
-        return result
+        return try map.value(key)
     }
 
 }
@@ -50,8 +49,7 @@ public extension BinaryInteger where Self: UniversalMappable {
 public extension BinaryFloatingPoint where Self: UniversalMappable {
 
     static func decode(from map: Map, key: String) throws -> Self {
-        let result: Self = try map.value(key)
-        return result
+        return try map.value(key)
     }
 
 }
@@ -59,8 +57,7 @@ public extension BinaryFloatingPoint where Self: UniversalMappable {
 extension Bool: UniversalMappable {
 
     public static func decode(from map: Map, key: String) throws -> Bool {
-        let result: Bool = try map.value(key)
-        return result
+        return try map.value(key)
     }
 
 }
@@ -68,8 +65,7 @@ extension Bool: UniversalMappable {
 extension String: UniversalMappable {
 
     public static func decode(from map: Map, key: String) throws -> String {
-        let result: String = try map.value(key)
-        return result
+        return try map.value(key)
     }
 
 }

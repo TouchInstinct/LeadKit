@@ -29,8 +29,7 @@ public extension UniversalMappable where Self: ImmutableMappable {
     }
 
     static func decode(from map: Map, key: String) throws -> ImmutableMappable {
-        let result: ImmutableMappable = try map.value(key)
-        return result
+        return try map.value(key)
     }
 
 }
