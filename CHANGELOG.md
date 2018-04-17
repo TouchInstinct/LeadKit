@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.7.12
+- **Add**: `UniversalMappable` protocol to have ability generate generic mapping models
+
 ### 0.7.11
 - **Fix**: `addHeaderBackground` cells overlapping.
 
