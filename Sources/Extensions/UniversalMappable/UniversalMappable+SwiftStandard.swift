@@ -36,7 +36,6 @@ extension UInt64: UniversalMappable {}
 
 extension Float: UniversalMappable {}       // aka float32
 extension Float64: UniversalMappable {}     // aka double
-extension Float80: UniversalMappable {}     // aka extended
 
 public extension BinaryInteger where Self: UniversalMappable {
 
