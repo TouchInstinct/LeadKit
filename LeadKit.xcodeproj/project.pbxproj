@@ -535,6 +535,9 @@
 		A6F32C121F6EBE9800AC08EE /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F32C0E1F6EBE8E00AC08EE /* StringExtensionTests.swift */; };
 		BA6C6DB45950382041948FC5 /* Pods_LeadKit_LeadKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE9323150A9760008093F73 /* Pods_LeadKit_LeadKit_iOS.framework */; };
 		D6EE55093E404DEA62B03DDF /* Pods_LeadKit_LeadKit_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8590CA7831555C295C5DC572 /* Pods_LeadKit_LeadKit_watchOS.framework */; };
+		D93221EE20A44896003799D5 /* Double+RoundingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93221ED20A44896003799D5 /* Double+RoundingTests.swift */; };
+		D93221EF20A44896003799D5 /* Double+RoundingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93221ED20A44896003799D5 /* Double+RoundingTests.swift */; };
+		D93221F020A44896003799D5 /* Double+RoundingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93221ED20A44896003799D5 /* Double+RoundingTests.swift */; };
 		DEE25FE98D40ED1C168F384A /* Pods_LeadKit_LeadKit_iOS_Extensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887F99C5326BD220C2811BD6 /* Pods_LeadKit_LeadKit_iOS_Extensions.framework */; };
 		EF24213A2076D5BD00FA9BE6 /* NetworkServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2421392076D5BD00FA9BE6 /* NetworkServiceConfiguration.swift */; };
 		EF24213B2076D5C700FA9BE6 /* NetworkServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2421392076D5BD00FA9BE6 /* NetworkServiceConfiguration.swift */; };
@@ -786,6 +789,7 @@
 		CFE9323150A9760008093F73 /* Pods_LeadKit_LeadKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_LeadKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F8D0002B21A4F31981F1ED /* Pods_LeadKit_LeadKit_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_LeadKit_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D840E55867DC9BB63460B856 /* Pods-LeadKit tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit tvOSTests/Pods-LeadKit tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		D93221ED20A44896003799D5 /* Double+RoundingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+RoundingTests.swift"; sourceTree = "<group>"; };
 		DF1148A279C7AC7A42B0A0F8 /* Pods_LeadKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF2421392076D5BD00FA9BE6 /* NetworkServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceConfiguration.swift; sourceTree = "<group>"; };
 		EFA4C66320864F9C008C4DD8 /* UniversalMappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalMappable.swift; sourceTree = "<group>"; };
@@ -1730,6 +1734,7 @@
 		A6F32C0D1F6EBE7700AC08EE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D93221ED20A44896003799D5 /* Double+RoundingTests.swift */,
 				A6F32C0E1F6EBE8E00AC08EE /* StringExtensionTests.swift */,
 			);
 			path = Extensions;
@@ -2717,6 +2722,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6C9A5051F8BC78F009311CC /* SeparatorConfiguration.swift in Sources */,
+				D93221EE20A44896003799D5 /* Double+RoundingTests.swift in Sources */,
 				671463CA1EB34B1E00EAB194 /* TestView.swift in Sources */,
 				671463B81EB34B1E00EAB194 /* StubCursor.swift in Sources */,
 				671463BB1EB34B1E00EAB194 /* CursorTests.swift in Sources */,
@@ -2983,6 +2989,7 @@
 				671463BA1EB34B1E00EAB194 /* StubCursor.swift in Sources */,
 				671463BD1EB34B1E00EAB194 /* CursorTests.swift in Sources */,
 				A6F32C121F6EBE9800AC08EE /* StringExtensionTests.swift in Sources */,
+				D93221F020A44896003799D5 /* Double+RoundingTests.swift in Sources */,
 				671463C01EB34B1E00EAB194 /* LoadFromNibTests.swift in Sources */,
 				671463C61EB34B1E00EAB194 /* Post.swift in Sources */,
 			);
@@ -3138,6 +3145,7 @@
 				671463BF1EB34B1E00EAB194 /* LoadFromNibTests.swift in Sources */,
 				671463C51EB34B1E00EAB194 /* Post.swift in Sources */,
 				671463CB1EB34B1E00EAB194 /* TestView.swift in Sources */,
+				D93221EF20A44896003799D5 /* Double+RoundingTests.swift in Sources */,
 				A6F32C111F6EBE9700AC08EE /* StringExtensionTests.swift in Sources */,
 				671463BC1EB34B1E00EAB194 /* CursorTests.swift in Sources */,
 				671463B91EB34B1E00EAB194 /* StubCursor.swift in Sources */,
