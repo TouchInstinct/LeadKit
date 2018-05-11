@@ -23,10 +23,8 @@
 import Foundation
 
 public extension Double {
-    
     /**
      Type of rounding double value
-     
      - Normal: From 167.567 you will get 167.6
      - Down:   From 167.567 you will get 167.5
      */
@@ -34,7 +32,7 @@ public extension Double {
         case normal
         case down
     }
-    
+
     /**
      Rounding of double value
      
