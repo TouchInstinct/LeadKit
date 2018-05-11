@@ -47,6 +47,8 @@ internal final class TextWithButtonPlaceholder: UIView {
         stackView.axis = .vertical
 
         addSubview(stackView)
+
+        stackView.setToCenter(withSize: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {

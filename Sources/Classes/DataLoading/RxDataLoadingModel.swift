@@ -31,14 +31,14 @@ open class RxDataLoadingModel<LoadingStateType: DataLoadingState>: DataLoadingMo
 
     public typealias EmptyResultChecker = (ResultType) -> Bool
 
-    private let stateVariable = Variable<LoadingStateType>(.initialState)
+    private let stateRelay = BehaviorRelay<LoadingStateType>(value: .initialState)
     var currentRequestDisposable: Disposable?
 
     var dataSource: DataSourceType
     let emptyResultChecker: EmptyResultChecker
 
     open var stateDriver: Driver<LoadingStateType> {
-        return stateVariable.asDriver()
+        return stateRelay.asDriver()
     }
 
     public init(dataSource: DataSourceType, emptyResultChecker: @escaping EmptyResultChecker) {
@@ -86,10 +86,10 @@ open class RxDataLoadingModel<LoadingStateType: DataLoadingState>: DataLoadingMo
 
     var state: LoadingStateType {
         get {
-            return stateVariable.value
+            return stateRelay.value
         }
         set {
-            stateVariable.value = newValue
+            stateRelay.accept(newValue)
         }
     }
 

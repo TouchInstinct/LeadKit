@@ -113,7 +113,7 @@ public extension TableDirector {
 
     /// Clear table view and reload it within empty section
     func safeClear() {
-        clear().append(section: TableSection()).reload()
+        clear().append(section: TableSection(onlyRows: [])).reload()
     }
 
 }

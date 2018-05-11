@@ -347,6 +347,8 @@
 		675C1FB41F97CA32007D5249 /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
 		675C1FB51F97CA33007D5249 /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
 		675C1FB61F97CA33007D5249 /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
+		6762131820A0BBA30034EEF1 /* TableSection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6762131720A0BBA30034EEF1 /* TableSection+Extensions.swift */; };
+		6762131920A0BBA30034EEF1 /* TableSection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6762131720A0BBA30034EEF1 /* TableSection+Extensions.swift */; };
 		676B22A2206A626D002E9F8A /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B22A1206A626D002E9F8A /* NSAttributedString+Extensions.swift */; };
 		676B22A3206A626D002E9F8A /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B22A1206A626D002E9F8A /* NSAttributedString+Extensions.swift */; };
 		676B22A4206A626D002E9F8A /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B22A1206A626D002E9F8A /* NSAttributedString+Extensions.swift */; };
@@ -710,6 +712,7 @@
 		673CF4332063E29B00C329F6 /* TextWithButtonPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWithButtonPlaceholder.swift; sourceTree = "<group>"; };
 		673CF4372063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralDataLoadingController+DefaultImplementation.swift"; sourceTree = "<group>"; };
 		674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+LoadingIndicator.swift"; sourceTree = "<group>"; };
+		6762131720A0BBA30034EEF1 /* TableSection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableSection+Extensions.swift"; sourceTree = "<group>"; };
 		676B22A1206A626D002E9F8A /* NSAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		6771DFE91EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormattingService+MappingTransform.swift"; sourceTree = "<group>"; };
 		67745267206249360024EEEF /* UITableView+PaginationWrappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+PaginationWrappable.swift"; sourceTree = "<group>"; };
@@ -957,7 +960,7 @@
 				82F8BB161F5DDED100C1061B /* Single */,
 				671461FA1EB3396E00EAB194 /* String */,
 				671461FE1EB3396E00EAB194 /* Support */,
-				671462001EB3396E00EAB194 /* TableDirector */,
+				6762131520A0BAD40034EEF1 /* TableKit */,
 				671462021EB3396E00EAB194 /* TimeInterval */,
 				671462081EB3396E00EAB194 /* UIColor */,
 				672947E0206EA36B00AC6B6B /* UIKit */,
@@ -1423,6 +1426,23 @@
 				674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */,
 			);
 			path = UIActivityIndicatorView;
+			sourceTree = "<group>";
+		};
+		6762131520A0BAD40034EEF1 /* TableKit */ = {
+			isa = PBXGroup;
+			children = (
+				6762131620A0BAF70034EEF1 /* TableSection */,
+				671462001EB3396E00EAB194 /* TableDirector */,
+			);
+			path = TableKit;
+			sourceTree = "<group>";
+		};
+		6762131620A0BAF70034EEF1 /* TableSection */ = {
+			isa = PBXGroup;
+			children = (
+				6762131720A0BBA30034EEF1 /* TableSection+Extensions.swift */,
+			);
+			path = TableSection;
 			sourceTree = "<group>";
 		};
 		676B22A0206A6249002E9F8A /* NSAttributedString */ = {
@@ -2633,6 +2653,7 @@
 				A676AE551F98112E001F9214 /* ObservableMappable.swift in Sources */,
 				A6E0DDE11F8A696F002CA74E /* SeparatorRowBox.swift in Sources */,
 				A6E0DDDE1F8A696F002CA74E /* EmptyCellRow.swift in Sources */,
+				6762131820A0BBA30034EEF1 /* TableSection+Extensions.swift in Sources */,
 				67EB7FFD206176C900BDD9FB /* AnyPaginationWrappable.swift in Sources */,
 				671463041EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
 				6774527420624E820024EEEF /* DataLoadingModel.swift in Sources */,
@@ -2971,6 +2992,7 @@
 				676B22A5206A626D002E9F8A /* NSAttributedString+Extensions.swift in Sources */,
 				673CF4142063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */,
 				671462DB1EB3396E00EAB194 /* TimeInterval+DateComponents.swift in Sources */,
+				6762131920A0BBA30034EEF1 /* TableSection+Extensions.swift in Sources */,
 				6774529020625C9E0024EEEF /* GeneralDataLoadingState.swift in Sources */,
 				67EB7FC3206140E600BDD9FB /* TotalCountCursor.swift in Sources */,
 				EF24213D2076D5CA00FA9BE6 /* NetworkServiceConfiguration.swift in Sources */,

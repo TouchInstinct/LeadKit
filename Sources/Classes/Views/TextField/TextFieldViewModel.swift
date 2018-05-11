@@ -30,7 +30,7 @@ open class TextFieldViewModel<ViewEvents: TextFieldViewEvents,
     /// Events that can be emitted by view model.
     public let viewModelEvents: ViewModelEvents
 
-    private let viewEventsVariable = Variable<ViewEvents?>(nil)
+    private let viewEventsRelay = BehaviorRelay<ViewEvents?>(value: nil)
 
     private(set) public var disposeBag = DisposeBag()
 
@@ -44,7 +44,7 @@ open class TextFieldViewModel<ViewEvents: TextFieldViewEvents,
     /// View events driver that will emit view events structure
     /// when view will bind itself to the view model.
     public var viewEventsDriver: Driver<ViewEvents> {
-        return viewEventsVariable
+        return viewEventsRelay
             .asDriver()
             .flatMap { viewEvents -> Driver<ViewEvents> in
                 guard let viewEvents = viewEvents else {
@@ -59,7 +59,7 @@ open class TextFieldViewModel<ViewEvents: TextFieldViewEvents,
     ///
     /// - Parameter viewEvents: View events structure.
     public func bind(viewEvents: ViewEvents) {
-        viewEventsVariable.value = viewEvents
+        viewEventsRelay.accept(viewEvents)
     }
 
     /// Unbinds view from view model.
