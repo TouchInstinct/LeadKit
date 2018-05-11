@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.7.13
+- **Fix**: `Double.roundValue(withPrecision:)` rounding issue
+- **Add**: `Double+Rounding` test case
+
 ### 0.7.12
 - **Add**: `UniversalMappable` protocol to have ability generate generic mapping models
 
