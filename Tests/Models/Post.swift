@@ -22,19 +22,23 @@
 
 import ObjectMapper
 
-struct Post: ImmutableMappable {
+struct Post: Decodable {
+    
+    enum CodingKeys: String, CodingKey {
+        case userId
+        case postId = "id"
+        case title
+        case body
+    }
 
     let userId: Int
     let postId: Int
     let title: String
     let body: String
 
-    init(userId: Int, postId: Int, title: String, body: String) {
-        self.userId = userId
-        self.postId = postId
-        self.title = title
-        self.body = body
-    }
+}
+
+extension Post: ImmutableMappable {
 
     init(map: Map) throws {
         userId = try map.value("userId")
@@ -42,14 +46,13 @@ struct Post: ImmutableMappable {
         title = try map.value("title")
         body = try map.value("body")
     }
-
+    
     mutating func mapping(map: Map) {
         userId >>> map["userId"]
         postId >>> map["id"]
         title >>> map["title"]
         body >>> map["body"]
     }
-
 }
 
 extension Post: Equatable {
