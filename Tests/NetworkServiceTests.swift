@@ -76,4 +76,36 @@ class NetworkServiceTests: XCTestCase {
         XCTAssertEqual(receivedModel, expectedModel)
     }
     
+    func testObservableModelRequest() {
+        // given
+        let expectedModel = ObservableMappablePost(userId: 1,
+                                                   postId: 1,
+                                                   title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                                                   body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto")
+        
+        var receivedModel: ObservableMappablePost?
+        var error: Error?
+        let requestCompletedExpectation = expectation(description: "Request completed")
+        let apiRequest = ApiRequestParameters(url: "https://jsonplaceholder.typicode.com/posts/1",
+                                              headers: ["Content-Type": "application/json"])
+        
+        // when
+        networkService.rxRequest(with: apiRequest)
+            .subscribe(onNext: { (_, model: ObservableMappablePost) in
+                receivedModel = model
+                requestCompletedExpectation.fulfill()
+            }, onError: {
+                error = $0
+                requestCompletedExpectation.fulfill()
+            })
+            .disposed(by: disposeBag)
+        
+        waitForExpectations(timeout: 20, handler: nil)
+        
+        // then
+        XCTAssertNil(error)
+        XCTAssertNotNil(receivedModel)
+        XCTAssertEqual(receivedModel, expectedModel)
+    }
+    
 }
