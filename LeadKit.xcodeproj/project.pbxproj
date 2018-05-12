@@ -536,6 +536,9 @@
 		B84D64B120A70B7000DD76DA /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84D64B020A70B7000DD76DA /* NetworkServiceTests.swift */; };
 		B84D64B220A70B7000DD76DA /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84D64B020A70B7000DD76DA /* NetworkServiceTests.swift */; };
 		B84D64B320A70B7000DD76DA /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84D64B020A70B7000DD76DA /* NetworkServiceTests.swift */; };
+		B84D64B620A71A8400DD76DA /* ObservableMappablePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84D64B520A71A8400DD76DA /* ObservableMappablePost.swift */; };
+		B84D64B720A71A8400DD76DA /* ObservableMappablePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84D64B520A71A8400DD76DA /* ObservableMappablePost.swift */; };
+		B84D64B820A71A8400DD76DA /* ObservableMappablePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84D64B520A71A8400DD76DA /* ObservableMappablePost.swift */; };
 		BA6C6DB45950382041948FC5 /* Pods_LeadKit_LeadKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE9323150A9760008093F73 /* Pods_LeadKit_LeadKit_iOS.framework */; };
 		D6EE55093E404DEA62B03DDF /* Pods_LeadKit_LeadKit_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8590CA7831555C295C5DC572 /* Pods_LeadKit_LeadKit_watchOS.framework */; };
 		DEE25FE98D40ED1C168F384A /* Pods_LeadKit_LeadKit_iOS_Extensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887F99C5326BD220C2811BD6 /* Pods_LeadKit_LeadKit_iOS_Extensions.framework */; };
@@ -784,6 +787,7 @@
 		A6F32C0E1F6EBE8E00AC08EE /* StringExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
 		A854A36EB179651E6D0CC9FB /* Pods_LeadKit_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B84D64B020A70B7000DD76DA /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		B84D64B520A71A8400DD76DA /* ObservableMappablePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableMappablePost.swift; sourceTree = "<group>"; };
 		BECC6E4BF63781403877B059 /* Pods-LeadKit-LeadKit watchOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit-LeadKit watchOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit-LeadKit watchOS/Pods-LeadKit-LeadKit watchOS.release.xcconfig"; sourceTree = "<group>"; };
 		CB02EAC4E52AF48AD64EC045 /* Pods-LeadKit iOS ExtensionsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit iOS ExtensionsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit iOS ExtensionsTests/Pods-LeadKit iOS ExtensionsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD7003F75FD6DDC97DC99A7A /* Pods-LeadKit iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit iOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit iOSTests/Pods-LeadKit iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1232,6 +1236,7 @@
 			isa = PBXGroup;
 			children = (
 				671463B31EB34B1E00EAB194 /* Post.swift */,
+				B84D64B520A71A8400DD76DA /* ObservableMappablePost.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2723,6 +2728,7 @@
 			files = (
 				A6C9A5051F8BC78F009311CC /* SeparatorConfiguration.swift in Sources */,
 				671463CA1EB34B1E00EAB194 /* TestView.swift in Sources */,
+				B84D64B620A71A8400DD76DA /* ObservableMappablePost.swift in Sources */,
 				671463B81EB34B1E00EAB194 /* StubCursor.swift in Sources */,
 				671463BB1EB34B1E00EAB194 /* CursorTests.swift in Sources */,
 				A6F32C101F6EBE9600AC08EE /* StringExtensionTests.swift in Sources */,
@@ -2989,6 +2995,7 @@
 				B84D64B320A70B7000DD76DA /* NetworkServiceTests.swift in Sources */,
 				671463BA1EB34B1E00EAB194 /* StubCursor.swift in Sources */,
 				671463BD1EB34B1E00EAB194 /* CursorTests.swift in Sources */,
+				B84D64B820A71A8400DD76DA /* ObservableMappablePost.swift in Sources */,
 				A6F32C121F6EBE9800AC08EE /* StringExtensionTests.swift in Sources */,
 				671463C01EB34B1E00EAB194 /* LoadFromNibTests.swift in Sources */,
 				671463C61EB34B1E00EAB194 /* Post.swift in Sources */,
@@ -3146,6 +3153,7 @@
 				B84D64B220A70B7000DD76DA /* NetworkServiceTests.swift in Sources */,
 				671463C51EB34B1E00EAB194 /* Post.swift in Sources */,
 				671463CB1EB34B1E00EAB194 /* TestView.swift in Sources */,
+				B84D64B720A71A8400DD76DA /* ObservableMappablePost.swift in Sources */,
 				A6F32C111F6EBE9700AC08EE /* StringExtensionTests.swift in Sources */,
 				671463BC1EB34B1E00EAB194 /* CursorTests.swift in Sources */,
 				671463B91EB34B1E00EAB194 /* StubCursor.swift in Sources */,
