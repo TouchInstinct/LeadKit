@@ -24,6 +24,18 @@ DEPENDENCIES:
   - TableKit (~> 2.6)
   - UIScrollView-InfiniteScroll (~> 1.0.0)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - ObjectMapper
+    - RxAlamofire
+    - RxCocoa
+    - RxSwift
+    - SwiftDate
+    - SwiftLint
+    - TableKit
+    - UIScrollView-InfiniteScroll
+
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
@@ -37,4 +49,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c664ef2965e7a828be2da9711aaa145b256e7d99
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0
