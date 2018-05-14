@@ -42,7 +42,7 @@ class LoadFromNibTests: XCTestCase {
 
         testView.text = LoadFromNibTests.testText
 
-        XCTAssertEqual(LoadFromNibTests.testText, "atata")
+        XCTAssertEqual(LoadFromNibTests.testText, testView.text)
     }
 
 }
