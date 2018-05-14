@@ -29,7 +29,7 @@ public final class DataModelFieldBinding<T> {
     public typealias GetFieldClosure = (T) -> String?
     public typealias MergeFieldClosure = (T, String?) -> T
 
-    private let modelVariable: Variable<T>
+    private let modelRelay: BehaviorRelay<T>
     private let modelDriver: Driver<T>
     private let getFieldClosure: DataModelFieldBinding<T>.GetFieldClosure
     private let mergeFieldClosure: DataModelFieldBinding<T>.MergeFieldClosure
@@ -37,16 +37,16 @@ public final class DataModelFieldBinding<T> {
     /// Memberwise initializer.
     ///
     /// - Parameters:
-    ///   - modelVariable: Variable that contains data model.
+    ///   - modelRelay: BehaviourRelay that contains data model.
     ///   - modelDriver: Driver that emits new data models.
     ///   - getFieldClosure: Closure for getting field string reprerentation from data model.
     ///   - mergeFieldClosure: Closure for merging new field value into data model.
-    public init(modelVariable: Variable<T>,
+    public init(modelRelay: BehaviorRelay<T>,
                 modelDriver: Driver<T>,
                 getFieldClosure: @escaping GetFieldClosure,
                 mergeFieldClosure: @escaping MergeFieldClosure) {
 
-        self.modelVariable = modelVariable
+        self.modelRelay = modelRelay
         self.modelDriver = modelDriver
         self.getFieldClosure = getFieldClosure
         self.mergeFieldClosure = mergeFieldClosure
@@ -55,12 +55,12 @@ public final class DataModelFieldBinding<T> {
     /// Method that merges new field values with data model.
     ///
     /// - Parameter textDriver: Driver that emits new text values.
-    /// - Returns: Disposable object that can be used to unsubscribe the observer from the variable.
+    /// - Returns: Disposable object that can be used to unsubscribe the observer from the behaviour relay.
     public func mergeStringToModel(from textDriver: Driver<String?>) -> Disposable {
-        return textDriver.map { [modelVariable, mergeFieldClosure] in
-            mergeFieldClosure(modelVariable.value, $0)
+        return textDriver.map { [modelRelay, mergeFieldClosure] in
+            mergeFieldClosure(modelRelay.value, $0)
         }
-        .drive(modelVariable)
+        .drive(modelRelay)
     }
 
     /// A Driver that will emit current field value.
@@ -72,18 +72,18 @@ public final class DataModelFieldBinding<T> {
 
 public extension DataModelFieldBinding {
 
-    /// Convenience initializer without modelDriver, which will be obtained from modelVariable.
+    /// Convenience initializer without modelDriver, which will be obtained from modelRelay.
     ///
     /// - Parameters:
-    ///   - modelVariable: Variable that contains data model.
+    ///   - modelRelay: BehaviourRelay that contains data model.
     ///   - getFieldClosure: Closure for getting field string reprerentation from data model.
     ///   - mergeFieldClosure: Closure for merging new field value into data model.
-    convenience init(modelVariable: Variable<T>,
+    convenience init(modelRelay: BehaviorRelay<T>,
                      getFieldClosure: @escaping GetFieldClosure,
                      mergeFieldClosure: @escaping MergeFieldClosure) {
 
-        self.init(modelVariable: modelVariable,
-                  modelDriver: modelVariable.asDriver(),
+        self.init(modelRelay: modelRelay,
+                  modelDriver: modelRelay.asDriver(),
                   getFieldClosure: getFieldClosure,
                   mergeFieldClosure: mergeFieldClosure)
     }
@@ -94,19 +94,19 @@ public extension DataModelFieldBinding where T == String? {
 
     /// Convenience initializer for data model of string.
     ///
-    /// - Parameter modelVariable: Variable that contains data model.
-    convenience init(modelVariable: Variable<T>) {
-        self.init(modelVariable: modelVariable,
-                  modelDriver: modelVariable.asDriver(),
+    /// - Parameter modelRelay: BehaviourRelay that contains data model.
+    convenience init(modelRelay: BehaviorRelay<T>) {
+        self.init(modelRelay: modelRelay,
+                  modelDriver: modelRelay.asDriver(),
                   getFieldClosure: { $0 },
                   mergeFieldClosure: { $1 })
     }
 
 }
 
-public extension Variable {
+public extension BehaviorRelay {
 
-    /// Creates DataModelFieldBinding configured with given closures and variable itself.
+    /// Creates DataModelFieldBinding configured with given closures and behaviour relay itself.
     ///
     /// - Parameters:
     ///   - getFieldClosure: Closure for getting field string reprerentation from data model.
@@ -115,20 +115,20 @@ public extension Variable {
     func fieldBinding(getFieldClosure: @escaping DataModelFieldBinding<E>.GetFieldClosure,
                       mergeFieldClosure: @escaping DataModelFieldBinding<E>.MergeFieldClosure) -> DataModelFieldBinding<E> {
 
-        return DataModelFieldBinding(modelVariable: self,
+        return DataModelFieldBinding(modelRelay: self,
                                      getFieldClosure: getFieldClosure,
                                      mergeFieldClosure: mergeFieldClosure)
     }
 
 }
 
-public extension Variable where Element == String? {
+public extension BehaviorRelay where Element == String? {
 
-    /// Creates DataModelFieldBinding configured with variable itself.
+    /// Creates DataModelFieldBinding configured with behaviour relay itself.
     ///
     /// - Returns: DataModelFieldBinding instance.
     func fieldBinding() -> DataModelFieldBinding<E> {
-        return DataModelFieldBinding(modelVariable: self)
+        return DataModelFieldBinding(modelRelay: self)
     }
 
 }

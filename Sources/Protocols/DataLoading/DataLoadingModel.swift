@@ -23,7 +23,7 @@
 import RxCocoa
 
 /// Protocol that describes data loading process
-/// with methods reload & retry and current state driver variable.
+/// with methods reload & retry and current state driver.
 public protocol DataLoadingModel {
 
     associatedtype LoadingStateType: DataLoadingState
