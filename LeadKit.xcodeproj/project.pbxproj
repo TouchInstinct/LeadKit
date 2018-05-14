@@ -13,6 +13,8 @@
 		32E6F03F20A9DFC70073BC6B /* SeparatorConfiguration+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6737CFA2207220960063E056 /* SeparatorConfiguration+Extensions.swift */; };
 		32E6F04020A9DFCC0073BC6B /* SeparatorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDF01F8A6C80002CA74E /* SeparatorConfiguration.swift */; };
 		32E6F04120A9DFCD0073BC6B /* SeparatorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDF01F8A6C80002CA74E /* SeparatorConfiguration.swift */; };
+		32E6F04220A9ECAB0073BC6B /* CellSeparatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67926235206EB0AE00308E62 /* CellSeparatorType.swift */; };
+		32E6F04320A9ECE20073BC6B /* CellSeparatorType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6792623B206EB0EC00308E62 /* CellSeparatorType+Extensions.swift */; };
 		3614FEACB9E8313C87F7C393 /* Pods_LeadKit_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB1CCAB1EAAACD3AC42C795 /* Pods_LeadKit_tvOSTests.framework */; };
 		36977763200CF12100ED9C6E /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
 		36DAAF512007CC920090BE0D /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
@@ -2635,6 +2637,8 @@
 				671463B81EB34B1E00EAB194 /* StubCursor.swift in Sources */,
 				A658E54E1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift in Sources */,
 				A658E5511F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift in Sources */,
+				32E6F04320A9ECE20073BC6B /* CellSeparatorType+Extensions.swift in Sources */,
+				32E6F04220A9ECAB0073BC6B /* CellSeparatorType.swift in Sources */,
 				671463BB1EB34B1E00EAB194 /* CursorTests.swift in Sources */,
 				A6F32C101F6EBE9600AC08EE /* StringExtensionTests.swift in Sources */,
 				671463BE1EB34B1E00EAB194 /* LoadFromNibTests.swift in Sources */,
