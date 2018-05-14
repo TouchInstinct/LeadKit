@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		2D6A0E6105F4A9BF22BF4BB1 /* Pods_LeadKit_iOS_ExtensionsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C88ED8C9373F85C06697849 /* Pods_LeadKit_iOS_ExtensionsTests.framework */; };
 		2D96F18874B9519F5AD74003 /* Pods_LeadKit_LeadKit_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F8D0002B21A4F31981F1ED /* Pods_LeadKit_LeadKit_tvOS.framework */; };
+		32E6F03E20A9DFC50073BC6B /* SeparatorConfiguration+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6737CFA2207220960063E056 /* SeparatorConfiguration+Extensions.swift */; };
+		32E6F03F20A9DFC70073BC6B /* SeparatorConfiguration+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6737CFA2207220960063E056 /* SeparatorConfiguration+Extensions.swift */; };
+		32E6F04020A9DFCC0073BC6B /* SeparatorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDF01F8A6C80002CA74E /* SeparatorConfiguration.swift */; };
+		32E6F04120A9DFCD0073BC6B /* SeparatorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDF01F8A6C80002CA74E /* SeparatorConfiguration.swift */; };
 		3614FEACB9E8313C87F7C393 /* Pods_LeadKit_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB1CCAB1EAAACD3AC42C795 /* Pods_LeadKit_tvOSTests.framework */; };
 		36977763200CF12100ED9C6E /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
 		36DAAF512007CC920090BE0D /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
@@ -311,8 +315,6 @@
 		673564F82068C68D00F0CBED /* NumberFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673564F52068C68D00F0CBED /* NumberFormat.swift */; };
 		673564F92068C68D00F0CBED /* NumberFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673564F52068C68D00F0CBED /* NumberFormat.swift */; };
 		6737CFA3207220960063E056 /* SeparatorConfiguration+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6737CFA2207220960063E056 /* SeparatorConfiguration+Extensions.swift */; };
-		6737CFA4207220960063E056 /* SeparatorConfiguration+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6737CFA2207220960063E056 /* SeparatorConfiguration+Extensions.swift */; };
-		6737CFA5207220960063E056 /* SeparatorConfiguration+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6737CFA2207220960063E056 /* SeparatorConfiguration+Extensions.swift */; };
 		67386A8C206CF3F6004EDA6C /* DateFormattingService+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67386A8B206CF3F6004EDA6C /* DateFormattingService+DefaultImplementation.swift */; };
 		67386A8D206CF3F6004EDA6C /* DateFormattingService+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67386A8B206CF3F6004EDA6C /* DateFormattingService+DefaultImplementation.swift */; };
 		67386A8E206CF3F6004EDA6C /* DateFormattingService+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67386A8B206CF3F6004EDA6C /* DateFormattingService+DefaultImplementation.swift */; };
@@ -348,7 +350,6 @@
 		675C1FB51F97CA33007D5249 /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
 		675C1FB61F97CA33007D5249 /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
 		6762131820A0BBA30034EEF1 /* TableSection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6762131720A0BBA30034EEF1 /* TableSection+Extensions.swift */; };
-		6762131920A0BBA30034EEF1 /* TableSection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6762131720A0BBA30034EEF1 /* TableSection+Extensions.swift */; };
 		676B22A2206A626D002E9F8A /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B22A1206A626D002E9F8A /* NSAttributedString+Extensions.swift */; };
 		676B22A3206A626D002E9F8A /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B22A1206A626D002E9F8A /* NSAttributedString+Extensions.swift */; };
 		676B22A4206A626D002E9F8A /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B22A1206A626D002E9F8A /* NSAttributedString+Extensions.swift */; };
@@ -1877,7 +1878,6 @@
 				67186B241EB248F100CFAFFB /* Frameworks */,
 				67186B251EB248F100CFAFFB /* Headers */,
 				67186B261EB248F100CFAFFB /* Resources */,
-				AD7FBCAEB89E0B83766E8157 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1897,7 +1897,6 @@
 				67186B2D1EB248F100CFAFFB /* Frameworks */,
 				67186B2E1EB248F100CFAFFB /* Resources */,
 				B285084CE10354367156E122 /* [CP] Embed Pods Frameworks */,
-				15DB700D73AEB88693BD2A11 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1920,7 +1919,6 @@
 				6782BB8D1EB31CFE0086E0B8 /* Frameworks */,
 				6782BB8E1EB31CFE0086E0B8 /* Headers */,
 				6782BB8F1EB31CFE0086E0B8 /* Resources */,
-				B6CCB9C7BB698F271C94C500 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1942,7 +1940,6 @@
 				6782BB9C1EB31D590086E0B8 /* Frameworks */,
 				6782BB9D1EB31D590086E0B8 /* Headers */,
 				6782BB9E1EB31D590086E0B8 /* Resources */,
-				5F7D4A2756CE6BE8BE089C88 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1962,7 +1959,6 @@
 				6782BBA51EB31D5A0086E0B8 /* Frameworks */,
 				6782BBA61EB31D5A0086E0B8 /* Resources */,
 				C7322258346BDF6E53D19895 /* [CP] Embed Pods Frameworks */,
-				71000585D4EF76D961C69AC5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1985,7 +1981,6 @@
 				67952DC11EB327B400B3BA1A /* Frameworks */,
 				67952DC21EB327B400B3BA1A /* Headers */,
 				67952DC31EB327B400B3BA1A /* Resources */,
-				75E9590F0E8EC5AF3132BF77 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2005,7 +2000,6 @@
 				67952DCA1EB327B400B3BA1A /* Frameworks */,
 				67952DCB1EB327B400B3BA1A /* Resources */,
 				FD672381E62A00830715CF1A /* [CP] Embed Pods Frameworks */,
-				71800182B4CD75D169977550 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2145,21 +2139,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		15DB700D73AEB88693BD2A11 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit iOSTests/Pods-LeadKit iOSTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		26ED592391E1816700F06F57 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2194,21 +2173,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5F7D4A2756CE6BE8BE089C88 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit-LeadKit tvOS/Pods-LeadKit-LeadKit tvOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		671463AB1EB3440D00EAB194 /* SwiftLint */ = {
@@ -2341,51 +2305,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		71000585D4EF76D961C69AC5 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit tvOSTests/Pods-LeadKit tvOSTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		71800182B4CD75D169977550 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit iOS ExtensionsTests/Pods-LeadKit iOS ExtensionsTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		75E9590F0E8EC5AF3132BF77 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit-LeadKit iOS Extensions/Pods-LeadKit-LeadKit iOS Extensions-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7651BEBB96C92C6FC99FC736 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2420,21 +2339,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AD7FBCAEB89E0B83766E8157 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit-LeadKit iOS/Pods-LeadKit-LeadKit iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AF85CA2DF6F5C17A49A0D252 /* [CP] Check Pods Manifest.lock */ = {
@@ -2485,21 +2389,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit iOSTests/Pods-LeadKit iOSTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B6CCB9C7BB698F271C94C500 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit-LeadKit watchOS/Pods-LeadKit-LeadKit watchOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BCF262D3C2C3337546F84061 /* [CP] Check Pods Manifest.lock */ = {
@@ -2919,11 +2808,11 @@
 				677452A220625EEE0024EEEF /* PaginationDataLoadingModel.swift in Sources */,
 				673CF4362063E29B00C329F6 /* TextWithButtonPlaceholder.swift in Sources */,
 				A6F32C0C1F6EBE5C00AC08EE /* String+LocalizedComponent.swift in Sources */,
+				32E6F03F20A9DFC70073BC6B /* SeparatorConfiguration+Extensions.swift in Sources */,
 				671462AF1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
 				A676AE4F1F9810C1001F9214 /* Any+Cast.swift in Sources */,
 				671463031EB3396E00EAB194 /* UIView+LoadFromNib.swift in Sources */,
 				6714627F1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
-				6737CFA5207220960063E056 /* SeparatorConfiguration+Extensions.swift in Sources */,
 				6714627B1EB3396E00EAB194 /* ResizeMode.swift in Sources */,
 				67745289206259CF0024EEEF /* Rx+RxDataSourceProtocol.swift in Sources */,
 				67386A8F206CF3F6004EDA6C /* DateFormattingService+DefaultImplementation.swift in Sources */,
@@ -2951,6 +2840,7 @@
 				6714626F1EB3396E00EAB194 /* XibView.swift in Sources */,
 				6714637F1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				67EB7FD720615D1700BDD9FB /* ResettableCursorType.swift in Sources */,
+				32E6F04120A9DFCD0073BC6B /* SeparatorConfiguration.swift in Sources */,
 				671463371EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
 				67153E3D207DFADA0049D8C0 /* RotateDrawingOperation.swift in Sources */,
 				67274782206CD3BD00725163 /* ViewText+Extensions.swift in Sources */,
@@ -2992,7 +2882,6 @@
 				676B22A5206A626D002E9F8A /* NSAttributedString+Extensions.swift in Sources */,
 				673CF4142063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */,
 				671462DB1EB3396E00EAB194 /* TimeInterval+DateComponents.swift in Sources */,
-				6762131920A0BBA30034EEF1 /* TableSection+Extensions.swift in Sources */,
 				6774529020625C9E0024EEEF /* GeneralDataLoadingState.swift in Sources */,
 				67EB7FC3206140E600BDD9FB /* TotalCountCursor.swift in Sources */,
 				EF24213D2076D5CA00FA9BE6 /* NetworkServiceConfiguration.swift in Sources */,
@@ -3078,6 +2967,7 @@
 				671463291EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
 				671462AD1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
 				671463011EB3396E00EAB194 /* UIView+LoadFromNib.swift in Sources */,
+				32E6F03E20A9DFC50073BC6B /* SeparatorConfiguration+Extensions.swift in Sources */,
 				6774526D206249E30024EEEF /* UICollectionView+PaginationWrappable.swift in Sources */,
 				6714627D1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
 				673CF4352063E29B00C329F6 /* TextWithButtonPlaceholder.swift in Sources */,
@@ -3138,10 +3028,10 @@
 				6714632D1EB3396E00EAB194 /* ConfigurableController.swift in Sources */,
 				67745287206259CF0024EEEF /* Rx+RxDataSourceProtocol.swift in Sources */,
 				A676AE561F98112F001F9214 /* ObservableMappable.swift in Sources */,
-				6737CFA4207220960063E056 /* SeparatorConfiguration+Extensions.swift in Sources */,
 				67926237206EB0AE00308E62 /* CellSeparatorType.swift in Sources */,
 				6774527A206252020024EEEF /* DataLoadingState.swift in Sources */,
 				6714628D1EB3396E00EAB194 /* CGImage+Alpha.swift in Sources */,
+				32E6F04020A9DFCC0073BC6B /* SeparatorConfiguration.swift in Sources */,
 				67745269206249360024EEEF /* UITableView+PaginationWrappable.swift in Sources */,
 				67274779206CD0B500725163 /* UILabel+ViewTextConfiguration.swift in Sources */,
 				67EB7FC8206148D000BDD9FB /* TotalCountCursorListingResult.swift in Sources */,
