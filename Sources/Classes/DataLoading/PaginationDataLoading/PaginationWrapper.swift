@@ -63,7 +63,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
     private var currentPlaceholderView: UIView?
     private var currentPlaceholderViewTopConstraint: NSLayoutConstraint?
 
-    private let applicationCurrentyActive = Variable<Bool>(true)
+    private let applicationCurrentyActive = BehaviorRelay(value: true)
 
     /// Initializer with table view, placeholders container view, cusor and delegate parameters.
     ///
@@ -193,7 +193,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
             retryButton.rx
                 .controlEvent(.touchUpInside)
                 .asDriver()
-                .drive(reloadEvent)
+                .drive(retryEvent)
                 .disposed(by: disposeBag)
 
             delegate?.footerRetryButtonWillAppear()
@@ -350,13 +350,13 @@ private extension PaginationWrapper {
         }
     }
 
-    var retryEvent: Binder<()> {
+    var retryEvent: Binder<Void> {
         return Binder(self) { base, _ in
             base.paginationViewModel.loadMore()
         }
     }
 
-    var reloadEvent: Binder<()> {
+    var reloadEvent: Binder<Void> {
         return Binder(self) { base, _ in
             base.reload()
         }

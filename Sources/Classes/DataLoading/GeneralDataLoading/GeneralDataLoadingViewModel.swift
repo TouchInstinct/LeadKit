@@ -31,7 +31,7 @@ open class GeneralDataLoadingViewModel<ResultType>: BaseViewModel {
 
     private let loadingModel: LoadingModel
 
-    private let loadingStateVariable = Variable<LoadingState>(.initial)
+    private let loadingStateRelay = BehaviorRelay<LoadingState>(value: .initial)
 
     public let disposeBag = DisposeBag()
 
@@ -46,7 +46,7 @@ open class GeneralDataLoadingViewModel<ResultType>: BaseViewModel {
         loadingModel = LoadingModel(dataSource: dataSource, emptyResultChecker: emptyResultChecker)
 
         loadingModel.stateDriver
-            .drive(loadingStateVariable)
+            .drive(loadingStateRelay)
             .disposed(by: disposeBag)
 
         loadingModel.reload()
@@ -54,7 +54,7 @@ open class GeneralDataLoadingViewModel<ResultType>: BaseViewModel {
 
     /// Returns driver that emits current loading state
     open var loadingStateDriver: Driver<LoadingState> {
-        return loadingStateVariable.asDriver()
+        return loadingStateRelay.asDriver()
     }
 
     /// By default returns true if loading state == .result.
@@ -70,10 +70,10 @@ open class GeneralDataLoadingViewModel<ResultType>: BaseViewModel {
     /// Current state of loading process.
     private(set) public var currentLoadingState: LoadingState {
         get {
-            return loadingStateVariable.value
+            return loadingStateRelay.value
         }
         set {
-            loadingStateVariable.value = newValue
+            loadingStateRelay.accept(newValue)
         }
     }
 

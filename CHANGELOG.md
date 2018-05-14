@@ -1,5 +1,11 @@
 # Changelog
 
+### 0.7.13
+- **Update**: Migrate from `Variable` to `BehaviorRelay`.
+- **Fix**: `PaginationWrapper` retry load more after fail.
+- **Fix**: `safeClear` method of `TableDirector` now creates section without header and footer.
+- **Add**: `TableSection` convenience initializer for section without footer and header.
+
 ### 0.7.12
 - **Add**: `UniversalMappable` protocol to have ability generate generic mapping models
 
