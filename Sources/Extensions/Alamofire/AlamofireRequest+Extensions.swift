@@ -25,52 +25,24 @@ import RxSwift
 import ObjectMapper
 import RxAlamofire
 
-typealias ServerResponse = (response: HTTPURLResponse, result: Any)
+typealias ServerResponse = (HTTPURLResponse, Data)
 
 public extension Reactive where Base: DataRequest {
 
-    private typealias JSON = [String: Any]
+    //private typealias JSON = [String: Any]
 
     /// Method that serializes response into target object
     ///
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
+    /// - Parameter decoder: JSONDecoder used to decode a decodable type
     /// - Returns: Observable with HTTP URL Response and target object
-    func apiResponse<T: ImmutableMappable>(mappingQueue: DispatchQueue = .global())
+    func apiResponse<T: Decodable>(mappingQueue: DispatchQueue = .global(), decoder: JSONDecoder)
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
-        return responseJSONOnQueue(mappingQueue)
-            .tryMapResult { resp, value in
-                let json = try cast(value) as JSON
-
-                return (resp, try T(JSON: json))
-            }
-    }
-
-    /// Method that serializes response into array of target objects
-    ///
-    /// - Parameter mappingQueue: The dispatch queue to use for mapping
-    /// - Returns: Observable with HTTP URL Response and array of target objects
-    func apiResponse<T: ImmutableMappable>(mappingQueue: DispatchQueue = .global())
-        -> Observable<(response: HTTPURLResponse, models: [T])> {
-
-            return responseJSONOnQueue(mappingQueue)
-                .tryMapResult { resp, value in
-                    let jsonArray = try cast(value) as [JSON]
-
-                    return (resp, try Mapper<T>().mapArray(JSONArray: jsonArray))
-                }
-    }
-
-    /// Method that serializes response into target type
-    ///
-    /// - Parameter mappingQueue: The dispatch queue to use for mapping
-    /// - Returns: Observable with HTTP URL Response and target object
-    func apiResponse<T>(mappingQueue: DispatchQueue = .global())
-        -> Observable<(response: HTTPURLResponse, object: T)> {
-
-            return responseJSONOnQueue(mappingQueue)
-                .tryMapResult { resp, value in
-                    (resp, try cast(value) as T)
+            return responseData()
+                .observeOn(SerialDispatchQueueScheduler(queue: mappingQueue, internalSerialQueueName: mappingQueue.label))
+                .tryMapResult { response, data in
+                    (response, try decoder.decode(T.self, from: data))
                 }
     }
 
@@ -110,32 +82,32 @@ public extension Reactive where Base: DataRequest {
                 }
     }
 
-    internal func responseJSONOnQueue(_ queue: DispatchQueue) -> Observable<ServerResponse> {
-        let responseSerializer = DataRequest.jsonResponseSerializer(options: .allowFragments)
-
-        return responseResult(queue: queue, responseSerializer: responseSerializer)
-            .map { ServerResponse(response: $0.0, result: $0.1) }
-            .catchError {
-                switch $0 {
-                case let urlError as URLError:
-                    switch urlError.code {
-                    case .notConnectedToInternet, .timedOut:
-                        throw RequestError.noConnection
-                    default:
-                        throw RequestError.network(error: urlError)
-                    }
-                case let afError as AFError:
-                    switch afError {
-                    case .responseSerializationFailed, .responseValidationFailed:
-                        throw RequestError.invalidResponse(error: afError)
-                    default:
-                        throw RequestError.network(error: afError)
-                    }
-                default:
-                    throw RequestError.network(error: $0)
-                }
-            }
-    }
+//    internal func responseJSONOnQueue(_ queue: DispatchQueue) -> Observable<ServerResponse> {
+//        let responseSerializer = DataRequest.jsonResponseSerializer(options: .allowFragments)
+//
+//        return responseResult(queue: queue, responseSerializer: responseSerializer)
+//            .map { ServerResponse($0.0, $0.1) }
+//            .catchError {
+//                switch $0 {
+//                case let urlError as URLError:
+//                    switch urlError.code {
+//                    case .notConnectedToInternet, .timedOut:
+//                        throw RequestError.noConnection
+//                    default:
+//                        throw RequestError.network(error: urlError)
+//                    }
+//                case let afError as AFError:
+//                    switch afError {
+//                    case .responseSerializationFailed, .responseValidationFailed:
+//                        throw RequestError.invalidResponse(error: afError)
+//                    default:
+//                        throw RequestError.network(error: afError)
+//                    }
+//                default:
+//                    throw RequestError.network(error: $0)
+//                }
+//            }
+//    }
 
 }
 
@@ -152,14 +124,14 @@ private extension ObservableType where E == ServerResponse {
     }
 
     func tryMapObservableResult<R>(_ transform: @escaping (E) throws -> Observable<R>) -> Observable<R> {
-        return flatMap { response -> Observable<R> in
+        return flatMap { response, result -> Observable<R> in
             do {
-                return try transform(response)
+                return try transform((response, result))
                     .catchError {
-                        throw RequestError.mapping(error: $0, response: response.result)
+                        throw RequestError.mapping(error: $0, response: result)
                     }
             } catch {
-                throw RequestError.mapping(error: error, response: response.result)
+                throw RequestError.mapping(error: error, response: result)
             }
         }
     }

@@ -71,10 +71,11 @@ open class NetworkService {
     ///
     /// - Parameter parameters: api parameters to pass Alamofire
     /// - Returns: Observable of tuple containing (HTTPURLResponse, ImmutableMappable)
-    public func rxRequest<T: ImmutableMappable>(with parameters: ApiRequestParameters)
+    public func rxRequest<T: Decodable>(with parameters: ApiRequestParameters, decoder: JSONDecoder = JSONDecoder())
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
             return sessionManager.rx.responseModel(requestParameters: parameters,
+                                                   decoder: decoder,
                                                    acceptableStatusCodes: configuration.acceptableStatusCodes)
                 .counterTracking(for: self)
     }
