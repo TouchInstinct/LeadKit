@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2017 Touch Instinct
+//  Copyright (c) 2018 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -24,7 +24,7 @@ import XCTest
 import LeadKit
 import RxSwift
 
-class NetworkServiceTests: XCTestCase {
+final class NetworkServiceTests: XCTestCase {
     
     var disposeBag: DisposeBag!
     
