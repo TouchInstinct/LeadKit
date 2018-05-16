@@ -158,5 +158,8 @@ final class NetworkServiceTests: XCTestCase {
         XCTAssertNil(error)
         XCTAssertNotNil(receivedModel)
         XCTAssert(receivedModel?.albums.count == 100)
+        receivedModel?.albums.enumerated().forEach { index, element in
+            XCTAssertEqual(element.albumId, index + 1)
+        }
     }
 }
