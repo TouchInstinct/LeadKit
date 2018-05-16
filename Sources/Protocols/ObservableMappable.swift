@@ -26,8 +26,8 @@ import RxSwift
 /// Protocol for concurrent model mapping
 public protocol ObservableMappable {
 
-    associatedtype ModelType
+    associatedtype ModelType: Decodable
 
-    static func createFrom(map: Map) -> Observable<ModelType>
+    static func createFrom(decoder: JSONDecoder, jsonObject: Any) -> Observable<ModelType>
 
 }
