@@ -20,52 +20,37 @@
 //  THE SOFTWARE.
 //
 
-import ObjectMapper
 import LeadKit
 import RxSwift
 
-struct ObservableMappablePost: Decodable {
-    
+struct Album: Decodable {
+
     enum CodingKeys: String, CodingKey {
         case userId
-        case postId = "id"
+        case albumId = "id"
         case title
-        case body
     }
-    
+
     let userId: Int
-    let postId: Int
+    let albumId: Int
     let title: String
-    let body: String
-    
 }
 
-extension ObservableMappablePost: ObservableMappable {
-    
-    static func createFrom(map: Map) -> Observable<ObservableMappablePost> {
-        
+extension Album: Equatable {
+
+    static func == (lhs: Album, rhs: Album) -> Bool {
+        return lhs.userId == rhs.userId &&
+            lhs.albumId == rhs.albumId &&
+            lhs.title == rhs.title
+    }
+}
+
+extension Album: ObservableMappable {
+
+    static func createFrom(decoder: JSONDecoder, jsonObject: Any) -> Observable<Album> {
         return Observable.deferredJust {
-            let userId: Int = try map.value("userId")
-            let postId: Int = try map.value("id")
-            let title: String = try map.value("title")
-            let body: String = try map.value("body")
-            
-            return ObservableMappablePost(userId: userId,
-                                          postId: postId,
-                                          title: title,
-                                          body: body)
+            let data = try JSONSerialization.data(withJSONObject: jsonObject, options: [])
+            return try decoder.decode(Album.self, from: data)
         }
     }
 }
-
-extension ObservableMappablePost: Equatable {
-    
-    static func == (lhs: ObservableMappablePost, rhs: ObservableMappablePost) -> Bool {
-        return lhs.userId == rhs.userId &&
-            lhs.postId == rhs.postId &&
-            lhs.title == rhs.title &&
-            lhs.body == rhs.body
-    }
-    
-}
-

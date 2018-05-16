@@ -21,6 +21,8 @@
 //
 
 import ObjectMapper
+import LeadKit
+import RxSwift
 
 struct Post: Decodable {
     
@@ -52,6 +54,16 @@ extension Post: ImmutableMappable {
         postId >>> map["id"]
         title >>> map["title"]
         body >>> map["body"]
+    }
+}
+
+extension Post: ObservableMappable {
+
+    static func createFrom(decoder: JSONDecoder, jsonObject: Any) -> Observable<Post> {
+        return Observable.deferredJust {
+            let data = try JSONSerialization.data(withJSONObject: jsonObject, options: [])
+            return try decoder.decode(Post.self, from: data)
+        }
     }
 }
 
