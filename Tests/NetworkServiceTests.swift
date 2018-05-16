@@ -46,20 +46,19 @@ final class NetworkServiceTests: XCTestCase {
     
     func testModelRequest() {
         // given
-        let expectedModel = Post(userId: 1,
-                                 postId: 1,
-                                 title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                                 body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto")
+        let expectedModel = Album(userId: 1,
+                                  albumId: 1,
+                                  title: "quidem molestiae enim")
         
-        var receivedModel: Post?
+        var receivedModel: Album?
         var error: Error?
         let requestCompletedExpectation = expectation(description: "Request completed")
-        let apiRequest = ApiRequestParameters(url: "https://jsonplaceholder.typicode.com/posts/1",
+        let apiRequest = ApiRequestParameters(url: "https://jsonplaceholder.typicode.com/albums/1",
                                               headers: ["Content-Type": "application/json"])
 
         // when
         networkService.rxRequest(with: apiRequest)
-            .subscribe(onNext: { (_, model: Post) in
+            .subscribe(onNext: { (_, model: Album) in
                 receivedModel = model
                 requestCompletedExpectation.fulfill()
             }, onError: {
@@ -74,24 +73,50 @@ final class NetworkServiceTests: XCTestCase {
         XCTAssertNil(error)
         XCTAssertNotNil(receivedModel)
         XCTAssertEqual(receivedModel, expectedModel)
+    }
+
+    func testModelArrayRequest() {
+        // given
+        var response: [Album]?
+        var error: Error?
+        let requestCompletedExpectation = expectation(description: "Request completed")
+        let apiRequest = ApiRequestParameters(url: "https://jsonplaceholder.typicode.com/albums",
+                                              headers: ["Content-Type": "application/json"])
+
+        //when
+        networkService.rxRequest(with: apiRequest)
+            .subscribe(onNext: { ( _, model: [Album]) in
+                response = model
+                requestCompletedExpectation.fulfill()
+            }, onError: {
+                error = $0
+                requestCompletedExpectation.fulfill()
+            })
+            .disposed(by: disposeBag)
+
+        waitForExpectations(timeout: 20, handler: nil)
+
+        // then
+        XCTAssertNil(error)
+        XCTAssertNotNil(response)
+        XCTAssert(response?.count == 100)
     }
     
     func testObservableModelRequest() {
         // given
-        let expectedModel = ObservableMappablePost(userId: 1,
-                                                   postId: 1,
-                                                   title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                                                   body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto")
+        let expectedModel = Album(userId: 1,
+                                  albumId: 1,
+                                  title: "quidem molestiae enim")
         
-        var receivedModel: ObservableMappablePost?
+        var receivedModel: Album?
         var error: Error?
         let requestCompletedExpectation = expectation(description: "Request completed")
-        let apiRequest = ApiRequestParameters(url: "https://jsonplaceholder.typicode.com/posts/1",
+        let apiRequest = ApiRequestParameters(url: "https://jsonplaceholder.typicode.com/albums/1",
                                               headers: ["Content-Type": "application/json"])
         
         // when
         networkService.rxRequest(with: apiRequest)
-            .subscribe(onNext: { (_, model: ObservableMappablePost) in
+            .subscribe(onNext: { (_, model: Album) in
                 receivedModel = model
                 requestCompletedExpectation.fulfill()
             }, onError: {
@@ -107,5 +132,31 @@ final class NetworkServiceTests: XCTestCase {
         XCTAssertNotNil(receivedModel)
         XCTAssertEqual(receivedModel, expectedModel)
     }
-    
+
+    func testObservableModelArrayRequest() {
+        // given
+        var receivedModel: AlbumContainer?
+        var error: Error?
+        let requestCompletedExpectation = expectation(description: "Request completed")
+        let apiRequest = ApiRequestParameters(url: "https://jsonplaceholder.typicode.com/albums",
+                                              headers: ["Content-Type": "application/json"])
+
+        // when
+        networkService.rxRequest(with: apiRequest)
+            .subscribe(onNext: { (_, model: AlbumContainer) in
+                receivedModel = model
+                requestCompletedExpectation.fulfill()
+            }, onError: {
+                error = $0
+                requestCompletedExpectation.fulfill()
+            })
+            .disposed(by: disposeBag)
+
+        waitForExpectations(timeout: 20, handler: nil)
+
+        //then
+        XCTAssertNil(error)
+        XCTAssertNotNil(receivedModel)
+        XCTAssert(receivedModel?.albums.count == 100)
+    }
 }
