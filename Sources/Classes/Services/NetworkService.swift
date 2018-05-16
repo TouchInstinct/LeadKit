@@ -58,11 +58,14 @@ open class NetworkService {
     /// Perform reactive request to get mapped ObservableMappable model and http response
     ///
     /// - Parameter parameters: api parameters to pass Alamofire
+    /// - Parameter decoder: json decoder to decode response data
     /// - Returns: Observable of tuple containing (HTTPURLResponse, ObservableMappable)
-    public func rxRequest<T: ObservableMappable>(with parameters: ApiRequestParameters)
+    public func rxRequest<T: ObservableMappable>(with parameters: ApiRequestParameters,
+                                                 decoder: JSONDecoder = JSONDecoder())
         -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
 
             return sessionManager.rx.responseObservableModel(requestParameters: parameters,
+                                                             decoder: decoder,
                                                              acceptableStatusCodes: configuration.acceptableStatusCodes)
                 .counterTracking(for: self)
     }
@@ -70,6 +73,7 @@ open class NetworkService {
     /// Perform reactive request to get mapped ImmutableMappable model and http response
     ///
     /// - Parameter parameters: api parameters to pass Alamofire
+    /// - Parameter decoder: json decoder to decode response data
     /// - Returns: Observable of tuple containing (HTTPURLResponse, ImmutableMappable)
     public func rxRequest<T: Decodable>(with parameters: ApiRequestParameters, decoder: JSONDecoder = JSONDecoder())
         -> Observable<(response: HTTPURLResponse, model: T)> {

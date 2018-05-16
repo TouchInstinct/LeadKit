@@ -53,7 +53,7 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// Method that executes request and serializes response into target object
     ///
     /// - Parameter requestParameters: api parameters to pass Alamofire
-    /// - Parameter decoder: JSONDecoder to use for parsing
+    /// - Parameter decoder: json decoder to decode response data
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func responseModel<T: Decodable>(requestParameters: ApiRequestParameters,
@@ -69,15 +69,17 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// Method that executes request and serializes response into target object
     ///
     /// - Parameter requestParameters: api parameters to pass Alamofire
+    /// - Parameter decoder: json decoder to decode response data
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func responseObservableModel<T: ObservableMappable>(requestParameters: ApiRequestParameters,
+                                                        decoder: JSONDecoder,
                                                         mappingQueue: DispatchQueue = .global(),
                                                         acceptableStatusCodes: Set<Int> = Base.defaultAcceptableStatusCodes)
         -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
 
         return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: acceptableStatusCodes)
-            .flatMap { $0.rx.observableApiResponse(mappingQueue: mappingQueue) }
+            .flatMap { $0.rx.observableApiResponse(mappingQueue: mappingQueue, decoder: decoder) }
     }
 
 }

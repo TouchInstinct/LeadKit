@@ -50,64 +50,17 @@ public extension Reactive where Base: DataRequest {
     ///
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
-    func observableApiResponse<T: ObservableMappable>(mappingQueue: DispatchQueue = .global())
+    func observableApiResponse<T: ObservableMappable>(mappingQueue: DispatchQueue = .global(), decoder: JSONDecoder)
         -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
 
-            return responseJSONOnQueue(mappingQueue)
-                .tryMapObservableResult { resp, value in
-                    let json = try cast(value) as JSON
-
-                    return T.createFrom(map: Map(mappingType: .fromJSON, JSON: json))
-                        .map { (resp, $0) }
+            return responseData()
+                .observeOn(SerialDispatchQueueScheduler(queue: mappingQueue, internalSerialQueueName: mappingQueue.label))
+                .tryMapObservableResult { response, value in
+                    let json = try JSONSerialization.jsonObject(with: value, options: [])
+                    return T.createFrom(decoder: decoder, jsonObject: json)
+                        .map { (response, $0) }
                 }
     }
-
-    /// Method that serializes response into array of target objects
-    ///
-    /// - Parameter mappingQueue: The dispatch queue to use for mapping
-    /// - Returns: Observable with HTTP URL Response and array of target objects
-    func observableApiResponse<T: ObservableMappable>(mappingQueue: DispatchQueue = .global())
-        -> Observable<(response: HTTPURLResponse, models: [T])> where T.ModelType == T {
-
-            return responseJSONOnQueue(mappingQueue)
-                .tryMapObservableResult { resp, value in
-                    let jsonArray = try cast(value) as [JSON]
-
-                    let createFromList = jsonArray.map {
-                        T.createFrom(map: Map(mappingType: .fromJSON, JSON: $0))
-                    }
-
-                    return Observable.zip(createFromList) { $0 }
-                        .map { (resp, $0) }
-                }
-    }
-
-//    internal func responseJSONOnQueue(_ queue: DispatchQueue) -> Observable<ServerResponse> {
-//        let responseSerializer = DataRequest.jsonResponseSerializer(options: .allowFragments)
-//
-//        return responseResult(queue: queue, responseSerializer: responseSerializer)
-//            .map { ServerResponse($0.0, $0.1) }
-//            .catchError {
-//                switch $0 {
-//                case let urlError as URLError:
-//                    switch urlError.code {
-//                    case .notConnectedToInternet, .timedOut:
-//                        throw RequestError.noConnection
-//                    default:
-//                        throw RequestError.network(error: urlError)
-//                    }
-//                case let afError as AFError:
-//                    switch afError {
-//                    case .responseSerializationFailed, .responseValidationFailed:
-//                        throw RequestError.invalidResponse(error: afError)
-//                    default:
-//                        throw RequestError.network(error: afError)
-//                    }
-//                default:
-//                    throw RequestError.network(error: $0)
-//                }
-//            }
-//    }
 
 }
 
