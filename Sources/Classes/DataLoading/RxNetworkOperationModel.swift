@@ -42,7 +42,7 @@ open class RxNetworkOperationModel<LoadingStateType: NetworkOperationState>: Net
         self.dataSource = dataSource
     }
 
-    public func execute() {
+    func execute() {
         currentRequestDisposable?.dispose()
 
         state = .initialLoadingState(after: state)

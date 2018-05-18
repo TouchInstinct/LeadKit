@@ -24,4 +24,9 @@ import RxSwift
 
 /// Network operation model for RequestNetworkOperationState with Single as data source.
 public final class RequestNetworkOperationModel<T>: RxNetworkOperationModel<RequestNetworkOperationState<Single<T>>> {
+
+    public override func execute() {
+        super.execute() // just to make it public
+    }
+
 }
