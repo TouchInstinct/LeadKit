@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.7.14
+- **Add**: `NetworkOperationState` and `RequestNetworkOperationModel` for tracking network request state. Just like `GeneralDataLoadingState` but without empty state.
+
 ### 0.7.13
 - **Update**: Migrate from `Variable` to `BehaviorRelay`.
 - **Fix**: `PaginationWrapper` retry load more after fail.

@@ -21,37 +21,7 @@
 //
 
 import RxSwift
-import RxCocoa
 
-open class RxDataLoadingModel<LoadingStateType: DataLoadingState>: RxNetworkOperationModel<LoadingStateType>
-    where LoadingStateType.DataSourceType: RxDataSource {
-
-    public typealias EmptyResultChecker = (ResultType) -> Bool
-
-    let emptyResultChecker: EmptyResultChecker
-
-    public init(dataSource: DataSourceType, emptyResultChecker: @escaping EmptyResultChecker) {
-        self.emptyResultChecker = emptyResultChecker
-
-        super.init(dataSource: dataSource)
-    }
-
-    open func reload() {
-        execute()
-    }
-
-    override func onGot(result: ResultType, from dataSource: DataSourceType) {
-        if emptyResultChecker(result) {
-            state = .emptyState
-        } else {
-            super.onGot(result: result, from: dataSource)
-
-            updateStateAfterNonEmptyResult(from: dataSource)
-        }
-    }
-
-    func updateStateAfterNonEmptyResult(from dataSource: DataSourceType) {
-        // override in subcass if needed
-    }
-
+/// Network operation model for RequestNetworkOperationState with Single as data source.
+public final class RequestNetworkOperationModel<T>: RxNetworkOperationModel<RequestNetworkOperationState<Single<T>>> {
 }

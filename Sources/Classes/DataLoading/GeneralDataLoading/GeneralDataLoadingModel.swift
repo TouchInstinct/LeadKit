@@ -22,5 +22,6 @@
 
 import RxSwift
 
+/// Data loading model for GeneralDataLoadingState with Single as data source.
 public final class GeneralDataLoadingModel<T>: RxDataLoadingModel<GeneralDataLoadingState<Single<T>>> {
 }

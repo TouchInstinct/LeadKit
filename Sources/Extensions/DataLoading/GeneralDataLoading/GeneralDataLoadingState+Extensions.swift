@@ -32,14 +32,4 @@ public extension GeneralDataLoadingState {
         }
     }
 
-    /// Returns result if state == .result. Otherwise returns nil.
-    var currentResult: DS.ResultType? {
-        switch self {
-        case .result(let newResult, _):
-            return newResult
-        default:
-            return nil
-        }
-    }
-
 }

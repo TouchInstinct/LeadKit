@@ -20,46 +20,40 @@
 //  THE SOFTWARE.
 //
 
-/// Enum that contains states for general data loading.
+/// Enum that contains states for network operation request.
 ///
 /// - initial: Initial state. Before something will happen.
-/// - loading: Loading state. When data loading is started.
-/// - result: Result state from a specific data source with result.
-/// - error: Error state with a specific error.
-/// - empty: Empty state. When data was requested and empty result was received.
-public enum GeneralDataLoadingState<DS: DataSource>: DataLoadingState {
+/// - processing: Loading state. When request is started.
+/// - done: Result state with result.
+/// - failed: Error state with a specific error.
+public enum RequestNetworkOperationState<DS: DataSource>: NetworkOperationState {
 
     case initial
-    case loading
-    case result(newResult: DS.ResultType, from: DS)
-    case error(error: Error)
-    case empty
+    case processing
+    case done(result: DS.ResultType)
+    case failed(error: Error)
 
     public typealias DataSourceType = DS
 
-    public static var initialState: GeneralDataLoadingState<DS> {
+    public static var initialState: RequestNetworkOperationState<DS> {
         return .initial
     }
 
-    public static var emptyState: GeneralDataLoadingState<DS> {
-        return .empty
-    }
-
-    public static func initialLoadingState(after: GeneralDataLoadingState<DS>) -> GeneralDataLoadingState<DS> {
-        return .loading
+    public static func initialLoadingState(after: RequestNetworkOperationState<DS>) -> RequestNetworkOperationState<DS> {
+        return .processing
     }
 
     public static func resultState(result: DS.ResultType,
                                    from: DS,
-                                   after: GeneralDataLoadingState<DS>) -> GeneralDataLoadingState<DS> {
+                                   after: RequestNetworkOperationState<DS>) -> RequestNetworkOperationState<DS> {
 
-        return .result(newResult: result, from: from)
+        return .done(result: result)
     }
 
     public static func errorState(error: Error,
-                                  after: GeneralDataLoadingState<DS>) -> GeneralDataLoadingState<DS> {
+                                  after: RequestNetworkOperationState<DS>) -> RequestNetworkOperationState<DS> {
 
-        return .error(error: error)
+        return .failed(error: error)
     }
 
     public var isInitialState: Bool {
@@ -73,8 +67,8 @@ public enum GeneralDataLoadingState<DS: DataSource>: DataLoadingState {
 
     public var result: DS.ResultType? {
         switch self {
-        case .result(let newResult, _):
-            return newResult
+        case .done(let result):
+            return result
         default:
             return nil
         }
@@ -82,7 +76,7 @@ public enum GeneralDataLoadingState<DS: DataSource>: DataLoadingState {
 
     public var error: Error? {
         switch self {
-        case .error(let error):
+        case .failed(let error):
             return error
         default:
             return nil

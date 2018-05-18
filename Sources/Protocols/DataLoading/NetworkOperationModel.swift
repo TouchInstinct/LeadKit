@@ -20,38 +20,14 @@
 //  THE SOFTWARE.
 //
 
-import RxSwift
 import RxCocoa
 
-open class RxDataLoadingModel<LoadingStateType: DataLoadingState>: RxNetworkOperationModel<LoadingStateType>
-    where LoadingStateType.DataSourceType: RxDataSource {
+/// Protocol that describes data loading process via current state driver
+public protocol NetworkOperationModel {
 
-    public typealias EmptyResultChecker = (ResultType) -> Bool
+    associatedtype NetworkOperationStateType: NetworkOperationState
 
-    let emptyResultChecker: EmptyResultChecker
-
-    public init(dataSource: DataSourceType, emptyResultChecker: @escaping EmptyResultChecker) {
-        self.emptyResultChecker = emptyResultChecker
-
-        super.init(dataSource: dataSource)
-    }
-
-    open func reload() {
-        execute()
-    }
-
-    override func onGot(result: ResultType, from dataSource: DataSourceType) {
-        if emptyResultChecker(result) {
-            state = .emptyState
-        } else {
-            super.onGot(result: result, from: dataSource)
-
-            updateStateAfterNonEmptyResult(from: dataSource)
-        }
-    }
-
-    func updateStateAfterNonEmptyResult(from dataSource: DataSourceType) {
-        // override in subcass if needed
-    }
+    /// Driver, that emits current state of loading process
+    var stateDriver: Driver<NetworkOperationStateType> { get }
 
 }
