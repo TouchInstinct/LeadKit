@@ -544,6 +544,7 @@
 		B85B766D20AC51C600F837C4 /* AlbumsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85B766B20AC51BE00F837C4 /* AlbumsContainer.swift */; };
 		B85B766E20AC51C600F837C4 /* AlbumsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85B766B20AC51BE00F837C4 /* AlbumsContainer.swift */; };
 		B85B766F20AC51C700F837C4 /* AlbumsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85B766B20AC51BE00F837C4 /* AlbumsContainer.swift */; };
+		B85B768720B1CF6700F837C4 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85B768620B1CF6700F837C4 /* Codable+Extensions.swift */; };
 		BA6C6DB45950382041948FC5 /* Pods_LeadKit_LeadKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE9323150A9760008093F73 /* Pods_LeadKit_LeadKit_iOS.framework */; };
 		D6EE55093E404DEA62B03DDF /* Pods_LeadKit_LeadKit_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8590CA7831555C295C5DC572 /* Pods_LeadKit_LeadKit_watchOS.framework */; };
 		DEE25FE98D40ED1C168F384A /* Pods_LeadKit_LeadKit_iOS_Extensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887F99C5326BD220C2811BD6 /* Pods_LeadKit_LeadKit_iOS_Extensions.framework */; };
@@ -795,6 +796,7 @@
 		B84D64B020A70B7000DD76DA /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		B85B766620AC4EA300F837C4 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		B85B766B20AC51BE00F837C4 /* AlbumsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsContainer.swift; sourceTree = "<group>"; };
+		B85B768620B1CF6700F837C4 /* Codable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
 		BECC6E4BF63781403877B059 /* Pods-LeadKit-LeadKit watchOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit-LeadKit watchOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit-LeadKit watchOS/Pods-LeadKit-LeadKit watchOS.release.xcconfig"; sourceTree = "<group>"; };
 		CB02EAC4E52AF48AD64EC045 /* Pods-LeadKit iOS ExtensionsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit iOS ExtensionsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit iOS ExtensionsTests/Pods-LeadKit iOS ExtensionsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD7003F75FD6DDC97DC99A7A /* Pods-LeadKit iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit iOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit iOSTests/Pods-LeadKit iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -954,6 +956,7 @@
 				EFBE57CE1EC35ED90040E00A /* Array */,
 				67A1FF921EBCA64A00D6C89F /* CABasicAnimation */,
 				671461E01EB3396E00EAB194 /* CGFloat */,
+				B85B768520B1CF4C00F837C4 /* Codable */,
 				A6D10EA91F8A9269003E69DD /* Comparable */,
 				67745284206259C20024EEEF /* DataLoading */,
 				6771DFE81EEA7C8F002DCDAE /* DateFormattingService */,
@@ -1768,6 +1771,14 @@
 				A6F32C0E1F6EBE8E00AC08EE /* StringExtensionTests.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B85B768520B1CF4C00F837C4 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				B85B768620B1CF6700F837C4 /* Codable+Extensions.swift */,
+			);
+			path = Codable;
 			sourceTree = "<group>";
 		};
 		C90516DF61394D92FF071C0C /* Frameworks */ = {
@@ -2682,6 +2693,7 @@
 				67EB7FEB2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */,
 				671AD26C206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift in Sources */,
 				673CF4382063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift in Sources */,
+				B85B768720B1CF6700F837C4 /* Codable+Extensions.swift in Sources */,
 				671AD267206A365100EAF887 /* UIApplication+OpenUrlSupport.swift in Sources */,
 				673CF40B2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */,
 				6714636C1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
