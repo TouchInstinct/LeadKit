@@ -29,7 +29,7 @@
 /// - error: Error state with a specific error after a given state.
 /// - empty: Empty state. When data was initially requested and empty result was received.
 /// - exhausted: Exhausted state. When no more results can be received.
-public indirect enum PaginationDataLoadingState<DS: DataSource>: DataLoadingState {
+public indirect enum PaginationDataLoadingState<DS: DataSource> {
 
     case initial
     case initialLoading(after: PaginationDataLoadingState)
@@ -38,6 +38,10 @@ public indirect enum PaginationDataLoadingState<DS: DataSource>: DataLoadingStat
     case error(error: Error, after: PaginationDataLoadingState)
     case empty
     case exhausted
+
+}
+
+extension PaginationDataLoadingState: DataLoadingState {
 
     public typealias DataSourceType = DS
 

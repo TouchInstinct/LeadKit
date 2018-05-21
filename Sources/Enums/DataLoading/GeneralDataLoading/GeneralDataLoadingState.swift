@@ -27,13 +27,17 @@
 /// - result: Result state from a specific data source with result.
 /// - error: Error state with a specific error.
 /// - empty: Empty state. When data was requested and empty result was received.
-public enum GeneralDataLoadingState<DS: DataSource>: DataLoadingState {
+public enum GeneralDataLoadingState<DS: DataSource> {
 
     case initial
     case loading
     case result(newResult: DS.ResultType, from: DS)
     case error(error: Error)
     case empty
+
+}
+
+extension GeneralDataLoadingState: DataLoadingState {
 
     public typealias DataSourceType = DS
 
