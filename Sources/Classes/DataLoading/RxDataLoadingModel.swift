@@ -45,12 +45,12 @@ open class RxDataLoadingModel<LoadingStateType: DataLoadingState>: RxNetworkOper
             state = .emptyState
         } else {
             super.onGot(result: result, from: dataSource)
-
-            updateStateAfterNonEmptyResult(from: dataSource)
         }
+
+        updateStateAfterResult(from: dataSource)
     }
 
-    func updateStateAfterNonEmptyResult(from dataSource: DataSourceType) {
+    func updateStateAfterResult(from dataSource: DataSourceType) {
         // override in subcass if needed
     }
 

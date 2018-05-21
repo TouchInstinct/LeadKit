@@ -92,7 +92,7 @@ public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCurs
         }
     }
 
-    override func updateStateAfterNonEmptyResult(from dataSource: DataSourceType) {
+    override func updateStateAfterResult(from dataSource: DataSourceType) {
         if dataSource.exhausted {
             state = .exhausted
         }
