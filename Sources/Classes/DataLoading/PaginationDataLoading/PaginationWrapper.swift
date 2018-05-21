@@ -25,9 +25,7 @@ import RxCocoa
 import UIScrollView_InfiniteScroll
 
 /// Class that connects PaginationDataLoadingModel with UIScrollView. It handles all non-visual and visual states.
-final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor,
-                                     Delegate: PaginationWrapperDelegate,
-                                     UIDelegate: PaginationWrapperUIDelegate>
+final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Delegate: PaginationWrapperDelegate>
     // "Segmentation fault: 11" in Xcode 9.2 without redundant same-type constraint :(
     where Cursor == Delegate.DataSourceType, Cursor.ResultType == [Cursor.Element] {
 
@@ -38,7 +36,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor,
     private var wrappedView: AnyPaginationWrappable
     private let paginationViewModel: DataLoadingModel
     private weak var delegate: Delegate?
-    private weak var uiDelegate: UIDelegate?
+    private weak var uiDelegate: PaginationWrapperUIDelegate?
 
     /// Sets the offset between the real end of the scroll view content and the scroll position,
     /// so the handler can be triggered before reaching end. Defaults to 0.0;
@@ -73,8 +71,12 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor,
     /// - Parameters:
     ///   - wrappedView: UIScrollView instance to work with.
     ///   - cursor: Cursor object that acts as data source.
-    ///   - delegate: Delegate object for data loading events handling and UI customization.
-    public init(wrappedView: AnyPaginationWrappable, cursor: Cursor, delegate: Delegate, uiDelegate: UIDelegate?) {
+    ///   - delegate: Delegate object for data loading events handling.
+    ///   - uiDelegate: Delegate object for UI customization.
+    public init(wrappedView: AnyPaginationWrappable,
+                cursor: Cursor,
+                delegate: Delegate,
+                uiDelegate: PaginationWrapperUIDelegate?) {
         self.wrappedView = wrappedView
         self.delegate = delegate
         self.uiDelegate = uiDelegate
