@@ -25,7 +25,9 @@ import RxCocoa
 import UIScrollView_InfiniteScroll
 
 /// Class that connects PaginationDataLoadingModel with UIScrollView. It handles all non-visual and visual states.
-final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Delegate: PaginationWrapperDelegate>
+final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor,
+                                     Delegate: PaginationWrapperDelegate,
+                                     UIDelegate: PaginationWrapperUIDelegate>
     // "Segmentation fault: 11" in Xcode 9.2 without redundant same-type constraint :(
     where Cursor == Delegate.DataSourceType, Cursor.ResultType == [Cursor.Element] {
 
@@ -36,6 +38,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
     private var wrappedView: AnyPaginationWrappable
     private let paginationViewModel: DataLoadingModel
     private weak var delegate: Delegate?
+    private weak var uiDelegate: UIDelegate?
 
     /// Sets the offset between the real end of the scroll view content and the scroll position,
     /// so the handler can be triggered before reaching end. Defaults to 0.0;
@@ -71,9 +74,10 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
     ///   - wrappedView: UIScrollView instance to work with.
     ///   - cursor: Cursor object that acts as data source.
     ///   - delegate: Delegate object for data loading events handling and UI customization.
-    public init(wrappedView: AnyPaginationWrappable, cursor: Cursor, delegate: Delegate) {
+    public init(wrappedView: AnyPaginationWrappable, cursor: Cursor, delegate: Delegate, uiDelegate: UIDelegate?) {
         self.wrappedView = wrappedView
         self.delegate = delegate
+        self.uiDelegate = uiDelegate
 
         self.paginationViewModel = PaginationDataLoadingModel(cursor: cursor)
 
@@ -116,7 +120,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
             removeCurrentPlaceholderView()
 
-            guard let loadingIndicator = delegate?.initialLoadingIndicator() else {
+            guard let loadingIndicator = uiDelegate?.initialLoadingIndicator() else {
                 return
             }
 
@@ -137,7 +141,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
     private func onLoadingMoreState(afterState: LoadingState) {
         if case .error = afterState { // user tap retry button in table footer
-            delegate?.footerRetryButtonWillDisappear()
+            uiDelegate?.footerRetryButtonWillDisappear()
             wrappedView.footerView = nil
             addInfiniteScroll(withHandler: false)
             wrappedView.scrollView.beginInfiniteScroll(true)
@@ -171,9 +175,9 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
                 wrappedView.scrollView.support.refreshControl?.endRefreshing()
             }
 
-            let customErrorHandling = delegate?.customInitialLoadingErrorHandling(for: error) ?? false
+            let customErrorHandling = uiDelegate?.customInitialLoadingErrorHandling(for: error) ?? false
 
-            guard !customErrorHandling, let errorView = delegate?.errorPlaceholder(for: error) else {
+            guard !customErrorHandling, let errorView = uiDelegate?.errorPlaceholder(for: error) else {
                 return
             }
 
@@ -183,8 +187,8 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
         } else if case .loadingMore = afterState {
             removeInfiniteScroll()
 
-            guard let retryButton = delegate?.footerRetryButton(),
-                let retryButtonHeigth = delegate?.footerRetryButtonHeight() else {
+            guard let retryButton = uiDelegate?.footerRetryButton(),
+                let retryButtonHeigth = uiDelegate?.footerRetryButtonHeight() else {
                     return
             }
 
@@ -196,7 +200,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
                 .drive(retryEvent)
                 .disposed(by: disposeBag)
 
-            delegate?.footerRetryButtonWillAppear()
+            uiDelegate?.footerRetryButtonWillAppear()
 
             wrappedView.footerView = retryButton
         }
@@ -209,7 +213,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
         delegate?.clearView()
 
-        guard let emptyView = delegate?.emptyPlaceholder() else {
+        guard let emptyView = uiDelegate?.emptyPlaceholder() else {
             return
         }
 
@@ -264,7 +268,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
             wrappedView.scrollView.addInfiniteScroll { _ in }
         }
 
-        wrappedView.scrollView.infiniteScrollIndicatorView = delegate?.loadingMoreIndicator().view
+        wrappedView.scrollView.infiniteScrollIndicatorView = uiDelegate?.loadingMoreIndicator().view
     }
 
     private func removeInfiniteScroll() {

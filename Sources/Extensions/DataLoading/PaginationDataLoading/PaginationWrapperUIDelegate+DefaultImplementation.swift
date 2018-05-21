@@ -22,7 +22,7 @@
 
 import UIKit
 
-public extension PaginationWrapperDelegate {
+public extension PaginationWrapperUIDelegate {
 
     func emptyPlaceholder() -> UIView {
         return TextPlaceholderView(title: .empty)
@@ -68,14 +68,4 @@ public extension PaginationWrapperDelegate {
     func footerRetryButtonWillDisappear() {
         // by default - nothing will happen
     }
-
-}
-
-public extension PaginationWrapperDelegate
-    where DataSourceType: ResettableRxDataSourceCursor,
-          DataSourceType.ResultType == [DataSourceType.Element] {
-
-    /// Convenient typealias.
-    typealias PaginationWrapperType = PaginationWrapper<DataSourceType, Self>
-
 }

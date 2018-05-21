@@ -363,7 +363,7 @@
 		6774526C206249E30024EEEF /* UICollectionView+PaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774526B206249E30024EEEF /* UICollectionView+PaginationWrappable.swift */; };
 		6774526D206249E30024EEEF /* UICollectionView+PaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774526B206249E30024EEEF /* UICollectionView+PaginationWrappable.swift */; };
 		6774526E206249E30024EEEF /* UICollectionView+PaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774526B206249E30024EEEF /* UICollectionView+PaginationWrappable.swift */; };
-		6774527020624A2A0024EEEF /* PaginationWrapperDelegate+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774526F20624A2A0024EEEF /* PaginationWrapperDelegate+DefaultImplementation.swift */; };
+		6774527020624A2A0024EEEF /* PaginationWrapperUIDelegate+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774526F20624A2A0024EEEF /* PaginationWrapperUIDelegate+DefaultImplementation.swift */; };
 		6774527420624E820024EEEF /* DataLoadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774527320624E820024EEEF /* DataLoadingModel.swift */; };
 		6774527520624E820024EEEF /* DataLoadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774527320624E820024EEEF /* DataLoadingModel.swift */; };
 		6774527620624E820024EEEF /* DataLoadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774527320624E820024EEEF /* DataLoadingModel.swift */; };
@@ -503,6 +503,7 @@
 		67FDC2601FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
 		67FDC2611FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
 		67FDC2621FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
+		825F8F2820B3384C00594857 /* PaginationWrapperUIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825F8F2720B3384C00594857 /* PaginationWrapperUIDelegate.swift */; };
 		82F8BB181F5DDED100C1061B /* Single+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */; };
 		A658E54D1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54C1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift */; };
 		A658E54E1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54C1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift */; };
@@ -717,7 +718,7 @@
 		6771DFE91EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormattingService+MappingTransform.swift"; sourceTree = "<group>"; };
 		67745267206249360024EEEF /* UITableView+PaginationWrappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+PaginationWrappable.swift"; sourceTree = "<group>"; };
 		6774526B206249E30024EEEF /* UICollectionView+PaginationWrappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+PaginationWrappable.swift"; sourceTree = "<group>"; };
-		6774526F20624A2A0024EEEF /* PaginationWrapperDelegate+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaginationWrapperDelegate+DefaultImplementation.swift"; sourceTree = "<group>"; };
+		6774526F20624A2A0024EEEF /* PaginationWrapperUIDelegate+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaginationWrapperUIDelegate+DefaultImplementation.swift"; sourceTree = "<group>"; };
 		6774527320624E820024EEEF /* DataLoadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingModel.swift; sourceTree = "<group>"; };
 		67745278206252020024EEEF /* DataLoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingState.swift; sourceTree = "<group>"; };
 		6774527F206256A20024EEEF /* RxDataLoadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxDataLoadingModel.swift; sourceTree = "<group>"; };
@@ -768,6 +769,7 @@
 		67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqutableOptionalArray.swift; sourceTree = "<group>"; };
 		67FDC25E1FA310EA00C76A77 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		78405D3B3D3C3E17456877FF /* Pods_LeadKit_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		825F8F2720B3384C00594857 /* PaginationWrapperUIDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationWrapperUIDelegate.swift; sourceTree = "<group>"; };
 		82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Single+DeferredJust.swift"; sourceTree = "<group>"; };
 		8590CA7831555C295C5DC572 /* Pods_LeadKit_LeadKit_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_LeadKit_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		887F99C5326BD220C2811BD6 /* Pods_LeadKit_LeadKit_iOS_Extensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_LeadKit_iOS_Extensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1465,7 +1467,7 @@
 		67745266206248F00024EEEF /* PaginationDataLoading */ = {
 			isa = PBXGroup;
 			children = (
-				6774526F20624A2A0024EEEF /* PaginationWrapperDelegate+DefaultImplementation.swift */,
+				6774526F20624A2A0024EEEF /* PaginationWrapperUIDelegate+DefaultImplementation.swift */,
 				6774526B206249E30024EEEF /* UICollectionView+PaginationWrappable.swift */,
 				67745267206249360024EEEF /* UITableView+PaginationWrappable.swift */,
 			);
@@ -1544,6 +1546,7 @@
 			children = (
 				67EB7FFC206176C900BDD9FB /* AnyPaginationWrappable.swift */,
 				67EB8000206177D600BDD9FB /* PaginationWrapperDelegate.swift */,
+				825F8F2720B3384C00594857 /* PaginationWrapperUIDelegate.swift */,
 			);
 			path = PaginationDataLoading;
 			sourceTree = "<group>";
@@ -2591,6 +2594,7 @@
 				67EB8001206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */,
 				67FD4382206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */,
 				6774529A20625E5B0024EEEF /* PaginationDataLoadingState.swift in Sources */,
+				825F8F2820B3384C00594857 /* PaginationWrapperUIDelegate.swift in Sources */,
 				678D26A020692BFF00B05B93 /* TextFieldViewEvents.swift in Sources */,
 				6727478F206CD88600725163 /* DateFormattingService.swift in Sources */,
 				678D26A420692BFF00B05B93 /* TextFieldViewModelEvents.swift in Sources */,
@@ -2690,7 +2694,7 @@
 				671463981EB3396E00EAB194 /* AnyLoadingIndicator.swift in Sources */,
 				671463A71EB340C000EAB194 /* UIViewController+ConfigurableController.swift in Sources */,
 				671463141EB3396E00EAB194 /* UIViewController+TopVisibleViewController.swift in Sources */,
-				6774527020624A2A0024EEEF /* PaginationWrapperDelegate+DefaultImplementation.swift in Sources */,
+				6774527020624A2A0024EEEF /* PaginationWrapperUIDelegate+DefaultImplementation.swift in Sources */,
 				6727478A206CD83600725163 /* DateFormat.swift in Sources */,
 				67745280206256A20024EEEF /* RxDataLoadingModel.swift in Sources */,
 				A6F32C081F6EBDAA00AC08EE /* String+LocalizedComponent.swift in Sources */,
