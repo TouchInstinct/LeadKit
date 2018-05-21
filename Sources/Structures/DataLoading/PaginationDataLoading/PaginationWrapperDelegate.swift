@@ -20,8 +20,7 @@
 //  THE SOFTWARE.
 //
 
-/// PaginationWrapper delegate used for pagination results handling and
-/// customization of bound states (loading, empty, error, etc.).
+/// PaginationWrapper delegate used for pagination results handling
 public protocol PaginationWrapperDelegate: class {
 
     associatedtype DataSourceType: DataSource
@@ -42,6 +41,6 @@ public protocol PaginationWrapperDelegate: class {
     func paginationWrapper(didReload allItems: DataSourceType.ResultType,
                            using dataSource: DataSourceType)
 
-    /// Clears view when placeholder is shown.
-    func clearView()
+    /// Handles empty data state.
+    func clearData()
 }

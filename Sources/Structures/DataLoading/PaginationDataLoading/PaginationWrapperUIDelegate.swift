@@ -20,6 +20,8 @@
 //  THE SOFTWARE.
 //
 
+/// PaginationWrapper UI delegate used for customization
+/// of bound states (loading, empty, error, etc.).
 public protocol PaginationWrapperUIDelegate: class {
 
     /// Returns placeholder view for empty state.

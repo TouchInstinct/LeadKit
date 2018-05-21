@@ -177,15 +177,14 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
                 wrappedView.scrollView.support.refreshControl?.endRefreshing()
             }
 
-            let customErrorHandling = uiDelegate?.customInitialLoadingErrorHandling(for: error) ?? false
+            delegate?.clearData()
 
+            let customErrorHandling = uiDelegate?.customInitialLoadingErrorHandling(for: error) ?? false
             guard !customErrorHandling, let errorView = uiDelegate?.errorPlaceholder(for: error) else {
                 return
             }
 
             replacePlaceholderViewIfNeeded(with: errorView)
-
-            delegate?.clearView()
         } else if case .loadingMore = afterState {
             removeInfiniteScroll()
 
@@ -213,7 +212,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
             wrappedView.scrollView.support.refreshControl?.endRefreshing()
         }
 
-        delegate?.clearView()
+        delegate?.clearData()
 
         guard let emptyView = uiDelegate?.emptyPlaceholder() else {
             return
