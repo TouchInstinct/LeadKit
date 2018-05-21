@@ -76,7 +76,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
     public init(wrappedView: AnyPaginationWrappable,
                 cursor: Cursor,
                 delegate: Delegate,
-                uiDelegate: PaginationWrapperUIDelegate?) {
+                uiDelegate: PaginationWrapperUIDelegate? = nil) {
         self.wrappedView = wrappedView
         self.delegate = delegate
         self.uiDelegate = uiDelegate
