@@ -269,7 +269,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
             wrappedView.scrollView.addInfiniteScroll { _ in }
         }
 
-        wrappedView.scrollView.infiniteScrollIndicatorView = uiDelegate?.loadingMoreIndicator().view
+        wrappedView.scrollView.infiniteScrollIndicatorView = uiDelegate?.loadingMoreIndicator()?.view
     }
 
     private func removeInfiniteScroll() {
