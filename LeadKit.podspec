@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.7.13"
+  s.version         = "0.7.15"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -40,7 +40,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/DataLoading/GeneralDataLoading/GeneralDataLoadingController+DefaultImplementation.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
-      "Sources/Extensions/TableDirector/*",
+      "Sources/Extensions/TableKit/**/*.swift",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
       "Sources/Extensions/Drawing/UIImage/*",
       "Sources/Extensions/UIKit/**/*.swift",
@@ -65,7 +65,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
-      "Sources/Extensions/TableDirector/*",
+      "Sources/Extensions/TableKit/**/*.swift",
       "Sources/Extensions/UIKit/UIApplication/UIApplication+OpenUrlSupport.swift",
       "Sources/Extensions/UIKit/UIApplication/UIApplication+Cellular.swift",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
@@ -97,7 +97,7 @@ Pod::Spec.new do |s|
       "Sources/Classes/DataLoading/PaginationDataLoading/PaginationWrapper.swift",
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
-      "Sources/Extensions/TableDirector/*",
+      "Sources/Extensions/TableKit/**/*.swift",
       "Sources/Extensions/UIApplication/UIApplication+OpenUrlSupport.swift",
       "Sources/Extensions/UIApplication/UIApplication+Cellular.swift",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",

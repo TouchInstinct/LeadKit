@@ -347,6 +347,8 @@
 		675C1FB41F97CA32007D5249 /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
 		675C1FB51F97CA33007D5249 /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
 		675C1FB61F97CA33007D5249 /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
+		6762131820A0BBA30034EEF1 /* TableSection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6762131720A0BBA30034EEF1 /* TableSection+Extensions.swift */; };
+		6762131920A0BBA30034EEF1 /* TableSection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6762131720A0BBA30034EEF1 /* TableSection+Extensions.swift */; };
 		676B22A2206A626D002E9F8A /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B22A1206A626D002E9F8A /* NSAttributedString+Extensions.swift */; };
 		676B22A3206A626D002E9F8A /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B22A1206A626D002E9F8A /* NSAttributedString+Extensions.swift */; };
 		676B22A4206A626D002E9F8A /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B22A1206A626D002E9F8A /* NSAttributedString+Extensions.swift */; };
@@ -361,7 +363,7 @@
 		6774526C206249E30024EEEF /* UICollectionView+PaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774526B206249E30024EEEF /* UICollectionView+PaginationWrappable.swift */; };
 		6774526D206249E30024EEEF /* UICollectionView+PaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774526B206249E30024EEEF /* UICollectionView+PaginationWrappable.swift */; };
 		6774526E206249E30024EEEF /* UICollectionView+PaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774526B206249E30024EEEF /* UICollectionView+PaginationWrappable.swift */; };
-		6774527020624A2A0024EEEF /* PaginationWrapperDelegate+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774526F20624A2A0024EEEF /* PaginationWrapperDelegate+DefaultImplementation.swift */; };
+		6774527020624A2A0024EEEF /* PaginationWrapperUIDelegate+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774526F20624A2A0024EEEF /* PaginationWrapperUIDelegate+DefaultImplementation.swift */; };
 		6774527420624E820024EEEF /* DataLoadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774527320624E820024EEEF /* DataLoadingModel.swift */; };
 		6774527520624E820024EEEF /* DataLoadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774527320624E820024EEEF /* DataLoadingModel.swift */; };
 		6774527620624E820024EEEF /* DataLoadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774527320624E820024EEEF /* DataLoadingModel.swift */; };
@@ -491,8 +493,6 @@
 		67EB7FFE206176C900BDD9FB /* AnyPaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FFC206176C900BDD9FB /* AnyPaginationWrappable.swift */; };
 		67EB7FFF206176C900BDD9FB /* AnyPaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB7FFC206176C900BDD9FB /* AnyPaginationWrappable.swift */; };
 		67EB8001206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB8000206177D600BDD9FB /* PaginationWrapperDelegate.swift */; };
-		67EB8002206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB8000206177D600BDD9FB /* PaginationWrapperDelegate.swift */; };
-		67EB8003206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB8000206177D600BDD9FB /* PaginationWrapperDelegate.swift */; };
 		67FD4382206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */; };
 		67FD4383206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */; };
 		67FD4384206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */; };
@@ -501,6 +501,8 @@
 		67FDC2601FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
 		67FDC2611FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
 		67FDC2621FA310EA00C76A77 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FDC25E1FA310EA00C76A77 /* RequestError.swift */; };
+		820CAD8420B43B080033EF94 /* PaginationWrapperDelegate+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820CAD8320B43B080033EF94 /* PaginationWrapperDelegate+DefaultImplementation.swift */; };
+		825F8F2820B3384C00594857 /* PaginationWrapperUIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825F8F2720B3384C00594857 /* PaginationWrapperUIDelegate.swift */; };
 		82F8BB181F5DDED100C1061B /* Single+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */; };
 		A658E54D1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54C1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift */; };
 		A658E5501F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54F1F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift */; };
@@ -709,11 +711,12 @@
 		673CF4332063E29B00C329F6 /* TextWithButtonPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWithButtonPlaceholder.swift; sourceTree = "<group>"; };
 		673CF4372063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralDataLoadingController+DefaultImplementation.swift"; sourceTree = "<group>"; };
 		674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+LoadingIndicator.swift"; sourceTree = "<group>"; };
+		6762131720A0BBA30034EEF1 /* TableSection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableSection+Extensions.swift"; sourceTree = "<group>"; };
 		676B22A1206A626D002E9F8A /* NSAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		6771DFE91EEA7CB8002DCDAE /* DateFormattingService+MappingTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormattingService+MappingTransform.swift"; sourceTree = "<group>"; };
 		67745267206249360024EEEF /* UITableView+PaginationWrappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+PaginationWrappable.swift"; sourceTree = "<group>"; };
 		6774526B206249E30024EEEF /* UICollectionView+PaginationWrappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+PaginationWrappable.swift"; sourceTree = "<group>"; };
-		6774526F20624A2A0024EEEF /* PaginationWrapperDelegate+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaginationWrapperDelegate+DefaultImplementation.swift"; sourceTree = "<group>"; };
+		6774526F20624A2A0024EEEF /* PaginationWrapperUIDelegate+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaginationWrapperUIDelegate+DefaultImplementation.swift"; sourceTree = "<group>"; };
 		6774527320624E820024EEEF /* DataLoadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingModel.swift; sourceTree = "<group>"; };
 		67745278206252020024EEEF /* DataLoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingState.swift; sourceTree = "<group>"; };
 		6774527F206256A20024EEEF /* RxDataLoadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxDataLoadingModel.swift; sourceTree = "<group>"; };
@@ -764,6 +767,8 @@
 		67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqutableOptionalArray.swift; sourceTree = "<group>"; };
 		67FDC25E1FA310EA00C76A77 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		78405D3B3D3C3E17456877FF /* Pods_LeadKit_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		820CAD8320B43B080033EF94 /* PaginationWrapperDelegate+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaginationWrapperDelegate+DefaultImplementation.swift"; sourceTree = "<group>"; };
+		825F8F2720B3384C00594857 /* PaginationWrapperUIDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationWrapperUIDelegate.swift; sourceTree = "<group>"; };
 		82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Single+DeferredJust.swift"; sourceTree = "<group>"; };
 		8590CA7831555C295C5DC572 /* Pods_LeadKit_LeadKit_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_LeadKit_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		887F99C5326BD220C2811BD6 /* Pods_LeadKit_LeadKit_iOS_Extensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_LeadKit_iOS_Extensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -957,7 +962,7 @@
 				82F8BB161F5DDED100C1061B /* Single */,
 				671461FA1EB3396E00EAB194 /* String */,
 				671461FE1EB3396E00EAB194 /* Support */,
-				671462001EB3396E00EAB194 /* TableDirector */,
+				6762131520A0BAD40034EEF1 /* TableKit */,
 				671462021EB3396E00EAB194 /* TimeInterval */,
 				671462081EB3396E00EAB194 /* UIColor */,
 				672947E0206EA36B00AC6B6B /* UIKit */,
@@ -1425,6 +1430,23 @@
 			path = UIActivityIndicatorView;
 			sourceTree = "<group>";
 		};
+		6762131520A0BAD40034EEF1 /* TableKit */ = {
+			isa = PBXGroup;
+			children = (
+				6762131620A0BAF70034EEF1 /* TableSection */,
+				671462001EB3396E00EAB194 /* TableDirector */,
+			);
+			path = TableKit;
+			sourceTree = "<group>";
+		};
+		6762131620A0BAF70034EEF1 /* TableSection */ = {
+			isa = PBXGroup;
+			children = (
+				6762131720A0BBA30034EEF1 /* TableSection+Extensions.swift */,
+			);
+			path = TableSection;
+			sourceTree = "<group>";
+		};
 		676B22A0206A6249002E9F8A /* NSAttributedString */ = {
 			isa = PBXGroup;
 			children = (
@@ -1445,7 +1467,8 @@
 		67745266206248F00024EEEF /* PaginationDataLoading */ = {
 			isa = PBXGroup;
 			children = (
-				6774526F20624A2A0024EEEF /* PaginationWrapperDelegate+DefaultImplementation.swift */,
+				6774526F20624A2A0024EEEF /* PaginationWrapperUIDelegate+DefaultImplementation.swift */,
+				820CAD8320B43B080033EF94 /* PaginationWrapperDelegate+DefaultImplementation.swift */,
 				6774526B206249E30024EEEF /* UICollectionView+PaginationWrappable.swift */,
 				67745267206249360024EEEF /* UITableView+PaginationWrappable.swift */,
 			);
@@ -1524,6 +1547,7 @@
 			children = (
 				67EB7FFC206176C900BDD9FB /* AnyPaginationWrappable.swift */,
 				67EB8000206177D600BDD9FB /* PaginationWrapperDelegate.swift */,
+				825F8F2720B3384C00594857 /* PaginationWrapperUIDelegate.swift */,
 			);
 			path = PaginationDataLoading;
 			sourceTree = "<group>";
@@ -2572,6 +2596,7 @@
 				67EB8001206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */,
 				67FD4382206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */,
 				6774529A20625E5B0024EEEF /* PaginationDataLoadingState.swift in Sources */,
+				825F8F2820B3384C00594857 /* PaginationWrapperUIDelegate.swift in Sources */,
 				678D26A020692BFF00B05B93 /* TextFieldViewEvents.swift in Sources */,
 				6727478F206CD88600725163 /* DateFormattingService.swift in Sources */,
 				678D26A420692BFF00B05B93 /* TextFieldViewModelEvents.swift in Sources */,
@@ -2634,6 +2659,7 @@
 				A676AE551F98112E001F9214 /* ObservableMappable.swift in Sources */,
 				A6E0DDE11F8A696F002CA74E /* SeparatorRowBox.swift in Sources */,
 				A6E0DDDE1F8A696F002CA74E /* EmptyCellRow.swift in Sources */,
+				6762131820A0BBA30034EEF1 /* TableSection+Extensions.swift in Sources */,
 				67EB7FFD206176C900BDD9FB /* AnyPaginationWrappable.swift in Sources */,
 				671463041EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
 				6774527420624E820024EEEF /* DataLoadingModel.swift in Sources */,
@@ -2670,7 +2696,7 @@
 				671463981EB3396E00EAB194 /* AnyLoadingIndicator.swift in Sources */,
 				671463A71EB340C000EAB194 /* UIViewController+ConfigurableController.swift in Sources */,
 				671463141EB3396E00EAB194 /* UIViewController+TopVisibleViewController.swift in Sources */,
-				6774527020624A2A0024EEEF /* PaginationWrapperDelegate+DefaultImplementation.swift in Sources */,
+				6774527020624A2A0024EEEF /* PaginationWrapperUIDelegate+DefaultImplementation.swift in Sources */,
 				6727478A206CD83600725163 /* DateFormat.swift in Sources */,
 				67745280206256A20024EEEF /* RxDataLoadingModel.swift in Sources */,
 				A6F32C081F6EBDAA00AC08EE /* String+LocalizedComponent.swift in Sources */,
@@ -2696,6 +2722,7 @@
 				6714628C1EB3396E00EAB194 /* CGImage+Alpha.swift in Sources */,
 				671462741EB3396E00EAB194 /* LeadKitError.swift in Sources */,
 				677452A420625FA90024EEEF /* RxDataSource.swift in Sources */,
+				820CAD8420B43B080033EF94 /* PaginationWrapperDelegate+DefaultImplementation.swift in Sources */,
 				671AD262206A35EC00EAF887 /* UIApplication+Cellular.swift in Sources */,
 				671462D81EB3396E00EAB194 /* TimeInterval+DateComponents.swift in Sources */,
 				6714638C1EB3396E00EAB194 /* SolidFillDrawingOperation.swift in Sources */,
@@ -2853,7 +2880,6 @@
 				678D26A320692BFF00B05B93 /* TextFieldViewEvents.swift in Sources */,
 				67153E43207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */,
 				67745283206256A20024EEEF /* RxDataLoadingModel.swift in Sources */,
-				67EB8003206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */,
 				671463571EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
 				671463631EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
 				671462871EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
@@ -2969,6 +2995,7 @@
 				676B22A5206A626D002E9F8A /* NSAttributedString+Extensions.swift in Sources */,
 				673CF4142063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */,
 				671462DB1EB3396E00EAB194 /* TimeInterval+DateComponents.swift in Sources */,
+				6762131920A0BBA30034EEF1 /* TableSection+Extensions.swift in Sources */,
 				6774529020625C9E0024EEEF /* GeneralDataLoadingState.swift in Sources */,
 				67EB7FC3206140E600BDD9FB /* TotalCountCursor.swift in Sources */,
 				EF24213D2076D5CA00FA9BE6 /* NetworkServiceConfiguration.swift in Sources */,
@@ -3058,7 +3085,6 @@
 				6774526D206249E30024EEEF /* UICollectionView+PaginationWrappable.swift in Sources */,
 				6714627D1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
 				673CF4352063E29B00C329F6 /* TextWithButtonPlaceholder.swift in Sources */,
-				67EB8002206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */,
 				6727476F206CCDDB00725163 /* ViewBackground+Configuration.swift in Sources */,
 				673CF4232063D90600C329F6 /* DisposeBagHolder.swift in Sources */,
 				677452AA206263360024EEEF /* CursorType+RxDataSourceDefaultImplementation.swift in Sources */,

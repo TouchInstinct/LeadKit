@@ -20,8 +20,7 @@
 //  THE SOFTWARE.
 //
 
-/// PaginationWrapper delegate used for pagination results handling and
-/// customization of bound states (loading, empty, error, etc.).
+/// PaginationWrapper delegate used for pagination results handling
 public protocol PaginationWrapperDelegate: class {
 
     associatedtype DataSourceType: DataSource
@@ -42,56 +41,6 @@ public protocol PaginationWrapperDelegate: class {
     func paginationWrapper(didReload allItems: DataSourceType.ResultType,
                            using dataSource: DataSourceType)
 
-    /// Returns placeholder view for empty state.
-    ///
-    /// - Returns: Configured instace of UIView.
-    func emptyPlaceholder() -> UIView
-
-    /// Called when initial loading error is occured.
-    /// It should return true if error is handled and false if it doesn't.
-    ///
-    /// - Parameters:
-    ///   - error: Error that occured due data loading.
-    /// - Returns: Bool value. If true - then error placeholder wouldn't be shown.
-    func customInitialLoadingErrorHandling(for error: Error) -> Bool
-
-    /// Returns placeholder view for error state.
-    ///
-    /// - Parameters:
-    ///   - error: Error that occured due data loading.
-    /// - Returns: Configured instace of UIView.
-    func errorPlaceholder(for error: Error) -> UIView
-
-    /// Returns loading idicator for initial loading state.
-    /// This indicator will appear at center of the placeholders container.
-    ///
-    /// - Returns: Configured instace of AnyLoadingIndicator.
-    func initialLoadingIndicator() -> AnyLoadingIndicator
-
-    /// Returns loading idicator for initial loading state.
-    ///
-    /// - Returns: Configured instace of AnyLoadingIndicator.
-    func loadingMoreIndicator() -> AnyLoadingIndicator
-
-    /// Returns instance of UIButton for "retry load more" action.
-    ///
-    /// - Returns: Configured instace of AnyLoadingIndicator.
-    func footerRetryButton() -> UIButton
-
-    /// Returns height for "retry load more" button.
-    ///
-    /// - Returns: Height of "retry load more" button.
-    func footerRetryButtonHeight() -> CGFloat
-
-    /// Method is called before "retry load more" will be shown.
-    /// Typically, it's used when you need to show custom footer view.
-    func footerRetryButtonWillAppear()
-
-    /// Method is called before "retry load more" will be hidden.
-    /// Typically, it's used when you need to hide custom footer view.
-    func footerRetryButtonWillDisappear()
-
-    /// Clears view when placeholder is shown.
-    func clearView()
-
+    /// Handles empty data state.
+    func clearData()
 }
