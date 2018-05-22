@@ -44,7 +44,7 @@ public extension Double {
     func roundValue(withPrecision precision: UInt,
                     roundType: RoundingType = .normal) -> Double {
         let divider = pow(10.0, Double(precision))
-        
+
         switch roundType {
         case .normal:
             return (self * divider).rounded(.toNearestOrEven) / divider
@@ -52,6 +52,5 @@ public extension Double {
             return (self * divider).rounded(.down) / divider
         }
     }
-    
-}
 
+}

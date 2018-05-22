@@ -19,6 +19,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
+
 import XCTest
 
 class Double_RoundingTests: XCTestCase {
@@ -50,5 +51,4 @@ class Double_RoundingTests: XCTestCase {
         XCTAssertTrue(some.roundValue(withPrecision: 1, roundType: .down) == -1.8)
         XCTAssertTrue(some.roundValue(withPrecision: 2, roundType: .down) == -1.78)
     }
-    
 }
