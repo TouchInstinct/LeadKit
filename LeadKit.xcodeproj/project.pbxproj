@@ -509,6 +509,7 @@
 		67ED2BE720B44F4300508B3E /* InitializableView+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED2BE420B44F4300508B3E /* InitializableView+DefaultImplementation.swift */; };
 		67ED2BE820B44F4300508B3E /* InitializableView+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED2BE420B44F4300508B3E /* InitializableView+DefaultImplementation.swift */; };
 		67ED2BED20B45EBF00508B3E /* SeparatorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDF01F8A6C80002CA74E /* SeparatorConfiguration.swift */; };
+		67ED2BEE20B45F1500508B3E /* SeparatorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0DDF01F8A6C80002CA74E /* SeparatorConfiguration.swift */; };
 		67FD4382206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */; };
 		67FD4383206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */; };
 		67FD4384206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */; };
@@ -3083,6 +3084,7 @@
 				671463611EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
 				671462851EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
 				67CAF8C720652E2A00527085 /* TextFieldViewModel.swift in Sources */,
+				67ED2BEE20B45F1500508B3E /* SeparatorConfiguration.swift in Sources */,
 				6714634D1EB3396E00EAB194 /* ReuseIdentifierProtocol.swift in Sources */,
 				67745281206256A20024EEEF /* RxDataLoadingModel.swift in Sources */,
 				671462F11EB3396E00EAB194 /* UIImage+SupportExtensions.swift in Sources */,
