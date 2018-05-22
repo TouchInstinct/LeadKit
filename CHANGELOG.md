@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.7.14
+- **[Breaking Chnage]**: Remove `ModuleConfigurator`, change type of `ConfigurableController.viewModel` property from `IUO` to plain `ViewModelT`.
+
 ### 0.7.13
 - **Update**: Migrate from `Variable` to `BehaviorRelay`.
 - **Fix**: `PaginationWrapper` retry load more after fail.
