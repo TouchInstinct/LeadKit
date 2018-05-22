@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.7.15
+- **Fix**: `Double.roundValue(withPrecision:)` rounding issue
+- **Add**: `Double+Rounding` test case
+
 ### 0.7.14
 - **[Breaking Change]**: `PaginationWrapper` separating state views from data loading.
 
@@ -25,7 +29,7 @@
 - **Remove**: `App`, `Log` and `LogFormatter`.
 - **Remove**: `CocoaLumberjack` dependency.
 - **Add**: Rotate operation for image drawing.
-- **Add**: `mapViewEvents` overload with closure that returns array of disposables. 
+- **Add**: `mapViewEvents` overload with closure that returns array of disposables.
 - **Update**: Update `ObjectMapper` to 3.1.
 - **Add**: `apiRequestParameters` method to `NetworkServiceConfiguration` extension.
 - **Update**: Rename setToCenter(withInsets:) to pintToSuperview(withInsets:excluding:)
