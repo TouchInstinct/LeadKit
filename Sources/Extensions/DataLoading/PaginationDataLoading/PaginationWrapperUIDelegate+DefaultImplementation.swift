@@ -24,7 +24,7 @@ import UIKit
 
 public extension PaginationWrapperUIDelegate {
 
-    func emptyPlaceholder() -> UIView {
+    func emptyPlaceholder() -> UIView? {
         return TextPlaceholderView(title: .empty)
     }
 
@@ -32,24 +32,24 @@ public extension PaginationWrapperUIDelegate {
         return false
     }
 
-    func errorPlaceholder(for error: Error) -> UIView {
+    func errorPlaceholder(for error: Error) -> UIView? {
         return TextPlaceholderView(title: .error)
     }
 
-    func initialLoadingIndicator() -> AnyLoadingIndicator {
+    func initialLoadingIndicator() -> AnyLoadingIndicator? {
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         indicator.color = .gray
 
         return AnyLoadingIndicator(indicator)
     }
 
-    func loadingMoreIndicator() -> AnyLoadingIndicator {
+    func loadingMoreIndicator() -> AnyLoadingIndicator? {
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
 
         return AnyLoadingIndicator(indicator)
     }
 
-    func footerRetryButton() -> UIButton {
+    func footerRetryButton() -> UIButton? {
         let retryButton = UIButton(type: .custom)
         retryButton.backgroundColor = .lightGray
         retryButton.setTitle("Retry load more", for: .normal)
