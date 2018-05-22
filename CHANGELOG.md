@@ -1,7 +1,10 @@
 # Changelog
 
-### 0.7.14
+### 0.7.15
 - **[Breaking Chnage]**: Remove `ModuleConfigurator`, change type of `ConfigurableController.viewModel` property from `IUO` to plain `ViewModelT`.
+
+### 0.7.14
+- **[Breaking Change]**: `PaginationWrapper` separating state views from data loading.
 
 ### 0.7.13
 - **Update**: Migrate from `Variable` to `BehaviorRelay`.
@@ -25,7 +28,7 @@
 - **Remove**: `App`, `Log` and `LogFormatter`.
 - **Remove**: `CocoaLumberjack` dependency.
 - **Add**: Rotate operation for image drawing.
-- **Add**: `mapViewEvents` overload with closure that returns array of disposables. 
+- **Add**: `mapViewEvents` overload with closure that returns array of disposables.
 - **Update**: Update `ObjectMapper` to 3.1.
 - **Add**: `apiRequestParameters` method to `NetworkServiceConfiguration` extension.
 - **Update**: Rename setToCenter(withInsets:) to pintToSuperview(withInsets:excluding:)
