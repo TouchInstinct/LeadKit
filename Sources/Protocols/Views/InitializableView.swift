@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2017 Touch Instinct
+//  Copyright (c) 2018 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,20 +20,22 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+/// Protocol with methods that should be called in constructor methods of view.
+public protocol InitializableView {
 
-public extension ConfigurableController where Self: UIViewController {
+    /// Main method that should call other in particular order.
+    func initializeView()
 
-    func configureBarButtons() {
-        // nothing
-    }
+    /// Method for adding views to current view.
+    func addViews()
 
-    func initialLoadView() {
-        addViews()
-        configureAppearance()
-        configureBarButtons()
-        localize()
-        bindViews()
-    }
+    /// Method for binding to data or user actions.
+    func bindViews()
+
+    /// Appearance configuration method.
+    func configureAppearance()
+
+    /// Localization method.
+    func localize()
 
 }

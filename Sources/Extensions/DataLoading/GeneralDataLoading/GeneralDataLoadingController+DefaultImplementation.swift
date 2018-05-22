@@ -41,7 +41,7 @@ public extension GeneralDataLoadingController where Self: UIViewController {
 
     func initialLoadDataLoadingView() {
         addViews()
-        setAppearance()
+        configureAppearance()
         setupStateViews()
         configureBarButtons()
         localize()

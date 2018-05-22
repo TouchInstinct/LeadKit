@@ -1,5 +1,11 @@
 # Changelog
 
+### 0.7.16
+- **[Breaking Change]**: Remove `ModuleConfigurator`, change type of `ConfigurableController.viewModel` property from `IUO` to plain `ViewModelT`.
+- **Add**: `InitializableView` protocol with default implementation.
+- **Update**: `ConfigurableController` protocol now inherit `InitializableView`.
+- **[Breaking Change]**: `setAppearance` of `ConfigurableController` replaced with `configureAppearance` of `InitializableView`.
+
 ### 0.7.15
 - **Fix**: `Double.roundValue(withPrecision:)` rounding issue
 - **Add**: `Double+Rounding` test case
