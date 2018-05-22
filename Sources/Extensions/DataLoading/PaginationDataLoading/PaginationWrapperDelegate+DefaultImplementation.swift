@@ -20,27 +20,10 @@
 //  THE SOFTWARE.
 //
 
-/// PaginationWrapper delegate used for pagination results handling
-public protocol PaginationWrapperDelegate: class {
+public extension PaginationWrapperDelegate
+    where DataSourceType: ResettableRxDataSourceCursor,
+    DataSourceType.ResultType == [DataSourceType.Element] {
 
-    associatedtype DataSourceType: DataSource
-
-    /// Handles loading new chunk of data.
-    ///
-    /// - Parameters:
-    ///   - newItems: New items.
-    ///   - dataSource: Data source used to load items
-    func paginationWrapper(didLoad newItems: DataSourceType.ResultType,
-                           using dataSource: DataSourceType)
-
-    /// Handles reloading or initial loading of data.
-    ///
-    /// - Parameters:
-    ///   - allItems: New items.
-    ///   - dataSource: Data source used to load items
-    func paginationWrapper(didReload allItems: DataSourceType.ResultType,
-                           using dataSource: DataSourceType)
-
-    /// Handles empty data state.
-    func clearData()
+    /// Convenient typealias.
+    typealias PaginationWrapperType = PaginationWrapper<DataSourceType, Self>
 }
