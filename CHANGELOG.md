@@ -1,7 +1,7 @@
 # Changelog
 
 ### 0.7.15
-- **[Breaking Chnage]**: Remove `ModuleConfigurator`, change type of `ConfigurableController.viewModel` property from `IUO` to plain `ViewModelT`.
+- **[Breaking Change]**: Remove `ModuleConfigurator`, change type of `ConfigurableController.viewModel` property from `IUO` to plain `ViewModelT`.
 
 ### 0.7.14
 - **[Breaking Change]**: `PaginationWrapper` separating state views from data loading.
