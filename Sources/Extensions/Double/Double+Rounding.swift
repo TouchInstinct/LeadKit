@@ -35,10 +35,8 @@ public extension Double {
 
     /**
      Rounding of double value
-     
      - parameter precision: significant digits after decimal point
      - parameter roundType: rounding type
-     
      - returns: rounded value
      */
     func roundValue(withPrecision precision: UInt,
