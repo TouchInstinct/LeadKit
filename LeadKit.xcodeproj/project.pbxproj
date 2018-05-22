@@ -491,6 +491,14 @@
 		67EB8001206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB8000206177D600BDD9FB /* PaginationWrapperDelegate.swift */; };
 		67EB8002206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB8000206177D600BDD9FB /* PaginationWrapperDelegate.swift */; };
 		67EB8003206177D600BDD9FB /* PaginationWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB8000206177D600BDD9FB /* PaginationWrapperDelegate.swift */; };
+		67ED2BDE20B44DEB00508B3E /* InitializableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED2BDD20B44DEB00508B3E /* InitializableView.swift */; };
+		67ED2BDF20B44DEB00508B3E /* InitializableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED2BDD20B44DEB00508B3E /* InitializableView.swift */; };
+		67ED2BE020B44DEB00508B3E /* InitializableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED2BDD20B44DEB00508B3E /* InitializableView.swift */; };
+		67ED2BE120B44DEB00508B3E /* InitializableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED2BDD20B44DEB00508B3E /* InitializableView.swift */; };
+		67ED2BE520B44F4300508B3E /* InitializableView+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED2BE420B44F4300508B3E /* InitializableView+DefaultImplementation.swift */; };
+		67ED2BE620B44F4300508B3E /* InitializableView+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED2BE420B44F4300508B3E /* InitializableView+DefaultImplementation.swift */; };
+		67ED2BE720B44F4300508B3E /* InitializableView+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED2BE420B44F4300508B3E /* InitializableView+DefaultImplementation.swift */; };
+		67ED2BE820B44F4300508B3E /* InitializableView+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED2BE420B44F4300508B3E /* InitializableView+DefaultImplementation.swift */; };
 		67FD4382206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */; };
 		67FD4383206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */; };
 		67FD4384206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */; };
@@ -760,6 +768,8 @@
 		67EB7FF7206175F700BDD9FB /* PaginationWrappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationWrappable.swift; sourceTree = "<group>"; };
 		67EB7FFC206176C900BDD9FB /* AnyPaginationWrappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPaginationWrappable.swift; sourceTree = "<group>"; };
 		67EB8000206177D600BDD9FB /* PaginationWrapperDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationWrapperDelegate.swift; sourceTree = "<group>"; };
+		67ED2BDD20B44DEB00508B3E /* InitializableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializableView.swift; sourceTree = "<group>"; };
+		67ED2BE420B44F4300508B3E /* InitializableView+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InitializableView+DefaultImplementation.swift"; sourceTree = "<group>"; };
 		67FD4381206BD24B005B0C64 /* EqutableOptionalArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqutableOptionalArray.swift; sourceTree = "<group>"; };
 		67FDC25E1FA310EA00C76A77 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		78405D3B3D3C3E17456877FF /* Pods_LeadKit_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1306,6 +1316,7 @@
 			isa = PBXGroup;
 			children = (
 				6792623A206EB0D800308E62 /* SeparatorCell */,
+				67ED2BE420B44F4300508B3E /* InitializableView+DefaultImplementation.swift */,
 				6727476D206CCDDB00725163 /* ViewBackground+Configuration.swift */,
 				6727477E206CD3BD00725163 /* ViewText+Extensions.swift */,
 			);
@@ -1556,6 +1567,7 @@
 			children = (
 				67926234206EB08400308E62 /* SeparatorCell */,
 				678D269D20692BFF00B05B93 /* TextField */,
+				67ED2BDD20B44DEB00508B3E /* InitializableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2593,6 +2605,7 @@
 				671463541EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
 				673CF4112063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */,
 				673CF42C2063DE5900C329F6 /* TextPlaceholderView.swift in Sources */,
+				67ED2BDE20B44DEB00508B3E /* InitializableView.swift in Sources */,
 				671463601EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
 				671462841EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
 				EFBE57DB1EC361620040E00A /* UIView+Layout.swift in Sources */,
@@ -2674,6 +2687,7 @@
 				671463081EB3396E00EAB194 /* UIView+Rotation.swift in Sources */,
 				6714626C1EB3396E00EAB194 /* XibView.swift in Sources */,
 				67274778206CD0B500725163 /* UILabel+ViewTextConfiguration.swift in Sources */,
+				67ED2BE520B44F4300508B3E /* InitializableView+DefaultImplementation.swift in Sources */,
 				6774529220625D170024EEEF /* GeneralDataLoadingModel.swift in Sources */,
 				6714637C1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				671463341EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
@@ -2790,6 +2804,7 @@
 				6714638A1EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
 				67153E3C207DFADA0049D8C0 /* RotateDrawingOperation.swift in Sources */,
 				6774529C20625E5B0024EEEF /* PaginationDataLoadingState.swift in Sources */,
+				67ED2BE020B44DEB00508B3E /* InitializableView.swift in Sources */,
 				671463821EB3396E00EAB194 /* PaddingDrawingOperation.swift in Sources */,
 				6714632A1EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
 				671462AE1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
@@ -2848,6 +2863,7 @@
 				67FDC2611FA310EA00C76A77 /* RequestError.swift in Sources */,
 				671AD25E206A343300EAF887 /* VoidBlock.swift in Sources */,
 				671462521EB3396E00EAB194 /* StaticCursor.swift in Sources */,
+				67ED2BE720B44F4300508B3E /* InitializableView+DefaultImplementation.swift in Sources */,
 				6714629E1EB3396E00EAB194 /* CursorType+Slice.swift in Sources */,
 				6714636A1EB3396E00EAB194 /* ConfigurableView.swift in Sources */,
 			);
@@ -2859,9 +2875,11 @@
 			files = (
 				6714634B1EB3396E00EAB194 /* ResettableType.swift in Sources */,
 				671462E71EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
+				67ED2BE120B44DEB00508B3E /* InitializableView.swift in Sources */,
 				67274775206CCF1200725163 /* ViewText.swift in Sources */,
 				6727476B206CCCA500725163 /* ViewBackground.swift in Sources */,
 				671462831EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
+				67ED2BE820B44F4300508B3E /* InitializableView+DefaultImplementation.swift in Sources */,
 				677452B820627FE00024EEEF /* PaginationWrappable.swift in Sources */,
 				673CF40E2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */,
 				67274770206CCDDB00725163 /* ViewBackground+Configuration.swift in Sources */,
@@ -3055,6 +3073,7 @@
 				67EB7FEC2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */,
 				671462991EB3396E00EAB194 /* CGSize+Resize.swift in Sources */,
 				67274780206CD3BD00725163 /* ViewText+Extensions.swift in Sources */,
+				67ED2BE620B44F4300508B3E /* InitializableView+DefaultImplementation.swift in Sources */,
 				671463311EB3396E00EAB194 /* CursorType.swift in Sources */,
 				6714624D1EB3396E00EAB194 /* MapCursor.swift in Sources */,
 				67EB7FD520615D1700BDD9FB /* ResettableCursorType.swift in Sources */,
@@ -3083,6 +3102,7 @@
 				673CF42D2063DE5900C329F6 /* TextPlaceholderView.swift in Sources */,
 				671462A11EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
 				671463091EB3396E00EAB194 /* UIView+Rotation.swift in Sources */,
+				67ED2BDF20B44DEB00508B3E /* InitializableView.swift in Sources */,
 				6714626D1EB3396E00EAB194 /* XibView.swift in Sources */,
 				6714637D1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				671463351EB3396E00EAB194 /* DrawingOperation.swift in Sources */,

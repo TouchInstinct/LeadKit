@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2017 Touch Instinct
+//  Copyright (c) 2018 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,20 +20,29 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+public extension InitializableView {
 
-public extension ConfigurableController where Self: UIViewController {
-
-    func configureBarButtons() {
-        // nothing
+    func initializeView() {
+        addViews()
+        bindViews()
+        configureAppearance()
+        localize()
     }
 
-    func initialLoadView() {
-        addViews()
-        configureAppearance()
-        configureBarButtons()
-        localize()
-        bindViews()
+    func addViews() {
+        //
+    }
+
+    func bindViews() {
+        //
+    }
+
+    func configureAppearance() {
+        //
+    }
+
+    func localize() {
+        //
     }
 
 }

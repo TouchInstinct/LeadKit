@@ -1,7 +1,10 @@
 # Changelog
 
 ### 0.7.14
-- **[Breaking Chnage]**: Remove `ModuleConfigurator`, change type of `ConfigurableController.viewModel` property from `IUO` to plain `ViewModelT`.
+- **[Breaking change]**: Remove `ModuleConfigurator`, change type of `ConfigurableController.viewModel` property from `IUO` to plain `ViewModelT`.
+- **Add**: `InitializableView` protocol with default implementation.
+- **Update**: `ConfigurableController` protocol now inherit `InitializableView`.
+- **[Breaking change]**: `setAppearance` of `ConfigurableController` replaced with `configureAppearance` of `InitializableView`.
 
 ### 0.7.13
 - **Update**: Migrate from `Variable` to `BehaviorRelay`.

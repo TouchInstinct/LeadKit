@@ -22,21 +22,13 @@
 
 import Foundation
 
-public protocol ConfigurableController {
+public protocol ConfigurableController: InitializableView {
 
     associatedtype ViewModelT
 
     var viewModel: ViewModelT { get }
 
-    func bindViews()
-
-    func addViews()
-
-    func setAppearance()
-
     func configureBarButtons()
-
-    func localize()
 
     func initialLoadView()
 
