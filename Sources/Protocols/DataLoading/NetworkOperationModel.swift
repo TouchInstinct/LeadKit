@@ -20,8 +20,14 @@
 //  THE SOFTWARE.
 //
 
-import RxSwift
+import RxCocoa
 
-/// Data loading model for GeneralDataLoadingState with Single as data source.
-public final class GeneralDataLoadingModel<T>: RxDataLoadingModel<GeneralDataLoadingState<Single<T>>> {
+/// Protocol that describes data loading process via current state driver
+public protocol NetworkOperationModel {
+
+    associatedtype NetworkOperationStateType: NetworkOperationState
+
+    /// Driver, that emits current state of loading process
+    var stateDriver: Driver<NetworkOperationStateType> { get }
+
 }

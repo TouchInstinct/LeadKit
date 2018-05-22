@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.7.17
+- **Add**: `RxNetworkOperationModel` base class, `NetworkOperationState` and `NetworkOperationStateType` protocols.
+
 ### 0.7.16
 - **[Breaking Change]**: Remove `ModuleConfigurator`, change type of `ConfigurableController.viewModel` property from `IUO` to plain `ViewModelT`.
 - **Add**: `InitializableView` protocol with default implementation.

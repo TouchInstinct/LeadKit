@@ -64,7 +64,7 @@ open class GeneralDataLoadingViewModel<ResultType>: BaseViewModel {
 
     /// Returns current result if it exists.
     public var currentResult: ResultType? {
-        return currentLoadingState.currentResult
+        return currentLoadingState.result
     }
 
     /// Current state of loading process.

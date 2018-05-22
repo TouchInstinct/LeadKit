@@ -31,7 +31,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
     private typealias DataLoadingModel = PaginationDataLoadingModel<Cursor>
 
-    private typealias LoadingState = DataLoadingModel.LoadingStateType
+    private typealias LoadingState = DataLoadingModel.NetworkOperationStateType
 
     private var wrappedView: AnyPaginationWrappable
     private let paginationViewModel: DataLoadingModel
