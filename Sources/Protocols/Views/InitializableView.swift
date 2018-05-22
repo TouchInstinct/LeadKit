@@ -20,10 +20,22 @@
 //  THE SOFTWARE.
 //
 
-public extension PaginationWrapperDelegate
-    where DataSourceType: ResettableRxDataSourceCursor,
-    DataSourceType.ResultType == [DataSourceType.Element] {
+/// Protocol with methods that should be called in constructor methods of view.
+public protocol InitializableView {
 
-    /// Convenient typealias.
-    typealias PaginationWrapperType = PaginationWrapper<DataSourceType, Self>
+    /// Main method that should call other in particular order.
+    func initializeView()
+
+    /// Method for adding views to current view.
+    func addViews()
+
+    /// Method for binding to data or user actions.
+    func bindViews()
+
+    /// Appearance configuration method.
+    func configureAppearance()
+
+    /// Localization method.
+    func localize()
+
 }
