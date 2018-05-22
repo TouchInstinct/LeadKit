@@ -44,3 +44,11 @@ public protocol PaginationWrapperDelegate: class {
     /// Handles empty data state.
     func clearData()
 }
+
+public extension PaginationWrapperDelegate
+    where DataSourceType: ResettableRxDataSourceCursor,
+    DataSourceType.ResultType == [DataSourceType.Element] {
+
+    /// Convenient typealias.
+    typealias PaginationWrapperType = PaginationWrapper<DataSourceType, Self>
+}

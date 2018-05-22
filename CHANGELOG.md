@@ -1,7 +1,7 @@
 # Changelog
 
 ### 0.7.14
-- **Update**: `PaginationWrapper` separating state views from data loading.
+- **[Breaking Change]**: `PaginationWrapper` separating state views from data loading.
 
 ### 0.7.13
 - **Update**: Migrate from `Variable` to `BehaviorRelay`.
