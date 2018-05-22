@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.7.18
+- **Update**: default implementation of `PaginationWrapperUIDelegate`.
+
 ### 0.7.17
 - **Add**: `RxNetworkOperationModel` base class, `NetworkOperationState` and `NetworkOperationStateType` protocols.
 
