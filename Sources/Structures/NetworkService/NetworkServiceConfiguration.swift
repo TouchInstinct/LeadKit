@@ -48,12 +48,12 @@ public struct NetworkServiceConfiguration {
     public init(baseUrl: String,
                 timeoutInterval: TimeInterval = 20,
                 encoding: ParameterEncoding = URLEncoding.default,
-                additionalHttpHeaders: HTTPHeaders = SessionManager.defaultHTTPHeaders) {
+                additionalHttpHeaders: HTTPHeaders = [:]) {
 
         self.baseUrl = baseUrl
         self.timeoutInterval = timeoutInterval
         self.encoding = encoding
-        self.additionalHttpHeaders = additionalHttpHeaders
+        self.additionalHttpHeaders = additionalHttpHeaders.merging(SessionManager.defaultHTTPHeaders) { current, _ in current }
 
         sessionConfiguration = URLSessionConfiguration.default
         sessionConfiguration.timeoutIntervalForResource = timeoutInterval
