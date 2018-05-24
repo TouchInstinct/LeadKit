@@ -22,7 +22,6 @@
 
 import Alamofire
 import RxSwift
-import ObjectMapper
 import RxAlamofire
 
 typealias ServerResponse = (HTTPURLResponse, Data)

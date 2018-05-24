@@ -23,7 +23,6 @@
 import RxSwift
 import RxCocoa
 import Alamofire
-import ObjectMapper
 import RxAlamofire
 
 /// Base network service implementation build on top of LeadKit extensions for Alamofire.

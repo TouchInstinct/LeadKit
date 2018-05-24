@@ -20,7 +20,6 @@
 //  THE SOFTWARE.
 //
 
-import ObjectMapper
 import RxSwift
 
 /// Protocol for concurrent model mapping

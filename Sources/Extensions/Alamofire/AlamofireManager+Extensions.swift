@@ -23,7 +23,6 @@
 import Alamofire
 import RxSwift
 import RxAlamofire
-import ObjectMapper
 
 public extension Alamofire.SessionManager {
 

@@ -20,7 +20,6 @@
 //  THE SOFTWARE.
 //
 
-import ObjectMapper
 import LeadKit
 import RxSwift
 
@@ -38,23 +37,6 @@ struct Post: Decodable {
     let title: String
     let body: String
 
-}
-
-extension Post: ImmutableMappable {
-
-    init(map: Map) throws {
-        userId = try map.value("userId")
-        postId = try map.value("id")
-        title = try map.value("title")
-        body = try map.value("body")
-    }
-    
-    mutating func mapping(map: Map) {
-        userId >>> map["userId"]
-        postId >>> map["id"]
-        title >>> map["title"]
-        body >>> map["body"]
-    }
 }
 
 extension Post: ObservableMappable {
