@@ -28,5 +28,5 @@ import Foundation
 public enum LeadKitError: Error {
 
     case failedToCastValue(expectedType: Any.Type, givenType: Any.Type)
-
+    case failedToDecode(reason: String)
 }
