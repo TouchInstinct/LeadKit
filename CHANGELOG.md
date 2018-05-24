@@ -1,6 +1,6 @@
 # Changelog
 
-### 0.7.19
+### 0.8.0
 - **Add**: tests for `NetworkService`
 - **Add**: `toJSON(with encoder: JSONEncoder)` method to `Encodable`
 - **Add**: `failedToDecode` error case to `LeadKitError`
