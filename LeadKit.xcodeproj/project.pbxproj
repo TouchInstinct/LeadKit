@@ -548,6 +548,9 @@
 		A6F32C101F6EBE9600AC08EE /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F32C0E1F6EBE8E00AC08EE /* StringExtensionTests.swift */; };
 		A6F32C111F6EBE9700AC08EE /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F32C0E1F6EBE8E00AC08EE /* StringExtensionTests.swift */; };
 		A6F32C121F6EBE9800AC08EE /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F32C0E1F6EBE8E00AC08EE /* StringExtensionTests.swift */; };
+		B84CB06920B702240090DB91 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85B768620B1CF6700F837C4 /* Codable+Extensions.swift */; };
+		B84CB06A20B702240090DB91 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85B768620B1CF6700F837C4 /* Codable+Extensions.swift */; };
+		B84CB06B20B702260090DB91 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85B768620B1CF6700F837C4 /* Codable+Extensions.swift */; };
 		B84D64B120A70B7000DD76DA /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84D64B020A70B7000DD76DA /* NetworkServiceTests.swift */; };
 		B84D64B220A70B7000DD76DA /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84D64B020A70B7000DD76DA /* NetworkServiceTests.swift */; };
 		B84D64B320A70B7000DD76DA /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84D64B020A70B7000DD76DA /* NetworkServiceTests.swift */; };
@@ -2812,6 +2815,7 @@
 				6714638A1EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
 				67153E3C207DFADA0049D8C0 /* RotateDrawingOperation.swift in Sources */,
 				6774529C20625E5B0024EEEF /* PaginationDataLoadingState.swift in Sources */,
+				B84CB06A20B702240090DB91 /* Codable+Extensions.swift in Sources */,
 				67ED2BE020B44DEB00508B3E /* InitializableView.swift in Sources */,
 				671463821EB3396E00EAB194 /* PaddingDrawingOperation.swift in Sources */,
 				6714632A1EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
@@ -2966,6 +2970,7 @@
 				67153E3D207DFADA0049D8C0 /* RotateDrawingOperation.swift in Sources */,
 				67274782206CD3BD00725163 /* ViewText+Extensions.swift in Sources */,
 				673CF42E2063DE5900C329F6 /* TextPlaceholderView.swift in Sources */,
+				B84CB06B20B702260090DB91 /* Codable+Extensions.swift in Sources */,
 				671462731EB3396E00EAB194 /* CursorError.swift in Sources */,
 				6727478D206CD83600725163 /* DateFormat.swift in Sources */,
 				67EB7FDD20615D5B00BDD9FB /* ResettableRxCursorDataSource.swift in Sources */,
@@ -3085,6 +3090,7 @@
 				67EB7FD520615D1700BDD9FB /* ResettableCursorType.swift in Sources */,
 				671463251EB3396E00EAB194 /* Any+TypeName.swift in Sources */,
 				671463891EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
+				B84CB06920B702240090DB91 /* Codable+Extensions.swift in Sources */,
 				675C1FB61F97CA33007D5249 /* AppearanceConfigurable.swift in Sources */,
 				67FD4383206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */,
 				671463811EB3396E00EAB194 /* PaddingDrawingOperation.swift in Sources */,
