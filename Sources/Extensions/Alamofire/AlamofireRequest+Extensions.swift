@@ -54,7 +54,7 @@ public extension Reactive where Base: DataRequest {
                 .observeOn(SerialDispatchQueueScheduler(queue: mappingQueue, internalSerialQueueName: mappingQueue.label))
                 .tryMapObservableResult { response, value in
                     let json = try JSONSerialization.jsonObject(with: value, options: [])
-                    return T.createFrom(decoder: decoder, jsonObject: json)
+                    return T.create(from: json, with: decoder)
                         .map { (response, $0) }
                 }
     }

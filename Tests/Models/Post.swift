@@ -41,7 +41,7 @@ struct Post: Decodable {
 
 extension Post: ObservableMappable {
 
-    static func createFrom(decoder: JSONDecoder, jsonObject: Any) -> Observable<Post> {
+    static func create(from jsonObject: Any, with decoder: JSONDecoder) -> Observable<Post> {
         return Observable.deferredJust {
             let data = try JSONSerialization.data(withJSONObject: jsonObject, options: [])
             return try decoder.decode(Post.self, from: data)

@@ -27,6 +27,6 @@ public protocol ObservableMappable {
 
     associatedtype ModelType: Decodable
 
-    static func createFrom(decoder: JSONDecoder, jsonObject: Any) -> Observable<ModelType>
+    static func create(from jsonObject: Any, with decoder: JSONDecoder) -> Observable<ModelType>
 
 }

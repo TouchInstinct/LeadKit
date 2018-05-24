@@ -30,7 +30,7 @@ struct AlbumContainer: Decodable {
 
 extension AlbumContainer: ObservableMappable {
 
-    static func createFrom(decoder: JSONDecoder, jsonObject: Any) -> Observable<AlbumContainer> {
+    static func create(from jsonObject: Any, with decoder: JSONDecoder) -> Observable<AlbumContainer> {
         return Observable.deferredJust { try cast(jsonObject) as [Any] }
             .flatMap {
                 $0.concurrentRxMap { json -> Album in
