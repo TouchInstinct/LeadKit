@@ -23,10 +23,8 @@
 import Foundation
 
 public extension Double {
-
     /**
      Type of rounding double value
-
      - Normal: From 167.567 you will get 167.6
      - Down:   From 167.567 you will get 167.5
      */
@@ -37,19 +35,17 @@ public extension Double {
 
     /**
      Rounding of double value
-
-     - parameter persicion: important number of digits after comma
+     - parameter precision: significant digits after decimal point
      - parameter roundType: rounding type
-
      - returns: rounded value
      */
-    func roundValue(withPersicion persicion: UInt,
+    func roundValue(withPrecision precision: UInt,
                     roundType: RoundingType = .normal) -> Double {
-        let divider = pow(10.0, Double(persicion))
+        let divider = pow(10.0, Double(precision))
 
         switch roundType {
         case .normal:
-            return (self * divider).rounded(.up) / divider
+            return (self * divider).rounded(.toNearestOrEven) / divider
         case .down:
             return (self * divider).rounded(.down) / divider
         }

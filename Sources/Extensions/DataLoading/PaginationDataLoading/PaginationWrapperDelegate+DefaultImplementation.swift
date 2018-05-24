@@ -20,62 +20,10 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
-
-public extension PaginationWrapperDelegate {
-
-    func emptyPlaceholder() -> UIView {
-        return TextPlaceholderView(title: .empty)
-    }
-
-    func customInitialLoadingErrorHandling(for error: Error) -> Bool {
-        return false
-    }
-
-    func errorPlaceholder(for error: Error) -> UIView {
-        return TextPlaceholderView(title: .error)
-    }
-
-    func initialLoadingIndicator() -> AnyLoadingIndicator {
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        indicator.color = .gray
-
-        return AnyLoadingIndicator(indicator)
-    }
-
-    func loadingMoreIndicator() -> AnyLoadingIndicator {
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-
-        return AnyLoadingIndicator(indicator)
-    }
-
-    func footerRetryButton() -> UIButton {
-        let retryButton = UIButton(type: .custom)
-        retryButton.backgroundColor = .lightGray
-        retryButton.setTitle("Retry load more", for: .normal)
-
-        return retryButton
-    }
-
-    func footerRetryButtonHeight() -> CGFloat {
-        return 44
-    }
-
-    func footerRetryButtonWillAppear() {
-        // by default - nothing will happen
-    }
-
-    func footerRetryButtonWillDisappear() {
-        // by default - nothing will happen
-    }
-
-}
-
 public extension PaginationWrapperDelegate
     where DataSourceType: ResettableRxDataSourceCursor,
-          DataSourceType.ResultType == [DataSourceType.Element] {
+    DataSourceType.ResultType == [DataSourceType.Element] {
 
     /// Convenient typealias.
     typealias PaginationWrapperType = PaginationWrapper<DataSourceType, Self>
-
 }

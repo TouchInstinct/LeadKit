@@ -1,5 +1,24 @@
 # Changelog
 
+### 0.7.18
+- **Update**: default implementation of `PaginationWrapperUIDelegate`.
+
+### 0.7.17
+- **Add**: `RxNetworkOperationModel` base class, `NetworkOperationState` and `NetworkOperationStateType` protocols.
+
+### 0.7.16
+- **[Breaking Change]**: Remove `ModuleConfigurator`, change type of `ConfigurableController.viewModel` property from `IUO` to plain `ViewModelT`.
+- **Add**: `InitializableView` protocol with default implementation.
+- **Update**: `ConfigurableController` protocol now inherit `InitializableView`.
+- **[Breaking Change]**: `setAppearance` of `ConfigurableController` replaced with `configureAppearance` of `InitializableView`.
+
+### 0.7.15
+- **Fix**: `Double.roundValue(withPrecision:)` rounding issue
+- **Add**: `Double+Rounding` test case
+
+### 0.7.14
+- **[Breaking Change]**: `PaginationWrapper` separating state views from data loading.
+
 ### 0.7.13
 - **Update**: Migrate from `Variable` to `BehaviorRelay`.
 - **Fix**: `PaginationWrapper` retry load more after fail.
@@ -22,7 +41,7 @@
 - **Remove**: `App`, `Log` and `LogFormatter`.
 - **Remove**: `CocoaLumberjack` dependency.
 - **Add**: Rotate operation for image drawing.
-- **Add**: `mapViewEvents` overload with closure that returns array of disposables. 
+- **Add**: `mapViewEvents` overload with closure that returns array of disposables.
 - **Update**: Update `ObjectMapper` to 3.1.
 - **Add**: `apiRequestParameters` method to `NetworkServiceConfiguration` extension.
 - **Update**: Rename setToCenter(withInsets:) to pintToSuperview(withInsets:excluding:)

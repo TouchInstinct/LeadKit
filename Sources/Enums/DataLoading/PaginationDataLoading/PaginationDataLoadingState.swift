@@ -20,7 +20,16 @@
 //  THE SOFTWARE.
 //
 
-public indirect enum PaginationDataLoadingState<DS: DataSource>: DataLoadingState {
+/// Enum that contains states for paginated data loading.
+///
+/// - initial: Initial state. Before something will happen.
+/// - initialLoading: Initial loading state. When data was requested initially.
+/// - loadingMore: Loading more state. When additional data was requested.
+/// - results: Result state from a specific data source after a given state.
+/// - error: Error state with a specific error after a given state.
+/// - empty: Empty state. When data was initially requested and empty result was received.
+/// - exhausted: Exhausted state. When no more results can be received.
+public indirect enum PaginationDataLoadingState<DS: DataSource> {
 
     case initial
     case initialLoading(after: PaginationDataLoadingState)
@@ -29,6 +38,10 @@ public indirect enum PaginationDataLoadingState<DS: DataSource>: DataLoadingStat
     case error(error: Error, after: PaginationDataLoadingState)
     case empty
     case exhausted
+
+}
+
+extension PaginationDataLoadingState: DataLoadingState {
 
     public typealias DataSourceType = DS
 
@@ -55,6 +68,33 @@ public indirect enum PaginationDataLoadingState<DS: DataSource>: DataLoadingStat
                                   after: PaginationDataLoadingState<DS>) -> PaginationDataLoadingState<DS> {
 
         return .error(error: error, after: after)
+    }
+
+    public var isInitialState: Bool {
+        switch self {
+        case .initial:
+            return true
+        default:
+            return false
+        }
+    }
+
+    public var result: DS.ResultType? {
+        switch self {
+        case .results(let newItems, _, _):
+            return newItems
+        default:
+            return nil
+        }
+    }
+
+    public var error: Error? {
+        switch self {
+        case .error(let error, _):
+            return error
+        default:
+            return nil
+        }
     }
 
 }

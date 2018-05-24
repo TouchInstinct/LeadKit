@@ -24,29 +24,13 @@ import UIKit
 
 public extension ConfigurableController where Self: UIViewController {
 
-    func bindViews() {
-        // nothing
-    }
-
-    func addViews() {
-        // nothing
-    }
-
-    func setAppearance() {
-        // nothing
-    }
-
     func configureBarButtons() {
-        // nothing
-    }
-
-    func localize() {
         // nothing
     }
 
     func initialLoadView() {
         addViews()
-        setAppearance()
+        configureAppearance()
         configureBarButtons()
         localize()
         bindViews()

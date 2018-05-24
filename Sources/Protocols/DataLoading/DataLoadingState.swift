@@ -21,37 +21,9 @@
 //
 
 /// Protocol that describes possible states of data loading process.
-public protocol DataLoadingState {
-
-    associatedtype DataSourceType: DataSource
-
-    /// Initial state. Before something will happen.
-    static var initialState: Self { get }
+public protocol DataLoadingState: NetworkOperationState {
 
     /// Empty state. When data was requested and empty result was received.
     static var emptyState: Self { get }
-
-    /// Method that returns loading state after a given state.
-    ///
-    /// - Parameter after: Previous state of data loading process.
-    /// - Returns: Instance of loading state with given argument.
-    static func initialLoadingState(after: Self) -> Self
-
-    /// Method that returns result state from a specific data source after a given state.
-    ///
-    /// - Parameters:
-    ///   - result: DataSource result.
-    ///   - from: DataSource from that a result was received.
-    ///   - after: Previous state of data loading process.
-    /// - Returns: Instance of result state with given arguments.
-    static func resultState(result: DataSourceType.ResultType, from: DataSourceType, after: Self) -> Self
-
-    /// Method that returns error state with a specific error after a given state.
-    ///
-    /// - Parameters:
-    ///   - error: An error that happens due data loading process.
-    ///   - after: Previous state of data loading process.
-    /// - Returns: Instance of error state with given arguments.
-    static func errorState(error: Error, after: Self) -> Self
 
 }

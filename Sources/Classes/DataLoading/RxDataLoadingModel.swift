@@ -23,74 +23,35 @@
 import RxSwift
 import RxCocoa
 
-open class RxDataLoadingModel<LoadingStateType: DataLoadingState>: DataLoadingModel
+open class RxDataLoadingModel<LoadingStateType: DataLoadingState>: RxNetworkOperationModel<LoadingStateType>
     where LoadingStateType.DataSourceType: RxDataSource {
-
-    public typealias DataSourceType = LoadingStateType.DataSourceType
-    public typealias ResultType = DataSourceType.ResultType
 
     public typealias EmptyResultChecker = (ResultType) -> Bool
 
-    private let stateRelay = BehaviorRelay<LoadingStateType>(value: .initialState)
-    var currentRequestDisposable: Disposable?
-
-    var dataSource: DataSourceType
     let emptyResultChecker: EmptyResultChecker
 
-    open var stateDriver: Driver<LoadingStateType> {
-        return stateRelay.asDriver()
-    }
-
     public init(dataSource: DataSourceType, emptyResultChecker: @escaping EmptyResultChecker) {
-        self.dataSource = dataSource
         self.emptyResultChecker = emptyResultChecker
+
+        super.init(dataSource: dataSource)
     }
 
     open func reload() {
-        currentRequestDisposable?.dispose()
-
-        state = .initialLoadingState(after: state)
-
-        requestResult(from: dataSource)
+        execute()
     }
 
-    func onGot(error: Error) {
-        state = .errorState(error: error, after: state)
-    }
-
-    private func onGot(result: ResultType, from dataSource: DataSourceType) {
+    override func onGot(result: ResultType, from dataSource: DataSourceType) {
         if emptyResultChecker(result) {
             state = .emptyState
         } else {
-            state = .resultState(result: result,
-                                 from: dataSource,
-                                 after: state)
-
-            updateStateAfterNonEmptyResult(from: dataSource)
+            super.onGot(result: result, from: dataSource)
         }
+
+        updateStateAfterResult(from: dataSource)
     }
 
-    func requestResult(from dataSource: DataSourceType) {
-        currentRequestDisposable = dataSource
-            .resultSingle()
-            .subscribe(onSuccess: { [weak self] result in
-                self?.onGot(result: result, from: dataSource)
-            }, onError: { [weak self] error in
-                self?.onGot(error: error)
-            })
-    }
-
-    func updateStateAfterNonEmptyResult(from dataSource: DataSourceType) {
+    func updateStateAfterResult(from dataSource: DataSourceType) {
         // override in subcass if needed
-    }
-
-    var state: LoadingStateType {
-        get {
-            return stateRelay.value
-        }
-        set {
-            stateRelay.accept(newValue)
-        }
     }
 
 }

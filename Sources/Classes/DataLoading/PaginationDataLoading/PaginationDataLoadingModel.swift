@@ -22,6 +22,7 @@
 
 import RxSwift
 
+/// Data loading model for PaginationDataLoadingState with ResettableRxDataSourceCursor as data source.
 public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCursor>:
     RxDataLoadingModel<PaginationDataLoadingState<Cursor>> {
 
@@ -56,6 +57,8 @@ public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCurs
     }
 
     private func load(_ loadType: LoadType) {
+        currentRequestDisposable?.dispose()
+
         switch loadType {
         case .reload, .retry:
             dataSource = dataSource.reset()
@@ -89,7 +92,7 @@ public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCurs
         }
     }
 
-    override func updateStateAfterNonEmptyResult(from dataSource: DataSourceType) {
+    override func updateStateAfterResult(from dataSource: DataSourceType) {
         if dataSource.exhausted {
             state = .exhausted
         }

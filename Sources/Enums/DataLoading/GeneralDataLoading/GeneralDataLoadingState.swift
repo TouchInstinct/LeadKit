@@ -20,13 +20,24 @@
 //  THE SOFTWARE.
 //
 
-public enum GeneralDataLoadingState<DS: DataSource>: DataLoadingState {
+/// Enum that contains states for general data loading.
+///
+/// - initial: Initial state. Before something will happen.
+/// - loading: Loading state. When data loading is started.
+/// - result: Result state from a specific data source with result.
+/// - error: Error state with a specific error.
+/// - empty: Empty state. When data was requested and empty result was received.
+public enum GeneralDataLoadingState<DS: DataSource> {
 
     case initial
     case loading
     case result(newResult: DS.ResultType, from: DS)
     case error(error: Error)
     case empty
+
+}
+
+extension GeneralDataLoadingState: DataLoadingState {
 
     public typealias DataSourceType = DS
 
@@ -53,6 +64,33 @@ public enum GeneralDataLoadingState<DS: DataSource>: DataLoadingState {
                                   after: GeneralDataLoadingState<DS>) -> GeneralDataLoadingState<DS> {
 
         return .error(error: error)
+    }
+
+    public var isInitialState: Bool {
+        switch self {
+        case .initial:
+            return true
+        default:
+            return false
+        }
+    }
+
+    public var result: DS.ResultType? {
+        switch self {
+        case .result(let newResult, _):
+            return newResult
+        default:
+            return nil
+        }
+    }
+
+    public var error: Error? {
+        switch self {
+        case .error(let error):
+            return error
+        default:
+            return nil
+        }
     }
 
 }

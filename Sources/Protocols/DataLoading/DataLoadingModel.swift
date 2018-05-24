@@ -24,12 +24,7 @@ import RxCocoa
 
 /// Protocol that describes data loading process
 /// with methods reload & retry and current state driver.
-public protocol DataLoadingModel {
-
-    associatedtype LoadingStateType: DataLoadingState
-
-    /// Driver, that emits current state of loading process
-    var stateDriver: Driver<LoadingStateType> { get }
+public protocol DataLoadingModel: NetworkOperationModel {
 
     /// Perform (re)load data.
     func reload()

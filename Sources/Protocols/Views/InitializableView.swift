@@ -20,8 +20,22 @@
 //  THE SOFTWARE.
 //
 
-import RxSwift
+/// Protocol with methods that should be called in constructor methods of view.
+public protocol InitializableView {
 
-/// Data loading model for GeneralDataLoadingState with Single as data source.
-public final class GeneralDataLoadingModel<T>: RxDataLoadingModel<GeneralDataLoadingState<Single<T>>> {
+    /// Main method that should call other in particular order.
+    func initializeView()
+
+    /// Method for adding views to current view.
+    func addViews()
+
+    /// Method for binding to data or user actions.
+    func bindViews()
+
+    /// Appearance configuration method.
+    func configureAppearance()
+
+    /// Localization method.
+    func localize()
+
 }
