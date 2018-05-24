@@ -28,8 +28,6 @@ typealias ServerResponse = (HTTPURLResponse, Data)
 
 public extension Reactive where Base: DataRequest {
 
-    //private typealias JSON = [String: Any]
-
     /// Method that serializes response into target object
     ///
     /// - Parameter mappingQueue: The dispatch queue to use for mapping

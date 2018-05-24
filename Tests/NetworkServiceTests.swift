@@ -33,7 +33,8 @@ final class NetworkServiceTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let configuration = NetworkServiceConfiguration(baseUrl: "")
+        let configuration = NetworkServiceConfiguration(baseUrl: "https://jsonplaceholder.typicode.com",
+                                                        additionalHttpHeaders: ["Content-Type": "application/json"])
         networkService = NetworkService(configuration: configuration)
         disposeBag = DisposeBag()
     }
@@ -53,8 +54,7 @@ final class NetworkServiceTests: XCTestCase {
         var receivedModel: Album?
         var error: Error?
         let requestCompletedExpectation = expectation(description: "Request completed")
-        let apiRequest = ApiRequestParameters(url: "https://jsonplaceholder.typicode.com/albums/1",
-                                              headers: ["Content-Type": "application/json"])
+        let apiRequest = ApiRequestParameters(url: networkService.configuration.baseUrl + "/albums/1")
 
         // when
         networkService.rxRequest(with: apiRequest)
@@ -80,8 +80,7 @@ final class NetworkServiceTests: XCTestCase {
         var response: [Album]?
         var error: Error?
         let requestCompletedExpectation = expectation(description: "Request completed")
-        let apiRequest = ApiRequestParameters(url: "https://jsonplaceholder.typicode.com/albums",
-                                              headers: ["Content-Type": "application/json"])
+        let apiRequest = ApiRequestParameters(url: networkService.configuration.baseUrl + "/albums")
 
         //when
         networkService.rxRequest(with: apiRequest)
@@ -111,8 +110,7 @@ final class NetworkServiceTests: XCTestCase {
         var receivedModel: Album?
         var error: Error?
         let requestCompletedExpectation = expectation(description: "Request completed")
-        let apiRequest = ApiRequestParameters(url: "https://jsonplaceholder.typicode.com/albums/1",
-                                              headers: ["Content-Type": "application/json"])
+        let apiRequest = ApiRequestParameters(url: networkService.configuration.baseUrl + "/albums/1")
         
         // when
         networkService.rxRequest(with: apiRequest)
@@ -138,8 +136,7 @@ final class NetworkServiceTests: XCTestCase {
         var receivedModel: AlbumContainer?
         var error: Error?
         let requestCompletedExpectation = expectation(description: "Request completed")
-        let apiRequest = ApiRequestParameters(url: "https://jsonplaceholder.typicode.com/albums",
-                                              headers: ["Content-Type": "application/json"])
+        let apiRequest = ApiRequestParameters(url: networkService.configuration.baseUrl + "/albums")
 
         // when
         networkService.rxRequest(with: apiRequest)
