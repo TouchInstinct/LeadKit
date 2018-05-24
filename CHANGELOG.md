@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.7.19
+- **Fix**: `PaginationWrapper` retry button showing.
+
 ### 0.7.18
 - **Update**: default implementation of `PaginationWrapperUIDelegate`.
 

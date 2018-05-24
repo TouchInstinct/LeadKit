@@ -26,10 +26,11 @@ import UIKit
 public final class AnyPaginationWrappable: PaginationWrappable {
 
     private typealias ViewSetter = (UIView?) -> Void
+    private typealias ViewGetter = () -> UIView?
 
     public var footerView: UIView? {
         get {
-            return footerViewBacking
+            return footerViewGetter()
         }
         set {
             footerViewSetter(newValue)
@@ -38,7 +39,7 @@ public final class AnyPaginationWrappable: PaginationWrappable {
 
     public var backgroundView: UIView? {
         get {
-            return backgroundViewBacking
+            return backgroundViewGetter()
         }
         set {
             backgroundViewSetter(newValue)
@@ -47,25 +48,29 @@ public final class AnyPaginationWrappable: PaginationWrappable {
 
     public let scrollView: UIScrollView
 
-    private let backgroundViewBacking: UIView?
-    private let footerViewBacking: UIView?
-
     private let backgroundViewSetter: ViewSetter
     private let footerViewSetter: ViewSetter
 
-    public init<View>(view: View) where View: PaginationWrappable {
+    private let backgroundViewGetter: ViewGetter
+    private let footerViewGetter: ViewGetter
+
+    public init<View: PaginationWrappable>(view: View) {
         self.scrollView = view.scrollView
-        self.backgroundViewBacking = view.backgroundView
-        self.footerViewBacking = view.footerView
 
         var localView = view
 
         self.backgroundViewSetter = {
             localView.backgroundView = $0
         }
+        self.backgroundViewGetter = {
+            localView.backgroundView
+        }
 
         self.footerViewSetter = {
             localView.footerView = $0
+        }
+        self.footerViewGetter = {
+            localView.footerView
         }
     }
 
