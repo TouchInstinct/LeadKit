@@ -1,5 +1,12 @@
 # Changelog
 
+### 0.7.19
+- **Add**: tests for `NetworkService`
+- **Add**: `toJSON(with encoder: JSONEncoder)` method to `Encodable`
+- **Add**: `failedToDecode` error case to `LeadKitError`
+- **Remove**: occurrences `ObjectMapper` pod and its occurrences in code
+- **Update**: replace `ObjectMapper` mapping with `Decodable`
+
 ### 0.7.18
 - **Update**: default implementation of `PaginationWrapperUIDelegate`.
 
