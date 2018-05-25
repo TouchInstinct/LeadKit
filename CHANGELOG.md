@@ -4,6 +4,7 @@
 - **Add**: tests for `NetworkService`
 - **Add**: `toJSON(with encoder: JSONEncoder)` method to `Encodable`
 - **Add**: `failedToDecode` error case to `LeadKitError`
+- **Add**: `SessionManager` class
 - **Remove**: occurrences `ObjectMapper` pod and its occurrences in code
 - **Update**: replace `ObjectMapper` mapping with `Decodable`
 
