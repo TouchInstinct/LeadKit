@@ -64,10 +64,10 @@
 		6714627D1EB3396E00EAB194 /* SessionManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DC1EB3396E00EAB194 /* SessionManager+Extensions.swift */; };
 		6714627E1EB3396E00EAB194 /* SessionManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DC1EB3396E00EAB194 /* SessionManager+Extensions.swift */; };
 		6714627F1EB3396E00EAB194 /* SessionManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DC1EB3396E00EAB194 /* SessionManager+Extensions.swift */; };
-		671462801EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DD1EB3396E00EAB194 /* AlamofireRequest+Extensions.swift */; };
-		671462811EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DD1EB3396E00EAB194 /* AlamofireRequest+Extensions.swift */; };
-		671462821EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DD1EB3396E00EAB194 /* AlamofireRequest+Extensions.swift */; };
-		671462831EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DD1EB3396E00EAB194 /* AlamofireRequest+Extensions.swift */; };
+		671462801EB3396E00EAB194 /* DataRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DD1EB3396E00EAB194 /* DataRequest+Extensions.swift */; };
+		671462811EB3396E00EAB194 /* DataRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DD1EB3396E00EAB194 /* DataRequest+Extensions.swift */; };
+		671462821EB3396E00EAB194 /* DataRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DD1EB3396E00EAB194 /* DataRequest+Extensions.swift */; };
+		671462831EB3396E00EAB194 /* DataRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DD1EB3396E00EAB194 /* DataRequest+Extensions.swift */; };
 		671462841EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DF1EB3396E00EAB194 /* CGContext+Initializers.swift */; };
 		671462851EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DF1EB3396E00EAB194 /* CGContext+Initializers.swift */; };
 		671462861EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DF1EB3396E00EAB194 /* CGContext+Initializers.swift */; };
@@ -640,7 +640,7 @@
 		671461D81EB3396E00EAB194 /* LeadKitError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadKitError.swift; sourceTree = "<group>"; };
 		671461D91EB3396E00EAB194 /* ResizeMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizeMode.swift; sourceTree = "<group>"; };
 		671461DC1EB3396E00EAB194 /* SessionManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SessionManager+Extensions.swift"; sourceTree = "<group>"; };
-		671461DD1EB3396E00EAB194 /* AlamofireRequest+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireRequest+Extensions.swift"; sourceTree = "<group>"; };
+		671461DD1EB3396E00EAB194 /* DataRequest+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataRequest+Extensions.swift"; sourceTree = "<group>"; };
 		671461DF1EB3396E00EAB194 /* CGContext+Initializers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGContext+Initializers.swift"; sourceTree = "<group>"; };
 		671461E11EB3396E00EAB194 /* CGFloat+Pixels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Pixels.swift"; sourceTree = "<group>"; };
 		671461E31EB3396E00EAB194 /* CGImage+Alpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Alpha.swift"; sourceTree = "<group>"; };
@@ -995,7 +995,7 @@
 			isa = PBXGroup;
 			children = (
 				671461DC1EB3396E00EAB194 /* SessionManager+Extensions.swift */,
-				671461DD1EB3396E00EAB194 /* AlamofireRequest+Extensions.swift */,
+				671461DD1EB3396E00EAB194 /* DataRequest+Extensions.swift */,
 			);
 			path = Alamofire;
 			sourceTree = "<group>";
@@ -2616,7 +2616,7 @@
 				678D26A020692BFF00B05B93 /* TextFieldViewEvents.swift in Sources */,
 				6727478F206CD88600725163 /* DateFormattingService.swift in Sources */,
 				678D26A420692BFF00B05B93 /* TextFieldViewModelEvents.swift in Sources */,
-				671462801EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
+				671462801EB3396E00EAB194 /* DataRequest+Extensions.swift in Sources */,
 				67EB7FF8206175F700BDD9FB /* PaginationWrappable.swift in Sources */,
 				671463541EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
 				673CF4112063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */,
@@ -2793,7 +2793,7 @@
 				EFBE57D21EC35EF20040E00A /* Array+Extensions.swift in Sources */,
 				6727478C206CD83600725163 /* DateFormat.swift in Sources */,
 				67EB7FC2206140E600BDD9FB /* TotalCountCursor.swift in Sources */,
-				671462821EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
+				671462821EB3396E00EAB194 /* DataRequest+Extensions.swift in Sources */,
 				67745288206259CF0024EEEF /* Rx+RxDataSourceProtocol.swift in Sources */,
 				67E6C2371EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				67274781206CD3BD00725163 /* ViewText+Extensions.swift in Sources */,
@@ -2895,7 +2895,7 @@
 				67ED2BE120B44DEB00508B3E /* InitializableView.swift in Sources */,
 				67274775206CCF1200725163 /* ViewText.swift in Sources */,
 				6727476B206CCCA500725163 /* ViewBackground.swift in Sources */,
-				671462831EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
+				671462831EB3396E00EAB194 /* DataRequest+Extensions.swift in Sources */,
 				67ED2BE820B44F4300508B3E /* InitializableView+DefaultImplementation.swift in Sources */,
 				677452B820627FE00024EEEF /* PaginationWrappable.swift in Sources */,
 				673CF40E2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */,
@@ -3065,7 +3065,7 @@
 				6713C23D20AF0D5900875921 /* NetworkOperationModel.swift in Sources */,
 				67EB7FC1206140E600BDD9FB /* TotalCountCursor.swift in Sources */,
 				67A1FF951EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */,
-				671462811EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */,
+				671462811EB3396E00EAB194 /* DataRequest+Extensions.swift in Sources */,
 				67E6C2361EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				671463551EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
 				671463611EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
