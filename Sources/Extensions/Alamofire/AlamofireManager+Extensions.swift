@@ -24,21 +24,14 @@ import Alamofire
 import RxSwift
 import RxAlamofire
 
-public extension Alamofire.SessionManager {
-
-    /// The default acceptable range 200...299
-    static let defaultAcceptableStatusCodes = Set(200..<300)
-
-}
-
-public extension Reactive where Base: Alamofire.SessionManager {
+public extension Reactive where Base: SessionManager {
 
     /// Method which executes request with given api parameters
     ///
     /// - Parameter requestParameters: api parameters to pass Alamofire
     /// - Returns: Observable with request
     func apiRequest(requestParameters: ApiRequestParameters,
-                    acceptableStatusCodes: Set<Int> = Base.defaultAcceptableStatusCodes)
+                    acceptableStatusCodes: Set<Int>)
         -> Observable<DataRequest> {
 
         return request(requestParameters.method,
@@ -56,13 +49,11 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func responseModel<T: Decodable>(requestParameters: ApiRequestParameters,
-                                     decoder: JSONDecoder,
-                                     mappingQueue: DispatchQueue = .global(),
-                                     acceptableStatusCodes: Set<Int> = Base.defaultAcceptableStatusCodes)
+                                     decoder: JSONDecoder)
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
-        return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: acceptableStatusCodes)
-            .flatMap { $0.rx.apiResponse(mappingQueue: mappingQueue, decoder: decoder) }
+        return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: base.acceptableStatusCodes)
+            .flatMap { $0.rx.apiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder) }
     }
 
     /// Method that executes request and serializes response into target object
@@ -72,13 +63,11 @@ public extension Reactive where Base: Alamofire.SessionManager {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func responseObservableModel<T: ObservableMappable>(requestParameters: ApiRequestParameters,
-                                                        decoder: JSONDecoder,
-                                                        mappingQueue: DispatchQueue = .global(),
-                                                        acceptableStatusCodes: Set<Int> = Base.defaultAcceptableStatusCodes)
+                                                        decoder: JSONDecoder)
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
-        return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: acceptableStatusCodes)
-            .flatMap { $0.rx.observableApiResponse(mappingQueue: mappingQueue, decoder: decoder) }
+        return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: base.acceptableStatusCodes)
+            .flatMap { $0.rx.observableApiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder) }
     }
 
 }

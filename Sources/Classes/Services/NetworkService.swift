@@ -36,7 +36,7 @@ open class NetworkService {
     private var disposeBag = DisposeBag()
 
     public let configuration: NetworkServiceConfiguration
-    public let sessionManager: Alamofire.SessionManager
+    public let sessionManager: SessionManager
 
     var requestCount: Driver<Int> {
         return requestCountRelay.asDriver()
@@ -64,8 +64,7 @@ open class NetworkService {
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
             return sessionManager.rx.responseObservableModel(requestParameters: parameters,
-                                                             decoder: decoder,
-                                                             acceptableStatusCodes: configuration.acceptableStatusCodes)
+                                                             decoder: decoder)
                 .counterTracking(for: self)
     }
 
@@ -78,8 +77,7 @@ open class NetworkService {
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
             return sessionManager.rx.responseModel(requestParameters: parameters,
-                                                   decoder: decoder,
-                                                   acceptableStatusCodes: configuration.acceptableStatusCodes)
+                                                   decoder: decoder)
                 .counterTracking(for: self)
     }
 

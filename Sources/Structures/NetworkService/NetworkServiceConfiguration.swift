@@ -39,9 +39,6 @@ public struct NetworkServiceConfiguration {
     /// Server trust policies.
     public var serverTrustPolicies: [String: ServerTrustPolicy]
 
-    /// Acceptable status codes for validation
-    public var acceptableStatusCodes: Set<Int> = Alamofire.SessionManager.defaultAcceptableStatusCodes
-
     /// Session configuration for potential fine tuning
     public var sessionConfiguration: URLSessionConfiguration
 
@@ -69,7 +66,9 @@ public extension NetworkServiceConfiguration {
     /// SessionManager constructed with given parameters (session configuration and trust policies)
     var sessionManager: SessionManager {
         return SessionManager(configuration: sessionConfiguration,
-                              serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies))
+                              serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies),
+                              acceptableStatusCodes: Set(200..<300),
+                              mappingQueue: .global())
     }
 
     /// Convenient method to create ApiRequestParameters.

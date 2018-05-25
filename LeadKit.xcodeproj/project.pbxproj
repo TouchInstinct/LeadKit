@@ -551,6 +551,10 @@
 		B84CB06920B702240090DB91 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85B768620B1CF6700F837C4 /* Codable+Extensions.swift */; };
 		B84CB06A20B702240090DB91 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85B768620B1CF6700F837C4 /* Codable+Extensions.swift */; };
 		B84CB06B20B702260090DB91 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85B768620B1CF6700F837C4 /* Codable+Extensions.swift */; };
+		B84CB06D20B8325D0090DB91 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84CB06C20B8325D0090DB91 /* SessionManager.swift */; };
+		B84CB06E20B8325D0090DB91 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84CB06C20B8325D0090DB91 /* SessionManager.swift */; };
+		B84CB06F20B8325D0090DB91 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84CB06C20B8325D0090DB91 /* SessionManager.swift */; };
+		B84CB07020B8325D0090DB91 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84CB06C20B8325D0090DB91 /* SessionManager.swift */; };
 		B84D64B120A70B7000DD76DA /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84D64B020A70B7000DD76DA /* NetworkServiceTests.swift */; };
 		B84D64B220A70B7000DD76DA /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84D64B020A70B7000DD76DA /* NetworkServiceTests.swift */; };
 		B84D64B320A70B7000DD76DA /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84D64B020A70B7000DD76DA /* NetworkServiceTests.swift */; };
@@ -801,6 +805,7 @@
 		A6F32C071F6EBDAA00AC08EE /* String+LocalizedComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+LocalizedComponent.swift"; sourceTree = "<group>"; };
 		A6F32C0E1F6EBE8E00AC08EE /* StringExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
 		A854A36EB179651E6D0CC9FB /* Pods_LeadKit_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B84CB06C20B8325D0090DB91 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		B84D64B020A70B7000DD76DA /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		B85B766620AC4EA300F837C4 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		B85B766B20AC51BE00F837C4 /* AlbumsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsContainer.swift; sourceTree = "<group>"; };
@@ -924,6 +929,7 @@
 			isa = PBXGroup;
 			children = (
 				671461D31EB3396E00EAB194 /* NetworkService.swift */,
+				B84CB06C20B8325D0090DB91 /* SessionManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2674,6 +2680,7 @@
 				6727476E206CCDDB00725163 /* ViewBackground+Configuration.swift in Sources */,
 				671463701EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
 				676B22A2206A626D002E9F8A /* NSAttributedString+Extensions.swift in Sources */,
+				B84CB06D20B8325D0090DB91 /* SessionManager.swift in Sources */,
 				A658E5501F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift in Sources */,
 				673564F12068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */,
 				671462EC1EB3396E00EAB194 /* UIImage+Extensions.swift in Sources */,
@@ -2842,6 +2849,7 @@
 				671462A21EB3396E00EAB194 /* Double+Rounding.swift in Sources */,
 				67955D54206D216B0021ECD2 /* Singleton.swift in Sources */,
 				67EB7FF32061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift in Sources */,
+				B84CB06F20B8325D0090DB91 /* SessionManager.swift in Sources */,
 				67EB7FED2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */,
 				6714637E1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				671463361EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
@@ -3018,6 +3026,7 @@
 				671462531EB3396E00EAB194 /* StaticCursor.swift in Sources */,
 				6714629F1EB3396E00EAB194 /* CursorType+Slice.swift in Sources */,
 				6714636B1EB3396E00EAB194 /* ConfigurableView.swift in Sources */,
+				B84CB07020B8325D0090DB91 /* SessionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3160,6 +3169,7 @@
 				A676AE561F98112F001F9214 /* ObservableMappable.swift in Sources */,
 				6737CFA4207220960063E056 /* SeparatorConfiguration+Extensions.swift in Sources */,
 				67926237206EB0AE00308E62 /* CellSeparatorType.swift in Sources */,
+				B84CB06E20B8325D0090DB91 /* SessionManager.swift in Sources */,
 				6774527A206252020024EEEF /* DataLoadingState.swift in Sources */,
 				6714628D1EB3396E00EAB194 /* CGImage+Alpha.swift in Sources */,
 				67745269206249360024EEEF /* UITableView+PaginationWrappable.swift in Sources */,
