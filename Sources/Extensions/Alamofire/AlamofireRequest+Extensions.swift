@@ -36,8 +36,7 @@ public extension Reactive where Base: DataRequest {
     func apiResponse<T: Decodable>(mappingQueue: DispatchQueue = .global(), decoder: JSONDecoder)
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
-            return responseData()
-                .observeOn(SerialDispatchQueueScheduler(queue: mappingQueue, internalSerialQueueName: mappingQueue.label))
+            return response(onQueue: mappingQueue)
                 .tryMapResult { response, data in
                     (response, try decoder.decode(T.self, from: data))
                 }
@@ -50,13 +49,37 @@ public extension Reactive where Base: DataRequest {
     func observableApiResponse<T: ObservableMappable>(mappingQueue: DispatchQueue = .global(), decoder: JSONDecoder)
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
-            return responseData()
-                .observeOn(SerialDispatchQueueScheduler(queue: mappingQueue, internalSerialQueueName: mappingQueue.label))
+            return response(onQueue: mappingQueue)
                 .tryMapObservableResult { response, value in
                     let json = try JSONSerialization.jsonObject(with: value, options: [])
                     return T.create(from: json, with: decoder)
                         .map { (response, $0) }
                 }
+    }
+
+    func response(onQueue queue: DispatchQueue) -> Observable<(HTTPURLResponse, Data)> {
+        return responseData()
+            .observeOn(SerialDispatchQueueScheduler(queue: queue, internalSerialQueueName: queue.label))
+            .catchError {
+                switch $0 {
+                case let urlError as URLError:
+                    switch urlError.code {
+                    case .notConnectedToInternet, .timedOut:
+                        throw RequestError.noConnection
+                    default:
+                        throw RequestError.network(error: urlError)
+                    }
+                case let afError as AFError:
+                    switch afError {
+                    case .responseSerializationFailed, .responseValidationFailed:
+                        throw RequestError.invalidResponse(error: afError)
+                    default:
+                        throw RequestError.network(error: afError)
+                    }
+                default:
+                    throw RequestError.network(error: $0)
+                }
+            }
     }
 
 }
