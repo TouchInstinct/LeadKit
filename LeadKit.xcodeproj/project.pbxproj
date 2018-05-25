@@ -60,10 +60,10 @@
 		671462791EB3396E00EAB194 /* ResizeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D91EB3396E00EAB194 /* ResizeMode.swift */; };
 		6714627A1EB3396E00EAB194 /* ResizeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D91EB3396E00EAB194 /* ResizeMode.swift */; };
 		6714627B1EB3396E00EAB194 /* ResizeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461D91EB3396E00EAB194 /* ResizeMode.swift */; };
-		6714627C1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DC1EB3396E00EAB194 /* AlamofireManager+Extensions.swift */; };
-		6714627D1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DC1EB3396E00EAB194 /* AlamofireManager+Extensions.swift */; };
-		6714627E1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DC1EB3396E00EAB194 /* AlamofireManager+Extensions.swift */; };
-		6714627F1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DC1EB3396E00EAB194 /* AlamofireManager+Extensions.swift */; };
+		6714627C1EB3396E00EAB194 /* SessionManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DC1EB3396E00EAB194 /* SessionManager+Extensions.swift */; };
+		6714627D1EB3396E00EAB194 /* SessionManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DC1EB3396E00EAB194 /* SessionManager+Extensions.swift */; };
+		6714627E1EB3396E00EAB194 /* SessionManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DC1EB3396E00EAB194 /* SessionManager+Extensions.swift */; };
+		6714627F1EB3396E00EAB194 /* SessionManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DC1EB3396E00EAB194 /* SessionManager+Extensions.swift */; };
 		671462801EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DD1EB3396E00EAB194 /* AlamofireRequest+Extensions.swift */; };
 		671462811EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DD1EB3396E00EAB194 /* AlamofireRequest+Extensions.swift */; };
 		671462821EB3396E00EAB194 /* AlamofireRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671461DD1EB3396E00EAB194 /* AlamofireRequest+Extensions.swift */; };
@@ -639,7 +639,7 @@
 		671461D71EB3396E00EAB194 /* CursorError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CursorError.swift; sourceTree = "<group>"; };
 		671461D81EB3396E00EAB194 /* LeadKitError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadKitError.swift; sourceTree = "<group>"; };
 		671461D91EB3396E00EAB194 /* ResizeMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizeMode.swift; sourceTree = "<group>"; };
-		671461DC1EB3396E00EAB194 /* AlamofireManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireManager+Extensions.swift"; sourceTree = "<group>"; };
+		671461DC1EB3396E00EAB194 /* SessionManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SessionManager+Extensions.swift"; sourceTree = "<group>"; };
 		671461DD1EB3396E00EAB194 /* AlamofireRequest+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireRequest+Extensions.swift"; sourceTree = "<group>"; };
 		671461DF1EB3396E00EAB194 /* CGContext+Initializers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGContext+Initializers.swift"; sourceTree = "<group>"; };
 		671461E11EB3396E00EAB194 /* CGFloat+Pixels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Pixels.swift"; sourceTree = "<group>"; };
@@ -994,7 +994,7 @@
 		671461DB1EB3396E00EAB194 /* Alamofire */ = {
 			isa = PBXGroup;
 			children = (
-				671461DC1EB3396E00EAB194 /* AlamofireManager+Extensions.swift */,
+				671461DC1EB3396E00EAB194 /* SessionManager+Extensions.swift */,
 				671461DD1EB3396E00EAB194 /* AlamofireRequest+Extensions.swift */,
 			);
 			path = Alamofire;
@@ -2666,7 +2666,7 @@
 				671462AC1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
 				671463001EB3396E00EAB194 /* UIView+LoadFromNib.swift in Sources */,
 				A676AE501F9810C1001F9214 /* Any+Cast.swift in Sources */,
-				6714627C1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
+				6714627C1EB3396E00EAB194 /* SessionManager+Extensions.swift in Sources */,
 				671462D41EB3396E00EAB194 /* TableDirector+Extensions.swift in Sources */,
 				671462781EB3396E00EAB194 /* ResizeMode.swift in Sources */,
 				A676AE551F98112E001F9214 /* ObservableMappable.swift in Sources */,
@@ -2829,7 +2829,7 @@
 				671462AE1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
 				67EB7FDC20615D5B00BDD9FB /* ResettableRxCursorDataSource.swift in Sources */,
 				A6F32C0B1F6EBE5C00AC08EE /* String+LocalizedComponent.swift in Sources */,
-				6714627E1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
+				6714627E1EB3396E00EAB194 /* SessionManager+Extensions.swift in Sources */,
 				677452AB206263360024EEEF /* CursorType+RxDataSourceDefaultImplementation.swift in Sources */,
 				673564F32068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */,
 				67EB7FD620615D1700BDD9FB /* ResettableCursorType.swift in Sources */,
@@ -2946,7 +2946,7 @@
 				671462AF1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
 				A676AE4F1F9810C1001F9214 /* Any+Cast.swift in Sources */,
 				671463031EB3396E00EAB194 /* UIView+LoadFromNib.swift in Sources */,
-				6714627F1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
+				6714627F1EB3396E00EAB194 /* SessionManager+Extensions.swift in Sources */,
 				6737CFA5207220960063E056 /* SeparatorConfiguration+Extensions.swift in Sources */,
 				6714627B1EB3396E00EAB194 /* ResizeMode.swift in Sources */,
 				67745289206259CF0024EEEF /* Rx+RxDataSourceProtocol.swift in Sources */,
@@ -3109,7 +3109,7 @@
 				671462AD1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
 				671463011EB3396E00EAB194 /* UIView+LoadFromNib.swift in Sources */,
 				6774526D206249E30024EEEF /* UICollectionView+PaginationWrappable.swift in Sources */,
-				6714627D1EB3396E00EAB194 /* AlamofireManager+Extensions.swift in Sources */,
+				6714627D1EB3396E00EAB194 /* SessionManager+Extensions.swift in Sources */,
 				673CF4352063E29B00C329F6 /* TextWithButtonPlaceholder.swift in Sources */,
 				6727476F206CCDDB00725163 /* ViewBackground+Configuration.swift in Sources */,
 				673CF4232063D90600C329F6 /* DisposeBagHolder.swift in Sources */,
