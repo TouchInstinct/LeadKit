@@ -22,9 +22,9 @@
 
 import Foundation
 
-extension Encodable {
+public extension Encodable {
 
-    func toJSON(with encoder: JSONEncoder = JSONEncoder()) -> [String: Any] {
+    public func toJSON(with encoder: JSONEncoder = JSONEncoder()) -> [String: Any] {
         guard let data = try? encoder.encode(self) else {
             return [:]
         }
