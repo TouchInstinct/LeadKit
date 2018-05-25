@@ -30,8 +30,7 @@ public extension Reactive where Base: SessionManager {
     ///
     /// - Parameter requestParameters: api parameters to pass Alamofire
     /// - Returns: Observable with request
-    func apiRequest(requestParameters: ApiRequestParameters,
-                    acceptableStatusCodes: Set<Int>)
+    func apiRequest(requestParameters: ApiRequestParameters)
         -> Observable<DataRequest> {
 
         return request(requestParameters.method,
@@ -39,20 +38,19 @@ public extension Reactive where Base: SessionManager {
                        parameters: requestParameters.parameters,
                        encoding: requestParameters.encoding,
                        headers: requestParameters.headers)
-            .map { $0.validate(statusCode: acceptableStatusCodes) }
+            .map { $0.validate(statusCode: self.base.acceptableStatusCodes) }
     }
 
     /// Method that executes request and serializes response into target object
     ///
     /// - Parameter requestParameters: api parameters to pass Alamofire
     /// - Parameter decoder: json decoder to decode response data
-    /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func responseModel<T: Decodable>(requestParameters: ApiRequestParameters,
                                      decoder: JSONDecoder)
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
-        return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: base.acceptableStatusCodes)
+        return apiRequest(requestParameters: requestParameters)
             .flatMap { $0.rx.apiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder) }
     }
 
@@ -60,13 +58,12 @@ public extension Reactive where Base: SessionManager {
     ///
     /// - Parameter requestParameters: api parameters to pass Alamofire
     /// - Parameter decoder: json decoder to decode response data
-    /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func responseObservableModel<T: ObservableMappable>(requestParameters: ApiRequestParameters,
                                                         decoder: JSONDecoder)
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
-        return apiRequest(requestParameters: requestParameters, acceptableStatusCodes: base.acceptableStatusCodes)
+        return apiRequest(requestParameters: requestParameters)
             .flatMap { $0.rx.observableApiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder) }
     }
 

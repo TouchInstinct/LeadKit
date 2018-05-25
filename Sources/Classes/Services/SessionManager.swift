@@ -22,9 +22,13 @@
 
 import Alamofire
 
+/// Session Manager stored in NetworkService
 open class SessionManager: Alamofire.SessionManager {
 
+    /// Acceptable status codes for validation
     public let acceptableStatusCodes: Set<Int>
+
+    /// Dispatch Queue on which mapping is performed
     public let mappingQueue: DispatchQueue
 
     public init(configuration: URLSessionConfiguration,
