@@ -48,7 +48,7 @@ public extension Reactive where Base: DataRequest {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func observableApiResponse<T: ObservableMappable>(mappingQueue: DispatchQueue = .global(), decoder: JSONDecoder)
-        -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
+        -> Observable<(response: HTTPURLResponse, model: T)> {
 
             return responseData()
                 .observeOn(SerialDispatchQueueScheduler(queue: mappingQueue, internalSerialQueueName: mappingQueue.label))

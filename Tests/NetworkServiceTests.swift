@@ -113,7 +113,7 @@ final class NetworkServiceTests: XCTestCase {
         let apiRequest = ApiRequestParameters(url: networkService.configuration.baseUrl + "/albums/1")
         
         // when
-        networkService.rxRequest(with: apiRequest)
+        networkService.rxObservableRequest(with: apiRequest)
             .subscribe(onNext: { (_, model: Album) in
                 receivedModel = model
                 requestCompletedExpectation.fulfill()
@@ -139,7 +139,7 @@ final class NetworkServiceTests: XCTestCase {
         let apiRequest = ApiRequestParameters(url: networkService.configuration.baseUrl + "/albums")
 
         // when
-        networkService.rxRequest(with: apiRequest)
+        networkService.rxObservableRequest(with: apiRequest)
             .subscribe(onNext: { (_, model: AlbumContainer) in
                 receivedModel = model
                 requestCompletedExpectation.fulfill()

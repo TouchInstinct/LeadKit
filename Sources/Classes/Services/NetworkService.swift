@@ -59,9 +59,9 @@ open class NetworkService {
     /// - Parameter parameters: api parameters to pass Alamofire
     /// - Parameter decoder: json decoder to decode response data
     /// - Returns: Observable of tuple containing (HTTPURLResponse, ObservableMappable)
-    public func rxRequest<T: ObservableMappable>(with parameters: ApiRequestParameters,
-                                                 decoder: JSONDecoder = JSONDecoder())
-        -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
+    public func rxObservableRequest<T: ObservableMappable>(with parameters: ApiRequestParameters,
+                                                           decoder: JSONDecoder = JSONDecoder())
+        -> Observable<(response: HTTPURLResponse, model: T)> {
 
             return sessionManager.rx.responseObservableModel(requestParameters: parameters,
                                                              decoder: decoder,
