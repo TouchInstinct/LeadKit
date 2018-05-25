@@ -22,17 +22,10 @@
 
 import Foundation
 
-public extension Encodable {
+public extension Decodable {
 
-    public func toJSON(with encoder: JSONEncoder = JSONEncoder()) -> [String: Any] {
-        guard let data = try? encoder.encode(self) else {
-            return [:]
-        }
-
-        guard let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any] else {
-            return [:]
-        }
-
-        return json
+    init(JSON: Any, decoder: JSONDecoder = JSONDecoder()) throws {
+        let data = try JSONSerialization.data(withJSONObject: JSON, options: .prettyPrinted)
+        self = try decoder.decode(Self.self, from: data)
     }
 }
