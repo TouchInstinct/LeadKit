@@ -41,4 +41,16 @@ open class SessionManager: Alamofire.SessionManager {
 
         super.init(configuration: configuration, serverTrustPolicyManager: serverTrustPolicyManager)
     }
+
+    public init?(session: URLSession,
+                 delegate: SessionDelegate,
+                 serverTrustPolicyManager: ServerTrustPolicyManager,
+                 acceptableStatusCodes: Set<Int>,
+                 mappingQueue: DispatchQueue) {
+
+        self.acceptableStatusCodes = acceptableStatusCodes
+        self.mappingQueue = mappingQueue
+
+        super.init(session: session, delegate: delegate, serverTrustPolicyManager: serverTrustPolicyManager)
+    }
 }
