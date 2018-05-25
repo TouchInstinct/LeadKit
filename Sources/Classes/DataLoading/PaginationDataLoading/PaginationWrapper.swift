@@ -33,6 +33,8 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
     private typealias LoadingState = DataLoadingModel.NetworkOperationStateType
 
+    private typealias FinishInfiniteScrollCompletion = ((UIScrollView) -> Void)
+
     private var wrappedView: AnyPaginationWrappable
     private let paginationViewModel: DataLoadingModel
     private weak var delegate: Delegate?
@@ -186,14 +188,15 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
             replacePlaceholderViewIfNeeded(with: errorView)
         } else if case .loadingMore = afterState {
-            removeInfiniteScroll()
-
             guard let retryButton = uiDelegate?.footerRetryButton(),
-                let retryButtonHeigth = uiDelegate?.footerRetryButtonHeight() else {
+                let retryButtonHeight = uiDelegate?.footerRetryButtonHeight() else {
+
+                    removeInfiniteScroll()
+
                     return
             }
 
-            retryButton.frame = CGRect(x: 0, y: 0, width: wrappedView.scrollView.bounds.width, height: retryButtonHeigth)
+            retryButton.frame = CGRect(x: 0, y: 0, width: wrappedView.scrollView.bounds.width, height: retryButtonHeight)
 
             retryButton.rx
                 .controlEvent(.touchUpInside)
@@ -203,7 +206,13 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
             uiDelegate?.footerRetryButtonWillAppear()
 
-            wrappedView.footerView = retryButton
+            removeInfiniteScroll { scrollView in
+                self.wrappedView.footerView = retryButton
+
+                let newContentOffset = CGPoint(x: 0, y: scrollView.contentOffset.y + retryButtonHeight)
+    
+                scrollView.setContentOffset(newContentOffset, animated: true)
+            }
         }
     }
 
@@ -272,8 +281,8 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
         wrappedView.scrollView.infiniteScrollIndicatorView = uiDelegate?.loadingMoreIndicator()?.view
     }
 
-    private func removeInfiniteScroll() {
-        wrappedView.scrollView.finishInfiniteScroll()
+    private func removeInfiniteScroll(with completion: FinishInfiniteScrollCompletion? = nil) {
+        wrappedView.scrollView.finishInfiniteScroll(completion: completion)
         wrappedView.scrollView.removeInfiniteScroll()
     }
 
