@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2017 Touch Instinct
+//  Copyright (c) 2018 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -23,50 +23,34 @@
 import LeadKit
 import RxSwift
 
-struct Post: Decodable {
-    
+struct Album: Decodable {
+
     enum CodingKeys: String, CodingKey {
         case userId
-        case postId = "id"
+        case albumId = "id"
         case title
-        case body
     }
 
     let userId: Int
-    let postId: Int
+    let albumId: Int
     let title: String
-    let body: String
-
 }
 
-extension Post: ObservableMappable {
+extension Album: Equatable {
 
-    static func create(from jsonObject: Any, with decoder: JSONDecoder) -> Observable<Post> {
+    static func == (lhs: Album, rhs: Album) -> Bool {
+        return lhs.userId == rhs.userId &&
+            lhs.albumId == rhs.albumId &&
+            lhs.title == rhs.title
+    }
+}
+
+extension Album: ObservableMappable {
+
+    static func create(from jsonObject: Any, with decoder: JSONDecoder) -> Observable<Album> {
         return Observable.deferredJust {
             let data = try JSONSerialization.data(withJSONObject: jsonObject, options: [])
-            return try decoder.decode(Post.self, from: data)
+            return try decoder.decode(Album.self, from: data)
         }
     }
-}
-
-extension Post: Equatable {
-
-    static func == (lhs: Post, rhs: Post) -> Bool {
-        return lhs.userId == rhs.userId &&
-            lhs.postId == rhs.postId &&
-            lhs.title == rhs.title &&
-            lhs.body == rhs.body
-    }
-
-}
-
-extension Post {
-
-    static func generate() -> [Post] {
-        return [Post(userId: 1, postId: 1, title: "First post", body: ""),
-                Post(userId: 1, postId: 2, title: "Second post", body: ""),
-                Post(userId: 2, postId: 3, title: "Third post", body: ""),
-                Post(userId: 2, postId: 4, title: "Forth post", body: "")]
-    }
-
 }

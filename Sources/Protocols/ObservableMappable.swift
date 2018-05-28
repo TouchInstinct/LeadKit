@@ -20,14 +20,11 @@
 //  THE SOFTWARE.
 //
 
-import ObjectMapper
 import RxSwift
 
 /// Protocol for concurrent model mapping
-public protocol ObservableMappable {
+public protocol ObservableMappable where Self: Decodable {
 
-    associatedtype ModelType
-
-    static func createFrom(map: Map) -> Observable<ModelType>
+    static func create(from jsonObject: Any, with decoder: JSONDecoder) -> Observable<Self>
 
 }

@@ -20,12 +20,12 @@
 //  THE SOFTWARE.
 //
 
-import ObjectMapper
+import Foundation
 
-public extension UniversalMappable {
+public extension Decodable {
 
-    func encode(to map: Map, key: String) {
-        self >>> map[key]
+    init(JSON: Any, decoder: JSONDecoder = JSONDecoder()) throws {
+        let data = try JSONSerialization.data(withJSONObject: JSON, options: .prettyPrinted)
+        self = try decoder.decode(Self.self, from: data)
     }
-
 }

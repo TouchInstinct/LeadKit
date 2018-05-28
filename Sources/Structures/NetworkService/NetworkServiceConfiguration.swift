@@ -39,21 +39,18 @@ public struct NetworkServiceConfiguration {
     /// Server trust policies.
     public var serverTrustPolicies: [String: ServerTrustPolicy]
 
-    /// Acceptable status codes for validation
-    public var acceptableStatusCodes: Set<Int> = Alamofire.SessionManager.defaultAcceptableStatusCodes
-
     /// Session configuration for potential fine tuning
     public var sessionConfiguration: URLSessionConfiguration
 
     public init(baseUrl: String,
                 timeoutInterval: TimeInterval = 20,
                 encoding: ParameterEncoding = URLEncoding.default,
-                additionalHttpHeaders: HTTPHeaders = SessionManager.defaultHTTPHeaders) {
+                additionalHttpHeaders: HTTPHeaders = [:]) {
 
         self.baseUrl = baseUrl
         self.timeoutInterval = timeoutInterval
         self.encoding = encoding
-        self.additionalHttpHeaders = additionalHttpHeaders
+        self.additionalHttpHeaders = additionalHttpHeaders.merging(SessionManager.defaultHTTPHeaders) { current, _ in current }
 
         sessionConfiguration = URLSessionConfiguration.default
         sessionConfiguration.timeoutIntervalForResource = timeoutInterval
@@ -69,7 +66,9 @@ public extension NetworkServiceConfiguration {
     /// SessionManager constructed with given parameters (session configuration and trust policies)
     var sessionManager: SessionManager {
         return SessionManager(configuration: sessionConfiguration,
-                              serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies))
+                              serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies),
+                              acceptableStatusCodes: Set(200..<300),
+                              mappingQueue: .global())
     }
 
     /// Convenient method to create ApiRequestParameters.

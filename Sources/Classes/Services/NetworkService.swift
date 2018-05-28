@@ -23,7 +23,6 @@
 import RxSwift
 import RxCocoa
 import Alamofire
-import ObjectMapper
 import RxAlamofire
 
 /// Base network service implementation build on top of LeadKit extensions for Alamofire.
@@ -37,7 +36,7 @@ open class NetworkService {
     private var disposeBag = DisposeBag()
 
     public let configuration: NetworkServiceConfiguration
-    public let sessionManager: Alamofire.SessionManager
+    public let sessionManager: SessionManager
 
     var requestCount: Driver<Int> {
         return requestCountRelay.asDriver()
@@ -58,24 +57,27 @@ open class NetworkService {
     /// Perform reactive request to get mapped ObservableMappable model and http response
     ///
     /// - Parameter parameters: api parameters to pass Alamofire
+    /// - Parameter decoder: json decoder to decode response data
     /// - Returns: Observable of tuple containing (HTTPURLResponse, ObservableMappable)
-    public func rxRequest<T: ObservableMappable>(with parameters: ApiRequestParameters)
-        -> Observable<(response: HTTPURLResponse, model: T)> where T.ModelType == T {
+    public func rxObservableRequest<T: ObservableMappable>(with parameters: ApiRequestParameters,
+                                                           decoder: JSONDecoder = JSONDecoder())
+        -> Observable<(response: HTTPURLResponse, model: T)> {
 
             return sessionManager.rx.responseObservableModel(requestParameters: parameters,
-                                                             acceptableStatusCodes: configuration.acceptableStatusCodes)
+                                                             decoder: decoder)
                 .counterTracking(for: self)
     }
 
     /// Perform reactive request to get mapped ImmutableMappable model and http response
     ///
     /// - Parameter parameters: api parameters to pass Alamofire
+    /// - Parameter decoder: json decoder to decode response data
     /// - Returns: Observable of tuple containing (HTTPURLResponse, ImmutableMappable)
-    public func rxRequest<T: ImmutableMappable>(with parameters: ApiRequestParameters)
+    public func rxRequest<T: Decodable>(with parameters: ApiRequestParameters, decoder: JSONDecoder = JSONDecoder())
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
             return sessionManager.rx.responseModel(requestParameters: parameters,
-                                                   acceptableStatusCodes: configuration.acceptableStatusCodes)
+                                                   decoder: decoder)
                 .counterTracking(for: self)
     }
 

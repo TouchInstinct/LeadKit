@@ -1,5 +1,13 @@
 # Changelog
 
+### 0.8.0
+- **Add**: tests for `NetworkService`
+- **Add**: `toJSON(with encoder: JSONEncoder)` method to `Encodable`
+- **Add**: `failedToDecode` error case to `LeadKitError`
+- **Add**: `SessionManager` class
+- **Remove**: occurrences `ObjectMapper` pod and its occurrences in code
+- **Update**: replace `ObjectMapper` mapping with `Decodable`
+
 ### 0.7.19
 - **Fix**: `PaginationWrapper` retry button showing.
 

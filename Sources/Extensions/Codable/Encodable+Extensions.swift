@@ -20,16 +20,19 @@
 //  THE SOFTWARE.
 //
 
-import ObjectMapper
+import Foundation
 
-public extension UniversalMappable where Self: ImmutableMappable {
+public extension Encodable {
 
-    func encode(to map: Map, key: String) {
-        self >>> map[key]
+    func toJSON(with encoder: JSONEncoder = JSONEncoder()) -> [String: Any] {
+        guard let data = try? encoder.encode(self) else {
+            return [:]
+        }
+
+        guard let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any] else {
+            return [:]
+        }
+
+        return json
     }
-
-    static func decode(from map: Map, key: String) throws -> ImmutableMappable {
-        return try map.value(key)
-    }
-
 }

@@ -210,7 +210,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
                 self.wrappedView.footerView = retryButton
 
                 let newContentOffset = CGPoint(x: 0, y: scrollView.contentOffset.y + retryButtonHeight)
-    
+
                 scrollView.setContentOffset(newContentOffset, animated: true)
             }
         }

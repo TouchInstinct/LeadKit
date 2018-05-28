@@ -20,15 +20,27 @@
 //  THE SOFTWARE.
 //
 
-import ObjectMapper
+import LeadKit
+import RxSwift
 
-/// Protocol for map uniformly generated models
-public protocol UniversalMappable {
+struct AlbumContainer: Decodable {
 
-    /// Method to serialize object into JSON
-    func encode(to map: Map, key: String)
-
-    /// Method to deserialize object from JSON
-    static func decode(from map: Map, key: String) throws -> Self
-
+    let albums: [Album]
 }
+
+extension AlbumContainer: ObservableMappable {
+
+    static func create(from jsonObject: Any, with decoder: JSONDecoder) -> Observable<AlbumContainer> {
+        return Observable.deferredJust { try cast(jsonObject) as [Any] }
+            .flatMap {
+                $0.concurrentRxMap { json -> Album in
+                    let data = try JSONSerialization.data(withJSONObject: json, options: [])
+                    return try decoder.decode(Album.self, from: data)
+                }
+            }
+            .map {
+                AlbumContainer(albums: $0)
+            }
+    }
+}
+
