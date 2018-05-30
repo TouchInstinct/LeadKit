@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.8.1
+
+- **Add**: Support for `localizedComponent` for `FixedWidthInteger`
+
+
 ### 0.8.0
 - **Add**: tests for `NetworkService`
 - **Add**: `toJSON(with encoder: JSONEncoder)` method to `Encodable`

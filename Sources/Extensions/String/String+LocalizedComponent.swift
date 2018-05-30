@@ -25,11 +25,10 @@ import Foundation
 public extension String {
 
     /// Pass value and proper naming string in russian
-    /// - returns: string of proper count naming
-    static func localizedComponent(value: Int,
-                                   stringOne: String,
-                                   stringTwo: String,
-                                   stringMany: String) -> String {
+    static func localizedComponent<T: FixedWidthInteger>(value: T,
+                                                         stringOne: String,
+                                                         stringTwo: String,
+                                                         stringMany: String) -> String {
 
         let lastTwoDigits = value % 100
 
