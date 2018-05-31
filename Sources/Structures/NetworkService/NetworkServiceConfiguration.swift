@@ -39,6 +39,9 @@ public struct NetworkServiceConfiguration {
     /// Server trust policies.
     public var serverTrustPolicies: [String: ServerTrustPolicy]
 
+    /// HTTP response status codes regarded as non-erroneous
+    public var acceptableStatusCodes: Set<Int> = Set(200..<300)
+
     /// Session configuration for potential fine tuning
     public var sessionConfiguration: URLSessionConfiguration
 
@@ -67,7 +70,7 @@ public extension NetworkServiceConfiguration {
     var sessionManager: SessionManager {
         return SessionManager(configuration: sessionConfiguration,
                               serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies),
-                              acceptableStatusCodes: Set(200..<300),
+                              acceptableStatusCodes: acceptableStatusCodes,
                               mappingQueue: .global())
     }
 
