@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.8.2
+
+- **Add**: `acceptableStatusCodes` property to `NetworkServiceConfiguration`
+
 ### 0.8.1
 
 - **Add**: Support for `localizedComponent` for `FixedWidthInteger`
