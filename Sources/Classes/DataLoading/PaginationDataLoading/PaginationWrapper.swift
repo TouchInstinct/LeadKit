@@ -83,7 +83,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
         self.delegate = delegate
         self.uiDelegate = uiDelegate
 
-        self.paginationViewModel = PaginationDataLoadingModel(cursor: cursor)
+        self.paginationViewModel = PaginationDataLoadingModel(dataSource: cursor, emptyResultChecker: { _ in false })
 
         bindViewModelStates()
 
@@ -152,7 +152,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
         }
     }
 
-    private func onResultsState(newItems: DataLoadingModel.ResultType,
+    private func onResultsState(newItems: LoadingState.DataSourceType.ResultType,
                                 from cursor: Cursor,
                                 afterState: LoadingState) {
 
@@ -326,13 +326,13 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
     private func bindAppStateNotifications() {
         let notificationCenter = NotificationCenter.default.rx
 
-        notificationCenter.notification(.UIApplicationWillResignActive)
+        notificationCenter.notification(UIApplication.willResignActiveNotification)
             .map { _ in false }
             .asDriver(onErrorJustReturn: false)
             .drive(applicationCurrentyActive)
             .disposed(by: disposeBag)
 
-        notificationCenter.notification(.UIApplicationDidBecomeActive)
+        notificationCenter.notification(UIApplication.didBecomeActiveNotification)
             .map { _ in true }
             .asDriver(onErrorJustReturn: true)
             .drive(applicationCurrentyActive)

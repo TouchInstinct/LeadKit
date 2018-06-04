@@ -42,7 +42,7 @@ public extension ViewText {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = alignment
 
-            let attributes: [NSAttributedStringKey: Any] = [
+            let attributes: [NSAttributedString.Key: Any] = [
                 .font: font,
                 .foregroundColor: color,
                 .paragraphStyle: paragraphStyle

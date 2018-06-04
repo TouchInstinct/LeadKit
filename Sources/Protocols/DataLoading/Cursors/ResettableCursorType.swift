@@ -21,4 +21,4 @@
 //
 
 /// Cursor type that can be resetted
-public typealias ResettableCursorType = CursorType & ResettableType
+public protocol ResettableCursorType: CursorType, ResettableType {}

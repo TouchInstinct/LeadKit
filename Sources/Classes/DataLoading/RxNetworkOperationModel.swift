@@ -27,7 +27,6 @@ open class RxNetworkOperationModel<LoadingStateType: NetworkOperationState>: Net
     where LoadingStateType.DataSourceType: RxDataSource {
 
     public typealias DataSourceType = LoadingStateType.DataSourceType
-    public typealias ResultType = DataSourceType.ResultType
 
     private let stateRelay = BehaviorRelay<LoadingStateType>(value: .initialState)
     var currentRequestDisposable: Disposable?
@@ -55,7 +54,7 @@ open class RxNetworkOperationModel<LoadingStateType: NetworkOperationState>: Net
         state = .errorState(error: error, after: state)
     }
 
-    func onGot(result: ResultType, from dataSource: DataSourceType) {
+    func onGot(result: DataSourceType.ResultType, from dataSource: DataSourceType) {
         state = .resultState(result: result,
                              from: dataSource,
                              after: state)

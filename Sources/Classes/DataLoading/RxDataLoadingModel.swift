@@ -26,7 +26,7 @@ import RxCocoa
 open class RxDataLoadingModel<LoadingStateType: DataLoadingState>: RxNetworkOperationModel<LoadingStateType>
     where LoadingStateType.DataSourceType: RxDataSource {
 
-    public typealias EmptyResultChecker = (ResultType) -> Bool
+    public typealias EmptyResultChecker = (DataSourceType.ResultType) -> Bool
 
     let emptyResultChecker: EmptyResultChecker
 
@@ -40,7 +40,7 @@ open class RxDataLoadingModel<LoadingStateType: DataLoadingState>: RxNetworkOper
         execute()
     }
 
-    override func onGot(result: ResultType, from dataSource: DataSourceType) {
+    override func onGot(result: DataSourceType.ResultType, from dataSource: DataSourceType) {
         if emptyResultChecker(result) {
             state = .emptyState
         } else {

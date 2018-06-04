@@ -60,7 +60,7 @@ public final class SpinnerView: UIView, Animatable, LoadingIndicator {
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(SpinnerView.restartAnimationIfNeeded),
-                                               name: .UIApplicationWillEnterForeground,
+                                               name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
     }
 
