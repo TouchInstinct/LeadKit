@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.8.3
+
+- **Fix**: `SpinnerView` animation freezing
+
 ### 0.8.2
 
 - **Add**: `acceptableStatusCodes` property to `NetworkServiceConfiguration`
