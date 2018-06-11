@@ -14,9 +14,7 @@
 		36DAAF512007CC920090BE0D /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
 		40F118471F8FEF97004AADAF /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
 		40F118491F8FF223004AADAF /* TableRow+AppearanceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118481F8FF223004AADAF /* TableRow+AppearanceExtension.swift */; };
-		67051ADB1EBC7C36008EADC0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */; };
-		67051ADC1EBC7C36008EADC0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */; };
-		67051ADD1EBC7C36008EADC0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */; };
+		67051ADD1EBC7C36008EADC0 /* SpinnerView+iOSExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67051ADA1EBC7C36008EADC0 /* SpinnerView+iOSExtensions.swift */; };
 		6713C23720AF0C4D00875921 /* NetworkOperationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6713C23620AF0C4D00875921 /* NetworkOperationState.swift */; };
 		6713C23820AF0C4D00875921 /* NetworkOperationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6713C23620AF0C4D00875921 /* NetworkOperationState.swift */; };
 		6713C23920AF0C4D00875921 /* NetworkOperationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6713C23620AF0C4D00875921 /* NetworkOperationState.swift */; };
@@ -518,6 +516,9 @@
 		A611AD6520CE8E0300E7DB21 /* UITableView+PaginationWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67745267206249360024EEEF /* UITableView+PaginationWrappable.swift */; };
 		A611AD6620CE8E0300E7DB21 /* Rx+RxDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67745285206259CF0024EEEF /* Rx+RxDataSourceProtocol.swift */; };
 		A611AD6720CE8E3300E7DB21 /* GeneralDataLoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CF4172063D50700C329F6 /* GeneralDataLoadingController.swift */; };
+		A611AD6820CE8FB300E7DB21 /* SpinnerView+iOSExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67051ADA1EBC7C36008EADC0 /* SpinnerView+iOSExtensions.swift */; };
+		A611AD6B20CE8FD800E7DB21 /* SpinnerView+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A611AD6A20CE8FD800E7DB21 /* SpinnerView+iOS.swift */; };
+		A611AD6D20CE8FD800E7DB21 /* SpinnerView+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A611AD6A20CE8FD800E7DB21 /* SpinnerView+iOS.swift */; };
 		A658E54D1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54C1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift */; };
 		A658E5501F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54F1F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift */; };
 		A676AE481F97D28A001F9214 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE471F97D28A001F9214 /* String+Extensions.swift */; };
@@ -631,7 +632,7 @@
 		563DDE9CACD515FDCB5A2FFF /* Pods-LeadKit-LeadKit tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit-LeadKit tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit-LeadKit tvOS/Pods-LeadKit-LeadKit tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		56C11305E2B44404FFFD12AA /* Pods_LeadKit_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65B19DB0B65A1EE1A1E2C907 /* Pods-LeadKit tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit tvOSTests/Pods-LeadKit tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
+		67051ADA1EBC7C36008EADC0 /* SpinnerView+iOSExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SpinnerView+iOSExtensions.swift"; sourceTree = "<group>"; };
 		6713C23620AF0C4D00875921 /* NetworkOperationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkOperationState.swift; sourceTree = "<group>"; };
 		6713C23B20AF0D5900875921 /* NetworkOperationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkOperationModel.swift; sourceTree = "<group>"; };
 		6713C24020AF189100875921 /* RxNetworkOperationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxNetworkOperationModel.swift; sourceTree = "<group>"; };
@@ -795,6 +796,7 @@
 		887F99C5326BD220C2811BD6 /* Pods_LeadKit_LeadKit_iOS_Extensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_LeadKit_iOS_Extensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E457F1241D136396FC2420 /* Pods_LeadKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9966FB938D114F79F71AE037 /* Pods-LeadKit-LeadKit iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit-LeadKit iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit-LeadKit iOS/Pods-LeadKit-LeadKit iOS.release.xcconfig"; sourceTree = "<group>"; };
+		A611AD6A20CE8FD800E7DB21 /* SpinnerView+iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpinnerView+iOS.swift"; sourceTree = "<group>"; };
 		A658E54C1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableRow+SeparatorsExtensions.swift"; sourceTree = "<group>"; };
 		A658E54F1F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SeparatorRowBoxExtensions.swift"; sourceTree = "<group>"; };
 		A66428A61F8A653600C6308D /* SeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
@@ -1763,7 +1765,8 @@
 		A6C9A4F81F8BBC27009311CC /* SpinnerView */ = {
 			isa = PBXGroup;
 			children = (
-				67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */,
+				A611AD6A20CE8FD800E7DB21 /* SpinnerView+iOS.swift */,
+				67051ADA1EBC7C36008EADC0 /* SpinnerView+iOSExtensions.swift */,
 			);
 			path = SpinnerView;
 			sourceTree = "<group>";
@@ -2209,7 +2212,7 @@
 		};
 		671463AB1EB3440D00EAB194 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -2217,9 +2220,9 @@
 			name = SwiftLint;
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = ". build-scripts/xcode/build_phases/swiftlint.sh Sources";
+			shellScript = ". build-scripts/xcode/build_phases/swiftlint.sh Sources\n";
 		};
 		67186C2E1EB2538E00CFAFFB /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2237,7 +2240,7 @@
 		};
 		6782BBBC1EB31ED90086E0B8 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -2245,13 +2248,13 @@
 			name = SwiftLint;
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = ". build-scripts/xcode/build_phases/swiftlint.sh Sources";
+			shellScript = ". build-scripts/xcode/build_phases/swiftlint.sh Sources\n";
 		};
 		6782BBBE1EB31F210086E0B8 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -2259,9 +2262,9 @@
 			name = SwiftLint;
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = ". build-scripts/xcode/build_phases/swiftlint.sh Sources";
+			shellScript = ". build-scripts/xcode/build_phases/swiftlint.sh Sources\n";
 		};
 		67887A0E1ECC856F008A9E1D /* CopyPaste Detection */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2512,6 +2515,7 @@
 				A611AD5B20CE8DCF00E7DB21 /* RxDataLoadingModel.swift in Sources */,
 				6727478F206CD88600725163 /* DateFormattingService.swift in Sources */,
 				678D26A420692BFF00B05B93 /* TextFieldViewModelEvents.swift in Sources */,
+				A611AD6B20CE8FD800E7DB21 /* SpinnerView+iOS.swift in Sources */,
 				671462801EB3396E00EAB194 /* DataRequest+Extensions.swift in Sources */,
 				67EB7FF8206175F700BDD9FB /* PaginationWrappable.swift in Sources */,
 				671463541EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
@@ -2541,7 +2545,6 @@
 				A658E54D1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift in Sources */,
 				67EB7FCF20615B8900BDD9FB /* TotalCountCursorConfiguration.swift in Sources */,
 				671462981EB3396E00EAB194 /* CGSize+Resize.swift in Sources */,
-				67051ADB1EBC7C36008EADC0 /* SpinnerView.swift in Sources */,
 				67A1FF941EBCA65E00D6C89F /* CABasicAnimation+Rotation.swift in Sources */,
 				82F8BB181F5DDED100C1061B /* Single+DeferredJust.swift in Sources */,
 				671463301EB3396E00EAB194 /* CursorType.swift in Sources */,
@@ -2795,6 +2798,7 @@
 				67ED2BE820B44F4300508B3E /* InitializableView+DefaultImplementation.swift in Sources */,
 				677452B820627FE00024EEEF /* PaginationWrappable.swift in Sources */,
 				673CF40E2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */,
+				A611AD6D20CE8FD800E7DB21 /* SpinnerView+iOS.swift in Sources */,
 				67274770206CCDDB00725163 /* ViewBackground+Configuration.swift in Sources */,
 				678D26A320692BFF00B05B93 /* TextFieldViewEvents.swift in Sources */,
 				67153E43207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */,
@@ -2908,7 +2912,7 @@
 				6714632F1EB3396E00EAB194 /* ConfigurableController.swift in Sources */,
 				67EB7FF42061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift in Sources */,
 				6714628F1EB3396E00EAB194 /* CGImage+Alpha.swift in Sources */,
-				67051ADD1EBC7C36008EADC0 /* SpinnerView.swift in Sources */,
+				67051ADD1EBC7C36008EADC0 /* SpinnerView+iOSExtensions.swift in Sources */,
 				671462771EB3396E00EAB194 /* LeadKitError.swift in Sources */,
 				676B22A5206A626D002E9F8A /* NSAttributedString+Extensions.swift in Sources */,
 				67ED2BED20B45EBF00508B3E /* SeparatorConfiguration.swift in Sources */,
@@ -2957,6 +2961,7 @@
 				6792623D206EB0EC00308E62 /* CellSeparatorType+Extensions.swift in Sources */,
 				671462E51EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
 				67EB7FFE206176C900BDD9FB /* AnyPaginationWrappable.swift in Sources */,
+				A611AD6820CE8FB300E7DB21 /* SpinnerView+iOSExtensions.swift in Sources */,
 				67274773206CCF1200725163 /* ViewText.swift in Sources */,
 				678D26A520692BFF00B05B93 /* TextFieldViewModelEvents.swift in Sources */,
 				677452B720627FE00024EEEF /* PaginationWrappable.swift in Sources */,
@@ -2978,7 +2983,6 @@
 				67153E41207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */,
 				671462911EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
 				673564F72068C68D00F0CBED /* NumberFormat.swift in Sources */,
-				67051ADC1EBC7C36008EADC0 /* SpinnerView.swift in Sources */,
 				EF24213B2076D5C700FA9BE6 /* NetworkServiceConfiguration.swift in Sources */,
 				671462FD1EB3396E00EAB194 /* UIView+XibNameProtocol.swift in Sources */,
 				671463851EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
