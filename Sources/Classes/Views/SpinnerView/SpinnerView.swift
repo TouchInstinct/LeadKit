@@ -24,7 +24,10 @@ import UIKit
 
 public final class SpinnerView: UIView, Animatable, LoadingIndicator {
 
-    private(set) var animating: Bool = false
+    private var animating: Bool {
+        return imageView?.layer.animation(forKey: CABasicAnimation.rotationKeyPath) != nil
+    }
+
     private var startTime = CFTimeInterval(0)
     private var stopTime = CFTimeInterval(0)
 
@@ -80,14 +83,20 @@ public final class SpinnerView: UIView, Animatable, LoadingIndicator {
         }
     }
 
+    override public func didMoveToSuperview() {
+        super.didMoveToSuperview()
+
+        if superview != nil {
+            restartAnimationIfNeeded()
+        }
+    }
+
     // MARK: - Animatable
 
     @objc public func startAnimating() {
         guard !animating else {
             return
         }
-
-        animating = true
 
         imageView?.isHidden = false
 
@@ -98,8 +107,6 @@ public final class SpinnerView: UIView, Animatable, LoadingIndicator {
         guard animating else {
             return
         }
-
-        animating = false
 
         imageView?.isHidden = true
 
