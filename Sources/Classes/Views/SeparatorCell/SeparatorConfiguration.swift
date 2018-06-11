@@ -34,7 +34,7 @@ public struct SeparatorConfiguration {
     /// - parameter insets: Insets for separator. Default is no insets
     /// - parameter height: Height for separator. Default is 1 pixel
     /// - returns: Ready to use separator configuration
-    public init(color: UIColor, insets: UIEdgeInsets = .zero, height: CGFloat = CGFloat(pixels: 1)) {
+    public init(color: UIColor, insets: UIEdgeInsets = .nonCrashZero, height: CGFloat = CGFloat(pixels: 1)) {
         self.color  = color
         self.insets = insets
         self.height = height

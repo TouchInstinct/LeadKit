@@ -22,6 +22,11 @@
 
 import UIKit
 
+public extension UIEdgeInsets {
+    // using .zero crashes compiler. https://bugs.swift.org/browse/SR-7879
+    static let nonCrashZero = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+}
+
 public extension UIView {
 
     /**
@@ -57,7 +62,8 @@ public extension UIView {
      - parameter insets: desired view insets, by default is zero
      - parameter edges: edges to which no constraints are needed
      */
-    func pinToSuperview(with insets: UIEdgeInsets = .zero, excluding edges: UIRectEdge = []) {
+    func pinToSuperview(with insets: UIEdgeInsets = .nonCrashZero, excluding edges: UIRectEdge = []) {
+
         guard let superview = superview else {
             return
         }
