@@ -24,6 +24,7 @@ Pod::Spec.new do |s|
     ss.source_files = "Sources/**/*.swift"
     ss.ios.exclude_files = [
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
+      "Sources/Classes/Views/SpinnerView/SpinnerView+iOSExtensions.swift",
     ]
     ss.watchos.exclude_files = [
       "Sources/Classes/Views/SeparatorRowBox/*",
@@ -101,7 +102,8 @@ Pod::Spec.new do |s|
       "Sources/Extensions/UIApplication/UIApplication+Cellular.swift",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
       "Sources/Extensions/Views/SeparatorCell/*",
-      "Sources/Protocols/Views/SeparatorCell/*"
+      "Sources/Protocols/Views/SeparatorCell/*",
+      "Sources/Classes/Views/SpinnerView/SpinnerView+iOS.swift"
     ]
 
     ss.dependency "RxSwift", '~> 4.1'
