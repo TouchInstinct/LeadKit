@@ -91,7 +91,6 @@ Pod::Spec.new do |s|
 
     ss.exclude_files = [
       "Sources/Classes/Views/SeparatorRowBox/*",
-      "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
       "Sources/Classes/DataLoading/PaginationDataLoading/PaginationWrapper.swift",
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
