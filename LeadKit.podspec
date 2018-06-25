@@ -96,10 +96,9 @@ Pod::Spec.new do |s|
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/TableKit/**/*.swift",
-      "Sources/Extensions/UIApplication/UIApplication+OpenUrlSupport.swift",
-      "Sources/Extensions/UIApplication/UIApplication+Cellular.swift",
-      "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
-      "Sources/Extensions/UIKit/UIApplication/UIApplication+OpenUrlSupport"
+      "Sources/Extensions/UIKit/UIApplication/UIApplication+OpenUrlSupport.swift",
+      "Sources/Extensions/UIKit/UIApplication/UIApplication+Cellular.swift",
+      "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
     ]
 
     ss.dependency "RxSwift", '~> 4.1'
