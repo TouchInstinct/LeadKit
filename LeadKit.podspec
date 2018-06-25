@@ -99,9 +99,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/TableKit/**/*.swift",
       "Sources/Extensions/UIApplication/UIApplication+OpenUrlSupport.swift",
       "Sources/Extensions/UIApplication/UIApplication+Cellular.swift",
-      "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
-      "Sources/Extensions/Views/SeparatorCell/*",
-      "Sources/Protocols/Views/SeparatorCell/*"
+      "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
     ]
 
     ss.dependency "RxSwift", '~> 4.1'
