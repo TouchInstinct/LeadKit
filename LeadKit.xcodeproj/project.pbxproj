@@ -14,8 +14,9 @@
 		3622F5DB20E24F99009DED94 /* Array+SeparatorRowBoxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54F1F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift */; };
 		3622F5DC20E253D8009DED94 /* TableSection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6762131720A0BBA30034EEF1 /* TableSection+Extensions.swift */; };
 		3622F5DD20E253F1009DED94 /* TableDirector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462011EB3396E00EAB194 /* TableDirector+Extensions.swift */; };
-		3622F5DE20E25414009DED94 /* TableRow+SeparatorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54C1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift */; };
 		3622F5DF20E2541B009DED94 /* TableRow+AppearanceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118481F8FF223004AADAF /* TableRow+AppearanceExtension.swift */; };
+		3622F5E120E2587B009DED94 /* TableRow+SeparatorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54C1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift */; };
+		3622F5E220E25883009DED94 /* SeparatorRowBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A81F8A655600C6308D /* SeparatorRowBox.swift */; };
 		36977763200CF12100ED9C6E /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
 		36DAAF512007CC920090BE0D /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
 		40F118471F8FEF97004AADAF /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
@@ -3088,6 +3089,7 @@
 				67E6C2361EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				671463551EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
 				671463611EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
+				3622F5E120E2587B009DED94 /* TableRow+SeparatorsExtensions.swift in Sources */,
 				671462851EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
 				67CAF8C720652E2A00527085 /* TextFieldViewModel.swift in Sources */,
 				67ED2BEE20B45F1500508B3E /* SeparatorConfiguration.swift in Sources */,
@@ -3149,6 +3151,7 @@
 				6714637D1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				671463351EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
 				677452A020625EEE0024EEEF /* PaginationDataLoadingModel.swift in Sources */,
+				3622F5E220E25883009DED94 /* SeparatorRowBox.swift in Sources */,
 				67FDC2601FA310EA00C76A77 /* RequestError.swift in Sources */,
 				6774529320625D170024EEEF /* GeneralDataLoadingModel.swift in Sources */,
 				671462711EB3396E00EAB194 /* CursorError.swift in Sources */,
@@ -3168,7 +3171,6 @@
 				6774527520624E820024EEEF /* DataLoadingModel.swift in Sources */,
 				A6C9A5101F8BC79D009311CC /* Comparable+Extensions.swift in Sources */,
 				67153E3B207DFADA0049D8C0 /* RotateDrawingOperation.swift in Sources */,
-				3622F5DE20E25414009DED94 /* TableRow+SeparatorsExtensions.swift in Sources */,
 				677452A520625FA90024EEEF /* RxDataSource.swift in Sources */,
 				671462491EB3396E00EAB194 /* FixedPageCursor.swift in Sources */,
 				671462C91EB3396E00EAB194 /* String+Localization.swift in Sources */,
