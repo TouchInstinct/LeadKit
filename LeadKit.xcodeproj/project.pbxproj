@@ -10,6 +10,8 @@
 		2D6A0E6105F4A9BF22BF4BB1 /* Pods_LeadKit_iOS_ExtensionsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C88ED8C9373F85C06697849 /* Pods_LeadKit_iOS_ExtensionsTests.framework */; };
 		2D96F18874B9519F5AD74003 /* Pods_LeadKit_LeadKit_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F8D0002B21A4F31981F1ED /* Pods_LeadKit_LeadKit_tvOS.framework */; };
 		3614FEACB9E8313C87F7C393 /* Pods_LeadKit_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB1CCAB1EAAACD3AC42C795 /* Pods_LeadKit_tvOSTests.framework */; };
+		3622F5DA20E24F44009DED94 /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A61F8A653600C6308D /* SeparatorCell.swift */; };
+		3622F5DB20E24F99009DED94 /* Array+SeparatorRowBoxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54F1F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift */; };
 		36977763200CF12100ED9C6E /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
 		36DAAF512007CC920090BE0D /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
 		40F118471F8FEF97004AADAF /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
@@ -3063,6 +3065,7 @@
 				678D267A20691D8200B05B93 /* DataModelFieldBinding.swift in Sources */,
 				67EB7FE520615DE000BDD9FB /* DataSource.swift in Sources */,
 				B84CB07920B872AD0090DB91 /* Decodable+Extensions.swift in Sources */,
+				3622F5DA20E24F44009DED94 /* SeparatorCell.swift in Sources */,
 				671463491EB3396E00EAB194 /* ResettableType.swift in Sources */,
 				67386A8D206CF3F6004EDA6C /* DateFormattingService+DefaultImplementation.swift in Sources */,
 				A676AE491F97D28A001F9214 /* String+Extensions.swift in Sources */,
@@ -3127,6 +3130,7 @@
 				671462791EB3396E00EAB194 /* ResizeMode.swift in Sources */,
 				671463051EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
 				671463711EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
+				3622F5DB20E24F99009DED94 /* Array+SeparatorRowBoxExtensions.swift in Sources */,
 				671462ED1EB3396E00EAB194 /* UIImage+Extensions.swift in Sources */,
 				6714636D1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
 				673CF42D2063DE5900C329F6 /* TextPlaceholderView.swift in Sources */,
