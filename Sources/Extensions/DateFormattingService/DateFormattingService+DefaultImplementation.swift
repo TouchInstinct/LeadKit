@@ -36,7 +36,9 @@ public extension DateFormattingService {
     }
 
     func string(from date: DateInRegion, format: DateFormatType) -> String {
-        return date.string(format: format.swiftDateFormat)
+        let dateInFormatterRegion = date.toRegion(currentRegion)
+
+        return dateInFormatterRegion.string(format: format.swiftDateFormat)
     }
 
 }
