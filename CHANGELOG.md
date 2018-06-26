@@ -2,7 +2,8 @@
 
 ### 0.8.4
 
-- **Fix**: Add `SeparatorCell` to `Core-iOS-Extension`. Fix `UIApplication` extensions path for `Core-iOS-Extension` exclusions.
+- **Fix**: Add `SeparatorCell` to `Core-iOS-Extension`. 
+Fix `UIApplication` extensions path for `Core-iOS-Extension` exclusions.
 
 ### 0.8.3
 
