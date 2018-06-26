@@ -27,6 +27,8 @@ abstract_target 'LeadKit' do
 
     use_frameworks!
 
+    pod "TableKit", '~> 2.6'
+
     target 'LeadKit iOS ExtensionsTests' do
       inherit! :search_paths
       # Pods for testing

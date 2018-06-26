@@ -10,6 +10,13 @@
 		2D6A0E6105F4A9BF22BF4BB1 /* Pods_LeadKit_iOS_ExtensionsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C88ED8C9373F85C06697849 /* Pods_LeadKit_iOS_ExtensionsTests.framework */; };
 		2D96F18874B9519F5AD74003 /* Pods_LeadKit_LeadKit_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F8D0002B21A4F31981F1ED /* Pods_LeadKit_LeadKit_tvOS.framework */; };
 		3614FEACB9E8313C87F7C393 /* Pods_LeadKit_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB1CCAB1EAAACD3AC42C795 /* Pods_LeadKit_tvOSTests.framework */; };
+		3622F5DA20E24F44009DED94 /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A61F8A653600C6308D /* SeparatorCell.swift */; };
+		3622F5DB20E24F99009DED94 /* Array+SeparatorRowBoxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54F1F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift */; };
+		3622F5DC20E253D8009DED94 /* TableSection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6762131720A0BBA30034EEF1 /* TableSection+Extensions.swift */; };
+		3622F5DD20E253F1009DED94 /* TableDirector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462011EB3396E00EAB194 /* TableDirector+Extensions.swift */; };
+		3622F5DF20E2541B009DED94 /* TableRow+AppearanceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118481F8FF223004AADAF /* TableRow+AppearanceExtension.swift */; };
+		3622F5E120E2587B009DED94 /* TableRow+SeparatorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54C1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift */; };
+		3622F5E220E25883009DED94 /* SeparatorRowBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A81F8A655600C6308D /* SeparatorRowBox.swift */; };
 		36977763200CF12100ED9C6E /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
 		36DAAF512007CC920090BE0D /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
 		40F118471F8FEF97004AADAF /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
@@ -1910,7 +1917,6 @@
 				67186B241EB248F100CFAFFB /* Frameworks */,
 				67186B251EB248F100CFAFFB /* Headers */,
 				67186B261EB248F100CFAFFB /* Resources */,
-				AD7FBCAEB89E0B83766E8157 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1930,7 +1936,6 @@
 				67186B2D1EB248F100CFAFFB /* Frameworks */,
 				67186B2E1EB248F100CFAFFB /* Resources */,
 				B285084CE10354367156E122 /* [CP] Embed Pods Frameworks */,
-				15DB700D73AEB88693BD2A11 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1953,7 +1958,6 @@
 				6782BB8D1EB31CFE0086E0B8 /* Frameworks */,
 				6782BB8E1EB31CFE0086E0B8 /* Headers */,
 				6782BB8F1EB31CFE0086E0B8 /* Resources */,
-				B6CCB9C7BB698F271C94C500 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1975,7 +1979,6 @@
 				6782BB9C1EB31D590086E0B8 /* Frameworks */,
 				6782BB9D1EB31D590086E0B8 /* Headers */,
 				6782BB9E1EB31D590086E0B8 /* Resources */,
-				5F7D4A2756CE6BE8BE089C88 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1995,7 +1998,6 @@
 				6782BBA51EB31D5A0086E0B8 /* Frameworks */,
 				6782BBA61EB31D5A0086E0B8 /* Resources */,
 				C7322258346BDF6E53D19895 /* [CP] Embed Pods Frameworks */,
-				71000585D4EF76D961C69AC5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2018,7 +2020,6 @@
 				67952DC11EB327B400B3BA1A /* Frameworks */,
 				67952DC21EB327B400B3BA1A /* Headers */,
 				67952DC31EB327B400B3BA1A /* Resources */,
-				75E9590F0E8EC5AF3132BF77 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2038,7 +2039,6 @@
 				67952DCA1EB327B400B3BA1A /* Frameworks */,
 				67952DCB1EB327B400B3BA1A /* Resources */,
 				FD672381E62A00830715CF1A /* [CP] Embed Pods Frameworks */,
-				71800182B4CD75D169977550 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2178,21 +2178,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		15DB700D73AEB88693BD2A11 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit iOSTests/Pods-LeadKit iOSTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		26ED592391E1816700F06F57 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2227,21 +2212,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5F7D4A2756CE6BE8BE089C88 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit-LeadKit tvOS/Pods-LeadKit-LeadKit tvOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		671463AB1EB3440D00EAB194 /* SwiftLint */ = {
@@ -2374,51 +2344,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		71000585D4EF76D961C69AC5 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit tvOSTests/Pods-LeadKit tvOSTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		71800182B4CD75D169977550 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit iOS ExtensionsTests/Pods-LeadKit iOS ExtensionsTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		75E9590F0E8EC5AF3132BF77 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit-LeadKit iOS Extensions/Pods-LeadKit-LeadKit iOS Extensions-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7651BEBB96C92C6FC99FC736 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2453,21 +2378,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AD7FBCAEB89E0B83766E8157 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit-LeadKit iOS/Pods-LeadKit-LeadKit iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AF85CA2DF6F5C17A49A0D252 /* [CP] Check Pods Manifest.lock */ = {
@@ -2516,21 +2426,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit iOSTests/Pods-LeadKit iOSTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B6CCB9C7BB698F271C94C500 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeadKit-LeadKit watchOS/Pods-LeadKit-LeadKit watchOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BCF262D3C2C3337546F84061 /* [CP] Check Pods Manifest.lock */ = {
@@ -2589,6 +2484,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa-iOS/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift-iOS/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate-iOS/SwiftDate.framework",
+				"${BUILT_PRODUCTS_DIR}/TableKit/TableKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -2597,6 +2493,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TableKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3063,6 +2960,7 @@
 				678D267A20691D8200B05B93 /* DataModelFieldBinding.swift in Sources */,
 				67EB7FE520615DE000BDD9FB /* DataSource.swift in Sources */,
 				B84CB07920B872AD0090DB91 /* Decodable+Extensions.swift in Sources */,
+				3622F5DA20E24F44009DED94 /* SeparatorCell.swift in Sources */,
 				671463491EB3396E00EAB194 /* ResettableType.swift in Sources */,
 				67386A8D206CF3F6004EDA6C /* DateFormattingService+DefaultImplementation.swift in Sources */,
 				A676AE491F97D28A001F9214 /* String+Extensions.swift in Sources */,
@@ -3079,6 +2977,7 @@
 				67E6C2361EBB32F5007842A6 /* SingleLoadCursor.swift in Sources */,
 				671463551EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
 				671463611EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
+				3622F5E120E2587B009DED94 /* TableRow+SeparatorsExtensions.swift in Sources */,
 				671462851EB3396E00EAB194 /* CGContext+Initializers.swift in Sources */,
 				67CAF8C720652E2A00527085 /* TextFieldViewModel.swift in Sources */,
 				67ED2BEE20B45F1500508B3E /* SeparatorConfiguration.swift in Sources */,
@@ -3106,6 +3005,7 @@
 				67ED2BE620B44F4300508B3E /* InitializableView+DefaultImplementation.swift in Sources */,
 				671463311EB3396E00EAB194 /* CursorType.swift in Sources */,
 				6714624D1EB3396E00EAB194 /* MapCursor.swift in Sources */,
+				3622F5DF20E2541B009DED94 /* TableRow+AppearanceExtension.swift in Sources */,
 				67EB7FD520615D1700BDD9FB /* ResettableCursorType.swift in Sources */,
 				671463251EB3396E00EAB194 /* Any+TypeName.swift in Sources */,
 				671463891EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
@@ -3127,6 +3027,7 @@
 				671462791EB3396E00EAB194 /* ResizeMode.swift in Sources */,
 				671463051EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
 				671463711EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
+				3622F5DB20E24F99009DED94 /* Array+SeparatorRowBoxExtensions.swift in Sources */,
 				671462ED1EB3396E00EAB194 /* UIImage+Extensions.swift in Sources */,
 				6714636D1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
 				673CF42D2063DE5900C329F6 /* TextPlaceholderView.swift in Sources */,
@@ -3138,6 +3039,7 @@
 				6714637D1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				671463351EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
 				677452A020625EEE0024EEEF /* PaginationDataLoadingModel.swift in Sources */,
+				3622F5E220E25883009DED94 /* SeparatorRowBox.swift in Sources */,
 				67FDC2601FA310EA00C76A77 /* RequestError.swift in Sources */,
 				6774529320625D170024EEEF /* GeneralDataLoadingModel.swift in Sources */,
 				671462711EB3396E00EAB194 /* CursorError.swift in Sources */,
@@ -3174,6 +3076,7 @@
 				6774529B20625E5B0024EEEF /* PaginationDataLoadingState.swift in Sources */,
 				671463791EB3396E00EAB194 /* CALayerDrawingOperation.swift in Sources */,
 				6727476A206CCCA300725163 /* ViewBackground.swift in Sources */,
+				3622F5DC20E253D8009DED94 /* TableSection+Extensions.swift in Sources */,
 				6714632D1EB3396E00EAB194 /* ConfigurableController.swift in Sources */,
 				67745287206259CF0024EEEF /* Rx+RxDataSourceProtocol.swift in Sources */,
 				A676AE561F98112F001F9214 /* ObservableMappable.swift in Sources */,
@@ -3189,6 +3092,7 @@
 				EFBE57D11EC35EF20040E00A /* Array+Extensions.swift in Sources */,
 				676B22A3206A626D002E9F8A /* NSAttributedString+Extensions.swift in Sources */,
 				671462D91EB3396E00EAB194 /* TimeInterval+DateComponents.swift in Sources */,
+				3622F5DD20E253F1009DED94 /* TableDirector+Extensions.swift in Sources */,
 				6714638D1EB3396E00EAB194 /* SolidFillDrawingOperation.swift in Sources */,
 				671463A31EB33FF600EAB194 /* Animatable.swift in Sources */,
 				678D26A120692BFF00B05B93 /* TextFieldViewEvents.swift in Sources */,
