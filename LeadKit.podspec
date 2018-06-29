@@ -96,7 +96,6 @@ Pod::Spec.new do |s|
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/TableKit/**/*.swift",
-      "Sources/Extensions/Views/SeparatorCell/*",
       "Sources/Protocols/Views/SeparatorCell/*",
       "Sources/Classes/Views/SpinnerView/SpinnerView+iOS.swift",
       "Sources/Extensions/UIKit/UIApplication/UIApplication+OpenUrlSupport.swift",
