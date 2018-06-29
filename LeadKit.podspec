@@ -98,7 +98,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/TableKit/**/*.swift",
       "Sources/Extensions/Views/SeparatorCell/*",
       "Sources/Protocols/Views/SeparatorCell/*",
-      "Sources/Classes/Views/SpinnerView/SpinnerView+iOS.swift"
+      "Sources/Classes/Views/SpinnerView/SpinnerView+iOS.swift",
       "Sources/Extensions/UIKit/UIApplication/UIApplication+OpenUrlSupport.swift",
       "Sources/Extensions/UIKit/UIApplication/UIApplication+Cellular.swift",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
