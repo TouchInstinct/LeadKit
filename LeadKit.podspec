@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.8.3"
+  s.version         = "0.8.4"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -91,25 +91,26 @@ Pod::Spec.new do |s|
     ss.source_files = "Sources/**/*.swift"
 
     ss.exclude_files = [
-      "Sources/Classes/Views/SeparatorRowBox/*",
-      "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
       "Sources/Classes/DataLoading/PaginationDataLoading/PaginationWrapper.swift",
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/TableKit/**/*.swift",
-      "Sources/Extensions/UIApplication/UIApplication+OpenUrlSupport.swift",
-      "Sources/Extensions/UIApplication/UIApplication+Cellular.swift",
-      "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
       "Sources/Extensions/Views/SeparatorCell/*",
       "Sources/Protocols/Views/SeparatorCell/*",
       "Sources/Classes/Views/SpinnerView/SpinnerView+iOS.swift"
+      "Sources/Extensions/UIKit/UIApplication/UIApplication+OpenUrlSupport.swift",
+      "Sources/Extensions/UIKit/UIApplication/UIApplication+Cellular.swift",
+      "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
     ]
 
     ss.dependency "RxSwift", '~> 4.1'
     ss.dependency "RxCocoa", '~> 4.1'
     ss.dependency "RxAlamofire", '~> 4.1'
     ss.dependency "SwiftDate", '~> 4.5'
+
+    ss.ios.dependency "TableKit", '~> 2.6'
+
   end
 
   s.default_subspec = 'Core'
