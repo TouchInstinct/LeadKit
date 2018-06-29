@@ -9,23 +9,28 @@ Pod::Spec.new do |s|
   s.platform        = :ios, '9.0'
 
   s.subspec 'UIColorHex' do |ss|
+
     ss.ios.deployment_target = '8.0'
     ss.tvos.deployment_target = '9.0'
     ss.watchos.deployment_target = '2.0'
 
     ss.source_files = "Sources/Extensions/UIColor/UIColor+Hex.swift"
+
   end
 
   s.subspec 'Core' do |ss|
-    ss.ios.deployment_target = '9.0'
+
+    ss.ios.deployment_target = '10.0'
     ss.tvos.deployment_target = '9.0'
     ss.watchos.deployment_target = '2.0'
 
     ss.source_files = "Sources/**/*.swift"
+
     ss.ios.exclude_files = [
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
       "Sources/Classes/Views/SpinnerView/SpinnerView+iOSExtensions.swift",
     ]
+
     ss.watchos.exclude_files = [
       "Sources/Classes/Views/SeparatorRowBox/*",
       "Sources/Classes/Views/SeparatorCell/*",
@@ -57,6 +62,7 @@ Pod::Spec.new do |s|
       "Sources/Structures/DrawingOperations/BorderDrawingOperation.swift",
       "Sources/Structures/DataLoading/PaginationDataLoading/*"
     ]
+
     ss.tvos.exclude_files = [
       "Sources/Classes/Views/SeparatorRowBox/*",
       "Sources/Classes/Views/SeparatorCell/*",
@@ -66,7 +72,6 @@ Pod::Spec.new do |s|
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
-      "Sources/Extensions/TableKit/**/*.swift",
       "Sources/Extensions/UIKit/UIApplication/UIApplication+OpenUrlSupport.swift",
       "Sources/Extensions/UIKit/UIApplication/UIApplication+Cellular.swift",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
@@ -80,13 +85,14 @@ Pod::Spec.new do |s|
     ss.dependency "RxCocoa", '~> 4.1'
     ss.dependency "RxAlamofire", '~> 4.1'
     ss.dependency "SwiftDate", '~> 4.5'
-
     ss.ios.dependency "TableKit", '~> 2.6'
     ss.ios.dependency "UIScrollView-InfiniteScroll", '~> 1.0.0'
+
   end
 
   s.subspec 'Core-iOS-Extension' do |ss|
-    ss.platform = :ios, '9.0'
+
+    ss.platform = :ios, '10.0'
 
     ss.source_files = "Sources/**/*.swift"
 
@@ -95,8 +101,6 @@ Pod::Spec.new do |s|
       "Sources/Classes/DataLoading/PaginationDataLoading/PaginationWrapper.swift",
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
-      "Sources/Extensions/TableKit/**/*.swift",
-      "Sources/Protocols/Views/SeparatorCell/*",
       "Sources/Classes/Views/SpinnerView/SpinnerView+iOS.swift",
       "Sources/Extensions/UIKit/UIApplication/UIApplication+OpenUrlSupport.swift",
       "Sources/Extensions/UIKit/UIApplication/UIApplication+Cellular.swift",
@@ -107,7 +111,6 @@ Pod::Spec.new do |s|
     ss.dependency "RxCocoa", '~> 4.1'
     ss.dependency "RxAlamofire", '~> 4.1'
     ss.dependency "SwiftDate", '~> 4.5'
-
     ss.ios.dependency "TableKit", '~> 2.6'
 
   end
