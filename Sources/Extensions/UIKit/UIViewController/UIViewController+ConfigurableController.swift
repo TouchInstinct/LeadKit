@@ -20,14 +20,15 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import UIKit.UIViewController
 
 public extension ConfigurableController where Self: UIViewController {
 
-    func configureBarButtons() {
-        // nothing
+    func initializeView() {
+        assertionFailure("Use \(initialLoadView) for UIViewController instead!")
     }
 
+    /// Method that should be called in viewDidLoad method of UIViewController.
     func initialLoadView() {
         addViews()
         configureAppearance()

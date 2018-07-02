@@ -22,13 +22,6 @@
 
 import UIKit
 
-/// Protocol that contains scroll view property.
-public protocol ScrollViewHolder {
-
-    var scrollView: UIScrollView { get }
-
-}
-
 /// Protocol that contains background view property.
 public protocol BackgroundViewHolder {
 
@@ -44,4 +37,4 @@ public protocol FooterViewHolder {
 }
 
 /// Protocol that conforms to ScrollViewHolder, BackgroundViewHolder and FooterViewHolder protocols.
-public typealias PaginationWrappable = ScrollViewHolder & BackgroundViewHolder & FooterViewHolder
+public protocol PaginationWrappable: ScrollViewHolder, BackgroundViewHolder, FooterViewHolder {}

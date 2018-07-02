@@ -24,10 +24,6 @@ import UIKit.UITableView
 
 extension UITableView: PaginationWrappable {
 
-    public var scrollView: UIScrollView {
-        return self
-    }
-
     public var footerView: UIView? {
         get {
             return tableFooterView

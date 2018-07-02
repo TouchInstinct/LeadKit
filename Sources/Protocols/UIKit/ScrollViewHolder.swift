@@ -20,17 +20,12 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UICollectionView
+import UIKit.UIScrollView
 
-extension UICollectionView: PaginationWrappable {
+/// Protocol that contains scroll view property.
+public protocol ScrollViewHolder {
 
-    public var footerView: UIView? {
-        get {
-            return nil
-        }
-        set {
-            // nothing
-        }
-    }
+    /// Contained UIScrollView instance.
+    var scrollView: UIScrollView { get }
 
 }

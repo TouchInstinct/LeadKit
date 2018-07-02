@@ -26,6 +26,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
     ]
     ss.watchos.exclude_files = [
+      "Sources/Classes/Controllers/**/*",
       "Sources/Classes/Views/SeparatorRowBox/*",
       "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
@@ -46,6 +47,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/UIKit/**/*.swift",
       "Sources/Extensions/Views/ViewBackground+Configuration.swift",
       "Sources/Extensions/Views/SeparatorCell/*",
+      "Sources/Protocols/UIKit/**/*.swift",
       "Sources/Protocols/LoadingIndicator.swift",
       "Sources/Protocols/DataLoading/PaginationDataLoading/PaginationWrappable.swift",
       "Sources/Protocols/DataLoading/GeneralDataLoading/GeneralDataLoadingController.swift",
