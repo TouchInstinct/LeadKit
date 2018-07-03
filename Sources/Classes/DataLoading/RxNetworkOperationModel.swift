@@ -29,16 +29,26 @@ open class RxNetworkOperationModel<LoadingStateType: NetworkOperationState>: Net
     public typealias DataSourceType = LoadingStateType.DataSourceType
     public typealias ResultType = DataSourceType.ResultType
 
+    public typealias ErrorHandler = (Error, LoadingStateType) -> LoadingStateType
+
     private let stateRelay = BehaviorRelay<LoadingStateType>(value: .initialState)
     var currentRequestDisposable: Disposable?
 
-    var dataSource: DataSourceType
+    private(set) var dataSource: DataSourceType
+
+    private let errorHandler: ErrorHandler
 
     open var stateDriver: Driver<LoadingStateType> {
         return stateRelay.asDriver()
     }
 
-    public init(dataSource: DataSourceType) {
+    /// Model initializer with data source and custom error handler.
+    ///
+    /// - Parameters:
+    ///   - dataSource: Data source for network operation.
+    ///   - customErrorHandler: Custom error handler for state update. Pass nil for default error handling.
+    public init(dataSource: DataSourceType, customErrorHandler: ErrorHandler? = nil) {
+        self.errorHandler = customErrorHandler ?? { .errorState(error: $0, after: $1) }
         self.dataSource = dataSource
     }
 
@@ -51,8 +61,15 @@ open class RxNetworkOperationModel<LoadingStateType: NetworkOperationState>: Net
         requestResult(from: dataSource)
     }
 
+    /// Replaces current data source with new one.
+    ///
+    /// - Parameter newDataSource: A new data source to use.
+    public func replaceDataSource(with newDataSource: DataSourceType) {
+        dataSource = newDataSource
+    }
+
     func onGot(error: Error) {
-        state = .errorState(error: error, after: state)
+        state = errorHandler(error, state)
     }
 
     func onGot(result: ResultType, from dataSource: DataSourceType) {
