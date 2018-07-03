@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.8.5
+
+- **Add**: `replaceDataSource` method to `RxNetworkOperationModel`. 
+- **Add**: `customErrorHandler` constructor parameter to `RxNetworkOperationModel` and it heirs.
+
 ### 0.8.4
 
 - **Fix**: Add `SeparatorCell` to `Core-iOS-Extension`. 
