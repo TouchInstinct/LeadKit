@@ -39,11 +39,15 @@ open class GeneralDataLoadingViewModel<ResultType>: BaseViewModel {
     ///
     /// - Parameters:
     ///   - dataSource: A single element sequence.
+    ///   - customErrorHandler: Custom error handler for state update. Pass nil for default error handling.
     ///   - emptyResultChecker: Closure for checking result on empty state.
     public init(dataSource: DataSourceType,
+                customErrorHandler: LoadingModel.ErrorHandler? = nil,
                 emptyResultChecker: @escaping LoadingModel.EmptyResultChecker = { _ in false }) {
 
-        loadingModel = LoadingModel(dataSource: dataSource, emptyResultChecker: emptyResultChecker)
+        loadingModel = LoadingModel(dataSource: dataSource,
+                                    customErrorHandler: customErrorHandler,
+                                    emptyResultChecker: emptyResultChecker)
 
         loadingModel.stateDriver
             .drive(loadingStateRelay)
@@ -52,7 +56,12 @@ open class GeneralDataLoadingViewModel<ResultType>: BaseViewModel {
         loadingModel.reload()
     }
 
-    /// Returns driver that emits current loading state
+    /// Returns observable that emits current loading state.
+    open var loadingStateObservable: Observable<LoadingState> {
+        return loadingStateRelay.asObservable()
+    }
+
+    /// Returns driver that emits current loading state.
     open var loadingStateDriver: Driver<LoadingState> {
         return loadingStateRelay.asDriver()
     }
@@ -85,17 +94,16 @@ open class GeneralDataLoadingViewModel<ResultType>: BaseViewModel {
         currentLoadingState = newState
     }
 
+    /// Replaces current data source of loading model with new one.
+    ///
+    /// - Parameter dataSource: A single element sequence.
+    public func replaceDataSource(with newDataSource: DataSourceType) {
+        loadingModel.replaceDataSource(with: newDataSource)
+    }
+
     /// Reload data.
     public func reload() {
         loadingModel.reload()
-    }
-
-}
-
-public extension GeneralDataLoadingViewModel where ResultType: Collection {
-
-    convenience init(dataSource: DataSourceType) {
-        self.init(dataSource: dataSource) { $0.isEmpty }
     }
 
 }

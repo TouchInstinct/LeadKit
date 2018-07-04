@@ -39,8 +39,19 @@ public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCurs
 
 //    public typealias PaginationEmptyResultChecker = ([Cursor.Element]) -> Bool
 
-    override public init(dataSource: DataSourceType, emptyResultChecker: @escaping EmptyResultChecker) {
-        super.init(dataSource: dataSource, emptyResultChecker: emptyResultChecker)
+    /// Model initializer with cursor, empty result checker and custom error handler.
+    ///
+    /// - Parameters:
+    ///   - dataSource: Data source cursor for paginated data loading.
+    ///   - customErrorHandler: Custom error handler for state update. Pass nil for default error handling.
+    ///   - emptyResultChecker: Empty result checker closure.
+    public override init(dataSource: Cursor,
+                         customErrorHandler: ErrorHandler? = nil,
+                         emptyResultChecker: @escaping EmptyResultChecker) {
+
+        super.init(dataSource: dataSource,
+                   customErrorHandler: customErrorHandler,
+                   emptyResultChecker: emptyResultChecker)
     }
 
     override public func reload() {
@@ -61,7 +72,7 @@ public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCurs
 
         switch loadType {
         case .reload, .retry:
-            dataSource = dataSource.reset()
+            replaceDataSource(with: dataSource.reset())
 
             if loadType == .retry {
                 state = .initial

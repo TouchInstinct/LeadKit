@@ -30,10 +30,19 @@ open class RxDataLoadingModel<LoadingStateType: DataLoadingState>: RxNetworkOper
 
     let emptyResultChecker: EmptyResultChecker
 
-    public init(dataSource: DataSourceType, emptyResultChecker: @escaping EmptyResultChecker) {
+    /// Model initializer with data source, empty result checker and custom error handler.
+    ///
+    /// - Parameters:
+    ///   - dataSource: Data source for data loading.
+    ///   - customErrorHandler: Custom error handler for state update. Pass nil for default error handling.
+    ///   - emptyResultChecker: Empty result checker closure.
+    public init(dataSource: DataSourceType,
+                customErrorHandler: ErrorHandler? = nil,
+                emptyResultChecker: @escaping EmptyResultChecker) {
+
         self.emptyResultChecker = emptyResultChecker
 
-        super.init(dataSource: dataSource)
+        super.init(dataSource: dataSource, customErrorHandler: customErrorHandler)
     }
 
     open func reload() {
