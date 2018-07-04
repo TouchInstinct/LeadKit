@@ -87,8 +87,8 @@ open class SeparatorCell: UITableViewCell {
     private var bottomViewBottomConstraint: NSLayoutConstraint!
     private var bottomViewHeightConstraint: NSLayoutConstraint!
 
-    private var topSeparatorInsets    = UIEdgeInsets.nonCrashZero
-    private var bottomSeparatorInsets = UIEdgeInsets.nonCrashZero
+    private var topSeparatorInsets    = UIEdgeInsets.zero
+    private var bottomSeparatorInsets = UIEdgeInsets.zero
 
     private var topSeparatorHeight    = Constants.defaultSeparatorHeight
     private var bottomSeparatorHeight = Constants.defaultSeparatorHeight
