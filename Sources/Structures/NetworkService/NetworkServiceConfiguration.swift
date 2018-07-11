@@ -59,9 +59,20 @@ public struct NetworkServiceConfiguration {
         sessionConfiguration.timeoutIntervalForResource = timeoutInterval
         sessionConfiguration.httpAdditionalHeaders = additionalHttpHeaders
 
-        serverTrustPolicies = [baseUrl: .disableEvaluation]
+        let urlKey = String.parseHost(from: baseUrl)
+        serverTrustPolicies = [urlKey: .disableEvaluation]
     }
+}
 
+private extension String {
+
+    static func parseHost(from string: String) -> String {
+        return URL(string: string)?.host ?? string
+            .replacingOccurrences(of: "https://", with: "")
+            .replacingOccurrences(of: "http://", with: "")
+            .components(separatedBy: "/")
+            .first ?? ""
+    }
 }
 
 public extension NetworkServiceConfiguration {
