@@ -48,7 +48,8 @@ public struct NetworkServiceConfiguration {
     public init(baseUrl: String,
                 timeoutInterval: TimeInterval = 20,
                 encoding: ParameterEncoding = URLEncoding.default,
-                additionalHttpHeaders: HTTPHeaders = [:]) {
+                additionalHttpHeaders: HTTPHeaders = [:],
+                trustPolicies: [String: ServerTrustPolicy] = [:]) {
 
         self.baseUrl = baseUrl
         self.timeoutInterval = timeoutInterval
@@ -59,14 +60,13 @@ public struct NetworkServiceConfiguration {
         sessionConfiguration.timeoutIntervalForResource = timeoutInterval
         sessionConfiguration.httpAdditionalHeaders = additionalHttpHeaders
 
-        let urlKey = baseUrl.parseHost()
-        serverTrustPolicies = [urlKey: .disableEvaluation]
+        serverTrustPolicies = trustPolicies.isEmpty ? [baseUrl.asHost : .disableEvaluation] : trustPolicies
     }
 }
 
-private extension String {
+extension String {
 
-    func parseHost() -> String {
+    var asHost: String {
         guard let host = URL(string: self)?.host else {
             assertionFailure("Cannot detect host for base URL")
             return ""
