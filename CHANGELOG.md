@@ -2,6 +2,7 @@
 
 ### 0.8.6
 
+- **Fix**: Add `trustPolicies` param to `NetworkServiceConfiguration` initialization.
 - **Fix**: Update `serverTrustPolicies` to save host instead of the whole URL as a key.  
 
 ### 0.8.5
