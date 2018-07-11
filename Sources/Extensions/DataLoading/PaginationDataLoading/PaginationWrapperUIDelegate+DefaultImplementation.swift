@@ -37,14 +37,14 @@ public extension PaginationWrapperUIDelegate {
     }
 
     func initialLoadingIndicator() -> AnyLoadingIndicator? {
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        let indicator = UIActivityIndicatorView(style: .whiteLarge)
         indicator.color = .gray
 
         return AnyLoadingIndicator(indicator)
     }
 
     func loadingMoreIndicator() -> AnyLoadingIndicator? {
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let indicator = UIActivityIndicatorView(style: .gray)
 
         return AnyLoadingIndicator(indicator)
     }

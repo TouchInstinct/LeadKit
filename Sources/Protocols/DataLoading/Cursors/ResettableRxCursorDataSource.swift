@@ -21,4 +21,4 @@
 //
 
 /// Ressetable cursor type that conforms to DataSourceProtocol
-public typealias ResettableRxDataSourceCursor = ResettableCursorType & RxDataSource
+public protocol ResettableRxDataSourceCursor: ResettableCursorType, RxDataSource {}

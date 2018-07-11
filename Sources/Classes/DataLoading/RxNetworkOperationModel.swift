@@ -27,7 +27,6 @@ open class RxNetworkOperationModel<LoadingStateType: NetworkOperationState>: Net
     where LoadingStateType.DataSourceType: RxDataSource {
 
     public typealias DataSourceType = LoadingStateType.DataSourceType
-    public typealias ResultType = DataSourceType.ResultType
 
     public typealias ErrorHandler = (Error, LoadingStateType) -> LoadingStateType
 
@@ -72,7 +71,7 @@ open class RxNetworkOperationModel<LoadingStateType: NetworkOperationState>: Net
         state = errorHandler(error, state)
     }
 
-    func onGot(result: ResultType, from dataSource: DataSourceType) {
+    func onGot(result: DataSourceType.ResultType, from dataSource: DataSourceType) {
         state = .resultState(result: result,
                              from: dataSource,
                              after: state)

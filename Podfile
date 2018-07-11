@@ -8,7 +8,7 @@ abstract_target 'LeadKit' do
   inhibit_all_warnings!
 
   target 'LeadKit iOS' do
-    platform :ios, '9.0'
+    platform :ios, '10.0'
 
     use_frameworks!
 
@@ -23,7 +23,7 @@ abstract_target 'LeadKit' do
   end
 
   target 'LeadKit iOS Extensions' do
-    platform :ios, '9.0'
+    platform :ios, '10.0'
 
     use_frameworks!
 
@@ -37,14 +37,14 @@ abstract_target 'LeadKit' do
   end
 
   target 'LeadKit watchOS' do
-    platform :watchos, '2.0'
+    platform :watchos, '3.0'
 
     use_frameworks!
 
   end
 
   target 'LeadKit tvOS' do
-    platform :tvos, '9.0'
+    platform :tvos, '10.0'
 
     use_frameworks!
 
@@ -59,3 +59,11 @@ end
 
 # If you have slow HDD
 ENV['COCOAPODS_DISABLE_STATS'] = "true"
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['SWIFT_VERSION'] = '4.0'
+        end
+    end
+end

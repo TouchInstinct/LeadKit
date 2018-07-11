@@ -24,9 +24,7 @@ import RxSwift
 
 public extension CursorType {
 
-    typealias ResultType = [Element]
-
-    func resultSingle() -> Single<ResultType> {
+    func resultSingle() -> Single<[Element]> {
         return loadNextBatch()
     }
 
