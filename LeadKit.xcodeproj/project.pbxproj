@@ -19,6 +19,10 @@
 		3622F5E220E25883009DED94 /* SeparatorRowBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A81F8A655600C6308D /* SeparatorRowBox.swift */; };
 		36977763200CF12100ED9C6E /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
 		36DAAF512007CC920090BE0D /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
+		36FE777020F669E300284C09 /* String+ConvertToHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FE776F20F669E300284C09 /* String+ConvertToHost.swift */; };
+		36FE777120F669E300284C09 /* String+ConvertToHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FE776F20F669E300284C09 /* String+ConvertToHost.swift */; };
+		36FE777220F669E300284C09 /* String+ConvertToHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FE776F20F669E300284C09 /* String+ConvertToHost.swift */; };
+		36FE777320F669E300284C09 /* String+ConvertToHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FE776F20F669E300284C09 /* String+ConvertToHost.swift */; };
 		40F118471F8FEF97004AADAF /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
 		40F118491F8FF223004AADAF /* TableRow+AppearanceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118481F8FF223004AADAF /* TableRow+AppearanceExtension.swift */; };
 		67051ADB1EBC7C36008EADC0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */; };
@@ -632,6 +636,7 @@
 		287AC0683207753A363152CB /* Pods_LeadKit_watchOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_watchOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD6FE790236CFF8D2CD505E /* Pods-LeadKit-LeadKit iOS Extensions.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit-LeadKit iOS Extensions.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit-LeadKit iOS Extensions/Pods-LeadKit-LeadKit iOS Extensions.release.xcconfig"; sourceTree = "<group>"; };
 		36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		36FE776F20F669E300284C09 /* String+ConvertToHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ConvertToHost.swift"; sourceTree = "<group>"; };
 		381DF859FC4E26D499123014 /* Pods-LeadKit iOS ExtensionsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeadKit iOS ExtensionsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeadKit iOS ExtensionsTests/Pods-LeadKit iOS ExtensionsTests.release.xcconfig"; sourceTree = "<group>"; };
 		3C88ED8C9373F85C06697849 /* Pods_LeadKit_iOS_ExtensionsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOS_ExtensionsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceConfigurable.swift; sourceTree = "<group>"; };
@@ -1090,6 +1095,7 @@
 				A676AE471F97D28A001F9214 /* String+Extensions.swift */,
 				671461FC1EB3396E00EAB194 /* String+Localization.swift */,
 				A6F32C071F6EBDAA00AC08EE /* String+LocalizedComponent.swift */,
+				36FE776F20F669E300284C09 /* String+ConvertToHost.swift */,
 			);
 			path = String;
 			sourceTree = "<group>";
@@ -2613,6 +2619,7 @@
 				6714626C1EB3396E00EAB194 /* XibView.swift in Sources */,
 				67274778206CD0B500725163 /* UILabel+ViewTextConfiguration.swift in Sources */,
 				67ED2BE520B44F4300508B3E /* InitializableView+DefaultImplementation.swift in Sources */,
+				36FE777020F669E300284C09 /* String+ConvertToHost.swift in Sources */,
 				6774529220625D170024EEEF /* GeneralDataLoadingModel.swift in Sources */,
 				6714637C1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				671463341EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
@@ -2718,6 +2725,7 @@
 				6714626A1EB3396E00EAB194 /* NetworkService.swift in Sources */,
 				671AD26E206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift in Sources */,
 				673CF4132063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */,
+				36FE777220F669E300284C09 /* String+ConvertToHost.swift in Sources */,
 				6713C24320AF189100875921 /* RxNetworkOperationModel.swift in Sources */,
 				671462921EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
 				6741C41120EAC88800418D08 /* GeneralDataLoadingViewModel+Extensions.swift in Sources */,
@@ -2844,6 +2852,7 @@
 				671AD26F206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift in Sources */,
 				67955D55206D216B0021ECD2 /* Singleton.swift in Sources */,
 				EFBE57D31EC35EF20040E00A /* Array+Extensions.swift in Sources */,
+				36FE777320F669E300284C09 /* String+ConvertToHost.swift in Sources */,
 				67FD4385206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */,
 				67CAF8AE2065189C00527085 /* NetworkService+ActivityIndicator.swift in Sources */,
 				6714638B1EB3396E00EAB194 /* RoundDrawingOperation.swift in Sources */,
@@ -3039,6 +3048,7 @@
 				671463711EB3396E00EAB194 /* ApiRequestParameters.swift in Sources */,
 				3622F5DB20E24F99009DED94 /* Array+SeparatorRowBoxExtensions.swift in Sources */,
 				671462ED1EB3396E00EAB194 /* UIImage+Extensions.swift in Sources */,
+				36FE777120F669E300284C09 /* String+ConvertToHost.swift in Sources */,
 				6714636D1EB3396E00EAB194 /* XibNameProtocol.swift in Sources */,
 				673CF42D2063DE5900C329F6 /* TextPlaceholderView.swift in Sources */,
 				6713C24220AF189100875921 /* RxNetworkOperationModel.swift in Sources */,

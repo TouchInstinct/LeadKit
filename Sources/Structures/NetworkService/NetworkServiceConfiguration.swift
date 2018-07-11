@@ -66,17 +66,6 @@ public struct NetworkServiceConfiguration {
     }
 }
 
-extension String {
-
-    var asHost: String {
-        guard let host = URL(string: self)?.host else {
-            assertionFailure("Cannot detect host for base URL")
-            return ""
-        }
-        return host
-    }
-}
-
 public extension NetworkServiceConfiguration {
 
     /// SessionManager constructed with given parameters (session configuration and trust policies)
