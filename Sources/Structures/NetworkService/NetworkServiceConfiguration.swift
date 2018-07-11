@@ -59,19 +59,19 @@ public struct NetworkServiceConfiguration {
         sessionConfiguration.timeoutIntervalForResource = timeoutInterval
         sessionConfiguration.httpAdditionalHeaders = additionalHttpHeaders
 
-        let urlKey = String.parseHost(from: baseUrl)
+        let urlKey = baseUrl.parseHost()
         serverTrustPolicies = [urlKey: .disableEvaluation]
     }
 }
 
 private extension String {
 
-    static func parseHost(from string: String) -> String {
-        return URL(string: string)?.host ?? string
-            .replacingOccurrences(of: "https://", with: "")
-            .replacingOccurrences(of: "http://", with: "")
-            .components(separatedBy: "/")
-            .first ?? ""
+    func parseHost() -> String {
+        guard let host = URL(string: self)?.host else {
+            assertionFailure("Cannot detect host for base URL")
+            return ""
+        }
+        return host
     }
 }
 
