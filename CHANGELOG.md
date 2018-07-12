@@ -4,6 +4,7 @@
 
 - **Fix**: Add `trustPolicies` param to `NetworkServiceConfiguration` initialization.
 - **Fix**: Update `serverTrustPolicies` to save host instead of the whole URL as a key.  
+- **Add**: String extension that extracts host.
 
 ### 0.8.5
 
