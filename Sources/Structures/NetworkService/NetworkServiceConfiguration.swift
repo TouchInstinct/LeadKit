@@ -60,8 +60,7 @@ public struct NetworkServiceConfiguration {
         sessionConfiguration.timeoutIntervalForResource = timeoutInterval
         sessionConfiguration.httpAdditionalHeaders = additionalHttpHeaders
 
-        var updatedPolicies: [String: ServerTrustPolicy] = [:]
-        trustPolicies.forEach { updatedPolicies[$0.key.asHost] = $0.value }
+        let updatedPolicies = Dictionary(uniqueKeysWithValues: trustPolicies.map { ($0.key.asHost, $0.value) })
         serverTrustPolicies = trustPolicies.isEmpty ? [baseUrl.asHost: .disableEvaluation] : updatedPolicies
     }
 }

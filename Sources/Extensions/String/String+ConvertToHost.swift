@@ -24,10 +24,9 @@ import Foundation
 
 extension String {
 
-    /**
-        Extracts host from strings that can be converted to URL.
-        Causes assertionFailure if string cannot be converted. 
-     */
+    /// Extracts host from strings that can be converted to URL.
+    /// Causes assertionFailure if string cannot be converted.
+
     var asHost: String {
         guard let host = URL(string: self)?.host else {
             assertionFailure("Cannot detect host for base URL")
