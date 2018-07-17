@@ -48,7 +48,8 @@ public struct NetworkServiceConfiguration {
     public init(baseUrl: String,
                 timeoutInterval: TimeInterval = 20,
                 encoding: ParameterEncoding = URLEncoding.default,
-                additionalHttpHeaders: HTTPHeaders = [:]) {
+                additionalHttpHeaders: HTTPHeaders = [:],
+                trustPolicies: [String: ServerTrustPolicy] = [:]) {
 
         self.baseUrl = baseUrl
         self.timeoutInterval = timeoutInterval
@@ -59,9 +60,9 @@ public struct NetworkServiceConfiguration {
         sessionConfiguration.timeoutIntervalForResource = timeoutInterval
         sessionConfiguration.httpAdditionalHeaders = additionalHttpHeaders
 
-        serverTrustPolicies = [baseUrl: .disableEvaluation]
+        let updatedPolicies = Dictionary(uniqueKeysWithValues: trustPolicies.map { ($0.key.asHost, $0.value) })
+        serverTrustPolicies = trustPolicies.isEmpty ? [baseUrl.asHost: .disableEvaluation] : updatedPolicies
     }
-
 }
 
 public extension NetworkServiceConfiguration {
