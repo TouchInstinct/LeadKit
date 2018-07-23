@@ -1,9 +1,9 @@
 abstract_target 'LeadKit' do
-  pod "RxSwift", '~> 4.1'
-  pod "RxCocoa", '~> 4.1'
-  pod "RxAlamofire", '~> 4.1'
-  pod "SwiftLint", '~> 0.25'
-  pod "SwiftDate", '~> 4.5'
+  pod "RxSwift"
+  pod "RxCocoa"
+  pod "RxAlamofire"
+  pod "SwiftLint"
+  pod "SwiftDate"
 
   inhibit_all_warnings!
 
@@ -12,8 +12,8 @@ abstract_target 'LeadKit' do
 
     use_frameworks!
 
-    pod "TableKit", '~> 2.6'
-    pod "UIScrollView-InfiniteScroll", '~> 1.0.0'
+    pod "TableKit"
+    pod "UIScrollView-InfiniteScroll"
 
     target 'LeadKit iOSTests' do
       inherit! :search_paths
@@ -27,7 +27,7 @@ abstract_target 'LeadKit' do
 
     use_frameworks!
 
-    pod "TableKit", '~> 2.6'
+    pod "TableKit"
 
     target 'LeadKit iOS ExtensionsTests' do
       inherit! :search_paths

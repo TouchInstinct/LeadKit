@@ -77,13 +77,13 @@ Pod::Spec.new do |s|
       "Sources/Structures/DataLoading/PaginationDataLoading/*"
     ]
 
-    ss.dependency "RxSwift", '~> 4.1'
-    ss.dependency "RxCocoa", '~> 4.1'
-    ss.dependency "RxAlamofire", '~> 4.1'
-    ss.dependency "SwiftDate", '~> 4.5'
+    ss.dependency "RxSwift", '~> 4.2'
+    ss.dependency "RxCocoa", '~> 4.2'
+    ss.dependency "RxAlamofire", '~> 4.2'
+    ss.dependency "SwiftDate", '~> 5.0'
 
-    ss.ios.dependency "TableKit", '~> 2.6'
-    ss.ios.dependency "UIScrollView-InfiniteScroll", '~> 1.0.0'
+    ss.ios.dependency "TableKit", '~> 2.7'
+    ss.ios.dependency "UIScrollView-InfiniteScroll", '~> 1.1.0'
   end
 
   s.subspec 'Core-iOS-Extension' do |ss|
@@ -101,12 +101,12 @@ Pod::Spec.new do |s|
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
     ]
 
-    ss.dependency "RxSwift", '~> 4.1'
-    ss.dependency "RxCocoa", '~> 4.1'
-    ss.dependency "RxAlamofire", '~> 4.1'
-    ss.dependency "SwiftDate", '~> 4.5'
+    ss.dependency "RxSwift", '~> 4.2'
+    ss.dependency "RxCocoa", '~> 4.2'
+    ss.dependency "RxAlamofire", '~> 4.2'
+    ss.dependency "SwiftDate", '~> 5.0'
 
-    ss.ios.dependency "TableKit", '~> 2.6'
+    ss.ios.dependency "TableKit", '~> 2.7'
 
   end
 
