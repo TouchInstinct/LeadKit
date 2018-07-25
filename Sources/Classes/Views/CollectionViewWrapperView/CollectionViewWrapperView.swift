@@ -20,31 +20,29 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UIView
+import UIKit
 
-/// Base controller configurable by view model and custom view.
-open class BaseCustomViewController<ViewModel, View: UIView>: BaseConfigurableController<ViewModel> {
+/// The main purpose of this class is to fix empty space on top of the screen
+/// when view controller view is UICollectionView.
+open class CollectionViewWrapperView: ScrollViewHolderView, CollectionViewHolder {
 
-    /// Contained custom view.
-    public let customView: View
+    /// Contained collection view.
+    public let collectionView: UICollectionView
 
-    /// Initializer with view model and custom view parameters.
+    /// Initializer with collection view layout parameter.
     ///
-    /// - Parameters:
-    ///   - viewModel: A view model to configure this controller.
-    ///   - customView: UIView instance to assign in view property.
-    public init(viewModel: ViewModel, customView: View) {
-        self.customView = customView
+    /// - Parameter layout: UICollectionViewLayout to pass in UICollectionView init.
+    public init(layout: UICollectionViewLayout) {
+        self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        self.collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
-        super.init(viewModel: viewModel)
+        super.init(frame: .zero)
+
+        addSubview(collectionView)
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    override open func loadView() {
-        view = customView
     }
 
 }

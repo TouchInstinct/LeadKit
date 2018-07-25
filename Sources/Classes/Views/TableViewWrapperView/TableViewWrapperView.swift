@@ -20,31 +20,29 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UIView
+import UIKit.UITableView
 
-/// Base controller configurable by view model and custom view.
-open class BaseCustomViewController<ViewModel, View: UIView>: BaseConfigurableController<ViewModel> {
+/// The main purpose of this class is to fix empty space on top of the screen
+/// when view controller view is UITableView.
+open class TableViewWrapperView: ScrollViewHolderView, TableViewHolder {
 
-    /// Contained custom view.
-    public let customView: View
+    /// Contained table view.
+    public let tableView: UITableView
 
-    /// Initializer with view model and custom view parameters.
+    /// Initializer with tableViewStyle parameter.
     ///
-    /// - Parameters:
-    ///   - viewModel: A view model to configure this controller.
-    ///   - customView: UIView instance to assign in view property.
-    public init(viewModel: ViewModel, customView: View) {
-        self.customView = customView
+    /// - Parameter tableViewStyle: UITableViewStyle to pass in UITableView init.
+    public init(tableViewStyle: UITableViewStyle) {
+        self.tableView = UITableView(frame: .zero, style: tableViewStyle)
+        self.tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
-        super.init(viewModel: viewModel)
+        super.init(frame: .zero)
+
+        addSubview(tableView)
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    override open func loadView() {
-        view = customView
     }
 
 }

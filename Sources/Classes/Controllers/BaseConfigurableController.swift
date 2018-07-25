@@ -25,8 +25,12 @@ import UIKit.UIViewController
 /// Base controller that can should be configured with view model.
 open class BaseConfigurableController<ViewModel>: UIViewController, ConfigurableController {
 
+    /// A view model instance used by this controller.
     public let viewModel: ViewModel
 
+    /// Initializer with view model parameter.
+    ///
+    /// - Parameter viewModel: A view model to configure this controller.
     public init(viewModel: ViewModel) {
         self.viewModel = viewModel
 

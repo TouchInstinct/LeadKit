@@ -34,6 +34,8 @@ Pod::Spec.new do |s|
       "Sources/Classes/Views/XibView/*",
       "Sources/Classes/Views/SpinnerView/*",
       "Sources/Classes/Views/DefaultPlaceholders/*",
+      "Sources/Classes/Views/CollectionViewWrapperView/*",
+      "Sources/Classes/Views/TableViewWrapperView/*",
       "Sources/Extensions/CABasicAnimation/*",
       "Sources/Extensions/CGFloat/CGFloat+Pixels.swift",
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
@@ -59,6 +61,7 @@ Pod::Spec.new do |s|
       "Sources/Structures/DataLoading/PaginationDataLoading/*"
     ]
     ss.tvos.exclude_files = [
+      "Sources/Classes/Controllers/BaseTableContentController.swift",
       "Sources/Classes/Views/SeparatorRowBox/*",
       "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",

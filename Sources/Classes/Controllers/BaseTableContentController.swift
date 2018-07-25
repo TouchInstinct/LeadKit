@@ -20,31 +20,43 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UIView
+import TableKit
 
-/// Base controller configurable by view model and custom view.
-open class BaseCustomViewController<ViewModel, View: UIView>: BaseConfigurableController<ViewModel> {
+/// Base table controller configurable with view model and TableViewWrapperView as custom view.
+open class BaseTableContentController<ViewModel>: BaseScrollContentController<ViewModel, TableViewWrapperView> {
 
-    /// Contained custom view.
-    public let customView: View
+    /// TableDirector binded to table view.
+    public let tableDirector: TableDirector
 
-    /// Initializer with view model and custom view parameters.
+    /// Initializer with view model, table view holder and table director parameters.
     ///
     /// - Parameters:
     ///   - viewModel: A view model to configure this controller.
-    ///   - customView: UIView instance to assign in view property.
-    public init(viewModel: ViewModel, customView: View) {
-        self.customView = customView
+    ///   - tableViewHolder: A view that contains table view.
+    ///   - tableDirector: Custom TableDirector instance or nil to use the default one.
+    public init(viewModel: ViewModel,
+                tableViewHolder: TableViewWrapperView = .init(tableViewStyle: .plain),
+                tableDirector: TableDirector? = nil) {
 
-        super.init(viewModel: viewModel)
+        self.tableDirector = tableDirector ?? TableDirector(tableView: tableViewHolder.tableView)
+
+        super.init(viewModel: viewModel,
+                   customView: tableViewHolder)
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override open func loadView() {
-        view = customView
+    override open func configureAppearance() {
+        super.configureAppearance()
+
+        tableView.separatorStyle = .none
+    }
+
+    /// Contained UITableView instance.
+    public var tableView: UITableView {
+        return customView.tableView
     }
 
 }

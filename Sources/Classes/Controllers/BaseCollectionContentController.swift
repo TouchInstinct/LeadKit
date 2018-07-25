@@ -20,31 +20,30 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UIView
+import UIKit
 
-/// Base controller configurable by view model and custom view.
-open class BaseCustomViewController<ViewModel, View: UIView>: BaseConfigurableController<ViewModel> {
+/// Base collection controller configurable with view model and CollectionViewWrapperView as custom view.
+open class BaseCollectionContentController<ViewModel>: BaseScrollContentController<ViewModel, CollectionViewWrapperView> {
 
-    /// Contained custom view.
-    public let customView: View
-
-    /// Initializer with view model and custom view parameters.
+    /// Initializer with view model, collection view holder and table director parameters.
     ///
     /// - Parameters:
     ///   - viewModel: A view model to configure this controller.
-    ///   - customView: UIView instance to assign in view property.
-    public init(viewModel: ViewModel, customView: View) {
-        self.customView = customView
+    ///   - collectionViewHolder: A view that contains collection view.
+    public init(viewModel: ViewModel,
+                collectionViewHolder: CollectionViewWrapperView = .init(layout: UICollectionViewFlowLayout())) {
 
-        super.init(viewModel: viewModel)
+        super.init(viewModel: viewModel,
+                   customView: collectionViewHolder)
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override open func loadView() {
-        view = customView
+    /// Contained UICollectionView instance.
+    public var collectionView: UICollectionView {
+        return customView.collectionView
     }
 
 }
