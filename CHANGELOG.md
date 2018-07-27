@@ -1,5 +1,13 @@
 # Changelog
 
+### 0.8.7
+- **Add**: Base configurable controllers hierarchy with generic custom view argument (`BaseConfigurableController`, `BaseCustomViewController`, `BaseScrollContentController`, `BaseTableContentController` and `BaseCollectionContentController`).
+- **Add**: `ScrollViewHolder`, `TableViewHolder` and `CollectionViewHolder` protocols.
+- **Update**: Update dependencies.
+- **[Breaking change]**: Update `SwiftDate` to 5.0.x.
+- **[Breaking change]**: Update `DateFormattingService`. Change `format` argument from `DateFormatType` to `String`.
+- **Update**: Add compile time debug messages. Improve compile time for some pieces of code.
+
 ### 0.8.6
 
 - **Fix**: Add `trustPolicies` param to `NetworkServiceConfiguration` initialization.
