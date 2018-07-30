@@ -38,7 +38,7 @@ public protocol DateFormattingService {
     ///   - format: Format that should be used for date parsing.
     ///   - defaultDate: Default date if formatting will fail.
     /// - Returns: Date parsed from given string or default date if parsing did fail.
-    func date(from string: String, format: DateFormatType, defaultDate: DateInRegion) -> DateInRegion
+    func date(from string: String, format: String, defaultDate: DateInRegion) -> DateInRegion
 
     /// Method parses date from string in given format with current region.
     ///
@@ -46,7 +46,7 @@ public protocol DateFormattingService {
     ///   - string: String to use for date parsing.
     ///   - format: Format that should be used for date parsing.
     /// - Returns: Date parsed from given string or default date if parsing did fail.
-    func date(from string: String, format: DateFormatType) -> DateInRegion?
+    func date(from string: String, format: String) -> DateInRegion?
 
     /// Method format date in given format.
     ///
