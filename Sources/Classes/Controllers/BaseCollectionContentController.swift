@@ -25,20 +25,8 @@ import UIKit
 /// Base collection controller configurable with view model and CollectionViewWrapperView as custom view.
 open class BaseCollectionContentController<ViewModel>: BaseScrollContentController<ViewModel, CollectionViewWrapperView> {
 
-    /// Initializer with view model, collection view holder and table director parameters.
-    ///
-    /// - Parameters:
-    ///   - viewModel: A view model to configure this controller.
-    ///   - collectionViewHolder: A view that contains collection view.
-    public init(viewModel: ViewModel,
-                collectionViewHolder: CollectionViewWrapperView = .init(layout: UICollectionViewFlowLayout())) {
-
-        super.init(viewModel: viewModel,
-                   customView: collectionViewHolder)
-    }
-
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override open func createView() -> CollectionViewWrapperView {
+        return CollectionViewWrapperView(layout: UICollectionViewFlowLayout())
     }
 
     /// Contained UICollectionView instance.

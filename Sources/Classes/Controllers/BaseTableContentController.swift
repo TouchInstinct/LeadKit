@@ -26,26 +26,17 @@ import TableKit
 open class BaseTableContentController<ViewModel>: BaseScrollContentController<ViewModel, TableViewWrapperView> {
 
     /// TableDirector binded to table view.
-    public let tableDirector: TableDirector
+    public private(set) lazy var tableDirector = createTableDirector()
 
-    /// Initializer with view model, table view holder and table director parameters.
+    /// Creates tableDirector for table view.
     ///
-    /// - Parameters:
-    ///   - viewModel: A view model to configure this controller.
-    ///   - tableViewHolder: A view that contains table view.
-    ///   - tableDirector: Custom TableDirector instance or nil to use the default one.
-    public init(viewModel: ViewModel,
-                tableViewHolder: TableViewWrapperView = .init(tableViewStyle: .plain),
-                tableDirector: TableDirector? = nil) {
-
-        self.tableDirector = tableDirector ?? TableDirector(tableView: tableViewHolder.tableView)
-
-        super.init(viewModel: viewModel,
-                   customView: tableViewHolder)
+    /// - Returns: Initialized TableDirector.
+    open func createTableDirector() -> TableDirector {
+        return TableDirector(tableView: tableView)
     }
 
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override open func createView() -> TableViewWrapperView {
+        return TableViewWrapperView(tableViewStyle: .plain)
     }
 
     override open func configureAppearance() {

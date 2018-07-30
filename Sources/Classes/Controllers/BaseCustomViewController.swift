@@ -26,16 +26,14 @@ import UIKit.UIView
 open class BaseCustomViewController<ViewModel, View: UIView>: BaseConfigurableController<ViewModel> {
 
     /// Contained custom view.
-    public let customView: View
+    public private(set) lazy var customView = createView()
 
     /// Initializer with view model and custom view parameters.
     ///
     /// - Parameters:
     ///   - viewModel: A view model to configure this controller.
     ///   - customView: UIView instance to assign in view property.
-    public init(viewModel: ViewModel, customView: View) {
-        self.customView = customView
-
+    public override init(viewModel: ViewModel) {
         super.init(viewModel: viewModel)
     }
 
@@ -45,6 +43,13 @@ open class BaseCustomViewController<ViewModel, View: UIView>: BaseConfigurableCo
 
     override open func loadView() {
         view = customView
+    }
+
+    /// Creates custom view.
+    ///
+    /// - Returns: Initialized custom view.
+    open func createView() -> View {
+        return View()
     }
 
 }
