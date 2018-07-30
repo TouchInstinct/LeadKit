@@ -36,7 +36,13 @@ public extension DateFormattingService {
     }
 
     func string(from date: DateInRegion, format: DateFormatType) -> String {
-        let dateInFormatterRegion = date.convertTo(region: currentRegion)
+        return date.toString(format.swiftDateFormat)
+    }
+
+    func string(from date: DateInRegion, format: DateFormatType, formattedIn: Region? = nil) -> String {
+        let region = formattedIn ?? currentRegion
+
+        let dateInFormatterRegion = date.convertTo(region: region)
 
         return dateInFormatterRegion.toString(format.swiftDateFormat)
     }
@@ -78,6 +84,17 @@ public extension DateFormattingService where Self: Singleton {
     /// - Returns: String that contains formatted date or nil if formatting did fail.
     static func string(from date: DateInRegion, format: DateFormatType) -> String {
         return shared.string(from: date, format: format)
+    }
+
+    /// Method format date in given format for specific region.
+    ///
+    /// - Parameters:
+    ///   - date: Date to format.
+    ///   - format: Format that should be used for date formatting.
+    ///   - formattedIn: A region that should be used for date formatting. In case of nil defaultRegion will be used.
+    /// - Returns: String that contains formatted date or nil if formatting did fail.
+    static func string(from date: DateInRegion, format: DateFormatType, formattedIn: Region?) -> String {
+        return shared.string(from: date, format: format, formattedIn: formattedIn)
     }
 
 }

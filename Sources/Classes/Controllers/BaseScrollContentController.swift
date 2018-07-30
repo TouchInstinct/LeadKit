@@ -28,36 +28,25 @@ public typealias ScrollViewHolderView = UIView & ScrollViewHolder
 /// Base controller configurable with view model and ScrollViewHolder custom view.
 open class BaseScrollContentController<ViewModel, View: ScrollViewHolderView>: BaseCustomViewController<ViewModel, View> {
 
-    private let defaultInsetsRelay = BehaviorRelay<UIEdgeInsets>(value: .zero)
-
     private var bottomInsetDisposable: Disposable?
 
     /// Bind given driver to bottom inset of scroll view. Takes into account default bottom insets.
     ///
     /// - Parameter bottomInsetDriver: Driver that emits CGFloat bottom inset changes.
     public func bindBottomInsetBinding(from bottomInsetDriver: Driver<CGFloat>) {
-        bottomInsetDisposable = bottomInsetDriver
-            .withLatestFrom(defaultInsetsRelay.asDriver()) {
-                $0 + $1.bottom
-            }
-            .drive(customView.scrollView.rx.bottomInsetBinder)
+        let contentInsetObservable = customView.scrollView.rx
+            .observe(UIEdgeInsets.self, #keyPath(UIScrollView.contentInset))
+
+        let bottomInset = contentInsetObservable.map { $0?.bottom ?? 0 }
+
+        bottomInsetDisposable = bottomInsetDriver.asObservable()
+            .withLatestFrom(bottomInset) { $0 + $1 }
+            .bind(to: customView.scrollView.rx.bottomInsetBinder)
     }
 
     /// Unbind scroll view from previous binding.
     public func unbindBottomInsetBinding() {
         bottomInsetDisposable?.dispose()
-    }
-
-    /// Default insets used for contained scroll view.
-    public var defaultInsets: UIEdgeInsets {
-        get {
-            return defaultInsetsRelay.value
-        }
-        set {
-            defaultInsetsRelay.accept(newValue)
-            customView.scrollView.contentInset = newValue
-            customView.scrollView.scrollIndicatorInsets = newValue
-        }
     }
 
     /// Contained UIScrollView instance.
