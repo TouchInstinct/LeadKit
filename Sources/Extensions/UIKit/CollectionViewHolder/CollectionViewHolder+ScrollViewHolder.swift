@@ -20,17 +20,12 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UICollectionView
+import UIKit.UIScrollView
 
-extension UICollectionView: PaginationWrappable {
+public extension ScrollViewHolder where Self: CollectionViewHolder {
 
-    public var footerView: UIView? {
-        get {
-            return nil
-        }
-        set {
-            // nothing
-        }
+    var scrollView: UIScrollView {
+        return collectionView
     }
 
 }

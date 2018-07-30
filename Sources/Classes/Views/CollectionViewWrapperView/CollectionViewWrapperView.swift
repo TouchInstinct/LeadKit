@@ -20,17 +20,29 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UICollectionView
+import UIKit
 
-extension UICollectionView: PaginationWrappable {
+/// The main purpose of this class is to fix empty space on top of the screen
+/// when view controller view is UICollectionView.
+open class CollectionViewWrapperView: ScrollViewHolderView, CollectionViewHolder {
 
-    public var footerView: UIView? {
-        get {
-            return nil
-        }
-        set {
-            // nothing
-        }
+    /// Contained collection view.
+    public let collectionView: UICollectionView
+
+    /// Initializer with collection view layout parameter.
+    ///
+    /// - Parameter layout: UICollectionViewLayout to pass in UICollectionView init.
+    public init(layout: UICollectionViewLayout) {
+        self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        self.collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+        super.init(frame: .zero)
+
+        addSubview(collectionView)
+    }
+
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 }

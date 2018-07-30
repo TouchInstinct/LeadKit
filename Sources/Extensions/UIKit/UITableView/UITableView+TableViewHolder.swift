@@ -20,17 +20,12 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UICollectionView
+import UIKit.UITableView
 
-extension UICollectionView: PaginationWrappable {
+extension UITableView: TableViewHolder {
 
-    public var footerView: UIView? {
-        get {
-            return nil
-        }
-        set {
-            // nothing
-        }
+    public var tableView: UITableView {
+        return self
     }
 
 }

@@ -20,17 +20,36 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UICollectionView
+import UIKit.UIView
 
-extension UICollectionView: PaginationWrappable {
+/// Base controller configurable by view model and custom view.
+open class BaseCustomViewController<ViewModel, View: UIView>: BaseConfigurableController<ViewModel> {
 
-    public var footerView: UIView? {
-        get {
-            return nil
-        }
-        set {
-            // nothing
-        }
+    /// Contained custom view.
+    public private(set) lazy var customView = createView()
+
+    /// Initializer with view model and custom view parameters.
+    ///
+    /// - Parameters:
+    ///   - viewModel: A view model to configure this controller.
+    ///   - customView: UIView instance to assign in view property.
+    public override init(viewModel: ViewModel) {
+        super.init(viewModel: viewModel)
+    }
+
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override open func loadView() {
+        view = customView
+    }
+
+    /// Creates custom view.
+    ///
+    /// - Returns: Initialized custom view.
+    open func createView() -> View {
+        return View()
     }
 
 }

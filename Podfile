@@ -1,9 +1,9 @@
 abstract_target 'LeadKit' do
-  pod "RxSwift", '~> 4.1'
-  pod "RxCocoa", '~> 4.1'
-  pod "RxAlamofire", '~> 4.1'
-  pod "SwiftLint", '~> 0.25'
-  pod "SwiftDate", '~> 4.5'
+  pod "RxSwift"
+  pod "RxCocoa"
+  pod "RxAlamofire"
+  pod "SwiftLint"
+  pod "SwiftDate"
 
   inhibit_all_warnings!
 
@@ -12,8 +12,8 @@ abstract_target 'LeadKit' do
 
     use_frameworks!
 
-    pod "TableKit", '~> 2.6'
-    pod "UIScrollView-InfiniteScroll", '~> 1.0.0'
+    pod "TableKit"
+    pod "UIScrollView-InfiniteScroll"
 
     target 'LeadKit iOSTests' do
       inherit! :search_paths
@@ -27,7 +27,7 @@ abstract_target 'LeadKit' do
 
     use_frameworks!
 
-    pod "TableKit", '~> 2.6'
+    pod "TableKit"
 
     target 'LeadKit iOS ExtensionsTests' do
       inherit! :search_paths
@@ -55,6 +55,14 @@ abstract_target 'LeadKit' do
 
   end
 
+end
+
+post_install do |installer|
+    # 1.5+
+    installer.pods_project.build_configurations.each do |config|
+        config.build_settings.delete('CODE_SIGNING_ALLOWED')
+        config.build_settings.delete('CODE_SIGNING_REQUIRED')
+    end
 end
 
 # If you have slow HDD

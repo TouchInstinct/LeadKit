@@ -20,17 +20,34 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UICollectionView
+import TableKit
 
-extension UICollectionView: PaginationWrappable {
+/// Base table controller configurable with view model and TableViewWrapperView as custom view.
+open class BaseTableContentController<ViewModel>: BaseScrollContentController<ViewModel, TableViewWrapperView> {
 
-    public var footerView: UIView? {
-        get {
-            return nil
-        }
-        set {
-            // nothing
-        }
+    /// TableDirector binded to table view.
+    public private(set) lazy var tableDirector = createTableDirector()
+
+    /// Creates tableDirector for table view.
+    ///
+    /// - Returns: Initialized TableDirector.
+    open func createTableDirector() -> TableDirector {
+        return TableDirector(tableView: tableView)
+    }
+
+    override open func createView() -> TableViewWrapperView {
+        return TableViewWrapperView(tableViewStyle: .plain)
+    }
+
+    override open func configureAppearance() {
+        super.configureAppearance()
+
+        tableView.separatorStyle = .none
+    }
+
+    /// Contained UITableView instance.
+    public var tableView: UITableView {
+        return customView.tableView
     }
 
 }

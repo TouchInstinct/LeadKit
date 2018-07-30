@@ -20,17 +20,12 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UICollectionView
+import UIKit.UITableView
 
-extension UICollectionView: PaginationWrappable {
+/// Protocol that contains table view property.
+public protocol TableViewHolder {
 
-    public var footerView: UIView? {
-        get {
-            return nil
-        }
-        set {
-            // nothing
-        }
-    }
+    /// Contained UITableView instance.
+    var tableView: UITableView { get }
 
 }

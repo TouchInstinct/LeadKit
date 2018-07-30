@@ -20,17 +20,18 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UICollectionView
+import UIKit
 
-extension UICollectionView: PaginationWrappable {
+/// Base collection controller configurable with view model and CollectionViewWrapperView as custom view.
+open class BaseCollectionContentController<ViewModel>: BaseScrollContentController<ViewModel, CollectionViewWrapperView> {
 
-    public var footerView: UIView? {
-        get {
-            return nil
-        }
-        set {
-            // nothing
-        }
+    override open func createView() -> CollectionViewWrapperView {
+        return CollectionViewWrapperView(layout: UICollectionViewFlowLayout())
+    }
+
+    /// Contained UICollectionView instance.
+    public var collectionView: UICollectionView {
+        return customView.collectionView
     }
 
 }

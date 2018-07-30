@@ -20,16 +20,20 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UICollectionView
+import RxSwift
+import RxCocoa
 
-extension UICollectionView: PaginationWrappable {
+public extension Reactive where Base: UIScrollView {
 
-    public var footerView: UIView? {
-        get {
-            return nil
-        }
-        set {
-            // nothing
+    /// Binder instance that updates contentInset bottom value.
+    var bottomInsetBinder: Binder<CGFloat> {
+        return Binder(base) { base, value in
+            // Quick workaround.
+            // For some reason code in closure won't work without async call.
+            DispatchQueue.main.async {
+                base.contentInset.bottom = value
+                base.scrollIndicatorInsets.bottom = value
+            }
         }
     }
 

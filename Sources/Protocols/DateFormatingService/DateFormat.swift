@@ -26,6 +26,6 @@ import SwiftDate
 public protocol DateFormat {
 
     /// SwiftDate.DateFormat for current format.
-    var swiftDateFormat: SwiftDate.DateFormat { get }
+    var swiftDateFormat: DateToStringStyles { get }
 
 }

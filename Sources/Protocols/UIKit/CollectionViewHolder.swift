@@ -22,15 +22,10 @@
 
 import UIKit.UICollectionView
 
-extension UICollectionView: PaginationWrappable {
+/// Protocol that contains table view property.
+public protocol CollectionViewHolder {
 
-    public var footerView: UIView? {
-        get {
-            return nil
-        }
-        set {
-            // nothing
-        }
-    }
+    /// Contained UICollectionView instance.
+    var collectionView: UICollectionView { get }
 
 }

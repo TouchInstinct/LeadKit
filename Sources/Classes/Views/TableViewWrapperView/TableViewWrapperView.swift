@@ -20,17 +20,29 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UICollectionView
+import UIKit.UITableView
 
-extension UICollectionView: PaginationWrappable {
+/// The main purpose of this class is to fix empty space on top of the screen
+/// when view controller view is UITableView.
+open class TableViewWrapperView: ScrollViewHolderView, TableViewHolder {
 
-    public var footerView: UIView? {
-        get {
-            return nil
-        }
-        set {
-            // nothing
-        }
+    /// Contained table view.
+    public let tableView: UITableView
+
+    /// Initializer with tableViewStyle parameter.
+    ///
+    /// - Parameter tableViewStyle: UITableViewStyle to pass in UITableView init.
+    public init(tableViewStyle: UITableViewStyle) {
+        self.tableView = UITableView(frame: .zero, style: tableViewStyle)
+        self.tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+        super.init(frame: .zero)
+
+        addSubview(tableView)
+    }
+
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 }
