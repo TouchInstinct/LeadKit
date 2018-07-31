@@ -2,7 +2,8 @@
 
 ### 0.8.8
 - **Update**: Update `DateFormat` protocol. Add `dateToStringFormat` and `stringToDateFormat` according to SwiftDate 5.0.
-- **Update**: Replace `String` with `DateFormat` in `DataFormattingService` methods.
+- **Update**: Replace `String` with `DateFormat` in `DataFormattingService` date parsing methods.
+- **Update**: Replace `DateInRegion` with `DateRepresentable` in `DataFormattingService` string formatting methods.
 - **Add**: `parsedIn` optional parameter to date parsing method in `DataFormattingService`.
 
 ### 0.8.7
