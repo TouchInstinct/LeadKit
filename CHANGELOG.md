@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.8.8
+- **Update**: Update `DateFormat` protocol. Add `dateToStringFormat` and `stringToDateFormat` according to SwiftDate 5.0.
+- **Update**: Replace `String` with `DateFormat` in `DataFormattingService` methods.
+- **Add**: `parsedIn` optional parameter to date parsing method in `DataFormattingService`.
+
 ### 0.8.7
 - **Add**: Base configurable controllers hierarchy with generic custom view argument (`BaseConfigurableController`, `BaseCustomViewController`, `BaseScrollContentController`, `BaseTableContentController` and `BaseCollectionContentController`).
 - **Add**: `ScrollViewHolder`, `TableViewHolder` and `CollectionViewHolder` protocols.

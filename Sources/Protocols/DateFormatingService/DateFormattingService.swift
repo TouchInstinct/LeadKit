@@ -38,15 +38,16 @@ public protocol DateFormattingService {
     ///   - format: Format that should be used for date parsing.
     ///   - defaultDate: Default date if formatting will fail.
     /// - Returns: Date parsed from given string or default date if parsing did fail.
-    func date(from string: String, format: String, defaultDate: DateInRegion) -> DateInRegion
+    func date(from string: String, format: DateFormatType, defaultDate: DateInRegion) -> DateInRegion
 
-    /// Method parses date from string in given format with current region.
+    /// Method parses date from string in given format with passed region.
     ///
     /// - Parameters:
     ///   - string: String to use for date parsing.
     ///   - format: Format that should be used for date parsing.
+    ///   - parsedIn: A region that should be used for date parsing. In case of nil defaultRegion will be used.
     /// - Returns: Date parsed from given string or default date if parsing did fail.
-    func date(from string: String, format: String) -> DateInRegion?
+    func date(from string: String, format: DateFormatType, parsedIn: Region?) -> DateInRegion?
 
     /// Method format date in given format.
     ///
@@ -54,7 +55,7 @@ public protocol DateFormattingService {
     ///   - date: Date to format.
     ///   - format: Format that should be used for date formatting.
     /// - Returns: String that contains formatted date or nil if formatting did fail.
-    func string(from date: DateInRegion, format: DateFormatType) -> String
+    func string(from date: DateRepresentable, format: DateFormatType) -> String
 
     /// Method format date in given format for specific region.
     ///
@@ -63,6 +64,6 @@ public protocol DateFormattingService {
     ///   - format: Format that should be used for date formatting.
     ///   - formattedIn: A region that should be used for date formatting. In case of nil defaultRegion will be used.
     /// - Returns: String that contains formatted date or nil if formatting did fail.
-    func string(from date: DateInRegion, format: DateFormatType, formattedIn: Region?) -> String
+    func string(from date: DateRepresentable, format: DateFormatType, formattedIn: Region?) -> String
 
 }
