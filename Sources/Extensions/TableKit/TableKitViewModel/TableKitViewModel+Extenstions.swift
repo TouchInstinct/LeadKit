@@ -20,15 +20,16 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import TableKit
 
-/// Enum that describes text with appearance options.
-///
-/// - string: Regular string with common and often-used text attributes.
-/// - attributedString: Attributed string.
-public enum ViewText {
+public extension TableKitViewModel {
 
-    case string(String, textAttributes: BaseTextAttributes)
-    case attributedString(NSAttributedString)
+    /// TableRow type.
+    typealias RowType = TableRow<CellType>
+
+    /// Returs TableRow initialized with current view model.
+    var tableRow: RowType {
+        return RowType(item: self)
+    }
 
 }

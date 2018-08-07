@@ -32,19 +32,22 @@ public extension ViewText {
     ///   - color: Color to use.
     ///   - alignment: Alignment to use. Default is natural.
     init(string: String, font: UIFont, color: UIColor, alignment: NSTextAlignment = .natural) {
-        self = .string(string, font: font, color: color, alignment: alignment)
+        self = .string(string, textAttributes: BaseTextAttributes(font: font,
+                                                                  color: color,
+                                                                  alignment: alignment))
     }
 
     /// Attributed string created using text attributes.
     var attributedString: NSAttributedString {
         switch self {
-        case .string(let title, let font, let color, let alignment):
+        case .string(let title, let textAttributes):
+
             let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = alignment
+            paragraphStyle.alignment = textAttributes.alignment
 
             let attributes: [NSAttributedStringKey: Any] = [
-                .font: font,
-                .foregroundColor: color,
+                .font: textAttributes.font,
+                .foregroundColor: textAttributes.color,
                 .paragraphStyle: paragraphStyle
             ]
 
@@ -66,6 +69,13 @@ public extension ViewText {
         return attributedString.boundingRect(with: CGSize(width: maxWidth, height: maxHeight),
                                              options: [.usesLineFragmentOrigin, .usesFontLeading],
                                              context: nil).size
+    }
+
+    /// Configures given ViewTextConfigurable instance.
+    ///
+    /// - Parameter view: ViewTextConfigurable instance to configure with ViewText.
+    func configure(view: ViewTextConfigurable) {
+        view.configure(with: self)
     }
 
 }

@@ -20,15 +20,30 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import RxSwift
 
-/// Enum that describes text with appearance options.
-///
-/// - string: Regular string with common and often-used text attributes.
-/// - attributedString: Attributed string.
-public enum ViewText {
+extension PrimitiveSequence where Trait == SingleTrait {
 
-    case string(String, textAttributes: BaseTextAttributes)
-    case attributedString(NSAttributedString)
+    /// Replaces emitted element with new one.
+    ///
+    /// - Parameter value: A new element.
+    /// - Returns: An primitive sequence whose element is equal to passed value.
+    func replace<T>(with value: T) -> PrimitiveSequence<Trait, T> {
+        return map { _ in value }
+    }
+
+    /// Replaces emitted element with Void.
+    ///
+    /// - Returns: An primitive sequence whose element is equal to Void.
+    func asVoid() -> PrimitiveSequence<Trait, Void> {
+        return replace(with: Void())
+    }
+
+    /// Cast emitted element to optional type.
+    ///
+    /// - Returns: An primitive sequence whose element is equals to optional type of element.
+    func asOptional() -> PrimitiveSequence<Trait, Element?> {
+        return map { $0 }
+    }
 
 }

@@ -20,15 +20,29 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import UIKit.UIFont
+import UIKit.UIColor
 
-/// Enum that describes text with appearance options.
-///
-/// - string: Regular string with common and often-used text attributes.
-/// - attributedString: Attributed string.
-public enum ViewText {
+/// Base set of attributes to configure appearance of text.
+open class BaseTextAttributes {
 
-    case string(String, textAttributes: BaseTextAttributes)
-    case attributedString(NSAttributedString)
+    /// Text font.
+    public let font: UIFont
+    /// Text color.
+    public let color: UIColor
+    /// Text alignment.
+    public let alignment: NSTextAlignment
+
+    /// Memberwise initializer.
+    ///
+    /// - Parameters:
+    ///   - font: Text font.
+    ///   - color: Text color.
+    ///   - alignment: Text alignment.
+    public init(font: UIFont, color: UIColor, alignment: NSTextAlignment = .natural) {
+        self.font = font
+        self.color = color
+        self.alignment = alignment
+    }
 
 }

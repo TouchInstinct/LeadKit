@@ -20,15 +20,30 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import RxCocoa
 
-/// Enum that describes text with appearance options.
-///
-/// - string: Regular string with common and often-used text attributes.
-/// - attributedString: Attributed string.
-public enum ViewText {
+public extension SharedSequence {
 
-    case string(String, textAttributes: BaseTextAttributes)
-    case attributedString(NSAttributedString)
+    /// Replaces all emitted elements with new one.
+    ///
+    /// - Parameter value: A new element.
+    /// - Returns: An observable sequence whose elements are equals to passed value.
+    func replace<T>(with value: T) -> SharedSequence<SharingStrategy, T> {
+        return map { _ in value }
+    }
+
+    /// Replaces all emitted elements with Void.
+    ///
+    /// - Returns: An observable sequence whose elements are equals to Void.
+    func asVoid() -> SharedSequence<SharingStrategy, Void> {
+        return replace(with: Void())
+    }
+
+    /// Cast all emitted elements to optional type.
+    ///
+    /// - Returns: An observable sequence whose elements are equals to optional type of element.
+    func asOptional() -> SharedSequence<SharingStrategy, Element?> {
+        return map { $0 }
+    }
 
 }
