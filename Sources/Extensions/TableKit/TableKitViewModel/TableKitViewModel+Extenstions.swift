@@ -27,7 +27,7 @@ public extension TableKitViewModel {
     /// TableRow type.
     typealias RowType = TableRow<CellType>
 
-    /// Returs TableRow initialized with current view model.
+    /// Returns TableRow initialized with current view model.
     var tableRow: RowType {
         return RowType(item: self)
     }

@@ -22,7 +22,7 @@
 
 import RxSwift
 
-extension PrimitiveSequence where Trait == SingleTrait {
+public extension PrimitiveSequence where Trait == SingleTrait {
 
     /// Replaces emitted element with new one.
     ///
