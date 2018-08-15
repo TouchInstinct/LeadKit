@@ -20,15 +20,11 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import TableKit
 
-/// Enum that describes text with appearance options.
-///
-/// - string: Regular string with common and often-used text attributes.
-/// - attributedString: Attributed string.
-public enum ViewText {
+/// Protocol that used for view model that can only be used in one cell type.
+public protocol TableKitViewModel where CellType.CellData == Self {
 
-    case string(String, textAttributes: BaseTextAttributes)
-    case attributedString(NSAttributedString)
+    associatedtype CellType: ConfigurableCell & UITableViewCell
 
 }

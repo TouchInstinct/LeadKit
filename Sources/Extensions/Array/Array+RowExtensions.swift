@@ -20,15 +20,22 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import TableKit
 
-/// Enum that describes text with appearance options.
-///
-/// - string: Regular string with common and often-used text attributes.
-/// - attributedString: Attributed string.
-public enum ViewText {
+public extension Array where Element: Row {
 
-    case string(String, textAttributes: BaseTextAttributes)
-    case attributedString(NSAttributedString)
+    /// Creates TableSection with empty, zero height header and footer.
+    var onlyRowsSection: TableSection {
+        return TableSection(onlyRows: self)
+    }
+
+}
+
+public extension Array where Element: TableKitViewModel {
+
+    /// Creates TableSection with empty, zero height header and footer.
+    var onlyRowsSection: TableSection {
+        return map { $0.tableRow }.onlyRowsSection
+    }
 
 }

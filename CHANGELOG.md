@@ -1,5 +1,14 @@
 # Changelog
 
+### 0.8.9
+- **Add**: Methods `replace(with:)`, `asVoid()`, `asOptional()` to `ObservableType`, `SharedSequence` (aka `Driver`) and `Single`.
+- **Add**: `Completable.deferredJust(:)` static method.
+- **Add**: `ViewTextConfigurable` protocol. Conform `UILabel`, `UITextField` and `UIButton` to this protocol.
+- **Add**: `BaseTextAttributes` with base text appearance attributes.
+- **Update**: `ViewText.string` now uses `BaseTextAttributes` instead of separate properties.
+- **Add**: `BasePlaceholderView` and `BasePlaceholderViewModel` classes used to create your own placeholder.
+- **Add**: `TableKitViewModel` protocol that adds convenient extensions to cell view models that implements it.
+
 ### 0.8.8
 - **Update**: Update `DateFormat` protocol. Add `dateToStringFormat` and `stringToDateFormat` according to SwiftDate 5.0.
 - **Update**: Replace `String` with `DateFormat` in `DataFormattingService` date parsing methods.

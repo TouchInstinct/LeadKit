@@ -22,13 +22,24 @@
 
 import UIKit
 
-/// Enum that describes text with appearance options.
-///
-/// - string: Regular string with common and often-used text attributes.
-/// - attributedString: Attributed string.
-public enum ViewText {
+extension UILabel: ViewTextConfigurable {
 
-    case string(String, textAttributes: BaseTextAttributes)
-    case attributedString(NSAttributedString)
+    public var textFont: UIFont? {
+        get {
+            return font
+        }
+        set {
+            font = newValue
+        }
+    }
+
+    public var titleColor: UIColor? {
+        get {
+            return textColor
+        }
+        set {
+            textColor = newValue
+        }
+    }
 
 }

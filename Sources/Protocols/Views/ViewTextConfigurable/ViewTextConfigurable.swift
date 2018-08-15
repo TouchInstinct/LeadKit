@@ -20,15 +20,25 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import UIKit.UIFont
+import UIKit.UIColor
 
-/// Enum that describes text with appearance options.
-///
-/// - string: Regular string with common and often-used text attributes.
-/// - attributedString: Attributed string.
-public enum ViewText {
+/// Protocol that represents text object with appearance attributes.
+public protocol ViewTextConfigurable: class {
 
-    case string(String, textAttributes: BaseTextAttributes)
-    case attributedString(NSAttributedString)
+    /// Font of text object.
+    var textFont: UIFont? { get set }
+
+    /// Text color of text object.
+    var titleColor: UIColor? { get set }
+
+    /// Text alignment of text object.
+    var textAlignment: NSTextAlignment { get set }
+
+    /// Text itself of text object.
+    var text: String? { get set }
+
+    /// Attributed text of text object.
+    var attributedText: NSAttributedString? { get set }
 
 }

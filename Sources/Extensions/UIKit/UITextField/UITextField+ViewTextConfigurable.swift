@@ -20,22 +20,25 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UILabel
+import UIKit
 
-public extension UILabel {
+extension UITextField: ViewTextConfigurable {
 
-    /// Configures label with given ViewText.
-    ///
-    /// - Parameter viewText: ViewText to set.
-    func configure(with viewText: ViewText) {
-        switch viewText {
-        case .string(let string, let font, let color, let alignment):
-            self.font = font
-            self.textColor = color
-            self.textAlignment = alignment
-            self.text = string
-        case .attributedString(let attributedString):
-            attributedText = attributedString
+    public var textFont: UIFont? {
+        get {
+            return font
+        }
+        set {
+            font = newValue
+        }
+    }
+
+    public var titleColor: UIColor? {
+        get {
+            return textColor
+        }
+        set {
+            textColor = newValue
         }
     }
 

@@ -1,8 +1,8 @@
 //
-//  Copyright (c) 2017 Touch Instinct
+//  Copyright (c) 2018 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
+//  of this software and associated documentation files (the Software), to deal
 //  in the Software without restriction, including without limitation the rights
 //  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 //  copies of the Software, and to permit persons to whom the Software is
@@ -11,7 +11,7 @@
 //  The above copyright notice and this permission notice shall be included in
 //  all copies or substantial portions of the Software.
 //
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 //  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 //  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 //  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -22,20 +22,20 @@
 
 import RxSwift
 
-public extension Observable {
+public extension PrimitiveSequence where Trait == CompletableTrait {
 
-    /// Returns an observable sequence that invokes the specified factory function whenever a new observer subscribes.
+    /// Returns an single that invokes the specified factory function whenever a new observer subscribes.
     ///
-    /// - Parameter elementFactory: Element factory function to invoke for each observer
+    /// - Parameter workUnit: Element factory function to invoke for each observer
     /// that subscribes to the resulting sequence.
-    /// - Returns: An observable sequence whose observers trigger an invocation of the given element factory function.
-    static func deferredJust(_ elementFactory: @escaping () throws -> Element) -> Observable<Element> {
-        return create { observer -> Disposable in
+    /// - Returns: A single whose observers trigger an invocation of the given element factory function.
+    static func deferredJust(_ workUnit: @escaping () throws -> Void) -> Completable {
+        return .create { observer in
             do {
-                observer.onNext(try elementFactory())
-                observer.onCompleted()
+                try workUnit()
+                observer(.completed)
             } catch {
-                observer.onError(error)
+                observer(.error(error))
             }
 
             return Disposables.create()

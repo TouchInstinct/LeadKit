@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.8.8"
+  s.version         = "0.8.9"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -36,6 +36,7 @@ Pod::Spec.new do |s|
       "Sources/Classes/Views/DefaultPlaceholders/*",
       "Sources/Classes/Views/CollectionViewWrapperView/*",
       "Sources/Classes/Views/TableViewWrapperView/*",
+      "Sources/Classes/Views/BasePlaceholderView/*",
       "Sources/Extensions/CABasicAnimation/*",
       "Sources/Extensions/CGFloat/CGFloat+Pixels.swift",
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
@@ -45,6 +46,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/TableKit/**/*.swift",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
+      "Sources/Extensions/Array/Array+RowExtensions.swift",
       "Sources/Extensions/Drawing/UIImage/*",
       "Sources/Extensions/UIKit/**/*.swift",
       "Sources/Extensions/Views/ViewBackground+Configuration.swift",
@@ -54,6 +56,7 @@ Pod::Spec.new do |s|
       "Sources/Protocols/DataLoading/PaginationDataLoading/PaginationWrappable.swift",
       "Sources/Protocols/DataLoading/GeneralDataLoading/GeneralDataLoadingController.swift",
       "Sources/Protocols/Views/SeparatorCell/*",
+      "Sources/Protocols/TableKit/**/*",
       "Sources/Structures/Views/AnyLoadingIndicator.swift",
       "Sources/Structures/DrawingOperations/CALayerDrawingOperation.swift",
       "Sources/Structures/DrawingOperations/RoundDrawingOperation.swift",
@@ -74,9 +77,11 @@ Pod::Spec.new do |s|
       "Sources/Extensions/UIKit/UIApplication/UIApplication+OpenUrlSupport.swift",
       "Sources/Extensions/UIKit/UIApplication/UIApplication+Cellular.swift",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
+      "Sources/Extensions/Array/Array+RowExtensions.swift",
       "Sources/Extensions/Views/SeparatorCell/*",
       "Sources/Protocols/DataLoading/PaginationDataLoading/PaginationWrappable.swift",
       "Sources/Protocols/Views/SeparatorCell/*",
+      "Sources/Protocols/TableKit/**/*",
       "Sources/Structures/DataLoading/PaginationDataLoading/*"
     ]
 
