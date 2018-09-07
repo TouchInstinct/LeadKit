@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.8.10
+- **Update**: `color` of `SeparatorConfiguration` is mutable.
+
 ### 0.8.9
 - **Add**: Methods `replace(with:)`, `asVoid()`, `asOptional()` to `ObservableType`, `SharedSequence` (aka `Driver`) and `Single`.
 - **Add**: `Completable.deferredJust(:)` static method.
