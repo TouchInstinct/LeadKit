@@ -23,7 +23,7 @@
 import UIKit
 
 /// Separator configuration. Supports positioning, color and height per each separator
-public struct SeparatorConfiguration {
+public class SeparatorConfiguration {
 
     public var color: UIColor
     public let insets: UIEdgeInsets
