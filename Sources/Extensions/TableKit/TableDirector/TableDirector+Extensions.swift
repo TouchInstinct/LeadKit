@@ -116,4 +116,58 @@ public extension TableDirector {
         clear().append(section: TableSection(onlyRows: [])).reload()
     }
 
+    /// Inserts rows into table without complete reload.
+    ///
+    /// - Parameters:
+    ///   - rows: Rows to insert.
+    ///   - indexPath: Position of first row.
+    ///   - animation: The type of animation when rows are inserted
+    ///   - manualBeginEndUpdates: Don't call beginUpdates() & endUpdates() inside.
+    func insert(rows: [Row],
+                at indexPath: IndexPath,
+                with animation: UITableViewRowAnimation,
+                manualBeginEndUpdates: Bool = false) {
+        sections[indexPath.section].insert(rows: rows, at: indexPath.row)
+        let indexPaths: [IndexPath] = rows.indices.map {
+            IndexPath(row: indexPath.row + $0, section: indexPath.section)
+        }
+
+        if manualBeginEndUpdates {
+            tableView?.insertRows(at: indexPaths, with: animation)
+        } else {
+            tableView?.beginUpdates()
+            tableView?.insertRows(at: indexPaths, with: animation)
+            tableView?.endUpdates()
+        }
+    }
+
+    /// Removes rows from table without complete reload.
+    ///
+    /// - Parameters:
+    ///   - rowsCount: Number of rows to remove.
+    ///   - indexPath: Position of first row to remove.
+    ///   - animation: The type of animation when rows are deleted
+    ///   - manualBeginEndUpdates: Don't call beginUpdates() & endUpdates() inside.
+    func remove(rowsCount: Int,
+                startingAt indexPath: IndexPath,
+                with animation: UITableViewRowAnimation,
+                manualBeginEndUpdates: Bool = false) {
+        var indexPaths = [IndexPath]()
+        for index in indexPath.row ..< indexPath.row + rowsCount {
+            indexPaths.append(IndexPath(row: index, section: indexPath.section))
+        }
+
+        indexPaths.reversed().forEach {
+            sections[$0.section].remove(rowAt: $0.row)
+        }
+
+        if manualBeginEndUpdates {
+            tableView?.deleteRows(at: indexPaths, with: animation)
+        } else {
+            tableView?.beginUpdates()
+            tableView?.deleteRows(at: indexPaths, with: animation)
+            tableView?.endUpdates()
+        }
+    }
+
 }

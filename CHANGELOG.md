@@ -1,5 +1,13 @@
 # Changelog
 
+### 0.8.10
+- **Add**: `NSNumberConvertible` protocol for `NumberFormattingService` use cases.
+- **Add**: `TableDirector` methods for rows insertion and removal without reload a whole table.
+- **Add**: `UIImageView` binder for disclosure indicator rotation.
+- **Add**: `UIView.addSubviews(:)` methods with variable number of arguments and array of views.
+- **Add**: `PlaceholderConfigurable` that defines attributes and methods for view with placeholder and regular state.
+- **Add**: `ContentLoadingViewModel` enum that describes possible `PlaceholderConfigurable` view states.
+
 ### 0.8.9
 - **Add**: Methods `replace(with:)`, `asVoid()`, `asOptional()` to `ObservableType`, `SharedSequence` (aka `Driver`) and `Single`.
 - **Add**: `Completable.deferredJust(:)` static method.

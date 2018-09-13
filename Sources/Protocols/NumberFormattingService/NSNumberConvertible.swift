@@ -20,18 +20,14 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
+import Foundation
 
-public extension Array where Element: TableKitViewModel {
+/// Protocol describes type that can be converted to NSNumber.
+public protocol NSNumberConvertible {
 
-    /// Creates [Row] array from TableKitViewModels.
-    var tableRows: [Row] {
-        return map { $0.tableRow }
-    }
-
-    /// Creates TableSection with empty, zero height header and footer.
-    var onlyRowsSection: TableSection {
-        return TableSection(onlyRows: tableRows)
-    }
+    /// Convert value to NSNumber.
+    ///
+    /// - Returns: A value, expressed as an NSNumber.
+    func asNSNumber() -> NSNumber
 
 }

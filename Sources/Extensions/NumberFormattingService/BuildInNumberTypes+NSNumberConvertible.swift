@@ -20,18 +20,52 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
+import Foundation
 
-public extension Array where Element: TableKitViewModel {
+extension NSNumber: NSNumberConvertible {
 
-    /// Creates [Row] array from TableKitViewModels.
-    var tableRows: [Row] {
-        return map { $0.tableRow }
+    public func asNSNumber() -> NSNumber {
+        return self
     }
 
-    /// Creates TableSection with empty, zero height header and footer.
-    var onlyRowsSection: TableSection {
-        return TableSection(onlyRows: tableRows)
+}
+
+extension Decimal: NSNumberConvertible {
+
+    public func asNSNumber() -> NSNumber {
+        return NSDecimalNumber(decimal: self)
+    }
+
+}
+
+extension Int: NSNumberConvertible {
+
+    public func asNSNumber() -> NSNumber {
+        return NSNumber(value: self)
+    }
+
+}
+
+extension Int64: NSNumberConvertible {
+
+    public func asNSNumber() -> NSNumber {
+        return NSNumber(value: self)
+    }
+
+}
+
+extension Double: NSNumberConvertible {
+
+    public func asNSNumber() -> NSNumber {
+        return NSNumber(value: self)
+    }
+
+}
+
+extension Float: NSNumberConvertible {
+
+    public func asNSNumber() -> NSNumber {
+        return NSNumber(value: self)
     }
 
 }

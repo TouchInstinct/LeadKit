@@ -20,18 +20,16 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
+import UIKit.UIView
 
-public extension Array where Element: TableKitViewModel {
+public extension ConfigurableView where Self: UIView {
 
-    /// Creates [Row] array from TableKitViewModels.
-    var tableRows: [Row] {
-        return map { $0.tableRow }
-    }
-
-    /// Creates TableSection with empty, zero height header and footer.
-    var onlyRowsSection: TableSection {
-        return TableSection(onlyRows: tableRows)
+    /// Convenience initializer for configurable UIView subclass.
+    ///
+    /// - Parameter viewModel: View model to configure view after initialization.
+    init(viewModel: ViewModelType) {
+        self.init()
+        self.configure(with: viewModel)
     }
 
 }

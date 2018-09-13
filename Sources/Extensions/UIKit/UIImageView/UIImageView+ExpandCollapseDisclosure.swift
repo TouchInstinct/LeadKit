@@ -20,18 +20,30 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
+import RxCocoa
 
-public extension Array where Element: TableKitViewModel {
+private extension Double {
+    static let halfPeriod = 0.5
+}
 
-    /// Creates [Row] array from TableKitViewModels.
-    var tableRows: [Row] {
-        return map { $0.tableRow }
-    }
+public extension UIImageView {
 
-    /// Creates TableSection with empty, zero height header and footer.
-    var onlyRowsSection: TableSection {
-        return TableSection(onlyRows: tableRows)
+    /// Rotates image view by 180 degrees via transform property with animation.
+    var expandRotationBinder: Binder<Bool> {
+        return Binder(self) { view, isExpanded in
+
+            let angle = isExpanded ? CGFloat.pi / 2 : -CGFloat.pi / 2
+
+            UIView.animateKeyframes(withDuration: CATransaction.animationDuration(), delay: 0, options: [], animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: .halfPeriod, animations: {
+                    view.transform = view.transform.rotated(by: angle)
+                })
+
+                UIView.addKeyframe(withRelativeStartTime: .halfPeriod, relativeDuration: .halfPeriod, animations: {
+                    view.transform = view.transform.rotated(by: angle)
+                })
+            })
+        }
     }
 
 }

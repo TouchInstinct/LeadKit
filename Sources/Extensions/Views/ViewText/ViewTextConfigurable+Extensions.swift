@@ -29,7 +29,7 @@ public extension ViewTextConfigurable {
         switch viewText {
         case .string(let text, let textAttributes):
             self.text = text
-            self.configureBaseArrearance(with: textAttributes)
+            self.configureBaseAppearance(with: textAttributes)
         case .attributedString(let attributedString):
             self.attributedText = attributedString
         }
@@ -38,7 +38,7 @@ public extension ViewTextConfigurable {
     /// Configures text appearance of view.
     ///
     /// - Parameter baseTextAttributes: Set of attributes to configure appearance of text.
-    func configureBaseArrearance(with baseTextAttributes: BaseTextAttributes) {
+    func configureBaseAppearance(with baseTextAttributes: BaseTextAttributes) {
         textFont = baseTextAttributes.font
         titleColor = baseTextAttributes.color
         textAlignment = baseTextAttributes.alignment
@@ -52,7 +52,7 @@ public extension BaseTextAttributes {
     ///
     /// - Parameter view: ViewTextConfigurable instance to configure with BaseTextAttributes.
     func configureBaseApperance(of view: ViewTextConfigurable) {
-        view.configureBaseArrearance(with: self)
+        view.configureBaseAppearance(with: self)
     }
 
 }
