@@ -25,7 +25,7 @@ import Foundation
 /// Protocol describes type that can be converted to NSNumber.
 public protocol NSNumberConvertible {
 
-    /// Convert value to NSNumber.
+    /// NSNumber representation of value.
     ///
     /// - Returns: A value, expressed as an NSNumber.
     func asNSNumber() -> NSNumber

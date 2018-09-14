@@ -127,6 +127,7 @@ public extension TableDirector {
                 at indexPath: IndexPath,
                 with animation: UITableViewRowAnimation,
                 manualBeginEndUpdates: Bool = false) {
+        
         sections[indexPath.section].insert(rows: rows, at: indexPath.row)
         let indexPaths: [IndexPath] = rows.indices.map {
             IndexPath(row: indexPath.row + $0, section: indexPath.section)
@@ -152,6 +153,7 @@ public extension TableDirector {
                 startingAt indexPath: IndexPath,
                 with animation: UITableViewRowAnimation,
                 manualBeginEndUpdates: Bool = false) {
+
         var indexPaths = [IndexPath]()
         for index in indexPath.row ..< indexPath.row + rowsCount {
             indexPaths.append(IndexPath(row: index, section: indexPath.section))
