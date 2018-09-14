@@ -20,7 +20,8 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
-
 /// Closure that takes no arguments and return Void.
 public typealias VoidBlock = () -> Void
+
+/// Closure that takes no arguments, may throw error and return Void.
+public typealias ThrowableVoidBlock = () throws -> Void
