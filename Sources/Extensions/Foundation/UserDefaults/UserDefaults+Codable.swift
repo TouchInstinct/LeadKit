@@ -7,8 +7,6 @@ public enum UserDefaultsError: Error {
 
 }
 
-private typealias JSONObject = [String: Any]
-
 public extension UserDefaults {
 
     /// Returns the object with specified type associated with the first occurrence of the specified default.
