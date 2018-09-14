@@ -1,6 +1,10 @@
 # Changelog
 
+### 0.8.11
+- **Change**: `NumberFormattingService.computedFormatters` computed var reverted to static.
+
 ### 0.8.10
+- **[Breaking change]**: `NumberFormattingService` methods is not static anymore.
 - **Add**: `NSNumberConvertible` protocol for `NumberFormattingService` use cases.
 - **Add**: `TableDirector` methods for rows insertion and removal without reload a whole table.
 - **Add**: `UIImageView` binder for disclosure indicator rotation.
