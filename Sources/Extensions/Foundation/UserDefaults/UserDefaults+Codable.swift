@@ -11,14 +11,6 @@ private typealias JSONObject = [String: Any]
 
 public extension UserDefaults {
 
-    private func storedValue<ST>(forKey key: String) throws -> ST {
-        guard let objectForKey = object(forKey: key) else {
-            throw UserDefaultsError.noSuchValue(key: key)
-        }
-
-        return try cast(objectForKey) as ST
-    }
-
     /// Returns the object with specified type associated with the first occurrence of the specified default.
     ///
     /// - Parameters:
@@ -28,7 +20,9 @@ public extension UserDefaults {
     /// or throw exception if the key was not found.
     /// - Throws: One of cases in UserDefaultsError
     func object<T: Decodable>(forKey key: String, decoder: JSONDecoder = JSONDecoder()) throws -> T {
-        let storedData = try storedValue(forKey: key) as Data
+        guard let storedData = data(forKey: key) else {
+            throw UserDefaultsError.noSuchValue(key: key)
+        }
 
         do {
             return try decoder.decode(T.self, from: storedData)
