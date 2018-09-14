@@ -25,11 +25,11 @@ import Foundation
 public extension NumberFormattingService {
 
     /// Computed static property. Use only once for `formatters` field implementation!
-    static var computedFormatters: [NumberFormatType: NumberFormatter] {
+    var computedFormatters: [NumberFormatType: NumberFormatter] {
         return Dictionary(uniqueKeysWithValues: NumberFormatType.allOptions.map { ($0, $0.numberFormatter) })
     }
 
-    static func numberFormatter(for format: NumberFormatType) -> NumberFormatter {
+    func numberFormatter(for format: NumberFormatType) -> NumberFormatter {
         guard let formatter = formatters[format] else {
             fatalError("Unregistered number formatter for \(format)")
         }
@@ -37,28 +37,24 @@ public extension NumberFormattingService {
         return formatter
     }
 
-    static func string(from number: NSNumber, format: NumberFormatType, defaultString: String = "") -> String {
-        return numberFormatter(for: format).string(from: number) ?? defaultString
+    func string(from number: NSNumberConvertible, format: NumberFormatType, defaultString: String = "") -> String {
+        return numberFormatter(for: format).string(from: number.asNSNumber()) ?? defaultString
     }
 
-    static func string(from number: Decimal, format: NumberFormatType, defaultString: String = "") -> String {
-        return string(from: NSDecimalNumber(decimal: number), format: format, defaultString: defaultString)
+    func number(from string: String, format: NumberFormatType) -> NSNumber? {
+        return numberFormatter(for: format).number(from: string)
     }
 
-    static func string(from number: Int, format: NumberFormatType, defaultString: String = "") -> String {
-        return string(from: NSNumber(value: number), format: format, defaultString: defaultString)
+}
+
+public extension NumberFormattingService where Self: Singleton {
+
+    static func string(from number: NSNumberConvertible, format: NumberFormatType, defaultString: String = "") -> String {
+        return shared.string(from: number, format: format, defaultString: defaultString)
     }
 
-    static func string(from number: Int64, format: NumberFormatType, defaultString: String = "") -> String {
-        return string(from: NSNumber(value: number), format: format, defaultString: defaultString)
-    }
-
-    static func string(from number: Float, format: NumberFormatType, defaultString: String = "") -> String {
-        return string(from: NSNumber(value: Double(number)), format: format, defaultString: defaultString)
-    }
-
-    static func string(from number: Double, format: NumberFormatType, defaultString: String = "") -> String {
-        return string(from: NSNumber(value: number), format: format, defaultString: defaultString)
+    static func number(from string: String, format: NumberFormatType) -> NSNumber? {
+        return shared.number(from: string, format: format)
     }
 
 }

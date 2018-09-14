@@ -27,66 +27,29 @@ public protocol NumberFormattingService {
 
     associatedtype NumberFormatType: NumberFormat
 
-    static var formatters: [NumberFormatType: NumberFormatter] { get }
+    var formatters: [NumberFormatType: NumberFormatter] { get }
 
-    /// Method returns NumberFormatter for given NumberFormatType.
+    /// Returns NumberFormatter for given NumberFormatType.
     ///
     /// - Parameter format: A number format under which should be configured NumberFormatter.
     /// - Returns: Configured NumberFormatter instance.
-    static func numberFormatter(for format: NumberFormatType) -> NumberFormatter
+    func numberFormatter(for format: NumberFormatType) -> NumberFormatter
 
-    /// Method format number in given format. If formatting fails - it returns default string.
+    /// Format number in given format. If formatting fails - it returns default string.
     ///
     /// - Parameters:
     ///   - number: A number to format.
     ///   - format: A format that should be used for number formatting.
     ///   - defaultString: Default string if formatting will fail.
     /// - Returns: An string that contains formatted number or default string if formatting did fail.
-    static func string(from number: NSNumber, format: NumberFormatType, defaultString: String) -> String
+    func string(from number: NSNumberConvertible, format: NumberFormatType, defaultString: String) -> String
 
-    /// Method format number in given format. If formatting fails - it returns default string.
+    /// Parses number from string in given format.
     ///
     /// - Parameters:
-    ///   - number: A number to format.
-    ///   - format: A format that should be used for number formatting.
-    ///   - defaultString: Default string if formatting will fail.
-    /// - Returns: An string that contains formatted number or default string if formatting did fail.
-    static func string(from number: Int, format: NumberFormatType, defaultString: String) -> String
-
-    /// Method format number in given format. If formatting fails - it returns default string.
-    ///
-    /// - Parameters:
-    ///   - number: A number to format.
-    ///   - format: A format that should be used for number formatting.
-    ///   - defaultString: Default string if formatting will fail.
-    /// - Returns: An string that contains formatted number or default string if formatting did fail.
-    static func string(from number: Int64, format: NumberFormatType, defaultString: String) -> String
-
-    /// Method format number in given format. If formatting fails - it returns default string.
-    ///
-    /// - Parameters:
-    ///   - number: A number to format.
-    ///   - format: A format that should be used for number formatting.
-    ///   - defaultString: Default string if formatting will fail.
-    /// - Returns: An string that contains formatted number or default string if formatting did fail.
-    static func string(from number: Float, format: NumberFormatType, defaultString: String) -> String
-
-    /// Method format number in given format. If formatting fails - it returns default string.
-    ///
-    /// - Parameters:
-    ///   - number: A number to format.
-    ///   - format: A format that should be used for number formatting.
-    ///   - defaultString: Default string if formatting will fail.
-    /// - Returns: An string that contains formatted number or default string if formatting did fail.
-    static func string(from number: Double, format: NumberFormatType, defaultString: String) -> String
-
-    /// Method format number in given format. If formatting fails - it returns default string.
-    ///
-    /// - Parameters:
-    ///   - number: A number to format.
-    ///   - format: A format that should be used for number formatting.
-    ///   - defaultString: Default string if formatting will fail.
-    /// - Returns: An string that contains formatted number or default string if formatting did fail.
-    static func string(from number: Decimal, format: NumberFormatType, defaultString: String) -> String
+    ///   - string: A string to parse.
+    ///   - format: A format that should be used for number parsing.
+    /// - Returns: Parsed number or nil if parsing will fail.
+    func number(from string: String, format: NumberFormatType) -> NSNumber?
 
 }

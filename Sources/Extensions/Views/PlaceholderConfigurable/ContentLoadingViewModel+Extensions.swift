@@ -20,18 +20,36 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
+public extension ContentLoadingViewModel {
 
-public extension Array where Element: TableKitViewModel {
-
-    /// Creates [Row] array from TableKitViewModels.
-    var tableRows: [Row] {
-        return map { $0.tableRow }
+    /// Returns true if self == .placeholder.
+    var isPlaceholder: Bool {
+        if case .placeholder = self {
+            return true
+        } else {
+            return false
+        }
     }
 
-    /// Creates TableSection with empty, zero height header and footer.
-    var onlyRowsSection: TableSection {
-        return TableSection(onlyRows: tableRows)
+}
+
+public extension ContentLoadingViewModel where PlaceholderType == Void {
+
+    /// Creates ContentLoadingViewModel with placeholder.
+    static var placeholder: ContentLoadingViewModel<ContentType, PlaceholderType> {
+        return .placeholder(())
+    }
+
+}
+
+public extension ContentLoadingViewModel where PlaceholderType == [Void] {
+
+    /// Creates ContentLoadingViewModel with placeholder.
+    ///
+    /// - Parameter numberOfItems: Number of placeholders to create.
+    /// - Returns: ContentLoadingViewModel with placeholder.
+    static func placeholders(numberOfItems: Int) -> ContentLoadingViewModel<ContentType, PlaceholderType> {
+        return .placeholder(Array(repeating: (), count: numberOfItems))
     }
 
 }

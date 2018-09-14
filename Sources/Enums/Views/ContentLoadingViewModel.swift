@@ -20,18 +20,13 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
+/// Enum that describes possible PlaceholderConfigurable view states.
+///
+/// - placeholder: Placeholder state with placeholder view model.
+/// - content: Content state with content view model.
+public enum ContentLoadingViewModel<ContentType, PlaceholderType> {
 
-public extension Array where Element: TableKitViewModel {
-
-    /// Creates [Row] array from TableKitViewModels.
-    var tableRows: [Row] {
-        return map { $0.tableRow }
-    }
-
-    /// Creates TableSection with empty, zero height header and footer.
-    var onlyRowsSection: TableSection {
-        return TableSection(onlyRows: tableRows)
-    }
+    case placeholder(PlaceholderType)
+    case content(ContentType)
 
 }
