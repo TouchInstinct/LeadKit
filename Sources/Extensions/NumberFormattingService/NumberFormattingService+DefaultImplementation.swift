@@ -25,7 +25,7 @@ import Foundation
 public extension NumberFormattingService {
 
     /// Computed static property. Use only once for `formatters` field implementation!
-    var computedFormatters: [NumberFormatType: NumberFormatter] {
+    static var computedFormatters: [NumberFormatType: NumberFormatter] {
         return Dictionary(uniqueKeysWithValues: NumberFormatType.allOptions.map { ($0, $0.numberFormatter) })
     }
 
