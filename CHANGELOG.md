@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.8.12
+- **Add**: `UserDefaults+Codable` is back. Now with generic subscript support.
+
 ### 0.8.11
 - **Change**: `NumberFormattingService.computedFormatters` computed var reverted to static.
 
