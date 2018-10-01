@@ -1,16 +1,16 @@
 PODS:
   - Alamofire (4.7.3)
-  - RxAlamofire (4.2.0):
-    - RxAlamofire/Core (= 4.2.0)
-  - RxAlamofire/Core (4.2.0):
+  - RxAlamofire (4.3.0):
+    - RxAlamofire/Core (= 4.3.0)
+  - RxAlamofire/Core (4.3.0):
     - Alamofire (~> 4.5)
     - RxSwift (~> 4)
-  - RxCocoa (4.2.0):
+  - RxCocoa (4.3.1):
     - RxSwift (~> 4.0)
-  - RxSwift (4.2.0)
-  - SwiftDate (5.0.7)
+  - RxSwift (4.3.1)
+  - SwiftDate (5.0.9)
   - SwiftLint (0.27.0)
-  - TableKit (2.7.0)
+  - TableKit (2.8.0)
   - UIScrollView-InfiniteScroll (1.1.0)
 
 DEPENDENCIES:
@@ -35,12 +35,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  RxAlamofire: 87a9c588541210cc3e4a1f843ccc3ecf3eb98b31
-  RxCocoa: 0b54909c902e1e581212a03e690bbd94032d8baa
-  RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
-  SwiftDate: f053fb89250c59af5eff777f3b832d2b9dd57403
+  RxAlamofire: 09624d0f2d48ed8b686e4eb4cf68e28cbd2df556
+  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
+  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
+  SwiftDate: 52b718d32ec006861a2be2756cbfa482d438e781
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
-  TableKit: 506650573ed96ec007649b655559ecd43f9fd505
+  TableKit: d635663343d00e209f258e35d4ee0072ad1beb1a
   UIScrollView-InfiniteScroll: 3ef456bcbe759c19f510a383cff96e6647c98c98
 
 PODFILE CHECKSUM: fd9789ede36fcba83a5b12f15edf8b32183698ba

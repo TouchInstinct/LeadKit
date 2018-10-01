@@ -401,6 +401,14 @@
 		6741CED120E243F800FEC4D9 /* BaseConfigurableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6741CECD20E243F800FEC4D9 /* BaseConfigurableController.swift */; };
 		6741CED220E243F800FEC4D9 /* BaseConfigurableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6741CECD20E243F800FEC4D9 /* BaseConfigurableController.swift */; };
 		6741CED320E243F800FEC4D9 /* BaseConfigurableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6741CECD20E243F800FEC4D9 /* BaseConfigurableController.swift */; };
+		674303CF214FB8F700EF4160 /* GeneralDataLoadingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674303CE214FB8F700EF4160 /* GeneralDataLoadingHandler.swift */; };
+		674303D0214FB8F700EF4160 /* GeneralDataLoadingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674303CE214FB8F700EF4160 /* GeneralDataLoadingHandler.swift */; };
+		674303D1214FB8F700EF4160 /* GeneralDataLoadingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674303CE214FB8F700EF4160 /* GeneralDataLoadingHandler.swift */; };
+		674303D2214FB8F700EF4160 /* GeneralDataLoadingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674303CE214FB8F700EF4160 /* GeneralDataLoadingHandler.swift */; };
+		674303D4214FC0FF00EF4160 /* GeneralDataLoadingHandler+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674303D3214FC0FF00EF4160 /* GeneralDataLoadingHandler+Extensions.swift */; };
+		674303D5214FC0FF00EF4160 /* GeneralDataLoadingHandler+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674303D3214FC0FF00EF4160 /* GeneralDataLoadingHandler+Extensions.swift */; };
+		674303D6214FC0FF00EF4160 /* GeneralDataLoadingHandler+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674303D3214FC0FF00EF4160 /* GeneralDataLoadingHandler+Extensions.swift */; };
+		674303D7214FC0FF00EF4160 /* GeneralDataLoadingHandler+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674303D3214FC0FF00EF4160 /* GeneralDataLoadingHandler+Extensions.swift */; };
 		674AF55C1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */; };
 		674AF55D1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */; };
 		674AF55E1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */; };
@@ -886,6 +894,8 @@
 		6741CEC120E2430900FEC4D9 /* UITableView+TableViewHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+TableViewHolder.swift"; sourceTree = "<group>"; };
 		6741CECC20E243F800FEC4D9 /* BaseCustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCustomViewController.swift; sourceTree = "<group>"; };
 		6741CECD20E243F800FEC4D9 /* BaseConfigurableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseConfigurableController.swift; sourceTree = "<group>"; };
+		674303CE214FB8F700EF4160 /* GeneralDataLoadingHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralDataLoadingHandler.swift; sourceTree = "<group>"; };
+		674303D3214FC0FF00EF4160 /* GeneralDataLoadingHandler+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralDataLoadingHandler+Extensions.swift"; sourceTree = "<group>"; };
 		674AF55B1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+LoadingIndicator.swift"; sourceTree = "<group>"; };
 		675E0AA821072FF400CDC143 /* BaseScrollContentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScrollContentController.swift; sourceTree = "<group>"; };
 		6760DC4C212F351700020BAE /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
@@ -1632,6 +1642,7 @@
 				673CF4372063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift */,
 				673CF4102063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift */,
 				6741C40E20EAC88800418D08 /* GeneralDataLoadingViewModel+Extensions.swift */,
+				674303D3214FC0FF00EF4160 /* GeneralDataLoadingHandler+Extensions.swift */,
 			);
 			path = GeneralDataLoading;
 			sourceTree = "<group>";
@@ -1657,6 +1668,7 @@
 			isa = PBXGroup;
 			children = (
 				673CF4172063D50700C329F6 /* GeneralDataLoadingController.swift */,
+				674303CE214FB8F700EF4160 /* GeneralDataLoadingHandler.swift */,
 			);
 			path = GeneralDataLoading;
 			sourceTree = "<group>";
@@ -2513,38 +2525,43 @@
 					67186B271EB248F100CFAFFB = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = D4HA43V467;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					67186B2F1EB248F100CFAFFB = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = D4HA43V467;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					6782BB901EB31CFE0086E0B8 = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = D4HA43V467;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					6782BB9F1EB31D590086E0B8 = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = D4HA43V467;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					6782BBA71EB31D5A0086E0B8 = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = D4HA43V467;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					67952DC41EB327B400B3BA1A = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = D4HA43V467;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					67952DCC1EB327B400B3BA1A = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = D4HA43V467;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -3048,6 +3065,7 @@
 				6762131820A0BBA30034EEF1 /* TableSection+Extensions.swift in Sources */,
 				67EB7FFD206176C900BDD9FB /* AnyPaginationWrappable.swift in Sources */,
 				671463041EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
+				674303CF214FB8F700EF4160 /* GeneralDataLoadingHandler.swift in Sources */,
 				6774527420624E820024EEEF /* DataLoadingModel.swift in Sources */,
 				40F118491F8FF223004AADAF /* TableRow+AppearanceExtension.swift in Sources */,
 				6727476E206CCDDB00725163 /* ViewBackground+Configuration.swift in Sources */,
@@ -3084,6 +3102,7 @@
 				36FE777020F669E300284C09 /* String+ConvertToHost.swift in Sources */,
 				6774529220625D170024EEEF /* GeneralDataLoadingModel.swift in Sources */,
 				6714637C1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
+				674303D4214FC0FF00EF4160 /* GeneralDataLoadingHandler+Extensions.swift in Sources */,
 				671463341EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
 				67DB7760210869D1001CB56B /* TableViewWrapperView.swift in Sources */,
 				673CF4182063D50700C329F6 /* GeneralDataLoadingController.swift in Sources */,
@@ -3235,6 +3254,7 @@
 				677452AB206263360024EEEF /* CursorType+RxDataSourceDefaultImplementation.swift in Sources */,
 				677B06C121187559006C947D /* ViewTextConfigurable.swift in Sources */,
 				673564F32068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */,
+				674303D6214FC0FF00EF4160 /* GeneralDataLoadingHandler+Extensions.swift in Sources */,
 				67EB7FD620615D1700BDD9FB /* ResettableCursorType.swift in Sources */,
 				67274791206CD88600725163 /* DateFormattingService.swift in Sources */,
 				6714627A1EB3396E00EAB194 /* ResizeMode.swift in Sources */,
@@ -3277,6 +3297,7 @@
 				671462CA1EB3396E00EAB194 /* String+Localization.swift in Sources */,
 				677452A620625FA90024EEEF /* RxDataSource.swift in Sources */,
 				67153E42207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */,
+				674303D1214FB8F700EF4160 /* GeneralDataLoadingHandler.swift in Sources */,
 				671462BA1EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */,
 				671463761EB3396E00EAB194 /* BorderDrawingOperation.swift in Sources */,
 				677452A120625EEE0024EEEF /* PaginationDataLoadingModel.swift in Sources */,
@@ -3335,6 +3356,7 @@
 				671463871EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
 				671463931EB3396E00EAB194 /* TemplateDrawingOperation.swift in Sources */,
 				674AF55E1EC45B1600038A8F /* UIActivityIndicatorView+LoadingIndicator.swift in Sources */,
+				674303D7214FC0FF00EF4160 /* GeneralDataLoadingHandler+Extensions.swift in Sources */,
 				6741CEC020E242FA00FEC4D9 /* UIScrollView+RxBindings.swift in Sources */,
 				677B06A921186AFE006C947D /* ObservableType+Extensions.swift in Sources */,
 				671463A51EB33FF600EAB194 /* Animatable.swift in Sources */,
@@ -3441,6 +3463,7 @@
 				671462BB1EB3396E00EAB194 /* Sequence+ConcurrentMap.swift in Sources */,
 				67EB7FEE2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */,
 				671463771EB3396E00EAB194 /* BorderDrawingOperation.swift in Sources */,
+				674303D2214FB8F700EF4160 /* GeneralDataLoadingHandler.swift in Sources */,
 				6760DC4F212F351700020BAE /* UIView+AddSubviews.swift in Sources */,
 				6714633F1EB3396E00EAB194 /* LoadingIndicator.swift in Sources */,
 				675C1FB41F97CA32007D5249 /* AppearanceConfigurable.swift in Sources */,
@@ -3512,6 +3535,7 @@
 				671462E51EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
 				67EB7FFE206176C900BDD9FB /* AnyPaginationWrappable.swift in Sources */,
 				67DB776E210871E8001CB56B /* BaseCollectionContentController.swift in Sources */,
+				674303D0214FB8F700EF4160 /* GeneralDataLoadingHandler.swift in Sources */,
 				67274773206CCF1200725163 /* ViewText.swift in Sources */,
 				678D26A520692BFF00B05B93 /* TextFieldViewModelEvents.swift in Sources */,
 				677452B720627FE00024EEEF /* PaginationWrappable.swift in Sources */,
@@ -3616,6 +3640,7 @@
 				671462711EB3396E00EAB194 /* CursorError.swift in Sources */,
 				671463991EB3396E00EAB194 /* AnyLoadingIndicator.swift in Sources */,
 				67DB7761210869D1001CB56B /* TableViewWrapperView.swift in Sources */,
+				674303D5214FC0FF00EF4160 /* GeneralDataLoadingHandler+Extensions.swift in Sources */,
 				673CF4392063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift in Sources */,
 				671463A81EB340C000EAB194 /* UIViewController+ConfigurableController.swift in Sources */,
 				671463151EB3396E00EAB194 /* UIViewController+TopVisibleViewController.swift in Sources */,
@@ -3751,7 +3776,7 @@
 				PRODUCT_NAME = LeadKit;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -3776,7 +3801,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.touchin.LeadKit-iOS";
 				PRODUCT_NAME = LeadKit;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -3796,7 +3821,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -3814,7 +3839,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.touchin.LeadKit-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -3841,7 +3866,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -3869,7 +3894,7 @@
 				PRODUCT_NAME = LeadKit;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -3897,7 +3922,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -3924,7 +3949,7 @@
 				PRODUCT_NAME = LeadKit;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -3946,7 +3971,7 @@
 				SDKROOT = appletvos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TVOS_DEPLOYMENT_TARGET = 10.2;
 			};
 			name = Debug;
@@ -3965,7 +3990,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.touchin.LeadKit-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TVOS_DEPLOYMENT_TARGET = 10.2;
 			};
 			name = Release;
@@ -3993,7 +4018,7 @@
 				PRODUCT_NAME = LeadKit;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -4019,7 +4044,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.touchin.LeadKit-iOS-Extensions";
 				PRODUCT_NAME = LeadKit;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -4037,7 +4062,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.touchin.LeadKit-iOS-ExtensionsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -4054,7 +4079,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.touchin.LeadKit-iOS-ExtensionsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

@@ -24,6 +24,7 @@ public extension InitializableView {
 
     func initializeView() {
         addViews()
+        configureLayout()
         bindViews()
         configureAppearance()
         localize()
@@ -42,6 +43,10 @@ public extension InitializableView {
     }
 
     func localize() {
+        //
+    }
+
+    func configureLayout() {
         //
     }
 

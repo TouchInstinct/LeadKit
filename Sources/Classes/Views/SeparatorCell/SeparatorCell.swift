@@ -60,14 +60,14 @@ open class SeparatorCell: UITableViewCell {
 
     /// Move separator upward in hierarchy
     public func bringSeparatorsToFront() {
-        contentView.bringSubview(toFront: topView)
-        contentView.bringSubview(toFront: bottomView)
+        contentView.bringSubviewToFront(topView)
+        contentView.bringSubviewToFront(bottomView)
     }
 
     /// Move separator backward in hierarchy
     public func sendSeparatorsToBack() {
-        contentView.sendSubview(toBack: topView)
-        contentView.sendSubview(toBack: bottomView)
+        contentView.sendSubviewToBack(topView)
+        contentView.sendSubviewToBack(bottomView)
     }
 
     // MARK: - Private
@@ -101,7 +101,7 @@ open class SeparatorCell: UITableViewCell {
         configureLineViews()
     }
 
-    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         configureLineViews()

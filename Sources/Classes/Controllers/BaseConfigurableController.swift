@@ -22,7 +22,7 @@
 
 import UIKit.UIViewController
 
-/// Base controller that can should be configured with view model.
+/// Base controller that should be configured with view model.
 open class BaseConfigurableController<ViewModel>: UIViewController, ConfigurableController {
 
     /// A view model instance used by this controller.
@@ -44,6 +44,10 @@ open class BaseConfigurableController<ViewModel>: UIViewController, Configurable
     // MARK: - ConfigurableController
 
     open func addViews() {
+        // override in subclass
+    }
+
+    open func configureLayout() {
         // override in subclass
     }
 

@@ -34,32 +34,12 @@ public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCurs
 
     }
 
-    // Additional init with closure typealias fixes swift
-    // runtime crash inside emptyResultChecker.
-
-    public typealias PaginationEmptyResultChecker = (Cursor.ResultType) -> Bool
-
-    /// Model initializer with cursor, empty result checker and custom error handler.
-    ///
-    /// - Parameters:
-    ///   - dataSource: Data source cursor for paginated data loading.
-    ///   - customErrorHandler: Custom error handler for state update. Pass nil for default error handling.
-    ///   - emptyResultChecker: Empty result checker closure.
-    public override init(dataSource: Cursor,
-                         customErrorHandler: ErrorHandler? = nil,
-                         emptyResultChecker: @escaping PaginationEmptyResultChecker) {
-
-        super.init(dataSource: dataSource,
-                   customErrorHandler: customErrorHandler,
-                   emptyResultChecker: emptyResultChecker)
-    }
-
-    override open func reload() {
+    override public func reload() {
         load(.reload)
     }
 
     /// Attempt to load data again.
-    open func retry() {
+    public func retry() {
         load(.retry)
     }
 
@@ -107,14 +87,6 @@ public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCurs
         if dataSource.exhausted {
             state = .exhausted
         }
-    }
-
-}
-
-extension PaginationDataLoadingModel {
-
-    convenience init(cursor: Cursor) {
-        self.init(dataSource: cursor) { $0.isEmpty }
     }
 
 }

@@ -1,5 +1,13 @@
 # Changelog
 
+### 0.8.13
+- **Add**: `configureLayout` method to `InitializeableView` protocol and all implementations.
+- **Update**: `GeneralDataLoadingViewModel` now can handle state changes and result of data source. Previously it was possible only in view controller.
+- **Add**: `GeneralDataLoadingHandler` protocol, that defines methods for common data loading states handling. 
+- **Add**: `resultObservable` and `resultDriver` properties to `GeneralDataLoadingViewModel`.
+- **Add**: `hidesWhenStopped` option to `SpinnerView`, so you can stop animation without hiding image inside it.
+- **Update**: Migrate to Swift 4.2 & Xcode 10. Update dependencies.
+
 ### 0.8.12
 - **Add**: `UserDefaults+Codable` is back. Now with generic subscript support.
 

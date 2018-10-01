@@ -20,10 +20,8 @@
 //  THE SOFTWARE.
 //
 
-public protocol GeneralDataLoadingController: class, ConfigurableController
-    where ViewModelT: GeneralDataLoadingViewModel<ViewModelResultType> {
-
-    associatedtype ViewModelResultType
+public protocol GeneralDataLoadingController: class, ConfigurableController, GeneralDataLoadingHandler
+    where ViewModelT: GeneralDataLoadingViewModel<ResultType> {
 
     /// The loading view is shown when the `onLoadingState` method gets called
     var loadingView: UIView? { get set }
@@ -45,19 +43,5 @@ public protocol GeneralDataLoadingController: class, ConfigurableController
 
     /// Shold be called in viewDidLoad() instead of initialLoadView().
     func initialLoadDataLoadingView()
-
-    /// Called when data loading has started.
-    func onLoadingState()
-
-    /// Called when data loading has finished with non-empty result.
-    func onResultsState(result: ViewModelResultType)
-
-    /// Called when data loading did finished with empty result.
-    func onEmptyState()
-
-    /// Gets called when error is occured during data loading.
-    ///
-    /// - Parameter error: An error that might have occurred whilst loading
-    func onErrorState(error: Error)
 
 }

@@ -23,37 +23,37 @@
 import RxSwift
 import RxCocoa
 
-public extension GeneralDataLoadingViewModel {
+// Change to public if extension will be required outside this framework.
+internal extension GeneralDataLoadingHandler where Self: AnyObject {
 
-    /// Manually update state to result with given value.
+    var stateChangeBinder: Binder<GeneralDataLoadingState<Single<ResultType>>> {
+        return Binder(self) { base, value in
+            switch value {
+            case .loading:
+                base.onLoadingState()
+            case .result(let newResult, _):
+                base.onResultsState(result: newResult)
+            case .empty:
+                base.onEmptyState()
+            case .error(let error):
+                base.onErrorState(error: error)
+            case .initial:
+                break
+            }
+        }
+    }
+
+}
+
+public extension GeneralDataLoadingHandler where Self: AnyObject & DisposeBagHolder {
+
+    /// Binds loading state driver to class that implements GeneralDataLoadingHandler.
     ///
-    /// - Parameter newResult: New value to use as result.
-    func updateResultManually(to newResult: ResultType) {
-        updateStateManually(to: .result(newResult: newResult, from: .just(newResult)))
-    }
-
-    /// Emit elements of ResultType from state observable.
-    var resultObservable: Observable<ResultType> {
-        return loadingStateObservable.flatMap { state -> Observable<ResultType> in
-            switch state {
-            case .result(let newResult, _):
-                return .just(newResult)
-            default:
-                return .empty()
-            }
-        }
-    }
-
-    /// Emit elements of ResultType from state driver.
-    var resultDriver: Driver<ResultType> {
-        return loadingStateDriver.flatMap { state -> Driver<ResultType> in
-            switch state {
-            case .result(let newResult, _):
-                return .just(newResult)
-            default:
-                return .empty()
-            }
-        }
+    /// - Parameter loadingStateDriver: Driver that emits state change events.
+    func bindLoadingState(from loadingStateDriver: Driver<GeneralDataLoadingState<Single<ResultType>>>) {
+        loadingStateDriver
+            .drive(stateChangeBinder)
+            .disposed(by: disposeBag)
     }
 
 }
