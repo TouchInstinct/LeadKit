@@ -45,7 +45,7 @@ public struct AnyLoadingIndicator: Animatable {
     }
 
     /// The background view.
-    var view: UIView {
+    public var view: UIView {
         return backgroundView
     }
 
