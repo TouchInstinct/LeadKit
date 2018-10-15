@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.0
+- **Update**: version update.
+
 ### 0.8.13
 - **Add**: `configureLayout` method to `InitializeableView` protocol and all implementations.
 - **Update**: `GeneralDataLoadingViewModel` now can handle state changes and result of data source. Previously it was possible only in view controller.
