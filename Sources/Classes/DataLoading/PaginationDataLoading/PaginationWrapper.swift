@@ -26,7 +26,6 @@ import UIScrollView_InfiniteScroll
 
 /// Class that connects PaginationDataLoadingModel with UIScrollView. It handles all non-visual and visual states.
 final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Delegate: PaginationWrapperDelegate>
-    // "Segmentation fault: 11" in Xcode 9.2 without redundant same-type constraint :(
     where Cursor == Delegate.DataSourceType, Cursor.ResultType == [Cursor.Element] {
 
     private typealias DataLoadingModel = PaginationDataLoadingModel<Cursor>
@@ -83,7 +82,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
         self.delegate = delegate
         self.uiDelegate = uiDelegate
 
-        self.paginationViewModel = PaginationDataLoadingModel(cursor: cursor)
+        self.paginationViewModel = PaginationDataLoadingModel(dataSource: cursor) { $0.isEmpty }
 
         bindViewModelStates()
 
@@ -326,13 +325,13 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
     private func bindAppStateNotifications() {
         let notificationCenter = NotificationCenter.default.rx
 
-        notificationCenter.notification(.UIApplicationWillResignActive)
+        notificationCenter.notification(UIApplication.willResignActiveNotification)
             .map { _ in false }
             .asDriver(onErrorJustReturn: false)
             .drive(applicationCurrentyActive)
             .disposed(by: disposeBag)
 
-        notificationCenter.notification(.UIApplicationDidBecomeActive)
+        notificationCenter.notification(UIApplication.didBecomeActiveNotification)
             .map { _ in true }
             .asDriver(onErrorJustReturn: true)
             .drive(applicationCurrentyActive)

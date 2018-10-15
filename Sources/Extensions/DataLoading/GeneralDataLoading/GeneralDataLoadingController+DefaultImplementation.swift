@@ -23,7 +23,7 @@
 import RxSwift
 import RxCocoa
 
-public extension GeneralDataLoadingController where Self: UIViewController {
+public extension GeneralDataLoadingController {
 
     // MARK: - DisposeBagHolder default implementation
 
@@ -41,6 +41,7 @@ public extension GeneralDataLoadingController where Self: UIViewController {
 
     func initialLoadDataLoadingView() {
         addViews()
+        configureLayout()
         configureAppearance()
         setupStateViews()
         configureBarButtons()
@@ -61,31 +62,12 @@ public extension GeneralDataLoadingController where Self: UIViewController {
         viewModel.reload()
     }
 
-    private var stateChanged: Binder<ViewModelT.LoadingState> {
-        return Binder(self) { base, value in
-            switch value {
-            case .loading:
-                base.onLoadingState()
-            case .result(let newResult, _):
-                base.onResultsState(result: newResult)
-            case .empty:
-                base.onEmptyState()
-            case .error(let error):
-                base.onErrorState(error: error)
-            case .initial:
-                break
-            }
-        }
-    }
-
 }
 
-public extension GeneralDataLoadingController where Self: UIViewController & DisposeBagHolder {
+public extension GeneralDataLoadingController where Self: DisposeBagHolder {
 
     func bindLoadingState() {
-        viewModel.loadingStateDriver
-            .drive(stateChanged)
-            .disposed(by: disposeBag)
+        bindLoadingState(from: viewModel.loadingStateDriver)
     }
 
 }

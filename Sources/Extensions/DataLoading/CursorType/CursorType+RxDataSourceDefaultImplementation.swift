@@ -22,11 +22,9 @@
 
 import RxSwift
 
-public extension CursorType {
+public extension RxDataSource where Self: CursorType {
 
-    typealias ResultType = [Element]
-
-    func resultSingle() -> Single<ResultType> {
+    func resultSingle() -> Single<[Element]> {
         return loadNextBatch()
     }
 

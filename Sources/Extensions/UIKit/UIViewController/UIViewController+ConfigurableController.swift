@@ -31,6 +31,7 @@ public extension ConfigurableController where Self: UIViewController {
     /// Method that should be called in viewDidLoad method of UIViewController.
     func initialLoadView() {
         addViews()
+        configureLayout()
         configureAppearance()
         configureBarButtons()
         localize()

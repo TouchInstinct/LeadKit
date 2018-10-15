@@ -71,7 +71,7 @@ extension UIButton: ViewTextConfigurable {
 
 }
 
-private extension UIControlContentHorizontalAlignment {
+private extension UIControl.ContentHorizontalAlignment {
 
     init(textAlignment: NSTextAlignment) {
         switch textAlignment {

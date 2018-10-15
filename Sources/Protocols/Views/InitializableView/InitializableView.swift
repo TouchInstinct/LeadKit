@@ -23,7 +23,7 @@
 /// Protocol with methods that should be called in constructor methods of view.
 public protocol InitializableView {
 
-    /// Main method that should call other in particular order.
+    /// Main method that should call other methods in particular order.
     func initializeView()
 
     /// Method for adding views to current view.
@@ -37,5 +37,8 @@ public protocol InitializableView {
 
     /// Localization method.
     func localize()
+
+    /// Confgiure layout of subviews.
+    func configureLayout()
 
 }

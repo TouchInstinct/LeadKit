@@ -33,15 +33,18 @@ public final class SpinnerView: UIView, Animatable, LoadingIndicator {
 
     private weak var imageView: UIImageView?
 
+    private let hidesWhenStopped: Bool
     private let animationDuration: CFTimeInterval
     private let animationRepeatCount: Float
     private let clockwiseAnimation: Bool
 
     public init(image: UIImage,
+                hidesWhenStopped: Bool = true,
                 animationDuration: CFTimeInterval = 1,
                 animationRepeatCount: Float = Float.infinity,
                 clockwiseAnimation: Bool = true) {
 
+        self.hidesWhenStopped = hidesWhenStopped
         self.animationDuration = animationDuration
         self.animationRepeatCount = animationRepeatCount
         self.clockwiseAnimation = clockwiseAnimation
@@ -63,7 +66,7 @@ public final class SpinnerView: UIView, Animatable, LoadingIndicator {
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(SpinnerView.restartAnimationIfNeeded),
-                                               name: .UIApplicationWillEnterForeground,
+                                               name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
     }
 
@@ -98,7 +101,9 @@ public final class SpinnerView: UIView, Animatable, LoadingIndicator {
             return
         }
 
-        imageView?.isHidden = false
+        if hidesWhenStopped {
+            imageView?.isHidden = false
+        }
 
         addAnimation()
     }
@@ -108,7 +113,9 @@ public final class SpinnerView: UIView, Animatable, LoadingIndicator {
             return
         }
 
-        imageView?.isHidden = true
+        if hidesWhenStopped {
+            imageView?.isHidden = true
+        }
 
         removeAnimation()
     }

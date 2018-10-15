@@ -23,7 +23,8 @@
 import RxSwift
 import RxCocoa
 
-open class GeneralDataLoadingViewModel<ResultType>: BaseViewModel {
+/// ViewModel that loads data from given data source with loading state tracking.
+open class GeneralDataLoadingViewModel<ResultType>: BaseViewModel, GeneralDataLoadingHandler, DisposeBagHolder {
 
     public typealias LoadingModel = GeneralDataLoadingModel<ResultType>
     public typealias DataSourceType = Single<ResultType>
@@ -32,6 +33,8 @@ open class GeneralDataLoadingViewModel<ResultType>: BaseViewModel {
     private let loadingModel: LoadingModel
 
     private let loadingStateRelay = BehaviorRelay<LoadingState>(value: .initial)
+
+    // MARK: - DisposeBagHolder
 
     public let disposeBag = DisposeBag()
 
@@ -52,6 +55,8 @@ open class GeneralDataLoadingViewModel<ResultType>: BaseViewModel {
         loadingModel.stateDriver
             .drive(loadingStateRelay)
             .disposed(by: disposeBag)
+
+        bindLoadingState(from: loadingStateDriver)
 
         loadingModel.reload()
     }
@@ -104,6 +109,24 @@ open class GeneralDataLoadingViewModel<ResultType>: BaseViewModel {
     /// Reload data.
     public func reload() {
         loadingModel.reload()
+    }
+
+    // MARK: - GeneralDataLoadingHandler
+
+    open func onLoadingState() {
+        // override in subclass
+    }
+
+    open func onResultsState(result: ResultType) {
+        // override in subclass
+    }
+
+    open func onEmptyState() {
+        // override in subclass
+    }
+
+    open func onErrorState(error: Error) {
+        // override in subclass
     }
 
 }

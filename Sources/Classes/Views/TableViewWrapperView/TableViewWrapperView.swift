@@ -32,7 +32,7 @@ open class TableViewWrapperView: ScrollViewHolderView, TableViewHolder {
     /// Initializer with tableViewStyle parameter.
     ///
     /// - Parameter tableViewStyle: UITableViewStyle to pass in UITableView init.
-    public init(tableViewStyle: UITableViewStyle) {
+    public init(tableViewStyle: UITableView.Style) {
         self.tableView = UITableView(frame: .zero, style: tableViewStyle)
         self.tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 

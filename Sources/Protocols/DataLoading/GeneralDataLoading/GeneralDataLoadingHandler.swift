@@ -20,40 +20,23 @@
 //  THE SOFTWARE.
 //
 
-import RxSwift
-import RxCocoa
+/// Protocol that defines methods for common data loading states handling.
+public protocol GeneralDataLoadingHandler {
 
-public extension GeneralDataLoadingViewModel {
+    associatedtype ResultType
 
-    /// Manually update state to result with given value.
+    /// Called when data loading has started.
+    func onLoadingState()
+
+    /// Called when data loading has finished with non-empty result.
+    func onResultsState(result: ResultType)
+
+    /// Called when data loading did finished with empty result.
+    func onEmptyState()
+
+    /// Gets called when error is occured during data loading.
     ///
-    /// - Parameter newResult: New value to use as result.
-    func updateResultManually(to newResult: ResultType) {
-        updateStateManually(to: .result(newResult: newResult, from: .just(newResult)))
-    }
-
-    /// Emit elements of ResultType from state observable.
-    var resultObservable: Observable<ResultType> {
-        return loadingStateObservable.flatMap { state -> Observable<ResultType> in
-            switch state {
-            case .result(let newResult, _):
-                return .just(newResult)
-            default:
-                return .empty()
-            }
-        }
-    }
-
-    /// Emit elements of ResultType from state driver.
-    var resultDriver: Driver<ResultType> {
-        return loadingStateDriver.flatMap { state -> Driver<ResultType> in
-            switch state {
-            case .result(let newResult, _):
-                return .just(newResult)
-            default:
-                return .empty()
-            }
-        }
-    }
+    /// - Parameter error: An error that occurred while loading data.
+    func onErrorState(error: Error)
 
 }

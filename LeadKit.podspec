@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.8.12"
+  s.version         = "0.8.13"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -88,12 +88,12 @@ Pod::Spec.new do |s|
       "Sources/Structures/DataLoading/PaginationDataLoading/*"
     ]
 
-    ss.dependency "RxSwift", '~> 4.2'
-    ss.dependency "RxCocoa", '~> 4.2'
-    ss.dependency "RxAlamofire", '~> 4.2'
+    ss.dependency "RxSwift", '~> 4.3'
+    ss.dependency "RxCocoa", '~> 4.3'
+    ss.dependency "RxAlamofire", '~> 4.3'
     ss.dependency "SwiftDate", '~> 5.0'
 
-    ss.ios.dependency "TableKit", '~> 2.7'
+    ss.ios.dependency "TableKit", '~> 2.8'
     ss.ios.dependency "UIScrollView-InfiniteScroll", '~> 1.1.0'
   end
 
@@ -112,12 +112,12 @@ Pod::Spec.new do |s|
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
     ]
 
-    ss.dependency "RxSwift", '~> 4.2'
-    ss.dependency "RxCocoa", '~> 4.2'
-    ss.dependency "RxAlamofire", '~> 4.2'
+    ss.dependency "RxSwift", '~> 4.3'
+    ss.dependency "RxCocoa", '~> 4.3'
+    ss.dependency "RxAlamofire", '~> 4.3'
     ss.dependency "SwiftDate", '~> 5.0'
 
-    ss.ios.dependency "TableKit", '~> 2.7'
+    ss.ios.dependency "TableKit", '~> 2.8'
 
   end
 

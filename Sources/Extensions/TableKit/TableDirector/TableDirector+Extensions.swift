@@ -54,7 +54,7 @@ public extension TableDirector {
      - returns: self
      */
     @discardableResult
-    func reload(sectionAtIndex index: Int, with animation: UITableViewRowAnimation = .none) -> Self {
+    func reload(sectionAtIndex index: Int, with animation: UITableView.RowAnimation = .none) -> Self {
         let action = { [tableView] in
             guard let tableView = tableView else {
                 return
@@ -125,7 +125,7 @@ public extension TableDirector {
     ///   - manualBeginEndUpdates: Don't call beginUpdates() & endUpdates() inside.
     func insert(rows: [Row],
                 at indexPath: IndexPath,
-                with animation: UITableViewRowAnimation,
+                with animation: UITableView.RowAnimation,
                 manualBeginEndUpdates: Bool = false) {
 
         sections[indexPath.section].insert(rows: rows, at: indexPath.row)
@@ -151,7 +151,7 @@ public extension TableDirector {
     ///   - manualBeginEndUpdates: Don't call beginUpdates() & endUpdates() inside.
     func remove(rowsCount: Int,
                 startingAt indexPath: IndexPath,
-                with animation: UITableViewRowAnimation,
+                with animation: UITableView.RowAnimation,
                 manualBeginEndUpdates: Bool = false) {
 
         var indexPaths = [IndexPath]()
