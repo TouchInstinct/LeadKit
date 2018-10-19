@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.1
+- **Update**: `DataRequest+Extensions`  time out as network error
+
 ### 0.9.0
 - **Update**: version update.
 

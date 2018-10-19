@@ -64,7 +64,7 @@ public extension Reactive where Base: DataRequest {
                 switch $0 {
                 case let urlError as URLError:
                     switch urlError.code {
-                    case .notConnectedToInternet, .timedOut:
+                    case .notConnectedToInternet:
                         throw RequestError.noConnection
                     default:
                         throw RequestError.network(error: urlError)
