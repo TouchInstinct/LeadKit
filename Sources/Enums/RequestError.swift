@@ -32,7 +32,7 @@ import Alamofire
 public enum RequestError: Error {
 
     case noConnection
-    case network(error: Error, response: Data)
+    case network(error: Error, response: Data?)
     case invalidResponse(error: AFError, response: Data)
     case mapping(error: Error, response: Data)
 

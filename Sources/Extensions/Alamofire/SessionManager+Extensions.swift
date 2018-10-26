@@ -51,6 +51,7 @@ public extension Reactive where Base: SessionManager {
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
         return apiRequest(requestParameters: requestParameters)
+            .takeOneAndCatchError()
             .flatMap {
                 $0.rx.apiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
                     .catchErrorAndWrap(for: $0)
@@ -67,6 +68,7 @@ public extension Reactive where Base: SessionManager {
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
         return apiRequest(requestParameters: requestParameters)
+            .takeOneAndCatchError()
             .flatMap {
                 $0.rx.observableApiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
                     .catchErrorAndWrap(for: $0)
@@ -75,11 +77,18 @@ public extension Reactive where Base: SessionManager {
 
 }
 
+private extension ObservableType where E: DataRequest {
+    func takeOneAndCatchError() -> Observable<E> {
+        return take(1)
+            .catchError { throw RequestError.network(error: $0, response: nil) }
+    }
+}
+
 private extension ObservableType {
     func catchErrorAndWrap(for request: DataRequest) -> Observable<E> {
         return catchError {
             let resultError: RequestError
-            let response = request.delegate.data ?? Data()
+            let response = request.delegate.data
 
             switch $0 {
             case let requestError as RequestError:
@@ -94,7 +103,7 @@ private extension ObservableType {
             case let afError as AFError:
                 switch afError {
                 case .responseSerializationFailed, .responseValidationFailed:
-                    resultError = .invalidResponse(error: afError, response: response)
+                    resultError = .invalidResponse(error: afError, response: response ?? Data())
                 default:
                     resultError = .network(error: afError, response: response)
                 }
