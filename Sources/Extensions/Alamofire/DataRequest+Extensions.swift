@@ -58,28 +58,7 @@ public extension Reactive where Base: DataRequest {
     }
 
     private func response(onQueue queue: DispatchQueue) -> Observable<(HTTPURLResponse, Data)> {
-        return responseData()
-            .observeOn(SerialDispatchQueueScheduler(queue: queue, internalSerialQueueName: queue.label))
-            .catchError {
-                switch $0 {
-                case let urlError as URLError:
-                    switch urlError.code {
-                    case .notConnectedToInternet:
-                        throw RequestError.noConnection
-                    default:
-                        throw RequestError.network(error: urlError)
-                    }
-                case let afError as AFError:
-                    switch afError {
-                    case .responseSerializationFailed, .responseValidationFailed:
-                        throw RequestError.invalidResponse(error: afError)
-                    default:
-                        throw RequestError.network(error: afError)
-                    }
-                default:
-                    throw RequestError.network(error: $0)
-                }
-            }
+        return responseResult(queue: queue, responseSerializer: DataRequest.dataResponseSerializer())
     }
 
 }

@@ -51,7 +51,11 @@ public extension Reactive where Base: SessionManager {
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
         return apiRequest(requestParameters: requestParameters)
-            .flatMap { $0.rx.apiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder) }
+            .flatMap {
+                $0.rx.apiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
+                    .catchAsRequestError(with: $0)
+            }
+            .catchAsRequestError()
     }
 
     /// Method that executes request and serializes response into target object
@@ -64,7 +68,43 @@ public extension Reactive where Base: SessionManager {
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
         return apiRequest(requestParameters: requestParameters)
-            .flatMap { $0.rx.observableApiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder) }
+            .flatMap {
+                $0.rx.observableApiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
+                    .catchAsRequestError(with: $0)
+            }
+            .catchAsRequestError()
     }
 
+}
+
+private extension ObservableType {
+    func catchAsRequestError(with request: DataRequest? = nil) -> Observable<E> {
+        return catchError { error in
+            let resultError: RequestError
+            let response = request?.delegate.data
+
+            switch error {
+            case let requestError as RequestError:
+                resultError = requestError
+            case let urlError as URLError:
+                switch urlError.code {
+                case .notConnectedToInternet:
+                    resultError = .noConnection
+                default:
+                    resultError = .network(error: urlError, response: response)
+                }
+            case let afError as AFError:
+                switch afError {
+                case .responseSerializationFailed, .responseValidationFailed:
+                    resultError = .invalidResponse(error: afError, response: response)
+                default:
+                    resultError = .network(error: afError, response: response)
+                }
+            default:
+                resultError = .network(error: error, response: response)
+            }
+
+            throw resultError
+        }
+    }
 }

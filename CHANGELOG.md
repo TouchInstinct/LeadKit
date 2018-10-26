@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.9.2
+- **Update**: Add response to `RequestError`.
+- **Fix**:  Update `SessionManager+Extensions` to catch network connection error.
+
 ### 0.9.1
 - **Update**: `DataRequest+Extensions` time out as network error
 
