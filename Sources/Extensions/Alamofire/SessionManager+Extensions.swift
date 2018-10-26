@@ -79,11 +79,11 @@ public extension Reactive where Base: SessionManager {
 
 private extension ObservableType {
     func catchErrorAndWrap(with request: DataRequest? = nil) -> Observable<E> {
-        return catchError {
+        return catchError { error in
             let resultError: RequestError
             let response = request?.delegate.data
 
-            switch $0 {
+            switch error {
             case let requestError as RequestError:
                 resultError = requestError
             case let urlError as URLError:
@@ -96,12 +96,12 @@ private extension ObservableType {
             case let afError as AFError:
                 switch afError {
                 case .responseSerializationFailed, .responseValidationFailed:
-                    resultError = .invalidResponse(error: afError, response: response ?? Data())
+                    resultError = .invalidResponse(error: afError, response: response)
                 default:
                     resultError = .network(error: afError, response: response)
                 }
             default:
-                resultError = .network(error: $0, response: response)
+                resultError = .network(error: error, response: response)
             }
 
             throw resultError
