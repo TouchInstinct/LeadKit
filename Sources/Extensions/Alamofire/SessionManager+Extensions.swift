@@ -51,7 +51,10 @@ public extension Reactive where Base: SessionManager {
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
         return apiRequest(requestParameters: requestParameters)
-            .flatMap { $0.rx.apiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder) }
+            .flatMap {
+                $0.rx.apiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
+                    .catchErrorAndWrap(for: $0)
+            }
     }
 
     /// Method that executes request and serializes response into target object
@@ -64,7 +67,42 @@ public extension Reactive where Base: SessionManager {
         -> Observable<(response: HTTPURLResponse, model: T)> {
 
         return apiRequest(requestParameters: requestParameters)
-            .flatMap { $0.rx.observableApiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder) }
+            .flatMap {
+                $0.rx.observableApiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
+                    .catchErrorAndWrap(for: $0)
+            }
     }
 
+}
+
+private extension ObservableType {
+    func catchErrorAndWrap(for request: DataRequest) -> Observable<E> {
+        return catchError {
+            let resultError: RequestError
+            let response = request.delegate.data ?? Data()
+
+            switch $0 {
+            case let requestError as RequestError:
+                resultError = requestError
+            case let urlError as URLError:
+                switch urlError.code {
+                case .notConnectedToInternet:
+                    resultError = .noConnection
+                default:
+                    resultError = .network(error: urlError, response: response)
+                }
+            case let afError as AFError:
+                switch afError {
+                case .responseSerializationFailed, .responseValidationFailed:
+                    resultError = .invalidResponse(error: afError, response: response)
+                default:
+                    resultError = .network(error: afError, response: response)
+                }
+            default:
+                resultError = .network(error: $0, response: response)
+            }
+
+            throw resultError
+        }
+    }
 }
