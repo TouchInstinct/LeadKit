@@ -61,23 +61,24 @@ public extension Reactive where Base: DataRequest {
         return responseData()
             .observeOn(SerialDispatchQueueScheduler(queue: queue, internalSerialQueueName: queue.label))
             .catchError {
+                let response = self.base.delegate.data ?? Data()
                 switch $0 {
                 case let urlError as URLError:
                     switch urlError.code {
                     case .notConnectedToInternet:
                         throw RequestError.noConnection
                     default:
-                        throw RequestError.network(error: urlError)
+                        throw RequestError.network(error: urlError, response: response)
                     }
                 case let afError as AFError:
                     switch afError {
                     case .responseSerializationFailed, .responseValidationFailed:
-                        throw RequestError.invalidResponse(error: afError)
+                        throw RequestError.invalidResponse(error: afError, response: response)
                     default:
-                        throw RequestError.network(error: afError)
+                        throw RequestError.network(error: afError, response: response)
                     }
                 default:
-                    throw RequestError.network(error: $0)
+                    throw RequestError.network(error: $0, response: response)
                 }
             }
     }
