@@ -58,8 +58,7 @@ public extension Reactive where Base: DataRequest {
     }
 
     private func response(onQueue queue: DispatchQueue) -> Observable<(HTTPURLResponse, Data)> {
-        return responseData()
-            .observeOn(SerialDispatchQueueScheduler(queue: queue, internalSerialQueueName: queue.label))
+        return responseResult(queue: queue, responseSerializer: DataRequest.dataResponseSerializer())
     }
 
 }

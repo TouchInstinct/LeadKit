@@ -53,9 +53,9 @@ public extension Reactive where Base: SessionManager {
         return apiRequest(requestParameters: requestParameters)
             .flatMap {
                 $0.rx.apiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
-                    .catchErrorAndWrap(with: $0)
+                    .catchAsRequestError(with: $0)
             }
-            .catchErrorAndWrap()
+            .catchAsRequestError()
     }
 
     /// Method that executes request and serializes response into target object
@@ -70,15 +70,15 @@ public extension Reactive where Base: SessionManager {
         return apiRequest(requestParameters: requestParameters)
             .flatMap {
                 $0.rx.observableApiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
-                    .catchErrorAndWrap(with: $0)
+                    .catchAsRequestError(with: $0)
             }
-            .catchErrorAndWrap()
+            .catchAsRequestError()
     }
 
 }
 
 private extension ObservableType {
-    func catchErrorAndWrap(with request: DataRequest? = nil) -> Observable<E> {
+    func catchAsRequestError(with request: DataRequest? = nil) -> Observable<E> {
         return catchError { error in
             let resultError: RequestError
             let response = request?.delegate.data
