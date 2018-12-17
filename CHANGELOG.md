@@ -1,6 +1,6 @@
 # Changelog
 ### 0.9.3
-- **Add**: `Insert`/`Remove` section with animation functions to  `TableKit`. Also make new function `Replace` that uses new Inser/Remove to animate section replace.
+- **Add**: `Insert`/`Remove` section with animation functions to `TableKit`. Also make new function `Replace` that uses new `Insert`/`Remove` to animate section replace.
 
 ### 0.9.2
 - **Update**: Add response to `RequestError`.
