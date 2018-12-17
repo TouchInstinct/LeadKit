@@ -26,18 +26,64 @@ import RxAlamofire
 
 public extension Reactive where Base: SessionManager {
 
+    /**
+     Creates an observable of the `Request`.
+     
+     - parameter method: Alamofire method object
+     - parameter url: An object adopting `URLConvertible`
+     - parameter parameters: An array of dictionaries containing all necessary options
+     - parameter encoding: The kind of encoding used to process parameters
+     - parameter header: A dictionary containing all the additional headers
+     
+     - returns: An observable of the `Request`
+     */
+    public func request(_ method: Alamofire.HTTPMethod,
+                        _ url: URLConvertible,
+                        parameters: [Parameters]? = nil,
+                        encoding: ParameterEncoding = URLEncoding.default,
+                        headers: [String: String]? = nil
+        )
+        -> Observable<DataRequest>
+    {
+        return Observable.deferred {
+            var urlRequest = URLRequest(url: try url.asURL())
+            urlRequest.httpMethod = method.rawValue
+            urlRequest.allHTTPHeaderFields = headers
+            urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+            
+            if urlRequest.value(forHTTPHeaderField: "Content-Type") == nil {
+                urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            }
+            
+            return self.request(urlRequest: urlRequest)
+        }
+    }
+    
     /// Method which executes request with given api parameters
     ///
     /// - Parameter requestParameters: api parameters to pass Alamofire
     /// - Returns: Observable with request
     func apiRequest(requestParameters: ApiRequestParameters)
         -> Observable<DataRequest> {
-
-        return request(requestParameters.method,
-                       requestParameters.url,
-                       parameters: requestParameters.parameters,
-                       encoding: requestParameters.encoding,
-                       headers: requestParameters.headers)
+            
+        let requestObservable: Observable<DataRequest>
+            
+        switch requestParameters.parameters {
+        case .dictionary(let parameters):
+            requestObservable = request(requestParameters.method,
+                                        requestParameters.url,
+                                        parameters: parameters,
+                                        encoding: requestParameters.encoding,
+                                        headers: requestParameters.headers)
+        case .array(let parameters):
+            requestObservable = request(requestParameters.method,
+                                        requestParameters.url,
+                                        parameters: parameters,
+                                        encoding: requestParameters.encoding,
+                                        headers: requestParameters.headers)
+        }
+            
+        return requestObservable
             .map { $0.validate(statusCode: self.base.acceptableStatusCodes) }
     }
 

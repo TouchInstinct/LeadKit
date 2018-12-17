@@ -95,5 +95,26 @@ public extension NetworkServiceConfiguration {
                                     encoding: requestEncoding ?? encoding,
                                     headers: requestHeaders)
     }
+    
+    /// Convenient method to create ApiRequestParameters.
+    ///
+    /// - Parameters:
+    ///   - relativeUrl: Url that will be concatenated with base url.
+    ///   - method: HTTP method to use for request.
+    ///   - parameters: An array of dictionaries of parameters to apply to a URLRequest.
+    ///   - requestEncoding: Encoding type to use. If passed nil, configuration encoding will be used.
+    ///   - requestHeaders: Dictionary of headers to apply to a URLRequest.
+    /// - Returns: Initialized instance of ApiRequestParameters with given parameters.
+    func apiRequestParameters(relativeUrl: String,
+                              method: HTTPMethod = .get,
+                              parameters: [Parameters]? = nil,
+                              requestEncoding: ParameterEncoding? = nil,
+                              requestHeaders: HTTPHeaders? = nil) -> ApiRequestParameters {
+        return ApiRequestParameters(url: baseUrl + relativeUrl,
+                                    method: method,
+                                    parameters: parameters,
+                                    encoding: requestEncoding ?? encoding,
+                                    headers: requestHeaders)
+    }
 
 }

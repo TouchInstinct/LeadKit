@@ -23,13 +23,21 @@
 import Alamofire
 
 /**
+ *  Enum which keeps parameters type for request body
+ */
+public enum ParametersType {
+    case dictionary(_ parameter: Parameters?)
+    case array(_ array: [Parameters]?)
+}
+
+/**
  *  Struct which keeps base parameters required for api request
  */
 public struct ApiRequestParameters {
 
     let method: HTTPMethod
     let url: URLConvertible
-    let parameters: Parameters?
+    let parameters: ParametersType
     let encoding: ParameterEncoding
     let headers: HTTPHeaders?
 
@@ -41,7 +49,20 @@ public struct ApiRequestParameters {
 
         self.method = method
         self.url = url
-        self.parameters = parameters
+        self.parameters = .dictionary(parameters)
+        self.encoding = encoding
+        self.headers = headers
+    }
+    
+    public init(url: URLConvertible,
+                method: HTTPMethod = .get,
+                parameters: [Parameters]? = nil,
+                encoding: ParameterEncoding = URLEncoding.default,
+                headers: HTTPHeaders? = nil) {
+        
+        self.method = method
+        self.url = url
+        self.parameters = .array(parameters)
         self.encoding = encoding
         self.headers = headers
     }
