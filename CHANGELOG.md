@@ -1,4 +1,6 @@
 # Changelog
+### 0.9.3
+- **Add**: Add section animated functions to `TableKit`.
 
 ### 0.9.2
 - **Update**: Add response to `RequestError`.

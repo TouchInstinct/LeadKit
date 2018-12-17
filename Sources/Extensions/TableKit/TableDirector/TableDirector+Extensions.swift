@@ -172,16 +172,14 @@ public extension TableDirector {
         }
     }
 
-    /**
-     Method inserts section with animation
-
-     - parameter section: Section to insert
-     - parameter index: Position to insert
-     - parameter animation: The type of insert animation
-     - parameter manualBeginEndUpdates: Don't call beginUpdates() & endUpdates() inside.
-
-     - returns: self
-     */
+    /// Method inserts section with animation.
+    ///
+    /// - Parameters:
+    ///   - section: Section to insert
+    ///   - index: Position to insert
+    ///   - animation: The type of insert animation
+    ///   - manualBeginEndUpdates: Don't call beginUpdates() & endUpdates() inside.
+    /// - Returns: self
     @discardableResult
     func insert(section: TableSection,
                 at index: Int,
@@ -200,15 +198,13 @@ public extension TableDirector {
         return self
     }
 
-    /**
-     Method removes section with animation
-
-     - parameter index: Position to remove
-     - parameter animation: The type of remove animation
-     - parameter manualBeginEndUpdates: Don't call beginUpdates() & endUpdates() inside.
-
-     - returns: self
-     */
+    /// Method removes section with animation.
+    ///
+    /// - Parameters:
+    ///   - index: Position to remove
+    ///   - animation: The type of remove animation
+    ///   - manualBeginEndUpdates: Don't call beginUpdates() & endUpdates() inside.
+    /// - Returns: self
     @discardableResult
     func remove(at index: Int,
                 with animation: UITableView.RowAnimation,
@@ -226,16 +222,14 @@ public extension TableDirector {
         return self
     }
 
-    /**
-     Method replace section with animation
-
-     - parameter section: Section to replace
-     - parameter index: Position to replace
-     - parameter animation: The type of replace animation
-     - parameter manualBeginEndUpdates: Don't call beginUpdates() & endUpdates() inside.
-
-     - returns: self
-     */
+    /// Method replace section with animation.
+    ///
+    /// - Parameters:
+    ///   - section: Section to replace
+    ///   - index: Position to replace
+    ///   - animation: The type of replace animation
+    ///   - manualBeginEndUpdates: Don't call beginUpdates() & endUpdates() inside.
+    /// - Returns: self
     func replace(with section: TableSection,
                  at index: Int,
                  with animation: UITableView.RowAnimation,
