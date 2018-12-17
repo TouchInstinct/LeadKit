@@ -1,5 +1,5 @@
 # Changelog
-### 0.9.3
+### 0.9.4
 - **Add**: `SessionManager.request` method, that takes an array as a request parameter.
 - **Add**: `ParametersType` enum to pass array parameter to request body.
 
