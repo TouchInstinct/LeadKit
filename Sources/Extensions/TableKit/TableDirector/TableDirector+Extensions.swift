@@ -172,4 +172,77 @@ public extension TableDirector {
         }
     }
 
+    /**
+     Method inserts section with animation
+
+     - parameter section: Section to insert
+     - parameter index: Position to insert
+     - parameter animation: The type of insert animation
+     - parameter manualBeginEndUpdates: Don't call beginUpdates() & endUpdates() inside.
+
+     - returns: self
+     */
+    @discardableResult
+    func insert(section: TableSection,
+                at index: Int,
+                with animation: UITableView.RowAnimation,
+                manualBeginEndUpdates: Bool = false) -> Self {
+
+        insert(section: section, atIndex: index)
+        if manualBeginEndUpdates {
+            tableView?.insertSections([index], with: animation)
+        } else {
+            tableView?.beginUpdates()
+            tableView?.insertSections([index], with: animation)
+            tableView?.endUpdates()
+        }
+
+        return self
+    }
+
+    /**
+     Method removes section with animation
+
+     - parameter index: Position to remove
+     - parameter animation: The type of remove animation
+     - parameter manualBeginEndUpdates: Don't call beginUpdates() & endUpdates() inside.
+
+     - returns: self
+     */
+    @discardableResult
+    func remove(at index: Int,
+                with animation: UITableView.RowAnimation,
+                manualBeginEndUpdates: Bool = false) -> Self {
+
+        delete(sectionAt: index)
+        if manualBeginEndUpdates {
+            tableView?.deleteSections([index], with: animation)
+        } else {
+            tableView?.beginUpdates()
+            tableView?.deleteSections([index], with: animation)
+            tableView?.endUpdates()
+        }
+
+        return self
+    }
+
+    /**
+     Method replace section with animation
+
+     - parameter section: Section to replace
+     - parameter index: Position to replace
+     - parameter animation: The type of replace animation
+     - parameter manualBeginEndUpdates: Don't call beginUpdates() & endUpdates() inside.
+
+     - returns: self
+     */
+    func replace(with section: TableSection,
+                 at index: Int,
+                 with animation: UITableView.RowAnimation,
+                 manualBeginEndUpdates: Bool = false) -> Self {
+
+        remove(at: index, with: animation, manualBeginEndUpdates: manualBeginEndUpdates)
+        return insert(section: section, at: index, with: animation, manualBeginEndUpdates: manualBeginEndUpdates)
+    }
+
 }
