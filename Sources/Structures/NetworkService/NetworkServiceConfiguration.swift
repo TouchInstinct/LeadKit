@@ -107,7 +107,7 @@ public extension NetworkServiceConfiguration {
     /// - Returns: Initialized instance of ApiRequestParameters with given parameters.
     func apiRequestParameters(relativeUrl: String,
                               method: HTTPMethod = .get,
-                              parameters: [Parameters]? = nil,
+                              parameters: [Any]? = nil,
                               requestEncoding: ParameterEncoding? = nil,
                               requestHeaders: HTTPHeaders? = nil) -> ApiRequestParameters {
         return ApiRequestParameters(url: baseUrl + relativeUrl,

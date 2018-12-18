@@ -26,35 +26,37 @@ import RxAlamofire
 
 public extension Reactive where Base: SessionManager {
 
-    /**
-     Creates an observable of the `Request`.
-     
-     - parameter method: Alamofire method object
-     - parameter url: An object adopting `URLConvertible`
-     - parameter parameters: An array of dictionaries containing all necessary options
-     - parameter encoding: The kind of encoding used to process parameters
-     - parameter header: A dictionary containing all the additional headers
-     
-     - returns: An observable of the `Request`
-     */
+    
+    /// Creates an observable of the `Request`.
+    ///
+    /// - Parameters:
+    ///   - method: Alamofire method object
+    ///   - url: An object adopting `URLConvertible`
+    ///   - parameters: An array of dictionaries containing all necessary options
+    ///   - encoding: The kind of encoding used to process parameters
+    ///   - headers: A dictionary containing all the additional headers
+    /// - Returns: An observable of the `Request`
     public func request(_ method: Alamofire.HTTPMethod,
                         _ url: URLConvertible,
-                        parameters: [Parameters]? = nil,
-                        encoding: ParameterEncoding = URLEncoding.default,
-                        headers: [String: String]? = nil
-        )
-        -> Observable<DataRequest>
-    {
+                        parameters: [Any]? = nil,
+                        encoding: ParameterEncoding = JSONEncoding.default,
+                        headers: [String: String]? = nil)
+        -> Observable<DataRequest> {
+
         return Observable.deferred {
-            var urlRequest = URLRequest(url: try url.asURL())
-            urlRequest.httpMethod = method.rawValue
-            urlRequest.allHTTPHeaderFields = headers
-            urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
-            
-            if urlRequest.value(forHTTPHeaderField: "Content-Type") == nil {
-                urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            let urlRequest = try URLRequest(url: try url.asURL(), method: method, headers: headers)
+
+            if let encoding = encoding as? JSONEncoding {
+                let encodedUrlRequest = try encoding.encode(urlRequest, withJSONObject: parameters)
+                self.request(urlRequest: encodedUrlRequest)
+            } else {
+                assertionFailure("Invalid encoding type")
             }
-            
+
+            if method == .get {
+                assertionFailure("Unable to pass array in get request")
+            }
+
             return self.request(urlRequest: urlRequest)
         }
     }
@@ -69,16 +71,22 @@ public extension Reactive where Base: SessionManager {
         let requestObservable: Observable<DataRequest>
             
         switch requestParameters.parameters {
-        case .dictionary(let parameters):
+        case .dictionary(let parameters)?:
             requestObservable = request(requestParameters.method,
                                         requestParameters.url,
                                         parameters: parameters,
                                         encoding: requestParameters.encoding,
                                         headers: requestParameters.headers)
-        case .array(let parameters):
+        case .array(let parameters)?:
             requestObservable = request(requestParameters.method,
                                         requestParameters.url,
                                         parameters: parameters,
+                                        encoding: requestParameters.encoding,
+                                        headers: requestParameters.headers)
+        case .none:
+            requestObservable = request(requestParameters.method,
+                                        requestParameters.url,
+                                        parameters: nil as Parameters?,
                                         encoding: requestParameters.encoding,
                                         headers: requestParameters.headers)
         }
