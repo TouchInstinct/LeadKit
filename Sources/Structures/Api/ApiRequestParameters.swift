@@ -22,21 +22,20 @@
 
 import Alamofire
 
-
-/// Enum which keeps parameters type for request body
-///
-/// - dictionary: dictionary parameter
-/// - array: array parameter
-public enum RequestParameters {
-    case dictionary(Parameters)
-    case array([Any])
-}
-
 /**
  *  Struct which keeps base parameters required for api request
  */
 public struct ApiRequestParameters {
 
+    /// Enum which keeps parameters type for request body
+    ///
+    /// - dictionary: dictionary parameter
+    /// - array: array parameter
+    enum RequestParameters {
+        case dictionary(Parameters)
+        case array([Any])
+    }
+    
     let method: HTTPMethod
     let url: URLConvertible
     let parameters: RequestParameters?

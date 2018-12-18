@@ -32,7 +32,7 @@ public extension Reactive where Base: SessionManager {
     /// - Parameters:
     ///   - method: Alamofire method object
     ///   - url: An object adopting `URLConvertible`
-    ///   - parameters: An array of dictionaries containing all necessary options
+    ///   - parameters: An array of JSON objects containing all necessary options
     ///   - encoding: The kind of encoding used to process parameters
     ///   - headers: A dictionary containing all the additional headers
     /// - Returns: An observable of the `Request`

@@ -101,7 +101,7 @@ public extension NetworkServiceConfiguration {
     /// - Parameters:
     ///   - relativeUrl: Url that will be concatenated with base url.
     ///   - method: HTTP method to use for request.
-    ///   - parameters: An array of dictionaries of parameters to apply to a URLRequest.
+    ///   - parameters: An array of JSON objects to apply to a URLRequest.
     ///   - requestEncoding: Encoding type to use. If passed nil, configuration encoding will be used.
     ///   - requestHeaders: Dictionary of headers to apply to a URLRequest.
     /// - Returns: Initialized instance of ApiRequestParameters with given parameters.
