@@ -3,7 +3,7 @@
 - **Add**:  initialization of `ApiRequestParameters`, that takes an array as a request parameter.
 - **Add**: `NetworkServiceConfiguration.apiRequestParameters` method, that creates `ApiRequestParameters` with array request parameter.
 - **Add**: `SessionManager.request` method, that takes an array as a request parameter.
-- **Add**: `RequestParameters` enum to pass array parameter to request body.
+- **Add**: `RequestUsageError` error, that represents wrong usage of requset parameters.
 
 ### 0.9.3
 - **Add**: `Insert`/`Remove` section with animation functions to `TableKit`. Also make new function `Replace` that uses new `Insert`/`Remove` to animate section replace.
