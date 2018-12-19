@@ -85,16 +85,16 @@ public extension Reactive where Base: SessionManager {
                                         encoding: requestParameters.encoding,
                                         headers: requestParameters.headers)
         case .array(let parameters)?:
-            if let encoding = requestParameters.encoding as? JSONEncoding {
-                requestObservable = request(requestParameters.method,
-                                            requestParameters.url,
-                                            parameters: parameters,
-                                            encoding: encoding,
-                                            headers: requestParameters.headers)
-            } else {
+            guard let encoding = requestParameters.encoding as? JSONEncoding else {
                 assertionFailure("Invalid encoding type with array parameter")
-                requestObservable = .error(RequestUsageError.urlEncodingForbidden)
+                return .error(RequestUsageError.urlEncodingForbidden)
             }
+            
+            requestObservable = request(requestParameters.method,
+                                        requestParameters.url,
+                                        parameters: parameters,
+                                        encoding: encoding,
+                                        headers: requestParameters.headers)
         case .none:
             requestObservable = request(requestParameters.method,
                                         requestParameters.url,
