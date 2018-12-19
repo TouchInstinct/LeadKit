@@ -24,6 +24,17 @@ import Alamofire
 import RxSwift
 import RxAlamofire
 
+/// Enum that represents wrong usage of requset parameters
+///
+/// - getMethodForbidden: invalid usage of get method
+/// - urlEncodingForbidden: invalid usage of URLEncoding
+enum RequestUsageError: Error {
+    
+    case getMethodForbidden
+    case urlEncodingForbidden
+    
+}
+
 public extension Reactive where Base: SessionManager {
 
     
@@ -39,25 +50,21 @@ public extension Reactive where Base: SessionManager {
     public func request(_ method: Alamofire.HTTPMethod,
                         _ url: URLConvertible,
                         parameters: [Any]? = nil,
-                        encoding: ParameterEncoding = JSONEncoding.default,
+                        encoding: JSONEncoding = .default,
                         headers: [String: String]? = nil)
         -> Observable<DataRequest> {
 
         return Observable.deferred {
-            let urlRequest = try URLRequest(url: try url.asURL(), method: method, headers: headers)
-
-            if let encoding = encoding as? JSONEncoding {
-                let encodedUrlRequest = try encoding.encode(urlRequest, withJSONObject: parameters)
-                self.request(urlRequest: encodedUrlRequest)
-            } else {
-                assertionFailure("Invalid encoding type")
-            }
-
-            if method == .get {
+            
+            guard method != .get else {
                 assertionFailure("Unable to pass array in get request")
+                throw RequestUsageError.getMethodForbidden
             }
-
-            return self.request(urlRequest: urlRequest)
+            
+            let urlRequest = try URLRequest(url: try url.asURL(), method: method, headers: headers)
+            let encodedUrlRequest = try encoding.encode(urlRequest, withJSONObject: parameters)
+            
+            return self.request(urlRequest: encodedUrlRequest)
         }
     }
     
@@ -78,11 +85,16 @@ public extension Reactive where Base: SessionManager {
                                         encoding: requestParameters.encoding,
                                         headers: requestParameters.headers)
         case .array(let parameters)?:
-            requestObservable = request(requestParameters.method,
-                                        requestParameters.url,
-                                        parameters: parameters,
-                                        encoding: requestParameters.encoding,
-                                        headers: requestParameters.headers)
+            if let encoding = requestParameters.encoding as? JSONEncoding {
+                requestObservable = request(requestParameters.method,
+                                            requestParameters.url,
+                                            parameters: parameters,
+                                            encoding: encoding,
+                                            headers: requestParameters.headers)
+            } else {
+                assertionFailure("Invalid encoding type with array parameter")
+                requestObservable = .error(RequestUsageError.urlEncodingForbidden)
+            }
         case .none:
             requestObservable = request(requestParameters.method,
                                         requestParameters.url,
