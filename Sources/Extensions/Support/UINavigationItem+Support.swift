@@ -24,7 +24,7 @@ import UIKit
 
 public extension Support where Base: UINavigationItem {
 
-    /// Large title display mode
+    /// The mode to use when displaying the title of the navigation bar.
     var largeTitleDisplayMode: Base.LargeTitleDisplayMode {
         get {
             if #available(iOS 11.0, *) {
