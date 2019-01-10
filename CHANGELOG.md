@@ -1,4 +1,9 @@
 # Changelog
+### 0.9.5
+- **Add**:  `TitleType` enum, that defines `UIViewController`'s title type.
+- **Add**: `UINavigationItem.largeTitleDisplayMode` property, that defines  `UINavigationItem`'s large title display mode.
+- **Add**: `UIViewController.updateNavigationItemTitle` method, that takes `TitleType` as a parameter and updates `UIViewController`'s title.
+
 ### 0.9.4
 - **Add**:  initialization of `ApiRequestParameters`, that takes an array as a request parameter.
 - **Add**: `NetworkServiceConfiguration.apiRequestParameters` method, that creates `ApiRequestParameters` with array request parameter.
