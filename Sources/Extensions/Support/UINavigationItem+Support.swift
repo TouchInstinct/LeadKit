@@ -28,7 +28,7 @@ public extension Support where Base: UINavigationItem {
     var largeTitleDisplayMode: Base.LargeTitleDisplayMode {
         get {
             if #available(iOS 11.0, *) {
-                return self.largeTitleDisplayMode
+                return base.largeTitleDisplayMode
             } else {
                 return .never
             }
@@ -36,7 +36,7 @@ public extension Support where Base: UINavigationItem {
 
         set {
             if #available(iOS 11.0, *) {
-                largeTitleDisplayMode = newValue
+                base.largeTitleDisplayMode = newValue
             }
         }
     }
