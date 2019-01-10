@@ -29,15 +29,14 @@ import RxAlamofire
 /// - getMethodForbidden: invalid usage of get method
 /// - urlEncodingForbidden: invalid usage of URLEncoding
 enum RequestUsageError: Error {
-    
+
     case getMethodForbidden
     case urlEncodingForbidden
-    
+
 }
 
 public extension Reactive where Base: SessionManager {
 
-    
     /// Creates an observable of the `Request`.
     ///
     /// - Parameters:
@@ -47,36 +46,36 @@ public extension Reactive where Base: SessionManager {
     ///   - encoding: The kind of encoding used to process parameters
     ///   - headers: A dictionary containing all the additional headers
     /// - Returns: An observable of the `Request`
-    public func request(_ method: Alamofire.HTTPMethod,
-                        _ url: URLConvertible,
-                        parameters: [Any]? = nil,
-                        encoding: JSONEncoding = .default,
-                        headers: [String: String]? = nil)
+    func request(_ method: Alamofire.HTTPMethod,
+                 _ url: URLConvertible,
+                 parameters: [Any]? = nil,
+                 encoding: JSONEncoding = .default,
+                 headers: [String: String]? = nil)
         -> Observable<DataRequest> {
 
         return Observable.deferred {
-            
+
             guard method != .get else {
                 assertionFailure("Unable to pass array in get request")
                 throw RequestUsageError.getMethodForbidden
             }
-            
+
             let urlRequest = try URLRequest(url: try url.asURL(), method: method, headers: headers)
             let encodedUrlRequest = try encoding.encode(urlRequest, withJSONObject: parameters)
-            
+
             return self.request(urlRequest: encodedUrlRequest)
         }
     }
-    
+
     /// Method which executes request with given api parameters
     ///
     /// - Parameter requestParameters: api parameters to pass Alamofire
     /// - Returns: Observable with request
     func apiRequest(requestParameters: ApiRequestParameters)
         -> Observable<DataRequest> {
-            
+
         let requestObservable: Observable<DataRequest>
-            
+
         switch requestParameters.parameters {
         case .dictionary(let parameters)?:
             requestObservable = request(requestParameters.method,
@@ -89,7 +88,7 @@ public extension Reactive where Base: SessionManager {
                 assertionFailure("Invalid encoding type with array parameter")
                 return .error(RequestUsageError.urlEncodingForbidden)
             }
-            
+
             requestObservable = request(requestParameters.method,
                                         requestParameters.url,
                                         parameters: parameters,
@@ -102,7 +101,7 @@ public extension Reactive where Base: SessionManager {
                                         encoding: requestParameters.encoding,
                                         headers: requestParameters.headers)
         }
-            
+
         return requestObservable
             .map { $0.validate(statusCode: self.base.acceptableStatusCodes) }
     }

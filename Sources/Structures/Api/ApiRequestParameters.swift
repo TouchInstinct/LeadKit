@@ -35,7 +35,7 @@ public struct ApiRequestParameters {
         case dictionary(Parameters)
         case array([Any])
     }
-    
+
     let method: HTTPMethod
     let url: URLConvertible
     let parameters: RequestParameters?
@@ -58,13 +58,13 @@ public struct ApiRequestParameters {
             self.parameters = nil
         }
     }
-    
+
     public init(url: URLConvertible,
                 method: HTTPMethod = .get,
                 parameters: [Any]? = nil,
                 encoding: ParameterEncoding = URLEncoding.default,
                 headers: HTTPHeaders? = nil) {
-        
+
         self.method = method
         self.url = url
         self.encoding = encoding

@@ -665,6 +665,9 @@
 		6B5B6EF1577C8CC06E4CCF1B /* Array+RowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B62E7942E5AEE68A95449 /* Array+RowExtensions.swift */; };
 		6B5B6F0BFA22832C47142BAD /* TableKitViewModel+Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B61443DDAB82927448CAA /* TableKitViewModel+Extenstions.swift */; };
 		6B5B6F4E2B4F6F74348AC138 /* TableKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B66503F2C42D009DEA011 /* TableKitViewModel.swift */; };
+		7295473F21E661E6009558E7 /* TitleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7295473E21E661E6009558E7 /* TitleType.swift */; };
+		7295474221E6628C009558E7 /* UINavigationItem+TitleDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7295474121E6628C009558E7 /* UINavigationItem+TitleDisplay.swift */; };
+		7295474421E66328009558E7 /* UIViewController+UpdateNavigationItemTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7295474321E66328009558E7 /* UIViewController+UpdateNavigationItemTitle.swift */; };
 		820CAD8420B43B080033EF94 /* PaginationWrapperDelegate+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820CAD8320B43B080033EF94 /* PaginationWrapperDelegate+DefaultImplementation.swift */; };
 		825F8F2820B3384C00594857 /* PaginationWrapperUIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825F8F2720B3384C00594857 /* PaginationWrapperUIDelegate.swift */; };
 		82F8BB181F5DDED100C1061B /* Single+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */; };
@@ -981,6 +984,9 @@
 		6B5B61443DDAB82927448CAA /* TableKitViewModel+Extenstions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableKitViewModel+Extenstions.swift"; sourceTree = "<group>"; };
 		6B5B62E7942E5AEE68A95449 /* Array+RowExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+RowExtensions.swift"; sourceTree = "<group>"; };
 		6B5B66503F2C42D009DEA011 /* TableKitViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableKitViewModel.swift; sourceTree = "<group>"; };
+		7295473E21E661E6009558E7 /* TitleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleType.swift; sourceTree = "<group>"; };
+		7295474121E6628C009558E7 /* UINavigationItem+TitleDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+TitleDisplay.swift"; sourceTree = "<group>"; };
+		7295474321E66328009558E7 /* UIViewController+UpdateNavigationItemTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+UpdateNavigationItemTitle.swift"; sourceTree = "<group>"; };
 		78405D3B3D3C3E17456877FF /* Pods_LeadKit_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		820CAD8320B43B080033EF94 /* PaginationWrapperDelegate+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaginationWrapperDelegate+DefaultImplementation.swift"; sourceTree = "<group>"; };
 		825F8F2720B3384C00594857 /* PaginationWrapperUIDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationWrapperUIDelegate.swift; sourceTree = "<group>"; };
@@ -1161,6 +1167,7 @@
 				671461D81EB3396E00EAB194 /* LeadKitError.swift */,
 				671461D91EB3396E00EAB194 /* ResizeMode.swift */,
 				67FDC25E1FA310EA00C76A77 /* RequestError.swift */,
+				7295473E21E661E6009558E7 /* TitleType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1337,6 +1344,7 @@
 				671463A61EB340C000EAB194 /* UIViewController+ConfigurableController.swift */,
 				671462191EB3396E00EAB194 /* UIViewController+DefaultXibName.swift */,
 				6714621A1EB3396E00EAB194 /* UIViewController+TopVisibleViewController.swift */,
+				7295474321E66328009558E7 /* UIViewController+UpdateNavigationItemTitle.swift */,
 			);
 			path = UIViewController;
 			sourceTree = "<group>";
@@ -1574,6 +1582,7 @@
 				672947E4206EA67B00AC6B6B /* UIImage */,
 				67E902552125B55E008EDF45 /* UIImageView */,
 				67274776206CD07B00725163 /* UILabel */,
+				7295474021E6623D009558E7 /* UINavigationItem */,
 				6741CEB820E242CF00FEC4D9 /* UIScrollView */,
 				36DAAF4F2007CC330090BE0D /* UITableView */,
 				67E3524C2119ABD00035BDDB /* UITextField */,
@@ -2165,6 +2174,14 @@
 				6B5B61443DDAB82927448CAA /* TableKitViewModel+Extenstions.swift */,
 			);
 			path = TableKitViewModel;
+			sourceTree = "<group>";
+		};
+		7295474021E6623D009558E7 /* UINavigationItem */ = {
+			isa = PBXGroup;
+			children = (
+				7295474121E6628C009558E7 /* UINavigationItem+TitleDisplay.swift */,
+			);
+			path = UINavigationItem;
 			sourceTree = "<group>";
 		};
 		78CFEE201C5C456B00F50370 = {
@@ -2926,6 +2943,7 @@
 				673564F62068C68D00F0CBED /* NumberFormat.swift in Sources */,
 				67DB776921087154001CB56B /* CollectionViewWrapperView.swift in Sources */,
 				671462901EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
+				7295473F21E661E6009558E7 /* TitleType.swift in Sources */,
 				671462FC1EB3396E00EAB194 /* UIView+XibNameProtocol.swift in Sources */,
 				67EB7FC0206140E600BDD9FB /* TotalCountCursor.swift in Sources */,
 				36DAAF512007CC920090BE0D /* UITableView+Extensions.swift in Sources */,
@@ -2988,6 +3006,8 @@
 				B84CB06D20B8325D0090DB91 /* SessionManager.swift in Sources */,
 				A658E5501F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift in Sources */,
 				673564F12068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */,
+				7295474221E6628C009558E7 /* UINavigationItem+TitleDisplay.swift in Sources */,
+				7295474421E66328009558E7 /* UIViewController+UpdateNavigationItemTitle.swift in Sources */,
 				671462EC1EB3396E00EAB194 /* UIImage+Extensions.swift in Sources */,
 				6713C24120AF189100875921 /* RxNetworkOperationModel.swift in Sources */,
 				677452AE206274630024EEEF /* PaginationWrapper.swift in Sources */,
