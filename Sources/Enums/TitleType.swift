@@ -20,7 +20,12 @@
 //  THE SOFTWARE.
 //
 
-enum TitleType {
+/// Title type for UIViewController title.
+///
+/// - large: large sized title
+/// - normal: normal sized title
+/// - empty: empty title
+public enum TitleType {
     case large(title: String)
     case normal(title: String)
     case empty

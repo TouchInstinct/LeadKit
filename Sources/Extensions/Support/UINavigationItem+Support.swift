@@ -22,11 +22,13 @@
 
 import UIKit
 
-public extension UINavigationItem {
-    var largeTitleDisplayModeIOS11: LargeTitleDisplayMode {
+public extension Support where Base: UINavigationItem {
+
+    /// Large title display mode
+    var largeTitleDisplayMode: Base.LargeTitleDisplayMode {
         get {
             if #available(iOS 11.0, *) {
-                return largeTitleDisplayMode
+                return self.largeTitleDisplayMode
             } else {
                 return .never
             }

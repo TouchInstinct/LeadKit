@@ -22,7 +22,11 @@
 
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
+
+    /// Updates UIViewController's title
+    ///
+    /// - Parameter titleType: UIViewController's title type
     func updateNavigationItemTitle(with titleType: TitleType) {
         switch titleType {
         case let .large(newTitle), let .normal(newTitle):
