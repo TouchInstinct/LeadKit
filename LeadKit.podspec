@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.9.4"
+  s.version         = "0.9.5"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -44,6 +44,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/DataLoading/GeneralDataLoading/GeneralDataLoadingController+DefaultImplementation.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
+      "Sources/Extensions/Support/UINavigationItem+Support.swift",
       "Sources/Extensions/TableKit/**/*.swift",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
       "Sources/Extensions/Array/Array+RowExtensions.swift",
@@ -76,6 +77,7 @@ Pod::Spec.new do |s|
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
+      "Sources/Extensions/Support/UINavigationItem+Support.swift",
       "Sources/Extensions/TableKit/**/*.swift",
       "Sources/Extensions/UIKit/UIApplication/UIApplication+OpenUrlSupport.swift",
       "Sources/Extensions/UIKit/UIApplication/UIApplication+Cellular.swift",
