@@ -17,6 +17,8 @@
 		3622F5DF20E2541B009DED94 /* TableRow+AppearanceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118481F8FF223004AADAF /* TableRow+AppearanceExtension.swift */; };
 		3622F5E120E2587B009DED94 /* TableRow+SeparatorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54C1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift */; };
 		3622F5E220E25883009DED94 /* SeparatorRowBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A81F8A655600C6308D /* SeparatorRowBox.swift */; };
+		3676D12621F5E8DB0080D164 /* EmptyCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66428A71F8A654600C6308D /* EmptyCellRow.swift */; };
+		3676D12721F5E8DF0080D164 /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AF3B371F8B956F00CDB971 /* EmptyCell.swift */; };
 		36977763200CF12100ED9C6E /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
 		36DAAF512007CC920090BE0D /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
 		36FE777020F669E300284C09 /* String+ConvertToHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FE776F20F669E300284C09 /* String+ConvertToHost.swift */; };
@@ -3483,6 +3485,7 @@
 				671462F11EB3396E00EAB194 /* UIImage+SupportExtensions.swift in Sources */,
 				671462691EB3396E00EAB194 /* NetworkService.swift in Sources */,
 				671463111EB3396E00EAB194 /* UIViewController+DefaultXibName.swift in Sources */,
+				3676D12721F5E8DF0080D164 /* EmptyCell.swift in Sources */,
 				67153E41207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */,
 				67990AE7213EB4080040D195 /* ConfigurableView+Extensions.swift in Sources */,
 				6732F240214C09F900B446F2 /* UserDefaults+Codable.swift in Sources */,
@@ -3552,6 +3555,7 @@
 				671463091EB3396E00EAB194 /* UIView+Rotation.swift in Sources */,
 				67ED2BDF20B44DEB00508B3E /* InitializableView.swift in Sources */,
 				6714626D1EB3396E00EAB194 /* XibView.swift in Sources */,
+				3676D12621F5E8DB0080D164 /* EmptyCellRow.swift in Sources */,
 				6714637D1EB3396E00EAB194 /* ImageDrawingOperation.swift in Sources */,
 				67E902522125B064008EDF45 /* BuildInNumberTypes+NSNumberConvertible.swift in Sources */,
 				671463351EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
