@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Core' do |ss|
-    ss.ios.deployment_target = '9.0'
+    ss.ios.deployment_target = '10.0'
     ss.tvos.deployment_target = '9.0'
     ss.watchos.deployment_target = '2.0'
 
@@ -100,7 +100,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Core-iOS-Extension' do |ss|
-    ss.platform = :ios, '9.0'
+    ss.platform = :ios, '10.0'
 
     ss.source_files = "Sources/**/*.swift"
 
