@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.platform        = :ios, '9.0'
 
   s.subspec 'UIColorHex' do |ss|
-    ss.ios.deployment_target = '8.0'
+    ss.ios.deployment_target = '10.0'
     ss.tvos.deployment_target = '9.0'
     ss.watchos.deployment_target = '2.0'
 
@@ -105,7 +105,7 @@ Pod::Spec.new do |s|
     ss.source_files = "Sources/**/*.swift"
 
     ss.exclude_files = [
-      "Sources/Classes/Views/EmptyCell/*",
+      "Sources/Classes/Views/EmptyCell/*.swift",
       "Sources/Classes/DataLoading/PaginationDataLoading/PaginationWrapper.swift",
       "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
