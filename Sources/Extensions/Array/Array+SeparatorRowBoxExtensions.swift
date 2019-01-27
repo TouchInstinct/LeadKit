@@ -41,12 +41,12 @@ public extension Array where Element == SeparatorRowBox {
     }
 
     /// Configure separators from SeparatorRowBox array
-    /// - parameter top: Configuration of the top separator of the first row
+    /// - parameter first: Configuration of the top separator of the first row
     /// - parameter middle: Configuration of the separators between the rows
-    /// - parameter bottom: Configuration of the bottom separator of the last row
-    func configureSeparators(first topSeparatorConfiguration: SeparatorConfiguration,
+    /// - parameter last: Configuration of the bottom separator of the last row
+    func configureSeparators(first firstSeparatorConfiguration: SeparatorConfiguration,
                              middle middleSeparatorConfiguration: SeparatorConfiguration,
-                             last bottomSeparatorConfiguration: SeparatorConfiguration) {
+                             last lastSeparatorConfiguration: SeparatorConfiguration) {
 
         if isEmpty {
             return
@@ -54,12 +54,12 @@ public extension Array where Element == SeparatorRowBox {
 
         switch count {
         case 1:
-            first?.set(separatorType: .full(topSeparatorConfiguration, bottomSeparatorConfiguration))
+            first?.set(separatorType: .full(firstSeparatorConfiguration, lastSeparatorConfiguration))
 
         default:
             forEach { $0.set(separatorType: .bottom(middleSeparatorConfiguration)) }
-            first?.set(separatorType: .full(topSeparatorConfiguration, middleSeparatorConfiguration))
-            last?.set(separatorType: .bottom(bottomSeparatorConfiguration))
+            first?.set(separatorType: .full(firstSeparatorConfiguration, middleSeparatorConfiguration))
+            last?.set(separatorType: .bottom(lastSeparatorConfiguration))
         }
     }
 
