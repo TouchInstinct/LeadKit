@@ -1,4 +1,8 @@
 # Changelog
+
+### 0.9.6
+- **Add**:  Add new `configureSeparators` method to `SeparatorRowBox` array.
+
 ### 0.9.5
 - **Add**:  `TitleType` enum, that defines `UIViewController`'s title type.
 - **Add**: `UINavigationItem.largeTitleDisplayMode` property, that defines  `UINavigationItem`'s large title display mode.
