@@ -520,7 +520,7 @@
 		6792623E206EB0EC00308E62 /* CellSeparatorType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6792623B206EB0EC00308E62 /* CellSeparatorType+Extensions.swift */; };
 		67952C3C1EB3266100B3BA1A /* LeadKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 67186B201EB247A200CFAFFB /* LeadKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		67952C3D1EB3266200B3BA1A /* LeadKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 67186B201EB247A200CFAFFB /* LeadKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		67952DCE1EB327B500B3BA1A /* LeadKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67952DC51EB327B400B3BA1A /* LeadKit.framework */; };
+		67952DCE1EB327B500B3BA1A /* LeadKitExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67952DC51EB327B400B3BA1A /* LeadKitExtensions.framework */; };
 		67952DDD1EB3281300B3BA1A /* LeadKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 67186B201EB247A200CFAFFB /* LeadKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		67955D52206D216B0021ECD2 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67955D51206D216B0021ECD2 /* Singleton.swift */; };
 		67955D53206D216B0021ECD2 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67955D51206D216B0021ECD2 /* Singleton.swift */; };
@@ -943,7 +943,7 @@
 		67952C391EB3203F00B3BA1A /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
 		67952C3A1EB3205D00B3BA1A /* Info-watchOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-watchOS.plist"; sourceTree = "<group>"; };
 		67952C3B1EB3208000B3BA1A /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
-		67952DC51EB327B400B3BA1A /* LeadKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LeadKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67952DC51EB327B400B3BA1A /* LeadKitExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LeadKitExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67952DCD1EB327B400B3BA1A /* LeadKit iOS ExtensionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LeadKit iOS ExtensionsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67952DDC1EB3280900B3BA1A /* Info-iOS-Extensions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS-Extensions.plist"; sourceTree = "<group>"; };
 		67952DDE1EB3285A00B3BA1A /* Info-iOS-Extensions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS-Extensions.plist"; sourceTree = "<group>"; };
@@ -1116,7 +1116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67952DCE1EB327B500B3BA1A /* LeadKit.framework in Frameworks */,
+				67952DCE1EB327B500B3BA1A /* LeadKitExtensions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2254,7 +2254,7 @@
 				6782BB911EB31CFE0086E0B8 /* LeadKit.framework */,
 				6782BBA01EB31D590086E0B8 /* LeadKit.framework */,
 				6782BBA81EB31D5A0086E0B8 /* LeadKit tvOSTests.xctest */,
-				67952DC51EB327B400B3BA1A /* LeadKit.framework */,
+				67952DC51EB327B400B3BA1A /* LeadKitExtensions.framework */,
 				67952DCD1EB327B400B3BA1A /* LeadKit iOS ExtensionsTests.xctest */,
 			);
 			name = Products;
@@ -2507,7 +2507,7 @@
 			);
 			name = "LeadKit iOS Extensions";
 			productName = "LeadKit iOS Extensions";
-			productReference = 67952DC51EB327B400B3BA1A /* LeadKit.framework */;
+			productReference = 67952DC51EB327B400B3BA1A /* LeadKitExtensions.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		67952DCC1EB327B400B3BA1A /* LeadKit iOS ExtensionsTests */ = {
@@ -3842,7 +3842,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -warn-long-expression-type-checking=200 -Xfrontend -warn-long-function-bodies=200 -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.touchin.LeadKit-iOS-Extensions";
-				PRODUCT_NAME = LeadKit;
+				PRODUCT_NAME = LeadKitExtensions;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 4.2;
@@ -3872,7 +3872,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -warn-long-expression-type-checking=200 -Xfrontend -warn-long-function-bodies=200 -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.touchin.LeadKit-iOS-Extensions";
-				PRODUCT_NAME = LeadKit;
+				PRODUCT_NAME = LeadKitExtensions;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 			};
