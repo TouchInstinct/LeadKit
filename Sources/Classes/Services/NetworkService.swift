@@ -33,13 +33,13 @@ open class NetworkService {
     private let lock = NSRecursiveLock()
 
     private let requestCountRelay = BehaviorRelay(value: 0)
-    private var disposeBag = DisposeBag()
 
     public let configuration: NetworkServiceConfiguration
     public let sessionManager: SessionManager
 
-    var requestCount: Driver<Int> {
-        return requestCountRelay.asDriver()
+    /// Driver that emits true when active requests count != 0 and false otherwise.
+    public var isActivityIndicatorVisibleDriver: Driver<Bool> {
+        return requestCountRelay.asDriver().map { $0 != 0 }.distinctUntilChanged()
     }
 
     /// - Parameter sessionManager: Alamofire.SessionManager to use for requests
@@ -51,7 +51,6 @@ open class NetworkService {
 
         self.configuration = configuration
         self.sessionManager = configuration.sessionManager
-        bindToApplicationActivityIndicator()
     }
 
     /// Perform reactive request to get mapped ObservableMappable model and http response
@@ -79,19 +78,6 @@ open class NetworkService {
             return sessionManager.rx.responseModel(requestParameters: parameters,
                                                    decoder: decoder)
                 .counterTracking(for: self)
-    }
-
-    /// Shows network activity indicator when requests in executed. Works only on iOS.
-    public func bindToApplicationActivityIndicator() {
-        // Fatal error: `drive*` family of methods can be only called from `MainThread`
-        DispatchQueue.main.async {
-            self.bindActivityIndicator()?.disposed(by: self.disposeBag)
-        }
-    }
-
-    /// Disable showing network activity indicator.
-    public func unbindToApplicationActivityIndicator() {
-        disposeBag = DisposeBag()
     }
 
 }

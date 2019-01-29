@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.9.6"
+  s.version         = "0.9.7"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -22,9 +22,6 @@ Pod::Spec.new do |s|
     ss.watchos.deployment_target = '3.0'
 
     ss.source_files = "Sources/**/*.swift"
-    ss.ios.exclude_files = [
-      "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator.swift",
-    ]
     ss.watchos.exclude_files = [
       "Sources/Classes/Controllers/**/*",
       "Sources/Classes/Views/SeparatorRowBox/*",
@@ -39,7 +36,6 @@ Pod::Spec.new do |s|
       "Sources/Classes/Views/BasePlaceholderView/*",
       "Sources/Extensions/CABasicAnimation/*",
       "Sources/Extensions/CGFloat/CGFloat+Pixels.swift",
-      "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
       "Sources/Extensions/NetworkService/NetworkService+RxLoadImage.swift",
       "Sources/Extensions/DataLoading/GeneralDataLoading/GeneralDataLoadingController+DefaultImplementation.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
@@ -74,13 +70,10 @@ Pod::Spec.new do |s|
       "Sources/Classes/Views/EmptyCell/*",
       "Sources/Classes/DataLoading/PaginationDataLoading/PaginationWrapper.swift",
       "Sources/Structures/Drawing/CALayerDrawingOperation.swift",
-      "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/Support/UINavigationItem+Support.swift",
       "Sources/Extensions/TableKit/**/*.swift",
-      "Sources/Extensions/UIKit/UIApplication/UIApplication+OpenUrlSupport.swift",
-      "Sources/Extensions/UIKit/UIApplication/UIApplication+Cellular.swift",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
       "Sources/Extensions/Array/Array+RowExtensions.swift",
       "Sources/Extensions/Views/SeparatorCell/*",
@@ -97,30 +90,6 @@ Pod::Spec.new do |s|
 
     ss.ios.dependency "TableKit", '~> 2.8'
     ss.ios.dependency "UIScrollView-InfiniteScroll", '~> 1.1.0'
-  end
-
-  s.subspec 'Core-iOS-Extension' do |ss|
-    ss.platform = :ios, '9.0'
-
-    ss.source_files = "Sources/**/*.swift"
-
-    ss.exclude_files = [
-      "Sources/Classes/Views/EmptyCell/*",
-      "Sources/Classes/DataLoading/PaginationDataLoading/PaginationWrapper.swift",
-      "Sources/Extensions/NetworkService/NetworkService+ActivityIndicator-UIApplication.swift",
-      "Sources/Extensions/DataLoading/PaginationDataLoading/*",
-      "Sources/Extensions/UIKit/UIApplication/UIApplication+OpenUrlSupport.swift",
-      "Sources/Extensions/UIKit/UIApplication/UIApplication+Cellular.swift",
-      "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
-    ]
-
-    ss.dependency "RxSwift", '~> 4'
-    ss.dependency "RxCocoa", '~> 4'
-    ss.dependency "RxAlamofire", '~> 4'
-    ss.dependency "SwiftDate", '~> 5.1'
-
-    ss.ios.dependency "TableKit", '~> 2.8'
-
   end
 
   s.default_subspec = 'Core'
