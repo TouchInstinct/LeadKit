@@ -37,7 +37,7 @@ abstract_target 'LeadKit' do
   end
 
   target 'LeadKit watchOS' do
-    platform :watchos, '2.0'
+    platform :watchos, '3.0'
 
     use_frameworks!
 
@@ -55,14 +55,6 @@ abstract_target 'LeadKit' do
 
   end
 
-end
-
-post_install do |installer|
-    # 1.5+
-    installer.pods_project.build_configurations.each do |config|
-        config.build_settings.delete('CODE_SIGNING_ALLOWED')
-        config.build_settings.delete('CODE_SIGNING_REQUIRED')
-    end
 end
 
 # If you have slow HDD

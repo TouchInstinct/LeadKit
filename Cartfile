@@ -1,0 +1,5 @@
+github "malcommac/SwiftDate"
+github "ReactiveX/RxSwift"
+github "RxSwiftCommunity/RxAlamofire"
+github "maxsokolov/TableKit"
+github "pronebird/UIScrollView-InfiniteScroll"

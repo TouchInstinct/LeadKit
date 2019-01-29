@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.subspec 'Core' do |ss|
     ss.ios.deployment_target = '9.0'
     ss.tvos.deployment_target = '9.0'
-    ss.watchos.deployment_target = '2.0'
+    ss.watchos.deployment_target = '3.0'
 
     ss.source_files = "Sources/**/*.swift"
     ss.ios.exclude_files = [
@@ -90,10 +90,10 @@ Pod::Spec.new do |s|
       "Sources/Structures/DataLoading/PaginationDataLoading/*"
     ]
 
-    ss.dependency "RxSwift", '~> 4.3'
-    ss.dependency "RxCocoa", '~> 4.3'
-    ss.dependency "RxAlamofire", '~> 4.3'
-    ss.dependency "SwiftDate", '~> 5.0'
+    ss.dependency "RxSwift", '~> 4'
+    ss.dependency "RxCocoa", '~> 4'
+    ss.dependency "RxAlamofire", '~> 4'
+    ss.dependency "SwiftDate", '~> 5.1'
 
     ss.ios.dependency "TableKit", '~> 2.8'
     ss.ios.dependency "UIScrollView-InfiniteScroll", '~> 1.1.0'
@@ -114,10 +114,10 @@ Pod::Spec.new do |s|
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift"
     ]
 
-    ss.dependency "RxSwift", '~> 4.3'
-    ss.dependency "RxCocoa", '~> 4.3'
-    ss.dependency "RxAlamofire", '~> 4.3'
-    ss.dependency "SwiftDate", '~> 5.0'
+    ss.dependency "RxSwift", '~> 4'
+    ss.dependency "RxCocoa", '~> 4'
+    ss.dependency "RxAlamofire", '~> 4'
+    ss.dependency "SwiftDate", '~> 5.1'
 
     ss.ios.dependency "TableKit", '~> 2.8'
 

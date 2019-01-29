@@ -67,7 +67,7 @@ public extension SupportCompatible {
         get {
             return Support<Self>.self
         }
-        set {
+        set { // swiftlint:disable:this unused_setter_value
             // this enables using Support to "mutate" base type
         }
     }
@@ -77,7 +77,7 @@ public extension SupportCompatible {
         get {
             return Support(self)
         }
-        set {
+        set { // swiftlint:disable:this unused_setter_value
             // this enables using Support to "mutate" base object
         }
     }
