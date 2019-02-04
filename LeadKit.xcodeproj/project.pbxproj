@@ -665,10 +665,17 @@
 		6B5B6EF1577C8CC06E4CCF1B /* Array+RowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B62E7942E5AEE68A95449 /* Array+RowExtensions.swift */; };
 		6B5B6F0BFA22832C47142BAD /* TableKitViewModel+Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B61443DDAB82927448CAA /* TableKitViewModel+Extenstions.swift */; };
 		6B5B6F4E2B4F6F74348AC138 /* TableKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B66503F2C42D009DEA011 /* TableKitViewModel.swift */; };
+		72039CE0220899E600875DD4 /* SearchResultsViewControllerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72039CDF220899E600875DD4 /* SearchResultsViewControllerState.swift */; };
+		72039CE122089A3D00875DD4 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7284087522079A4600A20F47 /* SearchResultsViewController.swift */; };
+		72039CE222089A3D00875DD4 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7284087522079A4600A20F47 /* SearchResultsViewController.swift */; };
+		72039CE322089A3D00875DD4 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7284087522079A4600A20F47 /* SearchResultsViewController.swift */; };
+		7284087422078EB800A20F47 /* BaseSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7284087322078EB800A20F47 /* BaseSearchViewModel.swift */; };
+		7284087622079A4600A20F47 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7284087522079A4600A20F47 /* SearchResultsViewController.swift */; };
 		7295473F21E661E6009558E7 /* TitleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7295473E21E661E6009558E7 /* TitleType.swift */; };
 		7295474221E6628C009558E7 /* UINavigationItem+Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7295474121E6628C009558E7 /* UINavigationItem+Support.swift */; };
 		7295474421E66328009558E7 /* UIViewController+UpdateNavigationItemTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7295474321E66328009558E7 /* UIViewController+UpdateNavigationItemTitle.swift */; };
 		7295474D21E75E84009558E7 /* UINavigationItem+Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7295474121E6628C009558E7 /* UINavigationItem+Support.swift */; };
+		72D213A422048180003B4292 /* BaseSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D213A322048180003B4292 /* BaseSearchViewController.swift */; };
 		820CAD8420B43B080033EF94 /* PaginationWrapperDelegate+DefaultImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820CAD8320B43B080033EF94 /* PaginationWrapperDelegate+DefaultImplementation.swift */; };
 		825F8F2820B3384C00594857 /* PaginationWrapperUIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825F8F2720B3384C00594857 /* PaginationWrapperUIDelegate.swift */; };
 		82F8BB181F5DDED100C1061B /* Single+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */; };
@@ -985,9 +992,13 @@
 		6B5B61443DDAB82927448CAA /* TableKitViewModel+Extenstions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableKitViewModel+Extenstions.swift"; sourceTree = "<group>"; };
 		6B5B62E7942E5AEE68A95449 /* Array+RowExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+RowExtensions.swift"; sourceTree = "<group>"; };
 		6B5B66503F2C42D009DEA011 /* TableKitViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableKitViewModel.swift; sourceTree = "<group>"; };
+		72039CDF220899E600875DD4 /* SearchResultsViewControllerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewControllerState.swift; sourceTree = "<group>"; };
+		7284087322078EB800A20F47 /* BaseSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSearchViewModel.swift; sourceTree = "<group>"; };
+		7284087522079A4600A20F47 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		7295473E21E661E6009558E7 /* TitleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleType.swift; sourceTree = "<group>"; };
 		7295474121E6628C009558E7 /* UINavigationItem+Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+Support.swift"; sourceTree = "<group>"; };
 		7295474321E66328009558E7 /* UIViewController+UpdateNavigationItemTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+UpdateNavigationItemTitle.swift"; sourceTree = "<group>"; };
+		72D213A322048180003B4292 /* BaseSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSearchViewController.swift; sourceTree = "<group>"; };
 		78405D3B3D3C3E17456877FF /* Pods_LeadKit_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeadKit_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		820CAD8320B43B080033EF94 /* PaginationWrapperDelegate+DefaultImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaginationWrapperDelegate+DefaultImplementation.swift"; sourceTree = "<group>"; };
 		825F8F2720B3384C00594857 /* PaginationWrapperUIDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationWrapperUIDelegate.swift; sourceTree = "<group>"; };
@@ -1106,6 +1117,7 @@
 			children = (
 				6741CEC520E2434900FEC4D9 /* Controllers */,
 				6774527E2062566D0024EEEF /* DataLoading */,
+				72D213A222048162003B4292 /* Search */,
 				671461D21EB3396E00EAB194 /* Services */,
 				671461D41EB3396E00EAB194 /* Views */,
 			);
@@ -1163,6 +1175,7 @@
 		671461D61EB3396E00EAB194 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				72039CDE220899D000875DD4 /* Search */,
 				67274767206CCB6F00725163 /* Views */,
 				6774528A20625C860024EEEF /* DataLoading */,
 				671461D81EB3396E00EAB194 /* LeadKitError.swift */,
@@ -1697,6 +1710,7 @@
 			isa = PBXGroup;
 			children = (
 				671462241EB3396E00EAB194 /* ConfigurableController.swift */,
+				7284087522079A4600A20F47 /* SearchResultsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -2175,6 +2189,23 @@
 				6B5B61443DDAB82927448CAA /* TableKitViewModel+Extenstions.swift */,
 			);
 			path = TableKitViewModel;
+			sourceTree = "<group>";
+		};
+		72039CDE220899D000875DD4 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				72039CDF220899E600875DD4 /* SearchResultsViewControllerState.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		72D213A222048162003B4292 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				72D213A322048180003B4292 /* BaseSearchViewController.swift */,
+				7284087322078EB800A20F47 /* BaseSearchViewModel.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		78CFEE201C5C456B00F50370 = {
@@ -2911,6 +2942,7 @@
 				6727478F206CD88600725163 /* DateFormattingService.swift in Sources */,
 				678D26A420692BFF00B05B93 /* TextFieldViewModelEvents.swift in Sources */,
 				671462801EB3396E00EAB194 /* DataRequest+Extensions.swift in Sources */,
+				7284087622079A4600A20F47 /* SearchResultsViewController.swift in Sources */,
 				67EB7FF8206175F700BDD9FB /* PaginationWrappable.swift in Sources */,
 				67990AD6213EA6A50040D195 /* ContentLoadingViewModel+Extensions.swift in Sources */,
 				671463541EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
@@ -3010,9 +3042,11 @@
 				6727477F206CD3BD00725163 /* ViewText+Extensions.swift in Sources */,
 				67EB7FEB2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */,
 				671AD26C206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift in Sources */,
+				72D213A422048180003B4292 /* BaseSearchViewController.swift in Sources */,
 				673CF4382063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift in Sources */,
 				B85B768720B1CF6700F837C4 /* Encodable+Extensions.swift in Sources */,
 				671AD267206A365100EAF887 /* UIApplication+OpenUrlSupport.swift in Sources */,
+				72039CE0220899E600875DD4 /* SearchResultsViewControllerState.swift in Sources */,
 				67E9024B2125AEB4008EDF45 /* NSNumberConvertible.swift in Sources */,
 				673CF40B2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */,
 				6713C23720AF0C4D00875921 /* NetworkOperationState.swift in Sources */,
@@ -3041,6 +3075,7 @@
 				6774527020624A2A0024EEEF /* PaginationWrapperUIDelegate+DefaultImplementation.swift in Sources */,
 				6727478A206CD83600725163 /* DateFormat.swift in Sources */,
 				67745280206256A20024EEEF /* RxDataLoadingModel.swift in Sources */,
+				7284087422078EB800A20F47 /* BaseSearchViewModel.swift in Sources */,
 				A6F32C081F6EBDAA00AC08EE /* String+LocalizedComponent.swift in Sources */,
 				671462881EB3396E00EAB194 /* CGFloat+Pixels.swift in Sources */,
 				671462941EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
@@ -3235,6 +3270,7 @@
 				6774529420625D170024EEEF /* GeneralDataLoadingModel.swift in Sources */,
 				67FDC2611FA310EA00C76A77 /* RequestError.swift in Sources */,
 				671AD25E206A343300EAF887 /* VoidBlock.swift in Sources */,
+				72039CE122089A3D00875DD4 /* SearchResultsViewController.swift in Sources */,
 				671462521EB3396E00EAB194 /* StaticCursor.swift in Sources */,
 				67ED2BE720B44F4300508B3E /* InitializableView+DefaultImplementation.swift in Sources */,
 				6714629E1EB3396E00EAB194 /* CursorType+Slice.swift in Sources */,
@@ -3370,6 +3406,7 @@
 				67990AE8213EB4080040D195 /* ConfigurableView+Extensions.swift in Sources */,
 				677452A720625FA90024EEEF /* RxDataSource.swift in Sources */,
 				6741CEBC20E242D900FEC4D9 /* UIScrollView+ScrollViewHolder.swift in Sources */,
+				72039CE222089A3D00875DD4 /* SearchResultsViewController.swift in Sources */,
 				6774527720624E820024EEEF /* DataLoadingModel.swift in Sources */,
 				67926239206EB0AE00308E62 /* CellSeparatorType.swift in Sources */,
 				678D267C20691D8200B05B93 /* DataModelFieldBinding.swift in Sources */,
@@ -3519,6 +3556,7 @@
 				675C1FB61F97CA33007D5249 /* AppearanceConfigurable.swift in Sources */,
 				67FD4383206BD24B005B0C64 /* EqutableOptionalArray.swift in Sources */,
 				671463811EB3396E00EAB194 /* PaddingDrawingOperation.swift in Sources */,
+				72039CE322089A3D00875DD4 /* SearchResultsViewController.swift in Sources */,
 				67EB7FDB20615D5B00BDD9FB /* ResettableRxCursorDataSource.swift in Sources */,
 				6741C41020EAC88800418D08 /* GeneralDataLoadingViewModel+Extensions.swift in Sources */,
 				A6F32C0A1F6EBE5B00AC08EE /* String+LocalizedComponent.swift in Sources */,

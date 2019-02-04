@@ -1,5 +1,11 @@
 # Changelog
 
+### 0.9.7
+- **Add**:  `BaseSearchViewController` class
+- **Add**:  `BaseSearchViewModel` class
+- **Add**:  `SearchResultsController` protocol
+- **Add**:  `SearchResultsControllerState` enum
+
 ### 0.9.6
 - **Add**:  Add new `configureSeparators` method to `SeparatorRowBox` array.
 
