@@ -25,8 +25,10 @@ import RxCocoa
 
 private protocol OptionalType {
     associatedtype Wrapped
+
     var optional: Wrapped? { get }
 }
+
 extension Optional: OptionalType {
     public var optional: Wrapped? { return self }
 }
@@ -41,11 +43,11 @@ private extension Observable where Element: OptionalType {
 
 open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel<[Item]> {
 
-    typealias ItemsList = [Item]
+    public typealias ItemsList = [Item]
 
     private let searchTextRelay = BehaviorRelay(value: "")
 
-    init(dataSource: Single<ItemsList>) {
+    public init(dataSource: Single<ItemsList>) {
         super.init(dataSource: dataSource, emptyResultChecker: { $0.isEmpty })
     }
 
@@ -77,15 +79,15 @@ open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel
         fatalError("viewModel(from:) has not been implemented")
     }
 
-    func search(by searchString: String, from items: ItemsList) -> Single<ItemsList> {
+    open func search(by searchString: String, from items: ItemsList) -> Single<ItemsList> {
         fatalError("searchEngine(for:) has not been implemented")
     }
 
-    func bind(searchText: Observable<String>) -> Disposable {
+    open func bind(searchText: Observable<String>) -> Disposable {
         return searchText.bind(to: searchTextRelay)
     }
 
-    func onDidSelect(item: Item) {
+    open func onDidSelect(item: Item) {
         // override in subclass
     }
 
@@ -93,21 +95,21 @@ open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel
         return items.map { self.viewModel(from: $0) }
     }
 
-    var loadingResultObservable: Observable<ResultType> {
+    open var loadingResultObservable: Observable<ResultType> {
         return loadingStateDriver
             .asObservable()
             .map { $0.result }
             .filterNil()
     }
 
-    var loadingErrorObservable: Observable<Error> {
+    open var loadingErrorObservable: Observable<Error> {
         return loadingStateDriver
             .asObservable()
             .map { $0.error }
             .filterNil()
     }
 
-    var firstLoadingResultObservable: Single<ResultType> {
+    open var firstLoadingResultObservable: Single<ResultType> {
         return loadingResultObservable
             .take(1)
             .asSingle()

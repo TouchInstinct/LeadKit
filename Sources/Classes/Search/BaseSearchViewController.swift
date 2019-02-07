@@ -38,19 +38,13 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
 
     // MARK: - Initialization
 
-    init(viewModel: ViewModel, searchResultsController: UIViewController & SearchResultsViewController) {
+    public init(viewModel: ViewModel, searchResultsController: UIViewController & SearchResultsViewController) {
         self.searchResultsViewController = searchResultsController
         super.init(viewModel: viewModel)
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: - Life Cycle
-
-    open override func loadView() {
-        view = customView
     }
 
     // MARK: - Configurable Controller
@@ -108,11 +102,11 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
         return []
     }
 
-    var searchBarPlaceholder: String {
+    open var searchBarPlaceholder: String {
         return ""
     }
 
-    var searchBarColor: UIColor {
+    open var searchBarColor: UIColor {
         return .gray
     }
 
@@ -127,25 +121,25 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
         return statusBarView
     }
 
-    var statusBarColor: UIColor {
+    open var statusBarColor: UIColor {
         return .black
     }
 
-    func updateContent(with viewModels: [ItemViewModel]) {
+    open func updateContent(with viewModels: [ItemViewModel]) {
         // override in subclass
     }
 
-    func stateForUpdate(with viewModels: [ItemViewModel]) -> SearchResultsViewControllerState {
+    open func stateForUpdate(with viewModels: [ItemViewModel]) -> SearchResultsViewControllerState {
         let rows = createRows(from: viewModels)
         return .rowsContent(rows: rows)
     }
 
-    var resetResults: Observable<SearchResultsViewControllerState> {
+    open var resetResults: Observable<SearchResultsViewControllerState> {
         return searchController.rx.willPresent
             .map { SearchResultsViewControllerState.initial }
     }
 
-    var searchResults: Observable<SearchResultsViewControllerState> {
+    open var searchResults: Observable<SearchResultsViewControllerState> {
         return viewModel.searchResultsDriver
             .asObservable()
             .map { [weak self] viewModels -> SearchResultsViewControllerState in
@@ -155,15 +149,15 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
 
     // MARK: - Helpers
 
-    func handle(itemViewModels viewModels: [ItemViewModel]) {
+    open func handle(itemViewModels viewModels: [ItemViewModel]) {
         updateContent(with: viewModels)
     }
 
-    func handle(searchResultsState state: SearchResultsViewControllerState) {
+    open func handle(searchResultsState state: SearchResultsViewControllerState) {
         searchResultsViewController.update(for: state)
     }
 
-    func handle(searchText: String?) {
+    open func handle(searchText: String?) {
         setTableViewInsets()
     }
 
@@ -178,7 +172,7 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
 }
 
 extension BaseSearchViewController {
-    var tableViewInsets: UIEdgeInsets {
+    open var tableViewInsets: UIEdgeInsets {
         let searchBarHeight = searchController.searchBar.frame.height
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
 
