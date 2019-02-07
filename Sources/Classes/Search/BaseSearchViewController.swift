@@ -26,24 +26,21 @@ import RxSwift
 open class BaseSearchViewController<Item,
     ItemViewModel,
     ViewModel,
-    ResultsVC: SearchResultsViewController,
-    CustomView>: UIViewController, ConfigurableController
-where ViewModel: BaseSearchViewModel<Item, ItemViewModel>, CustomView: UIView, CustomView: TableViewHolder {
+    CustomView: UIView & TableViewHolder>: BaseCustomViewController<ViewModel, CustomView>
+where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
 
     // MARK: - Properties
-    public let viewModel: ViewModel
 
     private let disposeBag = DisposeBag()
-    let customView = CustomView()
-    private let searchResultsViewController = ResultsVC()
+    private let searchResultsViewController: UIViewController & SearchResultsViewController
     private lazy var searchController = UISearchController(searchResultsController: searchResultsViewController)
     private var didEnterText = false
 
     // MARK: - Initialization
 
-    init(viewModel: ViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
+    init(viewModel: ViewModel, searchResultsController: UIViewController & SearchResultsViewController) {
+        self.searchResultsViewController = searchResultsController
+        super.init(viewModel: viewModel)
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -58,11 +55,11 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel>, CustomView: UIView, C
 
     // MARK: - Configurable Controller
 
-    public func configureBarButtons() {
+    open override func configureBarButtons() {
         // override in subclass
     }
 
-    public func bindViews() {
+    open override func bindViews() {
         viewModel.itemsViewModelsDriver
             .drive(onNext: { [weak self] viewModels in
                 self?.handle(itemViewModels: viewModels)
@@ -86,7 +83,7 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel>, CustomView: UIView, C
             .disposed(by: disposeBag)
     }
 
-    public func addViews() {
+    open override func addViews() {
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
         } else {
@@ -95,19 +92,20 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel>, CustomView: UIView, C
         searchController.view.addSubview(statusBarView)
     }
 
-    public func configureAppearance() {
+    open override func configureAppearance() {
         definesPresentationContext = true
         customView.tableView.tableHeaderView?.backgroundColor = searchBarColor
     }
 
-    public func localize() {
+    open override func localize() {
         searchController.searchBar.placeholder = searchBarPlaceholder
     }
 
     // MARK: - Search Controller Functionality
 
-    func createRows(from itemsViewModels: [ItemViewModel]) -> [Row] {
-        fatalError("createRows(from:) has not been implemented")
+    open func createRows(from itemsViewModels: [ItemViewModel]) -> [Row] {
+        assertionFailure("createRows(from:) has not been implemented")
+        return []
     }
 
     var searchBarPlaceholder: String {
@@ -118,7 +116,7 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel>, CustomView: UIView, C
         return .gray
     }
 
-    var statusBarView: UIView {
+    open var statusBarView: UIView {
         let statusBarSize = UIApplication.shared.statusBarFrame.size
         let statusBarView = UIView(frame: CGRect(x: 0,
                                                  y: 0,
@@ -162,7 +160,7 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel>, CustomView: UIView, C
     }
 
     func handle(searchResultsState state: SearchResultsViewControllerState) {
-        searchResultsViewController.update(from: state)
+        searchResultsViewController.update(for: state)
     }
 
     func handle(searchText: String?) {
@@ -170,11 +168,12 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel>, CustomView: UIView, C
     }
 
     private func setTableViewInsets() {
-        if !didEnterText {
-            didEnterText = true
-            searchResultsViewController.resultsView?.tableView.contentInset = tableViewInsets
-            searchResultsViewController.resultsView?.tableView.scrollIndicatorInsets = tableViewInsets
+        guard !didEnterText else {
+            return
         }
+        didEnterText = true
+        searchResultsViewController.searchResultsView.tableView.contentInset = tableViewInsets
+        searchResultsViewController.searchResultsView.tableView.scrollIndicatorInsets = tableViewInsets
     }
 }
 

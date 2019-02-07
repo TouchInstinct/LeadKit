@@ -23,6 +23,22 @@
 import RxSwift
 import RxCocoa
 
+private protocol OptionalType {
+    associatedtype Wrapped
+    var optional: Wrapped? { get }
+}
+extension Optional: OptionalType {
+    public var optional: Wrapped? { return self }
+}
+
+private extension Observable where Element: OptionalType {
+    func filterNil() -> Observable<Element.Wrapped> {
+        return flatMap { value -> Observable<Element.Wrapped> in
+            value.optional.map { .just($0) } ?? .empty()
+        }
+    }
+}
+
 open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel<[Item]> {
 
     typealias ItemsList = [Item]
@@ -30,7 +46,7 @@ open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel
     private let searchTextRelay = BehaviorRelay(value: "")
 
     init(dataSource: Single<ItemsList>) {
-        super.init(dataSource: dataSource, emptyResultChecker: { _ in false })
+        super.init(dataSource: dataSource, emptyResultChecker: { $0.isEmpty })
     }
 
     open var itemsViewModelsDriver: Driver<[ItemViewModel]> {
@@ -38,13 +54,7 @@ open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel
             .map { [weak self] items in
                 self?.viewModels(from: items)
             }
-            .flatMap({ element -> Observable<[ItemViewModel]> in
-                if let value = element {
-                    return .just(value)
-                } else {
-                    return .empty()
-                }
-            })
+            .filterNil()
             .share(replay: 1, scope: .forever)
             .asDriver(onErrorDriveWith: .empty())
     }
@@ -58,18 +68,12 @@ open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel
             .map { [weak self] items in
                 self?.viewModels(from: items)
             }
-            .flatMap({ element -> Observable<[ItemViewModel]> in
-                if let value = element {
-                    return .just(value)
-                } else {
-                    return .empty()
-                }
-            })
+            .filterNil()
             .share(replay: 1, scope: .forever)
             .asDriver(onErrorDriveWith: .empty())
     }
 
-    func viewModel(from item: Item) -> ItemViewModel {
+    open func viewModel(from item: Item) -> ItemViewModel {
         fatalError("viewModel(from:) has not been implemented")
     }
 
@@ -92,39 +96,15 @@ open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel
     var loadingResultObservable: Observable<ResultType> {
         return loadingStateDriver
             .asObservable()
-            .map { state -> ResultType? in
-                guard case let .result(data, _) = state else {
-                    return nil
-                }
-
-                return data
-            }
-            .flatMap({ element -> Observable<ResultType> in
-                if let value = element {
-                    return .just(value)
-                } else {
-                    return .empty()
-                }
-            })
+            .map { $0.result }
+            .filterNil()
     }
 
     var loadingErrorObservable: Observable<Error> {
         return loadingStateDriver
             .asObservable()
-            .map { state -> Error? in
-                guard case let .error(error) = state else {
-                    return nil
-                }
-
-                return error
-            }
-            .flatMap({ element -> Observable<Error> in
-                if let value = element {
-                    return .just(value)
-                } else {
-                    return .empty()
-                }
-            })
+            .map { $0.error }
+            .filterNil()
     }
 
     var firstLoadingResultObservable: Single<ResultType> {

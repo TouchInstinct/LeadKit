@@ -20,10 +20,10 @@
 //  THE SOFTWARE.
 //
 
-public protocol SearchResultsViewController where Self: UIViewController {
+public protocol SearchResultsViewController {
 
-    var resultsView: TableViewHolder? { get set }
+    var searchResultsView: TableViewHolder { get set }
 
-    func update(from state: SearchResultsViewControllerState)
+    func update(for state: SearchResultsViewControllerState)
 
 }
