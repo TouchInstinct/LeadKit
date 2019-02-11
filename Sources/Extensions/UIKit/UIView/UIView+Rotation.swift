@@ -42,5 +42,4 @@ public extension UIView {
     func stopZRotation() {
         layer.removeAnimation(forKey: CABasicAnimation.rotationKeyPath)
     }
-
 }

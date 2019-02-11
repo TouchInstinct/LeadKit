@@ -63,7 +63,6 @@ public extension Array where Element: Equatable {
         let allValues = values.flatMap { $0 }
         return filter { !allValues.contains($0) }
     }
-
 }
 
 public extension Array {
@@ -72,5 +71,4 @@ public extension Array {
     subscript(safe index: Index) -> Element? {
         return (index < count && index >= 0) ? self[index] : nil
     }
-
 }

@@ -29,5 +29,4 @@ public protocol Animatable {
     func startAnimating()
     /// Method that stops animation.
     func stopAnimating()
-
 }

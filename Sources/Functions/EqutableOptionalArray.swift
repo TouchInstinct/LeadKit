@@ -20,19 +20,23 @@
 //  THE SOFTWARE.
 //
 
-/// Compares two optional collections with Equtable elements.
-///
-/// - Parameters:
-///   - lhs: First collection.
-///   - rhs: Second collection.
-/// - Returns: True if both parameters are nil or if first collection is equal to second.
-public func ==<T: Equatable>(lhs: [T]?, rhs: [T]?) -> Bool {
-    switch (lhs, rhs) {
-    case (let lhs?, let rhs?):
-        return lhs == rhs
-    case (nil, nil):
-        return true
-    default:
-        return false
+public extension Optional where Wrapped: Sequence, Wrapped.Element: Equatable {
+    /// Compares two optional collections with Equtable elements.
+    ///
+    /// - Parameters:
+    ///   - lhs: First collection.
+    ///   - rhs: Second collection.
+    /// - Returns: True if both parameters are nil or if first collection is equal to second.
+    static func == (lhs: [Wrapped.Element]?, rhs: [Wrapped.Element]?) -> Bool {
+        switch (lhs, rhs) {
+        case let (lhs?, rhs?):
+            return lhs == rhs
+
+        case (nil, nil):
+            return true
+
+        default:
+            return false
+        }
     }
 }

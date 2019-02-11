@@ -24,7 +24,7 @@ import RxSwift
 import RxCocoa
 
 /// Class that used for binding text field with upper level view model.
-open class TextFieldViewModel<ViewEvents: TextFieldViewEvents,
+open class TextFieldViewModel < ViewEvents: TextFieldViewEvents,
                               ViewModelEvents: TextFieldViewModelEvents> {
 
     /// Events that can be emitted by view model.
@@ -66,7 +66,6 @@ open class TextFieldViewModel<ViewEvents: TextFieldViewEvents,
     public func unbindView() {
         disposeBag = DisposeBag()
     }
-
 }
 
 public extension TextFieldViewModel {
@@ -97,5 +96,4 @@ public extension TextFieldViewModel {
             }
             .drive()
     }
-
 }

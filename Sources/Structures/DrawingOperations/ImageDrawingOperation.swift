@@ -56,5 +56,4 @@ struct ImageDrawingOperation: DrawingOperation {
         context.interpolationQuality = .high
         context.draw(image, in: CGRect(origin: origin, size: newSize))
     }
-
 }

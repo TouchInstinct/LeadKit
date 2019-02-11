@@ -40,5 +40,4 @@ public protocol ViewTextConfigurable: class {
 
     /// Attributed text of text object.
     var attributedText: NSAttributedString? { get set }
-
 }

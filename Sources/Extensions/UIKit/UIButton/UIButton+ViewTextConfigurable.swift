@@ -68,7 +68,6 @@ extension UIButton: ViewTextConfigurable {
             setAttributedTitle(newValue, for: [])
         }
     }
-
 }
 
 private extension UIControl.ContentHorizontalAlignment {
@@ -81,16 +80,20 @@ private extension UIControl.ContentHorizontalAlignment {
             } else {
                 self = .left
             }
+
         case .right:
             if #available(iOS 11, tvOS 11, *) {
                 self = .trailing
             } else {
                 self = .right
             }
+
         case .center:
             self = .center
+
         case .justified:
             self = .fill
+
         case .natural:
             if #available(iOS 11, tvOS 11, *) {
                 self = .leading
@@ -104,17 +107,21 @@ private extension UIControl.ContentHorizontalAlignment {
         switch self {
         case .left:
             return .left
+
         case .right:
             return .right
+
         case .center:
             return .center
+
         case .fill:
             return .justified
+
         case .leading:
             return .natural
+
         case .trailing:
             return .right
         }
     }
-
 }

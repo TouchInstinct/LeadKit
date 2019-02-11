@@ -28,7 +28,6 @@ public extension CGBitmapInfo {
 
     static let alphaBitmapInfo = CGBitmapInfo(rawValue: CGBitmapInfo().rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue)
     static let opaqueBitmapInfo = CGBitmapInfo(rawValue: CGBitmapInfo().rawValue | CGImageAlphaInfo.none.rawValue)
-
 }
 
 public extension CGContext {
@@ -74,5 +73,4 @@ public extension CGContext {
                          space: colorSpace,
                          bitmapInfo: bitmapInfo.rawValue)
     }
-
 }

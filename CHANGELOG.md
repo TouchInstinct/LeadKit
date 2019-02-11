@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.7
+- **Add**: Carthage support.
+
 ### 0.9.6
 - **Add**:  Add new `configureSeparators` method to `SeparatorRowBox` array.
 

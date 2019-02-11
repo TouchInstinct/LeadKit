@@ -41,5 +41,4 @@ extension UILabel: ViewTextConfigurable {
             textColor = newValue
         }
     }
-
 }

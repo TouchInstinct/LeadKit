@@ -56,7 +56,6 @@ open class BasePlaceholderViewModel {
         self.buttonTitle = buttonTitle
         self.background = background
     }
-
 }
 
 public extension BasePlaceholderViewModel {
@@ -75,5 +74,4 @@ public extension BasePlaceholderViewModel {
     var hasCenterImage: Bool {
         return centerImage != nil
     }
-
 }

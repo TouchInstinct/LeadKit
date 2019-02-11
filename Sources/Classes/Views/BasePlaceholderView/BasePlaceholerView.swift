@@ -75,7 +75,6 @@ open class BasePlaceholderView: UIView, InitializableView {
     open func localize() {
         // override in subclass
     }
-
 }
 
 public extension BasePlaceholderView {
@@ -98,5 +97,4 @@ public extension BasePlaceholderView {
         button.isHidden = !viewModel.hasButton
         viewModel.buttonTitle?.configure(view: button)
     }
-
 }

@@ -29,5 +29,4 @@ public protocol NetworkOperationModel {
 
     /// Driver, that emits current state of loading process
     var stateDriver: Driver<NetworkOperationStateType> { get }
-
 }

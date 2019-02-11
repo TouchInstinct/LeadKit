@@ -66,5 +66,4 @@ open class BaseConfigurableController<ViewModel>: UIViewController, Configurable
     open func configureBarButtons() {
         // override in subclass
     }
-
 }

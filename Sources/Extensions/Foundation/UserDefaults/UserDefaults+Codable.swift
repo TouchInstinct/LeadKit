@@ -4,7 +4,6 @@ public enum UserDefaultsError: Error {
 
     case noSuchValue(key: String)
     case unableToDecode(decodingError: Error)
-
 }
 
 public extension UserDefaults {
@@ -65,7 +64,6 @@ public extension UserDefaults {
             try? set(object: newValue, forKey: key)
         }
     }
-
 }
 
 public extension Reactive where Base: UserDefaults {
@@ -104,5 +102,4 @@ public extension Reactive where Base: UserDefaults {
             try self.base.set(object: object, forKey: key, encoder: encoder)
         }
     }
-
 }

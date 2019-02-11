@@ -64,5 +64,4 @@ public final class TotalCountCursor<CursorConfiguration: TotalCountCursorConfigu
                 $0.results
             }
     }
-
 }

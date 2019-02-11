@@ -53,5 +53,4 @@ struct PaddingDrawingOperation: DrawingOperation {
 
         context.draw(image, in: imageLocation)
     }
-
 }

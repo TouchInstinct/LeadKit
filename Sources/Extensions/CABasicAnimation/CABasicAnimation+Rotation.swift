@@ -39,5 +39,4 @@ extension CABasicAnimation {
 
         return animation
     }
-
 }

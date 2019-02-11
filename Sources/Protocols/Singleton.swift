@@ -25,5 +25,4 @@ public protocol Singleton {
 
     /// Shared instance of this type.
     static var shared: Self { get }
-
 }

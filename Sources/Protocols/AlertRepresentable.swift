@@ -37,5 +37,4 @@ public extension AlertRepresentable {
     var actionTitles: [String] {
         return [actionTitle]
     }
-
 }

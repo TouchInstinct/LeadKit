@@ -38,7 +38,6 @@ public indirect enum PaginationDataLoadingState<DS: DataSource> {
     case error(error: Error, after: PaginationDataLoadingState)
     case empty
     case exhausted
-
 }
 
 extension PaginationDataLoadingState: DataLoadingState {
@@ -74,6 +73,7 @@ extension PaginationDataLoadingState: DataLoadingState {
         switch self {
         case .initial:
             return true
+
         default:
             return false
         }
@@ -83,6 +83,7 @@ extension PaginationDataLoadingState: DataLoadingState {
         switch self {
         case .results(let newItems, _, _):
             return newItems
+
         default:
             return nil
         }
@@ -92,9 +93,9 @@ extension PaginationDataLoadingState: DataLoadingState {
         switch self {
         case .error(let error, _):
             return error
+
         default:
             return nil
         }
     }
-
 }

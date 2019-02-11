@@ -153,5 +153,4 @@ public final class SpinnerView: UIView, Animatable, LoadingIndicator {
             addAnimation()
         }
     }
-
 }

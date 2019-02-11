@@ -38,7 +38,6 @@ public protocol DrawingOperation {
     ///
     /// - Parameter context: CGContext to perform drawing manipulations.
     func apply(in context: CGContext)
-
 }
 
 extension DrawingOperation {
@@ -46,5 +45,4 @@ extension DrawingOperation {
     var opaque: Bool {
         return false
     }
-
 }

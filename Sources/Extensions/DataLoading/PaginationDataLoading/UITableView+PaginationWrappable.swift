@@ -32,5 +32,4 @@ extension UITableView: PaginationWrappable {
             tableFooterView = newValue
         }
     }
-
 }

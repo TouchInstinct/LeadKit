@@ -27,9 +27,9 @@ public extension GeneralDataLoadingState {
         switch self {
         case .result:
             return true
+
         default:
             return false
         }
     }
-
 }

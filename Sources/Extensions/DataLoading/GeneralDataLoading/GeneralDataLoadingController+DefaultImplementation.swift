@@ -61,7 +61,6 @@ public extension GeneralDataLoadingController {
     func reload() {
         viewModel.reload()
     }
-
 }
 
 public extension GeneralDataLoadingController where Self: DisposeBagHolder {
@@ -69,5 +68,4 @@ public extension GeneralDataLoadingController where Self: DisposeBagHolder {
     func bindLoadingState() {
         bindLoadingState(from: viewModel.loadingStateDriver)
     }
-
 }

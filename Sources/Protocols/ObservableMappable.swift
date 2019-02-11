@@ -26,5 +26,4 @@ import RxSwift
 public protocol ObservableMappable where Self: Decodable {
 
     static func create(from jsonObject: Any, with decoder: JSONDecoder) -> Observable<Self>
-
 }

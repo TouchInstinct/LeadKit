@@ -238,5 +238,4 @@ public extension TableDirector {
         remove(at: index, with: animation, manualBeginEndUpdates: manualBeginEndUpdates)
         return insert(section: section, at: index, with: animation, manualBeginEndUpdates: manualBeginEndUpdates)
     }
-
 }

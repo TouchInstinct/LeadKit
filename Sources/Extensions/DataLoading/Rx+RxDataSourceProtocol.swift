@@ -30,7 +30,6 @@ extension Observable: RxDataSource {
     public func resultSingle() -> Single<ResultType> {
         return asSingle()
     }
-
 }
 
 // waiting for Swift 4.2 release...
@@ -44,5 +43,4 @@ extension Single: RxDataSource {
     public func resultSingle() -> Single<ResultType> {
         return asObservable().asSingle()
     }
-
 }

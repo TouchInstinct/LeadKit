@@ -27,5 +27,4 @@ public protocol CollectionViewHolder {
 
     /// Contained UICollectionView instance.
     var collectionView: UICollectionView { get }
-
 }

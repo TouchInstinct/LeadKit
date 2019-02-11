@@ -49,5 +49,4 @@ public extension InitializableView {
     func configureLayout() {
         //
     }
-
 }

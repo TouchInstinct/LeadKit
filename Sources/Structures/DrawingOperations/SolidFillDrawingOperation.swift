@@ -42,5 +42,4 @@ struct SolidFillDrawingOperation: DrawingOperation {
         context.setFillColor(color)
         context.fill(CGRect(origin: .zero, size: CGSize(width: width, height: height)))
     }
-
 }

@@ -116,5 +116,4 @@ public extension NetworkServiceConfiguration {
                                     encoding: requestEncoding ?? encoding,
                                     headers: requestHeaders)
     }
-
 }

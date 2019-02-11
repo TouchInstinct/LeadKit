@@ -51,5 +51,4 @@ struct ResizeDrawingOperation: DrawingOperation {
         context.interpolationQuality = .high
         context.draw(image, in: drawRect)
     }
-
 }

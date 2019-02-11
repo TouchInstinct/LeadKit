@@ -28,5 +28,4 @@ public enum ContentLoadingViewModel<ContentType, PlaceholderType> {
 
     case placeholder(PlaceholderType)
     case content(ContentType)
-
 }

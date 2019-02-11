@@ -30,5 +30,4 @@ public enum ViewText {
 
     case string(String, textAttributes: BaseTextAttributes)
     case attributedString(NSAttributedString)
-
 }

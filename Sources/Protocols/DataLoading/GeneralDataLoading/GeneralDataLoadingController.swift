@@ -43,5 +43,4 @@ public protocol GeneralDataLoadingController: class, ConfigurableController, Gen
 
     /// Shold be called in viewDidLoad() instead of initialLoadView().
     func initialLoadDataLoadingView()
-
 }

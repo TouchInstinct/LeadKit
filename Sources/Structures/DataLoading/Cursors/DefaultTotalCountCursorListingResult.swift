@@ -31,5 +31,4 @@ public struct DefaultTotalCountCursorListingResult<T>: TotalCountCursorListingRe
         self.results = results
         self.totalCount = totalCount
     }
-
 }

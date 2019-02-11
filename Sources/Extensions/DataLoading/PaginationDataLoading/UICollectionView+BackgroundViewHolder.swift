@@ -22,15 +22,5 @@
 
 import UIKit.UICollectionView
 
-extension UICollectionView: PaginationWrappable {
-
-    public var footerView: UIView? {
-        get {
-            return nil
-        }
-        set {
-            // nothing
-        }
-    }
-
+extension UICollectionView: BackgroundViewHolder {
 }

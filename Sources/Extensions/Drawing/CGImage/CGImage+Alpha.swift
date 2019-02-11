@@ -29,9 +29,9 @@ public extension CGImage {
         switch alphaInfo {
         case .first, .last, .premultipliedFirst, .premultipliedLast:
             return true
+
         default:
             return false
         }
     }
-
 }

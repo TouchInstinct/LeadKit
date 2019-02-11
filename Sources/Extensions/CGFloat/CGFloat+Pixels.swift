@@ -30,5 +30,4 @@ public extension CGFloat {
     init(pixels: CGFloat) {
         self.init(pixels / UIScreen.main.nativeScale)
     }
-
 }

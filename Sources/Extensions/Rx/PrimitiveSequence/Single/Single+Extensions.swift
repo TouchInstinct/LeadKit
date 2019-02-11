@@ -29,7 +29,7 @@ public extension PrimitiveSequence where Trait == SingleTrait {
     /// - Parameter value: A new element.
     /// - Returns: An primitive sequence whose element is equal to passed value.
     func replace<T>(with value: T) -> PrimitiveSequence<Trait, T> {
-        return map { _ in value }
+        return map { _ in value } // swiftlint:disable:this unused_map_parameter
     }
 
     /// Replaces emitted element with Void.
@@ -45,5 +45,4 @@ public extension PrimitiveSequence where Trait == SingleTrait {
     func asOptional() -> PrimitiveSequence<Trait, Element?> {
         return map { $0 }
     }
-
 }

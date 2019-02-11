@@ -38,5 +38,4 @@ public protocol GeneralDataLoadingHandler {
     ///
     /// - Parameter error: An error that occurred while loading data.
     func onErrorState(error: Error)
-
 }

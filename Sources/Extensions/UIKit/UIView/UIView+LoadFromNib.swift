@@ -50,7 +50,5 @@ public extension UIView {
         }
 
         return nibView
-
     }
-
 }

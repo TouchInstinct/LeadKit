@@ -51,5 +51,4 @@ public protocol NumberFormattingService {
     ///   - format: A format that should be used for number parsing.
     /// - Returns: Parsed number or nil if parsing will fail.
     func number(from string: String, format: NumberFormatType) -> NSNumber?
-
 }

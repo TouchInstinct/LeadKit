@@ -27,5 +27,4 @@ public extension CGSize {
     var ceiledContextSize: CGContextSize {
         return (width: Int(ceil(width)), height: Int(ceil(height)))
     }
-
 }

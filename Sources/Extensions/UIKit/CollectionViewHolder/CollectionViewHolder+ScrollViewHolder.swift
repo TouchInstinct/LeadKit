@@ -27,5 +27,4 @@ public extension ScrollViewHolder where Self: CollectionViewHolder {
     var scrollView: UIScrollView {
         return collectionView
     }
-
 }

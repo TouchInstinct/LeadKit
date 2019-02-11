@@ -60,7 +60,6 @@ public extension Reactive where Base: DataRequest {
     private func response(onQueue queue: DispatchQueue) -> Observable<(HTTPURLResponse, Data)> {
         return responseResult(queue: queue, responseSerializer: DataRequest.dataResponseSerializer())
     }
-
 }
 
 private extension ObservableType where E == ServerResponse {
@@ -87,5 +86,4 @@ private extension ObservableType where E == ServerResponse {
             }
         }
     }
-
 }

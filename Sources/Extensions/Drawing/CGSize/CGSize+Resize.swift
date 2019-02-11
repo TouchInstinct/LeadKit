@@ -39,8 +39,10 @@ public extension CGSize {
         switch resizeMode {
         case .scaleToFill:
             ratio = 1
+
         case .scaleAspectFill:
             ratio = max(horizontalRatio, verticalRatio)
+
         case .scaleAspectFit:
             ratio = min(horizontalRatio, verticalRatio)
         }
@@ -70,5 +72,4 @@ public extension CGSize {
         return CGRect(origin: CGPoint(x: originX, y: originY),
                       size: CGSize(width: newWidth, height: newHeight))
     }
-
 }

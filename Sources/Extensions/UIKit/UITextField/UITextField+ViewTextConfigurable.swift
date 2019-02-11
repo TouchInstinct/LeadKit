@@ -41,5 +41,4 @@ extension UITextField: ViewTextConfigurable {
             textColor = newValue
         }
     }
-
 }

@@ -31,7 +31,6 @@ internal final class TextPlaceholderView: UIView {
         case loading = "Loading..."
         case retry = "Retry"
         case retryLoadMore = "Retry load more"
-
     }
 
     init(title: PlaceholderText) {
@@ -52,5 +51,4 @@ internal final class TextPlaceholderView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }

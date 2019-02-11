@@ -43,7 +43,6 @@ public final class SingleLoadCursorConfiguration<Element>: TotalCountCursorConfi
     public init(resetFrom other: SingleLoadCursorConfiguration) {
         self.loadingSingle = other.loadingSingle
     }
-
 }
 
 /// Cursor implementation for single load operation
@@ -91,5 +90,4 @@ public class SingleLoadCursor<Element>: ResettableCursorType {
         content = result
         exhausted = true
     }
-
 }
