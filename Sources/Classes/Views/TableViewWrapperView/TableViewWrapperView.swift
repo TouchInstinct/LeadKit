@@ -44,5 +44,4 @@ open class TableViewWrapperView: ScrollViewHolderView, TableViewHolder {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }

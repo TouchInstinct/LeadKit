@@ -2329,7 +2329,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "swiftlint autocorrect --path Sources --config ${PROJECT_DIR}/build-scripts/xcode/.swiftlint.yml && swiftlint --path Sources --config ${PROJECT_DIR}/build-scripts/xcode/.swiftlint.yml\n";
+			shellScript = "CONFIG_PATH=${PROJECT_DIR}/build-scripts/xcode/.swiftlint.yml\n\nif which swiftlint >/dev/null; then\nswiftlint autocorrect --path Sources --config ${CONFIG_PATH} && swiftlint --path Sources --config ${CONFIG_PATH}\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		6782BBBC1EB31ED90086E0B8 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2343,7 +2343,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "swiftlint autocorrect --path Sources --config ${PROJECT_DIR}/build-scripts/xcode/.swiftlint.yml && swiftlint --path Sources --config ${PROJECT_DIR}/build-scripts/xcode/.swiftlint.yml\n";
+			shellScript = "CONFIG_PATH=${PROJECT_DIR}/build-scripts/xcode/.swiftlint.yml\n\nif which swiftlint >/dev/null; then\nswiftlint autocorrect --path Sources --config ${CONFIG_PATH} && swiftlint --path Sources --config ${CONFIG_PATH}\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		6782BBBE1EB31F210086E0B8 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2357,7 +2357,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "swiftlint autocorrect --path Sources --config ${PROJECT_DIR}/build-scripts/xcode/.swiftlint.yml && swiftlint --path Sources --config ${PROJECT_DIR}/build-scripts/xcode/.swiftlint.yml\n";
+			shellScript = "CONFIG_PATH=${PROJECT_DIR}/build-scripts/xcode/.swiftlint.yml\n\nif which swiftlint >/dev/null; then\nswiftlint autocorrect --path Sources --config ${CONFIG_PATH} && swiftlint --path Sources --config ${CONFIG_PATH}\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		67887A0E1ECC856F008A9E1D /* CopyPaste Detection */ = {
 			isa = PBXShellScriptBuildPhase;

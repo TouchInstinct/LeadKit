@@ -35,5 +35,4 @@ public extension FloatingPoint {
     func radiansToDegrees() -> Self {
         return self * 180 / .pi
     }
-
 }

@@ -29,7 +29,7 @@ public extension ObservableType {
     /// - Parameter value: A new element.
     /// - Returns: An observable sequence whose elements are equals to passed value.
     func replace<T>(with value: T) -> Observable<T> {
-        return map { _ in value }
+        return map { _ in value } // swiftlint:disable:this unused_map_parameter
     }
 
     /// Replaces all emitted elements with Void.
@@ -45,5 +45,4 @@ public extension ObservableType {
     func asOptional() -> Observable<E?> {
         return map { $0 }
     }
-
 }

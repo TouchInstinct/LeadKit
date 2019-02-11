@@ -79,7 +79,6 @@ open class NetworkService {
                                                    decoder: decoder)
                 .counterTracking(for: self)
     }
-
 }
 
 private extension NetworkService {
@@ -95,7 +94,6 @@ private extension NetworkService {
         requestCountRelay.accept(requestCountRelay.value - 1)
         lock.unlock()
     }
-
 }
 
 public extension Observable {
@@ -112,5 +110,4 @@ public extension Observable {
             networkService.decreaseRequestCounter()
         })
     }
-
 }

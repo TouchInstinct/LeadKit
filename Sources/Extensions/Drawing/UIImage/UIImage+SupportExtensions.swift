@@ -238,7 +238,6 @@ public extension Support where Base: UIImage {
 
         return actionClosure(image)?.support
     }
-
 }
 
 private extension CGImage {
@@ -250,7 +249,6 @@ private extension CGImage {
                                      opaque: false,
                                      flipY: true)
     }
-
 }
 
 private extension DrawingOperation {
@@ -282,5 +280,4 @@ private extension DrawingOperation {
 
         return UIImage(cgImage: image, scale: scale, orientation: .up)
     }
-
 }

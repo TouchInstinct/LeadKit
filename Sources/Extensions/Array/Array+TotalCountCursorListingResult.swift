@@ -31,5 +31,4 @@ extension Array: TotalCountCursorListingResult {
     public var totalCount: Int {
         return count
     }
-
 }

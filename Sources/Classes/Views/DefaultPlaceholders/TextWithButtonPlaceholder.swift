@@ -58,5 +58,4 @@ internal final class TextWithButtonPlaceholder: UIView {
     @objc private func buttonDidTapped(_ button: UIButton) {
         tapHandler()
     }
-
 }

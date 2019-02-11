@@ -32,7 +32,6 @@ enum RequestUsageError: Error {
 
     case getMethodForbidden
     case urlEncodingForbidden
-
 }
 
 public extension Reactive where Base: SessionManager {
@@ -83,6 +82,7 @@ public extension Reactive where Base: SessionManager {
                                         parameters: parameters,
                                         encoding: requestParameters.encoding,
                                         headers: requestParameters.headers)
+
         case .array(let parameters)?:
             guard let encoding = requestParameters.encoding as? JSONEncoding else {
                 assertionFailure("Invalid encoding type with array parameter")
@@ -94,6 +94,7 @@ public extension Reactive where Base: SessionManager {
                                         parameters: parameters,
                                         encoding: encoding,
                                         headers: requestParameters.headers)
+
         case .none:
             requestObservable = request(requestParameters.method,
                                         requestParameters.url,
@@ -139,7 +140,6 @@ public extension Reactive where Base: SessionManager {
             }
             .catchAsRequestError()
     }
-
 }
 
 private extension ObservableType {
@@ -151,20 +151,25 @@ private extension ObservableType {
             switch error {
             case let requestError as RequestError:
                 resultError = requestError
+
             case let urlError as URLError:
                 switch urlError.code {
                 case .notConnectedToInternet:
                     resultError = .noConnection
+
                 default:
                     resultError = .network(error: urlError, response: response)
                 }
+
             case let afError as AFError:
                 switch afError {
                 case .responseSerializationFailed, .responseValidationFailed:
                     resultError = .invalidResponse(error: afError, response: response)
+
                 default:
                     resultError = .network(error: afError, response: response)
                 }
+
             default:
                 resultError = .network(error: error, response: response)
             }

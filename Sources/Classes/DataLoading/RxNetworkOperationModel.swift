@@ -96,5 +96,4 @@ open class RxNetworkOperationModel<LoadingStateType: NetworkOperationState>: Net
             stateRelay.accept(newValue)
         }
     }
-
 }

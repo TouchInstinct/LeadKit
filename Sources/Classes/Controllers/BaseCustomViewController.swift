@@ -51,5 +51,4 @@ open class BaseCustomViewController<ViewModel, View: UIView>: BaseConfigurableCo
     open func createView() -> View {
         return View()
     }
-
 }

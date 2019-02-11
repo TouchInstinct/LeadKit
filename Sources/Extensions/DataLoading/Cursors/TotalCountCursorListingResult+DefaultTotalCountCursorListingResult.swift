@@ -40,5 +40,4 @@ public extension TotalCountCursorListingResult {
         return DefaultTotalCountCursorListingResult(results: results,
                                                     totalCount: totalCount)
     }
-
 }

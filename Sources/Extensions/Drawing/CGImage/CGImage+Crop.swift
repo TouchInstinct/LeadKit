@@ -64,5 +64,4 @@ public extension CGImage {
 
         return cropping(to: rect)
     }
-
 }

@@ -61,5 +61,4 @@ public class StaticCursor<Element>: ResettableRxDataSourceCursor {
             return .just(self.content)
         }
     }
-
 }

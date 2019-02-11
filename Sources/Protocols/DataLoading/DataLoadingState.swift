@@ -25,5 +25,4 @@ public protocol DataLoadingState: NetworkOperationState {
 
     /// Empty state. When data was requested and empty result was received.
     static var emptyState: Self { get }
-
 }

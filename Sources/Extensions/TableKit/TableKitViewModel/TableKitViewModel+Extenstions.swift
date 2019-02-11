@@ -31,5 +31,4 @@ public extension TableKitViewModel {
     var tableRow: RowType {
         return RowType(item: self)
     }
-
 }

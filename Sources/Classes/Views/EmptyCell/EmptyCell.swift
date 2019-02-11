@@ -61,5 +61,4 @@ public final class EmptyCell: SeparatorCell, AppearanceConfigurable, Configurabl
     private func resetAppearance() {
         configure(appearance: Appearance())
     }
-
 }

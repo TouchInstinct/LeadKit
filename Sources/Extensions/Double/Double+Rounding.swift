@@ -46,9 +46,9 @@ public extension Double {
         switch roundType {
         case .normal:
             return (self * divider).rounded(.toNearestOrEven) / divider
+
         case .down:
             return (self * divider).rounded(.down) / divider
         }
     }
-
 }

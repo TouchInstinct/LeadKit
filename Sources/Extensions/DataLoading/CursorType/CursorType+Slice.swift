@@ -35,5 +35,4 @@ public extension CursorType {
     var loadedElements: [Self.Element] {
         return self[0..<count]
     }
-
 }

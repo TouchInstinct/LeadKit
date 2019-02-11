@@ -41,7 +41,6 @@ public extension TableRow where CellType: SeparatorCell {
         action.id = configureSeparatorActionId
         on(action)
     }
-
 }
 
 public extension TableRow where CellType: SeparatorCell {
@@ -50,5 +49,4 @@ public extension TableRow where CellType: SeparatorCell {
     var separatorRowBox: SeparatorRowBox {
         return SeparatorRowBox(row: self)
     }
-
 }

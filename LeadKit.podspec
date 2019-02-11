@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.subspec 'Core' do |ss|
     ss.ios.deployment_target = '9.0'
     ss.tvos.deployment_target = '9.0'
-    ss.watchos.deployment_target = '3.0'
+    ss.watchos.deployment_target = '2.0'
 
     ss.source_files = "Sources/**/*.swift"
     ss.watchos.exclude_files = [

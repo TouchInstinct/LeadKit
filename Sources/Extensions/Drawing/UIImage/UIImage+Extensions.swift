@@ -233,7 +233,6 @@ public extension UIImage {
 
         return actionClosure(image)
     }
-
 }
 
 @available(iOS 10.0, tvOS 10.0, *)
@@ -250,5 +249,4 @@ private extension DrawingOperation {
             self.apply(in: $0.cgContext)
         }
     }
-
 }

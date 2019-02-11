@@ -41,7 +41,6 @@ public extension CursorType {
 
         return ResettableMapCursor(cursor: self, transform: transform)
     }
-
 }
 
 /// Map cursor implementation with enclosed cursor for fetching results
@@ -87,7 +86,6 @@ public class MapCursor<Cursor: CursorType, T>: CursorType, RxDataSource {
             return transformedNewItems
         }
     }
-
 }
 
 /// MapCursor subclass with implementation of ResettableType
@@ -102,5 +100,4 @@ public class ResettableMapCursor<Cursor: ResettableCursorType, T>: MapCursor<Cur
     public required init(resetFrom other: ResettableMapCursor) {
         super.init(cursor: other.cursor.reset(), transform: other.transform)
     }
-
 }

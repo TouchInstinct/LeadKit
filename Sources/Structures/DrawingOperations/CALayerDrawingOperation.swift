@@ -39,5 +39,4 @@ struct CALayerDrawingOperation: DrawingOperation {
     public func apply(in context: CGContext) {
         layer.render(in: context)
     }
-
 }

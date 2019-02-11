@@ -32,9 +32,9 @@ public extension UIColor {
      - parameter alpha: 0.0 - 1.0. The default is 1.0.
      */
     convenience init(hex3: UInt16, alpha: CGFloat = 1) {
-        let red     = CGFloat((hex3 & 0xF00) >> 8) / 0xF
-        let green   = CGFloat((hex3 & 0x0F0) >> 4) / 0xF
-        let blue    = CGFloat((hex3 & 0x00F) >> 0) / 0xF
+        let red = CGFloat((hex3 & 0xF00) >> 8) / 0xF
+        let green = CGFloat((hex3 & 0x0F0) >> 4) / 0xF
+        let blue = CGFloat((hex3 & 0x00F) >> 0) / 0xF
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
 
@@ -45,10 +45,10 @@ public extension UIColor {
      - parameter hex4: Four-digit hexadecimal value.
      */
     convenience init(hex4: UInt16) {
-        let red     = CGFloat((hex4 & 0xF000) >> 12) / 0xF
-        let green   = CGFloat((hex4 & 0x0F00) >>  8) / 0xF
-        let blue    = CGFloat((hex4 & 0x00F0) >>  4) / 0xF
-        let alpha   = CGFloat((hex4 & 0x000F) >>  0) / 0xF
+        let red = CGFloat((hex4 & 0xF000) >> 12) / 0xF
+        let green = CGFloat((hex4 & 0x0F00) >> 8) / 0xF
+        let blue = CGFloat((hex4 & 0x00F0) >> 4) / 0xF
+        let alpha = CGFloat((hex4 & 0x000F) >> 0) / 0xF
 
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
@@ -60,9 +60,9 @@ public extension UIColor {
      - parameter alpha: alpha: 0.0 - 1.0. The default is 1.0.
      */
     convenience init(hex6: UInt32, alpha: CGFloat = 1) {
-        let red     = CGFloat((hex6 & 0xFF0000) >> 16) / 0xFF
-        let green   = CGFloat((hex6 & 0x00FF00) >>  8) / 0xFF
-        let blue    = CGFloat((hex6 & 0x0000FF) >>  0) / 0xFF
+        let red = CGFloat((hex6 & 0xFF0000) >> 16) / 0xFF
+        let green = CGFloat((hex6 & 0x00FF00) >> 8) / 0xFF
+        let blue = CGFloat((hex6 & 0x0000FF) >> 0) / 0xFF
 
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
@@ -73,10 +73,10 @@ public extension UIColor {
      - parameter hex8: Eight-digit hexadecimal value.
      */
     convenience init(hex8: UInt32) {
-        let red     = CGFloat((hex8 & 0xFF000000) >> 24) / 0xFF
-        let green   = CGFloat((hex8 & 0x00FF0000) >> 16) / 0xFF
-        let blue    = CGFloat((hex8 & 0x0000FF00) >>  8) / 0xFF
-        let alpha   = CGFloat((hex8 & 0x000000FF) >>  0) / 0xFF
+        let red = CGFloat((hex8 & 0xFF000000) >> 24) / 0xFF
+        let green = CGFloat((hex8 & 0x00FF0000) >> 16) / 0xFF
+        let blue = CGFloat((hex8 & 0x0000FF00) >> 8) / 0xFF
+        let alpha = CGFloat((hex8 & 0x000000FF) >> 0) / 0xFF
 
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
@@ -109,6 +109,7 @@ public extension UIColor {
             } else {
                 return nil
             }
+
         case 6, 8:
             if let hex = UInt32(hexStr, radix: 16) {
                 if charactersCount == 6 {
@@ -119,9 +120,9 @@ public extension UIColor {
             } else {
                 return nil
             }
+
         default:
             return nil
         }
     }
-
 }

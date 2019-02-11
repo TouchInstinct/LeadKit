@@ -65,5 +65,4 @@ public protocol DateFormattingService {
     ///   - formattedIn: A region that should be used for date formatting. In case of nil defaultRegion will be used.
     /// - Returns: String that contains formatted date or nil if formatting did fail.
     func string(from date: DateRepresentable, format: DateFormatType, formattedIn: Region?) -> String
-
 }

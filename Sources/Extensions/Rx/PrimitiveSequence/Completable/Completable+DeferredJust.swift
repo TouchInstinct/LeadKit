@@ -41,5 +41,4 @@ public extension PrimitiveSequence where Trait == CompletableTrait {
             return Disposables.create()
         }
     }
-
 }

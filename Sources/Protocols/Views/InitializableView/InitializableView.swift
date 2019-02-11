@@ -40,5 +40,4 @@ public protocol InitializableView {
 
     /// Confgiure layout of subviews.
     func configureLayout()
-
 }

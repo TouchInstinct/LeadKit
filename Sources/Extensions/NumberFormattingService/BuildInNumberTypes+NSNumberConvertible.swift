@@ -27,7 +27,6 @@ extension NSNumber: NSNumberConvertible {
     public func asNSNumber() -> NSNumber {
         return self
     }
-
 }
 
 extension Decimal: NSNumberConvertible {
@@ -35,7 +34,6 @@ extension Decimal: NSNumberConvertible {
     public func asNSNumber() -> NSNumber {
         return NSDecimalNumber(decimal: self)
     }
-
 }
 
 extension Int: NSNumberConvertible {
@@ -43,7 +41,6 @@ extension Int: NSNumberConvertible {
     public func asNSNumber() -> NSNumber {
         return NSNumber(value: self)
     }
-
 }
 
 extension Int64: NSNumberConvertible {
@@ -51,7 +48,6 @@ extension Int64: NSNumberConvertible {
     public func asNSNumber() -> NSNumber {
         return NSNumber(value: self)
     }
-
 }
 
 extension Double: NSNumberConvertible {
@@ -59,7 +55,6 @@ extension Double: NSNumberConvertible {
     public func asNSNumber() -> NSNumber {
         return NSNumber(value: self)
     }
-
 }
 
 extension Float: NSNumberConvertible {
@@ -67,5 +62,4 @@ extension Float: NSNumberConvertible {
     public func asNSNumber() -> NSNumber {
         return NSNumber(value: self)
     }
-
 }

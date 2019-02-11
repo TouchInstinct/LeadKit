@@ -27,5 +27,4 @@ public extension RxDataSource where Self: CursorType {
     func resultSingle() -> Single<[Element]> {
         return loadNextBatch()
     }
-
 }

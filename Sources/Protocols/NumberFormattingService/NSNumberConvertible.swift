@@ -29,5 +29,4 @@ public protocol NSNumberConvertible {
     ///
     /// - Returns: A value, expressed as an NSNumber.
     func asNSNumber() -> NSNumber
-
 }

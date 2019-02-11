@@ -25,10 +25,10 @@ import Foundation
 extension TimeInterval {
 
     private static let secondsInMinute = 60
-    private static let minutesInHour   = 60
-    private static let hoursInDay      = 24
-    private static let secondsInHour   = secondsInMinute * minutesInHour
-    private static let secondsInDay    = secondsInHour * hoursInDay
+    private static let minutesInHour = 60
+    private static let hoursInDay = 24
+    private static let secondsInHour = secondsInMinute * minutesInHour
+    private static let secondsInDay = secondsInHour * hoursInDay
 
     public typealias TimeComponents = (days: Int, hours: Int, minutes: Int, seconds: Int)
 
@@ -77,5 +77,4 @@ extension TimeInterval {
             timeInterval % TimeInterval.secondsInMinute
         )
     }
-
 }

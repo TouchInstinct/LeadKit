@@ -40,14 +40,16 @@ public extension String {
             switch lastDigit {
             case 1:
                 return stringOne
+
             case 2...4:
                 return stringTwo
+
             case 5...9, 0:
                 return stringMany
+
             default:
                 return ""
             }
         }
     }
-
 }

@@ -26,5 +26,4 @@ import TableKit
 public protocol TableKitViewModel where CellType.CellData == Self {
 
     associatedtype CellType: ConfigurableCell & UITableViewCell
-
 }

@@ -245,10 +245,12 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
         let topConstraint = placeholderView.topAnchor.constraint(equalTo: placeholderWrapperView.topAnchor)
         let bottomConstraint = placeholderView.bottomAnchor.constraint(equalTo: placeholderWrapperView.bottomAnchor)
 
-        NSLayoutConstraint.activate([leadingConstraint,
-                                     trailingConstraint,
-                                     topConstraint,
-                                     bottomConstraint])
+        NSLayoutConstraint.activate([
+            leadingConstraint,
+            trailingConstraint,
+            topConstraint,
+            bottomConstraint
+        ])
 
         currentPlaceholderViewTopConstraint = topConstraint
 
@@ -311,7 +313,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
                         .filter { $0 }
                         .delay(0.5, scheduler: MainScheduler.instance)
                         .asDriver(onErrorJustReturn: true)
-                        .map { _ in state }
+                        .replace(with: state)
                 }
             }
             .drive(stateChanged)
@@ -326,18 +328,17 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
         let notificationCenter = NotificationCenter.default.rx
 
         notificationCenter.notification(UIApplication.willResignActiveNotification)
-            .map { _ in false }
+            .replace(with: false)
             .asDriver(onErrorJustReturn: false)
             .drive(applicationCurrentyActive)
             .disposed(by: disposeBag)
 
         notificationCenter.notification(UIApplication.didBecomeActiveNotification)
-            .map { _ in true }
+            .replace(with: true)
             .asDriver(onErrorJustReturn: true)
             .drive(applicationCurrentyActive)
             .disposed(by: disposeBag)
     }
-
 }
 
 private extension PaginationWrapper {
@@ -347,16 +348,22 @@ private extension PaginationWrapper {
             switch value {
             case .initial:
                 base.onInitialState()
+
             case .initialLoading(let after):
                 base.onLoadingState(afterState: after)
+
             case .loadingMore(let after):
                 base.onLoadingMoreState(afterState: after)
-            case .results(let newItems, let from, let after):
+
+            case let .results(newItems, from, after):
                 base.onResultsState(newItems: newItems, from: from, afterState: after)
-            case .error(let error, let after):
+
+            case let .error(error, after):
                 base.onErrorState(error: error, afterState: after)
+
             case .empty:
                 base.onEmptyState()
+
             case .exhausted:
                 base.onExhaustedState()
             }
@@ -380,5 +387,4 @@ private extension PaginationWrapper {
             base.currentPlaceholderViewTopConstraint?.constant = -value.y
         }
     }
-
 }

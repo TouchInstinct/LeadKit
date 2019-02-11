@@ -14,5 +14,4 @@ public extension TableSection {
         self.headerHeight = .leastNonzeroMagnitude
         self.footerHeight = .leastNonzeroMagnitude
     }
-
 }

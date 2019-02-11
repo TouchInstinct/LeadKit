@@ -45,13 +45,16 @@ open class SeparatorCell: UITableViewCell {
         switch separatorType {
         case .none:
             break
+
         case .bottom(let configuration):
             updateBottomSeparator(with: configuration)
             setNeedsUpdateConstraints()
+
         case .top(let configuration):
             updateTopSeparator(with: configuration)
             setNeedsUpdateConstraints()
-        case .full(let topConfiguration, let bottomConfiguration):
+
+        case let .full(topConfiguration, bottomConfiguration):
             updateTopSeparator(with: topConfiguration)
             updateBottomSeparator(with: bottomConfiguration)
             setNeedsUpdateConstraints()
@@ -72,6 +75,8 @@ open class SeparatorCell: UITableViewCell {
 
     // MARK: - Private
 
+    // swiftlint:disable implicitly_unwrapped_optional
+
     private var topView: UIView!
     private var bottomView: UIView!
 
@@ -87,10 +92,12 @@ open class SeparatorCell: UITableViewCell {
     private var bottomViewBottomConstraint: NSLayoutConstraint!
     private var bottomViewHeightConstraint: NSLayoutConstraint!
 
-    private var topSeparatorInsets    = UIEdgeInsets.zero
+    // swiftlint:enable implicitly_unwrapped_optional
+
+    private var topSeparatorInsets = UIEdgeInsets.zero
     private var bottomSeparatorInsets = UIEdgeInsets.zero
 
-    private var topSeparatorHeight    = Constants.defaultSeparatorHeight
+    private var topSeparatorHeight = Constants.defaultSeparatorHeight
     private var bottomSeparatorHeight = Constants.defaultSeparatorHeight
 
     // MARK: - Initialization
@@ -108,13 +115,13 @@ open class SeparatorCell: UITableViewCell {
     }
 
     override open func updateConstraints() {
-        topViewTopConstraint.constant       = topSeparatorInsets.top
-        topViewLeftConstraint.constant      = topSeparatorInsets.left
-        topViewRightConstraint.constant     = topSeparatorInsets.right
-        topViewHeightConstraint.constant    = topSeparatorHeight
+        topViewTopConstraint.constant = topSeparatorInsets.top
+        topViewLeftConstraint.constant = topSeparatorInsets.left
+        topViewRightConstraint.constant = topSeparatorInsets.right
+        topViewHeightConstraint.constant = topSeparatorHeight
 
-        bottomViewLeftConstraint.constant   = bottomSeparatorInsets.left
-        bottomViewRightConstraint.constant  = bottomSeparatorInsets.right
+        bottomViewLeftConstraint.constant = bottomSeparatorInsets.left
+        bottomViewRightConstraint.constant = bottomSeparatorInsets.right
         bottomViewBottomConstraint.constant = bottomSeparatorInsets.bottom
         bottomViewHeightConstraint.constant = bottomSeparatorHeight
 
@@ -147,8 +154,8 @@ open class SeparatorCell: UITableViewCell {
 
     private func updateBottomSeparator(with configuration: SeparatorConfiguration) {
         bottomView.backgroundColor = configuration.color
-        bottomSeparatorHeight      = configuration.height
-        bottomSeparatorInsets      = configuration.insets
+        bottomSeparatorHeight = configuration.height
+        bottomSeparatorInsets = configuration.insets
     }
 
     private func createConstraints() {
@@ -184,5 +191,4 @@ open class SeparatorCell: UITableViewCell {
         super.prepareForReuse()
         configureSeparator(with: .none)
     }
-
 }

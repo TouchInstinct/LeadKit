@@ -62,5 +62,4 @@ open class RxDataLoadingModel<LoadingStateType: DataLoadingState>: RxNetworkOper
     func updateStateAfterResult(from dataSource: DataSourceType) {
         // override in subcass if needed
     }
-
 }

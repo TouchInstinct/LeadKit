@@ -26,14 +26,12 @@ import UIKit
 public protocol BackgroundViewHolder {
 
     var backgroundView: UIView? { get set }
-
 }
 
 /// Protocol that contains footer view property.
 public protocol FooterViewHolder {
 
     var footerView: UIView? { get set }
-
 }
 
 /// Protocol that conforms to ScrollViewHolder, BackgroundViewHolder and FooterViewHolder protocols.

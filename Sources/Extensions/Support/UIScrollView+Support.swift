@@ -44,5 +44,4 @@ public extension Support where Base: UIScrollView {
             }
         }
     }
-
 }

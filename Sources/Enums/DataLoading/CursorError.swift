@@ -28,5 +28,4 @@ import Foundation
 public enum CursorError: Error {
 
     case exhausted
-
 }

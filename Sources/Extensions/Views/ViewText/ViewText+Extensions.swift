@@ -40,7 +40,7 @@ public extension ViewText {
     /// Attributed string created using text attributes.
     var attributedString: NSAttributedString {
         switch self {
-        case .string(let title, let textAttributes):
+        case let .string(title, textAttributes):
 
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = textAttributes.alignment
@@ -52,6 +52,7 @@ public extension ViewText {
             ]
 
             return NSAttributedString(string: title, attributes: attributes)
+
         case .attributedString(let attributedTitle):
             return attributedTitle
         }
@@ -77,5 +78,4 @@ public extension ViewText {
     func configure(view: ViewTextConfigurable) {
         view.configure(with: self)
     }
-
 }

@@ -56,5 +56,4 @@ struct RotateDrawingOperation: DrawingOperation {
 
         context.draw(image, in: imageLocation)
     }
-
 }

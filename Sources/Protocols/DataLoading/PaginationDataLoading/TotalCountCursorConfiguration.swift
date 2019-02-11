@@ -26,5 +26,4 @@ import RxSwift
 /// with constraint ResultType to TotalCountCursorListingResult.
 public protocol TotalCountCursorConfiguration: class, RxDataSource, ResettableType
     where ResultType: TotalCountCursorListingResult {
-
 }

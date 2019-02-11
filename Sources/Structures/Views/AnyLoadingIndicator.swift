@@ -56,5 +56,4 @@ public struct AnyLoadingIndicator: Animatable {
     public func stopAnimating() {
         animatableView.stopAnimating()
     }
-
 }

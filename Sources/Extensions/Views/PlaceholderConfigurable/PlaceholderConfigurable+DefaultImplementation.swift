@@ -26,6 +26,7 @@ public extension PlaceholderConfigurable {
         switch contentLoadingViewModel {
         case .content(let contentViewModel):
             configure(contentViewModel: contentViewModel)
+
         case .placeholder(let placeholderViewModel):
             configure(placeholderViewModel: placeholderViewModel)
         }
@@ -52,5 +53,4 @@ public extension PlaceholderConfigurable {
     static func content(with contentViewModel: ContentViewModelType) -> ContentLoadingViewModelType {
         return .content(contentViewModel)
     }
-
 }

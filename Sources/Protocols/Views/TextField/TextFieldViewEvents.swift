@@ -27,5 +27,4 @@ public protocol TextFieldViewEvents {
 
     /// Emit event when text inside view was changed.
     var textChangedDriver: Driver<String?> { get }
-
 }

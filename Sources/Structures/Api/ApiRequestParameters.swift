@@ -75,5 +75,4 @@ public struct ApiRequestParameters {
             self.parameters = nil
         }
     }
-
 }

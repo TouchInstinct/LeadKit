@@ -35,7 +35,6 @@ public extension NSAttributedString {
     var mutable: NSMutableAttributedString {
         return NSMutableAttributedString(attributedString: self)
     }
-
 }
 
 public extension NSMutableAttributedString {
@@ -54,5 +53,4 @@ public extension NSMutableAttributedString {
     var immutable: NSAttributedString {
         return NSAttributedString(attributedString: self)
     }
-
 }

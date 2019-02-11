@@ -38,6 +38,7 @@ public extension GeneralDataLoadingViewModel {
             switch state {
             case .result(let newResult, _):
                 return .just(newResult)
+
             default:
                 return .empty()
             }
@@ -50,10 +51,10 @@ public extension GeneralDataLoadingViewModel {
             switch state {
             case .result(let newResult, _):
                 return .just(newResult)
+
             default:
                 return .empty()
             }
         }
     }
-
 }

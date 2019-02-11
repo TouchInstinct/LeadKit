@@ -59,5 +59,4 @@ public protocol NetworkOperationState {
 
     /// Returns error if current state is error state.
     var error: Error? { get }
-
 }
