@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.9.8
+- **Add**: `rxDataRequest` method to `NetworkService` class, that performs reactive request to get data and http response.
+- **Add**: `responseData` method to `SessionManager` extension, that executes request and returns data.
+
 ### 0.9.7
 - **Add**: Carthage support.
 

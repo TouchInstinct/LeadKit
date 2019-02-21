@@ -105,6 +105,7 @@ public extension Reactive where Base: SessionManager {
 
         return requestObservable
             .map { $0.validate(statusCode: self.base.acceptableStatusCodes) }
+            .catchAsRequestError()
     }
 
     /// Method that executes request and serializes response into target object
@@ -121,7 +122,6 @@ public extension Reactive where Base: SessionManager {
                 $0.rx.apiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
                     .catchAsRequestError(with: $0)
             }
-            .catchAsRequestError()
     }
 
     /// Method that executes request and serializes response into target object
@@ -138,7 +138,22 @@ public extension Reactive where Base: SessionManager {
                 $0.rx.observableApiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
                     .catchAsRequestError(with: $0)
             }
-            .catchAsRequestError()
+    }
+
+    /// Method that executes request and returns data
+    ///
+    /// - Parameter requestParameters: api parameters to pass Alamofire
+    /// - Returns: Observable with HTTP URL Response and Data
+    func responseData(requestParameters: ApiRequestParameters)
+        -> Observable<(response: HTTPURLResponse, data: Data)> {
+
+            return apiRequest(requestParameters: requestParameters)
+                .flatMap {
+                    $0.rx.responseResult(queue: self.base.mappingQueue,
+                                         responseSerializer: DataRequest.dataResponseSerializer())
+                        .map { ($0, $1 as Data) }
+                        .catchAsRequestError(with: $0)
+                }
     }
 }
 
