@@ -79,6 +79,17 @@ open class NetworkService {
                                                    decoder: decoder)
                 .counterTracking(for: self)
     }
+
+    /// Perform reactive request to get data and http response
+    ///
+    /// - Parameter parameters: api parameters to pass Alamofire
+    /// - Returns: Observable of tuple containing (HTTPURLResponse, Data)
+    public func rxDataRequest(with parameters: ApiRequestParameters)
+        -> Observable<(response: HTTPURLResponse, data: Data)> {
+
+            return sessionManager.rx.responseData(requestParameters: parameters)
+                .counterTracking(for: self)
+    }
 }
 
 private extension NetworkService {
