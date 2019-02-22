@@ -115,7 +115,7 @@ public extension Reactive where Base: SessionManager {
     /// - Returns: Observable with HTTP URL Response and target object
     func responseModel<T: Decodable>(requestParameters: ApiRequestParameters,
                                      decoder: JSONDecoder)
-        -> Observable<(response: HTTPURLResponse, model: T)> {
+        -> Observable<SessionManager.ModelResponse<T>> {
 
         return apiRequest(requestParameters: requestParameters)
             .flatMap {
@@ -131,7 +131,7 @@ public extension Reactive where Base: SessionManager {
     /// - Returns: Observable with HTTP URL Response and target object
     func responseObservableModel<T: ObservableMappable>(requestParameters: ApiRequestParameters,
                                                         decoder: JSONDecoder)
-        -> Observable<(response: HTTPURLResponse, model: T)> {
+        -> Observable<SessionManager.ModelResponse<T>> {
 
         return apiRequest(requestParameters: requestParameters)
             .flatMap {
@@ -145,13 +145,13 @@ public extension Reactive where Base: SessionManager {
     /// - Parameter requestParameters: api parameters to pass Alamofire
     /// - Returns: Observable with HTTP URL Response and Data
     func responseData(requestParameters: ApiRequestParameters)
-        -> Observable<(response: HTTPURLResponse, data: Data)> {
+        -> Observable<SessionManager.DataResponse> {
 
             return apiRequest(requestParameters: requestParameters)
                 .flatMap {
                     $0.rx.responseResult(queue: self.base.mappingQueue,
                                          responseSerializer: DataRequest.dataResponseSerializer())
-                        .map { ($0, $1 as Data) }
+                        .map { $0 as SessionManager.DataResponse }
                         .catchAsRequestError(with: $0)
                 }
     }

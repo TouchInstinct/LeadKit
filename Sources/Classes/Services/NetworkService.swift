@@ -60,7 +60,7 @@ open class NetworkService {
     /// - Returns: Observable of tuple containing (HTTPURLResponse, ObservableMappable)
     public func rxObservableRequest<T: ObservableMappable>(with parameters: ApiRequestParameters,
                                                            decoder: JSONDecoder = JSONDecoder())
-        -> Observable<(response: HTTPURLResponse, model: T)> {
+        -> Observable<SessionManager.ModelResponse<T>> {
 
             return sessionManager.rx.responseObservableModel(requestParameters: parameters,
                                                              decoder: decoder)
@@ -73,7 +73,7 @@ open class NetworkService {
     /// - Parameter decoder: json decoder to decode response data
     /// - Returns: Observable of tuple containing (HTTPURLResponse, ImmutableMappable)
     public func rxRequest<T: Decodable>(with parameters: ApiRequestParameters, decoder: JSONDecoder = JSONDecoder())
-        -> Observable<(response: HTTPURLResponse, model: T)> {
+        -> Observable<SessionManager.ModelResponse<T>> {
 
             return sessionManager.rx.responseModel(requestParameters: parameters,
                                                    decoder: decoder)
@@ -85,7 +85,7 @@ open class NetworkService {
     /// - Parameter parameters: api parameters to pass Alamofire
     /// - Returns: Observable of tuple containing (HTTPURLResponse, Data)
     public func rxDataRequest(with parameters: ApiRequestParameters)
-        -> Observable<(response: HTTPURLResponse, data: Data)> {
+        -> Observable<SessionManager.DataResponse> {
 
             return sessionManager.rx.responseData(requestParameters: parameters)
                 .counterTracking(for: self)
