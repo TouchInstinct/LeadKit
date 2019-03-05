@@ -22,6 +22,9 @@
 
 import TableKit
 import RxSwift
+import UIKit
+
+public typealias SearchResultsController = UIViewController & SearchResultsViewController
 
 open class BaseSearchViewController<Item,
     ItemViewModel,
@@ -32,14 +35,15 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
     // MARK: - Properties
 
     private let disposeBag = DisposeBag()
-    private let searchResultsViewController: UIViewController & SearchResultsViewController
-    private lazy var searchController = UISearchController(searchResultsController: searchResultsViewController)
+    private let searchResultsController: SearchResultsController
+    private let searchController: UISearchController
     private var didEnterText = false
 
     // MARK: - Initialization
 
-    public init(viewModel: ViewModel, searchResultsController: UIViewController & SearchResultsViewController) {
-        self.searchResultsViewController = searchResultsController
+    public init(viewModel: ViewModel, searchResultsController: SearchResultsController) {
+        self.searchResultsController = searchResultsController
+        self.searchController = UISearchController(searchResultsController: searchResultsController)
         super.init(viewModel: viewModel)
     }
 
@@ -50,10 +54,13 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
     // MARK: - Configurable Controller
 
     open override func configureBarButtons() {
+        super.configureBarButtons()
         // override in subclass
     }
 
     open override func bindViews() {
+        super.bindViews()
+
         viewModel.itemsViewModelsDriver
             .drive(onNext: { [weak self] viewModels in
                 self?.handle(itemViewModels: viewModels)
@@ -78,6 +85,8 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
     }
 
     open override func addViews() {
+        super.addViews()
+
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
         } else {
@@ -87,11 +96,15 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
     }
 
     open override func configureAppearance() {
+        super.configureAppearance()
+
         definesPresentationContext = true
         customView.tableView.tableHeaderView?.backgroundColor = searchBarColor
     }
 
     open override func localize() {
+        super.localize()
+
         searchController.searchBar.placeholder = searchBarPlaceholder
     }
 
@@ -154,7 +167,7 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
     }
 
     open func handle(searchResultsState state: SearchResultsViewControllerState) {
-        searchResultsViewController.update(for: state)
+        searchResultsController.update(for: state)
     }
 
     open func handle(searchText: String?) {
@@ -166,8 +179,8 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
             return
         }
         didEnterText = true
-        searchResultsViewController.searchResultsView.tableView.contentInset = tableViewInsets
-        searchResultsViewController.searchResultsView.tableView.scrollIndicatorInsets = tableViewInsets
+        searchResultsController.searchResultsView.tableView.contentInset = tableViewInsets
+        searchResultsController.searchResultsView.tableView.scrollIndicatorInsets = tableViewInsets
     }
 }
 
