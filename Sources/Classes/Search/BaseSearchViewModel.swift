@@ -23,24 +23,6 @@
 import RxSwift
 import RxCocoa
 
-private protocol OptionalType {
-    associatedtype Wrapped
-
-    var optional: Wrapped? { get }
-}
-
-extension Optional: OptionalType {
-    public var optional: Wrapped? { return self }
-}
-
-private extension Observable where Element: OptionalType {
-    func filterNil() -> Observable<Element.Wrapped> {
-        return flatMap { value -> Observable<Element.Wrapped> in
-            value.optional.map { .just($0) } ?? .empty()
-        }
-    }
-}
-
 open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel<[Item]> {
 
     public typealias ItemsList = [Item]

@@ -53,11 +53,6 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
 
     // MARK: - Configurable Controller
 
-    open override func configureBarButtons() {
-        super.configureBarButtons()
-        // override in subclass
-    }
-
     open override func bindViews() {
         super.bindViews()
 
