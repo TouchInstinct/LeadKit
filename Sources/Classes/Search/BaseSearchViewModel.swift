@@ -23,6 +23,7 @@
 import RxSwift
 import RxCocoa
 
+/// ViewModel that loads data from a given data source and performs search among results
 open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel<[Item]> {
 
     public typealias ItemsList = [Item]

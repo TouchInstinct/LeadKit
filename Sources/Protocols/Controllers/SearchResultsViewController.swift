@@ -20,6 +20,7 @@
 //  THE SOFTWARE.
 //
 
+/// Protocol that represents a ViewController able to present search results
 public protocol SearchResultsViewController {
 
     var searchResultsView: TableViewHolder { get set }

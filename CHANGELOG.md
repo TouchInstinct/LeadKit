@@ -1,9 +1,9 @@
 # Changelog
 ### 0.9.9
-- **Add**: `BaseSearchViewController` class.
-- **Add**: `BaseSearchViewModel` class.
-- **Add**: `SearchResiltsController` protocol.
-- **Add**: `SearchResultsControllerState` enum.
+- **Add**: `BaseSearchViewController` class that that allows to enter text for search and then displays search results in table view. 
+- **Add**: `BaseSearchViewModel` class that loads data from a given data source and performs search among the results.
+- **Add**: `SearchResultsController` protocol that represent a controller able to display search results.
+- **Add**: `SearchResultsControllerState` enum that represents `SearchResultsController` state.
 
 ### 0.9.8
 - **Add**: `rxDataRequest` method to `NetworkService` class, that performs reactive request to get data and http response.

@@ -22,6 +22,7 @@
 
 import RxSwift
 
+/// Protocol that represents optional type. This is required for Observable's filterNil() function
 protocol OptionalType {
     associatedtype Wrapped
 

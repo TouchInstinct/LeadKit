@@ -26,6 +26,7 @@ import UIKit
 
 public typealias SearchResultsController = UIViewController & SearchResultsViewController
 
+/// Class that that allows to enter text for search and then displays search results in table view
 open class BaseSearchViewController<Item,
     ItemViewModel,
     ViewModel,
