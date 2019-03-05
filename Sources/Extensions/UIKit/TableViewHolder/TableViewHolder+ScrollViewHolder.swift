@@ -27,5 +27,4 @@ public extension ScrollViewHolder where Self: TableViewHolder {
     var scrollView: UIScrollView {
         return tableView
     }
-
 }

@@ -29,7 +29,6 @@ public protocol ResettableType {
     ///
     /// - Parameter other: Other instance of specific type.
     init(resetFrom other: Self)
-
 }
 
 public extension ResettableType {
@@ -40,5 +39,4 @@ public extension ResettableType {
     func reset() -> Self {
         return Self(resetFrom: self)
     }
-
 }

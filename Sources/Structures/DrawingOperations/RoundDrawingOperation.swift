@@ -45,5 +45,4 @@ struct RoundDrawingOperation: DrawingOperation {
         context.clip()
         context.draw(image, in: imageLocation)
     }
-
 }

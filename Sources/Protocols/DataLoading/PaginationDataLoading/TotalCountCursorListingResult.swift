@@ -28,5 +28,4 @@ public protocol TotalCountCursorListingResult {
 
     var results: [ElementType] { get }
     var totalCount: Int { get }
-
 }

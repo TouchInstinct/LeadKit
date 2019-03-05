@@ -52,5 +52,4 @@ public protocol PlaceholderConfigurable {
     ///
     /// - Parameter placeholderViewModel: Placeholder view model to configure placeholder state.
     func configure(placeholderViewModel: PlaceholderViewModelType)
-
 }

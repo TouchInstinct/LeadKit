@@ -28,5 +28,4 @@ public extension SeparatorConfiguration {
     var totalHeight: CGFloat {
         return height + insets.top + insets.bottom
     }
-
 }

@@ -51,7 +51,6 @@ public extension DateFormattingService {
 
         return format.dateToStringFormat.toString(dateInFormatterRegion)
     }
-
 }
 
 public extension DateFormattingService where Self: Singleton {
@@ -102,5 +101,4 @@ public extension DateFormattingService where Self: Singleton {
     static func string(from date: DateRepresentable, format: DateFormatType, formattedIn: Region?) -> String {
         return shared.string(from: date, format: format, formattedIn: formattedIn)
     }
-
 }

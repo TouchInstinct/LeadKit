@@ -25,6 +25,12 @@ import Alamofire
 /// Session Manager stored in NetworkService
 open class SessionManager: Alamofire.SessionManager {
 
+    /// Response with HTTP URL Response and target object
+    public typealias ModelResponse<T> = (response: HTTPURLResponse, model: T)
+
+    /// Response with HTTP URL Response and data
+    public typealias DataResponse = (response: HTTPURLResponse, data: Data)
+
     /// Acceptable status codes for validation
     public let acceptableStatusCodes: Set<Int>
 

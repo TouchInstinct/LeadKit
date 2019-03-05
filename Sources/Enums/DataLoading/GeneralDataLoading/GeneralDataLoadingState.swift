@@ -34,7 +34,6 @@ public enum GeneralDataLoadingState<DS: DataSource> {
     case result(newResult: DS.ResultType, from: DS)
     case error(error: Error)
     case empty
-
 }
 
 extension GeneralDataLoadingState: DataLoadingState {
@@ -70,6 +69,7 @@ extension GeneralDataLoadingState: DataLoadingState {
         switch self {
         case .initial:
             return true
+
         default:
             return false
         }
@@ -79,6 +79,7 @@ extension GeneralDataLoadingState: DataLoadingState {
         switch self {
         case .result(let newResult, _):
             return newResult
+
         default:
             return nil
         }
@@ -88,9 +89,9 @@ extension GeneralDataLoadingState: DataLoadingState {
         switch self {
         case .error(let error):
             return error
+
         default:
             return nil
         }
     }
-
 }

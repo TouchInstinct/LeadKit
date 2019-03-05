@@ -26,5 +26,4 @@ import RxSwift
 public protocol DisposeBagHolder {
 
     var disposeBag: DisposeBag { get }
-
 }

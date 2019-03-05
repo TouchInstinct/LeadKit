@@ -33,5 +33,4 @@ open class BaseCollectionContentController<ViewModel>: BaseScrollContentControll
     public var collectionView: UICollectionView {
         return customView.collectionView
     }
-
 }

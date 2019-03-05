@@ -65,5 +65,4 @@ public extension UIWindow {
             })
         }
     }
-
 }

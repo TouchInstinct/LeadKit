@@ -53,7 +53,6 @@ open class BaseScrollContentController<ViewModel, View: ScrollViewHolderView>: B
     public var scrollView: UIScrollView {
         return customView.scrollView
     }
-
 }
 
 public extension BaseScrollContentController {
@@ -67,5 +66,4 @@ public extension BaseScrollContentController {
             automaticallyAdjustsScrollViewInsets = false
         }
     }
-
 }

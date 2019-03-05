@@ -31,18 +31,21 @@ internal extension GeneralDataLoadingHandler where Self: AnyObject {
             switch value {
             case .loading:
                 base.onLoadingState()
+
             case .result(let newResult, _):
                 base.onResultsState(result: newResult)
+
             case .empty:
                 base.onEmptyState()
+
             case .error(let error):
                 base.onErrorState(error: error)
+
             case .initial:
                 break
             }
         }
     }
-
 }
 
 public extension GeneralDataLoadingHandler where Self: AnyObject & DisposeBagHolder {
@@ -55,5 +58,4 @@ public extension GeneralDataLoadingHandler where Self: AnyObject & DisposeBagHol
             .drive(stateChangeBinder)
             .disposed(by: disposeBag)
     }
-
 }

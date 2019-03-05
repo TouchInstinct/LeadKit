@@ -49,5 +49,4 @@ open class BaseTableContentController<ViewModel>: BaseScrollContentController<Vi
     public var tableView: UITableView {
         return customView.tableView
     }
-
 }

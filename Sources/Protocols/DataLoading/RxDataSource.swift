@@ -29,5 +29,4 @@ public protocol RxDataSource: DataSource {
     ///
     /// - Returns: Single sequence with one element.
     func resultSingle() -> Single<ResultType>
-
 }

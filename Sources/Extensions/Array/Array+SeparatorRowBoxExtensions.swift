@@ -62,5 +62,4 @@ public extension Array where Element == SeparatorRowBox {
             last?.set(separatorType: .bottom(lastSeparatorConfiguration))
         }
     }
-
 }

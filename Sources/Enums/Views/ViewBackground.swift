@@ -30,5 +30,4 @@ public enum ViewBackground {
 
     case color(UIColor)
     case image(UIImage)
-
 }

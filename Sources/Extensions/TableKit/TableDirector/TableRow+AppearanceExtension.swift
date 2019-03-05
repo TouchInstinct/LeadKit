@@ -41,5 +41,4 @@ public extension TableRow where CellType: AppearanceConfigurable {
         action.id = updateAppearanceActionId
         on(action)
     }
-
 }

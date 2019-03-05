@@ -1,0 +1,6 @@
+github "Alamofire/Alamofire" "4.8.1"
+github "ReactiveX/RxSwift" "4.4.0"
+github "RxSwiftCommunity/RxAlamofire" "4.3.0"
+github "malcommac/SwiftDate" "5.1.0"
+github "maxsokolov/TableKit" "2.8.1"
+github "pronebird/UIScrollView-InfiniteScroll" "1.1.0"

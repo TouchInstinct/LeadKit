@@ -31,5 +31,4 @@ public extension ConfigurableView where Self: UIView {
         self.init()
         self.configure(with: viewModel)
     }
-
 }

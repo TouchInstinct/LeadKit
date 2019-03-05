@@ -39,5 +39,4 @@ public final class SeparatorRowBox {
         self.row = row
         setSeparatorHandler = row.set
     }
-
 }

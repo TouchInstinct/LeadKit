@@ -42,5 +42,4 @@ public protocol LoadingIndicator {
 
     /// The underlying view.
     var view: View { get }
-
 }

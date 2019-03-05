@@ -31,5 +31,4 @@ public protocol ConfigurableController: InitializableView {
     func configureBarButtons()
 
     func initialLoadView()
-
 }

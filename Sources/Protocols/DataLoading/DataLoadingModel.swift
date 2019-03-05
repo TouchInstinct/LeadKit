@@ -28,5 +28,4 @@ public protocol DataLoadingModel: NetworkOperationModel {
 
     /// Perform (re)load data.
     func reload()
-
 }

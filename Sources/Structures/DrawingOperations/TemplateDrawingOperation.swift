@@ -50,5 +50,4 @@ struct TemplateDrawingOperation: DrawingOperation {
 
         context.setBlendMode(.multiply)
     }
-
 }

@@ -67,7 +67,6 @@ public final class DataModelFieldBinding<T> {
     public var fieldDriver: Driver<String?> {
         return modelDriver.map(getFieldClosure)
     }
-
 }
 
 public extension DataModelFieldBinding {
@@ -87,7 +86,6 @@ public extension DataModelFieldBinding {
                   getFieldClosure: getFieldClosure,
                   mergeFieldClosure: mergeFieldClosure)
     }
-
 }
 
 public extension DataModelFieldBinding where T == String? {
@@ -101,7 +99,6 @@ public extension DataModelFieldBinding where T == String? {
                   getFieldClosure: { $0 },
                   mergeFieldClosure: { $1 })
     }
-
 }
 
 public extension BehaviorRelay {
@@ -119,7 +116,6 @@ public extension BehaviorRelay {
                                      getFieldClosure: getFieldClosure,
                                      mergeFieldClosure: mergeFieldClosure)
     }
-
 }
 
 public extension BehaviorRelay where Element == String? {
@@ -130,5 +126,4 @@ public extension BehaviorRelay where Element == String? {
     func fieldBinding() -> DataModelFieldBinding<E> {
         return DataModelFieldBinding(modelRelay: self)
     }
-
 }

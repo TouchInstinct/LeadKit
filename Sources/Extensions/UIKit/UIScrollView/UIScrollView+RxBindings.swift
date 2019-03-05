@@ -36,5 +36,4 @@ public extension Reactive where Base: UIScrollView {
             }
         }
     }
-
 }

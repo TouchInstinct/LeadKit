@@ -27,5 +27,4 @@ extension UIView: XibNameProtocol {
     open class var xibName: String {
         return typeName(of: self)
     }
-
 }

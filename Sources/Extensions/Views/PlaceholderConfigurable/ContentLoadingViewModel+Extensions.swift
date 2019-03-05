@@ -30,7 +30,6 @@ public extension ContentLoadingViewModel {
             return false
         }
     }
-
 }
 
 public extension ContentLoadingViewModel where PlaceholderType == Void {
@@ -39,7 +38,6 @@ public extension ContentLoadingViewModel where PlaceholderType == Void {
     static var placeholder: ContentLoadingViewModel<ContentType, PlaceholderType> {
         return .placeholder(())
     }
-
 }
 
 public extension ContentLoadingViewModel where PlaceholderType == [Void] {
@@ -51,5 +49,4 @@ public extension ContentLoadingViewModel where PlaceholderType == [Void] {
     static func placeholders(numberOfItems: Int) -> ContentLoadingViewModel<ContentType, PlaceholderType> {
         return .placeholder(Array(repeating: (), count: numberOfItems))
     }
-
 }

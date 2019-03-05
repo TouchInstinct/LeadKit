@@ -84,5 +84,4 @@ struct BorderDrawingOperation: DrawingOperation {
             context.stroke(inset, width: border)
         }
     }
-
 }

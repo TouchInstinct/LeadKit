@@ -35,9 +35,11 @@ public extension UITableView {
         // don't overlap cells that has out of bounds content
         backgroundView.layer.zPosition = -CGFloat(Float.greatestFiniteMagnitude)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                                     backgroundView.bottomAnchor.constraint(equalTo: topAnchor),
-                                     backgroundView.widthAnchor.constraint(equalTo: widthAnchor),
-                                     backgroundView.heightAnchor.constraint(equalTo: heightAnchor)])
+        NSLayoutConstraint.activate([
+            backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: topAnchor),
+            backgroundView.widthAnchor.constraint(equalTo: widthAnchor),
+            backgroundView.heightAnchor.constraint(equalTo: heightAnchor)
+        ])
     }
 }

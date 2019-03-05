@@ -44,5 +44,4 @@ open class BaseTextAttributes {
         self.color = color
         self.alignment = alignment
     }
-
 }

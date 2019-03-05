@@ -30,5 +30,4 @@ public protocol NumberFormat: Hashable {
 
     /// A NumberFormatter instance for this format.
     var numberFormatter: NumberFormatter { get }
-
 }

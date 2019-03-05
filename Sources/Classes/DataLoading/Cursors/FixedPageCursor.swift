@@ -72,7 +72,6 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType, RxDataSource {
                 }
         }
     }
-
 }
 
 /// FixedPageCursor subclass with implementation of ResettableType
@@ -87,5 +86,4 @@ public class ResettableFixedPageCursor<Cursor: ResettableCursorType>: FixedPageC
     public required init(resetFrom other: ResettableFixedPageCursor) {
         super.init(cursor: other.cursor.reset(), pageSize: other.pageSize)
     }
-
 }

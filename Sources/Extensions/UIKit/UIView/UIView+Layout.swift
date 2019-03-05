@@ -110,5 +110,4 @@ public extension UIView {
 
         NSLayoutConstraint.activate(constraints)
     }
-
 }

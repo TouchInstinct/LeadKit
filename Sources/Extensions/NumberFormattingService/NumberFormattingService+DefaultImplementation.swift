@@ -44,7 +44,6 @@ public extension NumberFormattingService {
     func number(from string: String, format: NumberFormatType) -> NSNumber? {
         return numberFormatter(for: format).number(from: string)
     }
-
 }
 
 public extension NumberFormattingService where Self: Singleton {
@@ -56,5 +55,4 @@ public extension NumberFormattingService where Self: Singleton {
     static func number(from string: String, format: NumberFormatType) -> NSNumber? {
         return shared.number(from: string, format: format)
     }
-
 }

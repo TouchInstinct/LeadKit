@@ -64,5 +64,4 @@ public extension Sequence {
                     .flatMap { $0.results }
             }
     }
-
 }

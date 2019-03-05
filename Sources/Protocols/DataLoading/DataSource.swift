@@ -24,5 +24,4 @@
 public protocol DataSource {
 
     associatedtype ResultType
-
 }

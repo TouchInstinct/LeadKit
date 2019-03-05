@@ -20,13 +20,20 @@
 //  THE SOFTWARE.
 //
 
-import RxSwift
+import Foundation
 
-public extension NetworkService {
+public extension String {
+    /// Telprompt url of arbitrary phone number. Can be nil if processed final string is not a valid URL.
+    var telpromptURL: URL? {
+        let characterSet = CharacterSet(charactersIn: "+0123456789")
+        let cleanPhoneNumber = components(separatedBy: characterSet.inverted).joined()
 
-    /// Let netwrok service automatically show / hide activity indicator
-    func bindActivityIndicator() -> Disposable? {
+        if let escapedPhoneNumber = cleanPhoneNumber.addingPercentEncoding(withAllowedCharacters: characterSet),
+            let phonePrompt = URL(string: "telprompt://" + escapedPhoneNumber) {
+
+            return phonePrompt
+        }
+
         return nil
     }
-
 }

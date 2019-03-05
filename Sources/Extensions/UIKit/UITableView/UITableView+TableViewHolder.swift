@@ -27,5 +27,4 @@ extension UITableView: TableViewHolder {
     public var tableView: UITableView {
         return self
     }
-
 }

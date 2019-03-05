@@ -42,5 +42,4 @@ public extension UIImage {
 
         return AnyLoadingIndicator(spinner)
     }
-
 }

@@ -33,5 +33,4 @@ public extension Array where Element: TableKitViewModel {
     var onlyRowsSection: TableSection {
         return TableSection(onlyRows: tableRows)
     }
-
 }

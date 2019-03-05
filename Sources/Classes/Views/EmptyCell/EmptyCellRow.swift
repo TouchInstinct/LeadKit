@@ -50,5 +50,4 @@ public final class EmptyCellRow: TableRow<EmptyCell> {
     override public var defaultHeight: CGFloat? {
         return rowHeight
     }
-
 }

@@ -27,5 +27,4 @@ public protocol ScrollViewHolder {
 
     /// Contained UIScrollView instance.
     var scrollView: UIScrollView { get }
-
 }

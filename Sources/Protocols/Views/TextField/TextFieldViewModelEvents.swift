@@ -27,5 +27,4 @@ public protocol TextFieldViewModelEvents {
 
     /// Emit event with text that will be inserted inside view.
     var setTextDriver: Driver<String?> { get }
-
 }

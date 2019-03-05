@@ -27,5 +27,4 @@ public protocol TableViewHolder {
 
     /// Contained UITableView instance.
     var tableView: UITableView { get }
-
 }

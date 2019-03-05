@@ -34,10 +34,10 @@ public extension ViewBackground {
         case .color(let color):
             backgroundView.backgroundColor = color
             backgroundImageView.image = nil
+
         case .image(let image):
             backgroundView.backgroundColor = nil
             backgroundImageView.image = image
         }
     }
-
 }

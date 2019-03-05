@@ -31,6 +31,7 @@ public extension UIViewController {
         switch titleType {
         case let .large(newTitle), let .normal(newTitle):
             title = newTitle
+
         case .empty:
             title = nil
         }

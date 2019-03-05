@@ -128,5 +128,4 @@ open class GeneralDataLoadingViewModel<ResultType>: BaseViewModel, GeneralDataLo
     open func onErrorState(error: Error) {
         // override in subclass
     }
-
 }

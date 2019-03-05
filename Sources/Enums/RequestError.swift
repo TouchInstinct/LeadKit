@@ -35,5 +35,4 @@ public enum RequestError: Error {
     case network(error: Error, response: Data?)
     case invalidResponse(error: AFError, response: Data?)
     case mapping(error: Error, response: Data)
-
 }

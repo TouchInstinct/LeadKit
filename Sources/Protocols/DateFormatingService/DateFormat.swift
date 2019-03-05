@@ -30,5 +30,4 @@ public protocol DateFormat {
 
     /// String to date style for current format.
     var stringToDateFormat: StringToDateStyles { get }
-
 }

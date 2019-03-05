@@ -27,5 +27,4 @@ public protocol XibNameProtocol {
 
     /// Name of related xib
     static var xibName: String { get }
-
 }

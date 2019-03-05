@@ -39,6 +39,7 @@ public extension CellSeparatorType {
         switch self {
         case .top(let configuration), .full(let configuration, _):
             return configuration
+
         default:
             return nil
         }
@@ -49,6 +50,7 @@ public extension CellSeparatorType {
         switch self {
         case .bottom(let configuration), .full(_, let configuration):
             return configuration
+
         default:
             return nil
         }
@@ -79,5 +81,4 @@ public extension CellSeparatorType {
         configure(topSeparatorView: topSeparatorView)
         configure(bottomSeparatorView: bottomSeparatorView)
     }
-
 }
