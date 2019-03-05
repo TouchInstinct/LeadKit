@@ -119,14 +119,7 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
     }
 
     open var statusBarView: UIView {
-        let statusBarSize = UIApplication.shared.statusBarFrame.size
-        let statusBarView = UIView(frame: CGRect(x: 0,
-                                                 y: 0,
-                                                 width: statusBarSize.width,
-                                                 height: statusBarSize.height))
-        statusBarView.backgroundColor = statusBarColor
-
-        return statusBarView
+        return UIView()
     }
 
     open var statusBarColor: UIColor {
@@ -177,16 +170,8 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
         searchResultsController.searchResultsView.tableView.contentInset = tableViewInsets
         searchResultsController.searchResultsView.tableView.scrollIndicatorInsets = tableViewInsets
     }
-}
 
-extension BaseSearchViewController {
     open var tableViewInsets: UIEdgeInsets {
-        let searchBarHeight = searchController.searchBar.frame.height
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
-
-        return UIEdgeInsets(top: searchBarHeight + statusBarHeight,
-                            left: 0,
-                            bottom: 0,
-                            right: 0)
+        return .zero
     }
 }
