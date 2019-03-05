@@ -1,4 +1,9 @@
 # Changelog
+### 0.9.9
+- **Add**: `BaseSearchViewController` class.
+- **Add**: `BaseSearchViewModel` class.
+- **Add**: `SearchResiltsController` protocol.
+- **Add**: `SearchResultsControllerState` enum.
 
 ### 0.9.8
 - **Add**: `rxDataRequest` method to `NetworkService` class, that performs reactive request to get data and http response.
