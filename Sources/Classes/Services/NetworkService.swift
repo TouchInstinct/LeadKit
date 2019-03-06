@@ -55,39 +55,50 @@ open class NetworkService {
 
     /// Perform reactive request to get mapped ObservableMappable model and http response
     ///
-    /// - Parameter parameters: api parameters to pass Alamofire
-    /// - Parameter decoder: json decoder to decode response data
+    /// - Parameters:
+    ///   - parameters: api parameters to pass Alamofire
+    ///   - validStatusCodes: set of additional valid status codes
+    ///   - decoder: json decoder to decode response data
     /// - Returns: Observable of tuple containing (HTTPURLResponse, ObservableMappable)
     public func rxObservableRequest<T: ObservableMappable>(with parameters: ApiRequestParameters,
+                                                           validStatusCodes: Set<Int> = [],
                                                            decoder: JSONDecoder = JSONDecoder())
         -> Observable<SessionManager.ModelResponse<T>> {
 
             return sessionManager.rx.responseObservableModel(requestParameters: parameters,
+                                                             validStatusCodes: validStatusCodes,
                                                              decoder: decoder)
                 .counterTracking(for: self)
     }
 
     /// Perform reactive request to get mapped ImmutableMappable model and http response
     ///
-    /// - Parameter parameters: api parameters to pass Alamofire
-    /// - Parameter decoder: json decoder to decode response data
+    /// - Parameters:
+    ///   - parameters: api parameters to pass Alamofire
+    ///   - validStatusCodes: set of additional valid status codes
+    ///   - decoder: json decoder to decode response data
     /// - Returns: Observable of tuple containing (HTTPURLResponse, ImmutableMappable)
-    public func rxRequest<T: Decodable>(with parameters: ApiRequestParameters, decoder: JSONDecoder = JSONDecoder())
+    public func rxRequest<T: Decodable>(with parameters: ApiRequestParameters,
+                                        validStatusCodes: Set<Int> = [],
+                                        decoder: JSONDecoder = JSONDecoder())
         -> Observable<SessionManager.ModelResponse<T>> {
 
             return sessionManager.rx.responseModel(requestParameters: parameters,
+                                                   validStatusCodes: validStatusCodes,
                                                    decoder: decoder)
                 .counterTracking(for: self)
     }
 
     /// Perform reactive request to get data and http response
     ///
-    /// - Parameter parameters: api parameters to pass Alamofire
+    /// - Parameters:
+    ///   - parameters: api parameters to pass Alamofire
+    ///   - validStatusCodes: set of additional valid status codes
     /// - Returns: Observable of tuple containing (HTTPURLResponse, Data)
-    public func rxDataRequest(with parameters: ApiRequestParameters)
+    public func rxDataRequest(with parameters: ApiRequestParameters, validStatusCodes: Set<Int> = [])
         -> Observable<SessionManager.DataResponse> {
 
-            return sessionManager.rx.responseData(requestParameters: parameters)
+            return sessionManager.rx.responseData(requestParameters: parameters, validStatusCodes: validStatusCodes)
                 .counterTracking(for: self)
     }
 }

@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.9.9
+- **Add**: `validStatusCodes` parameter to request methods in `NetworkService` class, that expands valid status codes for request.
+- **Add**:  `validStatusCodes` parameter to response methods in `SessionManager` extension, that expands valid status codes for request.
+
 ### 0.9.8
 - **Add**: `rxDataRequest` method to `NetworkService` class, that performs reactive request to get data and http response.
 - **Add**: `responseData` method to `SessionManager` extension, that executes request and returns data.
