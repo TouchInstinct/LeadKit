@@ -26,5 +26,4 @@ public protocol SearchResultsViewController {
     var searchResultsView: TableViewHolder { get set }
 
     func update(for state: SearchResultsViewControllerState)
-
 }
