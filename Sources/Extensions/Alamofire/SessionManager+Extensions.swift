@@ -68,9 +68,11 @@ public extension Reactive where Base: SessionManager {
 
     /// Method which executes request with given api parameters
     ///
-    /// - Parameter requestParameters: api parameters to pass Alamofire
+    /// - Parameters:
+    ///   - requestParameters: api parameters to pass Alamofire
+    ///   - validStatusCodes: set of additional valid status codes
     /// - Returns: Observable with request
-    func apiRequest(requestParameters: ApiRequestParameters)
+    func apiRequest(requestParameters: ApiRequestParameters, validStatusCodes: Set<Int>)
         -> Observable<DataRequest> {
 
         let requestObservable: Observable<DataRequest>
@@ -104,20 +106,23 @@ public extension Reactive where Base: SessionManager {
         }
 
         return requestObservable
-            .map { $0.validate(statusCode: self.base.acceptableStatusCodes) }
+            .map { $0.validate(statusCode: self.base.acceptableStatusCodes.union(validStatusCodes)) }
             .catchAsRequestError()
     }
 
     /// Method that executes request and serializes response into target object
     ///
-    /// - Parameter requestParameters: api parameters to pass Alamofire
-    /// - Parameter decoder: json decoder to decode response data
+    /// - Parameters:
+    ///   - requestParameters: api parameters to pass Alamofire
+    ///   - validStatusCodes: set of additional valid status codes
+    ///   - decoder: json decoder to decode response data
     /// - Returns: Observable with HTTP URL Response and target object
     func responseModel<T: Decodable>(requestParameters: ApiRequestParameters,
+                                     validStatusCodes: Set<Int>,
                                      decoder: JSONDecoder)
         -> Observable<SessionManager.ModelResponse<T>> {
 
-        return apiRequest(requestParameters: requestParameters)
+        return apiRequest(requestParameters: requestParameters, validStatusCodes: validStatusCodes)
             .flatMap {
                 $0.rx.apiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
                     .catchAsRequestError(with: $0)
@@ -126,14 +131,17 @@ public extension Reactive where Base: SessionManager {
 
     /// Method that executes request and serializes response into target object
     ///
-    /// - Parameter requestParameters: api parameters to pass Alamofire
-    /// - Parameter decoder: json decoder to decode response data
+    /// - Parameters:
+    ///   - requestParameters: api parameters to pass Alamofire
+    ///   - validStatusCodes: set of additional valid status codes
+    ///   - decoder: json decoder to decode response data
     /// - Returns: Observable with HTTP URL Response and target object
     func responseObservableModel<T: ObservableMappable>(requestParameters: ApiRequestParameters,
+                                                        validStatusCodes: Set<Int>,
                                                         decoder: JSONDecoder)
         -> Observable<SessionManager.ModelResponse<T>> {
 
-        return apiRequest(requestParameters: requestParameters)
+        return apiRequest(requestParameters: requestParameters, validStatusCodes: validStatusCodes)
             .flatMap {
                 $0.rx.observableApiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
                     .catchAsRequestError(with: $0)
@@ -142,12 +150,14 @@ public extension Reactive where Base: SessionManager {
 
     /// Method that executes request and returns data
     ///
-    /// - Parameter requestParameters: api parameters to pass Alamofire
+    /// - Parameters:
+    ///   - requestParameters: api parameters to pass Alamofire
+    ///   - validStatusCodes: set of additional valid status codes
     /// - Returns: Observable with HTTP URL Response and Data
-    func responseData(requestParameters: ApiRequestParameters)
+    func responseData(requestParameters: ApiRequestParameters, validStatusCodes: Set<Int>)
         -> Observable<SessionManager.DataResponse> {
 
-            return apiRequest(requestParameters: requestParameters)
+            return apiRequest(requestParameters: requestParameters, validStatusCodes: validStatusCodes)
                 .flatMap {
                     $0.rx.responseResult(queue: self.base.mappingQueue,
                                          responseSerializer: DataRequest.dataResponseSerializer())
