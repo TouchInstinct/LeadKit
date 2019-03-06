@@ -56,7 +56,7 @@ open class NetworkService {
     /// Perform reactive request to get mapped ObservableMappable model and http response
     ///
     /// - Parameters:
-    ///   - parameters: api parameters to pass Alamofire
+    ///   - parameters: api parameters to pass to Alamofire
     ///   - validStatusCodes: set of additional valid status codes
     ///   - decoder: json decoder to decode response data
     /// - Returns: Observable of tuple containing (HTTPURLResponse, ObservableMappable)
@@ -74,7 +74,7 @@ open class NetworkService {
     /// Perform reactive request to get mapped ImmutableMappable model and http response
     ///
     /// - Parameters:
-    ///   - parameters: api parameters to pass Alamofire
+    ///   - parameters: api parameters to pass to Alamofire
     ///   - validStatusCodes: set of additional valid status codes
     ///   - decoder: json decoder to decode response data
     /// - Returns: Observable of tuple containing (HTTPURLResponse, ImmutableMappable)
@@ -92,7 +92,7 @@ open class NetworkService {
     /// Perform reactive request to get data and http response
     ///
     /// - Parameters:
-    ///   - parameters: api parameters to pass Alamofire
+    ///   - parameters: api parameters to pass to Alamofire
     ///   - validStatusCodes: set of additional valid status codes
     /// - Returns: Observable of tuple containing (HTTPURLResponse, Data)
     public func rxDataRequest(with parameters: ApiRequestParameters, validStatusCodes: Set<Int> = [])
