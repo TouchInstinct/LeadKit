@@ -1,5 +1,6 @@
-binary "https://raw.github.com/petropavel13/CarthageBinaries/master/SwiftDate/SwiftDate.json"
+binary "https://raw.github.com/TouchInstinct/CarthageBinaries/master/SwiftDate/SwiftDate.json"
+binary "https://raw.github.com/TouchInstinct/CarthageBinaries/master/Alamofire/Alamofire.json"
+binary "https://raw.github.com/TouchInstinct/CarthageBinaries/master/RxAlamofire/RxAlamofire.json"
 github "ReactiveX/RxSwift"
-binary "https://raw.github.com/petropavel13/CarthageBinaries/master/RxAlamofire/RxAlamofire.json"
 github "maxsokolov/TableKit"
 github "pronebird/UIScrollView-InfiniteScroll"
