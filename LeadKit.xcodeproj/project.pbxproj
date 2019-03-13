@@ -729,7 +729,6 @@
 		67952C391EB3203F00B3BA1A /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
 		67952C3A1EB3205D00B3BA1A /* Info-watchOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-watchOS.plist"; sourceTree = "<group>"; };
 		67952C3B1EB3208000B3BA1A /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
-		67952DDC1EB3280900B3BA1A /* Info-iOS-Extensions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS-Extensions.plist"; sourceTree = "<group>"; };
 		67952DDE1EB3285A00B3BA1A /* Info-iOS-Extensions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS-Extensions.plist"; sourceTree = "<group>"; };
 		67955D51206D216B0021ECD2 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		67990AC4213EA4DB0040D195 /* PlaceholderConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderConfigurable.swift; sourceTree = "<group>"; };
@@ -1294,7 +1293,6 @@
 				671461D61EB3396E00EAB194 /* Enums */,
 				671461DA1EB3396E00EAB194 /* Extensions */,
 				6714621F1EB3396E00EAB194 /* Functions */,
-				67952DDC1EB3280900B3BA1A /* Info-iOS-Extensions.plist */,
 				67952C391EB3203F00B3BA1A /* Info-iOS.plist */,
 				67952C3B1EB3208000B3BA1A /* Info-tvOS.plist */,
 				67952C3A1EB3205D00B3BA1A /* Info-watchOS.plist */,
