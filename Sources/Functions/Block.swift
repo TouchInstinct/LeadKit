@@ -36,4 +36,4 @@ public typealias VoidBlock = ResultBlock<Void>
 public typealias ThrowableBlock<Input, Output> = (Input) throws -> Output
 
 /// Closure that takes no arguments, may throw an error and returns Void.
-public typealias ThrowableVoidBlock = ThrowableBlock<Void, Void>
+public typealias ThrowableVoidBlock = () throws -> Void
