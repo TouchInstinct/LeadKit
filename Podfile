@@ -22,20 +22,6 @@ abstract_target 'LeadKit' do
 
   end
 
-  target 'LeadKit iOS Extensions' do
-    platform :ios, '9.0'
-
-    use_frameworks!
-
-    pod "TableKit"
-
-    target 'LeadKit iOS ExtensionsTests' do
-      inherit! :search_paths
-      # Pods for testing
-    end
-
-  end
-
   target 'LeadKit watchOS' do
     platform :watchos, '3.0'
 
