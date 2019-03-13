@@ -2,6 +2,7 @@
 
 ### 0.9.10
 - **Remove**: Removed unused scheme & target
+- **Remove**: Cocoapods deintegrated
 - **Update**: New closure typealiases
 
 ### 0.9.9
