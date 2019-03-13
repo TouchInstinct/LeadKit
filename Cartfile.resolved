@@ -1,5 +1,6 @@
+binary "https://raw.github.com/TouchInstinct/CarthageBinaries/master/Alamofire/Alamofire.json" "4.8.1"
 binary "https://raw.github.com/TouchInstinct/CarthageBinaries/master/RxAlamofire/RxAlamofire.json" "4.3.0"
 binary "https://raw.github.com/TouchInstinct/CarthageBinaries/master/SwiftDate/SwiftDate.json" "5.1.0"
-github "ReactiveX/RxSwift" "4.4.1"
+github "ReactiveX/RxSwift" "4.4.2"
 github "maxsokolov/TableKit" "2.8.1"
 github "pronebird/UIScrollView-InfiniteScroll" "1.1.0"

@@ -20,8 +20,20 @@
 //  THE SOFTWARE.
 //
 
-/// Closure that takes no arguments and return Void.
-public typealias VoidBlock = () -> Void
+/// Closure with custom arguments and return value.
+public typealias Block<Input, Output> = (Input) -> Output
 
-/// Closure that takes no arguments, may throw error and return Void.
+/// Closure with no arguments and custom return value.
+public typealias ResultBlock<Output> = Block<Void, Output>
+
+/// Closure that takes custom arguments and returns Void.
+public typealias ParameterBlock<Input> = Block<Input, Void>
+
+/// Closure that takes no arguments and returns Void.
+public typealias VoidBlock = ResultBlock<Void>
+
+/// Closure with custom arguments and return value, may throw an error.
+public typealias ThrowableBlock<Input, Output> = (Input) throws -> Output
+
+/// Closure that takes no arguments, may throw an error and returns Void.
 public typealias ThrowableVoidBlock = () throws -> Void
