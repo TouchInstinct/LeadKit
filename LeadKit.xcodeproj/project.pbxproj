@@ -1939,13 +1939,6 @@
 			path = TableKitViewModel;
 			sourceTree = "<group>";
 		};
-		6C722B542BA0317A7613C034 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		785EDF75220072B400985ED4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1981,7 +1974,6 @@
 				67186B401EB24A5B00CFAFFB /* Tests */,
 				67186B411EB24AA000CFAFFB /* iOS.playground */,
 				785EDF75220072B400985ED4 /* Frameworks */,
-				6C722B542BA0317A7613C034 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
