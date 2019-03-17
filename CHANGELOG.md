@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.9.11
+- **[Breaking change]**: Renamed `NumberFormat`'s `allOptions` to `allCases`
+- **Fix**: Closure syntax fix
+
 ### 0.9.10
 - **Remove**: Removed unused scheme & target
 - **Remove**: Cocoapods deintegrated
