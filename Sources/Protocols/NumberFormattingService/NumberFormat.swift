@@ -23,10 +23,7 @@
 import Foundation
 
 /// Protocol for describing number format.
-public protocol NumberFormat: Hashable {
-
-    /// All available options.
-    static var allOptions: [Self] { get }
+public protocol NumberFormat: Hashable, CaseIterable {
 
     /// A NumberFormatter instance for this format.
     var numberFormatter: NumberFormatter { get }

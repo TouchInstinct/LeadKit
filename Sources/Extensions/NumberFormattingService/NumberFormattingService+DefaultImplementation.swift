@@ -26,7 +26,7 @@ public extension NumberFormattingService {
 
     /// Computed static property. Use only once for `formatters` field implementation!
     static var computedFormatters: [NumberFormatType: NumberFormatter] {
-        return Dictionary(uniqueKeysWithValues: NumberFormatType.allOptions.map { ($0, $0.numberFormatter) })
+        return Dictionary(uniqueKeysWithValues: NumberFormatType.allCases.map { ($0, $0.numberFormatter) })
     }
 
     func numberFormatter(for format: NumberFormatType) -> NumberFormatter {
