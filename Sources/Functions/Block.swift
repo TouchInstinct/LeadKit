@@ -24,13 +24,13 @@
 public typealias Closure<Input, Output> = (Input) -> Output
 
 /// Closure with no arguments and custom return value.
-public typealias ResultBlock<Output> = () -> Output
+public typealias ResultClosure<Output> = () -> Output
 
 /// Closure that takes custom arguments and returns Void.
 public typealias ParameterClosure<Input> = Closure<Input, Void>
 
 /// Closure that takes no arguments and returns Void.
-public typealias VoidBlock = () -> Void
+public typealias VoidBlock = ResultClosure<Void>
 
 /// Closure with custom arguments and return value, may throw an error.
 public typealias ThrowableClosure<Input, Output> = (Input) throws -> Output
