@@ -2,7 +2,7 @@
 
 ### 0.9.11
 - **[Breaking change]**: Renamed `NumberFormat`'s `allOptions` to `allCases`
-- **Fix**: Closure syntax fix
+- **Fix**: Closure syntax fix. New closure naming.
 
 ### 0.9.10
 - **Remove**: Removed unused scheme & target
