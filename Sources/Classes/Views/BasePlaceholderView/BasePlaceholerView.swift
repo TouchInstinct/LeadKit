@@ -75,6 +75,10 @@ open class BasePlaceholderView: UIView, InitializableView {
     open func localize() {
         // override in subclass
     }
+
+    open func configureLayout() {
+        // override in subclass
+    }
 }
 
 public extension BasePlaceholderView {
