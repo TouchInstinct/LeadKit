@@ -101,6 +101,24 @@ open class NetworkService {
             return sessionManager.rx.responseData(requestParameters: parameters, validStatusCodes: validStatusCodes)
                 .counterTracking(for: self)
     }
+
+    /// Perform reactive request to upload data and get Observable model and http response
+    ///
+    /// - Parameters:
+    ///   - parameters: api upload parameters to pass Alamofire
+    ///   - validStatusCodes: et of additional valid status codes
+    ///   - decoder: json decoder to decode response data
+    /// - Returns: Observable of model response
+    public func rxUploadRequest<T: Decodable>(with parameters: ApiUploadRequestParameters,
+                                              validStatusCodes: Set<Int> = [],
+                                              decoder: JSONDecoder = JSONDecoder())
+        -> Observable<SessionManager.ModelResponse<T>> {
+
+            return sessionManager.rx.uploadResponseModel(requestParameters: parameters,
+                                                         validStatusCodes: validStatusCodes,
+                                                         decoder: decoder)
+                .counterTracking(for: self)
+    }
 }
 
 private extension NetworkService {

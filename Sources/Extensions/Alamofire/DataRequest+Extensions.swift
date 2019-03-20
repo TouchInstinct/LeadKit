@@ -34,12 +34,13 @@ public extension Reactive where Base: DataRequest {
     /// - Parameter decoder: JSONDecoder used to decode a decodable type
     /// - Returns: Observable with HTTP URL Response and target object
     func apiResponse<T: Decodable>(mappingQueue: DispatchQueue = .global(), decoder: JSONDecoder)
-        -> Observable<(response: HTTPURLResponse, model: T)> {
+        -> Observable<SessionManager.ModelResponse<T>> {
 
             return response(onQueue: mappingQueue)
                 .tryMapResult { response, data in
                     (response, try decoder.decode(T.self, from: data))
                 }
+                .catchAsRequestError(with: self.base)
     }
 
     /// Method that serializes response into target object
@@ -47,7 +48,7 @@ public extension Reactive where Base: DataRequest {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and target object
     func observableApiResponse<T: ObservableMappable>(mappingQueue: DispatchQueue = .global(), decoder: JSONDecoder)
-        -> Observable<(response: HTTPURLResponse, model: T)> {
+        -> Observable<SessionManager.ModelResponse<T>> {
 
             return response(onQueue: mappingQueue)
                 .tryMapObservableResult { response, value in
@@ -55,12 +56,32 @@ public extension Reactive where Base: DataRequest {
                     return T.create(from: json, with: decoder)
                         .map { (response, $0) }
                 }
+                .catchAsRequestError(with: self.base)
+    }
+
+    func dataApiResponse(mappingQueue: DispatchQueue) -> Observable<SessionManager.DataResponse> {
+        return response(onQueue: mappingQueue)
+            .map { $0 as SessionManager.DataResponse }
+            .catchAsRequestError(with: self.base)
     }
 
     private func response(onQueue queue: DispatchQueue) -> Observable<(HTTPURLResponse, Data)> {
         return responseResult(queue: queue, responseSerializer: DataRequest.dataResponseSerializer())
     }
 }
+
+public extension ObservableType where E == DataRequest {
+
+    /// Method that validates status codes and catch network errors
+    ///
+    /// - Parameter statusCodes: set of status codes to validate
+    /// - Returns: Observable on self
+    func validate(statusCodes: Set<Int>) -> Observable<E> {
+        return map { $0.validate(statusCode: statusCodes) }
+            .catchAsRequestError()
+    }
+}
+
 
 private extension ObservableType where E == ServerResponse {
 
@@ -84,6 +105,44 @@ private extension ObservableType where E == ServerResponse {
             } catch {
                 throw RequestError.mapping(error: error, response: result)
             }
+        }
+    }
+}
+
+private extension ObservableType {
+
+    func catchAsRequestError(with request: DataRequest? = nil) -> Observable<E> {
+        return catchError { error in
+            let resultError: RequestError
+            let response = request?.delegate.data
+
+            switch error {
+            case let requestError as RequestError:
+                resultError = requestError
+
+            case let urlError as URLError:
+                switch urlError.code {
+                case .notConnectedToInternet:
+                    resultError = .noConnection
+
+                default:
+                    resultError = .network(error: urlError, response: response)
+                }
+
+            case let afError as AFError:
+                switch afError {
+                case .responseSerializationFailed, .responseValidationFailed:
+                    resultError = .invalidResponse(error: afError, response: response)
+                    
+                default:
+                    resultError = .network(error: afError, response: response)
+                }
+
+            default:
+                resultError = .network(error: error, response: response)
+            }
+
+            throw resultError
         }
     }
 }
