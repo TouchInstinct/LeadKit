@@ -26,7 +26,7 @@ import MobileCoreServices
 private enum Constants {
 
     static let contentTypeKey = "Content-Type"
-    static let contentTypeValue = "multipart/form-data"
+    static let contentTypeValue = "multipart/form-data; "
     static let boundaryKey = "boundary"
 }
 
@@ -43,9 +43,19 @@ public struct ApiUploadRequestParameters {
     let url: URLConvertible
     let headers: HTTPHeaders
 
+    /// ApiUploadRequestParameters initializator (You can get mime type from data using "Swime" pod)
+    ///
+    /// - Parameters:
+    ///   - data: data to upload
+    ///   - url: request url
+    ///   - additionalHeaders: request additional headers exсept Content-Type
+    ///   - fileName: file name with extension
+    ///   - name: file name
+    ///   - mimeType: file MIME-type
+    /// - Throws: UploadParametersError
     public init(data: Data,
                 url: URLConvertible,
-                headers: HTTPHeaders?,
+                additionalHeaders: HTTPHeaders?,
                 fileName: String,
                 name: String? = nil,
                 mimeType: String? = nil) throws {
@@ -53,7 +63,7 @@ public struct ApiUploadRequestParameters {
         let formData = MultipartFormData()
 
         self.url = url
-        self.headers = ApiUploadRequestParameters.configureHTTPHeaders(with: headers ?? HTTPHeaders(),
+        self.headers = ApiUploadRequestParameters.configureHTTPHeaders(with: additionalHeaders ?? HTTPHeaders(),
                                                                        formData: formData)
 
         let name = name ?? (fileName as NSString).deletingPathExtension
@@ -79,11 +89,9 @@ private extension ApiUploadRequestParameters {
 
         var requestHeaders = headers
 
-        requestHeaders[Constants.boundaryKey] = formData.boundary
-
-        if requestHeaders[Constants.contentTypeKey] == nil {
-            requestHeaders[Constants.contentTypeKey] = Constants.contentTypeValue
-        }
+        let boundary = "\(Constants.boundaryKey)=\(formData.boundary)"
+        
+        requestHeaders[Constants.contentTypeKey] = Constants.contentTypeValue + boundary
 
         return requestHeaders
     }
@@ -93,8 +101,9 @@ private extension ApiUploadRequestParameters {
 
         guard let utiType = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,
                                                                   fileExtension as CFString,
-                                                                  nil)?.takeUnretainedValue(),
-              let mimeType = UTTypeCopyPreferredTagWithClass(utiType, kUTTagClassMIMEType) as? String else {
+                                                                  nil)?.takeRetainedValue(),
+              let mimeType = UTTypeCopyPreferredTagWithClass(utiType,
+                                                             kUTTagClassMIMEType)?.takeRetainedValue() as? String else {
 
                 assertionFailure("Unable to get mime type from file name")
                 throw UploadParametersError.unableGetMimeType
