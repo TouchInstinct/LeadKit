@@ -1,5 +1,14 @@
 # Changelog
 
+### 0.9.12
+- **Add**: `ApiUploadRequestParameters` struct, that defines upload data request parameters.
+- **Add**: `rxUploadRequest` method to `NetworkService` class, that performs reactive request to upload data.
+- **Add**: `uploadResponseModel` method to `SessionManager` extension, that executes upload request and serializes response.
+- **Add**: `handleMappingError` method to `Error` extension, that tries to serialize response from a mapping request error to a model.
+- **Add**: `handleMappingError` method to `ObservableType`, `Single`, `Completable` extensions, that handles a mapping error and serialize response to a model.
+- **Add**: `validate` method to `DataRequest` observable extension, that validates status codes and catch network errors.
+- **Add**: `dataApiResponse` method to `DataRequest` reactive extension, that serializes response into data.
+
 ### 0.9.11
 - **[Breaking change]**: Renamed `NumberFormat`'s `allOptions` to `allCases`
 - **Fix**: Closure syntax fix. New closure naming.

@@ -59,6 +59,10 @@ public extension Reactive where Base: DataRequest {
                 .catchAsRequestError(with: self.base)
     }
 
+    /// Method that serializes response into data
+    ///
+    /// - Parameter mappingQueue: The dispatch queue to use for mapping
+    /// - Returns: Observable with HTTP URL Response and data
     func dataApiResponse(mappingQueue: DispatchQueue) -> Observable<SessionManager.DataResponse> {
         return response(onQueue: mappingQueue)
             .map { $0 as SessionManager.DataResponse }
