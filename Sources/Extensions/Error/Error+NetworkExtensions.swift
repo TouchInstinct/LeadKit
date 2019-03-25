@@ -32,6 +32,7 @@ public extension Error {
     ///
     /// - Parameter decoder: json decoder to decode response data
     /// - Returns: optional target object
+    /// - Throws: an error during decoding
     func handleMappingError<T: Decodable>(with decoder: JSONDecoder = JSONDecoder()) throws -> T? {
         guard let self = requestError, case .mapping(_, let response) = self else {
             return nil
@@ -52,11 +53,11 @@ public extension ObservableType {
     func handleMappingError<T: Decodable>(with decoder: JSONDecoder = JSONDecoder(),
                                           handler: @escaping ParameterClosure<T>) -> Observable<E> {
             return self.do(onError: { error in
-                guard let mappingModel = try error.handleMappingError(with: decoder) as T? else {
+                guard let errorModel = try error.handleMappingError(with: decoder) as T? else {
                     return
                 }
 
-                handler(mappingModel)
+                handler(errorModel)
             })
     }
 }
@@ -72,11 +73,11 @@ public extension PrimitiveSequence where Trait == SingleTrait {
     func handleMappingError<T: Decodable>(with decoder: JSONDecoder = JSONDecoder(),
                                           handler: @escaping ParameterClosure<T>) -> PrimitiveSequence<Trait, Element> {
             return self.do(onError: { error in
-                guard let mappingModel = try error.handleMappingError(with: decoder) as T? else {
+                guard let errorModel = try error.handleMappingError(with: decoder) as T? else {
                     return
                 }
 
-                handler(mappingModel)
+                handler(errorModel)
             })
     }
 }
@@ -92,11 +93,11 @@ public extension PrimitiveSequence where Trait == CompletableTrait, Element == N
     func handleMappingError<T: Decodable>(with decoder: JSONDecoder = JSONDecoder(),
                                           handler: @escaping ParameterClosure<T>) -> Completable {
             return self.do(onError: { error in
-                guard let mappingModel = try error.handleMappingError(with: decoder) as T? else {
+                guard let errorModel = try error.handleMappingError(with: decoder) as T? else {
                     return
                 }
 
-                handler(mappingModel)
+                handler(errorModel)
             })
     }
 }
