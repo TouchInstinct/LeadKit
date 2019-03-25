@@ -70,9 +70,9 @@ public extension Reactive where Base: SessionManager {
     ///
     /// - Parameters:
     ///   - requestParameters: api parameters to pass Alamofire
-    ///   - validStatusCodes: set of additional valid status codes
+    ///   - additionalValidStatusCodes: set of additional valid status codes
     /// - Returns: Observable with request
-    func apiRequest(requestParameters: ApiRequestParameters, validStatusCodes: Set<Int>)
+    func apiRequest(requestParameters: ApiRequestParameters, additionalValidStatusCodes: Set<Int>)
         -> Observable<DataRequest> {
 
         let requestObservable: Observable<DataRequest>
@@ -106,22 +106,22 @@ public extension Reactive where Base: SessionManager {
         }
 
         return requestObservable
-            .validate(statusCodes: self.base.acceptableStatusCodes.union(validStatusCodes))
+            .validate(statusCodes: self.base.acceptableStatusCodes.union(additionalValidStatusCodes))
     }
 
     /// Method that executes request and serializes response into target object
     ///
     /// - Parameters:
     ///   - requestParameters: api parameters to pass Alamofire
-    ///   - validStatusCodes: set of additional valid status codes
+    ///   - additionalValidStatusCodes: set of additional valid status codes
     ///   - decoder: json decoder to decode response data
     /// - Returns: Observable with HTTP URL Response and target object
     func responseModel<T: Decodable>(requestParameters: ApiRequestParameters,
-                                     validStatusCodes: Set<Int>,
+                                     additionalValidStatusCodes: Set<Int>,
                                      decoder: JSONDecoder)
         -> Observable<SessionManager.ModelResponse<T>> {
 
-        return apiRequest(requestParameters: requestParameters, validStatusCodes: validStatusCodes)
+        return apiRequest(requestParameters: requestParameters, additionalValidStatusCodes: additionalValidStatusCodes)
             .flatMap {
                 $0.rx.apiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
             }
@@ -131,15 +131,15 @@ public extension Reactive where Base: SessionManager {
     ///
     /// - Parameters:
     ///   - requestParameters: api parameters to pass Alamofire
-    ///   - validStatusCodes: set of additional valid status codes
+    ///   - additionalValidStatusCodes: set of additional valid status codes
     ///   - decoder: json decoder to decode response data
     /// - Returns: Observable with HTTP URL Response and target object
     func responseObservableModel<T: ObservableMappable>(requestParameters: ApiRequestParameters,
-                                                        validStatusCodes: Set<Int>,
+                                                        additionalValidStatusCodes: Set<Int>,
                                                         decoder: JSONDecoder)
         -> Observable<SessionManager.ModelResponse<T>> {
 
-        return apiRequest(requestParameters: requestParameters, validStatusCodes: validStatusCodes)
+        return apiRequest(requestParameters: requestParameters, additionalValidStatusCodes: additionalValidStatusCodes)
             .flatMap {
                 $0.rx.observableApiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
             }
@@ -149,12 +149,12 @@ public extension Reactive where Base: SessionManager {
     ///
     /// - Parameters:
     ///   - requestParameters: api parameters to pass Alamofire
-    ///   - validStatusCodes: set of additional valid status codes
+    ///   - additionalValidStatusCodes: set of additional valid status codes
     /// - Returns: Observable with HTTP URL Response and Data
-    func responseData(requestParameters: ApiRequestParameters, validStatusCodes: Set<Int>)
+    func responseData(requestParameters: ApiRequestParameters, additionalValidStatusCodes: Set<Int>)
         -> Observable<SessionManager.DataResponse> {
 
-            return apiRequest(requestParameters: requestParameters, validStatusCodes: validStatusCodes)
+            return apiRequest(requestParameters: requestParameters, additionalValidStatusCodes: additionalValidStatusCodes)
                 .flatMap {
                     $0.rx.dataApiResponse(mappingQueue: self.base.mappingQueue)
                 }
@@ -164,11 +164,11 @@ public extension Reactive where Base: SessionManager {
     ///
     /// - Parameters:
     ///   - requestParameters: api upload parameters to pass Alamofire
-    ///   - validStatusCodes: set of additional valid status codes
+    ///   - additionalValidStatusCodes: set of additional valid status codes
     ///   - decoder: json decoder to decode response data
     /// - Returns: Observable with HTTP URL Response and target object
     func uploadResponseModel<T: Decodable>(requestParameters: ApiUploadRequestParameters,
-                                           validStatusCodes: Set<Int>,
+                                           additionalValidStatusCodes: Set<Int>,
                                            decoder: JSONDecoder)
         -> Observable<SessionManager.ModelResponse<T>> {
 
@@ -179,7 +179,7 @@ public extension Reactive where Base: SessionManager {
 
                 return self.upload(data, urlRequest: urlRequest)
                     .map { $0 as DataRequest }
-                    .validate(statusCodes: self.base.acceptableStatusCodes.union(validStatusCodes))
+                    .validate(statusCodes: self.base.acceptableStatusCodes.union(additionalValidStatusCodes))
                     .flatMap {
                         $0.rx.apiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
                     }

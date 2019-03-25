@@ -8,6 +8,7 @@
 - **Add**: `handleMappingError` method to `ObservableType`, `Single`, `Completable` extensions, that handles a mapping error and serialize response to a model.
 - **Add**: `validate` method to `DataRequest` observable extension, that validates status codes and catch network errors.
 - **Add**: `dataApiResponse` method to `DataRequest` reactive extension, that serializes response into data.
+- **Update**: `validStatusCodes` parameter in network methods renamed to `additionalValidStatusCodes`.
 
 ### 0.9.11
 - **[Breaking change]**: Renamed `NumberFormat`'s `allOptions` to `allCases`
