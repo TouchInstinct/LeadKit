@@ -39,7 +39,7 @@ open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel
             .map { [weak self] items in
                 self?.viewModels(from: items)
             }
-            .filterNil()
+            .flatMap { Observable.from(optional: $0) }
             .share(replay: 1, scope: .forever)
             .asDriver(onErrorDriveWith: .empty())
     }
@@ -57,7 +57,7 @@ open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel
             .map { [weak self] items in
                 self?.viewModels(from: items)
             }
-            .filterNil()
+            .flatMap { Observable.from(optional: $0) }
             .share(replay: 1, scope: .forever)
             .asDriver(onErrorDriveWith: .empty())
     }
