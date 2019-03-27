@@ -46,6 +46,7 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
         self.searchResultsController = searchResultsController
         self.searchController = UISearchController(searchResultsController: searchResultsController)
         super.init(viewModel: viewModel)
+        initialLoadView()
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -56,7 +57,6 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
 
     open override func bindViews() {
         super.bindViews()
-
         viewModel.itemsViewModelsDriver
             .drive(onNext: { [weak self] viewModels in
                 self?.handle(itemViewModels: viewModels)
@@ -93,8 +93,8 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
 
     open override func configureAppearance() {
         super.configureAppearance()
-
         definesPresentationContext = true
+        configureSearchBarAppearance(searchController.searchBar)
         customView.tableView.tableHeaderView?.backgroundColor = searchBarColor
     }
 
@@ -182,6 +182,10 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
     open func statusBarFrame() -> CGRect {
         /// override in subclass
         return .zero
+    }
+
+    open func configureSearchBarAppearance(_ searchBar: UISearchBar) {
+        // override in subclass
     }
 }
 
