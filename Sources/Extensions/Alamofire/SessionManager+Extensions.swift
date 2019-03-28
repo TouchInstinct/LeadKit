@@ -70,9 +70,9 @@ public extension Reactive where Base: SessionManager {
     ///
     /// - Parameters:
     ///   - requestParameters: api parameters to pass Alamofire
-    ///   - validStatusCodes: set of additional valid status codes
+    ///   - additionalValidStatusCodes: set of additional valid status codes
     /// - Returns: Observable with request
-    func apiRequest(requestParameters: ApiRequestParameters, validStatusCodes: Set<Int>)
+    func apiRequest(requestParameters: ApiRequestParameters, additionalValidStatusCodes: Set<Int>)
         -> Observable<DataRequest> {
 
         let requestObservable: Observable<DataRequest>
@@ -106,26 +106,24 @@ public extension Reactive where Base: SessionManager {
         }
 
         return requestObservable
-            .map { $0.validate(statusCode: self.base.acceptableStatusCodes.union(validStatusCodes)) }
-            .catchAsRequestError()
+            .validate(statusCodes: self.base.acceptableStatusCodes.union(additionalValidStatusCodes))
     }
 
     /// Method that executes request and serializes response into target object
     ///
     /// - Parameters:
     ///   - requestParameters: api parameters to pass Alamofire
-    ///   - validStatusCodes: set of additional valid status codes
+    ///   - additionalValidStatusCodes: set of additional valid status codes
     ///   - decoder: json decoder to decode response data
     /// - Returns: Observable with HTTP URL Response and target object
     func responseModel<T: Decodable>(requestParameters: ApiRequestParameters,
-                                     validStatusCodes: Set<Int>,
+                                     additionalValidStatusCodes: Set<Int>,
                                      decoder: JSONDecoder)
         -> Observable<SessionManager.ModelResponse<T>> {
 
-        return apiRequest(requestParameters: requestParameters, validStatusCodes: validStatusCodes)
+        return apiRequest(requestParameters: requestParameters, additionalValidStatusCodes: additionalValidStatusCodes)
             .flatMap {
                 $0.rx.apiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
-                    .catchAsRequestError(with: $0)
             }
     }
 
@@ -133,18 +131,17 @@ public extension Reactive where Base: SessionManager {
     ///
     /// - Parameters:
     ///   - requestParameters: api parameters to pass Alamofire
-    ///   - validStatusCodes: set of additional valid status codes
+    ///   - additionalValidStatusCodes: set of additional valid status codes
     ///   - decoder: json decoder to decode response data
     /// - Returns: Observable with HTTP URL Response and target object
     func responseObservableModel<T: ObservableMappable>(requestParameters: ApiRequestParameters,
-                                                        validStatusCodes: Set<Int>,
+                                                        additionalValidStatusCodes: Set<Int>,
                                                         decoder: JSONDecoder)
         -> Observable<SessionManager.ModelResponse<T>> {
 
-        return apiRequest(requestParameters: requestParameters, validStatusCodes: validStatusCodes)
+        return apiRequest(requestParameters: requestParameters, additionalValidStatusCodes: additionalValidStatusCodes)
             .flatMap {
                 $0.rx.observableApiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
-                    .catchAsRequestError(with: $0)
             }
     }
 
@@ -152,54 +149,40 @@ public extension Reactive where Base: SessionManager {
     ///
     /// - Parameters:
     ///   - requestParameters: api parameters to pass Alamofire
-    ///   - validStatusCodes: set of additional valid status codes
+    ///   - additionalValidStatusCodes: set of additional valid status codes
     /// - Returns: Observable with HTTP URL Response and Data
-    func responseData(requestParameters: ApiRequestParameters, validStatusCodes: Set<Int>)
+    func responseData(requestParameters: ApiRequestParameters, additionalValidStatusCodes: Set<Int>)
         -> Observable<SessionManager.DataResponse> {
 
-            return apiRequest(requestParameters: requestParameters, validStatusCodes: validStatusCodes)
+            return apiRequest(requestParameters: requestParameters, additionalValidStatusCodes: additionalValidStatusCodes)
                 .flatMap {
-                    $0.rx.responseResult(queue: self.base.mappingQueue,
-                                         responseSerializer: DataRequest.dataResponseSerializer())
-                        .map { $0 as SessionManager.DataResponse }
-                        .catchAsRequestError(with: $0)
+                    $0.rx.dataApiResponse(mappingQueue: self.base.mappingQueue)
                 }
     }
-}
 
-private extension ObservableType {
-    func catchAsRequestError(with request: DataRequest? = nil) -> Observable<E> {
-        return catchError { error in
-            let resultError: RequestError
-            let response = request?.delegate.data
+    /// Method that executes upload request and serializes response into target object
+    ///
+    /// - Parameters:
+    ///   - requestParameters: api upload parameters to pass Alamofire
+    ///   - additionalValidStatusCodes: set of additional valid status codes
+    ///   - decoder: json decoder to decode response data
+    /// - Returns: Observable with HTTP URL Response and target object
+    func uploadResponseModel<T: Decodable>(requestParameters: ApiUploadRequestParameters,
+                                           additionalValidStatusCodes: Set<Int>,
+                                           decoder: JSONDecoder)
+        -> Observable<SessionManager.ModelResponse<T>> {
 
-            switch error {
-            case let requestError as RequestError:
-                resultError = requestError
+            return Observable.deferred {
 
-            case let urlError as URLError:
-                switch urlError.code {
-                case .notConnectedToInternet:
-                    resultError = .noConnection
+                let urlRequest = try URLRequest(url: requestParameters.url, method: .post, headers: requestParameters.headers)
+                let data = try requestParameters.formData.encode()
 
-                default:
-                    resultError = .network(error: urlError, response: response)
-                }
-
-            case let afError as AFError:
-                switch afError {
-                case .responseSerializationFailed, .responseValidationFailed:
-                    resultError = .invalidResponse(error: afError, response: response)
-
-                default:
-                    resultError = .network(error: afError, response: response)
-                }
-
-            default:
-                resultError = .network(error: error, response: response)
+                return self.upload(data, urlRequest: urlRequest)
+                    .map { $0 as DataRequest }
+                    .validate(statusCodes: self.base.acceptableStatusCodes.union(additionalValidStatusCodes))
+                    .flatMap {
+                        $0.rx.apiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
+                    }
             }
-
-            throw resultError
-        }
     }
 }
