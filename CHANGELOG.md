@@ -1,6 +1,6 @@
 # Changelog
 
-### 0.9.12
+### 0.9.13
 - **Add**: `ApiUploadRequestParameters` struct that defines upload data request parameters.
 - **Add**: `rxUploadRequest` method to `NetworkService` class that performs reactive request to upload data.
 - **Add**: `uploadResponseModel` method to `SessionManager` extension that executes upload request and serializes response.
@@ -9,6 +9,9 @@
 - **Add**: `validate` method to `DataRequest` observable extension that validates status codes and catch network errors.
 - **Add**: `dataApiResponse` method to `DataRequest` reactive extension that serializes response into data.
 - **Update**: `validStatusCodes` parameter in network methods renamed to `additionalValidStatusCodes`.
+
+### 0.9.12
+- **Update**: Swift 5 support
 
 ### 0.9.11
 - **[Breaking change]**: Renamed `NumberFormat`'s `allOptions` to `allCases`
