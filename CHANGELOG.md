@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.12
+- **Update**: Swift 5 support
+
 ### 0.9.11
 - **[Breaking change]**: Renamed `NumberFormat`'s `allOptions` to `allCases`
 - **Fix**: Closure syntax fix. New closure naming.

@@ -54,7 +54,7 @@ final class NetworkServiceTests: XCTestCase {
         var receivedModel: Album?
         var error: Error?
         let requestCompletedExpectation = expectation(description: "Request completed")
-        let apiRequest = ApiRequestParameters(url: networkService.configuration.baseUrl + "/albums/1")
+        let apiRequest = ApiRequestParameters(url: networkService.configuration.baseUrl + "/albums/1", parameters: [:])
 
         // when
         networkService.rxRequest(with: apiRequest)
@@ -80,7 +80,7 @@ final class NetworkServiceTests: XCTestCase {
         var response: [Album]?
         var error: Error?
         let requestCompletedExpectation = expectation(description: "Request completed")
-        let apiRequest = ApiRequestParameters(url: networkService.configuration.baseUrl + "/albums")
+        let apiRequest = ApiRequestParameters(url: networkService.configuration.baseUrl + "/albums", parameters: [:])
 
         //when
         networkService.rxRequest(with: apiRequest)
@@ -110,7 +110,7 @@ final class NetworkServiceTests: XCTestCase {
         var receivedModel: Album?
         var error: Error?
         let requestCompletedExpectation = expectation(description: "Request completed")
-        let apiRequest = ApiRequestParameters(url: networkService.configuration.baseUrl + "/albums/1")
+        let apiRequest = ApiRequestParameters(url: networkService.configuration.baseUrl + "/albums/1", parameters: [:])
         
         // when
         networkService.rxObservableRequest(with: apiRequest)
@@ -136,7 +136,7 @@ final class NetworkServiceTests: XCTestCase {
         var receivedModel: AlbumContainer?
         var error: Error?
         let requestCompletedExpectation = expectation(description: "Request completed")
-        let apiRequest = ApiRequestParameters(url: networkService.configuration.baseUrl + "/albums")
+        let apiRequest = ApiRequestParameters(url: networkService.configuration.baseUrl + "/albums", parameters: [:])
 
         // when
         networkService.rxObservableRequest(with: apiRequest)
