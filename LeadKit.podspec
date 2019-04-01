@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.9.13"
+  s.version         = "0.9.14"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -86,7 +86,7 @@ Pod::Spec.new do |s|
     ss.dependency "RxSwift", '~> 4'
     ss.dependency "RxCocoa", '~> 4'
     ss.dependency "RxAlamofire", '~> 4'
-    ss.dependency "SwiftDate", '~> 5.1'
+    ss.dependency "SwiftDate", '~> 6'
 
     ss.ios.dependency "TableKit", '~> 2.8'
     ss.ios.dependency "UIScrollView-InfiniteScroll", '~> 1.1.0'
