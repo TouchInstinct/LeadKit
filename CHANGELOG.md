@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.14
+- **Update**: SwiftDate dependency (~> 6).
+
 ### 0.9.13
 - **Add**: `ApiUploadRequestParameters` struct that defines upload data request parameters.
 - **Add**: `rxUploadRequest` method to `NetworkService` class that performs reactive request to upload data.
