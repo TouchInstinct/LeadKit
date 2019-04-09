@@ -1,9 +1,39 @@
 # Changelog
-### 0.9.9
+### 0.9.15
 - **Add**: `BaseSearchViewController` class that that allows to enter text for search and then displays search results in table view. 
 - **Add**: `BaseSearchViewModel` class that loads data from a given data source and performs search among the results.
 - **Add**: `SearchResultsController` protocol that represent a controller able to display search results.
 - **Add**: `SearchResultsControllerState` enum that represents `SearchResultsController` state.
+
+### 0.9.14
+- **Update**: SwiftDate dependency (~> 6).
+
+### 0.9.13
+- **Add**: `ApiUploadRequestParameters` struct that defines upload data request parameters.
+- **Add**: `rxUploadRequest` method to `NetworkService` class that performs reactive request to upload data.
+- **Add**: `uploadResponseModel` method to `SessionManager` extension that executes upload request and serializes response.
+- **Add**: `handleMappingError` method to `Error` extension that tries to serialize response from a mapping request error to a model.
+- **Add**: `handleMappingError` method to `ObservableType`, `Single`, `Completable` extensions that handles a mapping error and serialize response to a model.
+- **Add**: `validate` method to `DataRequest` observable extension that validates status codes and catch network errors.
+- **Add**: `dataApiResponse` method to `DataRequest` reactive extension that serializes response into data.
+- **Update**: `validStatusCodes` parameter in network methods renamed to `additionalValidStatusCodes`.
+
+### 0.9.12
+- **Update**: Swift 5 support
+
+### 0.9.11
+- **[Breaking change]**: Renamed `NumberFormat`'s `allOptions` to `allCases`
+- **Fix**: Closure syntax fix. New closure naming.
+- **Fix**: Added missing `BasePlaceholderView` protocol function.
+
+### 0.9.10
+- **Remove**: Removed unused scheme & target
+- **Remove**: Cocoapods deintegrated
+- **Update**: New closure typealiases
+
+### 0.9.9
+- **Add**: `validStatusCodes` parameter to request methods in `NetworkService` class, that expands valid status codes for request.
+- **Add**:  `validStatusCodes` parameter to response methods in `SessionManager` extension, that expands valid status codes for request.
 
 ### 0.9.8
 - **Add**: `rxDataRequest` method to `NetworkService` class, that performs reactive request to get data and http response.
@@ -42,7 +72,7 @@
 ### 0.8.13
 - **Add**: `configureLayout` method to `InitializeableView` protocol and all implementations.
 - **Update**: `GeneralDataLoadingViewModel` now can handle state changes and result of data source. Previously it was possible only in view controller.
-- **Add**: `GeneralDataLoadingHandler` protocol, that defines methods for common data loading states handling. 
+- **Add**: `GeneralDataLoadingHandler` protocol, that defines methods for common data loading states handling.
 - **Add**: `resultObservable` and `resultDriver` properties to `GeneralDataLoadingViewModel`.
 - **Add**: `hidesWhenStopped` option to `SpinnerView`, so you can stop animation without hiding image inside it.
 - **Update**: Migrate to Swift 4.2 & Xcode 10. Update dependencies.
@@ -93,12 +123,12 @@
 
 ### 0.8.5
 
-- **Add**: `replaceDataSource` method to `RxNetworkOperationModel`. 
+- **Add**: `replaceDataSource` method to `RxNetworkOperationModel`.
 - **Add**: `customErrorHandler` constructor parameter to `RxNetworkOperationModel` and it heirs.
 
 ### 0.8.4
 
-- **Fix**: Add `SeparatorCell` to `Core-iOS-Extension`. 
+- **Fix**: Add `SeparatorCell` to `Core-iOS-Extension`.
 - **Fix**: `UIApplication` extensions path for `Core-iOS-Extension` exclusions.
 
 ### 0.8.3

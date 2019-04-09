@@ -25,7 +25,7 @@ import UIKit.UIViewController
 public extension ConfigurableController where Self: UIViewController {
 
     func initializeView() {
-        assertionFailure("Use \(initialLoadView) for UIViewController instead!")
+        assertionFailure("Use \(String(describing: initialLoadView)) for UIViewController instead!")
     }
 
     /// Method that should be called in viewDidLoad method of UIViewController.
