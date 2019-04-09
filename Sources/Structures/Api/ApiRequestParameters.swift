@@ -36,11 +36,11 @@ public struct ApiRequestParameters {
         case array([Any])
     }
 
-    let method: HTTPMethod
-    let url: URLConvertible
-    let parameters: RequestParameters?
-    let encoding: ParameterEncoding
-    let headers: HTTPHeaders?
+    public let method: HTTPMethod
+    public let url: URLConvertible
+    public let parameters: RequestParameters?
+    public let encoding: ParameterEncoding
+    public let headers: HTTPHeaders?
 
     public init(url: URLConvertible,
                 method: HTTPMethod = .get,
