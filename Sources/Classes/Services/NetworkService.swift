@@ -57,16 +57,16 @@ open class NetworkService {
     ///
     /// - Parameters:
     ///   - parameters: api parameters to pass to Alamofire
-    ///   - validStatusCodes: set of additional valid status codes
+    ///   - additionalValidStatusCodes: set of additional valid status codes
     ///   - decoder: json decoder to decode response data
     /// - Returns: Observable of tuple containing (HTTPURLResponse, ObservableMappable)
     public func rxObservableRequest<T: ObservableMappable>(with parameters: ApiRequestParameters,
-                                                           validStatusCodes: Set<Int> = [],
+                                                           additionalValidStatusCodes: Set<Int> = [],
                                                            decoder: JSONDecoder = JSONDecoder())
         -> Observable<SessionManager.ModelResponse<T>> {
 
             return sessionManager.rx.responseObservableModel(requestParameters: parameters,
-                                                             validStatusCodes: validStatusCodes,
+                                                             additionalValidStatusCodes: additionalValidStatusCodes,
                                                              decoder: decoder)
                 .counterTracking(for: self)
     }
@@ -75,16 +75,16 @@ open class NetworkService {
     ///
     /// - Parameters:
     ///   - parameters: api parameters to pass to Alamofire
-    ///   - validStatusCodes: set of additional valid status codes
+    ///   - additionalValidStatusCodes: set of additional valid status codes
     ///   - decoder: json decoder to decode response data
     /// - Returns: Observable of tuple containing (HTTPURLResponse, ImmutableMappable)
     public func rxRequest<T: Decodable>(with parameters: ApiRequestParameters,
-                                        validStatusCodes: Set<Int> = [],
+                                        additionalValidStatusCodes: Set<Int> = [],
                                         decoder: JSONDecoder = JSONDecoder())
         -> Observable<SessionManager.ModelResponse<T>> {
 
             return sessionManager.rx.responseModel(requestParameters: parameters,
-                                                   validStatusCodes: validStatusCodes,
+                                                   additionalValidStatusCodes: additionalValidStatusCodes,
                                                    decoder: decoder)
                 .counterTracking(for: self)
     }
@@ -93,12 +93,31 @@ open class NetworkService {
     ///
     /// - Parameters:
     ///   - parameters: api parameters to pass to Alamofire
-    ///   - validStatusCodes: set of additional valid status codes
+    ///   - additionalValidStatusCodes: set of additional valid status codes
     /// - Returns: Observable of tuple containing (HTTPURLResponse, Data)
-    public func rxDataRequest(with parameters: ApiRequestParameters, validStatusCodes: Set<Int> = [])
+    public func rxDataRequest(with parameters: ApiRequestParameters, additionalValidStatusCodes: Set<Int> = [])
         -> Observable<SessionManager.DataResponse> {
 
-            return sessionManager.rx.responseData(requestParameters: parameters, validStatusCodes: validStatusCodes)
+            return sessionManager.rx.responseData(requestParameters: parameters,
+                                                  additionalValidStatusCodes: additionalValidStatusCodes)
+                .counterTracking(for: self)
+    }
+
+    /// Perform reactive request to upload data and get Observable model and http response
+    ///
+    /// - Parameters:
+    ///   - parameters: api upload parameters to pass Alamofire
+    ///   - additionalValidStatusCodes: set of additional valid status codes
+    ///   - decoder: json decoder to decode response data
+    /// - Returns: Observable of model response
+    public func rxUploadRequest<T: Decodable>(with parameters: ApiUploadRequestParameters,
+                                              additionalValidStatusCodes: Set<Int> = [],
+                                              decoder: JSONDecoder = JSONDecoder())
+        -> Observable<SessionManager.ModelResponse<T>> {
+
+            return sessionManager.rx.uploadResponseModel(requestParameters: parameters,
+                                                         additionalValidStatusCodes: additionalValidStatusCodes,
+                                                         decoder: decoder)
                 .counterTracking(for: self)
     }
 }

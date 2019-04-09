@@ -236,7 +236,7 @@ public extension UIImage {
 }
 
 @available(iOS 10.0, tvOS 10.0, *)
-private extension DrawingOperation {
+internal extension DrawingOperation {
 
     func imageFromNewRenderer(scale: CGFloat) -> UIImage {
         let ctxSize = contextSize
