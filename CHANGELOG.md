@@ -1,16 +1,9 @@
 # Changelog
-### 0.9.9
+### 0.9.15
 - **Add**: `BaseSearchViewController` class that that allows to enter text for search and then displays search results in table view. 
 - **Add**: `BaseSearchViewModel` class that loads data from a given data source and performs search among the results.
 - **Add**: `SearchResultsController` protocol that represent a controller able to display search results.
 - **Add**: `SearchResultsControllerState` enum that represents `SearchResultsController` state.
-
-### 0.9.8
-- **Add**: `rxDataRequest` method to `NetworkService` class, that performs reactive request to get data and http response.
-- **Add**: `responseData` method to `SessionManager` extension, that executes request and returns data.
-
-### 0.9.7
-- **Add**: Carthage support.
 
 ### 0.9.14
 - **Update**: SwiftDate dependency (~> 6).
