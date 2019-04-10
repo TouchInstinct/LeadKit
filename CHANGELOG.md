@@ -1,6 +1,6 @@
 # Changelog
 ### 0.9.15
-- **Add**: `BaseSearchViewController` class that that allows to enter text for search and then displays search results in table view. 
+- **Add**: `BaseSearchViewController` class that allows to enter text for search and then displays search results in table view. 
 - **Add**: `BaseSearchViewModel` class that loads data from a given data source and performs search among the results.
 - **Add**: `SearchResultsController` protocol that represent a controller able to display search results.
 - **Add**: `SearchResultsControllerState` enum that represents `SearchResultsController` state.
