@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.16
+- **Update**: Make `ApiRequestParameters` vars public.
+
 ### 0.9.14
 - **Update**: SwiftDate dependency (~> 6).
 
