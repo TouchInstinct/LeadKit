@@ -86,7 +86,6 @@ public extension ObservableType where E == DataRequest {
     }
 }
 
-
 private extension ObservableType where E == ServerResponse {
 
     func tryMapResult<R>(_ transform: @escaping (E) throws -> R) -> Observable<R> {
@@ -137,7 +136,7 @@ private extension ObservableType {
                 switch afError {
                 case .responseSerializationFailed, .responseValidationFailed:
                     resultError = .invalidResponse(error: afError, response: response)
-                    
+
                 default:
                     resultError = .network(error: afError, response: response)
                 }
