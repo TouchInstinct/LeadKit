@@ -45,7 +45,7 @@ public struct BigBossButtonState: OptionSet {
     }
 }
 
-open class BigBossButtonView: UIView {
+open class CustomizableButtonView: UIView {
 
     private let disposeBag = DisposeBag()
 
@@ -75,7 +75,7 @@ open class BigBossButtonView: UIView {
         }
     }
 
-    private let button = BigBossButton()
+    private let button = CustomizableButton()
 
     public var shadowView = UIView() {
         willSet {
@@ -235,7 +235,7 @@ private extension UIView {
     }
 }
 
-extension BigBossButtonView: InitializableView {
+extension CustomizableButtonView: InitializableView {
 
     public func addViews() {
         addSubviews(shadowView, button)
@@ -262,8 +262,8 @@ extension BigBossButtonView: InitializableView {
     }
 }
 
-extension BigBossButtonView: ConfigurableView {
-    public func configure(with viewModel: BigBossButtonViewModel) {
+extension CustomizableButtonView: ConfigurableView {
+    public func configure(with viewModel: CustomizableButtonViewModel) {
         button.titleLabel?.numberOfLines = 0
         viewModel.stateObservable
             .skip(1)
@@ -310,7 +310,7 @@ extension BigBossButtonView: ConfigurableView {
     }
 }
 
-public extension BigBossButtonView {
+public extension CustomizableButtonView {
     struct Appearance {
 
         var buttonFont: UIFont

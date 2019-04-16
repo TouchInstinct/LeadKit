@@ -24,7 +24,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-open class BigBossButton: UIButton {
+open class CustomizableButton: UIButton {
 
     // MARK: - Constants
 

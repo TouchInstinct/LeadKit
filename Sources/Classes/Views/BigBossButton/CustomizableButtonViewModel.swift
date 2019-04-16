@@ -23,9 +23,9 @@
 import RxCocoa
 import RxSwift
 
-open class BigBossButtonViewModel {
+open class CustomizableButtonViewModel {
 
-    public typealias Appearance = BigBossButtonView.Appearance
+    public typealias Appearance = CustomizableButtonView.Appearance
 
     private let stateRelay = BehaviorRelay(value: BigBossButtonState.enabled)
     private let tapRelay = BehaviorRelay(value: ())
