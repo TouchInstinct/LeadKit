@@ -453,6 +453,9 @@
 		6B5B64BACFF8C5487FB0939D /* TableKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B66503F2C42D009DEA011 /* TableKitViewModel.swift */; };
 		6B5B6EF1577C8CC06E4CCF1B /* Array+RowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B62E7942E5AEE68A95449 /* Array+RowExtensions.swift */; };
 		6B5B6F0BFA22832C47142BAD /* TableKitViewModel+Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5B61443DDAB82927448CAA /* TableKitViewModel+Extenstions.swift */; };
+		72005A1E2266226800ECE090 /* BigBossButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72005A1B2266226800ECE090 /* BigBossButton.swift */; };
+		72005A1F2266226800ECE090 /* BigBossButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72005A1C2266226800ECE090 /* BigBossButtonViewModel.swift */; };
+		72005A202266226800ECE090 /* BigBossButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72005A1D2266226800ECE090 /* BigBossButtonView.swift */; };
 		7295473F21E661E6009558E7 /* TitleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7295473E21E661E6009558E7 /* TitleType.swift */; };
 		7295474221E6628C009558E7 /* UINavigationItem+Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7295474121E6628C009558E7 /* UINavigationItem+Support.swift */; };
 		7295474421E66328009558E7 /* UIViewController+UpdateNavigationItemTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7295474321E66328009558E7 /* UIViewController+UpdateNavigationItemTitle.swift */; };
@@ -726,6 +729,9 @@
 		6B5B61443DDAB82927448CAA /* TableKitViewModel+Extenstions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableKitViewModel+Extenstions.swift"; sourceTree = "<group>"; };
 		6B5B62E7942E5AEE68A95449 /* Array+RowExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+RowExtensions.swift"; sourceTree = "<group>"; };
 		6B5B66503F2C42D009DEA011 /* TableKitViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableKitViewModel.swift; sourceTree = "<group>"; };
+		72005A1B2266226800ECE090 /* BigBossButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigBossButton.swift; sourceTree = "<group>"; };
+		72005A1C2266226800ECE090 /* BigBossButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigBossButtonViewModel.swift; sourceTree = "<group>"; };
+		72005A1D2266226800ECE090 /* BigBossButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigBossButtonView.swift; sourceTree = "<group>"; };
 		7295473E21E661E6009558E7 /* TitleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleType.swift; sourceTree = "<group>"; };
 		7295474121E6628C009558E7 /* UINavigationItem+Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+Support.swift"; sourceTree = "<group>"; };
 		7295474321E66328009558E7 /* UIViewController+UpdateNavigationItemTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+UpdateNavigationItemTitle.swift"; sourceTree = "<group>"; };
@@ -844,7 +850,6 @@
 				6741CEC520E2434900FEC4D9 /* Controllers */,
 				72AECC68224A979D00D12E7C /* Search */,
 				6774527E2062566D0024EEEF /* DataLoading */,
-				72D213A222048162003B4292 /* Search */,
 				671461D21EB3396E00EAB194 /* Services */,
 				671461D41EB3396E00EAB194 /* Views */,
 			);
@@ -884,6 +889,7 @@
 		671461D41EB3396E00EAB194 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				72005A1A2266226800ECE090 /* BigBossButton */,
 				677B06B6211873E7006C947D /* BasePlaceholderView */,
 				67DB77672108714A001CB56B /* CollectionViewWrapperView */,
 				673CF42A2063DE3A00C329F6 /* DefaultPlaceholders */,
@@ -902,7 +908,6 @@
 		671461D61EB3396E00EAB194 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				72039CDE220899D000875DD4 /* Search */,
 				67274767206CCB6F00725163 /* Views */,
 				72AECC6D224A97B100D12E7C /* Search */,
 				6774528A20625C860024EEEF /* DataLoading */,
@@ -1138,7 +1143,6 @@
 				678D269C20692BFF00B05B93 /* Views */,
 				671462341EB3396E00EAB194 /* XibNameProtocol.swift */,
 				6B5B625D01107D0A6F4E14D2 /* TableKit */,
-				72527D26222E934100CA26BE /* OptionalType.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1902,6 +1906,16 @@
 			path = TableKitViewModel;
 			sourceTree = "<group>";
 		};
+		72005A1A2266226800ECE090 /* BigBossButton */ = {
+			isa = PBXGroup;
+			children = (
+				72005A1B2266226800ECE090 /* BigBossButton.swift */,
+				72005A1C2266226800ECE090 /* BigBossButtonViewModel.swift */,
+				72005A1D2266226800ECE090 /* BigBossButtonView.swift */,
+			);
+			path = BigBossButton;
+			sourceTree = "<group>";
+		};
 		72AECC68224A979D00D12E7C /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -2329,6 +2343,7 @@
 			files = (
 				671463481EB3396E00EAB194 /* ResettableType.swift in Sources */,
 				EFBE57D01EC35EF20040E00A /* Array+Extensions.swift in Sources */,
+				72005A202266226800ECE090 /* BigBossButtonView.swift in Sources */,
 				6792623C206EB0EC00308E62 /* CellSeparatorType+Extensions.swift in Sources */,
 				671462E41EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
 				67EB7FF12061682F00BDD9FB /* TotalCountCursorListingResult+DefaultTotalCountCursorListingResult.swift in Sources */,
@@ -2341,12 +2356,12 @@
 				6727478F206CD88600725163 /* DateFormattingService.swift in Sources */,
 				678D26A420692BFF00B05B93 /* TextFieldViewModelEvents.swift in Sources */,
 				671462801EB3396E00EAB194 /* DataRequest+Extensions.swift in Sources */,
-				7284087622079A4600A20F47 /* SearchResultsViewController.swift in Sources */,
 				67EB7FF8206175F700BDD9FB /* PaginationWrappable.swift in Sources */,
 				67990AD6213EA6A50040D195 /* ContentLoadingViewModel+Extensions.swift in Sources */,
 				671463541EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
 				72AECC6B224A979D00D12E7C /* BaseSearchViewController.swift in Sources */,
 				673CF4112063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */,
+				72005A1E2266226800ECE090 /* BigBossButton.swift in Sources */,
 				673CF42C2063DE5900C329F6 /* TextPlaceholderView.swift in Sources */,
 				67ED2BDE20B44DEB00508B3E /* InitializableView.swift in Sources */,
 				671463601EB3396E00EAB194 /* SupportProtocol.swift in Sources */,
@@ -2373,6 +2388,7 @@
 				36DAAF512007CC920090BE0D /* UITableView+Extensions.swift in Sources */,
 				671463841EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
 				6774528D20625C9E0024EEEF /* GeneralDataLoadingState.swift in Sources */,
+				72005A1F2266226800ECE090 /* BigBossButtonViewModel.swift in Sources */,
 				677B06C4211884F3006C947D /* BaseTextAttributes.swift in Sources */,
 				675E0AA921072FF400CDC143 /* BaseScrollContentController.swift in Sources */,
 				671462D01EB3396E00EAB194 /* UIScrollView+Support.swift in Sources */,
@@ -2409,7 +2425,6 @@
 				6714627C1EB3396E00EAB194 /* SessionManager+Extensions.swift in Sources */,
 				671462D41EB3396E00EAB194 /* TableDirector+Extensions.swift in Sources */,
 				67E352572119ACF30035BDDB /* ViewTextConfigurable+Extensions.swift in Sources */,
-				72527D27222E934100CA26BE /* OptionalType.swift in Sources */,
 				67990AC5213EA4DB0040D195 /* PlaceholderConfigurable.swift in Sources */,
 				6741CEBE20E242FA00FEC4D9 /* UIScrollView+RxBindings.swift in Sources */,
 				67E902572125B66E008EDF45 /* UIImageView+ExpandCollapseDisclosure.swift in Sources */,
@@ -2445,10 +2460,8 @@
 				6727477F206CD3BD00725163 /* ViewText+Extensions.swift in Sources */,
 				67EB7FEB2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */,
 				671AD26C206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift in Sources */,
-				72D213A422048180003B4292 /* BaseSearchViewController.swift in Sources */,
 				673CF4382063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift in Sources */,
 				B85B768720B1CF6700F837C4 /* Encodable+Extensions.swift in Sources */,
-				72039CE0220899E600875DD4 /* SearchResultsViewControllerState.swift in Sources */,
 				67E9024B2125AEB4008EDF45 /* NSNumberConvertible.swift in Sources */,
 				673CF40B2063AB7C00C329F6 /* GeneralDataLoadingViewModel.swift in Sources */,
 				6713C23720AF0C4D00875921 /* NetworkOperationState.swift in Sources */,
@@ -2477,7 +2490,6 @@
 				6774527020624A2A0024EEEF /* PaginationWrapperUIDelegate+DefaultImplementation.swift in Sources */,
 				6727478A206CD83600725163 /* DateFormat.swift in Sources */,
 				67745280206256A20024EEEF /* RxDataLoadingModel.swift in Sources */,
-				7284087422078EB800A20F47 /* BaseSearchViewModel.swift in Sources */,
 				A6F32C081F6EBDAA00AC08EE /* String+LocalizedComponent.swift in Sources */,
 				671462881EB3396E00EAB194 /* CGFloat+Pixels.swift in Sources */,
 				671462941EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
@@ -2790,7 +2802,6 @@
 				67990AE8213EB4080040D195 /* ConfigurableView+Extensions.swift in Sources */,
 				677452A720625FA90024EEEF /* RxDataSource.swift in Sources */,
 				6741CEBC20E242D900FEC4D9 /* UIScrollView+ScrollViewHolder.swift in Sources */,
-				72039CE222089A3D00875DD4 /* SearchResultsViewController.swift in Sources */,
 				6774527720624E820024EEEF /* DataLoadingModel.swift in Sources */,
 				67926239206EB0AE00308E62 /* CellSeparatorType.swift in Sources */,
 				678D267C20691D8200B05B93 /* DataModelFieldBinding.swift in Sources */,
