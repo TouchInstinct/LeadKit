@@ -36,6 +36,7 @@ Pod::Spec.new do |s|
       "Sources/Classes/Views/TableViewWrapperView/*",
       "Sources/Classes/Views/BasePlaceholderView/*",
       "Sources/Classes/Search/*",
+      "Sources/Enums/Search/*",
       "Sources/Extensions/CABasicAnimation/*",
       "Sources/Extensions/CGFloat/CGFloat+Pixels.swift",
       "Sources/Extensions/NetworkService/NetworkService+RxLoadImage.swift",
@@ -59,6 +60,7 @@ Pod::Spec.new do |s|
       "Sources/Protocols/Views/SeparatorCell/*",
       "Sources/Protocols/Views/PlaceholderConfigurable/*",
       "Sources/Protocols/TableKit/**/*",
+      "Sources/Protocols/Controllers/SearchResultsViewController.swift",
       "Sources/Structures/Views/AnyLoadingIndicator.swift",
       "Sources/Structures/DrawingOperations/CALayerDrawingOperation.swift",
       "Sources/Structures/DrawingOperations/RoundDrawingOperation.swift",
@@ -74,6 +76,7 @@ Pod::Spec.new do |s|
       "Sources/Classes/DataLoading/PaginationDataLoading/PaginationWrapper.swift",
       "Sources/Classes/Search/*",
       "Sources/Structures/Drawing/CALayerDrawingOperation.swift",
+      "Sources/Enums/Search/*",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
       "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/Support/UINavigationItem+Support.swift",
@@ -84,6 +87,7 @@ Pod::Spec.new do |s|
       "Sources/Protocols/DataLoading/PaginationDataLoading/PaginationWrappable.swift",
       "Sources/Protocols/Views/SeparatorCell/*",
       "Sources/Protocols/TableKit/**/*",
+      "Sources/Protocols/Controllers/SearchResultsViewController.swift",
       "Sources/Structures/DataLoading/PaginationDataLoading/*"
     ]
 
