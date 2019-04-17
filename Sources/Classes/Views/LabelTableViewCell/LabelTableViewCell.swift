@@ -28,8 +28,6 @@ open class LabelTableViewCell: SeparatorCell, InitializableView, ConfigurableCel
 
     // MARK: - Properties
 
-    public static let estimatedHeight: CGFloat? = 44.0
-
     private let label = UILabel()
     private let backgroundImageView = UIImageView()
     private let contentContainerView = UIView()
