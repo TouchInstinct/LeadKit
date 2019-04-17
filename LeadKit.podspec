@@ -91,6 +91,7 @@ Pod::Spec.new do |s|
     ss.dependency "SwiftDate", '~> 6'
 
     ss.ios.dependency "TableKit", '~> 2.8'
+    ss.ios.dependency "SnapKit", '~> 4.0.0'
     ss.ios.dependency "UIScrollView-InfiniteScroll", '~> 1.1.0'
   end
 
