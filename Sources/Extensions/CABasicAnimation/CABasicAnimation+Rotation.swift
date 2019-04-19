@@ -27,7 +27,7 @@ extension CABasicAnimation {
     static let rotationKeyPath = "transform.rotation.z"
 
     static func zRotationAnimationWith(duration: CFTimeInterval = 1,
-                                       repeatCount: Float = Float.infinity,
+                                       repeatCount: Float = .infinity,
                                        clockwise: Bool = true) -> CABasicAnimation {
 
         let animation = CABasicAnimation(keyPath: CABasicAnimation.rotationKeyPath)
@@ -36,6 +36,9 @@ extension CABasicAnimation {
         animation.duration = duration
         animation.isCumulative = true
         animation.repeatCount = repeatCount
+        if repeatCount == .infinity {
+            animation.isRemovedOnCompletion = false
+        }
 
         return animation
     }
