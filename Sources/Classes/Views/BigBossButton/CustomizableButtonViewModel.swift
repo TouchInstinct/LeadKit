@@ -35,8 +35,8 @@ open class CustomizableButtonViewModel {
         self.appearance = appearance
     }
 
-    open var stateObservable: Observable<BigBossButtonState> {
-        return stateRelay.asObservable()
+    open var stateDriver: Driver<BigBossButtonState> {
+        return stateRelay.asDriver()
     }
 
     func bind(tapObservable: Observable<Void>) -> Disposable {

@@ -27,39 +27,46 @@ public typealias Spinner = UIView & Animatable
 
 public struct BigBossButtonState: OptionSet {
 
+    // MARK: - OptionSet conformance
+
     public let rawValue: Int
 
     public init(rawValue: Int) {
         self.rawValue = rawValue
     }
 
+    // MARK: - States
+
     static let highlighted = BigBossButtonState(rawValue: 1 << 1)
-    static let unhighlighted = BigBossButtonState(rawValue: 1 << 2)
+    static let normal = BigBossButtonState(rawValue: 1 << 2)
     static let enabled = BigBossButtonState(rawValue: 1 << 3)
     static let disabled = BigBossButtonState(rawValue: 1 << 4)
-
     static let loading = BigBossButtonState(rawValue: 1 << 5)
 
+    // MARK: - Properties
+
     var isLoading: Bool {
-        return self.contains(.loading)
+        return contains(.loading)
     }
 }
 
 open class CustomizableButtonView: UIView {
 
-    private let disposeBag = DisposeBag()
-
-    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if var touchPoint = touches.first?.location(in: self) {
-            touchPoint = convert(touchPoint, to: self)
-            if button.frame.contains(touchPoint) && !button.isEnabled {
-                tapOnDisabledButton?()
-            }
-        }
-        super.touchesBegan(touches, with: event)
-    }
-
     // MARK: - Stored Properties
+
+    private let disposeBag = DisposeBag()
+    private let button = BigBossButton()
+    public var tapOnDisabledButton: VoidBlock?
+
+    public var shadowView = UIView() {
+        willSet {
+            shadowView.removeFromSuperview()
+        }
+        didSet {
+            insertSubview(shadowView, at: 0)
+            configureShadowViewConstraints()
+        }
+    }
 
     public var spinnerView: Spinner? {
         willSet {
@@ -75,28 +82,37 @@ open class CustomizableButtonView: UIView {
         }
     }
 
-    private let button = CustomizableButton()
-
-    public var shadowView = UIView() {
-        willSet {
-            shadowView.removeFromSuperview()
-        }
-        didSet {
-            insertSubview(shadowView, at: 0)
-            configureShadowViewConstraints()
-        }
-    }
-
-    private var isEnabledObserver: NSKeyValueObservation?
-    private var isHighlightedObserver: NSKeyValueObservation?
-
-    public var tapOnDisabledButton: VoidBlock?
-
     public var appearance = Appearance() {
         didSet {
             configureAppearance()
             configureConstraints()
         }
+    }
+
+    public var buttonIsDisabledWhileLoading = false
+
+    // MARK: - Computed Properties
+
+    open var tapObservable: Observable<Void> {
+        return button.rx.tap.asObservable()
+    }
+
+    override open var forFirstBaselineLayout: UIView {
+        return button.forFirstBaselineLayout
+    }
+
+    override open var forLastBaselineLayout: UIView {
+        return button.forLastBaselineLayout
+    }
+
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if var touchPoint = touches.first?.location(in: self) {
+            touchPoint = convert(touchPoint, to: self)
+            if button.frame.contains(touchPoint) && !button.isEnabled {
+                tapOnDisabledButton?()
+            }
+        }
+        super.touchesBegan(touches, with: event)
     }
 
     // MARK: - Initialization
@@ -111,55 +127,12 @@ open class CustomizableButtonView: UIView {
         initializeView()
     }
 
-    // MARK: - Drivers
-
-    open var tapObservable: Observable<Void> {
-        return button.rx.tap.asObservable()
-    }
-
-    // MARK: - Button State Observation
-
-    //    private func observeIsEnabled() -> NSKeyValueObservation {
-    //        return button.observe(\BigBossButton.isEnabled, options: .new) { [weak self] _, isEnabled in
-    //
-    //            guard let self = self else {
-    //                return
-    //            }
-    //
-    //            if let isEnabled = isEnabled.newValue {
-    //                var state = self.stateRelay.value
-    //                state.subtract([.enabled, .disabled])
-    //                state.insert(isEnabled ? .enabled : .disabled)
-    //                self.stateRelay.accept(state)
-    //            }
-    //        }
-    //    }
-    //
-    //    private func observeIsHighlighted() -> NSKeyValueObservation {
-    //        return button.observe(\BigBossButton.isHighlighted, options: .new,
-    //      changeHandler: { [weak self] _, isHighlighted in
-    //
-    //            guard let self = self else {
-    //                return
-    //            }
-    //
-    //            if let isHighlighted = isHighlighted.newValue {
-    //                var state = self.stateRelay.value
-    //                state.subtract([.highlighted, .unhighlighted])
-    //                state.insert(isHighlighted ? .highlighted : .unhighlighted)
-    //                self.stateRelay.accept(state)
-    //            }
-    //        })
-    //    }
-
     // MARK: - UI
 
     override open func layoutSubviews() {
         super.layoutSubviews()
         shadowView.layer.shadowPath = UIBezierPath(rect: button.bounds).cgPath
     }
-
-    public var buttonIsDisabledWhileLoading = false
 
     private func set(active: Bool) {
         button.isEnabled = buttonIsDisabledWhileLoading ? !active : true
@@ -188,16 +161,8 @@ open class CustomizableButtonView: UIView {
 
     // MARK: - Layout
 
-    override open var forFirstBaselineLayout: UIView {
-        return button.forFirstBaselineLayout
-    }
-
-    override open var forLastBaselineLayout: UIView {
-        return button.forLastBaselineLayout
-    }
-
     private func configureConstraints() {
-        button.constaintToEdges(of: self, with: appearance.buttonInsets)
+        button.pinToSuperview(with: appearance.buttonInsets)
         configureShadowViewConstraints()
     }
 
@@ -265,13 +230,9 @@ extension CustomizableButtonView: InitializableView {
 extension CustomizableButtonView: ConfigurableView {
     public func configure(with viewModel: CustomizableButtonViewModel) {
         button.titleLabel?.numberOfLines = 0
-        viewModel.stateObservable
+        viewModel.stateDriver
             .skip(1)
-            .do(onNext: { [weak self] state in
-                self?.configureButton(withState: state)
-                self?.onStateChange(state)
-            })
-            .subscribe()
+            .drive(stateBinder)
             .disposed(by: disposeBag)
 
         viewModel
@@ -281,8 +242,15 @@ extension CustomizableButtonView: ConfigurableView {
         appearance = viewModel.appearance
     }
 
-    open func onStateChange(_ state: BigBossButtonState) {
+    private var stateBinder: Binder<BigBossButtonState> {
+        return Binder(self) { base, value in
+            base.configureButton(withState: value)
+            base.onStateChange(value)
+        }
+    }
 
+    open func onStateChange(_ state: BigBossButtonState) {
+        /// override in subclass
     }
 
     open func configureButton(withState state: BigBossButtonState) {
@@ -298,7 +266,7 @@ extension CustomizableButtonView: ConfigurableView {
             button.isHighlighted = true
         }
 
-        if state.contains(.unhighlighted) {
+        if state.contains(.normal) {
             button.isHighlighted = false
         }
 
@@ -372,7 +340,6 @@ public extension CustomizableButtonView {
 }
 
 extension UIControl.State: Hashable {
-    //swiftlint:disable:next - inout_keyword
     public func hash(into hasher: inout Hasher) {
         hasher.combine(Int(rawValue))
     }
