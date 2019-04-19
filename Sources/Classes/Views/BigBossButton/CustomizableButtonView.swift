@@ -55,7 +55,7 @@ open class CustomizableButtonView: UIView {
     // MARK: - Stored Properties
 
     private let disposeBag = DisposeBag()
-    private let button = BigBossButton()
+    private let button = CustomizableButton()
     public var tapOnDisabledButton: VoidBlock?
 
     public var shadowView = UIView() {
