@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.17
+- **Fix**: SpinnerView infinity animation.
+
 ### 0.9.16
 - **Add**: `LabelTableViewCell` moved from `LeadKitAdditions`.
 - **Add**: `SnapKit` dependency.
