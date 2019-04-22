@@ -43,11 +43,11 @@ open class CustomizableButtonViewModel {
         return tapObservable.bind(to: tapRelay)
     }
 
-    var tapDriver: Driver<Void> {
+    public var tapDriver: Driver<Void> {
         return tapRelay.asDriver()
     }
 
-    func updateState(with newState: BigBossButtonState) {
+    public func updateState(with newState: BigBossButtonState) {
         stateRelay.accept(newState)
     }
 }

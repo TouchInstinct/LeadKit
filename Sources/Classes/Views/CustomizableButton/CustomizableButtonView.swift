@@ -37,15 +37,15 @@ public struct BigBossButtonState: OptionSet {
 
     // MARK: - States
 
-    static let highlighted = BigBossButtonState(rawValue: 1 << 1)
-    static let normal = BigBossButtonState(rawValue: 1 << 2)
-    static let enabled = BigBossButtonState(rawValue: 1 << 3)
-    static let disabled = BigBossButtonState(rawValue: 1 << 4)
-    static let loading = BigBossButtonState(rawValue: 1 << 5)
+    public static let highlighted = BigBossButtonState(rawValue: 1 << 1)
+    public static let normal = BigBossButtonState(rawValue: 1 << 2)
+    public static let enabled = BigBossButtonState(rawValue: 1 << 3)
+    public static let disabled = BigBossButtonState(rawValue: 1 << 4)
+    public static let loading = BigBossButtonState(rawValue: 1 << 5)
 
     // MARK: - Properties
 
-    var isLoading: Bool {
+    public var isLoading: Bool {
         return contains(.loading)
     }
 }
@@ -90,10 +90,11 @@ open class CustomizableButtonView: UIView {
     }
 
     public var buttonIsDisabledWhileLoading = false
+    public var hidesLabelWhenLoading = false
 
     // MARK: - Computed Properties
 
-    open var tapObservable: Observable<Void> {
+    public var tapObservable: Observable<Void> {
         return button.rx.tap.asObservable()
     }
 
@@ -131,11 +132,18 @@ open class CustomizableButtonView: UIView {
 
     override open func layoutSubviews() {
         super.layoutSubviews()
-        shadowView.layer.shadowPath = UIBezierPath(rect: button.bounds).cgPath
+        if shadowView.layer.cornerRadius == 0 {
+            shadowView.layer.shadowPath = UIBezierPath(rect: button.bounds).cgPath
+        }
     }
 
     private func set(active: Bool) {
         button.isEnabled = buttonIsDisabledWhileLoading ? !active : true
+        
+        if hidesLabelWhenLoading {
+            button.titleLabel?.layer.opacity = active ? 0 : 1
+        }
+
         if active {
             spinnerView?.isHidden = false
             spinnerView?.startAnimating()
@@ -149,6 +157,7 @@ open class CustomizableButtonView: UIView {
         if let spinner = spinnerView {
             addSubview(spinner)
             configureSpinnerConstraints()
+            spinner.isHidden = true
         }
     }
 
@@ -167,6 +176,7 @@ open class CustomizableButtonView: UIView {
     }
 
     private func configureSpinnerConstraints() {
+        spinnerView?.translatesAutoresizingMaskIntoConstraints = false
         switch appearance.spinnerPosition {
         case .center:
             spinnerView?.centerXAnchor.constraint(equalTo: button.centerXAnchor).isActive = true
@@ -193,6 +203,7 @@ open class CustomizableButtonView: UIView {
 
 private extension UIView {
     func constaintToEdges(of view: UIView, with offset: UIEdgeInsets) {
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: offset.left).isActive = true
         self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: offset.right).isActive = true
         self.topAnchor.constraint(equalTo: view.topAnchor, constant: offset.top).isActive = true
@@ -207,6 +218,7 @@ extension CustomizableButtonView: InitializableView {
     }
 
     public func configureAppearance() {
+
         button.titleLabel?.font = appearance.buttonFont
 
         button.set(titles: appearance.buttonStateTitles)
@@ -224,6 +236,8 @@ extension CustomizableButtonView: InitializableView {
         if let cornerRadius = appearance.buttonCornerRadius {
             button.layer.cornerRadius = cornerRadius
         }
+
+        button.titleLabel?.isHidden = true
     }
 }
 
@@ -231,7 +245,6 @@ extension CustomizableButtonView: ConfigurableView {
     public func configure(with viewModel: CustomizableButtonViewModel) {
         button.titleLabel?.numberOfLines = 0
         viewModel.stateDriver
-            .skip(1)
             .drive(stateBinder)
             .disposed(by: disposeBag)
 
@@ -292,24 +305,22 @@ public extension CustomizableButtonView {
         var buttonIconOffset: UIOffset
         var buttonInsets: UIEdgeInsets
 
-        var buttonHeight: CGFloat
         var buttonCornerRadius: CGFloat?
 
         var buttonShadowPadding: CGFloat
         var spinnerPosition: SpinnerPosition
 
-        init(buttonFont: UIFont = .systemFont(ofSize: 15),
-             buttonStateTitles: [UIControl.State: String] = [:],
-             buttonStateAttributtedTitles: [UIControl.State: NSAttributedString] = [:],
-             buttonTitleStateColors: [UIControl.State: UIColor] = [:],
-             buttonBackgroundStateColors: [UIControl.State: UIColor] = [:],
-             buttonStateIcons: [UIControl.State: UIImage] = [:],
-             buttonIconOffset: UIOffset = .zero,
-             buttonInsets: UIEdgeInsets = .zero,
-             buttonHeight: CGFloat = 50,
-             buttonCornerRadius: CGFloat? = nil,
-             buttonShadowPadding: CGFloat = 0,
-             spinnerPosition: SpinnerPosition = .center
+        public init(buttonFont: UIFont = .systemFont(ofSize: 15),
+                    buttonStateTitles: [UIControl.State: String] = [:],
+                    buttonStateAttributtedTitles: [UIControl.State: NSAttributedString] = [:],
+                    buttonTitleStateColors: [UIControl.State: UIColor] = [:],
+                    buttonBackgroundStateColors: [UIControl.State: UIColor] = [:],
+                    buttonStateIcons: [UIControl.State: UIImage] = [:],
+                    buttonIconOffset: UIOffset = .zero,
+                    buttonInsets: UIEdgeInsets = .zero,
+                    buttonCornerRadius: CGFloat? = nil,
+                    buttonShadowPadding: CGFloat = 0,
+                    spinnerPosition: SpinnerPosition = .center
             ) {
 
             self.buttonFont = buttonFont
@@ -323,7 +334,6 @@ public extension CustomizableButtonView {
             self.buttonIconOffset = buttonIconOffset
             self.buttonInsets = buttonInsets
 
-            self.buttonHeight = buttonHeight
             self.buttonCornerRadius = buttonCornerRadius
 
             self.buttonShadowPadding = buttonShadowPadding

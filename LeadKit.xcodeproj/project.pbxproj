@@ -889,7 +889,7 @@
 		671461D41EB3396E00EAB194 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				72005A1A2266226800ECE090 /* BigBossButton */,
+				72005A1A2266226800ECE090 /* CustomizableButton */,
 				677B06B6211873E7006C947D /* BasePlaceholderView */,
 				67DB77672108714A001CB56B /* CollectionViewWrapperView */,
 				673CF42A2063DE3A00C329F6 /* DefaultPlaceholders */,
@@ -1906,14 +1906,14 @@
 			path = TableKitViewModel;
 			sourceTree = "<group>";
 		};
-		72005A1A2266226800ECE090 /* BigBossButton */ = {
+		72005A1A2266226800ECE090 /* CustomizableButton */ = {
 			isa = PBXGroup;
 			children = (
 				72005A1B2266226800ECE090 /* CustomizableButton.swift */,
 				72005A1C2266226800ECE090 /* CustomizableButtonViewModel.swift */,
 				72005A1D2266226800ECE090 /* CustomizableButtonView.swift */,
 			);
-			path = BigBossButton;
+			path = CustomizableButton;
 			sourceTree = "<group>";
 		};
 		72AECC68224A979D00D12E7C /* Search */ = {
