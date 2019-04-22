@@ -74,7 +74,6 @@ open class CustomizableButtonView: UIView {
                 removeSpinner()
             }
         }
-
         didSet {
             if spinnerView != nil {
                 addSpinner()
