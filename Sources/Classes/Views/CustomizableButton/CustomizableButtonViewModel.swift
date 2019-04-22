@@ -27,7 +27,7 @@ open class CustomizableButtonViewModel {
 
     public typealias Appearance = CustomizableButtonView.Appearance
 
-    private let stateRelay = BehaviorRelay(value: BigBossButtonState.enabled)
+    private let stateRelay = BehaviorRelay(value: CustomizableButtonState.enabled)
     private let tapRelay = BehaviorRelay(value: ())
     public let appearance: Appearance
 
@@ -35,7 +35,7 @@ open class CustomizableButtonViewModel {
         self.appearance = appearance
     }
 
-    open var stateDriver: Driver<BigBossButtonState> {
+    open var stateDriver: Driver<CustomizableButtonState> {
         return stateRelay.asDriver()
     }
 
@@ -47,7 +47,7 @@ open class CustomizableButtonViewModel {
         return tapRelay.asDriver()
     }
 
-    public func updateState(with newState: BigBossButtonState) {
+    public func updateState(with newState: CustomizableButtonState) {
         stateRelay.accept(newState)
     }
 }

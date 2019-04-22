@@ -25,7 +25,7 @@ import RxCocoa
 
 public typealias Spinner = UIView & Animatable
 
-public struct BigBossButtonState: OptionSet {
+public struct CustomizableButtonState: OptionSet {
 
     // MARK: - OptionSet conformance
 
@@ -37,11 +37,11 @@ public struct BigBossButtonState: OptionSet {
 
     // MARK: - States
 
-    public static let highlighted = BigBossButtonState(rawValue: 1 << 1)
-    public static let normal = BigBossButtonState(rawValue: 1 << 2)
-    public static let enabled = BigBossButtonState(rawValue: 1 << 3)
-    public static let disabled = BigBossButtonState(rawValue: 1 << 4)
-    public static let loading = BigBossButtonState(rawValue: 1 << 5)
+    public static let highlighted = CustomizableButtonState(rawValue: 1 << 1)
+    public static let normal = CustomizableButtonState(rawValue: 1 << 2)
+    public static let enabled = CustomizableButtonState(rawValue: 1 << 3)
+    public static let disabled = CustomizableButtonState(rawValue: 1 << 4)
+    public static let loading = CustomizableButtonState(rawValue: 1 << 5)
 
     // MARK: - Properties
 
@@ -255,18 +255,18 @@ extension CustomizableButtonView: ConfigurableView {
         appearance = viewModel.appearance
     }
 
-    private var stateBinder: Binder<BigBossButtonState> {
+    private var stateBinder: Binder<CustomizableButtonState> {
         return Binder(self) { base, value in
             base.configureButton(withState: value)
             base.onStateChange(value)
         }
     }
 
-    open func onStateChange(_ state: BigBossButtonState) {
+    open func onStateChange(_ state: CustomizableButtonState) {
         /// override in subclass
     }
 
-    open func configureButton(withState state: BigBossButtonState) {
+    open func configureButton(withState state: CustomizableButtonState) {
         if state.contains(.enabled) {
             button.isEnabled = true
         }
