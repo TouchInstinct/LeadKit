@@ -50,6 +50,7 @@ public struct CustomizableButtonState: OptionSet {
     }
 }
 
+/// container class that acts like a button and provides great customization
 open class CustomizableButtonView: UIView, InitializableView {
 
     // MARK: - Stored Properties

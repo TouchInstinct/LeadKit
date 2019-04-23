@@ -24,6 +24,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+/// class that is a CustomizableButtonView subview and gives it a button functionality
 open class CustomizableButton: UIButton {
 
     // MARK: - Constants

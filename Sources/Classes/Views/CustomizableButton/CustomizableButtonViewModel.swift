@@ -23,6 +23,7 @@
 import RxCocoa
 import RxSwift
 
+/// viewModel class for CustomizableButtonView configuration
 open class CustomizableButtonViewModel {
 
     public typealias Appearance = CustomizableButtonView.Appearance
