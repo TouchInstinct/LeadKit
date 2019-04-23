@@ -297,7 +297,6 @@ public extension CustomizableButtonView {
 
         var buttonCornerRadius: CGFloat?
 
-        var buttonShadowPadding: CGFloat
         var spinnerPosition: SpinnerPosition
 
         var numberOfLines: Int
@@ -311,7 +310,6 @@ public extension CustomizableButtonView {
                     buttonIconOffset: UIOffset = .zero,
                     buttonInsets: UIEdgeInsets = .zero,
                     buttonCornerRadius: CGFloat? = nil,
-                    buttonShadowPadding: CGFloat = 0,
                     spinnerPosition: SpinnerPosition = .center,
                     numberOfLines: Int = 0) {
 
@@ -328,7 +326,6 @@ public extension CustomizableButtonView {
 
             self.buttonCornerRadius = buttonCornerRadius
 
-            self.buttonShadowPadding = buttonShadowPadding
             self.spinnerPosition = spinnerPosition
 
             self.numberOfLines = numberOfLines
