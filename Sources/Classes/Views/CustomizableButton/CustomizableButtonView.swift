@@ -50,7 +50,7 @@ public struct CustomizableButtonState: OptionSet {
     }
 }
 
-open class CustomizableButtonView: UIView {
+open class CustomizableButtonView: UIView, InitializableView {
 
     // MARK: - Stored Properties
 
@@ -137,17 +137,17 @@ open class CustomizableButtonView: UIView {
     }
 
     private func set(active: Bool) {
-        button.isEnabled = buttonIsDisabledWhileLoading ? !active : true
+        button.isEnabled = buttonIsDisabledWhileLoading || !active
         
         if hidesLabelWhenLoading {
             button.titleLabel?.layer.opacity = active ? 0 : 1
         }
 
+        spinnerView?.isHidden = !active
+
         if active {
-            spinnerView?.isHidden = false
             spinnerView?.startAnimating()
         } else {
-            spinnerView?.isHidden = true
             spinnerView?.stopAnimating()
         }
     }
@@ -175,49 +175,48 @@ open class CustomizableButtonView: UIView {
     }
 
     private func configureSpinnerConstraints() {
-        spinnerView?.translatesAutoresizingMaskIntoConstraints = false
+        guard let spinnerView = spinnerView else {
+            return
+        }
+        spinnerView.translatesAutoresizingMaskIntoConstraints = false
+        var constraints = [NSLayoutConstraint]()
         switch appearance.spinnerPosition {
         case .center:
-            spinnerView?.centerXAnchor.constraint(equalTo: button.centerXAnchor).isActive = true
-            spinnerView?.centerYAnchor.constraint(equalTo: button.centerYAnchor).isActive = true
+            constraints = [
+                spinnerView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
+                spinnerView.centerYAnchor.constraint(equalTo: button.centerYAnchor)
+            ]
         case .leftToText(let offset):
             if let buttonLabel = button.titleLabel {
-                spinnerView?.centerYAnchor.constraint(equalTo: buttonLabel.centerYAnchor).isActive = true
-                spinnerView?.trailingAnchor.constraint(equalTo: buttonLabel.leadingAnchor,
-                                                       constant: -offset).isActive = true
+                constraints = [
+                    spinnerView.centerYAnchor.constraint(equalTo: buttonLabel.centerYAnchor),
+                    spinnerView.trailingAnchor.constraint(equalTo: buttonLabel.leadingAnchor, constant: -offset)
+                ]
             }
         case .rightToText(let offset):
             if let buttonLabel = button.titleLabel {
-                spinnerView?.centerYAnchor.constraint(equalTo: buttonLabel.centerYAnchor).isActive = true
-                spinnerView?.leadingAnchor.constraint(equalTo: buttonLabel.trailingAnchor,
-                                                      constant: offset).isActive = true
+                constraints = [
+                    spinnerView.centerYAnchor.constraint(equalTo: buttonLabel.centerYAnchor),
+                    spinnerView.leadingAnchor.constraint(equalTo: buttonLabel.trailingAnchor, constant: offset)
+                ]
             }
         }
+
+        NSLayoutConstraint.activate(constraints)
     }
 
     private func configureShadowViewConstraints() {
         shadowView.constaintToEdges(of: button, with: .zero)
     }
-}
 
-private extension UIView {
-    func constaintToEdges(of view: UIView, with offset: UIEdgeInsets) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: offset.left).isActive = true
-        self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: offset.right).isActive = true
-        self.topAnchor.constraint(equalTo: view.topAnchor, constant: offset.top).isActive = true
-        self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: offset.bottom).isActive = true
-    }
-}
-
-extension CustomizableButtonView: InitializableView {
+    // MARK: - Initializable View
 
     public func addViews() {
         addSubviews(shadowView, button)
     }
 
     public func configureAppearance() {
-
+        button.titleLabel?.numberOfLines = appearance.numberOfLines
         button.titleLabel?.font = appearance.buttonFont
 
         button.set(titles: appearance.buttonStateTitles)
@@ -234,22 +233,28 @@ extension CustomizableButtonView: InitializableView {
 
         if let cornerRadius = appearance.buttonCornerRadius {
             button.layer.cornerRadius = cornerRadius
+        } else {
+            button.layer.cornerRadius = 0
         }
 
         button.titleLabel?.isHidden = true
     }
 }
 
+private extension UIView {
+    func constaintToEdges(of view: UIView, with offset: UIEdgeInsets) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: offset.left).isActive = true
+        self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: offset.right).isActive = true
+        self.topAnchor.constraint(equalTo: view.topAnchor, constant: offset.top).isActive = true
+        self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: offset.bottom).isActive = true
+    }
+}
+
 extension CustomizableButtonView: ConfigurableView {
     public func configure(with viewModel: CustomizableButtonViewModel) {
-        button.titleLabel?.numberOfLines = 0
-        viewModel.stateDriver
-            .drive(stateBinder)
-            .disposed(by: disposeBag)
-
-        viewModel
-            .bind(tapObservable: tapObservable)
-            .disposed(by: disposeBag)
+        viewModel.stateDriver.drive(stateBinder).disposed(by: disposeBag)
+        viewModel.bind(tapObservable: tapObservable).disposed(by: disposeBag)
 
         appearance = viewModel.appearance
     }
@@ -266,27 +271,9 @@ extension CustomizableButtonView: ConfigurableView {
     }
 
     open func configureButton(withState state: CustomizableButtonState) {
-        if state.contains(.enabled) {
-            button.isEnabled = true
-        }
-
-        if state.contains(.disabled) {
-            button.isEnabled = false
-        }
-
-        if state.contains(.highlighted) {
-            button.isHighlighted = true
-        }
-
-        if state.contains(.normal) {
-            button.isHighlighted = false
-        }
-
-        if state.contains(.loading) {
-            set(active: true)
-        } else {
-            set(active: false)
-        }
+        button.isEnabled = state.contains(.enabled) && !state.contains(.disabled)
+        button.isHighlighted = state.contains(.highlighted) && !state.contains(.normal)
+        set(active: state.contains(.loading))
     }
 }
 
@@ -309,6 +296,8 @@ public extension CustomizableButtonView {
         var buttonShadowPadding: CGFloat
         var spinnerPosition: SpinnerPosition
 
+        var numberOfLines: Int
+
         public init(buttonFont: UIFont = .systemFont(ofSize: 15),
                     buttonStateTitles: [UIControl.State: String] = [:],
                     buttonStateAttributtedTitles: [UIControl.State: NSAttributedString] = [:],
@@ -319,8 +308,8 @@ public extension CustomizableButtonView {
                     buttonInsets: UIEdgeInsets = .zero,
                     buttonCornerRadius: CGFloat? = nil,
                     buttonShadowPadding: CGFloat = 0,
-                    spinnerPosition: SpinnerPosition = .center
-            ) {
+                    spinnerPosition: SpinnerPosition = .center,
+                    numberOfLines: Int = 0) {
 
             self.buttonFont = buttonFont
 
@@ -337,6 +326,8 @@ public extension CustomizableButtonView {
 
             self.buttonShadowPadding = buttonShadowPadding
             self.spinnerPosition = spinnerPosition
+
+            self.numberOfLines = numberOfLines
         }
 
     }
