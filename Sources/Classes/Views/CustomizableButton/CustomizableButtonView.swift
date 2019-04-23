@@ -243,11 +243,14 @@ open class CustomizableButtonView: UIView, InitializableView {
 
 private extension UIView {
     func constaintToEdges(of view: UIView, with offset: UIEdgeInsets) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: offset.left).isActive = true
-        self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: offset.right).isActive = true
-        self.topAnchor.constraint(equalTo: view.topAnchor, constant: offset.top).isActive = true
-        self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: offset.bottom).isActive = true
+        translatesAutoresizingMaskIntoConstraints = false
+        let constraints = [
+            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: offset.left),
+            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: offset.right),
+            topAnchor.constraint(equalTo: view.topAnchor, constant: offset.top),
+            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: offset.bottom),
+        ]
+        NSLayoutConstraint.activate(constraints)
     }
 }
 
