@@ -142,8 +142,6 @@ public extension UIColor {
             ? Int(red * 255) << 16 | Int(green * 255) << 8 | Int(blue * 255) << 0
             : Int(red * 255) << 24 | Int(green * 255) << 16 | Int(blue * 255) << 8 | Int(alpha * 255) << 0
 
-        return alpha == 1
-            ? String(format: "#%06x", intRepresentation)
-            : String(format: "#%08x", intRepresentation)
+        return String(intRepresentation, radix: 16)
     }
 }
