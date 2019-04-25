@@ -164,7 +164,6 @@ open class CustomizableButtonView: UIView, InitializableView {
     private func removeSpinner() {
         if spinnerView != nil {
             self.spinnerView?.removeFromSuperview()
-            self.spinnerView = nil
         }
     }
 
