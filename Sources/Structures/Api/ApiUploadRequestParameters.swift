@@ -102,7 +102,7 @@ private extension ApiUploadRequestParameters {
                                                                   fileExtension as CFString,
                                                                   nil)?.takeRetainedValue(),
               let mimeType = UTTypeCopyPreferredTagWithClass(utiType,
-                                                             kUTTagClassMIMEType)?.takeRetainedValue() as? String else {
+                                                             kUTTagClassMIMEType)?.takeRetainedValue() as String? else {
 
                 assertionFailure("Unable to get mime type from file name")
                 throw UploadParametersError.unableGetMimeType

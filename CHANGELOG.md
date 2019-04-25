@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.18
+- **Add**: `hexString` property for `UIColor` that returns hex representation of color as string.
+
 ### 0.9.17
 - **Fix**: SpinnerView infinity animation.
 
