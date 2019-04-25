@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.19
+- **Add**: `hexString` property for `UIColor` that returns hex representation of color as string.
+
 ### 0.9.18
 - **Add**: `CustomizableButtonView` container class that provides great customization.
 - **Add**: `CustomizableButtonViewModel` viewModel class for `CustomizableButtonView` configuration.

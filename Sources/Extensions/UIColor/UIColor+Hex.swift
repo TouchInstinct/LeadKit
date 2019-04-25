@@ -126,3 +126,22 @@ public extension UIColor {
         }
     }
 }
+
+public extension UIColor {
+
+    /// Hex representation of UIColor as String
+    var hexString: String {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+
+        let intRepresentation = alpha == 1
+            ? Int(red * 255) << 16 | Int(green * 255) << 8 | Int(blue * 255) << 0
+            : Int(red * 255) << 24 | Int(green * 255) << 16 | Int(blue * 255) << 8 | Int(alpha * 255) << 0
+
+        return String(intRepresentation, radix: 16)
+    }
+}
