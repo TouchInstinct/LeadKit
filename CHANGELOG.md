@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.9.18
+- **Add**: `CustomizableButtonView` container class that provides great customization.
+- **Add**: `CustomizableButtonViewModel` viewModel class for `CustomizableButtonView` configuration.
+- **Add**: `CustomizableButton` class that is a `CustomizableButtonView` subview and gives it a button functionality.
+
 ### 0.9.17
 - **Fix**: SpinnerView infinity animation.
 

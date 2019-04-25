@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.9.17"
+  s.version         = "0.9.18"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -35,6 +35,7 @@ Pod::Spec.new do |s|
       "Sources/Classes/Views/CollectionViewWrapperView/*",
       "Sources/Classes/Views/TableViewWrapperView/*",
       "Sources/Classes/Views/BasePlaceholderView/*",
+      "Sources/Classes/Views/CustomizableButton/*",
       "Sources/Classes/Search/*",
       "Sources/Enums/Search/*",
       "Sources/Extensions/CABasicAnimation/*",
@@ -73,6 +74,7 @@ Pod::Spec.new do |s|
       "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
       "Sources/Classes/Views/LabelTableViewCell/*",
+      "Sources/Classes/Views/CustomizableButton/*",
       "Sources/Classes/DataLoading/PaginationDataLoading/PaginationWrapper.swift",
       "Sources/Classes/Search/*",
       "Sources/Structures/Drawing/CALayerDrawingOperation.swift",
