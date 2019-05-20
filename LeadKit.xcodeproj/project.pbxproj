@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		36977763200CF12100ED9C6E /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
+		36BCEFAD229313FF00D5A37E /* Initializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCEFAC229313FF00D5A37E /* Initializable.swift */; };
 		36DAAF512007CC920090BE0D /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */; };
 		36FE777020F669E300284C09 /* String+ConvertToHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FE776F20F669E300284C09 /* String+ConvertToHost.swift */; };
 		36FE777220F669E300284C09 /* String+ConvertToHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FE776F20F669E300284C09 /* String+ConvertToHost.swift */; };
@@ -540,6 +541,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36BCEFAC229313FF00D5A37E /* Initializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initializable.swift; sourceTree = "<group>"; };
 		36DAAF502007CC920090BE0D /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		36FE776F20F669E300284C09 /* String+ConvertToHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ConvertToHost.swift"; sourceTree = "<group>"; };
 		40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceConfigurable.swift; sourceTree = "<group>"; };
@@ -1128,29 +1130,30 @@
 		671462221EB3396E00EAB194 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				6741CEAC20E241A000FEC4D9 /* Controllers */,
-				6741CE9F20E2413300FEC4D9 /* UIKit */,
 				679C77D41F98F78E0094BE10 /* AlertRepresentable.swift */,
 				671463A11EB33FF600EAB194 /* Animatable.swift */,
 				40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */,
 				671462231EB3396E00EAB194 /* BaseViewModel.swift */,
 				671462331EB3396E00EAB194 /* ConfigurableView.swift */,
-				67EB7FC5206148C400BDD9FB /* DataLoading */,
-				67274783206CD7E500725163 /* DateFormatingService */,
-				672947E3206EA63200AC6B6B /* Drawing */,
+				36BCEFAC229313FF00D5A37E /* Initializable.swift */,
 				671462281EB3396E00EAB194 /* LoadingIndicator.swift */,
-				67C7B1772068BADA00C9EDA3 /* NumberFormattingService */,
 				A676AE541F981121001F9214 /* ObservableMappable.swift */,
 				6714622B1EB3396E00EAB194 /* ResettableType.swift */,
 				6714622C1EB3396E00EAB194 /* ReuseIdentifierProtocol.swift */,
-				673CF4202063D8EB00C329F6 /* Rx */,
 				67955D51206D216B0021ECD2 /* Singleton.swift */,
 				6714622E1EB3396E00EAB194 /* StaticViewHeightProtocol.swift */,
 				671462311EB3396E00EAB194 /* SupportProtocol.swift */,
 				671462321EB3396E00EAB194 /* ViewHeightProtocol.swift */,
-				678D269C20692BFF00B05B93 /* Views */,
 				671462341EB3396E00EAB194 /* XibNameProtocol.swift */,
+				6741CEAC20E241A000FEC4D9 /* Controllers */,
+				67EB7FC5206148C400BDD9FB /* DataLoading */,
+				67274783206CD7E500725163 /* DateFormatingService */,
+				672947E3206EA63200AC6B6B /* Drawing */,
+				67C7B1772068BADA00C9EDA3 /* NumberFormattingService */,
+				673CF4202063D8EB00C329F6 /* Rx */,
 				6B5B625D01107D0A6F4E14D2 /* TableKit */,
+				6741CE9F20E2413300FEC4D9 /* UIKit */,
+				678D269C20692BFF00B05B93 /* Views */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -2551,6 +2554,7 @@
 				67990AE6213EB4080040D195 /* ConfigurableView+Extensions.swift in Sources */,
 				6741C40F20EAC88800418D08 /* GeneralDataLoadingViewModel+Extensions.swift in Sources */,
 				67EB7FC7206148D000BDD9FB /* TotalCountCursorListingResult.swift in Sources */,
+				36BCEFAD229313FF00D5A37E /* Initializable.swift in Sources */,
 				67745286206259CF0024EEEF /* Rx+RxDataSourceProtocol.swift in Sources */,
 				67955D52206D216B0021ECD2 /* Singleton.swift in Sources */,
 				67EB7FE420615DE000BDD9FB /* DataSource.swift in Sources */,
