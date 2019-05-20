@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.20
+- **Fix**: `bindBottomInsetBinding(from bottomInsetDriver:)` in `BaseScrollContentController` works correctly now.
+
 ### 0.9.19
 - **Add**: `hexString` property for `UIColor` that returns hex representation of color as string.
 
