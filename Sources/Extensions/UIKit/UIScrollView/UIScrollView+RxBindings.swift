@@ -26,6 +26,7 @@ import RxCocoa
 public extension Reactive where Base: UIScrollView {
 
     /// Binder instance that updates contentInset bottom value.
+    /// If it doesn't work, observe it on MainScheduler.asyncInstance.
     var bottomInsetBinder: Binder<CGFloat> {
         return Binder(base) { base, value in
             base.contentInset.bottom = value
