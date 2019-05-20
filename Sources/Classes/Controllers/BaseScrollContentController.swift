@@ -34,10 +34,9 @@ open class BaseScrollContentController<ViewModel, View: ScrollViewHolderView>: B
     ///
     /// - Parameter bottomInsetDriver: Driver that emits CGFloat bottom inset changes.
     public func bindBottomInsetBinding(from bottomInsetDriver: Driver<CGFloat>) {
-        let contentInsetObservable = customView.scrollView.rx
-            .observe(UIEdgeInsets.self, #keyPath(UIScrollView.contentInset))
+        let contentInsetObservable = customView.scrollView.rx.contentOffset
 
-        let bottomInset = contentInsetObservable.map { $0?.bottom ?? 0 }
+        let bottomInset = contentInsetObservable.map { $0.y }
 
         bottomInsetDisposable = bottomInsetDriver.asObservable()
             .withLatestFrom(bottomInset) { $0 + $1 }
