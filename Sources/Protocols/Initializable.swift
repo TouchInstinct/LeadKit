@@ -27,7 +27,7 @@ public protocol Initializable {
 }
 
 /// Extension for initializing an array of instances
-extension Initializable {
+public extension Initializable {
 
     static func instantiateArray(count: Int) -> [Self] {
         var array: [Self] = []
