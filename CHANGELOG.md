@@ -1,7 +1,10 @@
 # Changelog
 
+### 0.9.22
+- **Fix**: Make `Initializable` protocol public.
+
 ### 0.9.21
-- **Add**: `Initializable` protocol for initializing an array of instances.
+- **Add**: `Initializable` protocol and its extension to initialize an array of instances.
 
 ### 0.9.20
 - **Fix**: `bindBottomInsetBinding(from bottomInsetDriver:)` in `BaseScrollContentController` works correctly now.
