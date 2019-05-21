@@ -4,7 +4,8 @@
 - **Fix**: Make `Initializable` protocol public.
 
 ### 0.9.21
-- **Add**: `Initializable` protocol and its extension to initialize an array of instances.
+- **Add**: `Initializable` - common protocol for object types that can be initialized without params.
+- **Add**: `instantiateArray(count:)` function in Initializable extension to initialize an array of instances.
 
 ### 0.9.20
 - **Fix**: `bindBottomInsetBinding(from bottomInsetDriver:)` in `BaseScrollContentController` works correctly now.
