@@ -22,12 +22,12 @@
 
 import Foundation
 
-/// Protocol for initializing an array of instances
-protocol Initializable {
+public protocol Initializable {
     init()
 }
 
-extension Initializable {
+/// Extension for initializing an array of instances
+public extension Initializable {
 
     static func instantiateArray(count: Int) -> [Self] {
         var array: [Self] = []
