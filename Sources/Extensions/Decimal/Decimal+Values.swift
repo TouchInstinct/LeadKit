@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2017 Touch Instinct
+//  Copyright (c) 2019 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,16 +22,10 @@
 
 import Foundation
 
-public extension Double {
-
-    /// Rounding of double value
-    ///
-    /// - Parameters:
-    ///   - precision: significant digits after decimal point
-    ///   - roundingMode: mode of rounding
-    /// - Returns: rounded value
-    func roundValue(precision: UInt, roundingMode: NSDecimalNumber.RoundingMode) -> Double {
-        // Using decimal here because of precision problem
-        return Decimal(self).roundValue(precision: precision, roundingMode: roundingMode).doubleValue
+public extension Decimal {
+    
+    /// Conver Decimal to double value
+    var doubleValue: Double {
+        return NSDecimalNumber(decimal: self).doubleValue
     }
 }
