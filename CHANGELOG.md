@@ -1,5 +1,11 @@
 # Changelog
 
+### 0.9.23
+- **Add**: Rounding for `Decimal`.
+- **Add**: `doubleValue` property for `Decimal`.
+- **Add**: `intValue` property for `Decimal`.
+- **Fix**: Rounding for `Double`.
+
 ### 0.9.22
 - **Fix**: Make `Initializable` protocol public.
 
