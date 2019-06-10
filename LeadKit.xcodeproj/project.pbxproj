@@ -501,6 +501,8 @@
 		8546C2E8224E864F0059C255 /* Error+NetworkExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8546C2E7224E864F0059C255 /* Error+NetworkExtensions.swift */; };
 		8546C2E9224E864F0059C255 /* Error+NetworkExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8546C2E7224E864F0059C255 /* Error+NetworkExtensions.swift */; };
 		8546C2EA224E864F0059C255 /* Error+NetworkExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8546C2E7224E864F0059C255 /* Error+NetworkExtensions.swift */; };
+		85A5D49522AA975000C7D254 /* Decimal+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A5D49422AA975000C7D254 /* Decimal+Rounding.swift */; };
+		85A5D49C22AAB6B700C7D254 /* Decimal+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A5D49B22AAB6B700C7D254 /* Decimal+Values.swift */; };
 		A658E54D1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54C1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift */; };
 		A658E5501F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54F1F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift */; };
 		A676AE481F97D28A001F9214 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE471F97D28A001F9214 /* String+Extensions.swift */; };
@@ -774,6 +776,8 @@
 		82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Single+DeferredJust.swift"; sourceTree = "<group>"; };
 		8546C2E2224E86280059C255 /* ApiUploadRequestParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiUploadRequestParameters.swift; sourceTree = "<group>"; };
 		8546C2E7224E864F0059C255 /* Error+NetworkExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+NetworkExtensions.swift"; sourceTree = "<group>"; };
+		85A5D49422AA975000C7D254 /* Decimal+Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Rounding.swift"; sourceTree = "<group>"; };
+		85A5D49B22AAB6B700C7D254 /* Decimal+Values.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Values.swift"; sourceTree = "<group>"; };
 		A658E54C1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableRow+SeparatorsExtensions.swift"; sourceTree = "<group>"; };
 		A658E54F1F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SeparatorRowBoxExtensions.swift"; sourceTree = "<group>"; };
 		A66428A61F8A653600C6308D /* SeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
@@ -941,6 +945,7 @@
 				A6D10EA91F8A9269003E69DD /* Comparable */,
 				67745284206259C20024EEEF /* DataLoading */,
 				6771DFE81EEA7C8F002DCDAE /* DateFormattingService */,
+				85A5D49322AA972B00C7D254 /* Decimal */,
 				671461EA1EB3396E00EAB194 /* Double */,
 				672947E2206EA59E00AC6B6B /* Drawing */,
 				8546C2E6224E864F0059C255 /* Error */,
@@ -2019,6 +2024,15 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		85A5D49322AA972B00C7D254 /* Decimal */ = {
+			isa = PBXGroup;
+			children = (
+				85A5D49422AA975000C7D254 /* Decimal+Rounding.swift */,
+				85A5D49B22AAB6B700C7D254 /* Decimal+Values.swift */,
+			);
+			path = Decimal;
+			sourceTree = "<group>";
+		};
 		A66428A41F8A651700C6308D /* SeparatorCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2415,6 +2429,7 @@
 				671462D01EB3396E00EAB194 /* UIScrollView+Support.swift in Sources */,
 				671463901EB3396E00EAB194 /* TemplateDrawingOperation.swift in Sources */,
 				A658E54D1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift in Sources */,
+				85A5D49522AA975000C7D254 /* Decimal+Rounding.swift in Sources */,
 				67EB7FCF20615B8900BDD9FB /* TotalCountCursorConfiguration.swift in Sources */,
 				671462981EB3396E00EAB194 /* CGSize+Resize.swift in Sources */,
 				67051ADB1EBC7C36008EADC0 /* SpinnerView.swift in Sources */,
@@ -2461,6 +2476,7 @@
 				67EB7FFD206176C900BDD9FB /* AnyPaginationWrappable.swift in Sources */,
 				671463041EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
 				674303CF214FB8F700EF4160 /* GeneralDataLoadingHandler.swift in Sources */,
+				85A5D49C22AAB6B700C7D254 /* Decimal+Values.swift in Sources */,
 				6774527420624E820024EEEF /* DataLoadingModel.swift in Sources */,
 				40F118491F8FF223004AADAF /* TableRow+AppearanceExtension.swift in Sources */,
 				6727476E206CCDDB00725163 /* ViewBackground+Configuration.swift in Sources */,
