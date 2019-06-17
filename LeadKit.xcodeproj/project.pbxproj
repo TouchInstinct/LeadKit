@@ -503,6 +503,14 @@
 		8546C2EA224E864F0059C255 /* Error+NetworkExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8546C2E7224E864F0059C255 /* Error+NetworkExtensions.swift */; };
 		85A5D49522AA975000C7D254 /* Decimal+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A5D49422AA975000C7D254 /* Decimal+Rounding.swift */; };
 		85A5D49C22AAB6B700C7D254 /* Decimal+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A5D49B22AAB6B700C7D254 /* Decimal+Values.swift */; };
+		85C343BC22B7B32400D9FAA5 /* NetworkErrorHandlingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C343BB22B7B32400D9FAA5 /* NetworkErrorHandlingType.swift */; };
+		85C343BE22B7B34D00D9FAA5 /* NetworkErrorAlertBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C343BD22B7B34D00D9FAA5 /* NetworkErrorAlertBase.swift */; };
+		85C343C022B7B55800D9FAA5 /* NetworkErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C343BF22B7B55800D9FAA5 /* NetworkErrorHandler.swift */; };
+		85C343C122B7BD3200D9FAA5 /* NetworkErrorHandlingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C343BB22B7B32400D9FAA5 /* NetworkErrorHandlingType.swift */; };
+		85C343C222B7BD3600D9FAA5 /* NetworkErrorHandlingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C343BB22B7B32400D9FAA5 /* NetworkErrorHandlingType.swift */; };
+		85C343C422B7CC3600D9FAA5 /* Observable+NetworkErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C343C322B7CC3600D9FAA5 /* Observable+NetworkErrorHandling.swift */; };
+		85C343C622B7CE9C00D9FAA5 /* Completable+NetworkErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C343C522B7CE9C00D9FAA5 /* Completable+NetworkErrorHandling.swift */; };
+		85C343C822B7CEE200D9FAA5 /* Single+NetworkErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C343C722B7CEE200D9FAA5 /* Single+NetworkErrorHandling.swift */; };
 		A658E54D1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54C1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift */; };
 		A658E5501F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658E54F1F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift */; };
 		A676AE481F97D28A001F9214 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A676AE471F97D28A001F9214 /* String+Extensions.swift */; };
@@ -778,6 +786,12 @@
 		8546C2E7224E864F0059C255 /* Error+NetworkExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+NetworkExtensions.swift"; sourceTree = "<group>"; };
 		85A5D49422AA975000C7D254 /* Decimal+Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Rounding.swift"; sourceTree = "<group>"; };
 		85A5D49B22AAB6B700C7D254 /* Decimal+Values.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Values.swift"; sourceTree = "<group>"; };
+		85C343BB22B7B32400D9FAA5 /* NetworkErrorHandlingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorHandlingType.swift; sourceTree = "<group>"; };
+		85C343BD22B7B34D00D9FAA5 /* NetworkErrorAlertBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorAlertBase.swift; sourceTree = "<group>"; };
+		85C343BF22B7B55800D9FAA5 /* NetworkErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorHandler.swift; sourceTree = "<group>"; };
+		85C343C322B7CC3600D9FAA5 /* Observable+NetworkErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+NetworkErrorHandling.swift"; sourceTree = "<group>"; };
+		85C343C522B7CE9C00D9FAA5 /* Completable+NetworkErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Completable+NetworkErrorHandling.swift"; sourceTree = "<group>"; };
+		85C343C722B7CEE200D9FAA5 /* Single+NetworkErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Single+NetworkErrorHandling.swift"; sourceTree = "<group>"; };
 		A658E54C1F8CD7790093527A /* TableRow+SeparatorsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableRow+SeparatorsExtensions.swift"; sourceTree = "<group>"; };
 		A658E54F1F8CD9350093527A /* Array+SeparatorRowBoxExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SeparatorRowBoxExtensions.swift"; sourceTree = "<group>"; };
 		A66428A61F8A653600C6308D /* SeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
@@ -926,6 +940,7 @@
 				72AECC6D224A97B100D12E7C /* Search */,
 				6774528A20625C860024EEEF /* DataLoading */,
 				671461D81EB3396E00EAB194 /* LeadKitError.swift */,
+				85C343BB22B7B32400D9FAA5 /* NetworkErrorHandlingType.swift */,
 				671461D91EB3396E00EAB194 /* ResizeMode.swift */,
 				67FDC25E1FA310EA00C76A77 /* RequestError.swift */,
 				7295473E21E661E6009558E7 /* TitleType.swift */,
@@ -1142,6 +1157,7 @@
 				671462331EB3396E00EAB194 /* ConfigurableView.swift */,
 				36BCEFAC229313FF00D5A37E /* Initializable.swift */,
 				671462281EB3396E00EAB194 /* LoadingIndicator.swift */,
+				85C343BF22B7B55800D9FAA5 /* NetworkErrorHandler.swift */,
 				A676AE541F981121001F9214 /* ObservableMappable.swift */,
 				6714622B1EB3396E00EAB194 /* ResettableType.swift */,
 				6714622C1EB3396E00EAB194 /* ReuseIdentifierProtocol.swift */,
@@ -1542,6 +1558,7 @@
 				671461C71EB3396E00EAB194 /* Cursors */,
 				6774529620625DA80024EEEF /* GeneralDataLoading */,
 				671461CF1EB3396E00EAB194 /* PaginationDataLoading */,
+				85C343BD22B7B34D00D9FAA5 /* NetworkErrorAlertBase.swift */,
 				6774527F206256A20024EEEF /* RxDataLoadingModel.swift */,
 				6713C24020AF189100875921 /* RxNetworkOperationModel.swift */,
 			);
@@ -1646,6 +1663,7 @@
 			children = (
 				671461F11EB3396E00EAB194 /* Observable+DeferredJust.swift */,
 				677B06A521186AFE006C947D /* ObservableType+Extensions.swift */,
+				85C343C322B7CC3600D9FAA5 /* Observable+NetworkErrorHandling.swift */,
 			);
 			path = ObservableType;
 			sourceTree = "<group>";
@@ -1663,6 +1681,7 @@
 			isa = PBXGroup;
 			children = (
 				677B06B121186C14006C947D /* Completable+DeferredJust.swift */,
+				85C343C522B7CE9C00D9FAA5 /* Completable+NetworkErrorHandling.swift */,
 			);
 			path = Completable;
 			sourceTree = "<group>";
@@ -2012,6 +2031,7 @@
 			children = (
 				82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */,
 				677B06AA21186BB6006C947D /* Single+Extensions.swift */,
+				85C343C722B7CEE200D9FAA5 /* Single+NetworkErrorHandling.swift */,
 			);
 			path = Single;
 			sourceTree = "<group>";
@@ -2407,6 +2427,7 @@
 				671462F01EB3396E00EAB194 /* UIImage+SupportExtensions.swift in Sources */,
 				6741CEAF20E242A500FEC4D9 /* TableViewHolder+ScrollViewHolder.swift in Sources */,
 				67CAF8C620652E2A00527085 /* TextFieldViewModel.swift in Sources */,
+				85C343C622B7CE9C00D9FAA5 /* Completable+NetworkErrorHandling.swift in Sources */,
 				671462681EB3396E00EAB194 /* NetworkService.swift in Sources */,
 				67990ACA213EA5B70040D195 /* ContentLoadingViewModel.swift in Sources */,
 				671463101EB3396E00EAB194 /* UIViewController+DefaultXibName.swift in Sources */,
@@ -2453,11 +2474,13 @@
 				671463281EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
 				A6E0DDDF1F8A696F002CA74E /* SeparatorCell.swift in Sources */,
 				67153E40207DFBA80049D8C0 /* FloatingPoint+DegreesRadiansConvertion.swift in Sources */,
+				85C343C822B7CEE200D9FAA5 /* Single+NetworkErrorHandling.swift in Sources */,
 				671462AC1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
 				671463001EB3396E00EAB194 /* UIView+LoadFromNib.swift in Sources */,
 				6741CEB420E242C100FEC4D9 /* CollectionViewHolder+ScrollViewHolder.swift in Sources */,
 				A676AE501F9810C1001F9214 /* Any+Cast.swift in Sources */,
 				78EC7B1322019F5A0007DCFD /* String+TelpromptURL.swift in Sources */,
+				85C343C422B7CC3600D9FAA5 /* Observable+NetworkErrorHandling.swift in Sources */,
 				72AECC6F224A97B100D12E7C /* SearchResultsViewControllerState.swift in Sources */,
 				6714627C1EB3396E00EAB194 /* SessionManager+Extensions.swift in Sources */,
 				671462D41EB3396E00EAB194 /* TableDirector+Extensions.swift in Sources */,
@@ -2530,6 +2553,7 @@
 				6727478A206CD83600725163 /* DateFormat.swift in Sources */,
 				67745280206256A20024EEEF /* RxDataLoadingModel.swift in Sources */,
 				A6F32C081F6EBDAA00AC08EE /* String+LocalizedComponent.swift in Sources */,
+				85C343BC22B7B32400D9FAA5 /* NetworkErrorHandlingType.swift in Sources */,
 				671462881EB3396E00EAB194 /* CGFloat+Pixels.swift in Sources */,
 				671462941EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
 				6741CEA920E2418B00FEC4D9 /* CollectionViewHolder.swift in Sources */,
@@ -2551,6 +2575,7 @@
 				40F118471F8FEF97004AADAF /* AppearanceConfigurable.swift in Sources */,
 				671463181EB3396E00EAB194 /* UIWindow+Extensions.swift in Sources */,
 				67274769206CCC9D00725163 /* ViewBackground.swift in Sources */,
+				85C343BE22B7B34D00D9FAA5 /* NetworkErrorAlertBase.swift in Sources */,
 				671463781EB3396E00EAB194 /* CALayerDrawingOperation.swift in Sources */,
 				6714632C1EB3396E00EAB194 /* ConfigurableController.swift in Sources */,
 				6714628C1EB3396E00EAB194 /* CGImage+Alpha.swift in Sources */,
@@ -2572,6 +2597,7 @@
 				67EB7FC7206148D000BDD9FB /* TotalCountCursorListingResult.swift in Sources */,
 				36BCEFAD229313FF00D5A37E /* Initializable.swift in Sources */,
 				67745286206259CF0024EEEF /* Rx+RxDataSourceProtocol.swift in Sources */,
+				85C343C022B7B55800D9FAA5 /* NetworkErrorHandler.swift in Sources */,
 				67955D52206D216B0021ECD2 /* Singleton.swift in Sources */,
 				67EB7FE420615DE000BDD9FB /* DataSource.swift in Sources */,
 				67EB7FD420615D1700BDD9FB /* ResettableCursorType.swift in Sources */,
@@ -2648,6 +2674,7 @@
 				671463821EB3396E00EAB194 /* PaddingDrawingOperation.swift in Sources */,
 				6714632A1EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
 				671462AE1EB3396E00EAB194 /* Observable+DeferredJust.swift in Sources */,
+				85C343C122B7BD3200D9FAA5 /* NetworkErrorHandlingType.swift in Sources */,
 				677B06B421186C14006C947D /* Completable+DeferredJust.swift in Sources */,
 				67EB7FDC20615D5B00BDD9FB /* ResettableRxCursorDataSource.swift in Sources */,
 				A6F32C0B1F6EBE5C00AC08EE /* String+LocalizedComponent.swift in Sources */,
@@ -2747,6 +2774,7 @@
 				67E352612119B7570035BDDB /* BasePlaceholerView.swift in Sources */,
 				673CF43A2063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift in Sources */,
 				671463131EB3396E00EAB194 /* UIViewController+DefaultXibName.swift in Sources */,
+				85C343C222B7BD3600D9FAA5 /* NetworkErrorHandlingType.swift in Sources */,
 				78EC7B1522019F5A0007DCFD /* String+TelpromptURL.swift in Sources */,
 				671462931EB3396E00EAB194 /* CGImage+Crop.swift in Sources */,
 				6727477A206CD0B500725163 /* UILabel+ViewTextConfigurable.swift in Sources */,
