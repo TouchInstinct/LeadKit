@@ -20,7 +20,7 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
 /// Protocol for class that can handle network error
 public protocol NetworkErrorHandler: class {

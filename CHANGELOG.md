@@ -1,5 +1,11 @@
 # Changelog
 
+### 0.9.24
+- **Add**: `NetworkErrorAlertBase` class that stores settings for network error alert.
+- **Add**: `NetworkErrorHandler` protocol for classes that can handle network error.
+- **Add**: `NetworkErrorHandlingType` enum with types of network error handling.
+- **Add**: `handleNetworkError(type:handler:)` method for `Observable`, `Single` and `Completable` that handles network error.
+
 ### 0.9.23
 - **Add**: Rounding for `Decimal`.
 - **Add**: `doubleValue` property for `Decimal`.
