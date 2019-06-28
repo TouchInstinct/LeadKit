@@ -39,17 +39,20 @@ public struct ApiRequestParameters {
     let method: HTTPMethod
     let url: URLConvertible
     let parameters: RequestParameters?
+    let queryItems: [URLQueryItem]?
     let encoding: ParameterEncoding
     let headers: HTTPHeaders?
 
     public init(url: URLConvertible,
                 method: HTTPMethod = .get,
                 parameters: Parameters? = nil,
+                queryItems: [URLQueryItem]? = nil,
                 encoding: ParameterEncoding = URLEncoding.default,
                 headers: HTTPHeaders? = nil) {
 
         self.method = method
         self.url = url
+        self.queryItems = queryItems
         self.encoding = encoding
         self.headers = headers
         if let parameters = parameters {
@@ -62,11 +65,13 @@ public struct ApiRequestParameters {
     public init(url: URLConvertible,
                 method: HTTPMethod = .get,
                 parameters: [Any]? = nil,
+                queryItems: [URLQueryItem]? = nil,
                 encoding: ParameterEncoding = URLEncoding.default,
                 headers: HTTPHeaders? = nil) {
 
         self.method = method
         self.url = url
+        self.queryItems = queryItems
         self.encoding = encoding
         self.headers = headers
         if let parameters = parameters {

@@ -32,6 +32,7 @@ enum RequestUsageError: Error {
 
     case getMethodForbidden
     case urlEncodingForbidden
+    case unableToHandleQueryParams
 }
 
 public extension Reactive where Base: SessionManager {
@@ -72,41 +73,52 @@ public extension Reactive where Base: SessionManager {
     ///   - requestParameters: api parameters to pass Alamofire
     ///   - additionalValidStatusCodes: set of additional valid status codes
     /// - Returns: Observable with request
-    func apiRequest(requestParameters: ApiRequestParameters, additionalValidStatusCodes: Set<Int>)
-        -> Observable<DataRequest> {
+    func apiRequest(requestParameters: ApiRequestParameters, additionalValidStatusCodes: Set<Int>) -> Observable<DataRequest> {
+        return .deferred {
+            var url = try requestParameters.url.asURL()
 
-        let requestObservable: Observable<DataRequest>
+            if let queryItems = requestParameters.queryItems {
+                guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+                    return .error(RequestUsageError.unableToHandleQueryParams)
+                }
 
-        switch requestParameters.parameters {
-        case .dictionary(let parameters)?:
-            requestObservable = request(requestParameters.method,
-                                        requestParameters.url,
-                                        parameters: parameters,
-                                        encoding: requestParameters.encoding,
-                                        headers: requestParameters.headers)
-
-        case .array(let parameters)?:
-            guard let encoding = requestParameters.encoding as? JSONEncoding else {
-                assertionFailure("Invalid encoding type with array parameter")
-                return .error(RequestUsageError.urlEncodingForbidden)
+                urlComponents.queryItems = queryItems
+                url = try urlComponents.asURL()
             }
 
-            requestObservable = request(requestParameters.method,
-                                        requestParameters.url,
-                                        parameters: parameters,
-                                        encoding: encoding,
-                                        headers: requestParameters.headers)
+            let requestObservable: Observable<DataRequest>
 
-        case .none:
-            requestObservable = request(requestParameters.method,
-                                        requestParameters.url,
-                                        parameters: nil as Parameters?,
-                                        encoding: requestParameters.encoding,
-                                        headers: requestParameters.headers)
+            switch requestParameters.parameters {
+            case .dictionary(let parameters)?:
+                requestObservable = self.request(requestParameters.method,
+                                                 url,
+                                                 parameters: parameters,
+                                                 encoding: requestParameters.encoding,
+                                                 headers: requestParameters.headers)
+
+            case .array(let parameters)?:
+                guard let encoding = requestParameters.encoding as? JSONEncoding else {
+                    assertionFailure("Invalid encoding type with array parameter")
+                    return .error(RequestUsageError.urlEncodingForbidden)
+                }
+
+                requestObservable = self.request(requestParameters.method,
+                                                 url,
+                                                 parameters: parameters,
+                                                 encoding: encoding,
+                                                 headers: requestParameters.headers)
+
+            case .none:
+                requestObservable = self.request(requestParameters.method,
+                                                 url,
+                                                 parameters: nil as Parameters?,
+                                                 encoding: requestParameters.encoding,
+                                                 headers: requestParameters.headers)
+            }
+
+            return requestObservable
+                .validate(statusCodes: self.base.acceptableStatusCodes.union(additionalValidStatusCodes))
         }
-
-        return requestObservable
-            .validate(statusCodes: self.base.acceptableStatusCodes.union(additionalValidStatusCodes))
     }
 
     /// Method that executes request and serializes response into target object

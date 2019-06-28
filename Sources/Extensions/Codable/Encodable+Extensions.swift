@@ -21,6 +21,7 @@
 //
 
 import Foundation
+import Alamofire
 
 public extension Encodable {
 
@@ -34,5 +35,21 @@ public extension Encodable {
         }
 
         return json
+    }
+
+    /// Method that converts encodable model to URLQueryItems array
+    /// - Returns: URLQueryItems array
+    func asUrlQueryItems() throws -> [URLQueryItem] {
+        return try toJSON().map {
+            if let value = $1 as? Encodable,
+                let jsonData = try? JSONSerialization.data(withJSONObject: value.toJSON(), options: []),
+                let jsonString = String(data: jsonData, encoding: .utf8) {
+                return URLQueryItem(name: $0, value: jsonString)
+            } else if let value = $1 as? CustomStringConvertible {
+                return URLQueryItem(name: $0, value: "\(value)")
+            } else {
+                throw LeadKitError.failedToEncodeQueryItems
+            }
+        }
     }
 }
