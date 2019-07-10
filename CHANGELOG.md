@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.24
+- **Fix**: Make `ApiRequestParameters` properties public.
+
 ### 0.9.23
 - **Add**: Rounding for `Decimal`.
 - **Add**: `doubleValue` property for `Decimal`.
