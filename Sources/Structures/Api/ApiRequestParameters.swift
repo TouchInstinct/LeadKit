@@ -31,17 +31,17 @@ public struct ApiRequestParameters {
     ///
     /// - dictionary: dictionary parameter
     /// - array: array parameter
-    enum RequestParameters {
+    public enum RequestParameters {
         case dictionary(Parameters)
         case array([Any])
     }
 
-    let method: HTTPMethod
-    let url: URLConvertible
-    let parameters: RequestParameters?
-    let queryItems: [URLQueryItem]?
-    let encoding: ParameterEncoding
-    let headers: HTTPHeaders?
+    public let url: URLConvertible
+    public let parameters: RequestParameters?
+    public let queryItems: [URLQueryItem]?
+    public let method: HTTPMethod
+    public let encoding: ParameterEncoding
+    public let headers: HTTPHeaders?
 
     public init(url: URLConvertible,
                 method: HTTPMethod = .get,

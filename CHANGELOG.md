@@ -1,8 +1,11 @@
 # Changelog
 
-### 0.9.24
+### 0.9.25
 - **Add**: `queryItems` parameter for `ApiRequestParameters`.
 - **Add**: `asQueryItems` method for `Encodable` that converts model to query items array.
+
+### 0.9.24
+- **Fix**: Make `ApiRequestParameters` properties public.
 
 ### 0.9.23
 - **Add**: Rounding for `Decimal`.
