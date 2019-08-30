@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.9.26
+- **Add**: possibility to override `loadNextBatch` method from `TotalCountCursor`.
+- **Add**: possibility to inherit from `TotalCountCursor`.
+
 ### 0.9.25
 - **Add**: `queryItems` parameter for `ApiRequestParameters`.
 - **Add**: `asQueryItems` method for `Encodable` that converts model to query items array.
