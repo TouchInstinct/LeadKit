@@ -1,7 +1,7 @@
 # Changelog
 
 ### 0.9.26
-- **Add**: possibility to override `loadNextBatch` method from `TotalCountCursor`.
+- **Add**: method `processResultFromConfigurationSingle` for `TotalCountCursor` that allows to get server response.
 - **Add**: possibility to inherit from `TotalCountCursor`.
 
 ### 0.9.25

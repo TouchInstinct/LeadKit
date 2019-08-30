@@ -54,8 +54,12 @@ open class TotalCountCursor<CursorConfiguration: TotalCountCursorConfiguration>:
         configuration = other.configuration.reset()
     }
 
-    open func loadNextBatch() -> Single<[Element]> {
+    open func processResultFromConfigurationSingle() -> Single<CursorConfiguration.ResultType> {
         return configuration.resultSingle()
+    }
+
+    public func loadNextBatch() -> Single<[Element]> {
+        return processResultFromConfigurationSingle()
             .do(onSuccess: { [weak self] listingResult in
                 self?.totalCount = listingResult.totalCount
                 self?.elements = (self?.elements ?? []) + listingResult.results
