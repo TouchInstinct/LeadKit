@@ -23,7 +23,7 @@
 import RxSwift
 import RxCocoa
 
-public final class TotalCountCursor<CursorConfiguration: TotalCountCursorConfiguration>: ResettableRxDataSourceCursor {
+open class TotalCountCursor<CursorConfiguration: TotalCountCursorConfiguration>: ResettableRxDataSourceCursor {
 
     public typealias Element = CursorConfiguration.ResultType.ElementType
     public typealias ResultType = [Element]
@@ -54,7 +54,7 @@ public final class TotalCountCursor<CursorConfiguration: TotalCountCursorConfigu
         configuration = other.configuration.reset()
     }
 
-    public func loadNextBatch() -> Single<[Element]> {
+    open func loadNextBatch() -> Single<[Element]> {
         return configuration.resultSingle()
             .do(onSuccess: { [weak self] listingResult in
                 self?.totalCount = listingResult.totalCount
