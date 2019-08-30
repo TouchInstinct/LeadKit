@@ -81,17 +81,20 @@ public extension NetworkServiceConfiguration {
     ///   - relativeUrl: Url that will be concatenated with base url.
     ///   - method: HTTP method to use for request.
     ///   - parameters: Dictionary of parameters to apply to a URLRequest.
+    ///   - queryItems: An array of query items to configure URL with them.
     ///   - requestEncoding: Encoding type to use. If passed nil, configuration encoding will be used.
     ///   - requestHeaders: Dictionary of headers to apply to a URLRequest.
     /// - Returns: Initialized instance of ApiRequestParameters with given parameters.
     func apiRequestParameters(relativeUrl: String,
                               method: HTTPMethod = .get,
                               parameters: Parameters? = nil,
+                              queryItems: [URLQueryItem]? = nil,
                               requestEncoding: ParameterEncoding? = nil,
                               requestHeaders: HTTPHeaders? = nil) -> ApiRequestParameters {
         return ApiRequestParameters(url: baseUrl + relativeUrl,
                                     method: method,
                                     parameters: parameters,
+                                    queryItems: queryItems,
                                     encoding: requestEncoding ?? encoding,
                                     headers: requestHeaders)
     }
@@ -102,17 +105,20 @@ public extension NetworkServiceConfiguration {
     ///   - relativeUrl: Url that will be concatenated with base url.
     ///   - method: HTTP method to use for request.
     ///   - parameters: An array of JSON objects to apply to a URLRequest.
+    ///   - queryItems: An array of query items to configure URL with them.
     ///   - requestEncoding: Encoding type to use. If passed nil, configuration encoding will be used.
     ///   - requestHeaders: Dictionary of headers to apply to a URLRequest.
     /// - Returns: Initialized instance of ApiRequestParameters with given parameters.
     func apiRequestParameters(relativeUrl: String,
                               method: HTTPMethod = .get,
                               parameters: [Any]? = nil,
+                              queryItems: [URLQueryItem]? = nil,
                               requestEncoding: ParameterEncoding? = nil,
                               requestHeaders: HTTPHeaders? = nil) -> ApiRequestParameters {
         return ApiRequestParameters(url: baseUrl + relativeUrl,
                                     method: method,
                                     parameters: parameters,
+                                    queryItems: queryItems,
                                     encoding: requestEncoding ?? encoding,
                                     headers: requestHeaders)
     }

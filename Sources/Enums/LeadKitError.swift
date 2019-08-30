@@ -25,8 +25,11 @@ import Foundation
 /// Enum that represents common errors in LeadKit framework
 ///
 /// - failedToCastValue: attempt to cast was failed
+/// - failedToDecode: attempt to decoding was failed
+/// - failedToEncodeQueryItems: attempt to encoding to query items was failed
 public enum LeadKitError: Error {
 
     case failedToCastValue(expectedType: Any.Type, givenType: Any.Type)
     case failedToDecode(reason: String)
+    case failedToEncodeQueryItems
 }
