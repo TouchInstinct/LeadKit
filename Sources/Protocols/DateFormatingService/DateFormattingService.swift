@@ -49,6 +49,15 @@ public protocol DateFormattingService {
     /// - Returns: Date parsed from given string or default date if parsing did fail.
     func date(from string: String, format: DateFormatType, parsedIn: Region?) -> DateInRegion?
 
+    /// Method parses date from string in one of the given formats with current region.
+    ///
+    /// - Parameters:
+    ///   - string: String to use for date parsing.
+    ///   - formats: Formats that should be used for date parsing.
+    ///   - parsedIn: A region that should be used for date parsing. In case of nil defaultRegion will be used.
+    /// - Returns: Date parsed from given string or default date if parsing did fail.
+    func date(from string: String, formats: [DateFormatType], parsedIn: Region?) -> DateInRegion?
+
     /// Method format date in given format.
     ///
     /// - Parameters:

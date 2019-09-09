@@ -40,6 +40,18 @@ public extension DateFormattingService {
         return format.stringToDateFormat.toDate(string, region: region)
     }
 
+    func date(from string: String, formats: [DateFormatType], parsedIn: Region?) -> DateInRegion? {
+        let region = parsedIn ?? currentRegion
+
+        for format in formats {
+            if let parsedDate = format.stringToDateFormat.toDate(string, region: region) {
+                return parsedDate
+            }
+        }
+
+        return nil
+    }
+
     func string(from date: DateRepresentable, format: DateFormatType) -> String {
         return format.dateToStringFormat.toString(date)
     }
@@ -79,6 +91,17 @@ public extension DateFormattingService where Self: Singleton {
     /// - Returns: Date parsed from given string or default date if parsing did fail.
     static func date(from string: String, format: DateFormatType, parsedIn: Region?) -> DateInRegion? {
         return shared.date(from: string, format: format, parsedIn: parsedIn)
+    }
+
+    /// Method parses date from string in one of the given formats with current region.
+    ///
+    /// - Parameters:
+    ///   - string: String to use for date parsing.
+    ///   - formats: Formats that should be used for date parsing.
+    ///   - parsedIn: A region that should be used for date parsing. In case of nil defaultRegion will be used.
+    /// - Returns: Date parsed from given string or default date if parsing did fail.
+    static func date(from string: String, formats: [DateFormatType], parsedIn: Region?) -> DateInRegion? {
+        return shared.date(from: string, formats: formats, parsedIn: parsedIn)
     }
 
     /// Method format date in given format.
