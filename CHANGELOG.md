@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.27
+- **Add**: method `date(from string:formats:parsedIn:)` method for `DateFormattingService` that parses date from string in one of the given formats with current region.
+
 ### 0.9.26
 - **Add**: method `processResultFromConfigurationSingle` for `TotalCountCursor` that allows to get server response.
 - **Add**: possibility to inherit from `TotalCountCursor`.
