@@ -1,4 +1,4 @@
-binary "https://raw.github.com/TouchInstinct/CarthageBinaries/rebuild_with_swift_5_1_v2/SwiftDate/SwiftDate.json"
+binary "https://raw.github.com/TouchInstinct/CarthageBinaries/rebuild_with_swift_5_1_v2/SwiftDate/SwiftDate.json" "6.0.1"
 binary "https://raw.github.com/TouchInstinct/CarthageBinaries/rebuild_with_swift_5_1_v2/Alamofire/Alamofire.json"
 binary "https://raw.github.com/TouchInstinct/CarthageBinaries/rebuild_with_swift_5_1_v2/RxAlamofire/RxAlamofire.json"
 binary "https://raw.github.com/TouchInstinct/CarthageBinaries/rebuild_with_swift_5_1_v2/TableKit/TableKit.json"
