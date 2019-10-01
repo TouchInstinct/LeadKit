@@ -2,6 +2,6 @@ binary "https://raw.github.com/TouchInstinct/CarthageBinaries/rebuild_with_swift
 binary "https://raw.github.com/TouchInstinct/CarthageBinaries/rebuild_with_swift_5_1_v2/RxAlamofire/RxAlamofire.json" "4.3.0"
 binary "https://raw.github.com/TouchInstinct/CarthageBinaries/rebuild_with_swift_5_1_v2/RxSwift/RxSwift.json" "4.4.2"
 binary "https://raw.github.com/TouchInstinct/CarthageBinaries/rebuild_with_swift_5_1_v2/SnapKit/SnapKit.json" "4.2.0"
-binary "https://raw.github.com/TouchInstinct/CarthageBinaries/rebuild_with_swift_5_1_v2/SwiftDate/SwiftDate.json" "5.1.0"
+binary "https://raw.github.com/TouchInstinct/CarthageBinaries/rebuild_with_swift_5_1_v2/SwiftDate/SwiftDate.json" "6.0.1"
 binary "https://raw.github.com/TouchInstinct/CarthageBinaries/rebuild_with_swift_5_1_v2/TableKit/TableKit.json" "2.10008.1"
 binary "https://raw.github.com/TouchInstinct/CarthageBinaries/rebuild_with_swift_5_1_v2/UIScrollView_InfiniteScroll/UIScrollView_InfiniteScroll.json" "1.1.0"
