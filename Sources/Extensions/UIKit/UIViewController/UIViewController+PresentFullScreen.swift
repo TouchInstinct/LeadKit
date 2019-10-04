@@ -14,7 +14,7 @@ public extension UIViewController {
                       animated: Bool = true,
                       completion: (() -> Void)? = nil) {
 
-        viewController.modalPresentationStyle = .fullScreen
+        viewController.modalPresentationStyle = presentationStyle
         present(viewController, animated: animated, completion: completion)
     }
 }
