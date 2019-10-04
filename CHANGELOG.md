@@ -1,7 +1,7 @@
 # Changelog
 
 ### 0.9.28
-- **Add**: method `presentFullScreen(_ viewController:animated:completion:)` for `UIViewController` that present `viewController` in full screen mode (avoid problems with *iOS13* default prsentation mode changed to `.automatic` stork)
+- **Add**: method `presentFullScreen(_ viewController:presentationStyle:animated:completion:)` for `UIViewController` that present any `viewController` modally in full screen mode by default (avoid problems with *iOS13* default presentation mode changed to `.automatic` stork)
 
 ### 0.9.27
 - **Add**: method `date(from string:formats:parsedIn:)` method for `DateFormattingService` that parses date from string in one of the given formats with current region.
