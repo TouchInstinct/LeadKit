@@ -35,7 +35,6 @@ enum UploadParametersError: Error {
     case unableGetMimeType
 }
 
-
 /// Struct which keeps base parameters required for upload api request
 public struct ApiUploadRequestParameters {
 
@@ -90,7 +89,7 @@ private extension ApiUploadRequestParameters {
         var requestHeaders = headers
 
         let boundary = "\(Constants.boundaryKey)=\(formData.boundary)"
-        
+
         requestHeaders[Constants.contentTypeKey] = Constants.contentTypeValue + boundary
 
         return requestHeaders

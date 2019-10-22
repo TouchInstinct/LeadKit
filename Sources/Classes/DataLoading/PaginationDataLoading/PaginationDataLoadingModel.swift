@@ -22,9 +22,10 @@
 
 import RxSwift
 
+//swiftlint:disable all
+
 /// Data loading model for PaginationDataLoadingState with ResettableRxDataSourceCursor as data source.
-public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCursor>:
-    RxDataLoadingModel<PaginationDataLoadingState<Cursor>> {
+public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCursor>: RxDataLoadingModel<PaginationDataLoadingState<Cursor>> {
 
     private enum LoadType {
 
