@@ -139,7 +139,7 @@ open class CustomizableButtonView: UIView, InitializableView {
 
     private func set(active: Bool) {
         button.isEnabled = buttonIsDisabledWhileLoading || !active
-        
+
         if hidesLabelWhenLoading {
             button.titleLabel?.layer.opacity = active ? 0 : 1
         }
@@ -186,6 +186,7 @@ open class CustomizableButtonView: UIView, InitializableView {
                 spinnerView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
                 spinnerView.centerYAnchor.constraint(equalTo: button.centerYAnchor)
             ]
+
         case .leftToText(let offset):
             if let buttonLabel = button.titleLabel {
                 constraints = [
@@ -193,6 +194,7 @@ open class CustomizableButtonView: UIView, InitializableView {
                     spinnerView.trailingAnchor.constraint(equalTo: buttonLabel.leadingAnchor, constant: -offset)
                 ]
             }
+
         case .rightToText(let offset):
             if let buttonLabel = button.titleLabel {
                 constraints = [
@@ -248,7 +250,7 @@ private extension UIView {
             leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: offset.left),
             trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: offset.right),
             topAnchor.constraint(equalTo: view.topAnchor, constant: offset.top),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: offset.bottom),
+            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: offset.bottom)
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -329,7 +331,6 @@ public extension CustomizableButtonView {
 
             self.numberOfLines = numberOfLines
         }
-
     }
 
     enum SpinnerPosition {
