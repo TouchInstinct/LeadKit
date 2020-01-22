@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.29
+- **Update**: remove Carthage binary dependencies, update build scripts.
+
 ### 0.9.28
 - **Add**: method `presentFullScreen(_ viewController:presentationStyle:animated:completion:)` for `UIViewController` that present any `viewController` modally in full screen mode by default (avoid problems with *iOS13* default presentation mode changed to `.automatic` stork)
 
