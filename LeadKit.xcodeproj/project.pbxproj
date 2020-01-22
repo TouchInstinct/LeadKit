@@ -2300,7 +2300,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "CONFIG_PATH=${PROJECT_DIR}/build-scripts/xcode/.swiftlint.yml\n\n. ${PROJECT_DIR}/download_swiftlint.sh\n\n${PROJECT_DIR}/Downloads/swiftlint autocorrect --path ${PROJECT_DIR}/Sources --config ${CONFIG_PATH} && swiftlint --path ${PROJECT_DIR}/Sources --config ${CONFIG_PATH}\n";
+			shellScript = ". run_swiftlint.sh\n";
 		};
 		6782BBBC1EB31ED90086E0B8 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2314,7 +2314,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "CONFIG_PATH=${PROJECT_DIR}/build-scripts/xcode/.swiftlint.yml\n\n. ${PROJECT_DIR}/download_swiftlint.sh\n\n${PROJECT_DIR}/Downloads/swiftlint autocorrect --path ${PROJECT_DIR}/Sources --config ${CONFIG_PATH} && swiftlint --path ${PROJECT_DIR}/Sources --config ${CONFIG_PATH}\n";
+			shellScript = ". run_swiftlint.sh\n";
 		};
 		6782BBBE1EB31F210086E0B8 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2328,7 +2328,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "CONFIG_PATH=${PROJECT_DIR}/build-scripts/xcode/.swiftlint.yml\n\n. ${PROJECT_DIR}/download_swiftlint.sh\n\n${PROJECT_DIR}/Downloads/swiftlint autocorrect --path ${PROJECT_DIR}/Sources --config ${CONFIG_PATH} && swiftlint --path ${PROJECT_DIR}/Sources --config ${CONFIG_PATH}\n";
+			shellScript = ". run_swiftlint.sh\n";
 		};
 		67887A0E1ECC856F008A9E1D /* CopyPaste Detection */ = {
 			isa = PBXShellScriptBuildPhase;

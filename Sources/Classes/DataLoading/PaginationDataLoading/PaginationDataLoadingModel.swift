@@ -23,7 +23,6 @@
 import RxSwift
 
 /// Data loading model for PaginationDataLoadingState with ResettableRxDataSourceCursor as data source.
-// swiftlint:disable:next colon
 public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCursor>:
     RxDataLoadingModel<PaginationDataLoadingState<Cursor>> {
 
