@@ -75,3 +75,6 @@ fastlane/screenshots
 
 cpd-output.xml
 
+# Touch Instinct custom
+Downloads/
+

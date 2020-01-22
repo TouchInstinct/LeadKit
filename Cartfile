@@ -1,7 +1,7 @@
-binary "https://raw.github.com/TouchInstinct/CarthageBinaries/master/SwiftDate/SwiftDate.json"
-binary "https://raw.github.com/TouchInstinct/CarthageBinaries/master/Alamofire/Alamofire.json"
-binary "https://raw.github.com/TouchInstinct/CarthageBinaries/master/RxAlamofire/RxAlamofire.json"
-binary "https://raw.github.com/TouchInstinct/CarthageBinaries/master/TableKit/TableKit.json"
-binary "https://raw.github.com/TouchInstinct/CarthageBinaries/master/RxSwift/RxSwift.json"
-binary "https://raw.github.com/TouchInstinct/CarthageBinaries/master/UIScrollView_InfiniteScroll/UIScrollView_InfiniteScroll.json"
-binary "https://raw.github.com/TouchInstinct/CarthageBinaries/master/SnapKit/SnapKit.json"
+github "malcommac/SwiftDate"
+github "Alamofire/Alamofire"
+github "RxSwiftCommunity/RxAlamofire" ~> 4.5
+github "TouchInstinct/TableKit"
+github "ReactiveX/RxSwift" ~> 4.5
+github "pronebird/UIScrollView-InfiniteScroll"
+github "SnapKit/SnapKit" ~> 4.2
