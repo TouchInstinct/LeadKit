@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.30
+- **Add**: character `*` into a valid set of characters in the extension `telpromptURL` of String.
+
 ### 0.9.29
 - **Update**: remove Carthage binary dependencies, update build scripts.
 
