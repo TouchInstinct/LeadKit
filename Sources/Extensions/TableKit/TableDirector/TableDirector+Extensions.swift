@@ -230,6 +230,7 @@ public extension TableDirector {
     ///   - animation: The type of replace animation
     ///   - manualBeginEndUpdates: Don't call beginUpdates() & endUpdates() inside.
     /// - Returns: self
+    @discardableResult
     func replace(with section: TableSection,
                  at index: Int,
                  with animation: UITableView.RowAnimation,
