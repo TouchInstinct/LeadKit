@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.31
+- **Add**: `@discardableResult` to method -  `replace(with:at:with:manualBeginEndUpdates)` in `TableDirector`.
+
 ### 0.9.30
 - **Add**: character `*` into a valid set of characters in the extension `telpromptURL` of String.
 
