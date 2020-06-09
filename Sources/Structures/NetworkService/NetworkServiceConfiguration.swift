@@ -37,7 +37,7 @@ public struct NetworkServiceConfiguration {
     public let additionalHttpHeaders: HTTPHeaders
 
     /// Server trust policies.
-    public var serverTrustPolicies: [String: ServerTrustPolicy]
+    public var serverTrustPolicies: [String: ServerTrustEvaluating]
 
     /// HTTP response status codes regarded as non-erroneous
     public var acceptableStatusCodes: Set<Int> = Set(200..<300)
@@ -48,20 +48,20 @@ public struct NetworkServiceConfiguration {
     public init(baseUrl: String,
                 timeoutInterval: TimeInterval = 20,
                 encoding: ParameterEncoding = URLEncoding.default,
-                additionalHttpHeaders: HTTPHeaders = [:],
-                trustPolicies: [String: ServerTrustPolicy] = [:]) {
+                additionalHttpHeaders: [String: String] = [:],
+                trustPolicies: [String: ServerTrustEvaluating] = [:]) {
 
         self.baseUrl = baseUrl
         self.timeoutInterval = timeoutInterval
         self.encoding = encoding
-        self.additionalHttpHeaders = additionalHttpHeaders.merging(SessionManager.defaultHTTPHeaders) { current, _ in current }
+        self.additionalHttpHeaders = HTTPHeaders(additionalHttpHeaders)
 
         sessionConfiguration = URLSessionConfiguration.default
         sessionConfiguration.timeoutIntervalForResource = timeoutInterval
         sessionConfiguration.httpAdditionalHeaders = additionalHttpHeaders
 
         let updatedPolicies = Dictionary(uniqueKeysWithValues: trustPolicies.map { ($0.key.asHost, $0.value) })
-        serverTrustPolicies = trustPolicies.isEmpty ? [baseUrl.asHost: .disableEvaluation] : updatedPolicies
+        serverTrustPolicies = trustPolicies.isEmpty ? [baseUrl.asHost: DisabledTrustEvaluator()] : updatedPolicies
     }
 }
 
@@ -70,7 +70,7 @@ public extension NetworkServiceConfiguration {
     /// SessionManager constructed with given parameters (session configuration and trust policies)
     var sessionManager: SessionManager {
         return SessionManager(configuration: sessionConfiguration,
-                              serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies),
+                              serverTrustManager: ServerTrustManager(evaluators: serverTrustPolicies),
                               acceptableStatusCodes: acceptableStatusCodes,
                               mappingQueue: .global())
     }

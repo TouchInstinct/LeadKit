@@ -109,8 +109,9 @@ public extension BehaviorRelay {
     ///   - getFieldClosure: Closure for getting field string reprerentation from data model.
     ///   - mergeFieldClosure: Closure for merging new field value into data model.
     /// - Returns: DataModelFieldBinding instance.
-    func fieldBinding(getFieldClosure: @escaping DataModelFieldBinding<E>.GetFieldClosure,
-                      mergeFieldClosure: @escaping DataModelFieldBinding<E>.MergeFieldClosure) -> DataModelFieldBinding<E> {
+    func fieldBinding(getFieldClosure: @escaping DataModelFieldBinding<Element>.GetFieldClosure,
+                      mergeFieldClosure: @escaping DataModelFieldBinding<Element>.MergeFieldClosure)
+        -> DataModelFieldBinding<Element> {
 
         return DataModelFieldBinding(modelRelay: self,
                                      getFieldClosure: getFieldClosure,
@@ -123,7 +124,7 @@ public extension BehaviorRelay where Element == String? {
     /// Creates DataModelFieldBinding configured with behaviour relay itself.
     ///
     /// - Returns: DataModelFieldBinding instance.
-    func fieldBinding() -> DataModelFieldBinding<E> {
+    func fieldBinding() -> DataModelFieldBinding<Element> {
         return DataModelFieldBinding(modelRelay: self)
     }
 }

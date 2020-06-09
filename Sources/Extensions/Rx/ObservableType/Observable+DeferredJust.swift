@@ -29,7 +29,7 @@ public extension ObservableType {
     /// - Parameter elementFactory: Element factory function to invoke for each observer
     /// that subscribes to the resulting sequence.
     /// - Returns: An observable sequence whose observers trigger an invocation of the given element factory function.
-    static func deferredJust(_ elementFactory: @escaping () throws -> E) -> Observable<E> {
+    static func deferredJust(_ elementFactory: @escaping () throws -> Element) -> Observable<Element> {
         return .create { observer in
             do {
                 observer.onNext(try elementFactory())

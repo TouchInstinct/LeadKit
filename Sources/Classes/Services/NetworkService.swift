@@ -144,7 +144,7 @@ public extension Observable {
     ///
     /// - Parameter networkService: NetworkService to operate on it
     /// - Returns: The source sequence with the side-effecting behavior applied.
-    func counterTracking(for networkService: NetworkService) -> Observable<Observable.E> {
+    func counterTracking(for networkService: NetworkService) -> Observable<Observable.Element> {
         return `do`(onSubscribe: {
             networkService.increaseRequestCounter()
         }, onDispose: {

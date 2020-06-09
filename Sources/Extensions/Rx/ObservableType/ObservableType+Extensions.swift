@@ -42,7 +42,7 @@ public extension ObservableType {
     /// Cast all emitted elements to optional type.
     ///
     /// - Returns: An observable sequence whose elements are equals to optional type of element.
-    func asOptional() -> Observable<E?> {
+    func asOptional() -> Observable<Element?> {
         return map { $0 }
     }
 }
