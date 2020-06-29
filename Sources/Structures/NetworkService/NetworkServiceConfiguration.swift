@@ -61,7 +61,8 @@ public struct NetworkServiceConfiguration {
         sessionConfiguration.httpAdditionalHeaders = additionalHttpHeaders
 
         let updatedPolicies = Dictionary(uniqueKeysWithValues: trustPolicies.map { ($0.key.asHost, $0.value) })
-        serverTrustPolicies = trustPolicies.isEmpty ? [baseUrl.asHost: DisabledTrustEvaluator()] : updatedPolicies
+        print(baseUrl.asHost)
+        serverTrustPolicies = trustPolicies.isEmpty ? ["touchin.ru": DisabledTrustEvaluator()] : updatedPolicies
     }
 }
 
