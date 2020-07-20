@@ -51,13 +51,13 @@ public struct CustomizableButtonState: OptionSet {
 }
 
 /// container class that acts like a button and provides great customization
-open class CustomizableButtonView: UIView, InitializableView {
+open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
 
     // MARK: - Stored Properties
 
     private let disposeBag = DisposeBag()
     private let button = CustomizableButton()
-    public var tapOnDisabledButton: VoidBlock?
+    open var tapOnDisabledButton: VoidBlock?
 
     public var shadowView = UIView() {
         willSet {
@@ -213,11 +213,11 @@ open class CustomizableButtonView: UIView, InitializableView {
 
     // MARK: - Initializable View
 
-    public func addViews() {
+    open func addViews() {
         addSubviews(shadowView, button)
     }
 
-    public func configureAppearance() {
+    open func configureAppearance() {
         button.titleLabel?.numberOfLines = appearance.numberOfLines
         button.titleLabel?.font = appearance.buttonFont
 
@@ -241,23 +241,8 @@ open class CustomizableButtonView: UIView, InitializableView {
 
         button.titleLabel?.isHidden = true
     }
-}
 
-private extension UIView {
-    func constaintToEdges(of view: UIView, with offset: UIEdgeInsets) {
-        translatesAutoresizingMaskIntoConstraints = false
-        let constraints = [
-            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: offset.left),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: offset.right),
-            topAnchor.constraint(equalTo: view.topAnchor, constant: offset.top),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: offset.bottom)
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
-}
-
-extension CustomizableButtonView: ConfigurableView {
-    public func configure(with viewModel: CustomizableButtonViewModel) {
+    open func configure(with viewModel: CustomizableButtonViewModel) {
         viewModel.stateDriver.drive(stateBinder).disposed(by: disposeBag)
         viewModel.bind(tapObservable: tapObservable).disposed(by: disposeBag)
 
@@ -279,6 +264,19 @@ extension CustomizableButtonView: ConfigurableView {
         button.isEnabled = state.contains(.enabled) && !state.contains(.disabled)
         button.isHighlighted = state.contains(.highlighted) && !state.contains(.normal)
         set(active: state.contains(.loading))
+    }
+}
+
+private extension UIView {
+    func constaintToEdges(of view: UIView, with offset: UIEdgeInsets) {
+        translatesAutoresizingMaskIntoConstraints = false
+        let constraints = [
+            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: offset.left),
+            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: offset.right),
+            topAnchor.constraint(equalTo: view.topAnchor, constant: offset.top),
+            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: offset.bottom)
+        ]
+        NSLayoutConstraint.activate(constraints)
     }
 }
 
