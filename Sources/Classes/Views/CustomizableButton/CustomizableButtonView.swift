@@ -55,7 +55,7 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
 
     // MARK: - Stored Properties
 
-    private let disposeBag = DisposeBag()
+    open var disposeBag = DisposeBag()
     private let button = CustomizableButton()
     open var tapOnDisabledButton: VoidBlock?
 
@@ -241,6 +241,7 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
     }
 
     open func configure(with viewModel: CustomizableButtonViewModel) {
+        disposeBag = DisposeBag()
         viewModel.stateDriver.drive(stateBinder).disposed(by: disposeBag)
         viewModel.bind(tapObservable: tapObservable).disposed(by: disposeBag)
 
