@@ -168,6 +168,7 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
     private func configureConstraints() {
         button.pinToSuperview(with: appearance.buttonInsets)
         configureShadowViewConstraints()
+        layoutIfNeeded()
     }
 
     private func configureSpinnerConstraints() {
@@ -236,6 +237,8 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
         }
 
         button.titleLabel?.isHidden = true
+        
+        setNeedsDisplay()
     }
 
     open func configure(with viewModel: CustomizableButtonViewModel) {
@@ -259,8 +262,10 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
 
     open func configureButton(withState state: CustomizableButtonState) {
         button.isEnabled = ![.disabled, .loading].contains(state)
+        isUserInteractionEnabled = button.isEnabled
         button.isHighlighted = state.contains(.highlighted) && !state.contains(.normal)
         set(active: state.contains(.loading))
+        setNeedsDisplay()
     }
 }
 
