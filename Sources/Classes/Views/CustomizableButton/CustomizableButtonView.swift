@@ -235,8 +235,6 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
         } else {
             button.layer.cornerRadius = 0
         }
-
-        button.titleLabel?.isHidden = true
         
         setNeedsDisplay()
     }
