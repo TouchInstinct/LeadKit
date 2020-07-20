@@ -71,9 +71,7 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
 
     public var spinnerView: Spinner? {
         willSet {
-            if newValue == nil {
-                removeSpinner()
-            }
+            removeSpinner()
         }
         didSet {
             if spinnerView != nil {
