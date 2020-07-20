@@ -136,8 +136,6 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
     }
 
     private func set(active: Bool) {
-        button.isEnabled = buttonIsDisabledWhileLoading || !active
-
         if hidesLabelWhenLoading {
             button.titleLabel?.layer.opacity = active ? 0 : 1
         }
@@ -260,7 +258,7 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
     }
 
     open func configureButton(withState state: CustomizableButtonState) {
-        button.isEnabled = state.contains(.enabled) && !state.contains(.disabled)
+        button.isEnabled = ![.disabled, .loading].contains(state)
         button.isHighlighted = state.contains(.highlighted) && !state.contains(.normal)
         set(active: state.contains(.loading))
     }
