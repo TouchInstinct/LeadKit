@@ -55,7 +55,7 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
 
     // MARK: - Stored Properties
 
-    open var disposeBag = DisposeBag()
+    public private(set) var disposeBag = DisposeBag()
     private let button = CustomizableButton()
     open var tapOnDisabledButton: VoidBlock?
 
@@ -204,7 +204,7 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
     }
 
     private func configureShadowViewConstraints() {
-        shadowView.constaintToEdges(of: button, with: .zero)
+        shadowView.constraintToEdges(of: button, with: .zero)
     }
 
     // MARK: - Initializable View
@@ -267,7 +267,7 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
 }
 
 private extension UIView {
-    func constaintToEdges(of view: UIView, with offset: UIEdgeInsets) {
+    func constraintToEdges(of view: UIView, with offset: UIEdgeInsets) {
         translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
             leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: offset.left),
