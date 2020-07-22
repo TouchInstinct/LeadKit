@@ -51,13 +51,13 @@ public struct CustomizableButtonState: OptionSet {
 }
 
 /// container class that acts like a button and provides great customization
-open class CustomizableButtonView: UIView, InitializableView {
+open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
 
     // MARK: - Stored Properties
 
-    private let disposeBag = DisposeBag()
+    public private(set) var disposeBag = DisposeBag()
     private let button = CustomizableButton()
-    public var tapOnDisabledButton: VoidBlock?
+    open var tapOnDisabledButton: VoidBlock?
 
     public var shadowView = UIView() {
         willSet {
@@ -71,9 +71,7 @@ open class CustomizableButtonView: UIView, InitializableView {
 
     public var spinnerView: Spinner? {
         willSet {
-            if newValue == nil {
-                removeSpinner()
-            }
+            removeSpinner()
         }
         didSet {
             if spinnerView != nil {
@@ -89,7 +87,6 @@ open class CustomizableButtonView: UIView, InitializableView {
         }
     }
 
-    public var buttonIsDisabledWhileLoading = false
     public var hidesLabelWhenLoading = false
 
     // MARK: - Computed Properties
@@ -138,8 +135,6 @@ open class CustomizableButtonView: UIView, InitializableView {
     }
 
     private func set(active: Bool) {
-        button.isEnabled = buttonIsDisabledWhileLoading || !active
-
         if hidesLabelWhenLoading {
             button.titleLabel?.layer.opacity = active ? 0 : 1
         }
@@ -172,6 +167,7 @@ open class CustomizableButtonView: UIView, InitializableView {
     private func configureConstraints() {
         button.pinToSuperview(with: appearance.buttonInsets)
         configureShadowViewConstraints()
+        layoutIfNeeded()
     }
 
     private func configureSpinnerConstraints() {
@@ -208,16 +204,16 @@ open class CustomizableButtonView: UIView, InitializableView {
     }
 
     private func configureShadowViewConstraints() {
-        shadowView.constaintToEdges(of: button, with: .zero)
+        shadowView.constraintToEdges(of: button, with: .zero)
     }
 
     // MARK: - Initializable View
 
-    public func addViews() {
+    open func addViews() {
         addSubviews(shadowView, button)
     }
 
-    public func configureAppearance() {
+    open func configureAppearance() {
         button.titleLabel?.numberOfLines = appearance.numberOfLines
         button.titleLabel?.font = appearance.buttonFont
 
@@ -238,26 +234,12 @@ open class CustomizableButtonView: UIView, InitializableView {
         } else {
             button.layer.cornerRadius = 0
         }
-
-        button.titleLabel?.isHidden = true
+        
+        setNeedsDisplay()
     }
-}
 
-private extension UIView {
-    func constaintToEdges(of view: UIView, with offset: UIEdgeInsets) {
-        translatesAutoresizingMaskIntoConstraints = false
-        let constraints = [
-            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: offset.left),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: offset.right),
-            topAnchor.constraint(equalTo: view.topAnchor, constant: offset.top),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: offset.bottom)
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
-}
-
-extension CustomizableButtonView: ConfigurableView {
-    public func configure(with viewModel: CustomizableButtonViewModel) {
+    open func configure(with viewModel: CustomizableButtonViewModel) {
+        disposeBag = DisposeBag()
         viewModel.stateDriver.drive(stateBinder).disposed(by: disposeBag)
         viewModel.bind(tapObservable: tapObservable).disposed(by: disposeBag)
 
@@ -276,9 +258,24 @@ extension CustomizableButtonView: ConfigurableView {
     }
 
     open func configureButton(withState state: CustomizableButtonState) {
-        button.isEnabled = state.contains(.enabled) && !state.contains(.disabled)
+        button.isEnabled = ![.disabled, .loading].contains(state)
+        isUserInteractionEnabled = button.isEnabled
         button.isHighlighted = state.contains(.highlighted) && !state.contains(.normal)
         set(active: state.contains(.loading))
+        setNeedsDisplay()
+    }
+}
+
+private extension UIView {
+    func constraintToEdges(of view: UIView, with offset: UIEdgeInsets) {
+        translatesAutoresizingMaskIntoConstraints = false
+        let constraints = [
+            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: offset.left),
+            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: offset.right),
+            topAnchor.constraint(equalTo: view.topAnchor, constant: offset.top),
+            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: offset.bottom)
+        ]
+        NSLayoutConstraint.activate(constraints)
     }
 }
 

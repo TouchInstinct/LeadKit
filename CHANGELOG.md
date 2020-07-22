@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.32
+- **Fix**: `CustomizableButtonView` container class that provides great customization.
+
 ### 0.9.31
 - **Add**: `@discardableResult` to function - `replace(with:at:with:manualBeginEndUpdates)` in `TableDirector`.
 
