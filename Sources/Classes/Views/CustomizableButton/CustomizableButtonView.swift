@@ -87,7 +87,6 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
         }
     }
 
-    public var buttonIsDisabledWhileLoading = false
     public var hidesLabelWhenLoading = false
 
     // MARK: - Computed Properties
