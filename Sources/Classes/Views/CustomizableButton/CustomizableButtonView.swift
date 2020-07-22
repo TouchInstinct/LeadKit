@@ -56,7 +56,9 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
     // MARK: - Stored Properties
 
     public private(set) var disposeBag = DisposeBag()
+
     private let button = CustomizableButton()
+
     open var tapOnDisabledButton: VoidBlock?
 
     public var shadowView = UIView() {
@@ -216,6 +218,7 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
     open func configureAppearance() {
         button.titleLabel?.numberOfLines = appearance.numberOfLines
         button.titleLabel?.font = appearance.buttonFont
+        button.alpha = appearance.alpha
 
         button.set(titles: appearance.buttonStateTitles)
         button.set(attributtedTitles: appearance.buttonStateAttributtedTitles)
@@ -280,25 +283,21 @@ private extension UIView {
 }
 
 public extension CustomizableButtonView {
-    struct Appearance {
+    public struct Appearance {
 
-        var buttonFont: UIFont
-
-        var buttonStateTitles: [UIControl.State: String]
-        var buttonStateAttributtedTitles: [UIControl.State: NSAttributedString]
-        var buttonTitleStateColors: [UIControl.State: UIColor]
-        var buttonBackgroundStateColors: [UIControl.State: UIColor]
-        var buttonStateIcons: [UIControl.State: UIImage]
-
-        var buttonIconOffset: UIOffset
-        var buttonInsets: UIEdgeInsets
-
-        var buttonCornerRadius: CGFloat?
-
-        var spinnerPosition: SpinnerPosition
-
-        var numberOfLines: Int
-
+        public var buttonFont: UIFont
+        public var buttonStateTitles: [UIControl.State: String]
+        public var buttonStateAttributtedTitles: [UIControl.State: NSAttributedString]
+        public var buttonTitleStateColors: [UIControl.State: UIColor]
+        public var buttonBackgroundStateColors: [UIControl.State: UIColor]
+        public var buttonStateIcons: [UIControl.State: UIImage]
+        public var buttonIconOffset: UIOffset
+        public var buttonInsets: UIEdgeInsets
+        public var buttonCornerRadius: CGFloat?
+        public var spinnerPosition: SpinnerPosition
+        public var numberOfLines: Int
+        public var alpha: CGFloat
+        
         public init(buttonFont: UIFont = .systemFont(ofSize: 15),
                     buttonStateTitles: [UIControl.State: String] = [:],
                     buttonStateAttributtedTitles: [UIControl.State: NSAttributedString] = [:],
@@ -309,28 +308,25 @@ public extension CustomizableButtonView {
                     buttonInsets: UIEdgeInsets = .zero,
                     buttonCornerRadius: CGFloat? = nil,
                     spinnerPosition: SpinnerPosition = .center,
-                    numberOfLines: Int = 0) {
+                    numberOfLines: Int = 0,
+                    alpha: CGFloat = 1) {
 
             self.buttonFont = buttonFont
-
             self.buttonStateTitles = buttonStateTitles
             self.buttonStateAttributtedTitles = buttonStateAttributtedTitles
             self.buttonTitleStateColors = buttonTitleStateColors
             self.buttonBackgroundStateColors = buttonBackgroundStateColors
             self.buttonStateIcons = buttonStateIcons
-
             self.buttonIconOffset = buttonIconOffset
             self.buttonInsets = buttonInsets
-
             self.buttonCornerRadius = buttonCornerRadius
-
             self.spinnerPosition = spinnerPosition
-
             self.numberOfLines = numberOfLines
+            self.alpha = alpha
         }
     }
 
-    enum SpinnerPosition {
+    public enum SpinnerPosition {
         case center
         case leftToText(offset: CGFloat)
         case rightToText(offset: CGFloat)
