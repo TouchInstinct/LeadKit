@@ -91,7 +91,7 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
     
     public var buttonTitle: String = "" {
         willSet {
-            buttonTitle.text = newValue
+            button.text = newValue
         }
     }
 
