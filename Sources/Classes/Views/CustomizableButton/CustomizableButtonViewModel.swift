@@ -31,6 +31,7 @@ open class CustomizableButtonViewModel {
     private let stateRelay = BehaviorRelay(value: CustomizableButtonState.enabled)
     private let tapRelay = BehaviorRelay(value: ())
     public let appearance: Appearance
+    public let buttonTitle: String
 
     public init(appearance: Appearance) {
         self.appearance = appearance

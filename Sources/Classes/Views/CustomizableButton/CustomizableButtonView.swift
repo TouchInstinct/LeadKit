@@ -220,7 +220,6 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
         button.titleLabel?.font = appearance.buttonFont
         button.alpha = appearance.alpha
 
-        button.set(titles: appearance.buttonStateTitles)
         button.set(attributtedTitles: appearance.buttonStateAttributtedTitles)
         button.set(titleColors: appearance.buttonTitleStateColors)
         button.set(images: appearance.buttonStateIcons)
@@ -246,6 +245,7 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
         viewModel.stateDriver.drive(stateBinder).disposed(by: disposeBag)
         viewModel.bind(tapObservable: tapObservable).disposed(by: disposeBag)
 
+        button.text = viewModel.buttonTitle
         appearance = viewModel.appearance
     }
 
@@ -286,7 +286,6 @@ public extension CustomizableButtonView {
     public struct Appearance {
 
         public var buttonFont: UIFont
-        public var buttonStateTitles: [UIControl.State: String]
         public var buttonStateAttributtedTitles: [UIControl.State: NSAttributedString]
         public var buttonTitleStateColors: [UIControl.State: UIColor]
         public var buttonBackgroundStateColors: [UIControl.State: UIColor]
@@ -299,7 +298,6 @@ public extension CustomizableButtonView {
         public var alpha: CGFloat
         
         public init(buttonFont: UIFont = .systemFont(ofSize: 15),
-                    buttonStateTitles: [UIControl.State: String] = [:],
                     buttonStateAttributtedTitles: [UIControl.State: NSAttributedString] = [:],
                     buttonTitleStateColors: [UIControl.State: UIColor] = [:],
                     buttonBackgroundStateColors: [UIControl.State: UIColor] = [:],
@@ -312,7 +310,6 @@ public extension CustomizableButtonView {
                     alpha: CGFloat = 1) {
 
             self.buttonFont = buttonFont
-            self.buttonStateTitles = buttonStateTitles
             self.buttonStateAttributtedTitles = buttonStateAttributtedTitles
             self.buttonTitleStateColors = buttonTitleStateColors
             self.buttonBackgroundStateColors = buttonBackgroundStateColors
