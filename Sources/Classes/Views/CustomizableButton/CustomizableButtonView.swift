@@ -88,6 +88,12 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
             configureConstraints()
         }
     }
+    
+    public var buttonTitle: String = "" {
+        willSet {
+            buttonTitle.text = newValue
+        }
+    }
 
     public var hidesLabelWhenLoading = false
 
