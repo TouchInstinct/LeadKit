@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.9.33
+- **Fix**: `CustomizableButtonView` container class that provides great customization.
+- **Fix**: `CustomizableButtonViewModel` viewModel class for `CustomizableButtonView` configuration.
+
 ### 0.9.32
 - **Fix**: `CustomizableButtonView` container class that provides great customization.
 
