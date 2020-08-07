@@ -88,7 +88,7 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
             configureConstraints()
         }
     }
-    
+
     public var buttonTitle: String = "" {
         willSet {
             button.text = newValue
@@ -242,7 +242,7 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
         } else {
             button.layer.cornerRadius = 0
         }
-        
+
         setNeedsDisplay()
     }
 
@@ -289,7 +289,7 @@ private extension UIView {
 }
 
 public extension CustomizableButtonView {
-    public struct Appearance {
+    struct Appearance {
 
         public var buttonFont: UIFont
         public var buttonStateAttributtedTitles: [UIControl.State: NSAttributedString]
@@ -302,7 +302,7 @@ public extension CustomizableButtonView {
         public var spinnerPosition: SpinnerPosition
         public var numberOfLines: Int
         public var alpha: CGFloat
-        
+
         public init(buttonFont: UIFont = .systemFont(ofSize: 15),
                     buttonStateAttributtedTitles: [UIControl.State: NSAttributedString] = [:],
                     buttonTitleStateColors: [UIControl.State: UIColor] = [:],
@@ -329,7 +329,7 @@ public extension CustomizableButtonView {
         }
     }
 
-    public enum SpinnerPosition {
+    enum SpinnerPosition {
         case center
         case leftToText(offset: CGFloat)
         case rightToText(offset: CGFloat)

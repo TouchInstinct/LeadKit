@@ -55,21 +55,21 @@ public protocol PaginationWrapperUIDelegate: class {
     /// - Returns: Configured instace of AnyLoadingIndicator.
     func loadingMoreIndicator() -> AnyLoadingIndicator?
 
-    /// Returns instance of UIButton for "retry load more" action.
+    /// Returns instance of ButtonHolderView with retry button for "retry load more" action.
     ///
     /// - Returns: Configured instace of AnyLoadingIndicator.
-    func footerRetryButton() -> UIButton?
+    func footerRetryView() -> ButtonHolderView?
 
     /// Returns height for "retry load more" button.
     ///
     /// - Returns: Height of "retry load more" button.
-    func footerRetryButtonHeight() -> CGFloat
+    func footerRetryViewHeight() -> CGFloat
 
     /// Method is called before "retry load more" will be shown.
     /// Typically, it's used when you need to show custom footer view.
-    func footerRetryButtonWillAppear()
+    func footerRetryViewWillAppear()
 
     /// Method is called before "retry load more" will be hidden.
     /// Typically, it's used when you need to hide custom footer view.
-    func footerRetryButtonWillDisappear()
+    func footerRetryViewWillDisappear()
 }

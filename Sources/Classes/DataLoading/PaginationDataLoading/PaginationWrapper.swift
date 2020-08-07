@@ -144,7 +144,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
     private func onLoadingMoreState(afterState: LoadingState) {
         if case .error = afterState { // user tap retry button in table footer
-            uiDelegate?.footerRetryButtonWillDisappear()
+            uiDelegate?.footerRetryViewWillDisappear()
             wrappedView.footerView = nil
             addInfiniteScroll(withHandler: false)
             wrappedView.scrollView.beginInfiniteScroll(true)
@@ -187,29 +187,26 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
             replacePlaceholderViewIfNeeded(with: errorView)
         } else if case .loadingMore = afterState {
-            guard let retryButton = uiDelegate?.footerRetryButton(),
-                let retryButtonHeight = uiDelegate?.footerRetryButtonHeight() else {
-
+            guard let retryView = uiDelegate?.footerRetryView(),
+                let retryViewHeight = uiDelegate?.footerRetryViewHeight() else {
                     removeInfiniteScroll()
-
                     return
             }
 
-            retryButton.frame = CGRect(x: 0, y: 0, width: wrappedView.scrollView.bounds.width, height: retryButtonHeight)
+            retryView.frame = CGRect(x: 0, y: 0, width: wrappedView.scrollView.bounds.width, height: retryViewHeight)
 
-            retryButton.rx
+            retryView.button.rx
                 .controlEvent(.touchUpInside)
                 .asDriver()
                 .drive(retryEvent)
                 .disposed(by: disposeBag)
 
-            uiDelegate?.footerRetryButtonWillAppear()
+            uiDelegate?.footerRetryViewWillAppear()
 
             removeInfiniteScroll { scrollView in
-                self.wrappedView.footerView = retryButton
+                self.wrappedView.footerView = retryView
 
-                let newContentOffset = CGPoint(x: 0, y: scrollView.contentOffset.y + retryButtonHeight)
-
+                let newContentOffset = CGPoint(x: 0, y: scrollView.contentOffset.y + retryViewHeight)
                 scrollView.setContentOffset(newContentOffset, animated: true)
             }
         }
