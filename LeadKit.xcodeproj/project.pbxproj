@@ -16,6 +16,9 @@
 		40F118471F8FEF97004AADAF /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
 		40F118491F8FF223004AADAF /* TableRow+AppearanceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118481F8FF223004AADAF /* TableRow+AppearanceExtension.swift */; };
 		411073AF23466B41002DD9B9 /* UIViewController+PresentFullScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411073AE23466B41002DD9B9 /* UIViewController+PresentFullScreen.swift */; };
+		4CF65D1424DD684A0006B001 /* ButtonHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF65D1324DD684A0006B001 /* ButtonHolder.swift */; };
+		4CF65D1624DD69250006B001 /* UIButton+ButtonHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF65D1524DD69250006B001 /* UIButton+ButtonHolder.swift */; };
+		4CF65D1824DD6C080006B001 /* ButtonHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF65D1724DD6C080006B001 /* ButtonHolderView.swift */; };
 		67051ADB1EBC7C36008EADC0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */; };
 		67051ADD1EBC7C36008EADC0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */; };
 		6713C23720AF0C4D00875921 /* NetworkOperationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6713C23620AF0C4D00875921 /* NetworkOperationState.swift */; };
@@ -550,6 +553,9 @@
 		40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceConfigurable.swift; sourceTree = "<group>"; };
 		40F118481F8FF223004AADAF /* TableRow+AppearanceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableRow+AppearanceExtension.swift"; sourceTree = "<group>"; };
 		411073AE23466B41002DD9B9 /* UIViewController+PresentFullScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+PresentFullScreen.swift"; sourceTree = "<group>"; };
+		4CF65D1324DD684A0006B001 /* ButtonHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonHolder.swift; sourceTree = "<group>"; };
+		4CF65D1524DD69250006B001 /* UIButton+ButtonHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+ButtonHolder.swift"; sourceTree = "<group>"; };
+		4CF65D1724DD6C080006B001 /* ButtonHolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonHolderView.swift; sourceTree = "<group>"; };
 		67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		6713C23620AF0C4D00875921 /* NetworkOperationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkOperationState.swift; sourceTree = "<group>"; };
 		6713C23B20AF0D5900875921 /* NetworkOperationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkOperationModel.swift; sourceTree = "<group>"; };
@@ -857,6 +863,15 @@
 				6741CEC120E2430900FEC4D9 /* UITableView+TableViewHolder.swift */,
 			);
 			path = UITableView;
+			sourceTree = "<group>";
+		};
+		4CF65D1924DD6C3D0006B001 /* ButtonHolder */ = {
+			isa = PBXGroup;
+			children = (
+				4CF65D1324DD684A0006B001 /* ButtonHolder.swift */,
+				4CF65D1724DD6C080006B001 /* ButtonHolderView.swift */,
+			);
+			path = ButtonHolder;
 			sourceTree = "<group>";
 		};
 		671461C41EB3396E00EAB194 /* Classes */ = {
@@ -1433,6 +1448,7 @@
 		6741CE9F20E2413300FEC4D9 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				4CF65D1924DD6C3D0006B001 /* ButtonHolder */,
 				6741CEA020E2416C00FEC4D9 /* ScrollViewHolder.swift */,
 				6741CEA420E2418200FEC4D9 /* TableViewHolder.swift */,
 				6741CEA820E2418B00FEC4D9 /* CollectionViewHolder.swift */,
@@ -1845,6 +1861,7 @@
 			isa = PBXGroup;
 			children = (
 				67E352512119AC060035BDDB /* UIButton+ViewTextConfigurable.swift */,
+				4CF65D1524DD69250006B001 /* UIButton+ButtonHolder.swift */,
 			);
 			path = UIButton;
 			sourceTree = "<group>";
@@ -2397,6 +2414,7 @@
 				67EB7FF8206175F700BDD9FB /* PaginationWrappable.swift in Sources */,
 				67990AD6213EA6A50040D195 /* ContentLoadingViewModel+Extensions.swift in Sources */,
 				671463541EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
+				4CF65D1824DD6C080006B001 /* ButtonHolderView.swift in Sources */,
 				72AECC6B224A979D00D12E7C /* BaseSearchViewController.swift in Sources */,
 				673CF4112063ABD100C329F6 /* GeneralDataLoadingState+Extensions.swift in Sources */,
 				72005A1E2266226800ECE090 /* CustomizableButton.swift in Sources */,
@@ -2424,6 +2442,7 @@
 				671462FC1EB3396E00EAB194 /* UIView+XibNameProtocol.swift in Sources */,
 				67EB7FC0206140E600BDD9FB /* TotalCountCursor.swift in Sources */,
 				36DAAF512007CC920090BE0D /* UITableView+Extensions.swift in Sources */,
+				4CF65D1624DD69250006B001 /* UIButton+ButtonHolder.swift in Sources */,
 				671463841EB3396E00EAB194 /* ResizeDrawingOperation.swift in Sources */,
 				6774528D20625C9E0024EEEF /* GeneralDataLoadingState.swift in Sources */,
 				72005A1F2266226800ECE090 /* CustomizableButtonViewModel.swift in Sources */,
@@ -2500,6 +2519,7 @@
 				A6E0DDF11F8A6C80002CA74E /* SeparatorConfiguration.swift in Sources */,
 				6727477F206CD3BD00725163 /* ViewText+Extensions.swift in Sources */,
 				67EB7FEB2061667900BDD9FB /* DefaultTotalCountCursorListingResult.swift in Sources */,
+				4CF65D1424DD684A0006B001 /* ButtonHolder.swift in Sources */,
 				671AD26C206A3E8500EAF887 /* Array+TotalCountCursorListingResult.swift in Sources */,
 				673CF4382063E7CE00C329F6 /* GeneralDataLoadingController+DefaultImplementation.swift in Sources */,
 				B85B768720B1CF6700F837C4 /* Encodable+Extensions.swift in Sources */,
