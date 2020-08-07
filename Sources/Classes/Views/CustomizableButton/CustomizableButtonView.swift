@@ -288,8 +288,8 @@ private extension UIView {
     }
 }
 
-public extension CustomizableButtonView {
-    struct Appearance {
+extension CustomizableButtonView {
+    public struct Appearance {
 
         public var buttonFont: UIFont
         public var buttonStateAttributtedTitles: [UIControl.State: NSAttributedString]
@@ -329,7 +329,7 @@ public extension CustomizableButtonView {
         }
     }
 
-    enum SpinnerPosition {
+    public enum SpinnerPosition {
         case center
         case leftToText(offset: CGFloat)
         case rightToText(offset: CGFloat)

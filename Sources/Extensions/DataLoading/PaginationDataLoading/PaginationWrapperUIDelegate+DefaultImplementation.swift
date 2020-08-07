@@ -61,11 +61,11 @@ public extension PaginationWrapperUIDelegate {
         return 44
     }
 
-    func footerRetryButtonWillAppear() {
+    func footerRetryViewWillAppear() {
         // by default - nothing will happen
     }
 
-    func footerRetryButtonWillDisappear() {
+    func footerRetryViewWillDisappear() {
         // by default - nothing will happen
     }
 }
