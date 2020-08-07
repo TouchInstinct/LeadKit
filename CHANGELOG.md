@@ -5,6 +5,7 @@
 - **Add**: `ButtonHolderView`  - view which contains button.
 - **Add**: Conformance `UIButton` to  `ButtonHolderView`.
 - **[Breaking change]**: Replace functions  `footerRetryButton() -> UIButton?` to `footerRetryView() -> ButtonHolderView?` and `footerRetryButtonHeight() -> CGFloat` to `footerRetryViewHeight() -> CGFloat` for `PaginationWrapperUIDelegate`. 
+- **[Breaking change]**: Replace functions  `footerRetryButtonWillAppear()` to `footerRetryViewWillAppear()` and `footerRetryButtonWillDisappear()` to `footerRetryViewWillDisappear()` for `PaginationWrapperUIDelegate`. 
 
 ### 0.9.33
 - **Fix**: `CustomizableButtonView` container class that provides great customization.
