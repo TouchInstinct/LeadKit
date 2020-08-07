@@ -292,12 +292,8 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
     }
 
     @objc private func refreshAction() {
-        if #available(iOS 10.0, *) {
-            RunLoop.current.perform(inModes: [.default]) { [weak self] in
-                self?.reload()
-            }
-        } else {
-            reload()
+        CFRunLoopPerformBlock(CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue) { [weak self] in
+            self?.reload()
         }
     }
 
