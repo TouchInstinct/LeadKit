@@ -22,8 +22,8 @@
 
 import UIKit.UIButton
 
-public extension UIButton: ButtonHolderView {
-    var button: UIButton {
+extension UIButton: ButtonHolderView {
+    public var button: UIButton {
         self
     }
 }
