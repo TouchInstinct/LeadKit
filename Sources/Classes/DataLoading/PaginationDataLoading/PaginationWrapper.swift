@@ -286,13 +286,15 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
     private func createRefreshControl() {
         let refreshControl = UIRefreshControl()
-        refreshControl.rx
-            .controlEvent(.valueChanged)
-            .asDriver()
-            .drive(reloadEvent)
-            .disposed(by: disposeBag)
+        refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
 
         wrappedView.scrollView.support.setRefreshControl(refreshControl)
+    }
+
+    @objc private func refreshAction() {
+        RunLoop.current.perform(inModes: [.default]) { [weak self] in
+            self?.reload()
+        }
     }
 
     private func removeRefreshControl() {
@@ -370,12 +372,6 @@ private extension PaginationWrapper {
     var retryEvent: Binder<Void> {
         return Binder(self) { base, _ in
             base.paginationViewModel.loadMore()
-        }
-    }
-
-    var reloadEvent: Binder<Void> {
-        return Binder(self) { base, _ in
-            base.reload()
         }
     }
 
