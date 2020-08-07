@@ -22,7 +22,7 @@
 
 import UIKit.UIButton
 
-extension UIButton: ButtonHolderView {
+extension UIButton: ButtonHolder {
     public var button: UIButton {
         self
     }
