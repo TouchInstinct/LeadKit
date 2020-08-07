@@ -3,7 +3,8 @@
 ### 0.9.34
 - **Add**: `ButtonHolder`  - protocol that contains button property.
 - **Add**: `ButtonHolderView`  - view which contains button.
-- **Add**: Conformance `UIButton` to  `ButtonHolderView`.
+- **Add**: Conformance `UIButton` to  `ButtonHolder`.
+- **Add**: Conformance `BasePlaceholderView` to  `ButtonHolderView`.
 - **[Breaking change]**: Replace functions  `footerRetryButton() -> UIButton?` to `footerRetryView() -> ButtonHolderView?` and `footerRetryButtonHeight() -> CGFloat` to `footerRetryViewHeight() -> CGFloat` for `PaginationWrapperUIDelegate`. 
 - **[Breaking change]**: Replace functions  `footerRetryButtonWillAppear()` to `footerRetryViewWillAppear()` and `footerRetryButtonWillDisappear()` to `footerRetryViewWillDisappear()` for `PaginationWrapperUIDelegate`. 
 
