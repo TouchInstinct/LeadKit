@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.35
+- **Add**: Selector `refreshAction()` for refresh control of `PaginationWrapper`.
+
 ### 0.9.34
 - **Add**: `ButtonHolder` - protocol that contains button property.
 - **Add**: `ButtonHolderView` - view which contains button.
