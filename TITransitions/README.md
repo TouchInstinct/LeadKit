@@ -53,9 +53,7 @@ struct Configuration {
 
 # Installation via SPM
 
-```swift
-package.append(.package(url: "https://github.com/Loupehope/TITransitions.git", from: "0.2.0"))
-```
+You can install this framework as a target of LeadKit.
 
 # License
 
