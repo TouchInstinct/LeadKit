@@ -1,5 +1,11 @@
 # Changelog
 
+### 0.9.36
+- **Add**: SPM Package.swift.
+- **Add**: TITransitions via SPM.
+- **Add**: TIUIKitCore via SPM.
+- **Update**: Readme.
+
 ### 0.9.35
 - **Add**: Selector `refreshAction()` for refresh control of `PaginationWrapper`.
 
