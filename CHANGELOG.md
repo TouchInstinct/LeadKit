@@ -1,5 +1,11 @@
 # Changelog
 
+### 0.9.37
+- **Add**: `BaseTableViewCell` is subclass of `UITableViewCell` class with support `InitializableView` and `DisposeBagHolder` protocols.
+- **Add**: `ContainerTableCell` is container class that provides wrapping any `UIView` into `UITableViewCell`.
+- **Add**: `BaseTappableViewModel` is simplifies interaction between view and viewModel for events of tapping.
+- **Add**: `VoidTappableViewModel` is subclass of `BaseTappableViewModel` class with void payload type.
+
 ### 0.9.36
 - **Add**: SPM Package.swift.
 - **Add**: TITransitions via SPM.
