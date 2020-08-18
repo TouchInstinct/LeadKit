@@ -22,11 +22,11 @@
 
 import RxSwift
 
-open class BaseTableViewCell: UITableViewCell, InitializableView {
+open class BaseTableViewCell: UITableViewCell, InitializableView, DisposeBagHolder {
 
     // MARK: - Properties
 
-    open var disposeBag = DisposeBag()
+    public var disposeBag = DisposeBag()
 
     // MARK: - Initialization
 
@@ -52,15 +52,15 @@ open class BaseTableViewCell: UITableViewCell, InitializableView {
     // MARK: - InitializableView
 
     open func addViews() {
-        // empty for subclasses overriding
+        // overriding
     }
 
     open func bindViews() {
-        // empty for subclasses overriding
+        // overriding
     }
 
     open func configureLayout() {
-        // empty for subclasses overriding
+        // overriding
     }
 
     open func configureAppearance() {
@@ -68,6 +68,6 @@ open class BaseTableViewCell: UITableViewCell, InitializableView {
     }
 
     open func localize() {
-        // empty for subclasses overriding
+        // overriding
     }
 }
