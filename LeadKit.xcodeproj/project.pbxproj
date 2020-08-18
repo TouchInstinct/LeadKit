@@ -20,7 +20,7 @@
 		4CF65D1624DD69250006B001 /* UIButton+ButtonHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF65D1524DD69250006B001 /* UIButton+ButtonHolder.swift */; };
 		4CF65D1824DD6C080006B001 /* ButtonHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF65D1724DD6C080006B001 /* ButtonHolderView.swift */; };
 		52421F8D24EAB52E00948DD1 /* ContainerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52421F8C24EAB52E00948DD1 /* ContainerTableCell.swift */; };
-		52421F8F24EAB84900948DD1 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52421F8E24EAB84900948DD1 /* BaseTableViewCell.swift */; };
+		52421F8F24EAB84900948DD1 /* BaseRxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52421F8E24EAB84900948DD1 /* BaseRxTableViewCell.swift */; };
 		52421F9424EBCFAE00948DD1 /* VoidTappableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52421F9324EBCFAE00948DD1 /* VoidTappableViewModel.swift */; };
 		52421F9624EBCFBB00948DD1 /* BaseTappableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52421F9524EBCFBB00948DD1 /* BaseTappableViewModel.swift */; };
 		67051ADB1EBC7C36008EADC0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */; };
@@ -561,7 +561,7 @@
 		4CF65D1524DD69250006B001 /* UIButton+ButtonHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+ButtonHolder.swift"; sourceTree = "<group>"; };
 		4CF65D1724DD6C080006B001 /* ButtonHolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonHolderView.swift; sourceTree = "<group>"; };
 		52421F8C24EAB52E00948DD1 /* ContainerTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerTableCell.swift; sourceTree = "<group>"; };
-		52421F8E24EAB84900948DD1 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		52421F8E24EAB84900948DD1 /* BaseRxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRxTableViewCell.swift; sourceTree = "<group>"; };
 		52421F9324EBCFAE00948DD1 /* VoidTappableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidTappableViewModel.swift; sourceTree = "<group>"; };
 		52421F9524EBCFBB00948DD1 /* BaseTappableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTappableViewModel.swift; sourceTree = "<group>"; };
 		67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
@@ -890,12 +890,12 @@
 			path = ContainerTableCell;
 			sourceTree = "<group>";
 		};
-		52421F9024EAB84E00948DD1 /* BaseTableViewCell */ = {
+		52421F9024EAB84E00948DD1 /* BaseRxTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				52421F8E24EAB84900948DD1 /* BaseTableViewCell.swift */,
+				52421F8E24EAB84900948DD1 /* BaseRxTableViewCell.swift */,
 			);
-			path = BaseTableViewCell;
+			path = BaseRxTableViewCell;
 			sourceTree = "<group>";
 		};
 		52421F9124EBCF6E00948DD1 /* ViewModels */ = {
@@ -961,7 +961,7 @@
 		671461D41EB3396E00EAB194 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				52421F9024EAB84E00948DD1 /* BaseTableViewCell */,
+				52421F9024EAB84E00948DD1 /* BaseRxTableViewCell */,
 				52421F8B24EAB52E00948DD1 /* ContainerTableCell */,
 				72005A1A2266226800ECE090 /* CustomizableButton */,
 				677B06B6211873E7006C947D /* BasePlaceholderView */,
@@ -2605,7 +2605,7 @@
 				52421F9424EBCFAE00948DD1 /* VoidTappableViewModel.swift in Sources */,
 				67745279206252020024EEEF /* DataLoadingState.swift in Sources */,
 				671463641EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
-				52421F8F24EAB84900948DD1 /* BaseTableViewCell.swift in Sources */,
+				52421F8F24EAB84900948DD1 /* BaseRxTableViewCell.swift in Sources */,
 				67EB7FDA20615D5B00BDD9FB /* ResettableRxCursorDataSource.swift in Sources */,
 				671462481EB3396E00EAB194 /* FixedPageCursor.swift in Sources */,
 				671462C81EB3396E00EAB194 /* String+Localization.swift in Sources */,

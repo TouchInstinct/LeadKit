@@ -23,11 +23,11 @@
 import RxSwift
 import TableKit
 
-open class ContainerTableCell<TView: UIView>: BaseTableViewCell, ConfigurableCell where TView: ConfigurableView {
+open class ContainerTableCell<TView: UIView>: BaseRxTableViewCell, ConfigurableCell where TView: ConfigurableView {
 
     // MARK: - Properties
 
-    public let view = TView()
+    public let wrappedView = TView()
 
     open var shouldConfigureDefaultConstraints: Bool {
         true
@@ -44,7 +44,7 @@ open class ContainerTableCell<TView: UIView>: BaseTableViewCell, ConfigurableCel
     // MARK: - ConfigurableCell
 
     open func configure(with viewModel: TView.ViewModelType) {
-        view.configure(with: viewModel)
+        wrappedView.configure(with: viewModel)
     }
 
     // MARK: - InitializableView
@@ -52,18 +52,18 @@ open class ContainerTableCell<TView: UIView>: BaseTableViewCell, ConfigurableCel
     override open func addViews() {
         super.addViews()
 
-        contentView.addSubview(view)
+        contentView.addSubview(wrappedView)
     }
 
     override open func configureLayout() {
         super.configureLayout()
 
         if shouldConfigureDefaultConstraints {
-            view.snp.makeConstraints { make in
-                make.edges.equalToSuperview().inset(contentInsets)
+            wrappedView.snp.makeConstraints {
+                $0.edges.equalToSuperview().inset(contentInsets)
             }
         } else {
-            configureCustomConstraints(forView: view)
+            configureCustomConstraints(forWrappedView: wrappedView)
         }
     }
 
@@ -74,5 +74,5 @@ open class ContainerTableCell<TView: UIView>: BaseTableViewCell, ConfigurableCel
         backgroundColor = contentViewBackgroundColor
     }
 
-    open func configureCustomConstraints(forView view: UIView) { }
+    open func configureCustomConstraints(forWrappedView view: TView) { }
 }

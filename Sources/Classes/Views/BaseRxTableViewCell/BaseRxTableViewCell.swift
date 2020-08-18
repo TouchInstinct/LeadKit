@@ -22,7 +22,7 @@
 
 import RxSwift
 
-open class BaseTableViewCell: UITableViewCell, InitializableView, DisposeBagHolder {
+open class BaseRxTableViewCell: UITableViewCell, InitializableView, DisposeBagHolder {
 
     // MARK: - Properties
 
