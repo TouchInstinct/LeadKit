@@ -27,7 +27,7 @@ open class ContainerTableCell<TView: UIView>: BaseRxTableViewCell, ConfigurableC
 
     // MARK: - Properties
 
-    public let wrappedView = TView()
+    private let wrappedView = TView()
 
     open var shouldConfigureDefaultConstraints: Bool {
         true
