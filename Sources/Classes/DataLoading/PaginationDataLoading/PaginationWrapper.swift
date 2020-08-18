@@ -214,7 +214,9 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
             removeInfiniteScroll { scrollView in
                 self.wrappedView.footerView = retryView
 
-                if scrollView.contentOffset.y + retryViewHeight >= self.bottom {
+                let shouldUpdateContentOffset = Int(scrollView.contentOffset.y + retryViewHeight) >= Int(self.bottom)
+
+                if shouldUpdateContentOffset {
                     let newContentOffset = CGPoint(x: 0, y: scrollView.contentOffset.y + retryViewHeight)
                     scrollView.setContentOffset(newContentOffset, animated: true)
 
