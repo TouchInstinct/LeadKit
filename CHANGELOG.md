@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.9.37
+- **Fix**: ScrollView content offset of `PaginationWrapper` for iOS 13.
+- **Fix**: Load more request crash of `PaginationWrapper`.
+
 ### 0.9.36
 - **Add**: SPM Package.swift.
 - **Add**: TITransitions via SPM.
