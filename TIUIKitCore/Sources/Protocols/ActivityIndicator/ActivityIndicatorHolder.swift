@@ -30,6 +30,6 @@ public protocol ActivityIndicatorHolder: class {
 
 public extension ActivityIndicatorHolder where Self: UIView {
     var indicatorOwner: UIView {
-        return self
+        self
     }
 }
