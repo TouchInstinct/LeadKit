@@ -44,6 +44,7 @@ open class ContainerTableCell<TView: UIView>: BaseRxTableViewCell, ConfigurableC
     // MARK: - ConfigurableCell
 
     open func configure(with viewModel: TView.ViewModelType) {
+        disposeBag = DisposeBag()
         wrappedView.configure(with: viewModel)
     }
 
