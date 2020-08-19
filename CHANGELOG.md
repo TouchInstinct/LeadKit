@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.9.39
+- **Add**: `Animatable` protocol to TIUIKitCore.
+- **Add**: `TIActivityIndicators` for activity indicators.
+
 ### 0.9.37
 - **Fix**: ScrollView content offset of `PaginationWrapper` for iOS 13.
 - **Fix**: Load more request crash of `PaginationWrapper`.
