@@ -23,38 +23,8 @@
 import UIKit
 import TIUIKitCore
 
-/// Type that performs some kind of type erasure for ActivityIndicator.
-public struct AnyActivityIndicator: Animatable {
-
-    private let backgroundView: UIView
-    private let animatableView: Animatable
-
-    /// Initializer with indicator that should be wrapped.
-    ///
-    /// - Parameter _: indicator for wrapping.
-    public init<Indicator>(_ base: Indicator) where Indicator: ActivityIndicator {
-        animatableView = base.view
-        backgroundView = base.view
-    }
-
-    /// Initializer with placeholder view, that wraps indicator.
-    ///
-    /// - Parameter loadingIndicatorHolder: placeholder view, containing indicator.
-    public init(activityIndicatorHolder: ActivityIndicatorHolder) {
-        animatableView = activityIndicatorHolder.activityIndicator
-        backgroundView = activityIndicatorHolder.indicatorOwner
-    }
-
-    /// The background view.
-    var view: UIView {
-        return backgroundView
-    }
-
-    public func startAnimating() {
-        animatableView.startAnimating()
-    }
-
-    public func stopAnimating() {
-        animatableView.stopAnimating()
+extension UIActivityIndicatorView: ActivityIndicatorHolder {
+    public var activityIndicator: Animatable {
+        self
     }
 }

@@ -22,8 +22,5 @@
 
 import UIKit
 
-extension UIActivityIndicatorView: ActivityIndicator {
-    public var view: UIActivityIndicatorView {
-        self
-    }
-}
+/// Protocol that describes basic activity indicator.
+public typealias ActivityIndicator = UIView & Animatable

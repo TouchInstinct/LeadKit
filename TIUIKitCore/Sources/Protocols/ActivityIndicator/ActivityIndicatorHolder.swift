@@ -21,7 +21,6 @@
 //
 
 import UIKit
-import TIUIKitCore
 
 /// Protocol that describes placeholder view, containing activity indicator.
 public protocol ActivityIndicatorHolder: class {
