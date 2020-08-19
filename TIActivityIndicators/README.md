@@ -37,7 +37,7 @@ Type that performs some kind of type erasure for ActivityIndicator.
 
 # Usage examples
 
-- Loading Indicator in PaginationWrapper of main framework LeadKit.
+- Loading Indicator in [PaginationWrapperUIDelegate](https://github.com/TouchInstinct/LeadKit/blob/master/Sources/Extensions/DataLoading/PaginationDataLoading/PaginationWrapperUIDelegate+DefaultImplementation.swift) of main framework LeadKit.
 
 # Installation via SPM
 
