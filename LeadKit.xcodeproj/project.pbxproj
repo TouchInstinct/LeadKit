@@ -19,6 +19,10 @@
 		4CF65D1424DD684A0006B001 /* ButtonHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF65D1324DD684A0006B001 /* ButtonHolder.swift */; };
 		4CF65D1624DD69250006B001 /* UIButton+ButtonHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF65D1524DD69250006B001 /* UIButton+ButtonHolder.swift */; };
 		4CF65D1824DD6C080006B001 /* ButtonHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF65D1724DD6C080006B001 /* ButtonHolderView.swift */; };
+		52421F8D24EAB52E00948DD1 /* ContainerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52421F8C24EAB52E00948DD1 /* ContainerTableCell.swift */; };
+		52421F8F24EAB84900948DD1 /* BaseRxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52421F8E24EAB84900948DD1 /* BaseRxTableViewCell.swift */; };
+		52421F9424EBCFAE00948DD1 /* VoidTappableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52421F9324EBCFAE00948DD1 /* VoidTappableViewModel.swift */; };
+		52421F9624EBCFBB00948DD1 /* BaseTappableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52421F9524EBCFBB00948DD1 /* BaseTappableViewModel.swift */; };
 		67051ADB1EBC7C36008EADC0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */; };
 		67051ADD1EBC7C36008EADC0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */; };
 		6713C23720AF0C4D00875921 /* NetworkOperationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6713C23620AF0C4D00875921 /* NetworkOperationState.swift */; };
@@ -556,6 +560,10 @@
 		4CF65D1324DD684A0006B001 /* ButtonHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonHolder.swift; sourceTree = "<group>"; };
 		4CF65D1524DD69250006B001 /* UIButton+ButtonHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+ButtonHolder.swift"; sourceTree = "<group>"; };
 		4CF65D1724DD6C080006B001 /* ButtonHolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonHolderView.swift; sourceTree = "<group>"; };
+		52421F8C24EAB52E00948DD1 /* ContainerTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerTableCell.swift; sourceTree = "<group>"; };
+		52421F8E24EAB84900948DD1 /* BaseRxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRxTableViewCell.swift; sourceTree = "<group>"; };
+		52421F9324EBCFAE00948DD1 /* VoidTappableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidTappableViewModel.swift; sourceTree = "<group>"; };
+		52421F9524EBCFBB00948DD1 /* BaseTappableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTappableViewModel.swift; sourceTree = "<group>"; };
 		67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		6713C23620AF0C4D00875921 /* NetworkOperationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkOperationState.swift; sourceTree = "<group>"; };
 		6713C23B20AF0D5900875921 /* NetworkOperationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkOperationModel.swift; sourceTree = "<group>"; };
@@ -874,6 +882,39 @@
 			path = ButtonHolder;
 			sourceTree = "<group>";
 		};
+		52421F8B24EAB52E00948DD1 /* ContainerTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				52421F8C24EAB52E00948DD1 /* ContainerTableCell.swift */,
+			);
+			path = ContainerTableCell;
+			sourceTree = "<group>";
+		};
+		52421F9024EAB84E00948DD1 /* BaseRxTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				52421F8E24EAB84900948DD1 /* BaseRxTableViewCell.swift */,
+			);
+			path = BaseRxTableViewCell;
+			sourceTree = "<group>";
+		};
+		52421F9124EBCF6E00948DD1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				52421F9224EBCF8600948DD1 /* TappableViewModel */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		52421F9224EBCF8600948DD1 /* TappableViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				52421F9524EBCFBB00948DD1 /* BaseTappableViewModel.swift */,
+				52421F9324EBCFAE00948DD1 /* VoidTappableViewModel.swift */,
+			);
+			path = TappableViewModel;
+			sourceTree = "<group>";
+		};
 		671461C41EB3396E00EAB194 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -882,6 +923,7 @@
 				6774527E2062566D0024EEEF /* DataLoading */,
 				671461D21EB3396E00EAB194 /* Services */,
 				671461D41EB3396E00EAB194 /* Views */,
+				52421F9124EBCF6E00948DD1 /* ViewModels */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -919,6 +961,8 @@
 		671461D41EB3396E00EAB194 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				52421F9024EAB84E00948DD1 /* BaseRxTableViewCell */,
+				52421F8B24EAB52E00948DD1 /* ContainerTableCell */,
 				72005A1A2266226800ECE090 /* CustomizableButton */,
 				677B06B6211873E7006C947D /* BasePlaceholderView */,
 				67DB77672108714A001CB56B /* CollectionViewWrapperView */,
@@ -2412,6 +2456,7 @@
 				678D26A420692BFF00B05B93 /* TextFieldViewModelEvents.swift in Sources */,
 				671462801EB3396E00EAB194 /* DataRequest+Extensions.swift in Sources */,
 				67EB7FF8206175F700BDD9FB /* PaginationWrappable.swift in Sources */,
+				52421F9624EBCFBB00948DD1 /* BaseTappableViewModel.swift in Sources */,
 				67990AD6213EA6A50040D195 /* ContentLoadingViewModel+Extensions.swift in Sources */,
 				671463541EB3396E00EAB194 /* StaticViewHeightProtocol.swift in Sources */,
 				4CF65D1824DD6C080006B001 /* ButtonHolderView.swift in Sources */,
@@ -2557,8 +2602,10 @@
 				411073AF23466B41002DD9B9 /* UIViewController+PresentFullScreen.swift in Sources */,
 				671462941EB3396E00EAB194 /* CGSize+CGContextSize.swift in Sources */,
 				6741CEA920E2418B00FEC4D9 /* CollectionViewHolder.swift in Sources */,
+				52421F9424EBCFAE00948DD1 /* VoidTappableViewModel.swift in Sources */,
 				67745279206252020024EEEF /* DataLoadingState.swift in Sources */,
 				671463641EB3396E00EAB194 /* ViewHeightProtocol.swift in Sources */,
+				52421F8F24EAB84900948DD1 /* BaseRxTableViewCell.swift in Sources */,
 				67EB7FDA20615D5B00BDD9FB /* ResettableRxCursorDataSource.swift in Sources */,
 				671462481EB3396E00EAB194 /* FixedPageCursor.swift in Sources */,
 				671462C81EB3396E00EAB194 /* String+Localization.swift in Sources */,
@@ -2606,6 +2653,7 @@
 				678D267920691D8200B05B93 /* DataModelFieldBinding.swift in Sources */,
 				72AECC71224A97F100D12E7C /* SearchResultsViewController.swift in Sources */,
 				673CF4342063E29B00C329F6 /* TextWithButtonPlaceholder.swift in Sources */,
+				52421F8D24EAB52E00948DD1 /* ContainerTableCell.swift in Sources */,
 				673CF4222063D90600C329F6 /* DisposeBagHolder.swift in Sources */,
 				67DB776D210871E8001CB56B /* BaseCollectionContentController.swift in Sources */,
 				82B4F8DB223903B800F6708C /* Block.swift in Sources */,
