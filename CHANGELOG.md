@@ -1,5 +1,11 @@
 # Changelog
 
+### 0.9.39
+- **Add**: `Animatable` protocol to TIUIKitCore.
+- **Add**: `ActivityIndicator` protocol to TIUIKitCore.
+- **Add**: `ActivityIndicatorHolder` protocol to TIUIKitCore.
+- **Add**: `TIUIElements` for ui elements.
+
 ### 0.9.38
 - **Add**: `BaseRxTableViewCell` is subclass of `UITableViewCell` class with support `InitializableView` and `DisposeBagHolder` protocols.
 - **Add**: `ContainerTableCell` is container class that provides wrapping any `UIView` into `UITableViewCell`.
