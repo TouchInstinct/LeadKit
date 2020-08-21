@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.9.40
+
+- **Add**: `BaseConfigurableBarButton` subclass of UIBarButton to TIUIKitCore.
+- **Add**: `LabelBarButton` subclass of  `BaseConfigurableBarButton` with wrappedValue of UILabel to TIUIKitCore.
+
 ### 0.9.39
 - **Add**: `Animatable` protocol to TIUIKitCore.
 - **Add**: `ActivityIndicator` protocol to TIUIKitCore.

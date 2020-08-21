@@ -12,6 +12,7 @@ Core UI elements: protocols, views and helpers.
 # Views
 
 - [BaseInitializableView](BaseInitializableView/BaseInitializableView.swift) - UIView conformance to InitializableView.
+- [BaseConfigurableBarButton](BaseConfigurableBarButton/BaseConfigurableBarButton.swift) - UIBarButton generic wrapper subclass, that uses any UIView as it's custom view
 
 # Installation via SPM
 
