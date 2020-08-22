@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.9.40
+- **Add**: `OTPSwiftView` - a fully customizable OTP view..
+- **Add**: `BaseInitializableControl` UIControl conformance to InitializableView..
+
 ### 0.9.39
 - **Add**: `Animatable` protocol to TIUIKitCore.
 - **Add**: `ActivityIndicator` protocol to TIUIKitCore.
