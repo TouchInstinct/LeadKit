@@ -9,11 +9,13 @@ let package = Package(
   products: [
     .library(name: "TITransitions", targets: ["TITransitions"]),
     .library(name: "TIUIKitCore", targets: ["TIUIKitCore"]),
-    .library(name: "TIUIElements", targets: ["TIUIElements"])
+    .library(name: "TIUIElements", targets: ["TIUIElements"]),
+    .library(name: "OTPSwiftView", targets: ["OTPSwiftView"])
   ],
   targets: [
     .target(name: "TITransitions", path: "TITransitions/Sources"),
     .target(name: "TIUIKitCore", path: "TIUIKitCore/Sources"),
-    .target(name: "TIUIElements", dependencies: ["TIUIKitCore"], path: "TIUIElements/Sources")
+    .target(name: "TIUIElements", dependencies: ["TIUIKitCore"], path: "TIUIElements/Sources"),
+    .target(name: "OTPSwiftView", dependencies: ["TIUIKitCore"], path: "OTPSwiftView/Sources")
   ]
 )
