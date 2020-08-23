@@ -32,7 +32,7 @@ open class OTPSwiftView<View: OTPView>: BaseInitializableControl {
     public private(set) var codeStackView = UIStackView()
     public private(set) var textFieldsCollection: [View] = []
     
-    public var onTextEnter: ((String) -> Void)?
+    public var onTextEnter: ValueClosure<String>?
     
     public var code: String {
         get {
@@ -99,28 +99,24 @@ private extension OTPSwiftView {
         }
         
         customSpacing.forEach { [weak self] viewIndex, spacing in
-            guard viewIndex < stackView.arrangedSubviews.count, viewIndex >= 0 else {
+            guard viewIndex < stackView.arrangedSubviews.count, viewIndex >= .zero else {
                 return
             }
             
             self?.set(spacing: spacing,
                       after: stackView.arrangedSubviews[viewIndex],
-                      at: viewIndex,
                       for: stackView)
         }
     }
     
-    func set(spacing: CGFloat,
-             after view: UIView,
-             at index: Int,
-             for stackView: UIStackView) {
+    func set(spacing: CGFloat, after view: UIView, for stackView: UIStackView) {
         stackView.setCustomSpacing(spacing, after: view)
     }
     
     func createTextFields(numberOfFields: Int) -> [View] {
         var textFieldsCollection: [View] = []
         
-        (0..<numberOfFields).forEach { _ in
+        (.zero..<numberOfFields).forEach { _ in
             let textField = View()
             textField.codeTextField.previousTextField = textFieldsCollection.last?.codeTextField
             textFieldsCollection.last?.codeTextField.nextTextField = textField.codeTextField
@@ -132,7 +128,9 @@ private extension OTPSwiftView {
     
     func bindTextFields(with config: OTPCodeConfig) {
         let onTextChangedSignal: VoidClosure = { [weak self] in
-            guard let code = self?.code else { return }
+            guard let code = self?.code else {
+                return
+            }
             
             let correctedCode = code.prefix(config.codeSymbolsCount).string
             self?.onTextEnter?(correctedCode)
