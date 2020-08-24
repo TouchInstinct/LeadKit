@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.40
+- **Fix**: Load more request repetion in `PaginationWrapper`.
+
 ### 0.9.39
 - **Add**: `Animatable` protocol to TIUIKitCore.
 - **Add**: `ActivityIndicator` protocol to TIUIKitCore.
