@@ -7,4 +7,5 @@ This repository contains the following additional frameworks:
 - [TITransitions](TITransitions) - set of custom transitions to present controller.
 - [TIUIElements](TIUIElements) - bunch of of useful protocols and views.
 - [OTPSwiftView](OTPSwiftView) - a fully customizable OTP view.
+- [TISwiftUtils](TISwiftUtils) - a bunch of useful helpers for development.
 
