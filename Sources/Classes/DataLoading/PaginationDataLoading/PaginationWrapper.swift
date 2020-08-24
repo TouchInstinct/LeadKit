@@ -202,7 +202,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
             }
 
             retryView.frame = CGRect(x: 0, y: 0, width: wrappedView.scrollView.bounds.width, height: retryViewHeight)
-
+            
             retryView.button.rx
                 .controlEvent(.touchUpInside)
                 .asObservable()
