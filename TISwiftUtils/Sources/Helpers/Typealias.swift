@@ -22,8 +22,6 @@
 
 import UIKit
 
-public extension UITextField {
-    var unwrappedText: String {
-        text ?? ""
-    }
-}
+public typealias ValueClosure<T> = ((T) -> Void)
+public typealias VoidClosure = (() -> Void)
+public typealias ValidationClosure<T> = ((T) -> Bool)

@@ -21,6 +21,7 @@
 //
 
 import TIUIKitCore
+import TISwiftUtils
 
 /// Base OTP view with textfield for entering a one symbol
 open class OTPView: BaseInitializableView {

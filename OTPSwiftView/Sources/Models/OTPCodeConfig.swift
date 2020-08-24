@@ -24,6 +24,8 @@ import UIKit
 
 /// Base configuration for OTPSwiftView
 open class OTPCodeConfig {
+    public typealias Spacing = [Int: CGFloat]
+    
     public let codeSymbolsCount: Int
     public let spacing: CGFloat
     public let customSpacing: Spacing?

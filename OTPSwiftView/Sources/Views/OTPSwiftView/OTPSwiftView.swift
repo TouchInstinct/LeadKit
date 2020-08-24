@@ -22,11 +22,12 @@
 
 import UIKit
 import TIUIKitCore
+import TISwiftUtils
 
 /// Base full OTP View for entering the verification code
 open class OTPSwiftView<View: OTPView>: BaseInitializableControl {
     private var emptyOTPView: View? {
-        textFieldsCollection.first { $0.codeTextField.unwrappedText.isEmpty } ?? textFieldsCollection.last
+        textFieldsCollection.first { $0.codeTextField.text.orEmpty.isEmpty } ?? textFieldsCollection.last
     }
 
     public private(set) var codeStackView = UIStackView()
@@ -93,19 +94,19 @@ open class OTPSwiftView<View: OTPView>: BaseInitializableControl {
 // MARK: - Configure textfields
 
 private extension OTPSwiftView {
-    func configure(customSpacing: Spacing?, for stackView: UIStackView) {
+    func configure(customSpacing: OTPCodeConfig.Spacing?, for stackView: UIStackView) {
         guard let customSpacing = customSpacing else {
             return
         }
         
-        customSpacing.forEach { [weak self] viewIndex, spacing in
+        customSpacing.forEach { viewIndex, spacing in
             guard viewIndex < stackView.arrangedSubviews.count, viewIndex >= .zero else {
                 return
             }
             
-            self?.set(spacing: spacing,
-                      after: stackView.arrangedSubviews[viewIndex],
-                      for: stackView)
+            self.set(spacing: spacing,
+                     after: stackView.arrangedSubviews[viewIndex],
+                     for: stackView)
         }
     }
     

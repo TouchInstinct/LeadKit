@@ -22,7 +22,8 @@
 
 import UIKit
 
-public typealias Spacing = [Int: CGFloat]
-public typealias ValueClosure<T> = ((T) -> Void)
-public typealias VoidClosure = (() -> Void)
-public typealias ValidationClosure<T> = ((T) -> Bool)
+public extension Optional where Wrapped == String {
+    var orEmpty: String {
+        self ?? ""
+    }
+}

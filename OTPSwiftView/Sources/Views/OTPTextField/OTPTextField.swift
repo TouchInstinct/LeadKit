@@ -21,6 +21,7 @@
 //
 
 import UIKit
+import TISwiftUtils
 
 /// Base one symbol textfield
 open class OTPTextField: UITextField {
@@ -34,7 +35,7 @@ open class OTPTextField: UITextField {
     public var caretHeight: CGFloat?
     
     public var lastNotEmpty: OTPTextField {
-        let isLastNotEmpty = !unwrappedText.isEmpty && nextTextField?.unwrappedText.isEmpty ?? true
+        let isLastNotEmpty = !text.orEmpty.isEmpty && nextTextField?.text.orEmpty.isEmpty ?? true
         return isLastNotEmpty ? self : nextTextField?.lastNotEmpty ?? self
     }
     
@@ -58,7 +59,7 @@ open class OTPTextField: UITextField {
     }
 
     open override func deleteBackward() {
-        guard unwrappedText.isEmpty else {
+        guard text.orEmpty.isEmpty else {
             return
         }
         
@@ -102,14 +103,14 @@ extension OTPTextField: UITextFieldDelegate {
             return true
         }
         
-        let isInputEmpty = textField.unwrappedText.isEmpty && string.isEmpty
+        let isInputEmpty = textField.text.orEmpty.isEmpty && string.isEmpty
         
         guard isInputEmpty || validationClosure?(string) ?? true else {
             return false
         }
         
         switch range.length {
-        case 0:
+        case 0: // set text to textfield
             textField.set(inputText: string)
             
             let currentTextField = textField.lastNotEmpty.nextTextField ?? textField.lastNotEmpty
@@ -118,7 +119,7 @@ extension OTPTextField: UITextFieldDelegate {
             
             return false
             
-        case 1:
+        case 1: // remove character from textfield
             textField.text = ""
             textField.onTextChangedSignal?()
             return false
