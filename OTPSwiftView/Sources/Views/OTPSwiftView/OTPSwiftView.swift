@@ -33,7 +33,7 @@ open class OTPSwiftView<View: OTPView>: BaseInitializableControl {
     public private(set) var codeStackView = UIStackView()
     public private(set) var textFieldsCollection: [View] = []
     
-    public var onTextEnter: ValueClosure<String>?
+    public var onTextEnter: ParameterClosure<String>?
     
     public var code: String {
         get {

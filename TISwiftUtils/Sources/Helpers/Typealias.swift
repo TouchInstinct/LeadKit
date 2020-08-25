@@ -22,6 +22,30 @@
 
 import UIKit
 
-public typealias ValueClosure<T> = ((T) -> Void)
-public typealias VoidClosure = (() -> Void)
-public typealias ValidationClosure<T> = ((T) -> Bool)
+/// Closure with custom arguments and return value.
+public typealias Closure<Input, Output> = (Input) -> Output
+
+/// Closure with no arguments and custom return value.
+public typealias ResultClosure<Output> = () -> Output
+
+/// Closure that takes custom arguments and returns Void.
+public typealias ParameterClosure<Input> = Closure<Input, Void>
+
+// MARK: Throwable versions
+
+/// Closure with custom arguments and return value, may throw an error.
+public typealias ThrowableClosure<Input, Output> = (Input) throws -> Output
+
+/// Closure with no arguments and custom return value, may throw an error.
+public typealias ThrowableResultClosure<Output> = () throws -> Output
+
+/// Closure that takes custom arguments and returns Void, may throw an error.
+public typealias ThrowableParameterClosure<Input> = ThrowableClosure<Input, Void>
+
+// MARK: Concrete closures
+
+/// Closure that takes no arguments and returns Void.
+public typealias VoidClosure = ResultClosure<Void>
+
+/// Closure that takes no arguments, may throw an error and returns Void.
+public typealias ThrowableVoidClosure = () throws -> Void

@@ -31,7 +31,7 @@ open class OTPTextField: UITextField {
     public weak var nextTextField: OTPTextField?
     
     public var onTextChangedSignal: VoidClosure?
-    public var validationClosure: ValidationClosure<String>?
+    public var validationClosure: Closure<String, Bool>?
     public var caretHeight: CGFloat?
     
     public var lastNotEmpty: OTPTextField {
