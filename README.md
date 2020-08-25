@@ -6,4 +6,6 @@ This repository contains the following additional frameworks:
 - [TIUIKitCore](TIUIKitCore) - core ui elements and protocols from LeadKit.
 - [TITransitions](TITransitions) - set of custom transitions to present controller.
 - [TIUIElements](TIUIElements) - bunch of of useful protocols and views.
+- [OTPSwiftView](OTPSwiftView) - a fully customizable OTP view.
+- [TISwiftUtils](TISwiftUtils) - a bunch of useful helpers for development.
 

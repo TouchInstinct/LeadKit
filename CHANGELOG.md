@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.9.41
+- **Add**: `OTPSwiftView` - a fully customizable OTP view.
+- **Add**: `BaseInitializableControl` UIControl conformance to InitializableView.
+- **Add**: `TISwiftUtils` a bunch of useful helpers for development.
+
 ### 0.9.40
 - **Fix**: Load more request repetion in `PaginationWrapper`.
 
