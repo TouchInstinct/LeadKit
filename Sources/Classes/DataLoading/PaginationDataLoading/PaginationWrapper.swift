@@ -171,7 +171,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
             delegate?.paginationWrapper(didLoad: newItems, using: cursor)
 
             removeAllPlaceholderView()
-            readInfiniteScrollWithHandler()
+            addInfiniteScrollWithHandler()
         }
     }
 
@@ -273,7 +273,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
         removeAllPlaceholderView()
     }
 
-    private func readInfiniteScrollWithHandler() {
+    private func addInfiniteScrollWithHandler() {
         removeInfiniteScroll()
         addInfiniteScroll(withHandler: true)
     }
