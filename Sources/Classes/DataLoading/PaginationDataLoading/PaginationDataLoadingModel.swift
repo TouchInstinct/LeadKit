@@ -67,9 +67,7 @@ public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCurs
             state = .loadingMore(after: state)
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in // to complete load more indicator view animation
-            self?.requestData()
-        }
+        requestResult(from: dataSource)
     }
 
     override func onGot(error: Error) {
@@ -90,9 +88,5 @@ public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCurs
         if dataSource.exhausted {
             state = .exhausted
         }
-    }
-
-    private func requestData() {
-        requestResult(from: dataSource)
     }
 }
