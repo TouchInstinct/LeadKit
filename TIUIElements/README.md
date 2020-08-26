@@ -1,6 +1,8 @@
 # TIUIElements
 
-Bunch of useful protocols and views.
+Bunch of useful protocols and views:
+
+- RefreshControl - a basic UIRefreshControl with fixed refresh action.
 
 # Installation via SPM
 
