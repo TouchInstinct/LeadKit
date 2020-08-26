@@ -303,7 +303,11 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
     }
 
     @objc private func refreshAction() {
-        reload()
+        // it is implemented the combined behavior of `touchUpInside` and `touchUpOutside` using `CFRunLoopPerformBlock`,
+        // which `UIRefreshControl` does not support
+        CFRunLoopPerformBlock(CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue) { [weak self] in
+            self?.reload()
+        }
     }
 
     private func removeRefreshControl() {
