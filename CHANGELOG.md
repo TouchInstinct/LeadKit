@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.42
+- **Fix**: Logic bugs of `PaginationWrapper`.
+
 ### 0.9.41
 - **Add**: `OTPSwiftView` - a fully customizable OTP view.
 - **Add**: `BaseInitializableControl` UIControl conformance to InitializableView.
