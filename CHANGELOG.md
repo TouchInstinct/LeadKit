@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.43
+- **Add**:  `RefreshControl` - a basic UIRefreshControl with fixed refresh action.
+
 ### 0.9.42
 - **Fix**: Logic bugs of `PaginationWrapper`.
 

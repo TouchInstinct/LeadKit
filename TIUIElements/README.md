@@ -2,7 +2,7 @@
 
 Bunch of useful protocols and views:
 
-- RefreshControl - a basic UIRefreshControl with fixed refresh action.
+- `RefreshControl` - a basic UIRefreshControl with fixed refresh action.
 
 # Installation via SPM
 
