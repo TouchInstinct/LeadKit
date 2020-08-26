@@ -32,7 +32,13 @@ open class RefreshControl: UIRefreshControl {
             performRefreshAction()
         }
     }
-
+    
+    open override func endRefreshing() {
+        CFRunLoopPerformBlock(CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue) {
+            super.endRefreshing()
+        }
+    }    
+    
     private func performRefreshAction() {
         CFRunLoopPerformBlock(CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue) { [weak self] in
             guard let action = self?.action else {
