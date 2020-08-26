@@ -69,8 +69,6 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
     private var currentPlaceholderView: UIView?
     private var currentPlaceholderViewTopConstraint: NSLayoutConstraint?
 
-    private let applicationCurrentlyActive = BehaviorRelay(value: true)
-
     /// Initializer with table view, placeholders container view, cusor and delegate parameters.
     ///
     /// - Parameters:
