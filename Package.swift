@@ -18,6 +18,6 @@ let package = Package(
     .target(name: "TIUIKitCore", path: "TIUIKitCore/Sources"),
     .target(name: "TISwiftUtils", path: "TISwiftUtils/Sources"),
     .target(name: "TIUIElements", dependencies: ["TIUIKitCore"], path: "TIUIElements/Sources"),
-    .target(name: "OTPSwiftView", dependencies: ["TIUIKitCore"], path: "OTPSwiftView/Sources")
+    .target(name: "OTPSwiftView", dependencies: ["TIUIKitCore", "TISwiftUtils"], path: "OTPSwiftView/Sources")
   ]
 )

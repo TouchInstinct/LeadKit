@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.43
+- **Fix**: `OTPSwiftView`'s dependencies.
+
 ### 0.9.42
 - **Fix**: Logic bugs of `PaginationWrapper`.
 
