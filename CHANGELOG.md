@@ -12,10 +12,8 @@
 #### TIFoundationUtils
 - **Add**: `CodableKeyValueStorage` - storage that can get and set codable objects by the key.
 
-
 ### 0.9.43
 - **Fix**: `OTPSwiftView`'s dependencies.
->>>>>>> master
 
 ### 0.9.42
 - **Fix**: Logic bugs of `PaginationWrapper`.
