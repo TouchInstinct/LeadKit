@@ -24,7 +24,7 @@ import UIKit
 
 /// Layoutless placeholder view. This class is used as views holder & configurator.
 /// You should inherit it and implement layout.
-open class BasePlaceholderView: UIView, InitializableView {
+open class BasePlaceholderView: ButtonHolderView, InitializableView {
 
     /// Title label of placeholder view.
     public let titleLabel = UILabel()

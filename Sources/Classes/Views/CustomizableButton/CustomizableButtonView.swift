@@ -51,13 +51,15 @@ public struct CustomizableButtonState: OptionSet {
 }
 
 /// container class that acts like a button and provides great customization
-open class CustomizableButtonView: UIView, InitializableView {
+open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
 
     // MARK: - Stored Properties
 
-    private let disposeBag = DisposeBag()
+    public private(set) var disposeBag = DisposeBag()
+
     private let button = CustomizableButton()
-    public var tapOnDisabledButton: VoidBlock?
+
+    open var tapOnDisabledButton: VoidBlock?
 
     public var shadowView = UIView() {
         willSet {
@@ -71,9 +73,7 @@ open class CustomizableButtonView: UIView, InitializableView {
 
     public var spinnerView: Spinner? {
         willSet {
-            if newValue == nil {
-                removeSpinner()
-            }
+            removeSpinner()
         }
         didSet {
             if spinnerView != nil {
@@ -89,7 +89,12 @@ open class CustomizableButtonView: UIView, InitializableView {
         }
     }
 
-    public var buttonIsDisabledWhileLoading = false
+    public var buttonTitle: String = "" {
+        willSet {
+            button.text = newValue
+        }
+    }
+
     public var hidesLabelWhenLoading = false
 
     // MARK: - Computed Properties
@@ -138,8 +143,6 @@ open class CustomizableButtonView: UIView, InitializableView {
     }
 
     private func set(active: Bool) {
-        button.isEnabled = buttonIsDisabledWhileLoading || !active
-
         if hidesLabelWhenLoading {
             button.titleLabel?.layer.opacity = active ? 0 : 1
         }
@@ -172,6 +175,7 @@ open class CustomizableButtonView: UIView, InitializableView {
     private func configureConstraints() {
         button.pinToSuperview(with: appearance.buttonInsets)
         configureShadowViewConstraints()
+        layoutIfNeeded()
     }
 
     private func configureSpinnerConstraints() {
@@ -208,20 +212,20 @@ open class CustomizableButtonView: UIView, InitializableView {
     }
 
     private func configureShadowViewConstraints() {
-        shadowView.constaintToEdges(of: button, with: .zero)
+        shadowView.constraintToEdges(of: button, with: .zero)
     }
 
     // MARK: - Initializable View
 
-    public func addViews() {
+    open func addViews() {
         addSubviews(shadowView, button)
     }
 
-    public func configureAppearance() {
+    open func configureAppearance() {
         button.titleLabel?.numberOfLines = appearance.numberOfLines
         button.titleLabel?.font = appearance.buttonFont
+        button.alpha = appearance.alpha
 
-        button.set(titles: appearance.buttonStateTitles)
         button.set(attributtedTitles: appearance.buttonStateAttributtedTitles)
         button.set(titleColors: appearance.buttonTitleStateColors)
         button.set(images: appearance.buttonStateIcons)
@@ -239,28 +243,15 @@ open class CustomizableButtonView: UIView, InitializableView {
             button.layer.cornerRadius = 0
         }
 
-        button.titleLabel?.isHidden = true
+        setNeedsDisplay()
     }
-}
 
-private extension UIView {
-    func constaintToEdges(of view: UIView, with offset: UIEdgeInsets) {
-        translatesAutoresizingMaskIntoConstraints = false
-        let constraints = [
-            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: offset.left),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: offset.right),
-            topAnchor.constraint(equalTo: view.topAnchor, constant: offset.top),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: offset.bottom)
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
-}
-
-extension CustomizableButtonView: ConfigurableView {
-    public func configure(with viewModel: CustomizableButtonViewModel) {
+    open func configure(with viewModel: CustomizableButtonViewModel) {
+        disposeBag = DisposeBag()
         viewModel.stateDriver.drive(stateBinder).disposed(by: disposeBag)
         viewModel.bind(tapObservable: tapObservable).disposed(by: disposeBag)
 
+        button.text = viewModel.buttonTitle
         appearance = viewModel.appearance
     }
 
@@ -276,34 +267,43 @@ extension CustomizableButtonView: ConfigurableView {
     }
 
     open func configureButton(withState state: CustomizableButtonState) {
-        button.isEnabled = state.contains(.enabled) && !state.contains(.disabled)
+        button.isEnabled = ![.disabled, .loading].contains(state)
+        isUserInteractionEnabled = button.isEnabled
         button.isHighlighted = state.contains(.highlighted) && !state.contains(.normal)
         set(active: state.contains(.loading))
+        setNeedsDisplay()
+    }
+}
+
+private extension UIView {
+    func constraintToEdges(of view: UIView, with offset: UIEdgeInsets) {
+        translatesAutoresizingMaskIntoConstraints = false
+        let constraints = [
+            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: offset.left),
+            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: offset.right),
+            topAnchor.constraint(equalTo: view.topAnchor, constant: offset.top),
+            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: offset.bottom)
+        ]
+        NSLayoutConstraint.activate(constraints)
     }
 }
 
 public extension CustomizableButtonView {
     struct Appearance {
 
-        var buttonFont: UIFont
-
-        var buttonStateTitles: [UIControl.State: String]
-        var buttonStateAttributtedTitles: [UIControl.State: NSAttributedString]
-        var buttonTitleStateColors: [UIControl.State: UIColor]
-        var buttonBackgroundStateColors: [UIControl.State: UIColor]
-        var buttonStateIcons: [UIControl.State: UIImage]
-
-        var buttonIconOffset: UIOffset
-        var buttonInsets: UIEdgeInsets
-
-        var buttonCornerRadius: CGFloat?
-
-        var spinnerPosition: SpinnerPosition
-
-        var numberOfLines: Int
+        public var buttonFont: UIFont
+        public var buttonStateAttributtedTitles: [UIControl.State: NSAttributedString]
+        public var buttonTitleStateColors: [UIControl.State: UIColor]
+        public var buttonBackgroundStateColors: [UIControl.State: UIColor]
+        public var buttonStateIcons: [UIControl.State: UIImage]
+        public var buttonIconOffset: UIOffset
+        public var buttonInsets: UIEdgeInsets
+        public var buttonCornerRadius: CGFloat?
+        public var spinnerPosition: SpinnerPosition
+        public var numberOfLines: Int
+        public var alpha: CGFloat
 
         public init(buttonFont: UIFont = .systemFont(ofSize: 15),
-                    buttonStateTitles: [UIControl.State: String] = [:],
                     buttonStateAttributtedTitles: [UIControl.State: NSAttributedString] = [:],
                     buttonTitleStateColors: [UIControl.State: UIColor] = [:],
                     buttonBackgroundStateColors: [UIControl.State: UIColor] = [:],
@@ -312,24 +312,20 @@ public extension CustomizableButtonView {
                     buttonInsets: UIEdgeInsets = .zero,
                     buttonCornerRadius: CGFloat? = nil,
                     spinnerPosition: SpinnerPosition = .center,
-                    numberOfLines: Int = 0) {
+                    numberOfLines: Int = 0,
+                    alpha: CGFloat = 1) {
 
             self.buttonFont = buttonFont
-
-            self.buttonStateTitles = buttonStateTitles
             self.buttonStateAttributtedTitles = buttonStateAttributtedTitles
             self.buttonTitleStateColors = buttonTitleStateColors
             self.buttonBackgroundStateColors = buttonBackgroundStateColors
             self.buttonStateIcons = buttonStateIcons
-
             self.buttonIconOffset = buttonIconOffset
             self.buttonInsets = buttonInsets
-
             self.buttonCornerRadius = buttonCornerRadius
-
             self.spinnerPosition = spinnerPosition
-
             self.numberOfLines = numberOfLines
+            self.alpha = alpha
         }
     }
 

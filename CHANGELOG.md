@@ -1,5 +1,59 @@
 # Changelog
 
+### 0.9.43
+- **Fix**: `OTPSwiftView`'s dependencies.
+
+### 0.9.42
+- **Fix**: Logic bugs of `PaginationWrapper`.
+
+### 0.9.41
+- **Add**: `OTPSwiftView` - a fully customizable OTP view.
+- **Add**: `BaseInitializableControl` UIControl conformance to InitializableView.
+- **Add**: `TISwiftUtils` a bunch of useful helpers for development.
+
+### 0.9.40
+- **Fix**: Load more request repetion in `PaginationWrapper`.
+
+### 0.9.39
+- **Add**: `Animatable` protocol to TIUIKitCore.
+- **Add**: `ActivityIndicator` protocol to TIUIKitCore.
+- **Add**: `ActivityIndicatorHolder` protocol to TIUIKitCore.
+- **Add**: `TIUIElements` for ui elements.
+
+### 0.9.38
+- **Add**: `BaseRxTableViewCell` is subclass of `UITableViewCell` class with support `InitializableView` and `DisposeBagHolder` protocols.
+- **Add**: `ContainerTableCell` is container class that provides wrapping any `UIView` into `UITableViewCell`.
+- **Add**: `BaseTappableViewModel` is simplifies interaction between view and viewModel for events of tapping.
+- **Add**: `VoidTappableViewModel` is subclass of `BaseTappableViewModel` class with void payload type.
+
+### 0.9.37
+- **Fix**: ScrollView content offset of `PaginationWrapper` for iOS 13.
+- **Fix**: Load more request crash of `PaginationWrapper`.
+
+### 0.9.36
+- **Add**: SPM Package.swift.
+- **Add**: TITransitions via SPM.
+- **Add**: TIUIKitCore via SPM.
+- **Update**: Readme.
+
+### 0.9.35
+- **Add**: Selector `refreshAction()` for refresh control of `PaginationWrapper`.
+
+### 0.9.34
+- **Add**: `ButtonHolder` - protocol that contains button property.
+- **Add**: `ButtonHolderView` - view which contains button.
+- **Add**: Conformance `UIButton` to `ButtonHolder`.
+- **Add**: Conformance `BasePlaceholderView` to `ButtonHolderView`.
+- **[Breaking change]**: Replace functions `footerRetryButton() -> UIButton?` to `footerRetryView() -> ButtonHolderView?` and `footerRetryButtonHeight() -> CGFloat` to `footerRetryViewHeight() -> CGFloat` for `PaginationWrapperUIDelegate`. 
+- **[Breaking change]**: Replace functions `footerRetryButtonWillAppear()` to `footerRetryViewWillAppear()` and `footerRetryButtonWillDisappear()` to `footerRetryViewWillDisappear()` for `PaginationWrapperUIDelegate`. 
+
+### 0.9.33
+- **Fix**: `CustomizableButtonView` container class that provides great customization.
+- **Fix**: `CustomizableButtonViewModel` viewModel class for `CustomizableButtonView` configuration.
+
+### 0.9.32
+- **Fix**: `CustomizableButtonView` container class that provides great customization.
+
 ### 0.9.31
 - **Add**: `@discardableResult` to function - `replace(with:at:with:manualBeginEndUpdates)` in `TableDirector`.
 

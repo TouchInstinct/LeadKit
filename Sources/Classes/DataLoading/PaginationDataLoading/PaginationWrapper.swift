@@ -60,12 +60,14 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
         }
     }
 
+    private var bottom: CGFloat {
+        wrappedView.scrollView.contentSize.height - wrappedView.scrollView.frame.size.height
+    }
+
     private let disposeBag = DisposeBag()
 
     private var currentPlaceholderView: UIView?
     private var currentPlaceholderViewTopConstraint: NSLayoutConstraint?
-
-    private let applicationCurrentyActive = BehaviorRelay(value: true)
 
     /// Initializer with table view, placeholders container view, cusor and delegate parameters.
     ///
@@ -87,8 +89,6 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
         bindViewModelStates()
 
         createRefreshControl()
-
-        bindAppStateNotifications()
     }
 
     /// Method that reload all data in internal view model.
@@ -121,7 +121,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
         if case .initial = afterState {
             wrappedView.scrollView.isUserInteractionEnabled = false
 
-            removeCurrentPlaceholderView()
+            removeAllPlaceholderView()
 
             guard let loadingIndicator = uiDelegate?.initialLoadingIndicator() else {
                 return
@@ -144,7 +144,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
     private func onLoadingMoreState(afterState: LoadingState) {
         if case .error = afterState { // user tap retry button in table footer
-            uiDelegate?.footerRetryButtonWillDisappear()
+            uiDelegate?.footerRetryViewWillDisappear()
             wrappedView.footerView = nil
             addInfiniteScroll(withHandler: false)
             wrappedView.scrollView.beginInfiniteScroll(true)
@@ -160,7 +160,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
         if case .initialLoading = afterState {
             delegate?.paginationWrapper(didReload: newItems, using: cursor)
 
-            removeCurrentPlaceholderView()
+            removeAllPlaceholderView()
 
             wrappedView.scrollView.support.refreshControl?.endRefreshing()
 
@@ -168,7 +168,8 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
         } else if case .loadingMore = afterState {
             delegate?.paginationWrapper(didLoad: newItems, using: cursor)
 
-            readdInfiniteScrollWithHandler()
+            removeAllPlaceholderView()
+            addInfiniteScrollWithHandler()
         }
     }
 
@@ -186,33 +187,37 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
             }
 
             replacePlaceholderViewIfNeeded(with: errorView)
-        } else if case .loadingMore = afterState {
-            guard let retryButton = uiDelegate?.footerRetryButton(),
-                let retryButtonHeight = uiDelegate?.footerRetryButtonHeight() else {
-
+        } else {
+            guard let retryView = uiDelegate?.footerRetryView(),
+                let retryViewHeight = uiDelegate?.footerRetryViewHeight() else {
                     removeInfiniteScroll()
-
                     return
             }
 
-            retryButton.frame = CGRect(x: 0, y: 0, width: wrappedView.scrollView.bounds.width, height: retryButtonHeight)
+            retryView.frame = CGRect(x: 0, y: 0, width: wrappedView.scrollView.bounds.width, height: retryViewHeight)
+            retryView.button.addTarget(self, action: #selector(retryEvent), for: .touchUpInside)
 
-            retryButton.rx
-                .controlEvent(.touchUpInside)
-                .asDriver()
-                .drive(retryEvent)
-                .disposed(by: disposeBag)
-
-            uiDelegate?.footerRetryButtonWillAppear()
+            uiDelegate?.footerRetryViewWillAppear()
 
             removeInfiniteScroll { scrollView in
-                self.wrappedView.footerView = retryButton
+                self.wrappedView.footerView = retryView
 
-                let newContentOffset = CGPoint(x: 0, y: scrollView.contentOffset.y + retryButtonHeight)
+                let shouldUpdateContentOffset = Int(scrollView.contentOffset.y + retryViewHeight) >= Int(self.bottom)
 
-                scrollView.setContentOffset(newContentOffset, animated: true)
+                if shouldUpdateContentOffset {
+                    let newContentOffset = CGPoint(x: 0, y: scrollView.contentOffset.y + retryViewHeight)
+                    scrollView.setContentOffset(newContentOffset, animated: true)
+
+                    if #available(iOS 13, *) {
+                        scrollView.setContentOffset(newContentOffset, animated: true)
+                    }
+                }
             }
         }
+    }
+
+    @objc private func retryEvent() {
+        paginationViewModel.loadMore()
     }
 
     private func onEmptyState() {
@@ -231,7 +236,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
     private func replacePlaceholderViewIfNeeded(with placeholderView: UIView) {
         wrappedView.scrollView.isUserInteractionEnabled = true
-        removeCurrentPlaceholderView()
+        removeAllPlaceholderView()
 
         placeholderView.translatesAutoresizingMaskIntoConstraints = false
         placeholderView.isHidden = false
@@ -263,9 +268,10 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
     private func onExhaustedState() {
         removeInfiniteScroll()
+        removeAllPlaceholderView()
     }
 
-    private func readdInfiniteScrollWithHandler() {
+    private func addInfiniteScrollWithHandler() {
         removeInfiniteScroll()
         addInfiniteScroll(withHandler: true)
     }
@@ -289,13 +295,17 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
     private func createRefreshControl() {
         let refreshControl = UIRefreshControl()
-        refreshControl.rx
-            .controlEvent(.valueChanged)
-            .asDriver()
-            .drive(reloadEvent)
-            .disposed(by: disposeBag)
+        refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
 
         wrappedView.scrollView.support.setRefreshControl(refreshControl)
+    }
+
+    @objc private func refreshAction() {
+        // it is implemented the combined behavior of `touchUpInside` and `touchUpOutside` using `CFRunLoopPerformBlock`,
+        // which `UIRefreshControl` does not support
+        CFRunLoopPerformBlock(CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue) { [weak self] in
+            self?.reload()
+        }
     }
 
     private func removeRefreshControl() {
@@ -304,40 +314,13 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
     private func bindViewModelStates() {
         paginationViewModel.stateDriver
-            .flatMap { [applicationCurrentyActive] state -> Driver<LoadingState> in
-                if applicationCurrentyActive.value {
-                    return .just(state)
-                } else {
-                    return applicationCurrentyActive
-                        .asObservable()
-                        .filter { $0 }
-                        .delay(0.5, scheduler: MainScheduler.instance)
-                        .asDriver(onErrorJustReturn: true)
-                        .replace(with: state)
-                }
-            }
             .drive(stateChanged)
             .disposed(by: disposeBag)
     }
 
-    private func removeCurrentPlaceholderView() {
+    private func removeAllPlaceholderView() {
         wrappedView.backgroundView = nil
-    }
-
-    private func bindAppStateNotifications() {
-        let notificationCenter = NotificationCenter.default.rx
-
-        notificationCenter.notification(UIApplication.willResignActiveNotification)
-            .replace(with: false)
-            .asDriver(onErrorJustReturn: false)
-            .drive(applicationCurrentyActive)
-            .disposed(by: disposeBag)
-
-        notificationCenter.notification(UIApplication.didBecomeActiveNotification)
-            .replace(with: true)
-            .asDriver(onErrorJustReturn: true)
-            .drive(applicationCurrentyActive)
-            .disposed(by: disposeBag)
+        wrappedView.footerView = nil
     }
 }
 
@@ -349,10 +332,10 @@ private extension PaginationWrapper {
             case .initial:
                 base.onInitialState()
 
-            case .initialLoading(let after):
+            case let .initialLoading(after):
                 base.onLoadingState(afterState: after)
 
-            case .loadingMore(let after):
+            case let .loadingMore(after):
                 base.onLoadingMoreState(afterState: after)
 
             case let .results(newItems, from, after):
@@ -367,18 +350,6 @@ private extension PaginationWrapper {
             case .exhausted:
                 base.onExhaustedState()
             }
-        }
-    }
-
-    var retryEvent: Binder<Void> {
-        return Binder(self) { base, _ in
-            base.paginationViewModel.loadMore()
-        }
-    }
-
-    var reloadEvent: Binder<Void> {
-        return Binder(self) { base, _ in
-            base.reload()
         }
     }
 
