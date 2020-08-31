@@ -1,7 +1,21 @@
 # Changelog
 
-### 0.9.43
+### 0.9.45
 - **Add**:  `RefreshControl` - a basic UIRefreshControl with fixed refresh action.
+
+### 0.9.44
+- **Add**: `TIFoundationUtils` - set of helpers for Foundation framework classes.
+
+#### TISwiftUtils
+- **Add**: `BackingStore` - a property wrapper that wraps storage and defines getter and setter for accessing value from it.
+
+#### TIFoundationUtils
+- **Add**: `CodableKeyValueStorage` - storage that can get and set codable objects by the key.
+
+
+### 0.9.43
+- **Fix**: `OTPSwiftView`'s dependencies.
+>>>>>>> master
 
 ### 0.9.42
 - **Fix**: Logic bugs of `PaginationWrapper`.
