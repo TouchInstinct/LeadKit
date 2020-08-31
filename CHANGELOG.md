@@ -1,7 +1,7 @@
 # Changelog
 
 ### 0.9.45
-- **Add**:  `RefreshControl` - a basic UIRefreshControl with fixed refresh action.
+- **Add**: `RefreshControl` - a basic UIRefreshControl with fixed refresh action.
 
 ### 0.9.44
 - **Add**: `TIFoundationUtils` - set of helpers for Foundation framework classes.
