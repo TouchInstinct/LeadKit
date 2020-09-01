@@ -5,6 +5,16 @@
 - **Refactored**: NetworkManager to use new Alamofire API
 - **API BreakingChanges**: NetworkServiceConfiguration no longer accepts `ServerTrustPolicy`, it is now replaced by an instance of a `ServerTrustEvaluating` protocol. Full description and default implementations can be found at Alamofire [sources](https://github.com/Alamofire/Alamofire/blob/master/Source/ServerTrustEvaluation.swift). Since new evaluation is used, evaluation against self-signed certificates will now throw an AfError and abort any outcoming request. To support self-signed certificates use `DisabledTrustEvaluator` for specified host in configuration.
 
+### 0.9.44
+- **Add**: `TIFoundationUtils` - set of helpers for Foundation framework classes.
+
+#### TISwiftUtils
+- **Add**: `BackingStore` - a property wrapper that wraps storage and defines getter and setter for accessing value from it.
+
+#### TIFoundationUtils
+- **Add**: `CodableKeyValueStorage` - storage that can get and set codable objects by the key.
+
+
 ### 0.9.43
 - **Fix**: `OTPSwiftView`'s dependencies.
 
