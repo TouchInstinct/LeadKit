@@ -45,12 +45,8 @@ open class RefreshControl: UIRefreshControl {
     private func performRefreshAction() {
         // It is implemented the combined behavior of `touchUpInside` and `touchUpOutside` using `CFRunLoopPerformBlock`,
         // which `UIRefreshControl` does not support
-        CFRunLoopPerformBlock(CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue) { [weak self] in
-            guard let action = self?.action else {
-                return
-            }
-
-            self?.target?.perform(action)
+        CFRunLoopPerformBlock(CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue) {
+            self.target?.perform(self.action)
         }
     }
 }
