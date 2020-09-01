@@ -25,23 +25,10 @@ import UIKit
 public extension Support where Base: UIScrollView {
 
     var refreshControl: UIRefreshControl? {
-        if #available(iOS 10.0, *) {
-            return base.refreshControl
-        } else {
-            return base.subviews.first { $0 is UIRefreshControl } as? UIRefreshControl
-        }
+        return base.refreshControl
     }
 
     func setRefreshControl(_ newRefreshControl: UIRefreshControl?) {
-        if #available(iOS 10.0, *) {
-            base.refreshControl = newRefreshControl
-        } else {
-            if let newControl = newRefreshControl {
-                refreshControl?.removeFromSuperview()
-                base.addSubview(newControl)
-            } else {
-                refreshControl?.removeFromSuperview()
-            }
-        }
+        base.refreshControl = newRefreshControl
     }
 }

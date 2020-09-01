@@ -48,15 +48,13 @@ open class SessionManager: Alamofire.Session {
         let delegate = SessionDelegate()
         
         let delegateQueue = OperationQueue()
-
-        let queue = DispatchQueue(label: "org.alamofire.session.rootQueue")
-        delegateQueue.underlyingQueue = queue
+        delegateQueue.underlyingQueue = mappingQueue
 
         let session = URLSession(configuration: configuration, delegate: delegate, delegateQueue: delegateQueue)
 
         super.init(session: session,
                    delegate: delegate,
-                   rootQueue: queue,
+                   rootQueue: mappingQueue,
                    serverTrustManager: serverTrustManager)
     }
 
@@ -68,13 +66,12 @@ open class SessionManager: Alamofire.Session {
 
         self.acceptableStatusCodes = acceptableStatusCodes
         self.mappingQueue = mappingQueue
-        
-        let queue = DispatchQueue(label: "org.alamofire.session.rootQueue")
-        session.delegateQueue.underlyingQueue = queue
+
+        session.delegateQueue.underlyingQueue = mappingQueue
 
         super.init(session: session,
                    delegate: delegate,
-                   rootQueue: queue,
+                   rootQueue: mappingQueue,
                    serverTrustManager: serverTrustManager)
     }
 }
