@@ -58,11 +58,11 @@ open class SessionManager: Alamofire.Session {
                    serverTrustManager: serverTrustManager)
     }
 
-    public init?(session: URLSession,
-                 delegate: SessionDelegate,
-                 serverTrustManager: ServerTrustManager,
-                 acceptableStatusCodes: Set<Int>,
-                 mappingQueue: DispatchQueue) {
+    public init(session: URLSession,
+                delegate: SessionDelegate,
+                serverTrustManager: ServerTrustManager,
+                acceptableStatusCodes: Set<Int>,
+                mappingQueue: DispatchQueue) {
 
         self.acceptableStatusCodes = acceptableStatusCodes
         self.mappingQueue = mappingQueue
