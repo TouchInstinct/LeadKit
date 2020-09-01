@@ -60,9 +60,7 @@ public struct NetworkServiceConfiguration {
         sessionConfiguration.timeoutIntervalForResource = timeoutInterval
         sessionConfiguration.httpAdditionalHeaders = additionalHttpHeaders
 
-        let updatedPolicies = Dictionary(uniqueKeysWithValues: trustPolicies.map { ($0.key.asHost, $0.value) })
-        print(baseUrl.asHost)
-        serverTrustPolicies = trustPolicies.isEmpty ? ["touchin.ru": DisabledTrustEvaluator()] : updatedPolicies
+        serverTrustPolicies = Dictionary(uniqueKeysWithValues: trustPolicies.map { ($0.key.asHost, $0.value) })
     }
 }
 
@@ -71,7 +69,8 @@ public extension NetworkServiceConfiguration {
     /// SessionManager constructed with given parameters (session configuration and trust policies)
     var sessionManager: SessionManager {
         return SessionManager(configuration: sessionConfiguration,
-                              serverTrustManager: ServerTrustManager(evaluators: serverTrustPolicies),
+                              serverTrustManager: ServerTrustManager(allHostsMustBeEvaluated: !serverTrustPolicies.isEmpty,
+                                                                     evaluators: serverTrustPolicies),
                               acceptableStatusCodes: acceptableStatusCodes,
                               mappingQueue: .global())
     }

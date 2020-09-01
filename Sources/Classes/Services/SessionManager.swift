@@ -48,9 +48,8 @@ open class SessionManager: Alamofire.Session {
         let delegate = SessionDelegate()
         
         let delegateQueue = OperationQueue()
-        
+
         let queue = DispatchQueue(label: "org.alamofire.session.rootQueue")
-        
         delegateQueue.underlyingQueue = queue
 
         let session = URLSession(configuration: configuration, delegate: delegate, delegateQueue: delegateQueue)
@@ -71,7 +70,6 @@ open class SessionManager: Alamofire.Session {
         self.mappingQueue = mappingQueue
         
         let queue = DispatchQueue(label: "org.alamofire.session.rootQueue")
-        
         session.delegateQueue.underlyingQueue = queue
 
         super.init(session: session,
