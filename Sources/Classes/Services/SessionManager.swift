@@ -44,9 +44,9 @@ open class SessionManager: Alamofire.Session {
 
         self.acceptableStatusCodes = acceptableStatusCodes
         self.mappingQueue = mappingQueue
-        
+
         let delegate = SessionDelegate()
-        
+
         let delegateQueue = OperationQueue()
         delegateQueue.underlyingQueue = mappingQueue
 

@@ -162,7 +162,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
             removeAllPlaceholderView()
 
-            wrappedView.scrollView.support.refreshControl?.endRefreshing()
+            wrappedView.scrollView.refreshControl?.endRefreshing()
 
             addInfiniteScroll(withHandler: true)
         } else if case .loadingMore = afterState {
@@ -176,7 +176,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
     private func onErrorState(error: Error, afterState: LoadingState) {
         if case .initialLoading = afterState {
             defer {
-                wrappedView.scrollView.support.refreshControl?.endRefreshing()
+                wrappedView.scrollView.refreshControl?.endRefreshing()
             }
 
             delegate?.clearData()
@@ -222,7 +222,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 
     private func onEmptyState() {
         defer {
-            wrappedView.scrollView.support.refreshControl?.endRefreshing()
+            wrappedView.scrollView.refreshControl?.endRefreshing()
         }
 
         delegate?.clearData()
@@ -297,7 +297,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
 
-        wrappedView.scrollView.support.setRefreshControl(refreshControl)
+        wrappedView.scrollView.refreshControl = refreshControl
     }
 
     @objc private func refreshAction() {
@@ -309,7 +309,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
     }
 
     private func removeRefreshControl() {
-        wrappedView.scrollView.support.setRefreshControl(nil)
+        wrappedView.scrollView.refreshControl = nil
     }
 
     private func bindViewModelStates() {
