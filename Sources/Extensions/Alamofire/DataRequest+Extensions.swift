@@ -70,25 +70,25 @@ public extension Reactive where Base: DataRequest {
     }
 
     private func response(onQueue queue: DispatchQueue) -> Observable<(HTTPURLResponse, Data)> {
-        return responseResult(queue: queue, responseSerializer: DataRequest.dataResponseSerializer())
+        return responseResult(queue: queue, responseSerializer: DataResponseSerializer())
     }
 }
 
-public extension ObservableType where E == DataRequest {
+public extension ObservableType where Element == DataRequest {
 
     /// Method that validates status codes and catch network errors
     ///
     /// - Parameter statusCodes: set of status codes to validate
     /// - Returns: Observable on self
-    func validate(statusCodes: Set<Int>) -> Observable<E> {
+    func validate(statusCodes: Set<Int>) -> Observable<Element> {
         return map { $0.validate(statusCode: statusCodes) }
             .catchAsRequestError()
     }
 }
 
-private extension ObservableType where E == ServerResponse {
+private extension ObservableType where Element == ServerResponse {
 
-    func tryMapResult<R>(_ transform: @escaping (E) throws -> R) -> Observable<R> {
+    func tryMapResult<R>(_ transform: @escaping (Element) throws -> R) -> Observable<R> {
         return map {
             do {
                 return try transform($0)
@@ -98,7 +98,7 @@ private extension ObservableType where E == ServerResponse {
         }
     }
 
-    func tryMapObservableResult<R>(_ transform: @escaping (E) throws -> Observable<R>) -> Observable<R> {
+    func tryMapObservableResult<R>(_ transform: @escaping (Element) throws -> Observable<R>) -> Observable<R> {
         return flatMap { response, result -> Observable<R> in
             do {
                 return try transform((response, result))
@@ -114,10 +114,10 @@ private extension ObservableType where E == ServerResponse {
 
 private extension ObservableType {
 
-    func catchAsRequestError(with request: DataRequest? = nil) -> Observable<E> {
+    func catchAsRequestError(with request: DataRequest? = nil) -> Observable<Element> {
         return catchError { error in
             let resultError: RequestError
-            let response = request?.delegate.data
+            let response = request?.data
 
             switch error {
             case let requestError as RequestError:

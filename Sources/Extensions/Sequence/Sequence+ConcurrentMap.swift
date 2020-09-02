@@ -63,5 +63,6 @@ public extension Sequence {
                 array.sorted { $0.idx < $1.idx }
                     .flatMap { $0.results }
             }
+            .asObservable()
     }
 }

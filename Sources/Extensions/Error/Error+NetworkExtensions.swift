@@ -51,7 +51,7 @@ public extension ObservableType {
     ///   - handler: closure that recieves serialized response
     /// - Returns: Observable on caller
     func handleMappingError<T: Decodable>(with decoder: JSONDecoder = JSONDecoder(),
-                                          handler: @escaping ParameterClosure<T>) -> Observable<E> {
+                                          handler: @escaping ParameterClosure<T>) -> Observable<Element> {
             return self.do(onError: { error in
                 guard let errorModel = try error.handleMappingError(with: decoder) as T? else {
                     return
