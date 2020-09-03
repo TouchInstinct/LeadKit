@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.10.1
+- **Update**: Third party dependencies:  `Alamofire` 5.2.2, `RxAlamofire` 5.6.1
+
 ### 0.10.0
 - **Update**: Third party dependencies: `RxSwift` (and all sub-dependencies) to 5.1.0, `Alamofire` 5.0, `SnapKit` 5.0
 - **Refactored**: NetworkManager to use new Alamofire API
