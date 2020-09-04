@@ -72,7 +72,7 @@ public extension NetworkServiceConfiguration {
                               serverTrustManager: ServerTrustManager(allHostsMustBeEvaluated: !serverTrustPolicies.isEmpty,
                                                                      evaluators: serverTrustPolicies),
                               acceptableStatusCodes: acceptableStatusCodes,
-                              mappingQueue: DispatchQueue(label: "com.app.session.rootQueue", qos: .default))
+                              mappingQueue: DispatchQueue(label: "leadkit.session.rootQueue", qos: .default))
     }
 
     /// Convenient method to create ApiRequestParameters.
