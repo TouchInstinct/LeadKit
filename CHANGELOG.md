@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.10.3
+- **Fix**: `mappingQueue` of `SessionManager`.
+
 ### 0.10.2
 - **Add**: `RefreshControl` - a basic UIRefreshControl with fixed refresh action.
 
