@@ -23,7 +23,7 @@
 import Alamofire
 
 /// Session Manager stored in NetworkService
-open class SessionManager: Alamofire.SessionManager {
+open class SessionManager: Alamofire.Session {
 
     /// Response with HTTP URL Response and target object
     public typealias ModelResponse<T> = (response: HTTPURLResponse, model: T)
@@ -38,25 +38,40 @@ open class SessionManager: Alamofire.SessionManager {
     public let mappingQueue: DispatchQueue
 
     public init(configuration: URLSessionConfiguration,
-                serverTrustPolicyManager: ServerTrustPolicyManager,
+                serverTrustManager: ServerTrustManager,
                 acceptableStatusCodes: Set<Int>,
                 mappingQueue: DispatchQueue) {
 
         self.acceptableStatusCodes = acceptableStatusCodes
         self.mappingQueue = mappingQueue
 
-        super.init(configuration: configuration, serverTrustPolicyManager: serverTrustPolicyManager)
+        let delegate = SessionDelegate()
+
+        let delegateQueue = OperationQueue()
+        delegateQueue.underlyingQueue = mappingQueue
+
+        let session = URLSession(configuration: configuration, delegate: delegate, delegateQueue: delegateQueue)
+
+        super.init(session: session,
+                   delegate: delegate,
+                   rootQueue: mappingQueue,
+                   serverTrustManager: serverTrustManager)
     }
 
-    public init?(session: URLSession,
-                 delegate: SessionDelegate,
-                 serverTrustPolicyManager: ServerTrustPolicyManager,
-                 acceptableStatusCodes: Set<Int>,
-                 mappingQueue: DispatchQueue) {
+    public init(session: URLSession,
+                delegate: SessionDelegate,
+                serverTrustManager: ServerTrustManager,
+                acceptableStatusCodes: Set<Int>,
+                mappingQueue: DispatchQueue) {
 
         self.acceptableStatusCodes = acceptableStatusCodes
         self.mappingQueue = mappingQueue
 
-        super.init(session: session, delegate: delegate, serverTrustPolicyManager: serverTrustPolicyManager)
+        session.delegateQueue.underlyingQueue = mappingQueue
+
+        super.init(session: session,
+                   delegate: delegate,
+                   rootQueue: mappingQueue,
+                   serverTrustManager: serverTrustManager)
     }
 }

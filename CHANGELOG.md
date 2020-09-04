@@ -1,7 +1,16 @@
 # Changelog
 
-### 0.9.45
+### 0.10.2
 - **Add**: `RefreshControl` - a basic UIRefreshControl with fixed refresh action.
+
+### 0.10.1
+- **Update**: Third party dependencies:  `Alamofire` 5.2.2, `RxAlamofire` 5.6.1
+
+### 0.10.0
+- **Update**: Third party dependencies: `RxSwift` (and all sub-dependencies) to 5.1.0, `Alamofire` 5.0, `SnapKit` 5.0
+- **Refactored**: NetworkManager to use new Alamofire API
+- **API BreakingChanges**: NetworkServiceConfiguration no longer accepts `ServerTrustPolicy`, it is now replaced by an instance of a `ServerTrustEvaluating` protocol. Full description and default implementations can be found at Alamofire [sources](https://github.com/Alamofire/Alamofire/blob/master/Source/ServerTrustEvaluation.swift). Since new evaluation is used, evaluation against self-signed certificates will now throw an AfError and abort any outcoming request. To support self-signed certificates use `DisabledTrustEvaluator` for specified host in configuration.
+- **Removed**: UIImage+SupportExtensions, UIScrollView+Support
 
 ### 0.9.44
 - **Add**: `TIFoundationUtils` - set of helpers for Foundation framework classes.

@@ -50,7 +50,7 @@ public extension Reactive where Base: SessionManager {
                  _ url: URLConvertible,
                  parameters: [Any]? = nil,
                  encoding: JSONEncoding = .default,
-                 headers: [String: String]? = nil)
+                 headers: HTTPHeaders? = nil)
         -> Observable<DataRequest> {
 
         return Observable.deferred {

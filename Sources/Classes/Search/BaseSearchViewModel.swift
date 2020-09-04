@@ -45,7 +45,7 @@ open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel
     }
 
     open var searchDebounceInterval: RxTimeInterval {
-        return 1
+        return .seconds(1)
     }
 
     open var searchResultsDriver: Driver<[ItemViewModel]> {

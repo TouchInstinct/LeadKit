@@ -1,12 +1,13 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.9.45"
+  s.version         = "0.10.2"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
   s.author          = "Touch Instinct"
   s.source          = { :git => "https://github.com/TouchInstinct/LeadKit.git", :tag => s.version }
-  s.platform        = :ios, '9.0'
+  s.platform        = :ios, '10.0'
+  s.swift_versions = ['5.0']
 
   s.subspec 'UIColorHex' do |ss|
     ss.ios.deployment_target = '8.0'
@@ -17,9 +18,9 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Core' do |ss|
-    ss.ios.deployment_target = '9.0'
-    ss.tvos.deployment_target = '9.0'
-    ss.watchos.deployment_target = '2.0'
+    ss.ios.deployment_target = '10.0'
+    ss.tvos.deployment_target = '10.0'
+    ss.watchos.deployment_target = '3.0'
 
     ss.source_files = "Sources/**/*.swift"
     ss.watchos.exclude_files = [
@@ -43,7 +44,6 @@ Pod::Spec.new do |s|
       "Sources/Extensions/NetworkService/NetworkService+RxLoadImage.swift",
       "Sources/Extensions/DataLoading/GeneralDataLoading/GeneralDataLoadingController+DefaultImplementation.swift",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
-      "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/Support/UINavigationItem+Support.swift",
       "Sources/Extensions/TableKit/**/*.swift",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
@@ -80,7 +80,6 @@ Pod::Spec.new do |s|
       "Sources/Structures/Drawing/CALayerDrawingOperation.swift",
       "Sources/Enums/Search/*",
       "Sources/Extensions/DataLoading/PaginationDataLoading/*",
-      "Sources/Extensions/Support/UIScrollView+Support.swift",
       "Sources/Extensions/Support/UINavigationItem+Support.swift",
       "Sources/Extensions/TableKit/**/*.swift",
       "Sources/Extensions/Array/Array+SeparatorRowBoxExtensions.swift",
@@ -93,13 +92,13 @@ Pod::Spec.new do |s|
       "Sources/Structures/DataLoading/PaginationDataLoading/*"
     ]
 
-    ss.dependency "RxSwift", '~> 4'
-    ss.dependency "RxCocoa", '~> 4'
-    ss.dependency "RxAlamofire", '~> 4'
+    ss.dependency "RxSwift", '~> 5.1.0'
+    ss.dependency "RxCocoa", '~> 5.1.0'
+    ss.dependency "RxAlamofire", '~> 5.6.0'
     ss.dependency "SwiftDate", '~> 6'
 
     ss.ios.dependency "TableKit", '~> 2.8'
-    ss.ios.dependency "SnapKit", '~> 4.0.0'
+    ss.ios.dependency "SnapKit", '~> 5.0.0'
     ss.ios.dependency "UIScrollView-InfiniteScroll", '~> 1.1.0'
   end
 
