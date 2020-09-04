@@ -72,7 +72,7 @@ public extension NetworkServiceConfiguration {
                               serverTrustManager: ServerTrustManager(allHostsMustBeEvaluated: !serverTrustPolicies.isEmpty,
                                                                      evaluators: serverTrustPolicies),
                               acceptableStatusCodes: acceptableStatusCodes,
-                              mappingQueue: .global())
+                              mappingQueue: DispatchQueue(label: .mappingQueueLabel, qos: .default))
     }
 
     /// Convenient method to create ApiRequestParameters.
@@ -122,4 +122,8 @@ public extension NetworkServiceConfiguration {
                                     encoding: requestEncoding ?? encoding,
                                     headers: requestHeaders)
     }
+}
+
+private extension String {
+    static let mappingQueueLabel = "leadkit.session.rootQueue"
 }
