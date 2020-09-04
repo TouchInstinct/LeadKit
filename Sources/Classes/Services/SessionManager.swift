@@ -55,8 +55,6 @@ open class SessionManager: Alamofire.Session {
         super.init(session: session,
                    delegate: delegate,
                    rootQueue: mappingQueue,
-                   requestQueue: .global(),
-                   serializationQueue: .global(),
                    serverTrustManager: serverTrustManager)
     }
 
@@ -74,8 +72,6 @@ open class SessionManager: Alamofire.Session {
         super.init(session: session,
                    delegate: delegate,
                    rootQueue: mappingQueue,
-                   requestQueue: .global(),
-                   serializationQueue: .global(),
                    serverTrustManager: serverTrustManager)
     }
 }
