@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.10.2
+- **Add**: `RefreshControl` - a basic UIRefreshControl with fixed refresh action.
+
 ### 0.10.1
 - **Update**: Third party dependencies:  `Alamofire` 5.2.2, `RxAlamofire` 5.6.1
 
@@ -17,7 +20,6 @@
 
 #### TIFoundationUtils
 - **Add**: `CodableKeyValueStorage` - storage that can get and set codable objects by the key.
-
 
 ### 0.9.43
 - **Fix**: `OTPSwiftView`'s dependencies.
