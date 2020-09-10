@@ -123,17 +123,17 @@ private extension ObservableType {
             case let requestError as RequestError:
                 resultError = requestError
 
-            case let urlError as URLError:
-                switch urlError.code {
-                case .notConnectedToInternet:
-                    resultError = .noConnection
-
-                default:
-                    resultError = .network(error: urlError, response: response)
-                }
-
             case let afError as AFError:
                 switch afError {
+                case let .sessionTaskFailed(error):
+                    switch error {
+                    case let urlError as URLError where urlError.code == .notConnectedToInternet:
+                        resultError = .noConnection
+
+                    default:
+                        resultError = .network(error: error, response: response)
+                    }
+                
                 case .responseSerializationFailed, .responseValidationFailed:
                     resultError = .invalidResponse(error: afError, response: response)
 
