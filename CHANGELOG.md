@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.10.4
+- **Fix**: `noConnection` error.
+
 ### 0.10.3
 - **Fix**: `mappingQueue` of `SessionManager`.
 
