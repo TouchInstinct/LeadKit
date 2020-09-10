@@ -134,6 +134,15 @@ private extension ObservableType {
 
             case let afError as AFError:
                 switch afError {
+                case let .sessionTaskFailed(error):
+                    switch error {
+                    case let urlError as URLError where urlError.code == .notConnectedToInternet:
+                        resultError = .noConnection
+
+                    default:
+                        resultError = .network(error: error, response: response)
+                    }
+                
                 case .responseSerializationFailed, .responseValidationFailed:
                     resultError = .invalidResponse(error: afError, response: response)
 
