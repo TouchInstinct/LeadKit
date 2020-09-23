@@ -25,8 +25,38 @@ import UIKit.UIViewController
 /// Base controller that should be configured with view model.
 open class BaseConfigurableController<ViewModel>: UIViewController, ConfigurableController {
 
+    /// Ability to set forced screen orientation
+    open var forcedInterfaceOrientation: UIInterfaceOrientation?
+
     /// A view model instance used by this controller.
     public let viewModel: ViewModel
+
+    override var interfaceOrientation: UIInterfaceOrientation {
+        return forcedInterfaceOrientation ?? super.interfaceOrientation
+    }
+
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        switch interfaceOrientation {
+        case .landscapeLeft:
+            return .landscapeLeft
+
+        case .landscapeRight:
+            return .landscapeRight
+
+        case .portrait:
+            return .portrait
+
+        case .portraitUpsideDown:
+            return .portraitUpsideDown
+
+        default:
+            return .portrait
+        }
+    }
+
+    open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return interfaceOrientation
+    }
 
     /// Initializer with view model parameter.
     ///

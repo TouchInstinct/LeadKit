@@ -142,7 +142,7 @@ private extension ObservableType {
                     default:
                         resultError = .network(error: error, response: response)
                     }
-                
+
                 case .responseSerializationFailed, .responseValidationFailed:
                     resultError = .invalidResponse(error: afError, response: response)
 
