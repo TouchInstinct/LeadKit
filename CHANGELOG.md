@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.10.5
+- **Add**: `OrientationNavigationController` .
+- **Add**: `Forced Interface Orientation logic to BaseConfigurableController` .
+- **Fix**: `Exclude files to watchos and tvos`.
+
 ### 0.10.4
 - **Fix**: `noConnection` error.
 

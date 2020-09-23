@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.10.4"
+  s.version         = "0.10.5"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -26,6 +26,8 @@ Pod::Spec.new do |s|
     ss.watchos.exclude_files = [
       "Sources/Classes/Controllers/**/*",
       "Sources/Classes/Views/SeparatorRowBox/*",
+      "Sources/Classes/Views/BaseRxTableViewCell/*",
+      "Sources/Classes/Views/ContainerTableCell/*",
       "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
       "Sources/Classes/Views/LabelTableViewCell/*",
@@ -70,6 +72,8 @@ Pod::Spec.new do |s|
     ]
     ss.tvos.exclude_files = [
       "Sources/Classes/Controllers/BaseTableContentController.swift",
+      "Sources/Classes/Views/BaseRxTableViewCell/*",
+      "Sources/Classes/Views/ContainerTableCell/*",
       "Sources/Classes/Views/SeparatorRowBox/*",
       "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
