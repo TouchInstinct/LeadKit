@@ -8,18 +8,18 @@ open class OrientationNavigationController: UINavigationController {
     open override var shouldAutorotate: Bool {
         return presentedViewController?.shouldAutorotate
             ?? topViewController?.shouldAutorotate
-            ?? false
+            ?? super.shouldAutorotate
     }
 
     open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return presentedViewController?.supportedInterfaceOrientations
             ?? topViewController?.supportedInterfaceOrientations
-            ?? .portrait
+            ?? super.supportedInterfaceOrientations
     }
 
     open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return presentedViewController?.preferredInterfaceOrientationForPresentation
             ?? topViewController?.preferredInterfaceOrientationForPresentation
-            ?? .portrait
+            ?? super.preferredInterfaceOrientationForPresentation
     }
 }

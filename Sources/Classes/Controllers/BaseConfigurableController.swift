@@ -31,12 +31,8 @@ open class BaseConfigurableController<ViewModel>: UIViewController, Configurable
     /// A view model instance used by this controller.
     public let viewModel: ViewModel
 
-    override var interfaceOrientation: UIInterfaceOrientation {
-        return forcedInterfaceOrientation ?? super.interfaceOrientation
-    }
-
     open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        switch interfaceOrientation {
+        switch forcedInterfaceOrientation {
         case .landscapeLeft:
             return .landscapeLeft
 
@@ -50,12 +46,12 @@ open class BaseConfigurableController<ViewModel>: UIViewController, Configurable
             return .portraitUpsideDown
 
         default:
-            return .portrait
+            return super.supportedInterfaceOrientations
         }
     }
 
     open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        return interfaceOrientation
+        return forcedInterfaceOrientation ?? super.preferredInterfaceOrientationForPresentation
     }
 
     /// Initializer with view model parameter.
