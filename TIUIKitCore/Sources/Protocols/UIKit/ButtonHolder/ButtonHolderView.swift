@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2018 Touch Instinct
+//  Copyright (c) 2020 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,19 +20,7 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import UIKit.UIView
 
-/// Protocol that contains background view property.
-public protocol BackgroundViewHolder {
-
-    var backgroundView: UIView? { get set }
-}
-
-/// Protocol that contains footer view property.
-public protocol FooterViewHolder {
-
-    var footerView: UIView? { get set }
-}
-
-/// Protocol that conforms to ScrollViewHolder, BackgroundViewHolder and FooterViewHolder protocols.
-public protocol PaginationWrappable: ScrollViewHolder, BackgroundViewHolder, FooterViewHolder {}
+/// View which contains button
+public typealias ButtonHolderView = UIView & ButtonHolder

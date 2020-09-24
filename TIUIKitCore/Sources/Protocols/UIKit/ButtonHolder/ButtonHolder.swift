@@ -20,7 +20,11 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
-import TIUIKitCore
+import UIKit.UIButton
 
-extension UIActivityIndicatorView: Animatable {}
+/// Protocol that contains button property.
+public protocol ButtonHolder {
+
+    /// Contained UIButton instance.
+    var button: UIButton { get }
+}

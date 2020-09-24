@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2017 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -21,10 +21,5 @@
 //
 
 import UIKit
-import TIUIKitCore
 
-extension UIActivityIndicatorView: ActivityIndicatorHolder {
-    public var activityIndicator: Animatable {
-        self
-    }
-}
+extension UIActivityIndicatorView: LoadingIndicator {}
