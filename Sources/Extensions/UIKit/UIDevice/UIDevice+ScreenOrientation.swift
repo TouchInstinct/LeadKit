@@ -6,9 +6,8 @@ public extension UIDevice {
     ///
     /// - Parameters:
     ///   - orientation: ориентация в терминах ScreenOrientation
-    func rotateOrientationManually(to orientation: UIInterfaceOrientation) {
-        let orientationValue = Int(orientation.rawValue)
-        UIDevice.current.setValue(orientationValue, forKey: "orientation")
+    func rotateManually(to orientation: UIInterfaceOrientation) {
+        UIDevice.current.setValue(orientation, forKey: "orientation")
         UIViewController.attemptRotationToDeviceOrientation()
     }
 }

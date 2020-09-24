@@ -51,7 +51,7 @@ open class BaseConfigurableController<ViewModel>: UIViewController, Configurable
     }
 
     open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        return forcedInterfaceOrientation ?? super.preferredInterfaceOrientationForPresentation
+        forcedInterfaceOrientation ?? super.preferredInterfaceOrientationForPresentation
     }
 
     /// Initializer with view model parameter.
