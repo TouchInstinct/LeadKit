@@ -71,6 +71,9 @@ Pod::Spec.new do |s|
       "Sources/Structures/DataLoading/PaginationDataLoading/*"
     ]
     ss.tvos.exclude_files = [
+      "Sources/Classes/Controllers/BaseConfigurableController.swift"
+      "Sources/Classes/Controllers/BaseOrientationNavigationController.swift"
+      "Sources/Extensions/UIKit/UIDevice/UIDevice+ScreenOrientation.swift",
       "Sources/Classes/Controllers/BaseTableContentController.swift",
       "Sources/Classes/Views/BaseRxTableViewCell/*",
       "Sources/Classes/Views/ContainerTableCell/*",
