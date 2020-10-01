@@ -1,7 +1,7 @@
 import Foundation
 import AVFoundation
 
-extension UIInterfaceOrientation {
+public extension UIInterfaceOrientation {
     
     var videoOrientation: AVCaptureVideoOrientation {
         switch self {
