@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.10.6
+- **Fix**: `Add tvos exclude files`.
+
 ### 0.10.5
 - **Add**: `OrientationNavigationController` .
 - **Add**: `Forced Interface Orientation logic to BaseConfigurableController` .

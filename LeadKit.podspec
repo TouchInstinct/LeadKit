@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.10.5"
+  s.version         = "0.10.6"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -71,6 +71,14 @@ Pod::Spec.new do |s|
       "Sources/Structures/DataLoading/PaginationDataLoading/*"
     ]
     ss.tvos.exclude_files = [
+      "Sources/Classes/Controllers/BaseConfigurableController.swift",
+      "Sources/Classes/Controllers/BaseCollectionContentController.swift",
+      "Sources/Classes/Views/TableViewWrapperView/TableViewWrapperView.swift",
+      "Sources/Classes/Views/CollectionViewWrapperView/CollectionViewWrapperView.swift",
+      "Sources/Classes/Controllers/BaseScrollContentController.swift",
+      "Sources/Classes/Controllers/BaseCustomViewController.swift",
+      "Sources/Classes/Controllers/BaseOrientationNavigationController.swift",
+      "Sources/Extensions/UIKit/UIDevice/UIDevice+ScreenOrientation.swift",
       "Sources/Classes/Controllers/BaseTableContentController.swift",
       "Sources/Classes/Views/BaseRxTableViewCell/*",
       "Sources/Classes/Views/ContainerTableCell/*",
