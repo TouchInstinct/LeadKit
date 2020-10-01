@@ -918,14 +918,14 @@
 			path = TappableViewModel;
 			sourceTree = "<group>";
 		};
-        5E2364162526488300E2F96B /* UIInterfaceOrientation */ = {
-            isa = PBXGroup;
-            children = (
-                5E2364172526489A00E2F96B /* UIInterfaceOrientation+ VideoOrientation.swift */,
-            );
-            path = UIInterfaceOrientation;
-            sourceTree = "<group>";
-        };
+		5E2364162526488300E2F96B /* UIInterfaceOrientation */ = {
+			isa = PBXGroup;
+			children = (
+				5E2364172526489A00E2F96B /* UIInterfaceOrientation+ VideoOrientation.swift */,
+			);
+			path = UIInterfaceOrientation;
+			sourceTree = "<group>";
+		};
 		5ED2C0B3251A365800D4E258 /* UIDevice */ = {
 			isa = PBXGroup;
 			children = (
