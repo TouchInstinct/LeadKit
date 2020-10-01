@@ -24,6 +24,7 @@
 		52421F9424EBCFAE00948DD1 /* VoidTappableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52421F9324EBCFAE00948DD1 /* VoidTappableViewModel.swift */; };
 		52421F9624EBCFBB00948DD1 /* BaseTappableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52421F9524EBCFBB00948DD1 /* BaseTappableViewModel.swift */; };
 		5E23631F25263EFA00E2F96B /* BaseOrientationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E23631E25263EFA00E2F96B /* BaseOrientationController.swift */; };
+		5E2364182526489A00E2F96B /* UIInterfaceOrientation+ VideoOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2364172526489A00E2F96B /* UIInterfaceOrientation+ VideoOrientation.swift */; };
 		5ED2C0B2251A354E00D4E258 /* BaseOrientationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED2C0B1251A354E00D4E258 /* BaseOrientationNavigationController.swift */; };
 		5ED2C0B5251A366700D4E258 /* UIDevice+ScreenOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED2C0B4251A366700D4E258 /* UIDevice+ScreenOrientation.swift */; };
 		67051ADB1EBC7C36008EADC0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */; };
@@ -565,6 +566,7 @@
 		52421F9324EBCFAE00948DD1 /* VoidTappableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidTappableViewModel.swift; sourceTree = "<group>"; };
 		52421F9524EBCFBB00948DD1 /* BaseTappableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTappableViewModel.swift; sourceTree = "<group>"; };
 		5E23631E25263EFA00E2F96B /* BaseOrientationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseOrientationController.swift; sourceTree = "<group>"; };
+		5E2364172526489A00E2F96B /* UIInterfaceOrientation+ VideoOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIInterfaceOrientation+ VideoOrientation.swift"; sourceTree = "<group>"; };
 		5ED2C0B1251A354E00D4E258 /* BaseOrientationNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseOrientationNavigationController.swift; sourceTree = "<group>"; };
 		5ED2C0B4251A366700D4E258 /* UIDevice+ScreenOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+ScreenOrientation.swift"; sourceTree = "<group>"; };
 		67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
@@ -916,6 +918,14 @@
 			path = TappableViewModel;
 			sourceTree = "<group>";
 		};
+        5E2364162526488300E2F96B /* UIInterfaceOrientation */ = {
+            isa = PBXGroup;
+            children = (
+                5E2364172526489A00E2F96B /* UIInterfaceOrientation+ VideoOrientation.swift */,
+            );
+            path = UIInterfaceOrientation;
+            sourceTree = "<group>";
+        };
 		5ED2C0B3251A365800D4E258 /* UIDevice */ = {
 			isa = PBXGroup;
 			children = (
@@ -1006,6 +1016,7 @@
 		671461DA1EB3396E00EAB194 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5E2364162526488300E2F96B /* UIInterfaceOrientation */,
 				6732F23C214C09DF00B446F2 /* Foundation */,
 				671461DB1EB3396E00EAB194 /* Alamofire */,
 				EFBE57CE1EC35ED90040E00A /* Array */,
@@ -2515,6 +2526,7 @@
 				82D2966D2264B1790067735C /* LabelTableViewCell.swift in Sources */,
 				671463301EB3396E00EAB194 /* CursorType.swift in Sources */,
 				67FDC25F1FA310EA00C76A77 /* RequestError.swift in Sources */,
+				5E2364182526489A00E2F96B /* UIInterfaceOrientation+ VideoOrientation.swift in Sources */,
 				677B06A021186A69006C947D /* SharedSequence+Extensions.swift in Sources */,
 				6760DC4D212F351700020BAE /* UIView+AddSubviews.swift in Sources */,
 				67745268206249360024EEEF /* UITableView+PaginationWrappable.swift in Sources */,
