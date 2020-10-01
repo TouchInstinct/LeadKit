@@ -1,9 +1,20 @@
-//
-//  UIInterfaceOrientation+ VideoOrientation.swift
-//  LeadKit iOS
-//
-//  Created by Mikhail Boyko on 01.10.2020.
-//  Copyright © 2020 Touch Instinct. All rights reserved.
-//
-
 import Foundation
+import AVFoundation
+
+extension UIInterfaceOrientation {
+    
+    var videoOrientation: AVCaptureVideoOrientation {
+        switch self {
+        case .portrait:
+            return .portrait
+        case .landscapeLeft:
+            return .landscapeLeft
+        case .landscapeRight:
+            return .landscapeRight
+        case .portraitUpsideDown:
+            return .portraitUpsideDown
+        case .unknown:
+            return .portrait
+        }
+    }
+}
