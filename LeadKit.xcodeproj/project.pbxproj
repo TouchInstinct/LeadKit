@@ -23,6 +23,7 @@
 		52421F8F24EAB84900948DD1 /* BaseRxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52421F8E24EAB84900948DD1 /* BaseRxTableViewCell.swift */; };
 		52421F9424EBCFAE00948DD1 /* VoidTappableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52421F9324EBCFAE00948DD1 /* VoidTappableViewModel.swift */; };
 		52421F9624EBCFBB00948DD1 /* BaseTappableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52421F9524EBCFBB00948DD1 /* BaseTappableViewModel.swift */; };
+		5E23631F25263EFA00E2F96B /* BaseOrientationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E23631E25263EFA00E2F96B /* BaseOrientationController.swift */; };
 		5ED2C0B2251A354E00D4E258 /* BaseOrientationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED2C0B1251A354E00D4E258 /* BaseOrientationNavigationController.swift */; };
 		5ED2C0B5251A366700D4E258 /* UIDevice+ScreenOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED2C0B4251A366700D4E258 /* UIDevice+ScreenOrientation.swift */; };
 		67051ADB1EBC7C36008EADC0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */; };
@@ -563,6 +564,7 @@
 		52421F8E24EAB84900948DD1 /* BaseRxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRxTableViewCell.swift; sourceTree = "<group>"; };
 		52421F9324EBCFAE00948DD1 /* VoidTappableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidTappableViewModel.swift; sourceTree = "<group>"; };
 		52421F9524EBCFBB00948DD1 /* BaseTappableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTappableViewModel.swift; sourceTree = "<group>"; };
+		5E23631E25263EFA00E2F96B /* BaseOrientationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseOrientationController.swift; sourceTree = "<group>"; };
 		5ED2C0B1251A354E00D4E258 /* BaseOrientationNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseOrientationNavigationController.swift; sourceTree = "<group>"; };
 		5ED2C0B4251A366700D4E258 /* UIDevice+ScreenOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+ScreenOrientation.swift"; sourceTree = "<group>"; };
 		67051ADA1EBC7C36008EADC0 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
@@ -1549,6 +1551,7 @@
 				675E0AA821072FF400CDC143 /* BaseScrollContentController.swift */,
 				67DB776321086A12001CB56B /* BaseTableContentController.swift */,
 				5ED2C0B1251A354E00D4E258 /* BaseOrientationNavigationController.swift */,
+				5E23631E25263EFA00E2F96B /* BaseOrientationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -2586,6 +2589,7 @@
 				671463081EB3396E00EAB194 /* UIView+Rotation.swift in Sources */,
 				6714626C1EB3396E00EAB194 /* XibView.swift in Sources */,
 				67274778206CD0B500725163 /* UILabel+ViewTextConfigurable.swift in Sources */,
+				5E23631F25263EFA00E2F96B /* BaseOrientationController.swift in Sources */,
 				67ED2BE520B44F4300508B3E /* InitializableView+DefaultImplementation.swift in Sources */,
 				36FE777020F669E300284C09 /* String+ConvertToHost.swift in Sources */,
 				6774529220625D170024EEEF /* GeneralDataLoadingModel.swift in Sources */,
