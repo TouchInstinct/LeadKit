@@ -3,11 +3,10 @@ import UIKit
 open class OrientationNavigationController: UINavigationController {
 
     // MARK: - Public properties
-    
-    var presentedOrTopViewController: UIViewController? {
+
+    open var presentedOrTopViewController: UIViewController? {
         presentedViewController ?? topViewController
     }
-
 
     open override var shouldAutorotate: Bool {
         presentedOrTopViewController?.shouldAutorotate
