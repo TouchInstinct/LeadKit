@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.10.9
+- **Fix**: `change presentedOrTopViewController to open`.
+
 ### 0.10.8
 - **Fix**: `Add presentedOrTopViewController`.
 
