@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.31
+- **Fix**: version for Soglasie
+
 ### 0.9.30
 - **Add**: character `*` into a valid set of characters in the extension `telpromptURL` of String.
 
