@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.10.8
+- **Fix**: `Add presentedOrTopViewController`.
+
 ### 0.10.7
 - **Fix**: `Add BaseOrientationController`.
 - **Fix**: `Add videoOrientation extension`.
