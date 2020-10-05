@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.10.7
+- **Fix**: `Add BaseOrientationController`.
+- **Fix**: `Add videoOrientation extension`.
+
 ### 0.10.6
 - **Fix**: `Add tvos exclude files`.
 
