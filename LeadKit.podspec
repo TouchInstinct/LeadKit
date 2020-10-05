@@ -39,6 +39,7 @@ Pod::Spec.new do |s|
       "Sources/Classes/Search/*",
       "Sources/Enums/Search/*",
       "Sources/Extensions/CABasicAnimation/*",
+      "Sources/Extensions/UIInterfaceOrientation/UIInterfaceOrientation+ VideoOrientation.swift",
       "Sources/Extensions/CGFloat/CGFloat+Pixels.swift",
       "Sources/Extensions/NetworkService/NetworkService+RxLoadImage.swift",
       "Sources/Extensions/DataLoading/GeneralDataLoading/GeneralDataLoadingController+DefaultImplementation.swift",
@@ -70,6 +71,10 @@ Pod::Spec.new do |s|
     ]
     ss.tvos.exclude_files = [
       "Sources/Classes/Controllers/BaseTableContentController.swift",
+      "Sources/Classes/Controllers/BaseOrientationController.swift",
+      "Sources/Classes/Controllers/BaseOrientationNavigationController.swift",
+      "Sources/Extensions/UIKit/UIDevice/UIDevice+ScreenOrientation.swift",
+      "Sources/Extensions/UIInterfaceOrientation/UIInterfaceOrientation+ VideoOrientation.swift",
       "Sources/Classes/Views/SeparatorRowBox/*",
       "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
