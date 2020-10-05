@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.44
+- **Fix**: new tag
+
 ### 0.9.30.2
 - **Fix**: version for Soglasie. open protection level
 
