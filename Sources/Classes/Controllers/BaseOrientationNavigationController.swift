@@ -3,22 +3,24 @@ import UIKit
 open class OrientationNavigationController: UINavigationController {
 
     // MARK: - Public properties
+    
+    var presentedOrTopViewController: UIViewController? {
+        presentedViewController ?? topViewController
+    }
+
 
     open override var shouldAutorotate: Bool {
-        presentedViewController?.shouldAutorotate
-            ?? topViewController?.shouldAutorotate
+        presentedOrTopViewController?.shouldAutorotate
             ?? super.shouldAutorotate
     }
 
     open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        presentedViewController?.supportedInterfaceOrientations
-            ?? topViewController?.supportedInterfaceOrientations
+        presentedOrTopViewController?.supportedInterfaceOrientations
             ?? super.supportedInterfaceOrientations
     }
 
     open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        presentedViewController?.preferredInterfaceOrientationForPresentation
-            ?? topViewController?.preferredInterfaceOrientationForPresentation
+        presentedOrTopViewController?.preferredInterfaceOrientationForPresentation
             ?? super.preferredInterfaceOrientationForPresentation
     }
 }
