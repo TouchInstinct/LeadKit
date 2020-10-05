@@ -1,6 +1,6 @@
 # Changelog
 
-### 0.9.31
+### 0.9.30.1
 - **Fix**: version for Soglasie
 
 ### 0.9.30
