@@ -71,6 +71,9 @@ Pod::Spec.new do |s|
     ]
     ss.tvos.exclude_files = [
       "Sources/Classes/Controllers/BaseTableContentController.swift",
+      "Sources/Classes/Controllers/BaseCustomViewController.swift",
+      "Sources/Classes/Controllers/BaseConfigurableController.swift",
+      "Sources/Classes/Controllers/BaseScrollContentController.swift",
       "Sources/Classes/Controllers/BaseOrientationController.swift",
       "Sources/Classes/Controllers/BaseOrientationNavigationController.swift",
       "Sources/Extensions/UIKit/UIDevice/UIDevice+ScreenOrientation.swift",
