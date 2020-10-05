@@ -1,25 +1,26 @@
-import RxSwift
 import UIKit
 
 open class OrientationNavigationController: UINavigationController {
 
     // MARK: - Public properties
+    
+    var presentedOrTopViewController: UIViewController? {
+        presentedViewController ?? topViewController
+    }
+
 
     open override var shouldAutorotate: Bool {
-        return presentedViewController?.shouldAutorotate
-            ?? topViewController?.shouldAutorotate
+        presentedOrTopViewController?.shouldAutorotate
             ?? super.shouldAutorotate
     }
 
     open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return presentedViewController?.supportedInterfaceOrientations
-            ?? topViewController?.supportedInterfaceOrientations
+        presentedOrTopViewController?.supportedInterfaceOrientations
             ?? super.supportedInterfaceOrientations
     }
 
     open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        return presentedViewController?.preferredInterfaceOrientationForPresentation
-            ?? topViewController?.preferredInterfaceOrientationForPresentation
+        presentedOrTopViewController?.preferredInterfaceOrientationForPresentation
             ?? super.preferredInterfaceOrientationForPresentation
     }
 }
