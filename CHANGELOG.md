@@ -102,6 +102,12 @@
 ### 0.9.31
 - **Add**: `@discardableResult` to function - `replace(with:at:with:manualBeginEndUpdates)` in `TableDirector`.
 
+### 0.9.30.2
+- **Fix**: version for Soglasie. open protection level
+
+### 0.9.30.1
+- **Fix**: version for Soglasie
+
 ### 0.9.30
 - **Add**: character `*` into a valid set of characters in the extension `telpromptURL` of String.
 

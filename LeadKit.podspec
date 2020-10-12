@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.10.9"
+  s.version         = "0.9.45"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -42,6 +42,7 @@ Pod::Spec.new do |s|
       "Sources/Classes/Search/*",
       "Sources/Enums/Search/*",
       "Sources/Extensions/CABasicAnimation/*",
+      "Sources/Extensions/UIInterfaceOrientation/UIInterfaceOrientation+ VideoOrientation.swift",
       "Sources/Extensions/CGFloat/CGFloat+Pixels.swift",
       "Sources/Extensions/NetworkService/NetworkService+RxLoadImage.swift",
       "Sources/Extensions/DataLoading/GeneralDataLoading/GeneralDataLoadingController+DefaultImplementation.swift",
@@ -82,6 +83,16 @@ Pod::Spec.new do |s|
       "Sources/Classes/Controllers/BaseTableContentController.swift",
       "Sources/Classes/Views/BaseRxTableViewCell/*",
       "Sources/Classes/Views/ContainerTableCell/*",
+      "Sources/Classes/Views/TableViewWrapperView/TableViewWrapperView.swift",
+      "Sources/Classes/Controllers/BaseCollectionContentController.swift",
+      "Sources/Classes/Views/CollectionViewWrapperView/CollectionViewWrapperView.swift",
+      "Sources/Classes/Controllers/BaseCustomViewController.swift",
+      "Sources/Classes/Controllers/BaseConfigurableController.swift",
+      "Sources/Classes/Controllers/BaseScrollContentController.swift",
+      "Sources/Classes/Controllers/BaseOrientationController.swift",
+      "Sources/Classes/Controllers/BaseOrientationNavigationController.swift",
+      "Sources/Extensions/UIKit/UIDevice/UIDevice+ScreenOrientation.swift",
+      "Sources/Extensions/UIInterfaceOrientation/UIInterfaceOrientation+ VideoOrientation.swift",
       "Sources/Classes/Views/SeparatorRowBox/*",
       "Sources/Classes/Views/SeparatorCell/*",
       "Sources/Classes/Views/EmptyCell/*",
