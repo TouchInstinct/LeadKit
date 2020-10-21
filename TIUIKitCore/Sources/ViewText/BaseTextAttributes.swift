@@ -45,3 +45,13 @@ open class BaseTextAttributes {
         self.alignment = alignment
     }
 }
+
+public extension BaseTextAttributes {
+
+    /// Configures text appearance of given ViewTextConfigurable instance.
+    ///
+    /// - Parameter view: ViewTextConfigurable instance to configure with BaseTextAttributes.
+    func configureBaseApperance(of view: ViewTextConfigurable) {
+        view.configureBaseAppearance(with: self)
+    }
+}
