@@ -20,7 +20,7 @@
 //  THE SOFTWARE.
 //
 
-public extension InitializableView {
+public extension InitializableViewProtocol {
 
     func initializeView() {
         addViews()

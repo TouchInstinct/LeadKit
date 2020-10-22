@@ -23,7 +23,7 @@
 import TIUIKitCore
 import UIKit
 
-open class BaseInitializableCell: UITableViewCell, InitializableView {
+open class BaseInitializableCell: UITableViewCell, InitializableViewProtocol {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
 

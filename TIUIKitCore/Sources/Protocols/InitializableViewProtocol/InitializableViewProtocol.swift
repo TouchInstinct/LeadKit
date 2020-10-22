@@ -20,40 +20,24 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+/// Protocol with methods that should be called in constructor methods of view.
+public protocol InitializableViewProtocol {
 
-open class BaseInitializableView: UIView, InitializableView {
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
+    /// Main method that should call other methods in particular order.
+    func initializeView()
 
-        initializeView()
-    }
+    /// Method for adding views to current view.
+    func addViews()
+    
+    /// Confgiure layout of subviews.
+    func configureLayout()
 
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    /// Method for binding to data or user actions.
+    func bindViews()
 
-        initializeView()
-    }
+    /// Appearance configuration method.
+    func configureAppearance()
 
-    // MARK: - InitializableView
-
-    open func addViews() {
-        // override in subclass
-    }
-
-    open func configureLayout() {
-        // override in subclass
-    }
-
-    open func bindViews() {
-        // override in subclass
-    }
-
-    open func configureAppearance() {
-        // override in subclass
-    }
-
-    open func localize() {
-        // override in subclass
-    }
+    /// Localization method.
+    func localize()
 }
