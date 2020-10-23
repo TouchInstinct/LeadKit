@@ -36,7 +36,7 @@ public extension TableRow where CellType: SeparatorConfigurable {
         removeAction(forActionId: configureSeparatorActionId)
 
         let action = TableRowAction<CellType>(.configure) {
-            $0.cell?.configure(with: separatorType)
+            $0.cell?.configureSeparators(with: separatorType)
         }
 
         action.id = configureSeparatorActionId

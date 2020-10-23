@@ -44,7 +44,7 @@ open class BaseSeparatorCell: BaseInitializableCell, SeparatorConfigurable {
         .init()
     }
 
-    public func configure(with separatorType: ViewSeparatorType) {
+    public func configureSeparators(with separatorType: ViewSeparatorType) {
         topSeparatorView.isHidden = separatorType.topIsHidden
         bottomSeparatorView.isHidden = separatorType.bottomIsHidden
 
@@ -66,7 +66,7 @@ open class BaseSeparatorCell: BaseInitializableCell, SeparatorConfigurable {
 
     open override func prepareForReuse() {
         super.prepareForReuse()
-        configure(with: .none)
+        configureSeparators(with: .none)
     }
 
     // MARK: - InitializableView

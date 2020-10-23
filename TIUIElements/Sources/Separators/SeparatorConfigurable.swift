@@ -21,5 +21,5 @@
 //
 
 public protocol SeparatorConfigurable {
-    func configure(with separatorType: ViewSeparatorType)
+    func configureSeparators(with separatorType: ViewSeparatorType)
 }
