@@ -44,6 +44,14 @@ open class BaseSeparatorCell: BaseInitializableCell, SeparatorConfigurable {
         .init()
     }
 
+    open func add(topSeparatorView: UIView) {
+        contentView.addSubview(topSeparatorView)
+    }
+
+    open func add(bottomSeparatorView: UIView) {
+        contentView.addSubview(bottomSeparatorView)
+    }
+
     public func configureSeparators(with separatorType: ViewSeparatorType) {
         topSeparatorView.isHidden = separatorType.topIsHidden
         bottomSeparatorView.isHidden = separatorType.bottomIsHidden
@@ -74,20 +82,27 @@ open class BaseSeparatorCell: BaseInitializableCell, SeparatorConfigurable {
     open override func addViews() {
         super.addViews()
 
-        contentView.addSubviews(topSeparatorView, bottomSeparatorView)
+        add(topSeparatorView: topSeparatorView)
+        add(bottomSeparatorView: bottomSeparatorView)
     }
 
     open override func configureLayout() {
         super.configureLayout()
 
-        topViewTopConstraint = topSeparatorView.topAnchor.constraint(equalTo: contentView.topAnchor)
-        topViewRightConstraint = contentView.rightAnchor.constraint(equalTo: topSeparatorView.rightAnchor)
-        topViewLeftConstraint = topSeparatorView.leftAnchor.constraint(equalTo: contentView.leftAnchor)
+        if let separatorSuperview = topSeparatorView.superview {
+            topViewTopConstraint = topSeparatorView.topAnchor.constraint(equalTo: separatorSuperview.topAnchor)
+            topViewRightConstraint = separatorSuperview.rightAnchor.constraint(equalTo: topSeparatorView.rightAnchor)
+            topViewLeftConstraint = topSeparatorView.leftAnchor.constraint(equalTo: separatorSuperview.leftAnchor)
+        }
+
         topViewHeightConstraint = topSeparatorView.heightAnchor.constraint(equalToConstant: 1)
 
-        bottomViewRightConstraint = contentView.rightAnchor.constraint(equalTo: bottomSeparatorView.rightAnchor)
-        bottomViewLeftConstraint = bottomSeparatorView.leftAnchor.constraint(equalTo: contentView.leftAnchor)
-        bottomViewBottomConstraint = bottomSeparatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        if let separatorSuperview = topSeparatorView.superview {
+            bottomViewRightConstraint = separatorSuperview.rightAnchor.constraint(equalTo: bottomSeparatorView.rightAnchor)
+            bottomViewLeftConstraint = bottomSeparatorView.leftAnchor.constraint(equalTo: separatorSuperview.leftAnchor)
+            bottomViewBottomConstraint = bottomSeparatorView.bottomAnchor.constraint(equalTo: separatorSuperview.bottomAnchor)
+        }
+
         bottomViewHeightConstraint = bottomSeparatorView.heightAnchor.constraint(equalToConstant: 1)
 
         NSLayoutConstraint.activate([
@@ -119,15 +134,14 @@ private extension BaseSeparatorCell {
         topViewHeightConstraint?.constant = configuration.height
         topViewTopConstraint?.constant = configuration.insets.top
         topViewLeftConstraint?.constant = configuration.insets.left
-        topViewRightConstraint?.constant = configuration.insets.right
-
+        topViewRightConstraint?.constant = -configuration.insets.right
     }
 
     func updateBottomSeparator(with configuration: SeparatorConfiguration) {
         bottomSeparatorView.backgroundColor = configuration.color
         bottomViewHeightConstraint?.constant = configuration.height
-        bottomViewBottomConstraint?.constant = configuration.insets.bottom
+        bottomViewBottomConstraint?.constant = -configuration.insets.bottom
         bottomViewLeftConstraint?.constant = configuration.insets.left
-        bottomViewRightConstraint?.constant = configuration.insets.right
+        bottomViewRightConstraint?.constant = -configuration.insets.right
     }
 }
