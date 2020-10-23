@@ -1,5 +1,13 @@
 # Changelog
 
+### 0.11.0
+- **Add**: Cocoapods support for TI-family libraries.
+- **Add**: `SeparatorConfigurable` and all helper types for separator configuration.
+- **Add**: `BaseSeparatorCell` - `BaseInitializeableCell` subclass with separators support. 
+- **Add**: `TITableKitUtils` - set of helpers for TableKit classes.
+- **Add**: `BaseTextAttributes` and `ViewText` implementation form LeadKit.
+- **Update**: `BaseInitializableView` and `BaseInitializableControl` are moved to `TIUIElements` from `TIUIKitCore`.
+
 ### 0.10.9
 - **Fix**: `change presentedOrTopViewController to open`.
 
