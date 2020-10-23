@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TISwiftUtils'
-  s.version          = '0.10.99'
+  s.version          = '0.10.299'
   s.summary          = 'Bunch of useful helpers for Swift development.'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
