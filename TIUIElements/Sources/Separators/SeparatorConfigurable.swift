@@ -20,13 +20,6 @@
 //  THE SOFTWARE.
 //
 
-public extension InitializableViewProtocol {
-
-    func initializeView() {
-        addViews()
-        configureLayout()
-        bindViews()
-        configureAppearance()
-        localize()
-    }
+public protocol SeparatorConfigurable {
+    func configureSeparators(with separatorType: ViewSeparatorType)
 }

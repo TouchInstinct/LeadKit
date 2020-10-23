@@ -20,13 +20,41 @@
 //  THE SOFTWARE.
 //
 
-public extension InitializableViewProtocol {
+import TIUIKitCore
+import UIKit
 
-    func initializeView() {
-        addViews()
-        configureLayout()
-        bindViews()
-        configureAppearance()
-        localize()
+open class BaseInitializableCell: UITableViewCell, InitializableViewProtocol {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
+
+        initializeView()
+    }
+
+    @available(*, unavailable)
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    // MARK: - InitializableView
+
+    open func addViews() {
+        // empty for subclasses overriding
+    }
+
+    open func bindViews() {
+        // empty for subclasses overriding
+    }
+
+    open func configureLayout() {
+        // empty for subclasses overriding
+    }
+
+    open func configureAppearance() {
+        selectionStyle = .none
+        backgroundColor = .clear
+    }
+
+    open func localize() {
+        // empty for subclasses overriding
     }
 }

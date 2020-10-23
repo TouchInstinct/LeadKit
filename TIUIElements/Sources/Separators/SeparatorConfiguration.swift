@@ -20,24 +20,17 @@
 //  THE SOFTWARE.
 //
 
-/// Protocol with methods that should be called in constructor methods of view.
-public protocol InitializableView {
+import UIKit
 
-    /// Main method that should call other methods in particular order.
-    func initializeView()
+public struct SeparatorConfiguration {
 
-    /// Method for adding views to current view.
-    func addViews()
-    
-    /// Confgiure layout of subviews.
-    func configureLayout()
+    public let color: UIColor
+    public let insets: UIEdgeInsets
+    public let height: CGFloat
 
-    /// Method for binding to data or user actions.
-    func bindViews()
-
-    /// Appearance configuration method.
-    func configureAppearance()
-
-    /// Localization method.
-    func localize()
+    public init(color: UIColor, insets: UIEdgeInsets = .zero, height: CGFloat = 1) {
+        self.color = color
+        self.insets = insets
+        self.height = height
+    }
 }

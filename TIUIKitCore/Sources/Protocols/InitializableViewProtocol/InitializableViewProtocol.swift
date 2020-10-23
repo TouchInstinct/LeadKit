@@ -20,13 +20,24 @@
 //  THE SOFTWARE.
 //
 
-public extension InitializableViewProtocol {
+/// Protocol with methods that should be called in constructor methods of view.
+public protocol InitializableViewProtocol {
 
-    func initializeView() {
-        addViews()
-        configureLayout()
-        bindViews()
-        configureAppearance()
-        localize()
-    }
+    /// Main method that should call other methods in particular order.
+    func initializeView()
+
+    /// Method for adding views to current view.
+    func addViews()
+    
+    /// Confgiure layout of subviews.
+    func configureLayout()
+
+    /// Method for binding to data or user actions.
+    func bindViews()
+
+    /// Appearance configuration method.
+    func configureAppearance()
+
+    /// Localization method.
+    func localize()
 }

@@ -20,13 +20,8 @@
 //  THE SOFTWARE.
 //
 
-public extension InitializableViewProtocol {
+public protocol ConfigurableView {
+    associatedtype ViewModelType
 
-    func initializeView() {
-        addViews()
-        configureLayout()
-        bindViews()
-        configureAppearance()
-        localize()
-    }
+    func configure(with _: ViewModelType)
 }

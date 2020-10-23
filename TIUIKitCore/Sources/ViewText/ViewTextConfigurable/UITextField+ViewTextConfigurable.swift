@@ -20,13 +20,25 @@
 //  THE SOFTWARE.
 //
 
-public extension InitializableViewProtocol {
+import UIKit.UITextField
 
-    func initializeView() {
-        addViews()
-        configureLayout()
-        bindViews()
-        configureAppearance()
-        localize()
+extension UITextField: ViewTextConfigurable {
+
+    public var textFont: UIFont? {
+        get {
+            return font
+        }
+        set {
+            font = newValue
+        }
+    }
+
+    public var titleColor: UIColor? {
+        get {
+            return textColor
+        }
+        set {
+            textColor = newValue
+        }
     }
 }

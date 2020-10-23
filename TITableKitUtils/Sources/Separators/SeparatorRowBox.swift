@@ -20,13 +20,22 @@
 //  THE SOFTWARE.
 //
 
-public extension InitializableViewProtocol {
+import TableKit
+import TIUIElements
+import TISwiftUtils
 
-    func initializeView() {
-        addViews()
-        configureLayout()
-        bindViews()
-        configureAppearance()
-        localize()
+/// Class that used to configure separators when multiply cells presented in one section
+public final class SeparatorRowBox {
+    private let setSeparatorHandler: ParameterClosure<ViewSeparatorType>
+
+    public func set(separatorType: ViewSeparatorType) {
+        setSeparatorHandler(separatorType)
+    }
+
+    public let row: Row
+
+    public init<T>(row: TableRow<T>) where T: SeparatorConfigurable {
+        self.row = row
+        setSeparatorHandler = row.set
     }
 }

@@ -1,6 +1,7 @@
 import UIKit
+import TIUIKitCore
 
-open class BaseInitializableControl: UIControl, InitializableView {
+open class BaseInitializableControl: UIControl, InitializableViewProtocol {
     override public init(frame: CGRect) {
         super.init(frame: frame)
 

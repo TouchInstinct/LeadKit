@@ -18,7 +18,3 @@ final class ViewModel {
     var hasFinishedOnboarding: Bool
 }
 ```
-
-# Installation via SPM
-
-You can install this framework as a target of LeadKit.

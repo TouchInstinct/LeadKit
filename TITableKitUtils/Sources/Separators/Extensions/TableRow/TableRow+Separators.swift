@@ -20,40 +20,34 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import TableKit
+import TIUIElements
 
-open class BaseInitializableView: UIView, InitializableView {
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
+private let configureSeparatorActionId = "TableRowConfigureSeparatorActionId"
 
-        initializeView()
+public extension TableRow where CellType: SeparatorConfigurable {
+
+    func with(separatorType: ViewSeparatorType) -> Self {
+        set(separatorType: separatorType)
+        return self
     }
 
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    func set(separatorType: ViewSeparatorType) {
+        removeAction(forActionId: configureSeparatorActionId)
 
-        initializeView()
+        let action = TableRowAction<CellType>(.configure) {
+            $0.cell?.configureSeparators(with: separatorType)
+        }
+
+        action.id = configureSeparatorActionId
+        on(action)
     }
+}
 
-    // MARK: - InitializableView
+public extension TableRow where CellType: SeparatorConfigurable {
 
-    open func addViews() {
-        // override in subclass
-    }
-
-    open func configureLayout() {
-        // override in subclass
-    }
-
-    open func bindViews() {
-        // override in subclass
-    }
-
-    open func configureAppearance() {
-        // override in subclass
-    }
-
-    open func localize() {
-        // override in subclass
+    /// TableRow typed as SeparatorRowBox
+    var separatorRowBox: SeparatorRowBox {
+        return SeparatorRowBox(row: self)
     }
 }

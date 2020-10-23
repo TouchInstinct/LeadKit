@@ -12,7 +12,3 @@ Core UI elements: protocols, views and helpers.
 # Views
 
 - [BaseInitializableView](BaseInitializableView/BaseInitializableView.swift) - UIView conformance to InitializableView.
-
-# Installation via SPM
-
-You can install this framework as a target of LeadKit.

@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "TableKit",
+        "repositoryURL": "https://github.com/maxsokolov/TableKit.git",
+        "state": {
+          "branch": null,
+          "revision": "8bf4840d9d0475a92352f02f368f88b74eced447",
+          "version": "2.11.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
