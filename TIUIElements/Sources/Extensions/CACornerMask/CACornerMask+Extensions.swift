@@ -20,41 +20,23 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
-import TIUIKitCore
+import QuartzCore
 
-open class BaseInitializableControl: UIControl, InitializableViewProtocol {
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-
-        initializeView()
+public extension CACornerMask {
+    static var topCorners: Self {
+        [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
 
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-
-        initializeView()
+    static var bottomCorners: Self {
+        [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     }
 
-    // MARK: - InitializableView
-
-    open func addViews() {
-        // override in subclass
-    }
-
-    open func configureLayout() {
-        // override in subclass
-    }
-
-    open func bindViews() {
-        // override in subclass
-    }
-
-    open func configureAppearance() {
-        // override in subclass
-    }
-
-    open func localize() {
-        // override in subclass
+    static var allCorners: Self {
+        [
+            .layerMinXMinYCorner,
+            .layerMaxXMinYCorner,
+            .layerMinXMaxYCorner,
+            .layerMaxXMaxYCorner
+        ]
     }
 }

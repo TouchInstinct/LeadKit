@@ -21,40 +21,37 @@
 //
 
 import UIKit
-import TIUIKitCore
 
-open class BaseInitializableControl: UIControl, InitializableViewProtocol {
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
+protocol BaseTextAttributesConfigurable {
+    func set(font: UIFont)
+    func set(color: UIColor)
+    func set(alignment: NSTextAlignment)
+}
 
-        initializeView()
+extension UILabel: BaseTextAttributesConfigurable {
+    public func set(font: UIFont) {
+        self.font = font
     }
 
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-
-        initializeView()
+    public func set(color: UIColor) {
+        self.textColor = color
     }
 
-    // MARK: - InitializableView
+    public func set(alignment: NSTextAlignment) {
+        self.textAlignment = alignment
+    }
+}
 
-    open func addViews() {
-        // override in subclass
+extension UITextField: BaseTextAttributesConfigurable {
+    public func set(font: UIFont) {
+        self.font = font
     }
 
-    open func configureLayout() {
-        // override in subclass
+    public func set(color: UIColor) {
+        self.textColor = color
     }
 
-    open func bindViews() {
-        // override in subclass
-    }
-
-    open func configureAppearance() {
-        // override in subclass
-    }
-
-    open func localize() {
-        // override in subclass
+    public func set(alignment: NSTextAlignment) {
+        self.textAlignment = alignment
     }
 }

@@ -1,5 +1,12 @@
 # Changelog
 
+### 0.12.0
+- **Add**: StatefulButton & RoundedStatefulButton to TIUIElements.
+- **Add**: added CACornerMask rounding extension to TIUIElements.
+- **Add**: UIControl.State dictionary extensions to TIUIKitCore.
+- **Add**: UIFont and CTFont extensions to TIUIKitCore.
+- **Breaking change**: reworked BaseTextAttributes & ViewText. Removed ViewTextConfigurable protocol & conformances.
+
 ### 0.11.0
 - **Add**: Cocoapods support for TI-family libraries.
 - **Add**: `SeparatorConfigurable` and all helper types for separator configuration.

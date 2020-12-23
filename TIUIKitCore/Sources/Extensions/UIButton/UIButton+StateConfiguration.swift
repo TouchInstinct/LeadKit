@@ -20,25 +20,28 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UITextField
+import UIKit.UIButton
 
-extension UITextField: ViewTextConfigurable {
-
-    public var textFont: UIFont? {
-        get {
-            return font
-        }
-        set {
-            font = newValue
-        }
+public extension UIButton {
+    func set(titleColors: StateColors) {
+        titleColors.forEach { setTitleColor($1, for: $0) }
     }
 
-    public var titleColor: UIColor? {
-        get {
-            return textColor
-        }
-        set {
-            textColor = newValue
-        }
+    func set(titles: StateTitles) {
+        titles.forEach { setTitle($1, for: $0) }
+    }
+
+    func set(attributtedTitles: StateAttributedTitles) {
+        attributtedTitles.forEach { setAttributedTitle($1, for: $0) }
+    }
+
+    // MARK: - Images
+
+    func set(images: StateImages) {
+        images.forEach { setImage($1, for: $0) }
+    }
+
+    func set(backgroundImages: StateImages) {
+        backgroundImages.forEach { setBackgroundImage($1, for: $0) }
     }
 }
