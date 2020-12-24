@@ -20,41 +20,17 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
-import TIUIKitCore
+import UIKit.UIControl
 
-open class BaseInitializableControl: UIControl, InitializableViewProtocol {
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-
-        initializeView()
+extension UIControl.State: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(Int(rawValue))
     }
+}
 
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-
-        initializeView()
-    }
-
-    // MARK: - InitializableView
-
-    open func addViews() {
-        // override in subclass
-    }
-
-    open func configureLayout() {
-        // override in subclass
-    }
-
-    open func bindViews() {
-        // override in subclass
-    }
-
-    open func configureAppearance() {
-        // override in subclass
-    }
-
-    open func localize() {
-        // override in subclass
-    }
+public extension UIControl {
+    typealias StateColors = [UIControl.State: UIColor?]
+    typealias StateImages = [UIControl.State: UIImage?]
+    typealias StateTitles = [UIControl.State: String?]
+    typealias StateAttributedTitles = [UIControl.State: NSAttributedString?]
 }

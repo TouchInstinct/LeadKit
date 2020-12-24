@@ -21,40 +21,36 @@
 //
 
 import UIKit
-import TIUIKitCore
 
-open class BaseInitializableControl: UIControl, InitializableViewProtocol {
+open class RoundedStatefulButton: StatefulButton {
+
+    // UIView override
+
     override public init(frame: CGRect) {
         super.init(frame: frame)
 
-        initializeView()
+        configureAppearance()
     }
 
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required public init?(coder: NSCoder) {
+        super.init(coder: coder)
 
-        initializeView()
+        configureAppearance()
     }
 
-    // MARK: - InitializableView
+    open override func layoutSubviews() {
+        super.layoutSubviews()
 
-    open func addViews() {
-        // override in subclass
+        layer.cornerRadius = calculateCornerRadius(for: bounds)
     }
 
-    open func configureLayout() {
-        // override in subclass
-    }
-
-    open func bindViews() {
-        // override in subclass
-    }
+    // MARK: - Open methods
 
     open func configureAppearance() {
-        // override in subclass
+        layer.round(corners: .allCorners)
     }
 
-    open func localize() {
-        // override in subclass
+    open func calculateCornerRadius(for bounds: CGRect) -> CGFloat {
+        min(bounds.width, bounds.height) / 2
     }
 }

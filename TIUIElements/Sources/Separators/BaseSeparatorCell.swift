@@ -74,6 +74,7 @@ open class BaseSeparatorCell: BaseInitializableCell, SeparatorConfigurable {
 
     open override func prepareForReuse() {
         super.prepareForReuse()
+
         configureSeparators(with: .none)
     }
 
@@ -131,17 +132,21 @@ open class BaseSeparatorCell: BaseInitializableCell, SeparatorConfigurable {
 private extension BaseSeparatorCell {
     func updateTopSeparator(with configuration: SeparatorConfiguration) {
         topSeparatorView.backgroundColor = configuration.color
+
         topViewHeightConstraint?.constant = configuration.height
+
         topViewTopConstraint?.constant = configuration.insets.top
         topViewLeftConstraint?.constant = configuration.insets.left
-        topViewRightConstraint?.constant = -configuration.insets.right
+        topViewRightConstraint?.constant = configuration.insets.right
     }
 
     func updateBottomSeparator(with configuration: SeparatorConfiguration) {
         bottomSeparatorView.backgroundColor = configuration.color
+
         bottomViewHeightConstraint?.constant = configuration.height
-        bottomViewBottomConstraint?.constant = -configuration.insets.bottom
+
+        bottomViewBottomConstraint?.constant = configuration.insets.bottom
         bottomViewLeftConstraint?.constant = configuration.insets.left
-        bottomViewRightConstraint?.constant = -configuration.insets.right
+        bottomViewRightConstraint?.constant = configuration.insets.right
     }
 }

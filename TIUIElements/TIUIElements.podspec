@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TIUIElements'
-  s.version          = '0.11.0'
+  s.version          = '0.12.0'
   s.summary          = 'Bunch of useful protocols and views.'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -13,4 +13,5 @@ Pod::Spec.new do |s|
   s.source_files = s.name + '/Sources/**/*'
 
   s.dependency 'TIUIKitCore', s.version.to_s
+  s.dependency 'TISwiftUtils', s.version.to_s
 end

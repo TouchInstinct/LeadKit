@@ -20,25 +20,16 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UILabel
+import UIKit.UIFont
 
-extension UILabel: ViewTextConfigurable {
+public extension UIFont {
+    convenience init(fontFamily: String, fontFace: String, size: CGFloat) {
+        let fontDescriptor = UIFontDescriptor(fontAttributes: [
+            UIFontDescriptor.AttributeName.size: size,
+            UIFontDescriptor.AttributeName.family: fontFamily,
+            UIFontDescriptor.AttributeName.face: fontFace
+        ])
 
-    public var textFont: UIFont? {
-        get {
-            return font
-        }
-        set {
-            font = newValue
-        }
-    }
-
-    public var titleColor: UIColor? {
-        get {
-            return textColor
-        }
-        set {
-            textColor = newValue
-        }
+        self.init(descriptor: fontDescriptor, size: size)
     }
 }
