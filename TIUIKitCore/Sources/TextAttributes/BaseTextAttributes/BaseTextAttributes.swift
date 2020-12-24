@@ -26,15 +26,10 @@ import UIKit.UIColor
 /// Base set of attributes to configure appearance of text.
 open class BaseTextAttributes {
 
-    /// Text font.
     public let font: UIFont
-    /// Text color.
     public let color: UIColor
-    /// Text alignment.
     public let alignment: NSTextAlignment
-    /// Paragraph line height.
     public let lineHeightMultiple: CGFloat
-    /// Number of lines for labels.
     public let numberOfLines: Int
 
     public init(font: UIFont,
@@ -42,6 +37,7 @@ open class BaseTextAttributes {
                 alignment: NSTextAlignment,
                 lineHeightMultiple: CGFloat,
                 numberOfLines: Int) {
+
         self.font = font
         self.color = color
         self.alignment = alignment

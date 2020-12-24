@@ -24,6 +24,10 @@ import CoreGraphics
 import CoreText
 import Foundation
 
+public enum FontFormat: String {
+    case woff2
+}
+
 public extension CTFont {
     enum FontRegistrationError: Error {
         case fontsNotFound
@@ -56,8 +60,11 @@ public extension CTFont {
         }
     }
 
-    static func registerAllFonts(in bundle: Bundle) throws {
-        guard let fontUrls = bundle.urls(forResourcesWithExtension: "woff2", subdirectory: nil),
+    static func registerAllFonts(in bundle: Bundle,
+                                 withFileExtension fileExtension: String = FontFormat.woff2.rawValue) throws {
+
+        guard let fontUrls = bundle.urls(forResourcesWithExtension: fileExtension,
+                                         subdirectory: nil),
               !fontUrls.isEmpty else {
             throw FontRegistrationError.fontsNotFound
         }

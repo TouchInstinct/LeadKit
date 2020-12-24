@@ -34,11 +34,11 @@ extension UILabel: BaseTextAttributesConfigurable {
     }
 
     public func set(color: UIColor) {
-        self.textColor = color
+        textColor = color
     }
 
     public func set(alignment: NSTextAlignment) {
-        self.textAlignment = alignment
+        textAlignment = alignment
     }
 }
 
@@ -48,10 +48,10 @@ extension UITextField: BaseTextAttributesConfigurable {
     }
 
     public func set(color: UIColor) {
-        self.textColor = color
+        textColor = color
     }
 
     public func set(alignment: NSTextAlignment) {
-        self.textAlignment = alignment
+        textAlignment = alignment
     }
 }

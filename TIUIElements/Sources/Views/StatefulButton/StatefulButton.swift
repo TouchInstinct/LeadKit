@@ -69,7 +69,7 @@ open class StatefulButton: UIButton {
 
     public var onDisabledStateTapHandler: VoidClosure?
 
-    var eventPropagations: StateEventPropagations = [:]
+    private var eventPropagations: StateEventPropagations = [:]
 
     // MARK: - Background
 
@@ -182,6 +182,8 @@ open class StatefulButton: UIButton {
                                                 at: position))
     }
 
+    // MARK: - Private
+
     private func constraints(for activityIndicator: ActivityIndicator,
                              at position: ActivityIndicatorPosition) -> [NSLayoutConstraint] {
         switch position {
@@ -204,8 +206,6 @@ open class StatefulButton: UIButton {
             ]
         }
     }
-
-    // MARK: - Private
 
     private func updateBackgroundColor() {
         if isEnabled {
