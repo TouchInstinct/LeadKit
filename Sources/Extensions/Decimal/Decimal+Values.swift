@@ -26,14 +26,7 @@ public extension Decimal {
 
     /// Conver Decimal to Double value
     var doubleValue: Double {
-        var scannedValue = 0.0
-        let scanner = Scanner(string: description)
-
-        guard scanner.scanDouble(&scannedValue) else {
-            return NSDecimalNumber(decimal: self).doubleValue
-        }
-
-        return scannedValue
+        return NSString(string: description).doubleValue
     }
 
     /// Conver Decimal to Int value
