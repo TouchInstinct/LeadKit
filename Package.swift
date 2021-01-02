@@ -4,7 +4,9 @@ import PackageDescription
 let package = Package(
   name: "LeadKit",
   platforms: [
-      .iOS(.v11)
+    .iOS(.v11),
+    .tvOS(.v11),
+    .watchOS(.v3)
   ],
   products: [
     .library(name: "TITransitions", targets: ["TITransitions"]),

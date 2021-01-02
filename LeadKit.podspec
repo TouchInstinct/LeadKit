@@ -104,12 +104,12 @@ Pod::Spec.new do |s|
       "Sources/Structures/DataLoading/PaginationDataLoading/*"
     ]
 
-    ss.dependency "RxSwift", '~> 5.1.0'
-    ss.dependency "RxCocoa", '~> 5.1.0'
-    ss.dependency "RxAlamofire", '~> 5.6.0'
+    ss.dependency "RxSwift", '~> 6.0'
+    ss.dependency "RxCocoa", '~> 6.0'
+    ss.dependency "RxAlamofire", '~> 6.0.0'
     ss.dependency "SwiftDate", '~> 6'
 
-    ss.ios.dependency "TableKit", '~> 2.8'
+    ss.ios.dependency "TableKit", '~> 2.11'
     ss.ios.dependency "SnapKit", '~> 5.0.0'
     ss.ios.dependency "UIScrollView-InfiniteScroll", '~> 1.1.0'
   end
