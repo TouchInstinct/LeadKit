@@ -100,6 +100,13 @@ private extension UIControl.ContentHorizontalAlignment {
             } else {
                 self = .left
             }
+
+        @unknown default:
+            if #available(iOS 11, tvOS 11, *) {
+                self = .leading
+            } else {
+                self = .left
+            }
         }
     }
 
@@ -122,6 +129,9 @@ private extension UIControl.ContentHorizontalAlignment {
 
         case .trailing:
             return .right
+
+        @unknown default:
+            return .left
         }
     }
 }

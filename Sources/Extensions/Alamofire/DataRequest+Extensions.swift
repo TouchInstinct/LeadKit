@@ -102,7 +102,7 @@ private extension ObservableType where Element == ServerResponse {
         return flatMap { response, result -> Observable<R> in
             do {
                 return try transform((response, result))
-                    .catchError {
+                    .catch {
                         throw RequestError.mapping(error: $0, response: result)
                     }
             } catch {
@@ -115,7 +115,7 @@ private extension ObservableType where Element == ServerResponse {
 private extension ObservableType {
 
     func catchAsRequestError(with request: DataRequest? = nil) -> Observable<Element> {
-        return catchError { error in
+        return self.catch { error in
             let resultError: RequestError
             let response = request?.data
 

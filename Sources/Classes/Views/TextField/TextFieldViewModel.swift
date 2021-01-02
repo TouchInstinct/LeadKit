@@ -88,11 +88,9 @@ public extension TextFieldViewModel {
     /// - Returns: Disposable object that can be used to unsubscribe the observer from the binding.
     func mapViewEvents(_ closure: @escaping MapViewEventsClosure) -> Disposable {
         return viewEventsDriver
-            .map { [weak self] in
-                guard let strongSelf = self else {
-                    return
-                }
-                closure($0).forEach { $0.disposed(by: strongSelf.disposeBag) }
+            .withUnretained(self)
+            .map { owner, item in
+                closure(item).forEach { $0.disposed(by: owner.disposeBag) }
             }
             .drive()
     }

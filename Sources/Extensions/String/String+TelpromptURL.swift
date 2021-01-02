@@ -29,7 +29,7 @@ public extension String {
         let cleanPhoneNumber = components(separatedBy: characterSet.inverted).joined()
 
         if let escapedPhoneNumber = cleanPhoneNumber.addingPercentEncoding(withAllowedCharacters: characterSet),
-            let phonePrompt = URL(string: "telprompt://" + escapedPhoneNumber) {
+           let phonePrompt = URL(string: "telprompt://" + escapedPhoneNumber) {
 
             return phonePrompt
         }

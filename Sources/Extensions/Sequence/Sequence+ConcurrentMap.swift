@@ -55,7 +55,7 @@ public extension Sequence {
         return Observable.from(indexedRanges)
             .flatMap { indexedRange -> Observable<(idx: Int, results: [R])> in
                 Observable.just(indexedRange)
-                    .observeOn(scheduler)
+                    .observe(on: scheduler)
                     .map { (idx: $0.idx, results: try array[$0.range].map(transform)) }
             }
             .toArray()
