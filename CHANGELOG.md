@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.12.1
+- **Fix**: Convert from Decimal to Double.
+
 ### 0.12.0
 - **Add**: StatefulButton & RoundedStatefulButton to TIUIElements.
 - **Add**: added CACornerMask rounding extension to TIUIElements.
