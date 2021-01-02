@@ -20,7 +20,7 @@
 //  THE SOFTWARE.
 //
 
-import RxCocoa
+import RxSwift
 
 private extension Double {
     static let halfPeriod = 0.5

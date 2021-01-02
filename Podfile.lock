@@ -1,0 +1,62 @@
+PODS:
+  - Alamofire (5.4.1)
+  - RxAlamofire (6.0.0):
+    - RxAlamofire/Core (= 6.0.0)
+  - RxAlamofire/Core (6.0.0):
+    - Alamofire (~> 5.4)
+    - RxSwift (~> 6.0)
+  - RxCocoa (6.0.0):
+    - RxRelay (= 6.0.0)
+    - RxSwift (= 6.0.0)
+  - RxRelay (6.0.0):
+    - RxSwift (= 6.0.0)
+  - RxSwift (6.0.0)
+  - SnapKit (5.0.1)
+  - SwiftDate (6.3.1)
+  - TableKit (2.11.0)
+  - UIScrollView-InfiniteScroll (1.1.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - RxAlamofire (~> 6.0)
+  - RxCocoa (~> 6.0)
+  - RxSwift (~> 6.0)
+  - SnapKit (~> 5.0)
+  - SwiftDate
+  - TableKit (from `https://github.com/TouchInstinct/TableKit`)
+  - UIScrollView-InfiniteScroll
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - RxAlamofire
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SnapKit
+    - SwiftDate
+    - UIScrollView-InfiniteScroll
+
+EXTERNAL SOURCES:
+  TableKit:
+    :git: https://github.com/TouchInstinct/TableKit
+
+CHECKOUT OPTIONS:
+  TableKit:
+    :commit: 41826e18db4ce9255d8c4d682e1290f9e51d2141
+    :git: https://github.com/TouchInstinct/TableKit
+
+SPEC CHECKSUMS:
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  RxAlamofire: 3cc9539633ba5039fb9eab3efefdd1b9bb1ee511
+  RxCocoa: 3f79328fafa3645b34600f37c31e64c73ae3a80e
+  RxRelay: 8d593be109c06ea850df027351beba614b012ffb
+  RxSwift: c14e798c59b9f6e9a2df8fd235602e85cc044295
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
+  TableKit: 8a1a267d841a2da638ea09bdb0db33aedb459fa8
+  UIScrollView-InfiniteScroll: 3ef456bcbe759c19f510a383cff96e6647c98c98
+
+PODFILE CHECKSUM: a289110411d182221f2a81b35613f6e40c14c083
+
+COCOAPODS: 1.10.0

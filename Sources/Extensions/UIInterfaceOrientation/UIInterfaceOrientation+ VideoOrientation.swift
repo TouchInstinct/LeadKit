@@ -2,7 +2,7 @@ import Foundation
 import AVFoundation
 
 public extension UIInterfaceOrientation {
-    
+
     var videoOrientation: AVCaptureVideoOrientation {
             switch self {
             case .portrait, .unknown:
@@ -16,7 +16,7 @@ public extension UIInterfaceOrientation {
 
             case .portraitUpsideDown:
                 return .portraitUpsideDown
-                
+
             @unknown default:
                 return .portrait
             }
