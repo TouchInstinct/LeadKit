@@ -33,7 +33,7 @@ public extension UIWindow {
     ///
     /// - Parameter controller: New root controller.
     /// - Parameter animated: Indicates whether to use animation or not.
-    func changeRootController(controller: UIViewController, animated: Bool = true) {
+    func changeRootController(_ controller: UIViewController, animated: Bool = true) {
         if animated {
             animateRootViewControllerChanging(controller: controller)
         }

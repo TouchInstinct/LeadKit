@@ -20,6 +20,8 @@
 //  THE SOFTWARE.
 //
 
+// swiftlint:disable parameter_closure
+
 /// Closure with custom arguments and return value.
 public typealias Closure<Input, Output> = (Input) -> Output
 

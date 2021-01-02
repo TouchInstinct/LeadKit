@@ -1,0 +1,6 @@
+/Users/vladsuhomlinov/LeadKit//Structures/Api/ApiRequestParameters.swift:48:1: warning: 12 copy-pasted lines from: /Users/vladsuhomlinov/LeadKit//Structures/Api/ApiRequestParameters.swift:67
+/Users/vladsuhomlinov/LeadKit//Structures/Api/ApiRequestParameters.swift:67:1: warning: 12 copy-pasted lines from: /Users/vladsuhomlinov/LeadKit//Structures/Api/ApiRequestParameters.swift:48
+/Users/vladsuhomlinov/LeadKit//Structures/NetworkService/NetworkServiceConfiguration.swift:90:1: warning: 11 copy-pasted lines from: /Users/vladsuhomlinov/LeadKit//Structures/NetworkService/NetworkServiceConfiguration.swift:114
+/Users/vladsuhomlinov/LeadKit//Structures/NetworkService/NetworkServiceConfiguration.swift:114:1: warning: 11 copy-pasted lines from: /Users/vladsuhomlinov/LeadKit//Structures/NetworkService/NetworkServiceConfiguration.swift:90
+/Users/vladsuhomlinov/LeadKit//Classes/Search/BaseSearchViewModel.swift:39:1: warning: 10 copy-pasted lines from: /Users/vladsuhomlinov/LeadKit//Classes/Search/BaseSearchViewModel.swift:58
+/Users/vladsuhomlinov/LeadKit//Classes/Search/BaseSearchViewModel.swift:58:1: warning: 10 copy-pasted lines from: /Users/vladsuhomlinov/LeadKit//Classes/Search/BaseSearchViewModel.swift:39

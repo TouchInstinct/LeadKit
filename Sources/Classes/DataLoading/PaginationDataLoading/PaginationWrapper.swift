@@ -50,7 +50,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
         }
     }
 
-    public var pullToRefreshEnabled: Bool = true {
+    public var pullToRefreshEnabled = true {
         didSet {
             if pullToRefreshEnabled {
                 createRefreshControl()
