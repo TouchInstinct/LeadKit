@@ -1,0 +1,43 @@
+name: release
+
+on:
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Set up Ruby 3.0
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0
+        bundler-cache: true
+
+    - name: Select Xcode 11 # Use Xcode 11 due to Carthage crashes
+      run: sudo xcode-select -s /Applications/Xcode_11.app
+
+    - name: Cache Carthage
+      id: cache-carthage
+      uses: actions/cache@v2
+      with:
+        path: ~/Carthage
+        key: ${{ runner.os }}-carthage
+
+    - name: Install Carthage
+      if: steps.cache-carthage.outputs.cache-hit != 'true'
+      run: bundle exec carthage bootstrap
+  
+    - name: Build SPM
+      run: |
+        swift build -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios14.0-simulator"
+
+    - name: Build LeadKit Project
+      run: |
+        set -o pipefail && xcodebuild build SWIFT_VERSION=5.2.0
+        -workspace LeadKit.xcodeproj
+        -scheme 'LeadKit iOS' -sdk iphonesimulator
+        -destination "name=iPhone 11" | xcpretty -c
