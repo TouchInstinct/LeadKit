@@ -22,6 +22,11 @@ jobs:
     runs-on: macos-latest
 
     steps:
+    - name: Current Dir
+      run: |
+        pwd
+        ls .
+
     - name: Set up Ruby 3.0
       uses: ruby/setup-ruby@v1
       with:
