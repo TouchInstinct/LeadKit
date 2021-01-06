@@ -10,7 +10,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      
+
+    - name: Build SPM
+      run: |
+        swift build -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios14.0-simulator"
+        
+  danger:
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Set up Ruby 3.0
       uses: ruby/setup-ruby@v1
       with:
@@ -21,4 +29,3 @@ jobs:
       env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: bundle exec danger
-
