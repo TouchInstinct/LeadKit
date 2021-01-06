@@ -17,41 +17,11 @@ jobs:
     - name: Build SPM
       run: |
         swift build -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios14.0-simulator"
-  
-  create-release:
-    if: github.event.review.state == 'approved'
-    
-    runs-on: macos-latest
-
-    steps:
-    - uses: actions/checkout@v2      
-    
-    - name: Set up Ruby 3.0
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.0
-        bundler-cache: true
-
-    - name: Fetch all tags
-      run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-
-    - name: Bump version
+        
+    - name: Deploy to Cocoapods
       run: |
-        chmod +x ./bump-version.sh
-        ./bump-version.sh
-
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
-
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
+        set -eo pipefail
+        export RELEASE_VERSION="$(git describe --abbrev=0 | tr -d '\n')"
+        pod repo push https://github.com/TouchInstinct/Podspecs ./TITransitions/TITransitions.podspec --allow-warnings
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ env.RELEASE_VERSION }}
-        release_name: LeadKit ${{ env.RELEASE_VERSION }}
-        draft: false
+        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
