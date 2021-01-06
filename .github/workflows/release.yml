@@ -4,9 +4,6 @@ on:
   pull_request:
     branches: [ master, main ]
 
-env:
-  DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
-
 jobs:
   build:
     runs-on: macos-latest
@@ -17,11 +14,56 @@ jobs:
     - name: Build SPM
       run: |
         swift build -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios14.0-simulator"
-        
+  
+  create-release:
+    if: github.event.review.state == 'approved'
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2      
+    
+    - name: Configure SSH
+      run: |
+        mkdir -p ~/.ssh/
+        ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+        echo "$key" > ~/.ssh/id_rsa
+        ssh-add
+      env:
+        key: ${{ secrets.SSH_KEY }}
+
+    - name: Fetch all tags
+      run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+
+    - name: Bump version
+      run: |
+        set -euo pipefail
+        npx standard-version --skip.changelog --skip.commit  -t ''
+        echo "RELEASE_VERSION=$(git describe --abbrev=0 | tr -d '\n')" >> $GITHUB_ENV
+        export VERSION="$(git describe --abbrev=0 | tr -d '\n')"
+        find . -name '*.podspec' | xargs -I% npx podspec-bump -i $VERSION -w -p %
+        git add -A
+        git commit --amend --no-edit
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ env.RELEASE_VERSION }}
+        release_name: LeadKit ${{ env.RELEASE_VERSION }}
+        draft: false
+        prerelease: false
+
     - name: Deploy to Cocoapods
       run: |
-        set -eo pipefail
+        set -euo pipefail
         export RELEASE_VERSION="$(git describe --abbrev=0 | tr -d '\n')"
-        pod repo push https://github.com/TouchInstinct/Podspecs ./TITransitions/TITransitions.podspec --allow-warnings
-      env:
-        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+        find . -name '*.podspec' | xargs -I% pod repo push git@github.com:TouchInstinct/Podspecs % --allow-warnings
