@@ -4,6 +4,9 @@ on:
   pull_request:
     branches: [ master, main ]
 
+env:
+  DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
+
 jobs:
   create-release:
     if: github.event.review.state == 'approved'
