@@ -4,11 +4,11 @@ on:
   pull_request:
     branches: [ master, main ]
 
-env:
-  DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
-
 jobs:
   build:
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
+
     runs-on: macos-latest
 
     steps:
@@ -24,8 +24,7 @@ jobs:
     steps:
     - name: Current Dir
       run: |
-        pwd
-        ls .
+        ls $pwd
 
     - name: Set up Ruby 3.0
       uses: ruby/setup-ruby@v1
