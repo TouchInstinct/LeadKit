@@ -13,13 +13,45 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      
+
+    - name: Build SPM
+      run: |
+        swift build -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios14.0-simulator"
+  
+  create-release:
+    if: github.event.review.state == 'approved'
+    
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2      
+    
     - name: Set up Ruby 3.0
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 3.0
         bundler-cache: true
-  
-    - name: Build SPM
+
+    - name: Fetch all tags
+      run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+
+    - name: Bump version
       run: |
-        swift build -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios14.0-simulator"
+        chmod +x ./bump-version.sh
+        ./bump-version.sh
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ env.RELEASE_VERSION }}
+        release_name: LeadKit ${{ env.RELEASE_VERSION }}
+        draft: false
