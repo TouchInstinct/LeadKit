@@ -19,12 +19,12 @@ jobs:
         swift build -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios14.0-simulator"
         
   danger:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Current Dir
       run: |
-        ls $pwd
+        find .
 
     - name: Set up Ruby 3.0
       uses: ruby/setup-ruby@v1
