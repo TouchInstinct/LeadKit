@@ -1,5 +1,5 @@
 # LeadKit
-LeadKit is the iOS framework with a bunch of tools for rapid app development.  
+LeadKit is the iOS framework with a bunch of tools for rapid app development.
 
 ## Additional
 This repository contains the following additional frameworks:
@@ -10,6 +10,11 @@ This repository contains the following additional frameworks:
 - [TISwiftUtils](TISwiftUtils) - a bunch of useful helpers for development.
 - [TITableKitUtils](TITableKitUtils) - Set of helpers for TableKit classes.
 
+## Setup
+Run following script in framework's folder:
+```ruby
+./setup.sh
+```
 
 ## Installation
 
