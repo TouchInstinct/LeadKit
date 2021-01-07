@@ -21,6 +21,7 @@ breaking_changes_message = 'If commit include Breaking changes use ! after type 
 colored_breaking_changes_message = 'If commit include \033[91mBreaking changes\033[00m use \033[91m!\033[00m after type or scope:' 
 breaking_changes_commit_pattern = '    type(scope)!: message | type!: message \n'
 
+available_types_message = 'Available commit types:'
 available_commit_types = ['build: Changes that affect the build system or external dependencies',
  'ci: Changes to our CI configuration files and scripts', 
  'docs: Documentation only changes', 
@@ -58,7 +59,7 @@ def print_error_message():
     print_available_commit_types()
 
 def print_available_commit_types():
-    print("Available commit types:")
+    print(available_types_message)
 
     for commit_type in available_commit_types:
         print("   - %s" %commit_type)
