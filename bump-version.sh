@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -euo pipefail
-npx standard-version --skip.changelog --skip.commit  -t ''
+npx standard-version -t ''
 
 echo "RELEASE_VERSION=$(git describe --abbrev=0 | tr -d '\n')" >> $GITHUB_ENV
 export VERSION="$(git describe --abbrev=0 | tr -d '\n')"
