@@ -55,7 +55,6 @@ def print_error_message():
         print(colored_breaking_changes_message)
 
     print_pattern(breaking_changes_commit_pattern)
-
     print_available_commit_types()
 
 def print_available_commit_types():
