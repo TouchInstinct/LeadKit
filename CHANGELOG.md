@@ -1,7 +1,7 @@
 # Changelog
 
 ### 0.13.0
-- **Add**: Githook `prepare-commit-msg` to - check commit's style.
+- **Add**: Githook `prepare-commit-msg` to check commit's style.
 - **Add**: Setup script.
 
 ### 0.12.0
