@@ -39,7 +39,7 @@ public extension Encodable {
     /// Method that converts encodable model to URLQueryItems array
     /// - Returns: URLQueryItems array
     func asUrlQueryItems() throws -> [URLQueryItem] {
-        return try toJSON().map {
+        try toJSON().map {
             if ($1 is [String: Any] || $1 is [Any]),
                 let jsonData = try? JSONSerialization.data(withJSONObject: $1, options: []),
                 let jsonString = String(data: jsonData, encoding: .utf8) {

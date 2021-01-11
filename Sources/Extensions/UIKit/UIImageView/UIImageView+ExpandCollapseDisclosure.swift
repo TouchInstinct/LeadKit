@@ -30,7 +30,7 @@ public extension UIImageView {
 
     /// Rotates image view by 180 degrees via transform property with animation.
     var expandRotationBinder: Binder<Bool> {
-        return Binder(self) { view, isExpanded in
+        Binder(self) { view, isExpanded in
 
             let angle = isExpanded ? CGFloat.pi / 2 : -CGFloat.pi / 2
 

@@ -43,6 +43,6 @@ public protocol DrawingOperation {
 extension DrawingOperation {
 
     var opaque: Bool {
-        return false
+        false
     }
 }

@@ -51,6 +51,6 @@ public extension PlaceholderConfigurable {
     /// - Parameter contentViewModel: Content of ContentLoadingViewModel.
     /// - Returns: ContentLoadingViewModel with content.
     static func content(with contentViewModel: ContentViewModelType) -> ContentLoadingViewModelType {
-        return .content(contentViewModel)
+        .content(contentViewModel)
     }
 }

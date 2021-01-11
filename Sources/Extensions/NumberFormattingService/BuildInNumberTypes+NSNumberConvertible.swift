@@ -25,41 +25,41 @@ import Foundation
 extension NSNumber: NSNumberConvertible {
 
     public func asNSNumber() -> NSNumber {
-        return self
+        self
     }
 }
 
 extension Decimal: NSNumberConvertible {
 
     public func asNSNumber() -> NSNumber {
-        return NSDecimalNumber(decimal: self)
+        NSDecimalNumber(decimal: self)
     }
 }
 
 extension Int: NSNumberConvertible {
 
     public func asNSNumber() -> NSNumber {
-        return NSNumber(value: self)
+        NSNumber(value: self)
     }
 }
 
 extension Int64: NSNumberConvertible {
 
     public func asNSNumber() -> NSNumber {
-        return NSNumber(value: self)
+        NSNumber(value: self)
     }
 }
 
 extension Double: NSNumberConvertible {
 
     public func asNSNumber() -> NSNumber {
-        return NSNumber(value: self)
+        NSNumber(value: self)
     }
 }
 
 extension Float: NSNumberConvertible {
 
     public func asNSNumber() -> NSNumber {
-        return NSNumber(value: self)
+        NSNumber(value: self)
     }
 }

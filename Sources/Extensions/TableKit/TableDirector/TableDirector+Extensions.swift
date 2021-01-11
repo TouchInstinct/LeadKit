@@ -96,7 +96,7 @@ public extension TableDirector {
      */
     @discardableResult
     func replace(withSection section: TableSection) -> Self {
-        return replace(withSections: [section])
+        replace(withSections: [section])
     }
 
     /**
@@ -108,7 +108,7 @@ public extension TableDirector {
      */
     @discardableResult
     func replace(withRows rows: [Row]) -> Self {
-        return replace(withSection: TableSection(rows: rows))
+        replace(withSection: TableSection(rows: rows))
     }
 
     /// Clear table view and reload it within empty section

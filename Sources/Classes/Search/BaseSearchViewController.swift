@@ -114,11 +114,11 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
     }
 
     open var searchBarPlaceholder: String {
-        return ""
+        ""
     }
 
     open var searchBarColor: UIColor {
-        return .gray
+        .gray
     }
 
     open var statusBarView: UIView {
@@ -133,7 +133,7 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
     }
 
     open var statusBarColor: UIColor {
-        return .black
+        .black
     }
 
     open func updateContent(with viewModels: [ItemViewModel]) {
@@ -146,16 +146,16 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
     }
 
     open var resetResults: Observable<SearchResultsViewControllerState> {
-        return searchController.rx.willPresent
+        searchController.rx.willPresent
             .map { SearchResultsViewControllerState.initial }
     }
 
     open var searchResults: Observable<SearchResultsViewControllerState> {
-        return viewModel.searchResultsDriver
+        viewModel.searchResultsDriver
             .asObservable()
             .withUnretained(self)
             .map { owner, viewModels -> SearchResultsViewControllerState in
-                owner.stateForUpdate(with: viewModels) ?? .rowsContent(rows: [])
+                owner.stateForUpdate(with: viewModels)
             }
     }
 

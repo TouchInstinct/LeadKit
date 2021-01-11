@@ -26,7 +26,7 @@ public extension NumberFormattingService {
 
     /// Computed static property. Use only once for `formatters` field implementation!
     static var computedFormatters: [NumberFormatType: NumberFormatter] {
-        return Dictionary(uniqueKeysWithValues: NumberFormatType.allCases.map { ($0, $0.numberFormatter) })
+        Dictionary(uniqueKeysWithValues: NumberFormatType.allCases.map { ($0, $0.numberFormatter) })
     }
 
     func numberFormatter(for format: NumberFormatType) -> NumberFormatter {
@@ -38,21 +38,21 @@ public extension NumberFormattingService {
     }
 
     func string(from number: NSNumberConvertible, format: NumberFormatType, defaultString: String = "") -> String {
-        return numberFormatter(for: format).string(from: number.asNSNumber()) ?? defaultString
+        numberFormatter(for: format).string(from: number.asNSNumber()) ?? defaultString
     }
 
     func number(from string: String, format: NumberFormatType) -> NSNumber? {
-        return numberFormatter(for: format).number(from: string)
+        numberFormatter(for: format).number(from: string)
     }
 }
 
 public extension NumberFormattingService where Self: Singleton {
 
     static func string(from number: NSNumberConvertible, format: NumberFormatType, defaultString: String = "") -> String {
-        return shared.string(from: number, format: format, defaultString: defaultString)
+        shared.string(from: number, format: format, defaultString: defaultString)
     }
 
     static func number(from string: String, format: NumberFormatType) -> NSNumber? {
-        return shared.number(from: string, format: format)
+        shared.number(from: string, format: format)
     }
 }

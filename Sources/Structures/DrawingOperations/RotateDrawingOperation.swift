@@ -42,7 +42,7 @@ struct RotateDrawingOperation: DrawingOperation {
     }
 
     public var contextSize: CGContextSize {
-        return translateRect.size.ceiledContextSize
+        translateRect.size.ceiledContextSize
     }
 
     public func apply(in context: CGContext) {

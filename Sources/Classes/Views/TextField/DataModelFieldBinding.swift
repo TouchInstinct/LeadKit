@@ -57,7 +57,7 @@ public final class DataModelFieldBinding<T> {
     /// - Parameter textDriver: Driver that emits new text values.
     /// - Returns: Disposable object that can be used to unsubscribe the observer from the behaviour relay.
     public func mergeStringToModel(from textDriver: Driver<String?>) -> Disposable {
-        return textDriver.map { [modelRelay, mergeFieldClosure] in
+        textDriver.map { [modelRelay, mergeFieldClosure] in
             mergeFieldClosure(modelRelay.value, $0)
         }
         .drive(modelRelay)
@@ -65,7 +65,7 @@ public final class DataModelFieldBinding<T> {
 
     /// A Driver that will emit current field value.
     public var fieldDriver: Driver<String?> {
-        return modelDriver.map(getFieldClosure)
+        modelDriver.map(getFieldClosure)
     }
 }
 
@@ -111,11 +111,11 @@ public extension BehaviorRelay {
     /// - Returns: DataModelFieldBinding instance.
     func fieldBinding(getFieldClosure: @escaping DataModelFieldBinding<Element>.GetFieldClosure,
                       mergeFieldClosure: @escaping DataModelFieldBinding<Element>.MergeFieldClosure)
-        -> DataModelFieldBinding<Element> {
+    -> DataModelFieldBinding<Element> {
 
-        return DataModelFieldBinding(modelRelay: self,
-                                     getFieldClosure: getFieldClosure,
-                                     mergeFieldClosure: mergeFieldClosure)
+        DataModelFieldBinding(modelRelay: self,
+                              getFieldClosure: getFieldClosure,
+                              mergeFieldClosure: mergeFieldClosure)
     }
 }
 
@@ -125,6 +125,6 @@ public extension BehaviorRelay where Element == String? {
     ///
     /// - Returns: DataModelFieldBinding instance.
     func fieldBinding() -> DataModelFieldBinding<Element> {
-        return DataModelFieldBinding(modelRelay: self)
+        DataModelFieldBinding(modelRelay: self)
     }
 }

@@ -25,10 +25,10 @@ extension Array: TotalCountCursorListingResult {
     public typealias ElementType = Element
 
     public var results: [Element] {
-        return self
+        self
     }
 
     public var totalCount: Int {
-        return count
+        count
     }
 }

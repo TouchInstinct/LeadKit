@@ -28,8 +28,8 @@ public extension TotalCountCursorListingResult {
     /// - Parameter transform: closure to transform results
     /// - Returns: new DefaultTotalCountCursorListingResult instance
     func asDefaultListingResult<E>(transform: ((ElementType) -> E)) -> DefaultTotalCountCursorListingResult<E> {
-        return DefaultTotalCountCursorListingResult(results: results.map(transform),
-                                                    totalCount: totalCount)
+        DefaultTotalCountCursorListingResult(results: results.map(transform),
+                                             totalCount: totalCount)
     }
 
     /// Method that creates DefaultTotalCountCursorListingResult
@@ -37,7 +37,7 @@ public extension TotalCountCursorListingResult {
     ///
     /// - Returns: new DefaultTotalCountCursorListingResult instance
     func asDefaultListingResult() -> DefaultTotalCountCursorListingResult<ElementType> {
-        return DefaultTotalCountCursorListingResult(results: results,
-                                                    totalCount: totalCount)
+        DefaultTotalCountCursorListingResult(results: results,
+                                             totalCount: totalCount)
     }
 }

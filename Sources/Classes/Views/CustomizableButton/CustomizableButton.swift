@@ -48,7 +48,7 @@ open class CustomizableButton: UIButton {
     }
 
     func backgroundColor(for state: UIControl.State) -> UIColor? {
-        return backgroundColors[state]
+        backgroundColors[state]
     }
 
     private func updateBackgroundColor() {

@@ -67,9 +67,9 @@ public extension ViewText {
     func size(maxWidth: CGFloat = CGFloat.greatestFiniteMagnitude,
               maxHeight: CGFloat = CGFloat.greatestFiniteMagnitude) -> CGSize {
 
-        return attributedString.boundingRect(with: CGSize(width: maxWidth, height: maxHeight),
-                                             options: [.usesLineFragmentOrigin, .usesFontLeading],
-                                             context: nil).size
+        attributedString.boundingRect(with: CGSize(width: maxWidth, height: maxHeight),
+                                      options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                      context: nil).size
     }
 
     /// Configures given ViewTextConfigurable instance.

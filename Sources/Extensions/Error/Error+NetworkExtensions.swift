@@ -25,7 +25,7 @@ import RxSwift
 public extension Error {
 
     var requestError: RequestError? {
-        return self as? RequestError
+        self as? RequestError
     }
 
     /// Method that tries to serialize response from a mapping request error to a model
@@ -52,7 +52,7 @@ public extension ObservableType {
     /// - Returns: Observable on caller
     func handleMappingError<T: Decodable>(with decoder: JSONDecoder = JSONDecoder(),
                                           handler: @escaping ParameterClosure<T>) -> Observable<Element> {
-            return self.do(onError: { error in
+            self.do(onError: { error in
                 guard let errorModel = try error.handleMappingError(with: decoder) as T? else {
                     return
                 }
@@ -72,7 +72,7 @@ public extension PrimitiveSequence where Trait == SingleTrait {
     /// - Returns: Single on caller
     func handleMappingError<T: Decodable>(with decoder: JSONDecoder = JSONDecoder(),
                                           handler: @escaping ParameterClosure<T>) -> PrimitiveSequence<Trait, Element> {
-            return self.do(onError: { error in
+            self.do(onError: { error in
                 guard let errorModel = try error.handleMappingError(with: decoder) as T? else {
                     return
                 }
@@ -92,7 +92,7 @@ public extension PrimitiveSequence where Trait == CompletableTrait, Element == N
     /// - Returns: Completable
     func handleMappingError<T: Decodable>(with decoder: JSONDecoder = JSONDecoder(),
                                           handler: @escaping ParameterClosure<T>) -> Completable {
-            return self.do(onError: { error in
+            self.do(onError: { error in
                 guard let errorModel = try error.handleMappingError(with: decoder) as T? else {
                     return
                 }

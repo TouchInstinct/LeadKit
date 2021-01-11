@@ -28,13 +28,13 @@ public extension Comparable {
     /// - parameter bounds: Lower and uppper bounds tuple
     /// - returns: Current value if it fits range, otherwise lower if value is too small or upper if value is too big
     func `in`(bounds: (lower: Self, upper: Self)) -> Self {
-        return min(max(bounds.lower, self), bounds.upper)
+        min(max(bounds.lower, self), bounds.upper)
     }
 
     /// Use this function to restrict comparable with lower and upper values
     /// - parameter range: ClosedRange representing bounds
     /// - returns: Current value if it fits range, otherwise lower if value is too small or upper if value is too big
     func `in`(range: ClosedRange<Self>) -> Self {
-        return `in`(bounds: (lower: range.lowerBound, upper: range.upperBound))
+        `in`(bounds: (lower: range.lowerBound, upper: range.upperBound))
     }
 }

@@ -26,12 +26,12 @@ public extension CellSeparatorType {
 
     /// Determine if bottom separator is hidden.
     var bottomIsHidden: Bool {
-        return bottomConfiguration == nil
+        bottomConfiguration == nil
     }
 
     /// Determine if top separator is hidden.
     var topIsHidden: Bool {
-        return topConfiguration == nil
+        topConfiguration == nil
     }
 
     /// Returns top configuration if type is top or full.

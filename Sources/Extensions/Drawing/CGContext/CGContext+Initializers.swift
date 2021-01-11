@@ -41,11 +41,11 @@ public extension CGContext {
     static func create(forCGImage cgImage: CGImage,
                        fallbackColorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()) -> CGContext? {
 
-        return create(width: cgImage.width,
-                      height: cgImage.height,
-                      bitmapInfo: cgImage.bitmapInfo,
-                      colorSpace: cgImage.colorSpace ?? fallbackColorSpace,
-                      bitsPerComponent: cgImage.bitsPerComponent)
+        create(width: cgImage.width,
+               height: cgImage.height,
+               bitmapInfo: cgImage.bitmapInfo,
+               colorSpace: cgImage.colorSpace ?? fallbackColorSpace,
+               bitsPerComponent: cgImage.bitsPerComponent)
     }
 
     /// Creates a bitmap graphics context.
@@ -65,12 +65,12 @@ public extension CGContext {
                        colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB(),
                        bitsPerComponent: Int = 8) -> CGContext? {
 
-        return CGContext(data: nil,
-                         width: width,
-                         height: height,
-                         bitsPerComponent: bitsPerComponent,
-                         bytesPerRow: 0,
-                         space: colorSpace,
-                         bitmapInfo: bitmapInfo.rawValue)
+        CGContext(data: nil,
+                  width: width,
+                  height: height,
+                  bitsPerComponent: bitsPerComponent,
+                  bytesPerRow: 0,
+                  space: colorSpace,
+                  bitmapInfo: bitmapInfo.rawValue)
     }
 }

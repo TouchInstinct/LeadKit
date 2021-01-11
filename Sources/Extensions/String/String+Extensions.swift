@@ -30,6 +30,6 @@ public extension String {
      - returns: nil if string empty, self otherwise
      */
     var nilIfEmpty: String? {
-        return isEmpty ? nil : self
+        isEmpty ? nil : self
     }
 }

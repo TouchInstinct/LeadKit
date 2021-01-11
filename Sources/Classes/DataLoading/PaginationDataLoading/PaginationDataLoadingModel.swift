@@ -22,9 +22,11 @@
 
 import RxSwift
 
+public typealias RxPaginationDataLoadingModel<Cursor: ResettableRxDataSourceCursor> =
+    RxDataLoadingModel<PaginationDataLoadingState<Cursor>>
+
 /// Data loading model for PaginationDataLoadingState with ResettableRxDataSourceCursor as data source.
-public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCursor>:
-    RxDataLoadingModel<PaginationDataLoadingState<Cursor>> {
+public final class PaginationDataLoadingModel<Cursor: ResettableRxDataSourceCursor>: RxPaginationDataLoadingModel<Cursor> {
 
     private enum LoadType {
 

@@ -39,7 +39,7 @@ open class RxNetworkOperationModel<LoadingStateType: NetworkOperationState>: Net
     private let errorHandler: ErrorHandler
 
     open var stateDriver: Driver<LoadingStateType> {
-        return stateRelay.asDriver()
+        stateRelay.asDriver()
     }
 
     /// Model initializer with data source and custom error handler.
@@ -91,7 +91,7 @@ open class RxNetworkOperationModel<LoadingStateType: NetworkOperationState>: Net
 
     var state: LoadingStateType {
         get {
-            return stateRelay.value
+            stateRelay.value
         }
         set {
             stateRelay.accept(newValue)

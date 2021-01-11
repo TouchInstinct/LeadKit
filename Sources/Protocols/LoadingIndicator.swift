@@ -30,7 +30,7 @@ public protocol LoadingIndicatorHolder: class {
 
 public extension LoadingIndicatorHolder where Self: UIView {
     var indicatorOwner: UIView {
-        return self
+        self
     }
 }
 

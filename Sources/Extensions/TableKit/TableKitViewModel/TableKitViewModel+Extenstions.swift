@@ -29,6 +29,6 @@ public extension TableKitViewModel {
 
     /// Returns TableRow initialized with current view model.
     var tableRow: RowType {
-        return RowType(item: self)
+        RowType(item: self)
     }
 }

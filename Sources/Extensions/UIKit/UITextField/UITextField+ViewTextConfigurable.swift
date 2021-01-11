@@ -26,7 +26,7 @@ extension UITextField: ViewTextConfigurable {
 
     public var textFont: UIFont? {
         get {
-            return font
+            font
         }
         set {
             font = newValue
@@ -35,7 +35,7 @@ extension UITextField: ViewTextConfigurable {
 
     public var titleColor: UIColor? {
         get {
-            return textColor
+            textColor
         }
         set {
             textColor = newValue

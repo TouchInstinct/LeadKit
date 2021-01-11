@@ -31,7 +31,7 @@ public extension UIView {
     ///                     If you specify nil, this method looks for the nib file in the main bundle.
     /// - Returns: UIView or UIView subclass instance
     static func loadFromNib<T>(bundle: Bundle? = nil) -> T where T: UIView {
-        return loadFromNib(named: T.xibName, bundle: bundle)
+        loadFromNib(named: T.xibName, bundle: bundle)
     }
 
     /// Method which loads UIView (or subclass) instance from nib using given nib name parameter

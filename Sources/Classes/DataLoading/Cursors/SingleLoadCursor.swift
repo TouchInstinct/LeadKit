@@ -37,7 +37,7 @@ public final class SingleLoadCursorConfiguration<Element>: TotalCountCursorConfi
     }
 
     public func resultSingle() -> Single<ResultType> {
-        return loadingSingle
+        loadingSingle
     }
 
     public init(resetFrom other: SingleLoadCursorConfiguration) {
@@ -67,15 +67,15 @@ public class SingleLoadCursor<Element>: ResettableCursorType {
     public private(set) var exhausted = false
 
     public var count: Int {
-        return content.count
+        content.count
     }
 
     public subscript(index: Int) -> Element {
-        return content[index]
+        content[index]
     }
 
     public func loadNextBatch() -> Single<[Element]> {
-        return Single.deferred {
+        Single.deferred {
             if self.exhausted {
                 return .error(CursorError.exhausted)
             }

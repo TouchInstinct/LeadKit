@@ -26,13 +26,13 @@ public extension FloatingPoint {
     ///
     /// - Returns: radians
     func degreesToRadians() -> Self {
-        return self * .pi / 180
+        self * .pi / 180
     }
 
     /// Converts radians to degrees
     ///
     /// - Returns: degrees
     func radiansToDegrees() -> Self {
-        return self * 180 / .pi
+        self * 180 / .pi
     }
 }

@@ -26,7 +26,7 @@ extension UIButton: ViewTextConfigurable {
 
     public var textFont: UIFont? {
         get {
-            return titleLabel?.font
+            titleLabel?.font
         }
         set {
             titleLabel?.font = newValue
@@ -35,7 +35,7 @@ extension UIButton: ViewTextConfigurable {
 
     public var titleColor: UIColor? {
         get {
-            return currentTitleColor
+            currentTitleColor
         }
         set {
             setTitleColor(newValue, for: [])
@@ -44,7 +44,7 @@ extension UIButton: ViewTextConfigurable {
 
     public var textAlignment: NSTextAlignment {
         get {
-            return contentHorizontalAlignment.textAlignment
+            contentHorizontalAlignment.textAlignment
         }
         set {
             contentHorizontalAlignment = .init(textAlignment: newValue)
@@ -53,7 +53,7 @@ extension UIButton: ViewTextConfigurable {
 
     public var text: String? {
         get {
-            return currentTitle
+            currentTitle
         }
         set {
             setTitle(newValue, for: [])
@@ -62,7 +62,7 @@ extension UIButton: ViewTextConfigurable {
 
     public var attributedText: NSAttributedString? {
         get {
-            return currentAttributedTitle
+            currentAttributedTitle
         }
         set {
             setAttributedTitle(newValue, for: [])

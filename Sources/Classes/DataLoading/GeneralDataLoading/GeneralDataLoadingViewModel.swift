@@ -63,28 +63,28 @@ open class GeneralDataLoadingViewModel<ResultType>: BaseViewModel, GeneralDataLo
 
     /// Returns observable that emits current loading state.
     open var loadingStateObservable: Observable<LoadingState> {
-        return loadingStateRelay.asObservable()
+        loadingStateRelay.asObservable()
     }
 
     /// Returns driver that emits current loading state.
     open var loadingStateDriver: Driver<LoadingState> {
-        return loadingStateRelay.asDriver()
+        loadingStateRelay.asDriver()
     }
 
     /// By default returns true if loading state == .result.
     open var hasContent: Bool {
-        return currentLoadingState.hasResult
+        currentLoadingState.hasResult
     }
 
     /// Returns current result if it exists.
     public var currentResult: ResultType? {
-        return currentLoadingState.result
+        currentLoadingState.result
     }
 
     /// Current state of loading process.
     private(set) public var currentLoadingState: LoadingState {
         get {
-            return loadingStateRelay.value
+            loadingStateRelay.value
         }
         set {
             loadingStateRelay.accept(newValue)

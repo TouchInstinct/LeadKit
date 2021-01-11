@@ -25,7 +25,7 @@ import UIKit
 public final class SpinnerView: UIView, Animatable, LoadingIndicator {
 
     private var animating: Bool {
-        return imageView?.layer.animation(forKey: CABasicAnimation.rotationKeyPath) != nil
+        imageView?.layer.animation(forKey: CABasicAnimation.rotationKeyPath) != nil
     }
 
     private var startTime = CFTimeInterval(0)

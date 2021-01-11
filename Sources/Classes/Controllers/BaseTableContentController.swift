@@ -32,11 +32,11 @@ open class BaseTableContentController<ViewModel>: BaseScrollContentController<Vi
     ///
     /// - Returns: Initialized TableDirector.
     open func createTableDirector() -> TableDirector {
-        return TableDirector(tableView: tableView)
+        TableDirector(tableView: tableView)
     }
 
     override open func createView() -> TableViewWrapperView {
-        return TableViewWrapperView(tableViewStyle: .plain)
+        TableViewWrapperView(tableViewStyle: .plain)
     }
 
     override open func configureAppearance() {
@@ -47,6 +47,6 @@ open class BaseTableContentController<ViewModel>: BaseScrollContentController<Vi
 
     /// Contained UITableView instance.
     public var tableView: UITableView {
-        return customView.tableView
+        customView.tableView
     }
 }

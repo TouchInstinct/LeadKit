@@ -35,15 +35,15 @@ open class TotalCountCursor<CursorConfiguration: TotalCountCursorConfiguration>:
     public private(set) var totalCount: Int = .max
 
     public var exhausted: Bool {
-        return count >= totalCount
+        count >= totalCount
     }
 
     public var count: Int {
-        return elements.count
+        elements.count
     }
 
     public subscript(index: Int) -> Element {
-        return elements[index]
+        elements[index]
     }
 
     public init(configuration: CursorConfiguration) {
@@ -55,11 +55,11 @@ open class TotalCountCursor<CursorConfiguration: TotalCountCursorConfiguration>:
     }
 
     open func processResultFromConfigurationSingle() -> Single<CursorConfiguration.ResultType> {
-        return configuration.resultSingle()
+        configuration.resultSingle()
     }
 
     public func loadNextBatch() -> Single<[Element]> {
-        return processResultFromConfigurationSingle()
+        processResultFromConfigurationSingle()
             .do(onSuccess: { [weak self] listingResult in
                 self?.totalCount = listingResult.totalCount
                 self?.elements = (self?.elements ?? []) + listingResult.results

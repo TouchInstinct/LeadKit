@@ -47,6 +47,6 @@ public extension TableRow where CellType: SeparatorCell {
 
     /// TableRow typed as SeparatorRowBox
     var separatorRowBox: SeparatorRowBox {
-        return SeparatorRowBox(row: self)
+        SeparatorRowBox(row: self)
     }
 }

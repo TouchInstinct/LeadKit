@@ -30,7 +30,7 @@ public final class AnyPaginationWrappable: PaginationWrappable {
 
     public var footerView: UIView? {
         get {
-            return footerViewGetter()
+            footerViewGetter()
         }
         set {
             footerViewSetter(newValue)
@@ -39,7 +39,7 @@ public final class AnyPaginationWrappable: PaginationWrappable {
 
     public var backgroundView: UIView? {
         get {
-            return backgroundViewGetter()
+            backgroundViewGetter()
         }
         set {
             backgroundViewSetter(newValue)

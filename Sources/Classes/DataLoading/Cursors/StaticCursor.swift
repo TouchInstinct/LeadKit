@@ -45,11 +45,11 @@ public class StaticCursor<Element>: ResettableRxDataSourceCursor {
     public private(set) var count = 0
 
     public subscript(index: Int) -> Element {
-        return content[index]
+        content[index]
     }
 
     public func loadNextBatch() -> Single<[Element]> {
-        return Single.deferred {
+        Single.deferred {
             if self.exhausted {
                 return .error(CursorError.exhausted)
             }

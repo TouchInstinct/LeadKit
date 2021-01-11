@@ -26,11 +26,11 @@ public extension Array where Element: TableKitViewModel {
 
     /// Creates [Row] array from TableKitViewModels.
     var tableRows: [Row] {
-        return map { $0.tableRow }
+        map { $0.tableRow }
     }
 
     /// Creates TableSection with empty, zero height header and footer.
     var onlyRowsSection: TableSection {
-        return TableSection(onlyRows: tableRows)
+        TableSection(onlyRows: tableRows)
     }
 }

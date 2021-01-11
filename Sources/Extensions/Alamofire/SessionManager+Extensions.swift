@@ -53,7 +53,7 @@ public extension Reactive where Base: SessionManager {
                  headers: HTTPHeaders? = nil)
         -> Observable<DataRequest> {
 
-        return Observable.deferred {
+        Observable.deferred {
 
             guard method != .get else {
                 assertionFailure("Unable to pass array in get request")
@@ -74,7 +74,7 @@ public extension Reactive where Base: SessionManager {
     ///   - additionalValidStatusCodes: set of additional valid status codes
     /// - Returns: Observable with request
     func apiRequest(requestParameters: ApiRequestParameters, additionalValidStatusCodes: Set<Int>) -> Observable<DataRequest> {
-        return .deferred {
+        .deferred {
             var url = try requestParameters.url.asURL()
 
             if let queryItems = requestParameters.queryItems {
@@ -133,7 +133,7 @@ public extension Reactive where Base: SessionManager {
                                      decoder: JSONDecoder)
         -> Observable<SessionManager.ModelResponse<T>> {
 
-        return apiRequest(requestParameters: requestParameters, additionalValidStatusCodes: additionalValidStatusCodes)
+        apiRequest(requestParameters: requestParameters, additionalValidStatusCodes: additionalValidStatusCodes)
             .flatMap {
                 $0.rx.apiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
             }
@@ -151,7 +151,7 @@ public extension Reactive where Base: SessionManager {
                                                         decoder: JSONDecoder)
         -> Observable<SessionManager.ModelResponse<T>> {
 
-        return apiRequest(requestParameters: requestParameters, additionalValidStatusCodes: additionalValidStatusCodes)
+        apiRequest(requestParameters: requestParameters, additionalValidStatusCodes: additionalValidStatusCodes)
             .flatMap {
                 $0.rx.observableApiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
             }
@@ -166,7 +166,7 @@ public extension Reactive where Base: SessionManager {
     func responseData(requestParameters: ApiRequestParameters, additionalValidStatusCodes: Set<Int>)
         -> Observable<SessionManager.DataResponse> {
 
-            return apiRequest(requestParameters: requestParameters, additionalValidStatusCodes: additionalValidStatusCodes)
+            apiRequest(requestParameters: requestParameters, additionalValidStatusCodes: additionalValidStatusCodes)
                 .flatMap {
                     $0.rx.dataApiResponse(mappingQueue: self.base.mappingQueue)
                 }
@@ -184,7 +184,7 @@ public extension Reactive where Base: SessionManager {
                                            decoder: JSONDecoder)
         -> Observable<SessionManager.ModelResponse<T>> {
 
-            return Observable.deferred {
+            Observable.deferred {
 
                 let urlRequest = try URLRequest(url: requestParameters.url, method: .post, headers: requestParameters.headers)
                 let data = try requestParameters.formData.encode()

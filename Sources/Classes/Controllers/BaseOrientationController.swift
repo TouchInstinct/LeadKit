@@ -25,6 +25,6 @@ open class BaseOrientationController: UIViewController {
         }
 
     open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        return forcedInterfaceOrientation ?? super.preferredInterfaceOrientationForPresentation
+        forcedInterfaceOrientation ?? super.preferredInterfaceOrientationForPresentation
     }
 }

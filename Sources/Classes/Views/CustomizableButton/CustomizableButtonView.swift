@@ -45,7 +45,7 @@ public struct CustomizableButtonState: OptionSet {
     // MARK: - Properties
 
     public var isLoading: Bool {
-        return contains(.loading)
+        contains(.loading)
     }
 }
 
@@ -99,15 +99,15 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
     // MARK: - Computed Properties
 
     public var tapObservable: Observable<Void> {
-        return button.rx.tap.asObservable()
+        button.rx.tap.asObservable()
     }
 
     override open var forFirstBaselineLayout: UIView {
-        return button.forFirstBaselineLayout
+        button.forFirstBaselineLayout
     }
 
     override open var forLastBaselineLayout: UIView {
-        return button.forLastBaselineLayout
+        button.forLastBaselineLayout
     }
 
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -255,7 +255,7 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
     }
 
     private var stateBinder: Binder<CustomizableButtonState> {
-        return Binder(self) { base, value in
+        Binder(self) { base, value in
             base.configureButton(withState: value)
             base.onStateChange(value)
         }

@@ -29,20 +29,20 @@ public extension SharedSequence {
     /// - Parameter value: A new element.
     /// - Returns: An observable sequence whose elements are equals to passed value.
     func replace<T>(with value: T) -> SharedSequence<SharingStrategy, T> {
-        return map { _ in value } // swiftlint:disable:this unused_map_parameter
+        map { _ in value } // swiftlint:disable:this unused_map_parameter
     }
 
     /// Replaces all emitted elements with Void.
     ///
     /// - Returns: An observable sequence whose elements are equals to Void.
     func asVoid() -> SharedSequence<SharingStrategy, Void> {
-        return replace(with: Void())
+        replace(with: Void())
     }
 
     /// Cast all emitted elements to optional type.
     ///
     /// - Returns: An observable sequence whose elements are equals to optional type of element.
     func asOptional() -> SharedSequence<SharingStrategy, Element?> {
-        return map { $0 }
+        map { $0 }
     }
 }
