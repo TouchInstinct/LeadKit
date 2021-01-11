@@ -21,7 +21,7 @@
 //
 
 import UIKit
-import TIUIKitCore
+import TIUIElements
 import TISwiftUtils
 
 /// Base full OTP View for entering the verification code

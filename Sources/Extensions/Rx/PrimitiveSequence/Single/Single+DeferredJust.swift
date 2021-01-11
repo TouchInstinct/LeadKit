@@ -34,7 +34,7 @@ public extension Single {
             do {
                 observer(.success(try elementFactory()))
             } catch {
-                observer(.error(error))
+                observer(.failure(error))
             }
 
             return Disposables.create()

@@ -21,7 +21,6 @@
 //
 
 import RxSwift
-import RxCocoa
 
 public typealias Spinner = UIView & Animatable
 
