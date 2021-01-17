@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import sys, re
+import sys, re, os
 from subprocess import check_output
 from sys import getdefaultencoding
 
@@ -75,10 +75,10 @@ def lint_commit_message(fh, commit_msg):
     if is_valid_commit or is_merge_commit:
         print_result_header(success_title, success_color)
         write_commit_message(fh, commit_msg)
-        sys.exit(0)
+        sys.exit(os.EX_OK)
     else:
         print_error_message()
-        sys.exit(1)
+        sys.exit(os.EX_DATAERR)
 
 def run_script():
     commit_msg_filepath = sys.argv[1]

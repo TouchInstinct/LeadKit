@@ -12,8 +12,8 @@ This repository contains the following additional frameworks:
 
 ## Setup
 Run following script in framework's folder:
-```ruby
-./setup.sh
+```sh
+./setup
 ```
 
 ## Installation
