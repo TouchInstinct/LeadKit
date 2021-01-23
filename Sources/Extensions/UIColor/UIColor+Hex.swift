@@ -138,9 +138,13 @@ public extension UIColor {
 
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
 
-        let intRepresentation = alpha == 1
-            ? Int(red * 255) << 16 | Int(green * 255) << 8 | Int(blue * 255) << 0
-            : Int(red * 255) << 24 | Int(green * 255) << 16 | Int(blue * 255) << 8 | Int(alpha * 255) << 0
+        let intRepresentation: Int
+
+        if alpha == 1 {
+            intRepresentation = Int(red * 255) << 16 | Int(green * 255) << 8 | Int(blue * 255)
+        } else {
+            intRepresentation = Int(red * 255) << 24 | Int(green * 255) << 16 | Int(blue * 255) << 8 | Int(alpha * 255)
+        }
 
         return String(intRepresentation, radix: 16)
     }
