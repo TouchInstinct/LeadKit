@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.13.1
+- **Fix**: LeadKit.podspec file.
+
 ### 0.13.0
 - **Add**: Githook `prepare-commit-msg` to check commit's style.
 - **Add**: Setup script.
