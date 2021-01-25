@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+
+import sys, re, os
+from subprocess import check_output
+from sys import getdefaultencoding
+
+getdefaultencoding()  # utf-8
+
+valid_commit_style = '^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style)(\(\S+\))?\!?: .+'
+merge_commit_style = '^(m|M)erge .+'
+
+success_title = 'SUCCESS'
+success_color = '92m'
+
+error_title = 'ERROR'
+error_message = 'Incorrect commit message style!\nThe commit pattern:'
+error_commit_pattern = '    type(scope): message | type: message \n'
+error_color = '91m'
+
+breaking_changes_message = 'If commit include Breaking changes use ! after type or scope:' 
+colored_breaking_changes_message = 'If commit include \033[91mBreaking changes\033[00m use \033[91m!\033[00m after type or scope:' 
+breaking_changes_commit_pattern = '    type(scope)!: message | type!: message \n'
+
+available_types_message = 'Available commit types:'
+available_commit_types = ['build: Changes that affect the build system or external dependencies',
+ 'ci: Changes to our CI configuration files and scripts', 
+ 'docs: Documentation only changes', 
+ 'feat: A new feature. Correlates with MINOR in SemVer', 
+ 'fix: A bug fix. Correlates with PATCH in SemVer', 
+ 'perf: A code change that improves performance',
+ 'refactor: A code change that neither fixes', 
+ 'revert: A revert to previous commit', 
+ 'style: Changes that do not affect the meaning of the code (white-space, formatting, etc)']
+
+is_GUI_client = False
+
+def print_result_header(result_title, color): 
+    if not is_GUI_client:
+        print("[\033[96mcommit lint\033[00m] [\033[{}{}\033[00m]\n".format(color, result_title))
+
+def print_pattern(pattern):
+    if is_GUI_client:
+        print(pattern)
+    else:
+        print("\033[96m{}\033[00m".format(pattern))
+
+def print_error_message(): 
+    print_result_header(error_title, error_color)
+
+    print(error_message)
+    print_pattern(error_commit_pattern)
+
+    if is_GUI_client:
+        print(breaking_changes_message)
+    else:
+        print(colored_breaking_changes_message)
+
+    print_pattern(breaking_changes_commit_pattern)
+    print_available_commit_types()
+
+def print_available_commit_types():
+    print(available_types_message)
+
+    for commit_type in available_commit_types:
+        print("   - %s" %commit_type)
+
+def write_commit_message(fh, commit_msg):
+    fh.seek(0, 0)
+    fh.write(commit_msg)
+
+def lint_commit_message(fh, commit_msg):
+    is_merge_commit = re.findall(merge_commit_style, commit_msg)
+    is_valid_commit = re.findall(valid_commit_style, commit_msg)
+
+    if is_valid_commit or is_merge_commit:
+        print_result_header(success_title, success_color)
+        write_commit_message(fh, commit_msg)
+        sys.exit(os.EX_OK)
+    else:
+        print_error_message()
+        sys.exit(os.EX_DATAERR)
+
+def run_script():
+    commit_msg_filepath = sys.argv[1]
+
+    with open(commit_msg_filepath, 'r+') as fh:
+        commit_msg = fh.read()
+        lint_commit_message(fh, commit_msg)
+
+try:
+    sys.stdin = open("/dev/tty", "r")
+    is_GUI_client = False
+except:
+    is_GUI_client = True
+
+run_script()

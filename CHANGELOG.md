@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.13.0
+- **Add**: Githook `prepare-commit-msg` to check commit's style.
+- **Add**: Setup script.
+
 ### 0.12.0
 - **Add**: StatefulButton & RoundedStatefulButton to TIUIElements.
 - **Add**: added CACornerMask rounding extension to TIUIElements.
