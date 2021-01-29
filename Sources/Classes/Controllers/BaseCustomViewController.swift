@@ -49,6 +49,6 @@ open class BaseCustomViewController<ViewModel, View: UIView>: BaseConfigurableCo
     ///
     /// - Returns: Initialized custom view.
     open func createView() -> View {
-        return View()
+        View()
     }
 }

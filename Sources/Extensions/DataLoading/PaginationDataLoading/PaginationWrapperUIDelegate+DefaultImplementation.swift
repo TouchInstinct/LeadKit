@@ -25,15 +25,15 @@ import UIKit
 public extension PaginationWrapperUIDelegate {
 
     func emptyPlaceholder() -> UIView? {
-        return TextPlaceholderView(title: .empty)
+        TextPlaceholderView(title: .empty)
     }
 
     func customInitialLoadingErrorHandling(for error: Error) -> Bool {
-        return false
+        false
     }
 
     func errorPlaceholder(for error: Error) -> UIView? {
-        return TextPlaceholderView(title: .error)
+        TextPlaceholderView(title: .error)
     }
 
     func initialLoadingIndicator() -> AnyLoadingIndicator? {
@@ -58,7 +58,7 @@ public extension PaginationWrapperUIDelegate {
     }
 
     func footerRetryViewHeight() -> CGFloat {
-        return 44
+        44
     }
 
     func footerRetryViewWillAppear() {

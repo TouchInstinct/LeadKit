@@ -28,13 +28,13 @@ public extension GeneralDataLoadingController {
     // MARK: - DisposeBagHolder default implementation
 
     var disposeBag: DisposeBag {
-        return viewModel.disposeBag
+        viewModel.disposeBag
     }
 
     // MARK: - StatefulViewController default implementation
 
     func hasContent() -> Bool {
-        return viewModel.hasContent
+        viewModel.hasContent
     }
 
     // MARK: - GeneralDataLoadingController default implementation

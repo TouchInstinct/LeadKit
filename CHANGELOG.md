@@ -1,5 +1,18 @@
 # Changelog
 
+### 1.0.0
+- **API BreakingChanges**: up swift version to 5.1.
+- **Update**: build scripts.
+- **Update**: code with new swiftlint rules.
+- **Update**: RxSwift to 6.0.0.
+
+### 0.13.1
+- **Fix**: LeadKit.podspec file.
+
+### 0.13.0
+- **Add**: Githook `prepare-commit-msg` to check commit's style.
+- **Add**: Setup script.
+
 ### 0.12.0
 - **Add**: StatefulButton & RoundedStatefulButton to TIUIElements.
 - **Add**: added CACornerMask rounding extension to TIUIElements.

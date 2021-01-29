@@ -27,7 +27,7 @@ import RxCocoa
 internal extension GeneralDataLoadingHandler where Self: AnyObject {
 
     var stateChangeBinder: Binder<GeneralDataLoadingState<Single<ResultType>>> {
-        return Binder(self) { base, value in
+        Binder(self) { base, value in
             switch value {
             case .loading:
                 base.onLoadingState()

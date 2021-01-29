@@ -42,17 +42,17 @@ public class FixedPageCursor<Cursor: CursorType>: CursorType, RxDataSource {
     }
 
     public var exhausted: Bool {
-        return cursor.exhausted && cursor.count == count
+        cursor.exhausted && cursor.count == count
     }
 
     public private(set) var count: Int = 0
 
     public subscript(index: Int) -> Cursor.Element {
-        return cursor[index]
+        cursor[index]
     }
 
     public func loadNextBatch() -> Single<[Cursor.Element]> {
-        return Single.deferred {
+        Single.deferred {
             if self.exhausted {
                 return .error(CursorError.exhausted)
             }

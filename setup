@@ -1,0 +1,7 @@
+# Find source dir
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" 
+
+cd "$DIR"
+
+# Configure githooks folder path
+git config core.hooksPath .githooks

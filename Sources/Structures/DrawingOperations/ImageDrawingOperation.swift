@@ -44,7 +44,7 @@ struct ImageDrawingOperation: DrawingOperation {
     }
 
     public var contextSize: CGContextSize {
-        return newSize.ceiledContextSize
+        newSize.ceiledContextSize
     }
 
     public func apply(in context: CGContext) {

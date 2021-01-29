@@ -35,9 +35,10 @@ open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel
     }
 
     open var itemsViewModelsDriver: Driver<[ItemViewModel]> {
-        return loadingResultObservable
-            .map { [weak self] items in
-                self?.viewModels(from: items)
+        loadingResultObservable
+            .withUnretained(self)
+            .map { owner, items in
+                owner.viewModels(from: items)
             }
             .flatMap { Observable.from(optional: $0) }
             .share(replay: 1, scope: .forever)
@@ -45,17 +46,18 @@ open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel
     }
 
     open var searchDebounceInterval: RxTimeInterval {
-        return .seconds(1)
+        .seconds(1)
     }
 
     open var searchResultsDriver: Driver<[ItemViewModel]> {
-        return searchTextRelay.debounce(searchDebounceInterval, scheduler: MainScheduler.instance)
+        searchTextRelay.debounce(searchDebounceInterval, scheduler: MainScheduler.instance)
             .withLatestFrom(loadingResultObservable) { ($0, $1) }
             .flatMapLatest { [weak self] searchText, items -> Observable<ItemsList> in
                 self?.search(by: searchText, from: items).asObservable() ?? .empty()
             }
-            .map { [weak self] items in
-                self?.viewModels(from: items)
+            .withUnretained(self)
+            .map { owner, items in
+                owner.viewModels(from: items)
             }
             .flatMap { Observable.from(optional: $0) }
             .share(replay: 1, scope: .forever)
@@ -71,29 +73,29 @@ open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel
     }
 
     open func bind(searchText: Observable<String>) -> Disposable {
-        return searchText.bind(to: searchTextRelay)
+        searchText.bind(to: searchTextRelay)
     }
 
     private func viewModels(from items: ItemsList) -> [ItemViewModel] {
-        return items.map { self.viewModel(from: $0) }
+        items.map { self.viewModel(from: $0) }
     }
 
     open var loadingResultObservable: Observable<ResultType> {
-        return loadingStateDriver
+        loadingStateDriver
             .asObservable()
             .map { $0.result }
             .flatMap { Observable.from(optional: $0) }
     }
 
     open var loadingErrorObservable: Observable<Error> {
-        return loadingStateDriver
+        loadingStateDriver
             .asObservable()
             .map { $0.error }
             .flatMap { Observable.from(optional: $0) }
     }
 
     open var firstLoadingResultObservable: Single<ResultType> {
-        return loadingResultObservable
+        loadingResultObservable
             .take(1)
             .asSingle()
     }

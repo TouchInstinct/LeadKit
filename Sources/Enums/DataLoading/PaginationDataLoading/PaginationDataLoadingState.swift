@@ -45,28 +45,28 @@ extension PaginationDataLoadingState: DataLoadingState {
     public typealias DataSourceType = DS
 
     public static var initialState: PaginationDataLoadingState<DS> {
-        return .initial
+        .initial
     }
 
     public static var emptyState: PaginationDataLoadingState<DS> {
-        return .empty
+        .empty
     }
 
     public static func initialLoadingState(after: PaginationDataLoadingState<DS>) -> PaginationDataLoadingState<DS> {
-        return .initialLoading(after: after)
+        .initialLoading(after: after)
     }
 
     public static func resultState(result: DS.ResultType,
                                    from: DataSourceType,
                                    after: PaginationDataLoadingState<DS>) -> PaginationDataLoadingState<DS> {
 
-        return .results(newItems: result, from: from, after: after)
+        .results(newItems: result, from: from, after: after)
     }
 
     public static func errorState(error: Error,
                                   after: PaginationDataLoadingState<DS>) -> PaginationDataLoadingState<DS> {
 
-        return .error(error: error, after: after)
+        .error(error: error, after: after)
     }
 
     public var isInitialState: Bool {

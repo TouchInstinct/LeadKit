@@ -37,6 +37,6 @@ public extension ResettableType {
     ///
     /// - Returns: resseted instance of self
     func reset() -> Self {
-        return Self(resetFrom: self)
+        Self(resetFrom: self)
     }
 }

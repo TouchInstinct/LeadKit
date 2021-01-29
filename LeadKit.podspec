@@ -1,18 +1,18 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "0.10.9"
+  s.version         = "1.0.0"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
   s.author          = "Touch Instinct"
   s.source          = { :git => "https://github.com/TouchInstinct/LeadKit.git", :tag => s.version }
   s.platform        = :ios, '10.0'
-  s.swift_versions = ['5.0']
+  s.swift_versions = ['5.1']
 
   s.subspec 'UIColorHex' do |ss|
-    ss.ios.deployment_target = '8.0'
-    ss.tvos.deployment_target = '9.0'
-    ss.watchos.deployment_target = '2.0'
+    ss.ios.deployment_target = '10.0'
+    ss.tvos.deployment_target = '10.0'
+    ss.watchos.deployment_target = '3.0'
 
     ss.source_files = "Sources/Extensions/UIColor/UIColor+Hex.swift"
   end
@@ -68,7 +68,8 @@ Pod::Spec.new do |s|
       "Sources/Structures/DrawingOperations/CALayerDrawingOperation.swift",
       "Sources/Structures/DrawingOperations/RoundDrawingOperation.swift",
       "Sources/Structures/DrawingOperations/BorderDrawingOperation.swift",
-      "Sources/Structures/DataLoading/PaginationDataLoading/*"
+      "Sources/Structures/DataLoading/PaginationDataLoading/*",
+      "Sources/Extensions/UIInterfaceOrientation/*"
     ]
     ss.tvos.exclude_files = [
       "Sources/Classes/Controllers/BaseConfigurableController.swift",
@@ -101,16 +102,18 @@ Pod::Spec.new do |s|
       "Sources/Protocols/Views/SeparatorCell/*",
       "Sources/Protocols/TableKit/**/*",
       "Sources/Protocols/Controllers/SearchResultsViewController.swift",
-      "Sources/Structures/DataLoading/PaginationDataLoading/*"
+      "Sources/Structures/DataLoading/PaginationDataLoading/*",
+      "Sources/Extensions/UIInterfaceOrientation/*",
+      "Sources/Classes/Controllers/BaseOrientationController.swift"
     ]
 
-    ss.dependency "RxSwift", '~> 5.1.0'
-    ss.dependency "RxCocoa", '~> 5.1.0'
-    ss.dependency "RxAlamofire", '~> 5.6.0'
+    ss.dependency "RxSwift", '~> 6.0.0'
+    ss.dependency "RxCocoa", '~> 6.0.0'
+    ss.dependency "RxAlamofire", '~> 6.1.1'
     ss.dependency "SwiftDate", '~> 6'
 
-    ss.ios.dependency "TableKit", '~> 2.8'
-    ss.ios.dependency "SnapKit", '~> 5.0.0'
+    ss.ios.dependency "TableKit", '~> 2.11'
+    ss.ios.dependency "SnapKit", '~> 5.0.1'
     ss.ios.dependency "UIScrollView-InfiniteScroll", '~> 1.1.0'
   end
 

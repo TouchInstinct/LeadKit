@@ -68,11 +68,11 @@ public extension NetworkServiceConfiguration {
 
     /// SessionManager constructed with given parameters (session configuration and trust policies)
     var sessionManager: SessionManager {
-        return SessionManager(configuration: sessionConfiguration,
-                              serverTrustManager: ServerTrustManager(allHostsMustBeEvaluated: !serverTrustPolicies.isEmpty,
-                                                                     evaluators: serverTrustPolicies),
-                              acceptableStatusCodes: acceptableStatusCodes,
-                              mappingQueue: DispatchQueue(label: .mappingQueueLabel, qos: .default))
+        SessionManager(configuration: sessionConfiguration,
+                       serverTrustManager: ServerTrustManager(allHostsMustBeEvaluated: !serverTrustPolicies.isEmpty,
+                                                              evaluators: serverTrustPolicies),
+                       acceptableStatusCodes: acceptableStatusCodes,
+                       mappingQueue: DispatchQueue(label: .mappingQueueLabel, qos: .default))
     }
 
     /// Convenient method to create ApiRequestParameters.
@@ -91,12 +91,12 @@ public extension NetworkServiceConfiguration {
                               queryItems: [URLQueryItem]? = nil,
                               requestEncoding: ParameterEncoding? = nil,
                               requestHeaders: HTTPHeaders? = nil) -> ApiRequestParameters {
-        return ApiRequestParameters(url: baseUrl + relativeUrl,
-                                    method: method,
-                                    parameters: parameters,
-                                    queryItems: queryItems,
-                                    encoding: requestEncoding ?? encoding,
-                                    headers: requestHeaders)
+        ApiRequestParameters(url: baseUrl + relativeUrl,
+                             method: method,
+                             parameters: parameters,
+                             queryItems: queryItems,
+                             encoding: requestEncoding ?? encoding,
+                             headers: requestHeaders)
     }
 
     /// Convenient method to create ApiRequestParameters.
@@ -115,12 +115,12 @@ public extension NetworkServiceConfiguration {
                               queryItems: [URLQueryItem]? = nil,
                               requestEncoding: ParameterEncoding? = nil,
                               requestHeaders: HTTPHeaders? = nil) -> ApiRequestParameters {
-        return ApiRequestParameters(url: baseUrl + relativeUrl,
-                                    method: method,
-                                    parameters: parameters,
-                                    queryItems: queryItems,
-                                    encoding: requestEncoding ?? encoding,
-                                    headers: requestHeaders)
+        ApiRequestParameters(url: baseUrl + relativeUrl,
+                             method: method,
+                             parameters: parameters,
+                             queryItems: queryItems,
+                             encoding: requestEncoding ?? encoding,
+                             headers: requestHeaders)
     }
 }
 

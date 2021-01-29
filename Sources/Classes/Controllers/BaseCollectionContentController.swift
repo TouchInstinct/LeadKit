@@ -26,11 +26,11 @@ import UIKit
 open class BaseCollectionContentController<ViewModel>: BaseScrollContentController<ViewModel, CollectionViewWrapperView> {
 
     override open func createView() -> CollectionViewWrapperView {
-        return CollectionViewWrapperView(layout: UICollectionViewFlowLayout())
+        CollectionViewWrapperView(layout: UICollectionViewFlowLayout())
     }
 
     /// Contained UICollectionView instance.
     public var collectionView: UICollectionView {
-        return customView.collectionView
+        customView.collectionView
     }
 }

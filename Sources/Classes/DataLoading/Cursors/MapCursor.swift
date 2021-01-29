@@ -29,7 +29,7 @@ public extension CursorType {
     /// - Parameter transform: closure to transform elements
     /// - Returns: new MapCursor instance
     func flatMap<T>(transform: @escaping MapCursor<Self, T>.Transform) -> MapCursor<Self, T> {
-        return MapCursor(cursor: self, transform: transform)
+        MapCursor(cursor: self, transform: transform)
     }
 
     /// Creates ResettableMapCursor with current cursor
@@ -39,7 +39,7 @@ public extension CursorType {
     func flatMap<T>(transform: @escaping ResettableMapCursor<Self, T>.Transform)
         -> ResettableMapCursor<Self, T> where Self: ResettableCursorType {
 
-        return ResettableMapCursor(cursor: self, transform: transform)
+        ResettableMapCursor(cursor: self, transform: transform)
     }
 }
 
@@ -67,19 +67,19 @@ public class MapCursor<Cursor: CursorType, T>: CursorType, RxDataSource {
     }
 
     public var exhausted: Bool {
-        return cursor.exhausted
+        cursor.exhausted
     }
 
     public var count: Int {
-        return elements.count
+        elements.count
     }
 
     public subscript(index: Int) -> T {
-        return elements[index]
+        elements[index]
     }
 
     public func loadNextBatch() -> Single<[T]> {
-        return cursor.loadNextBatch().map { newItems in
+        cursor.loadNextBatch().map { newItems in
             let transformedNewItems = newItems.compactMap(self.transform)
             self.elements += transformedNewItems
 

@@ -39,15 +39,15 @@ open class CustomizableButtonViewModel {
     }
 
     open var stateDriver: Driver<CustomizableButtonState> {
-        return stateRelay.asDriver()
+        stateRelay.asDriver()
     }
 
     func bind(tapObservable: Observable<Void>) -> Disposable {
-        return tapObservable.bind(to: tapRelay)
+        tapObservable.bind(to: tapRelay)
     }
 
     public var tapDriver: Driver<Void> {
-        return tapRelay.asDriver()
+        tapRelay.asDriver()
     }
 
     public func updateState(with newState: CustomizableButtonState) {

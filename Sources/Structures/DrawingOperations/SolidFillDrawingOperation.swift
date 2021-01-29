@@ -35,7 +35,7 @@ struct SolidFillDrawingOperation: DrawingOperation {
     }
 
     public var contextSize: CGContextSize {
-        return (width: width, height: height)
+        (width: width, height: height)
     }
 
     public func apply(in context: CGContext) {

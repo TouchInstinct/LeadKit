@@ -38,7 +38,7 @@ public extension UserDefaults {
     /// - Returns: The object with specified type associated with the specified key, or passed default value
     /// if there is no such value for specified key or if error occurred during mapping.
     func object<T: Decodable>(forKey key: String, defaultValue: T, decoder: JSONDecoder = JSONDecoder()) -> T {
-        return (try? object(forKey: key, decoder: decoder)) ?? defaultValue
+        (try? object(forKey: key, decoder: decoder)) ?? defaultValue
     }
 
     /// Set or remove the value of the specified default key in the standard application domain.
@@ -58,7 +58,7 @@ public extension UserDefaults {
 
     subscript<T: Codable>(key: String) -> T? {
         get {
-            return try? object(forKey: key)
+            try? object(forKey: key)
         }
         set {
             try? set(object: newValue, forKey: key)
@@ -75,7 +75,7 @@ public extension Reactive where Base: UserDefaults {
     ///   - decoder: JSON decoder to decode stored data.
     /// - Returns: Single of specified model type.
     func object<T: Decodable>(forKey key: String, decoder: JSONDecoder = JSONDecoder()) -> Single<T> {
-        return .deferredJust { try self.base.object(forKey: key, decoder: decoder) }
+        .deferredJust { try self.base.object(forKey: key, decoder: decoder) }
     }
 
     /// Reactive version of object<T>(forKey:defaultValue:decoder:) -> T.
@@ -87,7 +87,7 @@ public extension Reactive where Base: UserDefaults {
     ///   - decoder: JSON decoder to decode stored data.
     /// - Returns: Single of specified model type.
     func object<T: Decodable>(forKey key: String, defaultValue: T, decoder: JSONDecoder = JSONDecoder()) -> Single<T> {
-        return .deferredJust { self.base.object(forKey: key, defaultValue: defaultValue, decoder: decoder) }
+        .deferredJust { self.base.object(forKey: key, defaultValue: defaultValue, decoder: decoder) }
     }
 
     /// Reactive version of set<T>(object:forKey:encoder:).
@@ -98,7 +98,7 @@ public extension Reactive where Base: UserDefaults {
     ///   - encoder: JSON encoder to encode to encode passed object.
     /// - Returns: Completable.
     func set<T: Encodable>(object: T?, forKey key: String, encoder: JSONEncoder = JSONEncoder()) -> Completable {
-        return .deferredJust {
+        .deferredJust {
             try self.base.set(object: object, forKey: key, encoder: encoder)
         }
     }

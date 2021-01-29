@@ -26,11 +26,11 @@ public extension Decimal {
 
     /// Conver Decimal to Double value
     var doubleValue: Double {
-        return NSDecimalNumber(decimal: self).doubleValue
+        NSDecimalNumber(decimal: self).doubleValue
     }
 
     /// Conver Decimal to Int value
     var intValue: Int {
-        return NSDecimalNumber(decimal: self).intValue
+        NSDecimalNumber(decimal: self).intValue
     }
 }

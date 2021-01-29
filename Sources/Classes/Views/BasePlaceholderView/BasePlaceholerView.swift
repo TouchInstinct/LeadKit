@@ -55,7 +55,7 @@ open class BasePlaceholderView: ButtonHolderView, InitializableView {
     ///
     /// - Returns: UIButton (sub)class.
     open func createButton() -> UIButton {
-        return UIButton()
+        UIButton()
     }
 
     // MARK: - InitializableView

@@ -30,7 +30,7 @@ public extension PrimitiveSequence where Trait == CompletableTrait {
     /// that subscribes to the resulting sequence.
     /// - Returns: A single whose observers trigger an invocation of the given element factory function.
     static func deferredJust(_ workUnit: @escaping ThrowableVoidBlock) -> Completable {
-        return .create { observer in
+        .create { observer in
             do {
                 try workUnit()
                 observer(.completed)

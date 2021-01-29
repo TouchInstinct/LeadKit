@@ -34,7 +34,7 @@ public extension GeneralDataLoadingViewModel {
 
     /// Emit elements of ResultType from state observable.
     var resultObservable: Observable<ResultType> {
-        return loadingStateObservable.flatMap { state -> Observable<ResultType> in
+        loadingStateObservable.flatMap { state -> Observable<ResultType> in
             switch state {
             case .result(let newResult, _):
                 return .just(newResult)
@@ -47,7 +47,7 @@ public extension GeneralDataLoadingViewModel {
 
     /// Emit elements of ResultType from state driver.
     var resultDriver: Driver<ResultType> {
-        return loadingStateDriver.flatMap { state -> Driver<ResultType> in
+        loadingStateDriver.flatMap { state -> Driver<ResultType> in
             switch state {
             case .result(let newResult, _):
                 return .just(newResult)

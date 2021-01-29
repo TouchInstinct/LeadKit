@@ -44,7 +44,7 @@ open class TextFieldViewModel < ViewEvents: TextFieldViewEvents,
     /// View events driver that will emit view events structure
     /// when view will bind itself to the view model.
     public var viewEventsDriver: Driver<ViewEvents> {
-        return viewEventsRelay
+        viewEventsRelay
             .asDriver()
             .flatMap { viewEvents -> Driver<ViewEvents> in
                 guard let viewEvents = viewEvents else {
@@ -77,7 +77,7 @@ public extension TextFieldViewModel {
     /// - Parameter closure: Closure that takes a view events parameter and returns Disposable.
     /// - Returns: Disposable object that can be used to unsubscribe the observer from the binding.
     func mapViewEvents(_ closure: @escaping MapViewEventClosure) -> Disposable {
-        return mapViewEvents { [closure($0)] }
+        mapViewEvents { [closure($0)] }
     }
 
     typealias MapViewEventsClosure = (ViewEvents) -> [Disposable]
@@ -87,7 +87,7 @@ public extension TextFieldViewModel {
     /// - Parameter closure: Closure that takes a view events parameter and returns [Disposable].
     /// - Returns: Disposable object that can be used to unsubscribe the observer from the binding.
     func mapViewEvents(_ closure: @escaping MapViewEventsClosure) -> Disposable {
-        return viewEventsDriver
+        viewEventsDriver
             .map { [weak self] in
                 guard let strongSelf = self else {
                     return

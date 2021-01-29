@@ -25,6 +25,6 @@ import UIKit.UITableView
 extension UITableView: TableViewHolder {
 
     public var tableView: UITableView {
-        return self
+        self
     }
 }

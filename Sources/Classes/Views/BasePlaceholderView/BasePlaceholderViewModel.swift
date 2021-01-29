@@ -62,16 +62,16 @@ public extension BasePlaceholderViewModel {
 
     /// Returns true if description is not nil.
     var hasDescription: Bool {
-        return description != nil
+        description != nil
     }
 
     /// Returns true buttonTitle is not nil.
     var hasButton: Bool {
-        return buttonTitle != nil
+        buttonTitle != nil
     }
 
     /// Returns true if centerImage is not nil.
     var hasCenterImage: Bool {
-        return centerImage != nil
+        centerImage != nil
     }
 }
