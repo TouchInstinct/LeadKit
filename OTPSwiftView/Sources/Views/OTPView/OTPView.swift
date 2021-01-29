@@ -20,7 +20,7 @@
 //  THE SOFTWARE.
 //
 
-import TIUIKitCore
+import TIUIElements
 import TISwiftUtils
 
 /// Base OTP view with textfield for entering a one symbol

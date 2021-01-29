@@ -25,6 +25,6 @@ import UIKit.UIScrollView
 public extension ScrollViewHolder where Self: TableViewHolder {
 
     var scrollView: UIScrollView {
-        return tableView
+        tableView
     }
 }

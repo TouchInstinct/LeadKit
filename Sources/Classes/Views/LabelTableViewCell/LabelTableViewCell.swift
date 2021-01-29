@@ -93,11 +93,11 @@ open class LabelTableViewCell: SeparatorCell, InitializableView, ConfigurableCel
     // MARK: - Private
 
     private var labelInsets: UIEdgeInsets {
-        return viewModel?.labelInsets ?? .zero
+        viewModel?.labelInsets ?? .zero
     }
 
     private var contentInsets: UIEdgeInsets {
-        return viewModel?.contentInsets ?? .zero
+        viewModel?.contentInsets ?? .zero
     }
 
     // MARK: - Subclass methods to override

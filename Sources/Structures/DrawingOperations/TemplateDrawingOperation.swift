@@ -35,7 +35,7 @@ struct TemplateDrawingOperation: DrawingOperation {
     }
 
     public var contextSize: CGContextSize {
-        return imageSize.ceiledContextSize
+        imageSize.ceiledContextSize
     }
 
     public func apply(in context: CGContext) {

@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.0.0
+- **API BreakingChanges**: up swift version to 5.1.
+- **Update**: build scripts.
+- **Update**: code with new swiftlint rules.
+- **Update**: RxSwift to 6.0.0.
+
 ### 0.13.1
 - **Fix**: LeadKit.podspec file.
 

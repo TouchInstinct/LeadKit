@@ -33,7 +33,7 @@ struct CALayerDrawingOperation: DrawingOperation {
     }
 
     public var contextSize: CGContextSize {
-        return size.ceiledContextSize
+        size.ceiledContextSize
     }
 
     public func apply(in context: CGContext) {

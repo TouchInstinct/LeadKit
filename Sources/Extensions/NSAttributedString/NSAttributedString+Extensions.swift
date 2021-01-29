@@ -33,7 +33,7 @@ public extension NSAttributedString {
 
     /// Mutable copy of attributed string.
     var mutable: NSMutableAttributedString {
-        return NSMutableAttributedString(attributedString: self)
+        NSMutableAttributedString(attributedString: self)
     }
 }
 
@@ -51,6 +51,6 @@ public extension NSMutableAttributedString {
 
     /// Immutable copy of attributed string.
     var immutable: NSAttributedString {
-        return NSAttributedString(attributedString: self)
+        NSAttributedString(attributedString: self)
     }
 }

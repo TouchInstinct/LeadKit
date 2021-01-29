@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -476,7 +476,6 @@
 		785EDF7C220072B500985ED4 /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF76220072B400985ED4 /* SwiftDate.framework */; };
 		785EDF7D220072B500985ED4 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF77220072B400985ED4 /* RxCocoa.framework */; };
 		785EDF7E220072B500985ED4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF78220072B500985ED4 /* Alamofire.framework */; };
-		785EDF7F220072B500985ED4 /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF79220072B500985ED4 /* RxAtomic.framework */; };
 		785EDF80220072B500985ED4 /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF7A220072B500985ED4 /* RxAlamofire.framework */; };
 		785EDF81220072B500985ED4 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF7B220072B500985ED4 /* RxSwift.framework */; };
 		785EDF8322007DF900985ED4 /* TableKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF8222007DF900985ED4 /* TableKit.framework */; };
@@ -484,11 +483,9 @@
 		785EDFA1220081F200985ED4 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF9C220081F100985ED4 /* RxCocoa.framework */; };
 		785EDFA2220081F200985ED4 /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF9D220081F100985ED4 /* SwiftDate.framework */; };
 		785EDFA3220081F200985ED4 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF9E220081F100985ED4 /* RxSwift.framework */; };
-		785EDFA4220081F200985ED4 /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF9F220081F100985ED4 /* RxAtomic.framework */; };
 		785EDFA5220081F200985ED4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDFA0220081F100985ED4 /* Alamofire.framework */; };
 		785EDFB22200833100985ED4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDFA8220082E600985ED4 /* Alamofire.framework */; };
 		785EDFB32200833100985ED4 /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDFA9220082E600985ED4 /* RxAlamofire.framework */; };
-		785EDFB42200833100985ED4 /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDFAB220082E600985ED4 /* RxAtomic.framework */; };
 		785EDFB52200833100985ED4 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDFA7220082E500985ED4 /* RxCocoa.framework */; };
 		785EDFB62200833100985ED4 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDFA6220082E500985ED4 /* RxSwift.framework */; };
 		785EDFB72200833100985ED4 /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDFAA220082E600985ED4 /* SwiftDate.framework */; };
@@ -829,7 +826,6 @@
 			files = (
 				785EDF7E220072B500985ED4 /* Alamofire.framework in Frameworks */,
 				785EDF81220072B500985ED4 /* RxSwift.framework in Frameworks */,
-				785EDF7F220072B500985ED4 /* RxAtomic.framework in Frameworks */,
 				785EDF7D220072B500985ED4 /* RxCocoa.framework in Frameworks */,
 				785EDF80220072B500985ED4 /* RxAlamofire.framework in Frameworks */,
 				82D296712264B4C10067735C /* SnapKit.framework in Frameworks */,
@@ -844,7 +840,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				785EDFA5220081F200985ED4 /* Alamofire.framework in Frameworks */,
-				785EDFA4220081F200985ED4 /* RxAtomic.framework in Frameworks */,
 				785EDFA1220081F200985ED4 /* RxCocoa.framework in Frameworks */,
 				785EDFA2220081F200985ED4 /* SwiftDate.framework in Frameworks */,
 				785EDFA3220081F200985ED4 /* RxSwift.framework in Frameworks */,
@@ -856,7 +851,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				785EDFB22200833100985ED4 /* Alamofire.framework in Frameworks */,
-				785EDFB42200833100985ED4 /* RxAtomic.framework in Frameworks */,
 				785EDFB62200833100985ED4 /* RxSwift.framework in Frameworks */,
 				785EDFB52200833100985ED4 /* RxCocoa.framework in Frameworks */,
 				785EDFB32200833100985ED4 /* RxAlamofire.framework in Frameworks */,
@@ -2302,7 +2296,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = "Touch Instinct";
 				TargetAttributes = {
 					67186B271EB248F100CFAFFB = {
@@ -2326,7 +2320,7 @@
 				};
 			};
 			buildConfigurationList = 78CFEE241C5C456B00F50370 /* Build configuration list for PBXProject "LeadKit" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -3019,8 +3013,12 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -warn-long-expression-type-checking=200 -Xfrontend -warn-long-function-bodies=200 -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.touchin.LeadKit-iOS";
 				PRODUCT_NAME = LeadKit;
@@ -3049,8 +3047,12 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -warn-long-expression-type-checking=200 -Xfrontend -warn-long-function-bodies=200 -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.touchin.LeadKit-iOS";
 				PRODUCT_NAME = LeadKit;
@@ -3078,7 +3080,11 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info-watchOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -warn-long-expression-type-checking=200 -Xfrontend -warn-long-function-bodies=200 -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.touchin.LeadKit-watchOS";
 				PRODUCT_NAME = LeadKit;
@@ -3110,7 +3116,11 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info-watchOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -warn-long-expression-type-checking=200 -Xfrontend -warn-long-function-bodies=200 -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.touchin.LeadKit-watchOS";
 				PRODUCT_NAME = LeadKit;
@@ -3140,7 +3150,11 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -warn-long-expression-type-checking=200 -Xfrontend -warn-long-function-bodies=200 -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.touchin.LeadKit-tvOS";
 				PRODUCT_NAME = LeadKit;
@@ -3149,7 +3163,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -3171,7 +3185,11 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xfrontend -warn-long-expression-type-checking=200 -Xfrontend -warn-long-function-bodies=200 -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.touchin.LeadKit-tvOS";
 				PRODUCT_NAME = LeadKit;
@@ -3179,7 +3197,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
@@ -3206,6 +3224,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -3231,7 +3250,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -3265,6 +3284,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -3284,10 +3304,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";

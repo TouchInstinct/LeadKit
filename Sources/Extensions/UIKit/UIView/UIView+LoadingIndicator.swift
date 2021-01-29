@@ -25,6 +25,6 @@ import UIKit
 public extension LoadingIndicator where Self: UIView {
 
     var view: Self {
-        return self
+        self
     }
 }

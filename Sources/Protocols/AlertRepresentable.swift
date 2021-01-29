@@ -35,6 +35,6 @@ public protocol AlertRepresentable {
 public extension AlertRepresentable {
     /// By default actionTitles contains single action title
     var actionTitles: [String] {
-        return [actionTitle]
+        [actionTitle]
     }
 }

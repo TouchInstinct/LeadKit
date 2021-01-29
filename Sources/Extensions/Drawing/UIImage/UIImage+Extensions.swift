@@ -55,7 +55,7 @@ public extension UIImage {
     /// - Parameter color: Color to fill template image.
     /// - Returns: A new UIImage rendered with given color or original image if something goes wrong.
     func renderTemplate(withColor color: UIColor) -> UIImage {
-        return withCGImage { image in
+        withCGImage { image in
             let operation = TemplateDrawingOperation(image: image,
                                                      imageSize: size,
                                                      color: color.cgColor)
@@ -77,7 +77,7 @@ public extension UIImage {
                       color: UIColor,
                       extendSize: Bool = false) -> UIImage {
 
-        return withCGImage { image in
+        withCGImage { image in
             let roundOperation = RoundDrawingOperation(image: image,
                                                        imageSize: size,
                                                        radius: cornerRadius)
@@ -101,7 +101,7 @@ public extension UIImage {
     ///
     /// - Returns: A new circled image or original image if something goes wrong.
     func roundCornersToCircle() -> UIImage {
-        return withCGImage { image in
+        withCGImage { image in
             let radius = CGFloat(min(size.width, size.height) / 2)
 
             let operation = RoundDrawingOperation(image: image,
@@ -123,7 +123,7 @@ public extension UIImage {
                               borderColor: UIColor,
                               extendSize: Bool = false) -> UIImage {
 
-        return withCGImage { image in
+        withCGImage { image in
             let radius = CGFloat(min(size.width, size.height) / 2)
 
             let roundOperation = RoundDrawingOperation(image: image,
@@ -157,7 +157,7 @@ public extension UIImage {
                 contentMode: ResizeMode = .scaleToFill,
                 cropToImageBounds: Bool = false) -> UIImage {
 
-        return withCGImage { image in
+        withCGImage { image in
             let operation = ResizeDrawingOperation(image: image,
                                                    imageSize: size,
                                                    preferredNewSize: newSize,
@@ -172,7 +172,7 @@ public extension UIImage {
     ///
     /// - Returns: A copy of the given image, adding an alpha channel if it doesn't already have one.
     func applyAlpha() -> UIImage {
-        return withCGImage { image in
+        withCGImage { image in
             guard !image.hasAlpha else {
                 return self
             }
@@ -190,7 +190,7 @@ public extension UIImage {
     /// - Parameter padding: The padding amount.
     /// - Returns: A new padded image or original image if something goes wrong.
     func applyPadding(_ padding: CGFloat) -> UIImage {
-        return withCGImage { image in
+        withCGImage { image in
             let operation = PaddingDrawingOperation(image: image, imageSize: size, padding: padding)
 
             return operation.imageFromNewRenderer(scale: scale).redraw()
@@ -204,7 +204,7 @@ public extension UIImage {
     ///   - clockwise: Should rotate image clockwise.
     /// - Returns: A new rotated image or original image if something goes wrong.
     func rotate(degrees: CGFloat, clockwise: Bool = true) -> UIImage {
-        return withCGImage { image in
+        withCGImage { image in
             let radians = degrees.degreesToRadians()
 
             let operation = RotateDrawingOperation(image: image,
@@ -218,7 +218,7 @@ public extension UIImage {
 
     /// Workaround to fix flipped image rendering (by Y)
     private func redraw() -> UIImage {
-        return withCGImage { image in
+        withCGImage { image in
             let operation = ImageDrawingOperation(image: image, newSize: size)
 
             return operation.imageFromNewRenderer(scale: scale)

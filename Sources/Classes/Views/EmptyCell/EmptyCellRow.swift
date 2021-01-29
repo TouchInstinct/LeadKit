@@ -48,6 +48,6 @@ public final class EmptyCellRow: TableRow<EmptyCell> {
 
     /// Used for set custom height to each cell, not for each cell type
     override public var defaultHeight: CGFloat? {
-        return rowHeight
+        rowHeight
     }
 }

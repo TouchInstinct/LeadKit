@@ -39,7 +39,7 @@ open class NetworkService {
 
     /// Driver that emits true when active requests count != 0 and false otherwise.
     public var isActivityIndicatorVisibleDriver: Driver<Bool> {
-        return requestCountRelay.asDriver().map { $0 != 0 }.distinctUntilChanged()
+        requestCountRelay.asDriver().map { $0 != 0 }.distinctUntilChanged()
     }
 
     /// - Parameter sessionManager: Alamofire.SessionManager to use for requests
@@ -63,12 +63,12 @@ open class NetworkService {
     public func rxObservableRequest<T: ObservableMappable>(with parameters: ApiRequestParameters,
                                                            additionalValidStatusCodes: Set<Int> = [],
                                                            decoder: JSONDecoder = JSONDecoder())
-        -> Observable<SessionManager.ModelResponse<T>> {
+    -> Observable<SessionManager.ModelResponse<T>> {
 
-            return sessionManager.rx.responseObservableModel(requestParameters: parameters,
-                                                             additionalValidStatusCodes: additionalValidStatusCodes,
-                                                             decoder: decoder)
-                .counterTracking(for: self)
+        sessionManager.rx.responseObservableModel(requestParameters: parameters,
+                                                  additionalValidStatusCodes: additionalValidStatusCodes,
+                                                  decoder: decoder)
+            .counterTracking(for: self)
     }
 
     /// Perform reactive request to get mapped ImmutableMappable model and http response
@@ -81,12 +81,12 @@ open class NetworkService {
     public func rxRequest<T: Decodable>(with parameters: ApiRequestParameters,
                                         additionalValidStatusCodes: Set<Int> = [],
                                         decoder: JSONDecoder = JSONDecoder())
-        -> Observable<SessionManager.ModelResponse<T>> {
+    -> Observable<SessionManager.ModelResponse<T>> {
 
-            return sessionManager.rx.responseModel(requestParameters: parameters,
-                                                   additionalValidStatusCodes: additionalValidStatusCodes,
-                                                   decoder: decoder)
-                .counterTracking(for: self)
+        sessionManager.rx.responseModel(requestParameters: parameters,
+                                        additionalValidStatusCodes: additionalValidStatusCodes,
+                                        decoder: decoder)
+            .counterTracking(for: self)
     }
 
     /// Perform reactive request to get data and http response
@@ -96,11 +96,11 @@ open class NetworkService {
     ///   - additionalValidStatusCodes: set of additional valid status codes
     /// - Returns: Observable of tuple containing (HTTPURLResponse, Data)
     public func rxDataRequest(with parameters: ApiRequestParameters, additionalValidStatusCodes: Set<Int> = [])
-        -> Observable<SessionManager.DataResponse> {
+    -> Observable<SessionManager.DataResponse> {
 
-            return sessionManager.rx.responseData(requestParameters: parameters,
-                                                  additionalValidStatusCodes: additionalValidStatusCodes)
-                .counterTracking(for: self)
+        sessionManager.rx.responseData(requestParameters: parameters,
+                                       additionalValidStatusCodes: additionalValidStatusCodes)
+            .counterTracking(for: self)
     }
 
     /// Perform reactive request to upload data and get Observable model and http response
@@ -113,12 +113,12 @@ open class NetworkService {
     public func rxUploadRequest<T: Decodable>(with parameters: ApiUploadRequestParameters,
                                               additionalValidStatusCodes: Set<Int> = [],
                                               decoder: JSONDecoder = JSONDecoder())
-        -> Observable<SessionManager.ModelResponse<T>> {
+    -> Observable<SessionManager.ModelResponse<T>> {
 
-            return sessionManager.rx.uploadResponseModel(requestParameters: parameters,
-                                                         additionalValidStatusCodes: additionalValidStatusCodes,
-                                                         decoder: decoder)
-                .counterTracking(for: self)
+        sessionManager.rx.uploadResponseModel(requestParameters: parameters,
+                                              additionalValidStatusCodes: additionalValidStatusCodes,
+                                              decoder: decoder)
+            .counterTracking(for: self)
     }
 }
 
@@ -145,7 +145,7 @@ public extension Observable {
     /// - Parameter networkService: NetworkService to operate on it
     /// - Returns: The source sequence with the side-effecting behavior applied.
     func counterTracking(for networkService: NetworkService) -> Observable<Observable.Element> {
-        return `do`(onSubscribe: {
+        `do`(onSubscribe: {
             networkService.increaseRequestCounter()
         }, onDispose: {
             networkService.decreaseRequestCounter()

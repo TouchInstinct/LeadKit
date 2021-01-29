@@ -49,13 +49,13 @@ open class BaseScrollContentController<ViewModel, View: ScrollViewHolderView>: B
 
     /// Contained UIScrollView instance.
     public var scrollView: UIScrollView {
-        return customView.scrollView
+        customView.scrollView
     }
 
     /// Default insets used for contained scroll view.
     public var defaultInsets: UIEdgeInsets {
         get {
-            return defaultInsetsRelay.value
+            defaultInsetsRelay.value
         }
         set {
             defaultInsetsRelay.accept(newValue)

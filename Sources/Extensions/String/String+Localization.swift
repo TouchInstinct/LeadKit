@@ -30,6 +30,6 @@ public extension String {
      - returns: localized string
      */
     func localized() -> String {
-        return NSLocalizedString(self, comment: "")
+        NSLocalizedString(self, comment: "")
     }
 }

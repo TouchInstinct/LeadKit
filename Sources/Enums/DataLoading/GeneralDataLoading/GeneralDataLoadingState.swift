@@ -41,28 +41,28 @@ extension GeneralDataLoadingState: DataLoadingState {
     public typealias DataSourceType = DS
 
     public static var initialState: GeneralDataLoadingState<DS> {
-        return .initial
+        .initial
     }
 
     public static var emptyState: GeneralDataLoadingState<DS> {
-        return .empty
+        .empty
     }
 
     public static func initialLoadingState(after: GeneralDataLoadingState<DS>) -> GeneralDataLoadingState<DS> {
-        return .loading
+        .loading
     }
 
     public static func resultState(result: DS.ResultType,
                                    from: DS,
                                    after: GeneralDataLoadingState<DS>) -> GeneralDataLoadingState<DS> {
 
-        return .result(newResult: result, from: from)
+        .result(newResult: result, from: from)
     }
 
     public static func errorState(error: Error,
                                   after: GeneralDataLoadingState<DS>) -> GeneralDataLoadingState<DS> {
 
-        return .error(error: error)
+        .error(error: error)
     }
 
     public var isInitialState: Bool {

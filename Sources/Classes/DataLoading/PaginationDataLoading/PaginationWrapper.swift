@@ -43,7 +43,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
     /// so the handler can be triggered before reaching end. Defaults to 0.0;
     public var infiniteScrollTriggerOffset: CGFloat {
         get {
-            return wrappedView.scrollView.infiniteScrollTriggerOffset
+            wrappedView.scrollView.infiniteScrollTriggerOffset
         }
         set {
             wrappedView.scrollView.infiniteScrollTriggerOffset = newValue
@@ -327,7 +327,7 @@ final public class PaginationWrapper<Cursor: ResettableRxDataSourceCursor, Deleg
 private extension PaginationWrapper {
 
     private var stateChanged: Binder<LoadingState> {
-        return Binder(self) { base, value in
+        Binder(self) { base, value in
             switch value {
             case .initial:
                 base.onInitialState()
@@ -354,7 +354,7 @@ private extension PaginationWrapper {
     }
 
     var scrollOffsetChanged: Binder<CGPoint> {
-        return Binder(self) { base, value in
+        Binder(self) { base, value in
             base.currentPlaceholderViewTopConstraint?.constant = -value.y
         }
     }

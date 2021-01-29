@@ -69,6 +69,6 @@ public extension Array {
 
     // Subscript for safe access to element by index
     subscript(safe index: Index) -> Element? {
-        return (index < count && index >= 0) ? self[index] : nil
+        (index < count && index >= 0) ? self[index] : nil
     }
 }

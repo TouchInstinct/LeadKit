@@ -28,7 +28,7 @@ extension Observable: RxDataSource {
     public typealias ResultType = Element
 
     public func resultSingle() -> Single<ResultType> {
-        return asSingle()
+        asSingle()
     }
 }
 
@@ -41,6 +41,6 @@ extension Single: RxDataSource {
     public typealias ResultType = Element
 
     public func resultSingle() -> Single<ResultType> {
-        return asObservable().asSingle()
+        asObservable().asSingle()
     }
 }

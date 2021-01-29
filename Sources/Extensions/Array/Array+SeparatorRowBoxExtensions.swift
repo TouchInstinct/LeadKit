@@ -26,7 +26,7 @@ public extension Array where Element == SeparatorRowBox {
 
     /// Create rows from SeparatorRowBox array
     var rows: [Row] {
-        return map { $0.row }
+        map { $0.row }
     }
 
     /// Configure separators from SeparatorRowBox array

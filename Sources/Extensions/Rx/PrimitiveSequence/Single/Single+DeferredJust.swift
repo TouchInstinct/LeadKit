@@ -30,11 +30,11 @@ public extension Single {
     /// that subscribes to the resulting sequence.
     /// - Returns: A single whose observers trigger an invocation of the given element factory function.
     static func deferredJust(_ elementFactory: @escaping () throws -> Element) -> Single<Element> {
-        return .create { observer in
+        .create { observer in
             do {
                 observer(.success(try elementFactory()))
             } catch {
-                observer(.error(error))
+                observer(.failure(error))
             }
 
             return Disposables.create()

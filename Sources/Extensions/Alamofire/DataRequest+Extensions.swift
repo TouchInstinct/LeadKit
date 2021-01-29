@@ -36,7 +36,7 @@ public extension Reactive where Base: DataRequest {
     func apiResponse<T: Decodable>(mappingQueue: DispatchQueue = .global(), decoder: JSONDecoder)
         -> Observable<SessionManager.ModelResponse<T>> {
 
-            return response(onQueue: mappingQueue)
+            response(onQueue: mappingQueue)
                 .tryMapResult { response, data in
                     (response, try decoder.decode(T.self, from: data))
                 }
@@ -50,7 +50,7 @@ public extension Reactive where Base: DataRequest {
     func observableApiResponse<T: ObservableMappable>(mappingQueue: DispatchQueue = .global(), decoder: JSONDecoder)
         -> Observable<SessionManager.ModelResponse<T>> {
 
-            return response(onQueue: mappingQueue)
+            response(onQueue: mappingQueue)
                 .tryMapObservableResult { response, value in
                     let json = try JSONSerialization.jsonObject(with: value, options: [])
                     return T.create(from: json, with: decoder)
@@ -64,13 +64,13 @@ public extension Reactive where Base: DataRequest {
     /// - Parameter mappingQueue: The dispatch queue to use for mapping
     /// - Returns: Observable with HTTP URL Response and data
     func dataApiResponse(mappingQueue: DispatchQueue) -> Observable<SessionManager.DataResponse> {
-        return response(onQueue: mappingQueue)
+        response(onQueue: mappingQueue)
             .map { $0 as SessionManager.DataResponse }
             .catchAsRequestError(with: self.base)
     }
 
     private func response(onQueue queue: DispatchQueue) -> Observable<(HTTPURLResponse, Data)> {
-        return responseResult(queue: queue, responseSerializer: DataResponseSerializer())
+        responseResult(queue: queue, responseSerializer: DataResponseSerializer())
     }
 }
 
@@ -81,7 +81,7 @@ public extension ObservableType where Element == DataRequest {
     /// - Parameter statusCodes: set of status codes to validate
     /// - Returns: Observable on self
     func validate(statusCodes: Set<Int>) -> Observable<Element> {
-        return map { $0.validate(statusCode: statusCodes) }
+        map { $0.validate(statusCode: statusCodes) }
             .catchAsRequestError()
     }
 }
@@ -89,7 +89,7 @@ public extension ObservableType where Element == DataRequest {
 private extension ObservableType where Element == ServerResponse {
 
     func tryMapResult<R>(_ transform: @escaping (Element) throws -> R) -> Observable<R> {
-        return map {
+        map {
             do {
                 return try transform($0)
             } catch {
@@ -99,10 +99,10 @@ private extension ObservableType where Element == ServerResponse {
     }
 
     func tryMapObservableResult<R>(_ transform: @escaping (Element) throws -> Observable<R>) -> Observable<R> {
-        return flatMap { response, result -> Observable<R> in
+        flatMap { response, result -> Observable<R> in
             do {
                 return try transform((response, result))
-                    .catchError {
+                    .catch {
                         throw RequestError.mapping(error: $0, response: result)
                     }
             } catch {
@@ -115,7 +115,7 @@ private extension ObservableType where Element == ServerResponse {
 private extension ObservableType {
 
     func catchAsRequestError(with request: DataRequest? = nil) -> Observable<Element> {
-        return catchError { error in
+        self.catch { error in
             let resultError: RequestError
             let response = request?.data
 

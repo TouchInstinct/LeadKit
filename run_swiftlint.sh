@@ -2,7 +2,7 @@
 
 readonly CONFIG_PATH=${PROJECT_DIR}/build-scripts/xcode/.swiftlint.yml
 
-readonly SWIFTLINT_VERSION=0.31.0
+readonly SWIFTLINT_VERSION=0.39.1
 readonly SWIFTLINT_PORTABLE_FILENAME=portable_swiftlint.zip
 
 readonly SWIFTLINT_PORTABLE_URL=https://github.com/realm/SwiftLint/releases/download/${SWIFTLINT_VERSION}/${SWIFTLINT_PORTABLE_FILENAME}

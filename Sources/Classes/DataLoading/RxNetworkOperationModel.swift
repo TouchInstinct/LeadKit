@@ -39,7 +39,7 @@ open class RxNetworkOperationModel<LoadingStateType: NetworkOperationState>: Net
     private let errorHandler: ErrorHandler
 
     open var stateDriver: Driver<LoadingStateType> {
-        return stateRelay.asDriver()
+        stateRelay.asDriver()
     }
 
     /// Model initializer with data source and custom error handler.
@@ -81,17 +81,17 @@ open class RxNetworkOperationModel<LoadingStateType: NetworkOperationState>: Net
     func requestResult(from dataSource: DataSourceType) {
         currentRequestDisposable = dataSource
             .resultSingle()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(onSuccess: { [weak self] result in
                 self?.onGot(result: result, from: dataSource)
-            }, onError: { [weak self] error in
+            }, onFailure: { [weak self] error in
                 self?.onGot(error: error)
             })
     }
 
     var state: LoadingStateType {
         get {
-            return stateRelay.value
+            stateRelay.value
         }
         set {
             stateRelay.accept(newValue)

@@ -25,14 +25,14 @@ import Foundation
 public extension CursorType {
 
     subscript(range: CountableRange<Int>) -> [Self.Element] {
-        return range.map { self[$0] }
+        range.map { self[$0] }
     }
 
     subscript(range: CountableClosedRange<Int>) -> [Self.Element] {
-        return range.map { self[$0] }
+        range.map { self[$0] }
     }
 
     var loadedElements: [Self.Element] {
-        return self[0..<count]
+        self[0..<count]
     }
 }

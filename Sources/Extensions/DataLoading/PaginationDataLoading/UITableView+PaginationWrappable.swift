@@ -26,7 +26,7 @@ extension UITableView: PaginationWrappable {
 
     public var footerView: UIView? {
         get {
-            return tableFooterView
+            tableFooterView
         }
         set {
             tableFooterView = newValue

@@ -36,7 +36,7 @@ public extension ContentLoadingViewModel where PlaceholderType == Void {
 
     /// Creates ContentLoadingViewModel with placeholder.
     static var placeholder: ContentLoadingViewModel<ContentType, PlaceholderType> {
-        return .placeholder(())
+        .placeholder(())
     }
 }
 
@@ -47,6 +47,6 @@ public extension ContentLoadingViewModel where PlaceholderType == [Void] {
     /// - Parameter numberOfItems: Number of placeholders to create.
     /// - Returns: ContentLoadingViewModel with placeholder.
     static func placeholders(numberOfItems: Int) -> ContentLoadingViewModel<ContentType, PlaceholderType> {
-        return .placeholder(Array(repeating: (), count: numberOfItems))
+        .placeholder(Array(repeating: (), count: numberOfItems))
     }
 }

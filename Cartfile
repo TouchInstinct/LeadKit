@@ -1,7 +1,7 @@
 github "malcommac/SwiftDate"
 github "Alamofire/Alamofire"
-github "RxSwiftCommunity/RxAlamofire" ~> 5.6.0
+github "RxSwiftCommunity/RxAlamofire" ~> 6.1
 github "TouchInstinct/TableKit"
-github "ReactiveX/RxSwift" ~> 5.1.0
+github "ReactiveX/RxSwift" ~> 6.0.0
 github "pronebird/UIScrollView-InfiniteScroll"
 github "SnapKit/SnapKit" ~> 5.0

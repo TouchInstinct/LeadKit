@@ -27,5 +27,5 @@ import Foundation
 /// - Parameter type: an class type
 /// - Returns: string representation of class type
 public func typeName<T>(of type: T.Type) -> String {
-    return String(describing: type)
+    String(describing: type)
 }
