@@ -68,7 +68,8 @@ Pod::Spec.new do |s|
       "Sources/Structures/DrawingOperations/CALayerDrawingOperation.swift",
       "Sources/Structures/DrawingOperations/RoundDrawingOperation.swift",
       "Sources/Structures/DrawingOperations/BorderDrawingOperation.swift",
-      "Sources/Structures/DataLoading/PaginationDataLoading/*"
+      "Sources/Structures/DataLoading/PaginationDataLoading/*",
+      "Sources/Extensions/UIInterfaceOrientation/*"
     ]
     ss.tvos.exclude_files = [
       "Sources/Classes/Controllers/BaseConfigurableController.swift",
@@ -101,7 +102,9 @@ Pod::Spec.new do |s|
       "Sources/Protocols/Views/SeparatorCell/*",
       "Sources/Protocols/TableKit/**/*",
       "Sources/Protocols/Controllers/SearchResultsViewController.swift",
-      "Sources/Structures/DataLoading/PaginationDataLoading/*"
+      "Sources/Structures/DataLoading/PaginationDataLoading/*",
+      "Sources/Extensions/UIInterfaceOrientation/*",
+      "Sources/Classes/Controllers/BaseOrientationController.swift"
     ]
 
     ss.dependency "RxSwift", '~> 6.0.0'
