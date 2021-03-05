@@ -22,7 +22,7 @@
 
 import TableKit
 
-protocol TableDirectorHolder {
+public protocol TableDirectorHolder {
     associatedtype TableDirectorType: TableDirector
     
     var tableDirector: TableDirectorType { get }

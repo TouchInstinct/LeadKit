@@ -23,7 +23,7 @@ import TIUIKitCore
 import TableKit
 
 extension BaseCustomViewController: TableDirectorHolder where View: TableDirectorHolder {
-    var tableDirector: View.TableDirectorType {
+    public var tableDirector: View.TableDirectorType {
         customView.tableDirector
     }
 }
