@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.1.0
+- **Add**: `BaseInitializeableViewController`, `BaseCustomViewController` and `BaseViewController` to TIUIKitCore.
+- **Add**: `TableKitTableView` and `TableDirectorHolder` to TITableKitUtils.
+
 ### 1.0.0
 - **API BreakingChanges**: up swift version to 5.1.
 - **Update**: build scripts.
