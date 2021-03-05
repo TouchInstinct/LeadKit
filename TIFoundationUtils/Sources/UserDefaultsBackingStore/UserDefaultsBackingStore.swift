@@ -20,6 +20,7 @@
 //  THE SOFTWARE.
 //
 
+import TISwiftUtils
 import Foundation
 
 public typealias UserDefaultsBackingStore<T> = BackingStore<UserDefaults, T>
