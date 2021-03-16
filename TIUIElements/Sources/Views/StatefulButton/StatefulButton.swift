@@ -143,7 +143,7 @@ open class StatefulButton: UIButton {
 
         let shouldPropagateEvent = eventPropagations[state] ?? true
 
-        if pointInsideView && touchEventReceiver == nil && !shouldPropagateEvent {
+        if pointInsideView && touchEventReceiver == nil && !shouldPropagateEvent && !isHidden {
             return self // disable propagation
         }
 
