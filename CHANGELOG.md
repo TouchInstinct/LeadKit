@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.1.1
+- **Fix**: `StatefullButton` propagation
+
 ### 1.1.0
 - **Add**: `BaseInitializeableViewController`, `BaseCustomViewController` and `BaseViewController` to TIUIKitCore.
 - **Add**: `TableKitTableView` and `TableDirectorHolder` to TITableKitUtils.
