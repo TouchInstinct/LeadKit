@@ -20,7 +20,7 @@
 //  THE SOFTWARE.
 //
 
-enum StorageError: Error {
+public enum StorageError: Error {
     case valueNotFound
     case unableToExtractData(underlyingError: Error)
     case unableToDecode(underlyingError: Error)
