@@ -15,4 +15,5 @@ Pod::Spec.new do |s|
   s.dependency 'TISwiftUtils', s.version.to_s
   s.dependency 'TIFoundationUtils', s.version.to_s
   s.framework = 'Foundation'
+  s.framework = 'KeychainAccess'
 end
