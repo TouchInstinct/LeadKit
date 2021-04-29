@@ -14,19 +14,19 @@ extension StorageKey {
 }
 
 extension Bundle {
-    var mirBundleId: String {
+    var bundleId: String {
         Bundle.main.bundleIdentifier ?? .empty
     }
 }
 
 extension Keychain {
-    static var mirKeychain: Keychain {
-        .init(service: Bundle.main.mirBundleId)
+    static var defaultKeychain: Keychain {
+        .init(service: Bundle.main.bundleId)
     }
 }
 
 final class ViewModel {
-    @KeychainCodableBackingStore(key: .userProfileKey, codableKeyValueStorage: .mirKeychain)
+    @KeychainCodableBackingStore(key: .userProfileKey, codableKeyValueStorage: .defaultKeychain)
 
     private(set) var profile: UserProfile?
     
