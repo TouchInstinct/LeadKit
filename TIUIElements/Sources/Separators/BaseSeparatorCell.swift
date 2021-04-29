@@ -24,7 +24,7 @@ import UIKit
 
 open class BaseSeparatorCell: BaseInitializableCell, SeparatorConfigurable {
     private lazy var topSeparatorView = createTopSeparator()
-    private lazy var bottomSeparatorView = UIView()
+    private lazy var bottomSeparatorView = createBottomSeparator()
 
     private var topViewLeftConstraint: NSLayoutConstraint?
     private var topViewRightConstraint: NSLayoutConstraint?

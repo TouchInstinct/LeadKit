@@ -69,7 +69,7 @@ public extension NetworkServiceConfiguration {
     /// SessionManager constructed with given parameters (session configuration and trust policies)
     var sessionManager: SessionManager {
         SessionManager(configuration: sessionConfiguration,
-                       serverTrustManager: ServerTrustManager(allHostsMustBeEvaluated: !serverTrustPolicies.isEmpty,
+                       serverTrustManager: ServerTrustManager(allHostsMustBeEvaluated: false,
                                                               evaluators: serverTrustPolicies),
                        acceptableStatusCodes: acceptableStatusCodes,
                        mappingQueue: DispatchQueue(label: .mappingQueueLabel, qos: .default))
