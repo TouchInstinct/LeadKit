@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TIKeychainUtils'
-  s.version          = '1.1.2'
+  s.version          = '1.1.3'
   s.summary          = 'Set of helpers for Keychain classes.'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '11.0'
   s.swift_versions = ['5.3']
 
-  s.source_files = s.name + '/Sources/**/*.swift'
+  s.source_files = s.name + '/Sources/**/*'
 
   s.dependency 'TIFoundationUtils', s.version.to_s
   s.dependency 'KeychainAccess'
