@@ -10,6 +10,8 @@ This repository contains the following additional frameworks:
 - [OTPSwiftView](OTPSwiftView) - a fully customizable OTP view.
 - [TISwiftUtils](TISwiftUtils) - a bunch of useful helpers for development.
 - [TITableKitUtils](TITableKitUtils) - Set of helpers for TableKit classes.
+- [TIFoundationUtils](TIFoundationUtils) - Set of helpers for Foundation framework classes.
+- [TIKeychainUtils](TIKeychainUtils) - Set of helpers for Keychain classes.
   
 Useful docs:
 - [Semantic Commit Messages](docs/semantic-commit-messages.md) - commit message codestyle.
