@@ -24,7 +24,7 @@ import Foundation
 import KeychainAccess
 import TIFoundationUtils
 
-typealias KeychainCodableBackingStore<T: Codable> = CodableKeyValueBackingStore<Keychain, T>
+public typealias KeychainCodableBackingStore<T: Codable> = CodableKeyValueBackingStore<Keychain, T>
 
 extension Keychain: CodableKeyValueStorage {
     public func codableObject<Value: Decodable>(forKey key: StorageKey<Value>,
