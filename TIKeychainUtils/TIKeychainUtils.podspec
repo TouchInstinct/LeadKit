@@ -12,8 +12,6 @@ Pod::Spec.new do |s|
 
   s.source_files = s.name + '/Sources/**/*'
 
-  s.dependency 'TISwiftUtils', s.version.to_s
   s.dependency 'TIFoundationUtils', s.version.to_s
   s.dependency 'KeychainAccess'
-  s.framework = 'Foundation'
 end
