@@ -103,3 +103,5 @@ Templates/
 cpd-output.xml
 *.swp
 *IDEWorkspaceChecks.plist
+
+.DS_Store
