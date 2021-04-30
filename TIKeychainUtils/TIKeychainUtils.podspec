@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
-  s.name             = 'TIUIElements'
+  s.name             = 'TIKeychainUtils'
   s.version          = '1.2.0'
-  s.summary          = 'Bunch of useful protocols and views.'
+  s.summary          = 'Set of helpers for Keychain classes.'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'petropavel13' => 'ivan.smolin@touchin.ru' }
@@ -12,6 +12,6 @@ Pod::Spec.new do |s|
 
   s.source_files = s.name + '/Sources/**/*'
 
-  s.dependency 'TIUIKitCore', s.version.to_s
-  s.dependency 'TISwiftUtils', s.version.to_s
+  s.dependency 'TIFoundationUtils', s.version.to_s
+  s.dependency 'KeychainAccess'
 end

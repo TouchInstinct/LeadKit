@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.2.0
+- **Add**: `TIKeychainUtils` - Set of helpers for Keychain classes.
+
 ### 1.1.1
 - **Fix**: `StatefullButton` propagation
 
