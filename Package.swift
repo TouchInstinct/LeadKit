@@ -17,7 +17,8 @@ let package = Package(
     .library(name: "OTPSwiftView", targets: ["OTPSwiftView"])
   ],
   dependencies: [
-    .package(url: "https://github.com/maxsokolov/TableKit.git", from: "2.11.0")
+    .package(url: "https://github.com/maxsokolov/TableKit.git", from: "2.11.0"),
+    .package(url: "https://github.com/kishikawakatsumi/KeychainAccess.git", from: "4.2.2")
   ],
   targets: [
     .target(name: "TITransitions", path: "TITransitions/Sources"),
