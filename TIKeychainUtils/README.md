@@ -30,8 +30,8 @@ final class ViewModel {
 
     private(set) var profile: UserProfile?
     
-    func updateProfile(profile newProfile: UserProfile?) {
-        let oldProfile = profile
+    func updateProfile(newProfile: UserProfile?) {
+        profile = newProfile
     }
 }
 ```
