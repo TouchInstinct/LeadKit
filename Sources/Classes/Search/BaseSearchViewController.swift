@@ -58,16 +58,14 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
     open override func bindViews() {
         super.bindViews()
         viewModel.itemsViewModelsDriver
-            .withUnretained(self)
-            .drive(onNext: { owner, viewModels in
-                owner.handle(itemViewModels: viewModels)
+            .drive(onNext: { [weak self] viewModels in
+                self?.handle(itemViewModels: viewModels)
             })
             .disposed(by: disposeBag)
 
         Observable.merge(searchResults, resetResults)
-            .withUnretained(self)
-            .subscribe(onNext: { owner, state in
-                owner.handle(searchResultsState: state)
+            .subscribe(onNext: { [weak self] state in
+                self?.handle(searchResultsState: state)
             })
             .disposed(by: disposeBag)
 
@@ -153,9 +151,8 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
     open var searchResults: Observable<SearchResultsViewControllerState> {
         viewModel.searchResultsDriver
             .asObservable()
-            .withUnretained(self)
-            .map { owner, viewModels -> SearchResultsViewControllerState in
-                owner.stateForUpdate(with: viewModels)
+            .compactMap { [weak self] viewModels in
+                self?.stateForUpdate(with: viewModels)
             }
     }
 
