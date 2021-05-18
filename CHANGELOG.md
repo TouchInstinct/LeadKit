@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.2.1
+- **Update**: RxSwift to 6.2.0, Alamofire to 5.4.3, UIScrollView-InfiniteScroll to 1.2.0.
+
 ### 1.2.0
 - **Add**: `TIKeychainUtils` - Set of helpers for Keychain classes.
 
