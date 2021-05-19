@@ -58,8 +58,8 @@ where ViewModel: BaseSearchViewModel<Item, ItemViewModel> {
     open override func bindViews() {
         super.bindViews()
         viewModel.itemsViewModelsDriver
-            .drive(onNext: { [weak self] viewModels in
-                self?.handle(itemViewModels: viewModels)
+            .drive(with: self, onNext: { object, viewModels in
+                object.handle(itemViewModels: viewModels)
             })
             .disposed(by: disposeBag)
 
