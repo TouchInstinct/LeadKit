@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-open protocol HeaderViewHandlerProtocol: UIViewController {
+public protocol HeaderViewHandlerProtocol: UIViewController {
     var largeHeaderView: UIView? { get }
     var headerView: UIView? { get }
     var tableView: UITableView { get }
@@ -9,8 +9,8 @@ open protocol HeaderViewHandlerProtocol: UIViewController {
     func configureHeaderViews()
 }
 
-extension HeaderViewHandlerProtocol {
-    func configureHeaderViews() {}
+public extension HeaderViewHandlerProtocol {
+    open func configureHeaderViews() {}
 }
 
 open class HeaderTransitionDelegate: NSObject {
@@ -22,7 +22,7 @@ open class HeaderTransitionDelegate: NSObject {
     
     private weak var headerViewHandler: HeaderViewHandlerProtocol?
     
-    init(headerViewHandler: HeaderViewHandlerProtocol) {
+    public init(headerViewHandler: HeaderViewHandlerProtocol) {
         self.headerViewHandler = headerViewHandler
         super.init()
         
