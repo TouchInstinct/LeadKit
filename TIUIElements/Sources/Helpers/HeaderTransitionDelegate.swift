@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-protocol HeaderViewHandlerProtocol: UIViewController {
+open protocol HeaderViewHandlerProtocol: UIViewController {
     var largeHeaderView: UIView? { get }
     var headerView: UIView? { get }
     var tableView: UITableView { get }
@@ -13,7 +13,7 @@ extension HeaderViewHandlerProtocol {
     func configureHeaderViews() {}
 }
 
-class HeaderTransitionDelegate: NSObject {
+open class HeaderTransitionDelegate: NSObject {
     
     private var navigationBarHeight: CGFloat = 0
     private var startOffset: CGFloat = 0
@@ -29,7 +29,7 @@ class HeaderTransitionDelegate: NSObject {
         initialUpdateHeaderView()
     }
 
-    func updateHeaderView(isNavigationTitleView: Bool = false) {
+    open func updateHeaderView(isNavigationTitleView: Bool = false) {
         headerViewHandler?.configureHeaderViews()
         headerViewHandler?.navigationController?.navigationBar.topItem?.titleView?.isHidden = !isNavigationTitleView
     }
