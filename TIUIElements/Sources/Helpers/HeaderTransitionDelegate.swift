@@ -10,7 +10,7 @@ public protocol HeaderViewHandlerProtocol: UIViewController {
 }
 
 public extension HeaderViewHandlerProtocol {
-    open func configureHeaderViews() {}
+    func configureHeaderViews() {}
 }
 
 open class HeaderTransitionDelegate: NSObject {
@@ -49,7 +49,7 @@ open class HeaderTransitionDelegate: NSObject {
 }
 
 extension HeaderTransitionDelegate: UITableViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let headerHandler = headerViewHandler,
               let largeHeaderView = headerHandler.largeHeaderView else {
             headerViewHandler?.navigationController?.navigationBar.topItem?.titleView?.isHidden = false
