@@ -35,13 +35,15 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
 }
 ```
 
-<p align="rigth">
-<img src="Assets/first_header_transition_exemple.gif" width=300 height=600>  
-</p>
+<div id="mainDiv"> 
+    <div id="divOne" class="boxes"> 
+	<img src="Assets/first_header_transition_exemple.gif" width=300 height=600>  
+    </div> 
+    <div id="divTwo" class="boxes"> 
+	<img src="Assets/licard_header_transition_exemple.gif" width=300 height=600>  
+    </div> 
+</div> 
 
-<p align="left">
-<img src="Assets/licard_header_transition_exemple.gif" width=300 height=600>  
-</p>
 
 # Installation via SPM
 
