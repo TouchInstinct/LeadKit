@@ -35,18 +35,16 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
 }
 ```
 
-<table border="1" cellspacing="0" cellpadding="0">
+<table border="0" cellspacing="3" cellpadding="3">
     <tbody>
         <tr>
             <td>
-                <p align="center" class="bold">
+                <p align="center">
                    <img src="Assets/first_header_transition_exemple.gif" width=300 height=600>  
                 </p>
             </td>
-             <td>
-            </td>
             <td>
-                <p align="center" class="bold">
+                <p align="center">
                    <img src="Assets/licard_header_transition_exemple.gif" width=300 height=600>  
                 </p>
             </td>
