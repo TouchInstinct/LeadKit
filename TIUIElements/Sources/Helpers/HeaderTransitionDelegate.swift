@@ -40,8 +40,6 @@ open class HeaderTransitionDelegate: NSObject {
         headerViewHandler?.headerView?.isHidden = true
 
         headerViewHandler?.tableView.tableHeaderView = headerViewHandler?.largeHeaderView
-        
-        headerViewHandler?.tableView.delegate = self
 
         updateHeaderView(isNavigationTitleView: false)
         
@@ -49,7 +47,7 @@ open class HeaderTransitionDelegate: NSObject {
 }
 
 extension HeaderTransitionDelegate: UITableViewDelegate {
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    open func scrollViewDidScrollHandler(_ scrollView: UIScrollView) {
         guard let headerHandler = headerViewHandler,
               let largeHeaderView = headerHandler.largeHeaderView else {
             headerViewHandler?.navigationController?.navigationBar.topItem?.titleView?.isHidden = false
@@ -73,5 +71,10 @@ extension HeaderTransitionDelegate: UITableViewDelegate {
         let navigayionBarOffset = prefersLargeTitles ? navigationBarHeight - statusBarHeight : 0
         let isHidden = offsetY <= (largeHeaderView.frame.height + navigayionBarOffset)
         headerHandler.navigationController?.navigationBar.topItem?.titleView?.isHidden = isHidden
+    }
+    
+    
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollViewDidScrollHandler(scrollView)
     }
 }
