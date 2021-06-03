@@ -35,13 +35,11 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
 }
 ```
 
-<div id="mainDiv"> 
-    <div style=”width:50%”>
+<div style=”width:50%”>
 	<img src="Assets/first_header_transition_exemple.gif" width=300 height=600>  
-    </div> 
-    <div style=”width:50%”>
+</div> 
+<div style=”width:50%”>
 	<img src="Assets/licard_header_transition_exemple.gif" width=300 height=600>  
-    </div> 
 </div> 
 
 
