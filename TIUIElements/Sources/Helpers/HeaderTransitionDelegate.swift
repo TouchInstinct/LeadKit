@@ -28,8 +28,6 @@ open class HeaderTransitionDelegate: NSObject {
         headerViewHandler?.navigationController?.navigationBar.topItem?.titleView?.isHidden = true
 
         headerViewHandler?.tableView.tableHeaderView = headerViewHandler?.largeHeaderView
-        
-        headerViewHandler?.tableView.delegate = self
     }
 }
 
