@@ -39,12 +39,12 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
     <tbody>
         <tr>
             <td>
-                <p align="center">
+                <p align="left">
                    <img src="Assets/first_header_transition_exemple.gif" width=300 height=600>  
                 </p>
             </td>
             <td>
-                <p align="center">
+                <p align="rigth">
                    <img src="Assets/licard_header_transition_exemple.gif" width=300 height=600>  
                 </p>
             </td>
