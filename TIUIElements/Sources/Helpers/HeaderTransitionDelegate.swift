@@ -5,12 +5,6 @@ public protocol HeaderViewHandlerProtocol: UIViewController {
     var largeHeaderView: UIView? { get }
     var headerView: UIView? { get }
     var tableView: UITableView { get }
-    
-    func configureHeaderViews()
-}
-
-public extension HeaderViewHandlerProtocol {
-    func configureHeaderViews() {}
 }
 
 open class HeaderTransitionDelegate: NSObject {
@@ -28,21 +22,14 @@ open class HeaderTransitionDelegate: NSObject {
         
         initialUpdateHeaderView()
     }
-
-    open func updateHeaderView(isNavigationTitleView: Bool = false) {
-        headerViewHandler?.configureHeaderViews()
-        headerViewHandler?.navigationController?.navigationBar.topItem?.titleView?.isHidden = !isNavigationTitleView
-    }
-
+    
     private func initialUpdateHeaderView() {
-        
         headerViewHandler?.navigationController?.navigationBar.topItem?.titleView = headerViewHandler?.headerView
-        headerViewHandler?.headerView?.isHidden = true
+        headerViewHandler?.navigationController?.navigationBar.topItem?.titleView?.isHidden = true
 
         headerViewHandler?.tableView.tableHeaderView = headerViewHandler?.largeHeaderView
-
-        updateHeaderView(isNavigationTitleView: false)
         
+        headerViewHandler?.tableView.delegate = self
     }
 }
 
