@@ -43,6 +43,8 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
                    <img src="Assets/first_header_transition_exemple.gif" width=300 height=600>  
                 </p>
             </td>
+             <td>
+            </td>
             <td>
                 <p align="center" class="bold">
                    <img src="Assets/licard_header_transition_exemple.gif" width=300 height=600>  
