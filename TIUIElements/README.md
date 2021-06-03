@@ -35,7 +35,7 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
 }
 ```
 
-<table border="0" cellspacing="3" cellpadding="3">
+<table border="0" cellspacing="30" cellpadding="30">
     <tbody>
         <tr>
             <td>
