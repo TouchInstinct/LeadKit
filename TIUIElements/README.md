@@ -35,17 +35,22 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
 }
 ```
 
-<ul id="film_strip">
-  <li><img src="Assets/first_header_transition_exemple.gif" width="300" height="600" alt="" /></li>
-  <li><img src="Assets/licard_header_transition_exemple.gif" width="300" height="600" alt="" /></li>
-</ul>
-
-<div style=”width:50%”>
-	<img src="Assets/first_header_transition_exemple.gif" width=300 height=600>  
-</div> 
-<div style=”width:50%”>
-	<img src="Assets/licard_header_transition_exemple.gif" width=300 height=600>  
-</div> 
+<table border="1" cellspacing="0" cellpadding="0">
+    <tbody>
+        <tr>
+            <td>
+                <p align="center" class="bold">
+                   <img src="Assets/first_header_transition_exemple.gif" width=300 height=600>  
+                </p>
+            </td>
+            <td>
+                <p align="center" class="bold">
+                   <img src="Assets/licard_header_transition_exemple.gif" width=300 height=600>  
+                </p>
+            </td>
+        </tr>
+     </tbody>
+</table>
 
 
 # Installation via SPM
