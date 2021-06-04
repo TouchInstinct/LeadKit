@@ -1,65 +1,154 @@
 import Foundation
 import UIKit
 
-public protocol HeaderViewHandlerProtocol: UIViewController {
-    var largeHeaderView: UIView? { get }
-    var headerView: UIView? { get }
-    var tableView: UITableView { get }
-}
-
-open class HeaderTransitionDelegate: NSObject {
+open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
     
-    private var navigationBarHeight: CGFloat = 0
-    private var startOffset: CGFloat = 0
-    private var statusBarHeight: CGFloat = 0
-    private var isStartSet = true
+    public enum HeaderAnimationType {
+        case onlyParalax, paralaxWithTransition, transition, scale, paralaxWithScale, none
+    }
     
     private weak var headerViewHandler: HeaderViewHandlerProtocol?
+    private let headerAnimationType: HeaderAnimationType
     
-    public init(headerViewHandler: HeaderViewHandlerProtocol) {
+    private var startOffset: CGFloat = 0
+    private var navigationBarOffset: CGFloat = 0
+    private var isFirstScroll = true
+    
+    private var titleView: UIView? {
+        get {
+            headerViewHandler?.navigationBar?.topItem?.titleView
+        }
+        set {
+            headerViewHandler?.navigationBar?.topItem?.titleView = newValue
+        }
+        
+    }
+    
+    private var tableHeaderView: UIView? {
+        get {
+            headerViewHandler?.tableView.tableHeaderView
+        }
+        set {
+            headerViewHandler?.tableView.tableHeaderView = newValue
+        }
+    }
+    
+    public init(headerViewHandler: HeaderViewHandlerProtocol,
+                headerAnimationType: HeaderAnimationType = .paralaxWithTransition) {
         self.headerViewHandler = headerViewHandler
+        self.headerAnimationType = headerAnimationType
         super.init()
         
         initialUpdateHeaderView()
     }
     
-    private func initialUpdateHeaderView() {
-        headerViewHandler?.navigationController?.navigationBar.topItem?.titleView = headerViewHandler?.headerView
-        headerViewHandler?.navigationController?.navigationBar.topItem?.titleView?.isHidden = true
-
-        headerViewHandler?.tableView.tableHeaderView = headerViewHandler?.largeHeaderView
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollViewDidScrollHandler(scrollView)
     }
-}
-
-extension HeaderTransitionDelegate: UITableViewDelegate {
+    
     open func scrollViewDidScrollHandler(_ scrollView: UIScrollView) {
         guard let headerHandler = headerViewHandler,
               let largeHeaderView = headerHandler.largeHeaderView else {
-            headerViewHandler?.navigationController?.navigationBar.topItem?.titleView?.isHidden = false
+            titleView?.isHidden = false
             return
         }
         
-        if isStartSet {
-            startOffset = -(headerHandler.tableView.contentOffset.y)
-            startOffset = startOffset < 0 ? 0 : startOffset
-            navigationBarHeight = headerHandler.navigationController?.navigationBar.bounds.height ?? 0
-            if #available(iOS 13.0, *) {
-                statusBarHeight = headerHandler.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-            } else {
-                statusBarHeight = UIApplication.shared.statusBarFrame.height
-            }
-            isStartSet = false
+        if isFirstScroll {
+            startOffset = headerViewHandler?.startOffset ?? 0
+            navigationBarOffset = headerViewHandler?.navigationBarOffset ?? 0
+            isFirstScroll = false
         }
-
-        let prefersLargeTitles = headerHandler.navigationController?.navigationBar.prefersLargeTitles ?? false
+        
         let offsetY = scrollView.contentOffset.y + startOffset
-        let navigayionBarOffset = prefersLargeTitles ? navigationBarHeight - statusBarHeight : 0
-        let isHidden = offsetY <= (largeHeaderView.frame.height + navigayionBarOffset)
-        headerHandler.navigationController?.navigationBar.topItem?.titleView?.isHidden = isHidden
+        
+        var alpha = offsetY / (largeHeaderView.frame.height + navigationBarOffset)
+        alpha = alpha > 1 ? 1 : alpha
+        
+        animate(headerAnimation: headerAnimationType, alpha: alpha)
     }
     
+    private func setupView() {
+        switch headerAnimationType {
+        case .scale, .paralaxWithScale:
+            titleView?.transform = CGAffineTransform(scaleX: -0.5, y: 0.5)
+            
+        case .paralaxWithTransition, .transition:
+            break
+            
+        default:
+            titleView?.alpha = 1
+            titleView?.isHidden = true
+        }
+    }
     
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollViewDidScrollHandler(scrollView)
+    private func initialUpdateHeaderView() {
+        titleView = headerViewHandler?.headerView
+        titleView?.alpha = 0
+
+        setLargeHeader()
+        
+        setupView()
+    }
+    
+    private func setLargeHeader() {
+        guard let largeHeaderView = headerViewHandler?.largeHeaderView else {
+            return
+        }
+        
+        switch headerAnimationType {
+        case .paralaxWithScale, .paralaxWithTransition, .onlyParalax:
+            tableHeaderView =  ParallaxTableHeaderView(subView: largeHeaderView)
+        default:
+            tableHeaderView =  largeHeaderView
+        }
+    }
+    
+    private func animate(headerAnimation: HeaderAnimationType, alpha: CGFloat) {
+        
+        switch headerAnimation {
+        case .paralaxWithTransition:
+            transition(alpha: alpha)
+            paralax()
+            
+        case .transition:
+            transition(alpha: alpha)
+            
+        case .onlyParalax:
+            paralax()
+            titleView?.isHidden = alpha != 1
+            
+        case .scale:
+            scale(alpha: alpha)
+            
+        case .paralaxWithScale:
+            scale(alpha: alpha)
+            paralax()
+            
+        default:
+            titleView?.isHidden = alpha != 1
+        }
+    }
+    
+    private func paralax() {
+        guard let tableView = headerViewHandler?.tableView,
+              let header: ParallaxTableHeaderView = tableView.tableHeaderView as? ParallaxTableHeaderView else {
+            return
+        }
+        
+        header.layoutForContentOffset(tableView.contentOffset)
+    }
+    
+    private func transition(alpha: CGFloat) {
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            self?.titleView?.alpha = alpha
+            self?.titleView?.transform = CGAffineTransform(translationX: 0, y: -alpha*10)
+        }
+    }
+    
+    private func scale(alpha: CGFloat) {
+        UIView.animate(withDuration: 0.2){ [weak self] in
+            self?.titleView?.alpha = alpha
+            self?.titleView?.transform = CGAffineTransform(scaleX: alpha, y: alpha)
+        }
     }
 }
