@@ -21,7 +21,6 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
         set {
             headerViewHandler?.navigationBar?.topItem?.titleView = newValue
         }
-        
     }
     
     private var tableHeaderView: UIView? {
@@ -47,15 +46,12 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
     }
     
     open func scrollViewDidScrollHandler(_ scrollView: UIScrollView) {
-        guard let headerHandler = headerViewHandler,
-              let largeHeaderView = headerHandler.largeHeaderView else {
+        guard let largeHeaderView = headerViewHandler?.largeHeaderView else {
             titleView?.isHidden = false
             return
         }
         
         if isFirstScroll {
-            
-           
             startOffset = max(-(headerViewHandler?.startOffset.y ?? 0), 0)
             navigationBarOffset = headerViewHandler?.navigationBarOffset ?? 0
             isFirstScroll = false
@@ -100,6 +96,7 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
         switch headerAnimationType {
         case .paralaxWithScale, .paralaxWithTransition, .onlyParalax:
             tableHeaderView =  ParallaxTableHeaderView(subView: largeHeaderView)
+            
         default:
             tableHeaderView =  largeHeaderView
         }
@@ -133,7 +130,7 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
     
     private func paralax() {
         guard let tableView = headerViewHandler?.tableView,
-              let header: ParallaxTableHeaderView = tableView.tableHeaderView as? ParallaxTableHeaderView else {
+              let header = tableView.tableHeaderView as? ParallaxTableHeaderView else {
             return
         }
         
