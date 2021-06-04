@@ -5,7 +5,7 @@ public protocol TableViewHandler {
 }
 
 extension TableViewHandler {
-    var startOffset: CGFloat {
-        max(-(tableView.contentOffset.y), 0)
+    var startOffset: CGPoint {
+        tableView.contentOffset
     }
 }

@@ -54,7 +54,9 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
         }
         
         if isFirstScroll {
-            startOffset = headerViewHandler?.startOffset ?? 0
+            
+           
+            startOffset = max(-(headerViewHandler?.startOffset.y ?? 0), 0)
             navigationBarOffset = headerViewHandler?.navigationBarOffset ?? 0
             isFirstScroll = false
         }
