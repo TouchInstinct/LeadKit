@@ -72,27 +72,27 @@ HeaderTransitionDelegate(headerViewHandler: HeaderViewHandlerProtocol,
 </table>
 
 #### **onlyParalax**
-<p align="right">
+<p align="left">
    <img src="Assets/onlyParalax.gif" width=300 height=600>  
 </p>
 
 #### **paralaxWithTransition**
-<p align="right">
+<p align="left">
    <img src="Assets/paralaxWithTransition.gif" width=300 height=600>  
 </p>
 
 #### **transition**
-<p align="right">
+<p align="left">
    <img src="Assets/transition.gif" width=300 height=600>  
 </p>
 
 #### **scale**
-<p align="right">
+<p align="left">
    <img src="Assets/scale.gif" width=300 height=600>  
 </p>
 
 #### **paralaxWithScale**
-<p align="right">
+<p align="left">
    <img src="Assets/paralaxWithScale.gif" width=300 height=600>  
 </p>
                 
