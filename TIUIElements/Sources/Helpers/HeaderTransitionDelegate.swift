@@ -33,7 +33,7 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
     }
     
     public init(headerViewHandler: HeaderViewHandlerProtocol,
-                headerAnimationType: HeaderAnimationType = .paralaxWithTransition) {
+                headerAnimationType: HeaderAnimationType = .none) {
         self.headerViewHandler = headerViewHandler
         self.headerAnimationType = headerAnimationType
         super.init()
