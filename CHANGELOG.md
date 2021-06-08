@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.2.1
+- **Fix**: ISO date formatting.
+
 ### 1.2.0
 - **Add**: `TIKeychainUtils` - Set of helpers for Keychain classes.
 
