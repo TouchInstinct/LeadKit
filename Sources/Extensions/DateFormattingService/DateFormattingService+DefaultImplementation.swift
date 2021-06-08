@@ -37,14 +37,28 @@ public extension DateFormattingService {
 
         let region = parsedIn ?? currentRegion
 
-        return format.stringToDateFormat.toDate(string, region: region)
-    }
+        switch format.stringToDateFormat {
+        case .custom:
+            if let date = string.toISODate(region: region) {
+                return date
+            }
 
+            if let date = string.toDotNETDate(region: region) {
+                return date
+            }
+
+            return format.stringToDateFormat.toDate(string, region: region)
+
+        default:
+            return format.stringToDateFormat.toDate(string, region: region)
+        }
+    }
+    
     func date(from string: String, formats: [DateFormatType], parsedIn: Region?) -> DateInRegion? {
         let region = parsedIn ?? currentRegion
 
         for format in formats {
-            if let parsedDate = format.stringToDateFormat.toDate(string, region: region) {
+            if let parsedDate = date(from: string, format: format, parsedIn: parsedIn) {
                 return parsedDate
             }
         }
