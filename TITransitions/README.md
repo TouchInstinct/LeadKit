@@ -1,76 +1,60 @@
-# TIUIElements
+# TITransitions
 
-Bunch of useful protocols and views:
+![Version](https://img.shields.io/github/v/release/Loupehope/TITransitions)
+![Platform](https://img.shields.io/badge/platform-iOS-green)
+![License](https://img.shields.io/hexpm/l/plug?color=darkBlue)
 
-- `RefreshControl` - a basic UIRefreshControl with fixed refresh action.
+Set of custom transitions to present controller. 
 
-# HeaderTransitionDelegate
-Use for transition table header to navigationBar view while scrolling
+# PanelTransition
+Use to present ViewController from the bottom.
 
-## Your class must implement HeaderViewHandlerProtocol protocol
-
-## HeaderViewHandlerProtocol
+## Usage
 ```swift 
-public protocol HeaderViewHandlerProtocol {
-    var largeHeaderView: UIView? { get }
-    var headerView: UIView? { get }
-    var navigationBar: UINavigationBar? { get }
-    var window: UIWindow? { get }
-    var tableView: UITableView { get }
-}
-```
+let panelTransition = PanelTransition(presentStyle: .halfScreen)
 
-## Usage if your ViewController don't needs extend UITableViewDelegate
-```swift 
-let headerTransitionDelegate = HeaderTransitionDelegate(headerViewHandler: self)
-tableView.delegate = headerTransitionDelegate
-```
+let childController = UIViewController()
+childController.view.backgroundColor = .white
+       
+childController.transitioningDelegate = panelTransition
+childController.modalPresentationStyle = .custom
 
-## Usage if your ViewController needs extend UITableViewDelegate
-```swift 
-let headerTransitionDelegate = HeaderTransitionDelegate(headerViewHandler: self)
-tableView.delegate = self
-.
-.
-func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    headerTransitionDelegate?.scrollViewDidScrollHandler(scrollView)
-    
-    /// Your local work
-}
+rootController.present(childController)
 ```
+<p align="left">
+<img src="Assets/panel_transition.gif" width=300 height=600>  
+</p>
 
 ## Customization 
-You can use different kinds of animations to change views
+
+To customize panel transition behaviour use the PanelTransition's constructor.
 ```swift
-HeaderTransitionDelegate(headerViewHandler: HeaderViewHandlerProtocol,
-                         headerAnimationType: HeaderAnimationType = .paralaxWithTransition)
+PanelTransition(presentStyle: PresentStyle, //required
+                panelConfig: PanelPresentationController.Configuration = .default,
+                driver: TransitionDriver? = .init(),
+                presentAnimation: PresentAnimation = .init(),
+                dismissAnimation: DismissAnimation = .init())
 ```
-1. *headerAnimationType* - определяет тип анимации перехода отображений:
-    - onlyParalax - applies only parallax effect to the header of table
-    - paralaxWithTransition - applies parallax effect to the header of table with transition effect down up of the navigationBar titleView
-    - transition - applies only transition effect down up of the navigationBar titleView
-    - scale - applies only scale effect down up of the navigationBar titleView
-    - paralaxWithScale - applies parallax effect to the header of table with scale effect down up of the navigationBar titleView
-    - none - dont applies any effects
+1. *PresentStyle* - defines a position of ViewController:
+    - fullScreen
+    - halfScreen
+    - customInsets(UIEdgeInsets)
+    - customHeight(CGFloat)
 
-<table border="0" cellspacing="30" cellpadding="30">
-    <tbody>
-        <tr>
-            <td>
-                <p align="left">
-                   <img src="Assets/first_header_transition_example.gif" width=300 height=600>  
-                </p>
-            </td>
-            <td>
-                <p align="right">
-                   <img src="Assets/licard_header_transition_example.gif" width=300 height=600>  
-                </p>
-            </td>
-        </tr>
-     </tbody>
-</table>
-
+2. *PanelPresentationController.Configuration* - defines a background color of back view and a tap gesture:
+```swift
+struct Configuration {
+  let backgroundColor: UIColor
+  let onTapDismissEnabled: Bool
+  let onTapDismissCompletion: VoidClosure?
+```
+3. *TransitionDriver* is responsible for swipe gesture.
+4. *PresentAnimation and DismissAnimation* defines present and dismiss animations.
 
 # Installation via SPM
 
 You can install this framework as a target of LeadKit.
+
+# License
+
+TITransitions is available under the Apache License 2.0. See the LICENSE file for more info.
