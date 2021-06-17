@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TIPagination'
-  s.version          = '1.2.0'
+  s.version          = '1.3.0'
   s.summary          = 'Set of helpers for Foundation framework classes.'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = 'Apache License, Version 2.0'
