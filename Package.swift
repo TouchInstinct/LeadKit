@@ -14,7 +14,8 @@ let package = Package(
     .library(name: "TIKeychainUtils", targets: ["TIKeychainUtils"]),
     .library(name: "TIUIElements", targets: ["TIUIElements"]),
     .library(name: "TITableKitUtils", targets: ["TITableKitUtils"]),
-    .library(name: "OTPSwiftView", targets: ["OTPSwiftView"])
+    .library(name: "OTPSwiftView", targets: ["OTPSwiftView"]),
+    .library(name: "TICoordinatorKit", targets: ["TICoordinatorKit"])
   ],
   dependencies: [
     .package(url: "https://github.com/maxsokolov/TableKit.git", from: "2.11.0"),
@@ -28,6 +29,7 @@ let package = Package(
     .target(name: "TIKeychainUtils", dependencies: ["TIFoundationUtils", "KeychainAccess"], path: "TIKeychainUtils/Sources"),
     .target(name: "TIUIElements", dependencies: ["TIUIKitCore", "TISwiftUtils"], path: "TIUIElements/Sources"),
     .target(name: "TITableKitUtils", dependencies: ["TIUIElements", "TableKit"], path: "TITableKitUtils/Sources"),
-    .target(name: "OTPSwiftView", dependencies: ["TIUIElements"], path: "OTPSwiftView/Sources")
+    .target(name: "OTPSwiftView", dependencies: ["TIUIElements"], path: "OTPSwiftView/Sources"),
+    .target(name: "TICoordinatorKit", dependencies: ["TISwiftUtils"], path: "TICoordinatorKit/Sources")
   ]
 )

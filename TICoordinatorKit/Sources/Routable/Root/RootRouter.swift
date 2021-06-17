@@ -1,0 +1,59 @@
+//
+//  Copyright (c) 2020 Touch Instinct
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the Software), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+//
+
+import UIKit
+
+open class RootRouter: StackRouter, RootRoutable {
+
+    public func setRootModule(_ module: Presentable?) {
+        setRootModule(module, rootConfigurationClosure: nil, childConfigurationClosure: nil)
+    }
+    
+    public func setRootModule(_ module: Presentable?, childConfigurationClosure: ConfigurationClosure?) {
+        setRootModule(module, rootConfigurationClosure: nil, childConfigurationClosure: childConfigurationClosure)
+    }
+    
+    public func setRootModule(_ module: Presentable?, rootConfigurationClosure: ConfigurationClosure?) {
+        setRootModule(module, rootConfigurationClosure: rootConfigurationClosure, childConfigurationClosure: nil)
+    }
+
+    public func setRootModule(_ module: Presentable?,
+                              rootConfigurationClosure: ConfigurationClosure?,
+                              childConfigurationClosure: ConfigurationClosure?) {
+        guard let rootController = rootController,
+              let controller = extractController(from: module) else {
+            return
+        }
+        rootController.setViewControllers([controller], animated: false)
+
+        rootConfigurationClosure?(rootController)
+        childConfigurationClosure?(controller)
+
+        headModule = module
+    }
+
+    public func popToRootModule(animated: Bool) {
+        if let controllers = rootController?.popToRootViewController(animated: animated) {
+            runCompletionsChain(of: controllers)
+        }
+    }
+}
