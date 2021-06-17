@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.3.0
+- **Add**: `TICoordinatorKit` - framework for performing navigation in iOS application
+
 ### 1.2.0
 - **Add**: `TIKeychainUtils` - Set of helpers for Keychain classes.
 
