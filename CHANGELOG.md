@@ -1,5 +1,10 @@
 # Changelog
 
+### 2.0.0
+- **Update**: minor dependencies.
+- **[Breaking change]**: Remove cursors and pagination from source folder. Use instead - `TIPaginator`.
+- **[Breaking change]**: Remove block typealias. Use instead - `TISwiftUtils`.
+
 ### 1.3.0
 - **Add**: `TIPaginator` - realisation of paginating items from a data source.
 
