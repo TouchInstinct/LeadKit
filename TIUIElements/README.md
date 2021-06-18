@@ -11,12 +11,22 @@ Use for transition table header to navigationBar view while scrolling
 
 ## HeaderViewHandlerProtocol
 ```swift 
-public protocol HeaderViewHandlerProtocol {
-    var largeHeaderView: UIView? { get }
-    var headerView: UIView? { get }
+public protocol CollapsibleViewsContainer: class, TableViewHandler {
+    var topHeaderView: UIView? { get } // titleView
+    var bottomHeaderView: UIView? { get } // tableHeaderView
+
+    var fixedTopOffet: CGFloat { get } // status bar + nav bar height
     var navigationBar: UINavigationBar? { get }
-    var window: UIWindow? { get }
+    
     var tableView: UITableView { get }
+}
+```
+
+UIViewController have default realization for fixedTopOffet (defaultTopOffet). 
+If you are satisfied default realization You can implement fixedTopOffet like this  
+```swift 
+var fixedTopOffet: CGFloat {
+    defaultTopOffet
 }
 ```
 

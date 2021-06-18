@@ -1,11 +1,6 @@
 import UIKit
 
-public protocol TransitioningView: UIView {
-    func transition(to fraction: CGFloat)
-    func scale(alpha: CGFloat)
-}
-
-extension UIView: TransitioningView {
+extension UIView {
     public func transition(to alpha: CGFloat) {
         UIView.animate(withDuration: 0.2) { [weak self] in
             self?.alpha = alpha
