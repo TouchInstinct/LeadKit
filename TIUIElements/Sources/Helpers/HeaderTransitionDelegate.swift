@@ -103,7 +103,6 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
     }
     
     private func animate(headerAnimation: HeaderAnimationType, alpha: CGFloat) {
-        debugPrint("titleView = ", headerViewHandler?.navBar)
         switch headerAnimation {
         case .paralaxWithTransition:
             titleView?.transition(to: alpha)
