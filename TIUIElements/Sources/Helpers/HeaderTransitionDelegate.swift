@@ -7,7 +7,7 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
         case onlyParalax, paralaxWithTransition, transition, scale, paralaxWithScale, none
     }
     
-    private weak var headerViewHandler: HeaderViewHandlerProtocol?
+    private weak var headerViewHandler: CollapsibleViewsContainer?
     private let headerAnimationType: HeaderAnimationType
     
     private var startOffset: CGFloat = 0
@@ -32,7 +32,7 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
         }
     }
     
-    public init(headerViewHandler: HeaderViewHandlerProtocol,
+    public init(headerViewHandler: CollapsibleViewsContainer,
                 headerAnimationType: HeaderAnimationType = .none) {
         self.headerViewHandler = headerViewHandler
         self.headerAnimationType = headerAnimationType
@@ -46,14 +46,14 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
     }
     
     open func scrollViewDidScrollHandler(_ scrollView: UIScrollView) {
-        guard let largeHeaderView = headerViewHandler?.largeHeaderView else {
+        guard let largeHeaderView = headerViewHandler?.bottomHeaderView else {
             titleView?.isHidden = false
             return
         }
         
         if isFirstScroll {
             startOffset = max(-(headerViewHandler?.startOffset.y ?? 0), 0)
-            navigationBarOffset = headerViewHandler?.navigationBarOffset ?? 0
+            navigationBarOffset = headerViewHandler?.fixedTopOffet ?? 0
             isFirstScroll = false
         }
         
@@ -80,7 +80,7 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
     }
     
     private func initialUpdateHeaderView() {
-        titleView = headerViewHandler?.headerView
+        titleView = headerViewHandler?.topHeaderView
         titleView?.alpha = 0
 
         setLargeHeader()
@@ -89,7 +89,7 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
     }
     
     private func setLargeHeader() {
-        guard let largeHeaderView = headerViewHandler?.largeHeaderView else {
+        guard let largeHeaderView = headerViewHandler?.bottomHeaderView else {
             return
         }
         
@@ -106,21 +106,21 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
         
         switch headerAnimation {
         case .paralaxWithTransition:
-            transition(alpha: alpha)
+            titleView?.transition(to: alpha)
             paralax()
             
         case .transition:
-            transition(alpha: alpha)
+            titleView?.transition(to: alpha)
             
         case .onlyParalax:
             paralax()
             titleView?.isHidden = alpha != 1
             
         case .scale:
-            scale(alpha: alpha)
+            titleView?.scale(alpha: alpha)
             
         case .paralaxWithScale:
-            scale(alpha: alpha)
+            titleView?.scale(alpha: alpha)
             paralax()
             
         default:
@@ -135,19 +135,5 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
         }
         
         header.layoutForContentOffset(tableView.contentOffset)
-    }
-    
-    private func transition(alpha: CGFloat) {
-        UIView.animate(withDuration: 0.2) { [weak self] in
-            self?.titleView?.alpha = alpha
-            self?.titleView?.transform = CGAffineTransform(translationX: 0, y: -alpha*10)
-        }
-    }
-    
-    private func scale(alpha: CGFloat) {
-        UIView.animate(withDuration: 0.2){ [weak self] in
-            self?.titleView?.alpha = alpha
-            self?.titleView?.transform = CGAffineTransform(scaleX: alpha, y: alpha)
-        }
     }
 }
