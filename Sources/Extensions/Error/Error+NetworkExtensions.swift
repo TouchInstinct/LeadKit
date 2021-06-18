@@ -51,7 +51,7 @@ public extension ObservableType {
     ///   - handler: closure that recieves serialized response
     /// - Returns: Observable on caller
     func handleMappingError<T: Decodable>(with decoder: JSONDecoder = JSONDecoder(),
-                                          handler: @escaping ParameterClosure<T>) -> Observable<Element> {
+                                          handler: @escaping (T) -> Void) -> Observable<Element> {
             self.do(onError: { error in
                 guard let errorModel = try error.handleMappingError(with: decoder) as T? else {
                     return
@@ -71,7 +71,7 @@ public extension PrimitiveSequence where Trait == SingleTrait {
     ///   - handler: closure that recieves serialized response
     /// - Returns: Single on caller
     func handleMappingError<T: Decodable>(with decoder: JSONDecoder = JSONDecoder(),
-                                          handler: @escaping ParameterClosure<T>) -> PrimitiveSequence<Trait, Element> {
+                                          handler: @escaping (T) -> Void) -> PrimitiveSequence<Trait, Element> {
             self.do(onError: { error in
                 guard let errorModel = try error.handleMappingError(with: decoder) as T? else {
                     return
@@ -91,7 +91,7 @@ public extension PrimitiveSequence where Trait == CompletableTrait, Element == N
     ///   - handler: closure that recieves serialized response
     /// - Returns: Completable
     func handleMappingError<T: Decodable>(with decoder: JSONDecoder = JSONDecoder(),
-                                          handler: @escaping ParameterClosure<T>) -> Completable {
+                                          handler: @escaping (T) -> Void) -> Completable {
             self.do(onError: { error in
                 guard let errorModel = try error.handleMappingError(with: decoder) as T? else {
                     return

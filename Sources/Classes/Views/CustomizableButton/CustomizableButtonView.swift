@@ -58,7 +58,7 @@ open class CustomizableButtonView: UIView, InitializableView, ConfigurableView {
 
     private let button = CustomizableButton()
 
-    open var tapOnDisabledButton: VoidBlock?
+    open var tapOnDisabledButton: (() -> Void)?
 
     public var shadowView = UIView() {
         willSet {
