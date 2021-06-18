@@ -107,14 +107,14 @@ Pod::Spec.new do |s|
       "Sources/Classes/Controllers/BaseOrientationController.swift"
     ]
 
-    ss.dependency "RxSwift", '~> 6.0.0'
-    ss.dependency "RxCocoa", '~> 6.0.0'
-    ss.dependency "RxAlamofire", '~> 6.1.1'
+    ss.dependency "RxSwift", '~> 6.2'
+    ss.dependency "RxCocoa", '~> 6.2'
+    ss.dependency "RxAlamofire", '~> 6.1'
     ss.dependency "SwiftDate", '~> 6'
 
     ss.ios.dependency "TableKit", '~> 2.11'
     ss.ios.dependency "SnapKit", '~> 5.0.1'
-    ss.ios.dependency "UIScrollView-InfiniteScroll", '~> 1.1.0'
+    ss.ios.dependency "UIScrollView-InfiniteScroll", '~> 1.2'
   end
 
   s.default_subspec = 'Core'
