@@ -16,7 +16,7 @@ public protocol CollapsibleViewsContainer: class, TableViewHandler {
     var bottomHeaderView: UIView? { get } // tableHeaderView
 
     var fixedTopOffet: CGFloat { get } // status bar + nav bar height
-    var navigationBar: UINavigationBar? { get }
+    var navBar: UINavigationBar? { get }
     
     var tableView: UITableView { get }
 }
@@ -27,6 +27,13 @@ If you are satisfied default realization You can implement fixedTopOffet like th
 ```swift 
 var fixedTopOffet: CGFloat {
     defaultTopOffet
+}
+```
+
+UIViewController have default realization for navBar
+```swift 
+public var navBar: UINavigationBar? {
+    navigationController?.navigationBar
 }
 ```
 

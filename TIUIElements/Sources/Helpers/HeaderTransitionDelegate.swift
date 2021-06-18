@@ -16,10 +16,10 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
     
     private var titleView: UIView? {
         get {
-            headerViewHandler?.navigationBar?.topItem?.titleView
+            headerViewHandler?.navBar?.topItem?.titleView
         }
         set {
-            headerViewHandler?.navigationBar?.topItem?.titleView = newValue
+            headerViewHandler?.navBar?.topItem?.titleView = newValue
         }
     }
     
@@ -103,7 +103,7 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
     }
     
     private func animate(headerAnimation: HeaderAnimationType, alpha: CGFloat) {
-        
+        debugPrint("titleView = ", headerViewHandler?.navBar)
         switch headerAnimation {
         case .paralaxWithTransition:
             titleView?.transition(to: alpha)
