@@ -4,7 +4,7 @@ public protocol TableViewHandler {
     var tableView: UITableView { get }
 }
 
-extension TableViewHandler {
+public extension TableViewHandler {
     var startOffset: CGPoint {
         tableView.contentOffset
     }
