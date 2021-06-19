@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "Cursors",
+        "repositoryURL": "https://github.com/petropavel13/Cursors",
+        "state": {
+          "branch": null,
+          "revision": "a1561869135e72832eff3b1e729075c56c2eebf6",
+          "version": "0.5.1"
+        }
+      },
+      {
         "package": "KeychainAccess",
         "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
         "state": {

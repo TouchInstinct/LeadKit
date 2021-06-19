@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.3.0
+- **Add**: `TIPaginator` - realisation of paginating items from a data source.
+
 ### 1.2.0
 - **Add**: `TIKeychainUtils` - Set of helpers for Keychain classes.
 
