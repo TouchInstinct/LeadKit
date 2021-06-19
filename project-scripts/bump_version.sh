@@ -7,8 +7,8 @@ cd "$DIR"
 
 # Bump version
 find ../ -name '*.podspec' \
-	-not -path "./Carthage/*" \
-	-not -path "./*/Carthage/*" \
-	-not -path "./Pods/*" \
-	-not -path "./*/Pods/*" \
+	-not -path "../Carthage/*" \
+	-not -path "../*/Carthage/*" \
+	-not -path "../Pods/*" \
+	-not -path "../*/Pods/*" \
 	| xargs -I% npx podspec-bump -i "$1" -w -p %
