@@ -25,6 +25,8 @@ Useful docs:
 ./setup
 ```
 
+- If legacy [Source](https://github.com/TouchInstinct/LeadKit/tree/master/Sources) folder needed, [build dependencies for LeadKit.xcodeproj](https://github.com/TouchInstinct/LeadKit/blob/master/docs/snippets.md#build-dependencies-for-LeadKit.xcodeproj).
+
 - Make sure the commit message codestyle is followed. More about [Semantic Commit Messages](docs/semantic-commit-messages.md).
 
 ## Installation
