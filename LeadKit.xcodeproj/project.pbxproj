@@ -16,6 +16,39 @@
 		40F118471F8FEF97004AADAF /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
 		40F118491F8FF223004AADAF /* TableRow+AppearanceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118481F8FF223004AADAF /* TableRow+AppearanceExtension.swift */; };
 		411073AF23466B41002DD9B9 /* UIViewController+PresentFullScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411073AE23466B41002DD9B9 /* UIViewController+PresentFullScreen.swift */; };
+		4C4C7B52267FE27E006F3C70 /* RxAlamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B47267FE27E006F3C70 /* RxAlamofire.xcframework */; };
+		4C4C7B56267FE27E006F3C70 /* RxSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B49267FE27E006F3C70 /* RxSwift.xcframework */; };
+		4C4C7B5C267FE27E006F3C70 /* RxRelay.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B4C267FE27E006F3C70 /* RxRelay.xcframework */; };
+		4C4C7B5E267FE27E006F3C70 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B4D267FE27E006F3C70 /* Alamofire.xcframework */; };
+		4C4C7B60267FE27E006F3C70 /* SwiftDate.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B4E267FE27E006F3C70 /* SwiftDate.xcframework */; };
+		4C4C7B62267FE27E006F3C70 /* RxBlocking.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B4F267FE27E006F3C70 /* RxBlocking.xcframework */; };
+		4C4C7B66267FE27F006F3C70 /* RxCocoa.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B51267FE27E006F3C70 /* RxCocoa.xcframework */; };
+		4C4C7B7F267FE319006F3C70 /* Decimal+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A5D49422AA975000C7D254 /* Decimal+Rounding.swift */; };
+		4C4C7B83267FE32F006F3C70 /* Decimal+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A5D49B22AAB6B700C7D254 /* Decimal+Values.swift */; };
+		4C4C7B8A267FE364006F3C70 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B4D267FE27E006F3C70 /* Alamofire.xcframework */; };
+		4C4C7B8C267FE364006F3C70 /* RxAlamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B47267FE27E006F3C70 /* RxAlamofire.xcframework */; };
+		4C4C7B8E267FE365006F3C70 /* RxBlocking.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B4F267FE27E006F3C70 /* RxBlocking.xcframework */; };
+		4C4C7B90267FE365006F3C70 /* RxCocoa.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B51267FE27E006F3C70 /* RxCocoa.xcframework */; };
+		4C4C7B92267FE365006F3C70 /* RxRelay.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B4C267FE27E006F3C70 /* RxRelay.xcframework */; };
+		4C4C7B94267FE365006F3C70 /* RxSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B49267FE27E006F3C70 /* RxSwift.xcframework */; };
+		4C4C7B96267FE365006F3C70 /* RxTest.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B50267FE27E006F3C70 /* RxTest.xcframework */; };
+		4C4C7B98267FE365006F3C70 /* SnapKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B4B267FE27E006F3C70 /* SnapKit.xcframework */; };
+		4C4C7B9A267FE365006F3C70 /* SwiftDate.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B4E267FE27E006F3C70 /* SwiftDate.xcframework */; };
+		4C4C7BA7267FE3F6006F3C70 /* Decimal+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A5D49422AA975000C7D254 /* Decimal+Rounding.swift */; };
+		4C4C7BA8267FE3F6006F3C70 /* Decimal+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A5D49B22AAB6B700C7D254 /* Decimal+Values.swift */; };
+		4C4C7BB7267FE4C9006F3C70 /* ButtonHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF65D1724DD6C080006B001 /* ButtonHolderView.swift */; };
+		4C4C7BBA267FE4DD006F3C70 /* ButtonHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF65D1324DD684A0006B001 /* ButtonHolder.swift */; };
+		4C4C7BBF267FE508006F3C70 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B4D267FE27E006F3C70 /* Alamofire.xcframework */; };
+		4C4C7BC1267FE508006F3C70 /* RxAlamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B47267FE27E006F3C70 /* RxAlamofire.xcframework */; };
+		4C4C7BC3267FE508006F3C70 /* RxBlocking.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B4F267FE27E006F3C70 /* RxBlocking.xcframework */; };
+		4C4C7BC5267FE508006F3C70 /* RxCocoa.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B51267FE27E006F3C70 /* RxCocoa.xcframework */; };
+		4C4C7BC7267FE509006F3C70 /* RxRelay.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B4C267FE27E006F3C70 /* RxRelay.xcframework */; };
+		4C4C7BC9267FE509006F3C70 /* RxSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B49267FE27E006F3C70 /* RxSwift.xcframework */; };
+		4C4C7BCB267FE509006F3C70 /* RxTest.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B50267FE27E006F3C70 /* RxTest.xcframework */; };
+		4C4C7BCD267FE509006F3C70 /* SnapKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B4B267FE27E006F3C70 /* SnapKit.xcframework */; };
+		4C4C7BCF267FE509006F3C70 /* SwiftDate.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B4E267FE27E006F3C70 /* SwiftDate.xcframework */; };
+		4C4C7BD1267FE509006F3C70 /* TableKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B48267FE27E006F3C70 /* TableKit.xcframework */; };
+		4C4C7BD3267FE509006F3C70 /* UIScrollView_InfiniteScroll.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B4A267FE27E006F3C70 /* UIScrollView_InfiniteScroll.xcframework */; };
 		4CF65D1424DD684A0006B001 /* ButtonHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF65D1324DD684A0006B001 /* ButtonHolder.swift */; };
 		4CF65D1624DD69250006B001 /* UIButton+ButtonHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF65D1524DD69250006B001 /* UIButton+ButtonHolder.swift */; };
 		4CF65D1824DD6C080006B001 /* ButtonHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF65D1724DD6C080006B001 /* ButtonHolderView.swift */; };
@@ -273,9 +306,7 @@
 		6741CEC220E2430A00FEC4D9 /* UITableView+TableViewHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6741CEC120E2430900FEC4D9 /* UITableView+TableViewHolder.swift */; };
 		6741CEC420E2430A00FEC4D9 /* UITableView+TableViewHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6741CEC120E2430900FEC4D9 /* UITableView+TableViewHolder.swift */; };
 		6741CECE20E243F800FEC4D9 /* BaseCustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6741CECC20E243F800FEC4D9 /* BaseCustomViewController.swift */; };
-		6741CED020E243F800FEC4D9 /* BaseCustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6741CECC20E243F800FEC4D9 /* BaseCustomViewController.swift */; };
 		6741CED120E243F800FEC4D9 /* BaseConfigurableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6741CECD20E243F800FEC4D9 /* BaseConfigurableController.swift */; };
-		6741CED320E243F800FEC4D9 /* BaseConfigurableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6741CECD20E243F800FEC4D9 /* BaseConfigurableController.swift */; };
 		674303CF214FB8F700EF4160 /* GeneralDataLoadingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674303CE214FB8F700EF4160 /* GeneralDataLoadingHandler.swift */; };
 		674303D1214FB8F700EF4160 /* GeneralDataLoadingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674303CE214FB8F700EF4160 /* GeneralDataLoadingHandler.swift */; };
 		674303D2214FB8F700EF4160 /* GeneralDataLoadingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674303CE214FB8F700EF4160 /* GeneralDataLoadingHandler.swift */; };
@@ -287,7 +318,6 @@
 		675C1FB41F97CA32007D5249 /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
 		675C1FB51F97CA33007D5249 /* AppearanceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */; };
 		675E0AA921072FF400CDC143 /* BaseScrollContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675E0AA821072FF400CDC143 /* BaseScrollContentController.swift */; };
-		675E0AAB21072FF400CDC143 /* BaseScrollContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675E0AA821072FF400CDC143 /* BaseScrollContentController.swift */; };
 		6760DC4D212F351700020BAE /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6760DC4C212F351700020BAE /* UIView+AddSubviews.swift */; };
 		6760DC4F212F351700020BAE /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6760DC4C212F351700020BAE /* UIView+AddSubviews.swift */; };
 		6762131820A0BBA30034EEF1 /* TableSection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6762131720A0BBA30034EEF1 /* TableSection+Extensions.swift */; };
@@ -392,12 +422,9 @@
 		67CAF8C920652E2A00527085 /* TextFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CAF8C520652E2A00527085 /* TextFieldViewModel.swift */; };
 		67CDEE401EB369BF00895905 /* ConfigurableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671462241EB3396E00EAB194 /* ConfigurableController.swift */; };
 		67DB7760210869D1001CB56B /* TableViewWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB775F210869D1001CB56B /* TableViewWrapperView.swift */; };
-		67DB7762210869D1001CB56B /* TableViewWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB775F210869D1001CB56B /* TableViewWrapperView.swift */; };
 		67DB776421086A12001CB56B /* BaseTableContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB776321086A12001CB56B /* BaseTableContentController.swift */; };
 		67DB776921087154001CB56B /* CollectionViewWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB776821087154001CB56B /* CollectionViewWrapperView.swift */; };
-		67DB776B21087154001CB56B /* CollectionViewWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB776821087154001CB56B /* CollectionViewWrapperView.swift */; };
 		67DB776D210871E8001CB56B /* BaseCollectionContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB776C210871E8001CB56B /* BaseCollectionContentController.swift */; };
-		67DB776F210871E8001CB56B /* BaseCollectionContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB776C210871E8001CB56B /* BaseCollectionContentController.swift */; };
 		67E3524E2119ABE40035BDDB /* UITextField+ViewTextConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E3524D2119ABE40035BDDB /* UITextField+ViewTextConfigurable.swift */; };
 		67E352502119ABE40035BDDB /* UITextField+ViewTextConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E3524D2119ABE40035BDDB /* UITextField+ViewTextConfigurable.swift */; };
 		67E352522119AC060035BDDB /* UIButton+ViewTextConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E352512119AC060035BDDB /* UIButton+ViewTextConfigurable.swift */; };
@@ -473,22 +500,6 @@
 		72AECC6C224A979D00D12E7C /* BaseSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AECC6A224A979D00D12E7C /* BaseSearchViewModel.swift */; };
 		72AECC6F224A97B100D12E7C /* SearchResultsViewControllerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AECC6E224A97B100D12E7C /* SearchResultsViewControllerState.swift */; };
 		72AECC71224A97F100D12E7C /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AECC70224A97F000D12E7C /* SearchResultsViewController.swift */; };
-		785EDF7C220072B500985ED4 /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF76220072B400985ED4 /* SwiftDate.framework */; };
-		785EDF7D220072B500985ED4 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF77220072B400985ED4 /* RxCocoa.framework */; };
-		785EDF7E220072B500985ED4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF78220072B500985ED4 /* Alamofire.framework */; };
-		785EDF80220072B500985ED4 /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF7A220072B500985ED4 /* RxAlamofire.framework */; };
-		785EDF81220072B500985ED4 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF7B220072B500985ED4 /* RxSwift.framework */; };
-		785EDF8322007DF900985ED4 /* TableKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF8222007DF900985ED4 /* TableKit.framework */; };
-		785EDF8522007E5200985ED4 /* UIScrollView_InfiniteScroll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF8422007E5200985ED4 /* UIScrollView_InfiniteScroll.framework */; };
-		785EDFA1220081F200985ED4 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF9C220081F100985ED4 /* RxCocoa.framework */; };
-		785EDFA2220081F200985ED4 /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF9D220081F100985ED4 /* SwiftDate.framework */; };
-		785EDFA3220081F200985ED4 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDF9E220081F100985ED4 /* RxSwift.framework */; };
-		785EDFA5220081F200985ED4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDFA0220081F100985ED4 /* Alamofire.framework */; };
-		785EDFB22200833100985ED4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDFA8220082E600985ED4 /* Alamofire.framework */; };
-		785EDFB32200833100985ED4 /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDFA9220082E600985ED4 /* RxAlamofire.framework */; };
-		785EDFB52200833100985ED4 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDFA7220082E500985ED4 /* RxCocoa.framework */; };
-		785EDFB62200833100985ED4 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDFA6220082E500985ED4 /* RxSwift.framework */; };
-		785EDFB72200833100985ED4 /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785EDFAA220082E600985ED4 /* SwiftDate.framework */; };
 		78EC7B1322019F5A0007DCFD /* String+TelpromptURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC7B1222019F5A0007DCFD /* String+TelpromptURL.swift */; };
 		78EC7B1422019F5A0007DCFD /* String+TelpromptURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC7B1222019F5A0007DCFD /* String+TelpromptURL.swift */; };
 		78EC7B1522019F5A0007DCFD /* String+TelpromptURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EC7B1222019F5A0007DCFD /* String+TelpromptURL.swift */; };
@@ -499,7 +510,6 @@
 		82B4F8DD223903B800F6708C /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B4F8DA223903B800F6708C /* Block.swift */; };
 		82D2966D2264B1790067735C /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2966A2264B1790067735C /* LabelTableViewCell.swift */; };
 		82D2966F2264B1790067735C /* LabelCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2966C2264B1790067735C /* LabelCellViewModel.swift */; };
-		82D296712264B4C10067735C /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82D296702264B4C10067735C /* SnapKit.framework */; };
 		82F8BB181F5DDED100C1061B /* Single+DeferredJust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8BB171F5DDED100C1061B /* Single+DeferredJust.swift */; };
 		8546C2E3224E86280059C255 /* ApiUploadRequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8546C2E2224E86280059C255 /* ApiUploadRequestParameters.swift */; };
 		8546C2E4224E86280059C255 /* ApiUploadRequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8546C2E2224E86280059C255 /* ApiUploadRequestParameters.swift */; };
@@ -555,6 +565,18 @@
 		40F118461F8FEF97004AADAF /* AppearanceConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceConfigurable.swift; sourceTree = "<group>"; };
 		40F118481F8FF223004AADAF /* TableRow+AppearanceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableRow+AppearanceExtension.swift"; sourceTree = "<group>"; };
 		411073AE23466B41002DD9B9 /* UIViewController+PresentFullScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+PresentFullScreen.swift"; sourceTree = "<group>"; };
+		4C4C7B46267FE275006F3C70 /* Build */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Build; path = Carthage/Build; sourceTree = "<group>"; };
+		4C4C7B47267FE27E006F3C70 /* RxAlamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxAlamofire.xcframework; path = Carthage/Build/RxAlamofire.xcframework; sourceTree = "<group>"; };
+		4C4C7B48267FE27E006F3C70 /* TableKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TableKit.xcframework; path = Carthage/Build/TableKit.xcframework; sourceTree = "<group>"; };
+		4C4C7B49267FE27E006F3C70 /* RxSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxSwift.xcframework; path = Carthage/Build/RxSwift.xcframework; sourceTree = "<group>"; };
+		4C4C7B4A267FE27E006F3C70 /* UIScrollView_InfiniteScroll.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UIScrollView_InfiniteScroll.xcframework; path = Carthage/Build/UIScrollView_InfiniteScroll.xcframework; sourceTree = "<group>"; };
+		4C4C7B4B267FE27E006F3C70 /* SnapKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SnapKit.xcframework; path = Carthage/Build/SnapKit.xcframework; sourceTree = "<group>"; };
+		4C4C7B4C267FE27E006F3C70 /* RxRelay.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxRelay.xcframework; path = Carthage/Build/RxRelay.xcframework; sourceTree = "<group>"; };
+		4C4C7B4D267FE27E006F3C70 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
+		4C4C7B4E267FE27E006F3C70 /* SwiftDate.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SwiftDate.xcframework; path = Carthage/Build/SwiftDate.xcframework; sourceTree = "<group>"; };
+		4C4C7B4F267FE27E006F3C70 /* RxBlocking.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxBlocking.xcframework; path = Carthage/Build/RxBlocking.xcframework; sourceTree = "<group>"; };
+		4C4C7B50267FE27E006F3C70 /* RxTest.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxTest.xcframework; path = Carthage/Build/RxTest.xcframework; sourceTree = "<group>"; };
+		4C4C7B51267FE27E006F3C70 /* RxCocoa.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxCocoa.xcframework; path = Carthage/Build/RxCocoa.xcframework; sourceTree = "<group>"; };
 		4CF65D1324DD684A0006B001 /* ButtonHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonHolder.swift; sourceTree = "<group>"; };
 		4CF65D1524DD69250006B001 /* UIButton+ButtonHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+ButtonHolder.swift"; sourceTree = "<group>"; };
 		4CF65D1724DD6C080006B001 /* ButtonHolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonHolderView.swift; sourceTree = "<group>"; };
@@ -824,14 +846,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				785EDF7E220072B500985ED4 /* Alamofire.framework in Frameworks */,
-				785EDF81220072B500985ED4 /* RxSwift.framework in Frameworks */,
-				785EDF7D220072B500985ED4 /* RxCocoa.framework in Frameworks */,
-				785EDF80220072B500985ED4 /* RxAlamofire.framework in Frameworks */,
-				82D296712264B4C10067735C /* SnapKit.framework in Frameworks */,
-				785EDF7C220072B500985ED4 /* SwiftDate.framework in Frameworks */,
-				785EDF8322007DF900985ED4 /* TableKit.framework in Frameworks */,
-				785EDF8522007E5200985ED4 /* UIScrollView_InfiniteScroll.framework in Frameworks */,
+				4C4C7BCB267FE509006F3C70 /* RxTest.xcframework in Frameworks */,
+				4C4C7BC1267FE508006F3C70 /* RxAlamofire.xcframework in Frameworks */,
+				4C4C7BC5267FE508006F3C70 /* RxCocoa.xcframework in Frameworks */,
+				4C4C7BCF267FE509006F3C70 /* SwiftDate.xcframework in Frameworks */,
+				4C4C7BC3267FE508006F3C70 /* RxBlocking.xcframework in Frameworks */,
+				4C4C7BCD267FE509006F3C70 /* SnapKit.xcframework in Frameworks */,
+				4C4C7BC9267FE509006F3C70 /* RxSwift.xcframework in Frameworks */,
+				4C4C7BD1267FE509006F3C70 /* TableKit.xcframework in Frameworks */,
+				4C4C7BD3267FE509006F3C70 /* UIScrollView_InfiniteScroll.xcframework in Frameworks */,
+				4C4C7BC7267FE509006F3C70 /* RxRelay.xcframework in Frameworks */,
+				4C4C7BBF267FE508006F3C70 /* Alamofire.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,10 +864,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				785EDFA5220081F200985ED4 /* Alamofire.framework in Frameworks */,
-				785EDFA1220081F200985ED4 /* RxCocoa.framework in Frameworks */,
-				785EDFA2220081F200985ED4 /* SwiftDate.framework in Frameworks */,
-				785EDFA3220081F200985ED4 /* RxSwift.framework in Frameworks */,
+				4C4C7B56267FE27E006F3C70 /* RxSwift.xcframework in Frameworks */,
+				4C4C7B62267FE27E006F3C70 /* RxBlocking.xcframework in Frameworks */,
+				4C4C7B52267FE27E006F3C70 /* RxAlamofire.xcframework in Frameworks */,
+				4C4C7B66267FE27F006F3C70 /* RxCocoa.xcframework in Frameworks */,
+				4C4C7B5C267FE27E006F3C70 /* RxRelay.xcframework in Frameworks */,
+				4C4C7B5E267FE27E006F3C70 /* Alamofire.xcframework in Frameworks */,
+				4C4C7B60267FE27E006F3C70 /* SwiftDate.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -850,11 +878,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				785EDFB22200833100985ED4 /* Alamofire.framework in Frameworks */,
-				785EDFB62200833100985ED4 /* RxSwift.framework in Frameworks */,
-				785EDFB52200833100985ED4 /* RxCocoa.framework in Frameworks */,
-				785EDFB32200833100985ED4 /* RxAlamofire.framework in Frameworks */,
-				785EDFB72200833100985ED4 /* SwiftDate.framework in Frameworks */,
+				4C4C7B96267FE365006F3C70 /* RxTest.xcframework in Frameworks */,
+				4C4C7B8C267FE364006F3C70 /* RxAlamofire.xcframework in Frameworks */,
+				4C4C7B90267FE365006F3C70 /* RxCocoa.xcframework in Frameworks */,
+				4C4C7B9A267FE365006F3C70 /* SwiftDate.xcframework in Frameworks */,
+				4C4C7B8E267FE365006F3C70 /* RxBlocking.xcframework in Frameworks */,
+				4C4C7B98267FE365006F3C70 /* SnapKit.xcframework in Frameworks */,
+				4C4C7B94267FE365006F3C70 /* RxSwift.xcframework in Frameworks */,
+				4C4C7B92267FE365006F3C70 /* RxRelay.xcframework in Frameworks */,
+				4C4C7B8A267FE364006F3C70 /* Alamofire.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2031,6 +2063,18 @@
 		785EDF75220072B400985ED4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C4C7B4D267FE27E006F3C70 /* Alamofire.xcframework */,
+				4C4C7B47267FE27E006F3C70 /* RxAlamofire.xcframework */,
+				4C4C7B4F267FE27E006F3C70 /* RxBlocking.xcframework */,
+				4C4C7B51267FE27E006F3C70 /* RxCocoa.xcframework */,
+				4C4C7B4C267FE27E006F3C70 /* RxRelay.xcframework */,
+				4C4C7B49267FE27E006F3C70 /* RxSwift.xcframework */,
+				4C4C7B50267FE27E006F3C70 /* RxTest.xcframework */,
+				4C4C7B4B267FE27E006F3C70 /* SnapKit.xcframework */,
+				4C4C7B4E267FE27E006F3C70 /* SwiftDate.xcframework */,
+				4C4C7B48267FE27E006F3C70 /* TableKit.xcframework */,
+				4C4C7B4A267FE27E006F3C70 /* UIScrollView_InfiniteScroll.xcframework */,
+				4C4C7B46267FE275006F3C70 /* Build */,
 				82D296702264B4C10067735C /* SnapKit.framework */,
 				785EDFA0220081F100985ED4 /* Alamofire.framework */,
 				785EDF9F220081F100985ED4 /* RxAtomic.framework */,
@@ -2685,6 +2729,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C4C7B83267FE32F006F3C70 /* Decimal+Values.swift in Sources */,
+				4C4C7B7F267FE319006F3C70 /* Decimal+Rounding.swift in Sources */,
 				67EB7FE620615DE000BDD9FB /* DataSource.swift in Sources */,
 				6714634A1EB3396E00EAB194 /* ResettableType.swift in Sources */,
 				6713C23E20AF0D5900875921 /* NetworkOperationModel.swift in Sources */,
@@ -2811,6 +2857,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C4C7BBA267FE4DD006F3C70 /* ButtonHolder.swift in Sources */,
+				4C4C7BB7267FE4C9006F3C70 /* ButtonHolderView.swift in Sources */,
+				4C4C7BA7267FE3F6006F3C70 /* Decimal+Rounding.swift in Sources */,
+				4C4C7BA8267FE3F6006F3C70 /* Decimal+Values.swift in Sources */,
 				6714634B1EB3396E00EAB194 /* ResettableType.swift in Sources */,
 				82B4F8DD223903B800F6708C /* Block.swift in Sources */,
 				671462E71EB3396E00EAB194 /* UIColor+Hex.swift in Sources */,
@@ -2852,7 +2902,6 @@
 				671463A51EB33FF600EAB194 /* Animatable.swift in Sources */,
 				67CAF8C920652E2A00527085 /* TextFieldViewModel.swift in Sources */,
 				67E352592119ACF30035BDDB /* ViewTextConfigurable+Extensions.swift in Sources */,
-				675E0AAB21072FF400CDC143 /* BaseScrollContentController.swift in Sources */,
 				6714629B1EB3396E00EAB194 /* CGSize+Resize.swift in Sources */,
 				677B06C221187559006C947D /* ViewTextConfigurable.swift in Sources */,
 				671463331EB3396E00EAB194 /* CursorType.swift in Sources */,
@@ -2875,7 +2924,6 @@
 				6714632B1EB3396E00EAB194 /* BaseViewModel.swift in Sources */,
 				673564F42068C2AD00F0CBED /* NumberFormattingService+DefaultImplementation.swift in Sources */,
 				677452A220625EEE0024EEEF /* PaginationDataLoadingModel.swift in Sources */,
-				67DB776F210871E8001CB56B /* BaseCollectionContentController.swift in Sources */,
 				673CF4362063E29B00C329F6 /* TextWithButtonPlaceholder.swift in Sources */,
 				A6F32C0C1F6EBE5C00AC08EE /* String+LocalizedComponent.swift in Sources */,
 				6741CEB620E242C100FEC4D9 /* CollectionViewHolder+ScrollViewHolder.swift in Sources */,
@@ -2892,7 +2940,6 @@
 				67745289206259CF0024EEEF /* Rx+RxDataSourceProtocol.swift in Sources */,
 				67386A8F206CF3F6004EDA6C /* DateFormattingService+DefaultImplementation.swift in Sources */,
 				671463071EB3396E00EAB194 /* UIView+LoadingIndicator.swift in Sources */,
-				67DB7762210869D1001CB56B /* TableViewWrapperView.swift in Sources */,
 				6774526E206249E30024EEEF /* UICollectionView+BackgroundViewHolder.swift in Sources */,
 				671463A91EB340C000EAB194 /* UIViewController+ConfigurableController.swift in Sources */,
 				673564F92068C68D00F0CBED /* NumberFormat.swift in Sources */,
@@ -2915,14 +2962,12 @@
 				67EB7FD720615D1700BDD9FB /* ResettableCursorType.swift in Sources */,
 				671463371EB3396E00EAB194 /* DrawingOperation.swift in Sources */,
 				67153E3D207DFADA0049D8C0 /* RotateDrawingOperation.swift in Sources */,
-				6741CED320E243F800FEC4D9 /* BaseConfigurableController.swift in Sources */,
 				67274782206CD3BD00725163 /* ViewText+Extensions.swift in Sources */,
 				673CF42E2063DE5900C329F6 /* TextPlaceholderView.swift in Sources */,
 				6741CEB120E242A500FEC4D9 /* TableViewHolder+ScrollViewHolder.swift in Sources */,
 				6741CEA320E2416C00FEC4D9 /* ScrollViewHolder.swift in Sources */,
 				B84CB06B20B702260090DB91 /* Encodable+Extensions.swift in Sources */,
 				671462731EB3396E00EAB194 /* CursorError.swift in Sources */,
-				6741CED020E243F800FEC4D9 /* BaseCustomViewController.swift in Sources */,
 				6732F242214C09F900B446F2 /* UserDefaults+Codable.swift in Sources */,
 				677B06B521186C14006C947D /* Completable+DeferredJust.swift in Sources */,
 				6727478D206CD83600725163 /* DateFormat.swift in Sources */,
@@ -2958,7 +3003,6 @@
 				6714637B1EB3396E00EAB194 /* CALayerDrawingOperation.swift in Sources */,
 				67E902592125B66E008EDF45 /* UIImageView+ExpandCollapseDisclosure.swift in Sources */,
 				6741CEA720E2418200FEC4D9 /* TableViewHolder.swift in Sources */,
-				67DB776B21087154001CB56B /* CollectionViewWrapperView.swift in Sources */,
 				6774529520625D170024EEEF /* GeneralDataLoadingModel.swift in Sources */,
 				6713C23A20AF0C4D00875921 /* NetworkOperationState.swift in Sources */,
 				6774529D20625E5B0024EEEF /* PaginationDataLoadingState.swift in Sources */,
