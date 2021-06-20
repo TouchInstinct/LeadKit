@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.4.0
+- **Update**: update minor dependencies.
+- **Fix**: project's scripts.
+
 ### 1.3.0
 - **Add**: `TIPaginator` - realisation of paginating items from a data source.
 
