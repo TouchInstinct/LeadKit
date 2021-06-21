@@ -1,8 +1,21 @@
 # Snippets
 
+- [🔧 Carthage](#Carthage)
+	- [Build dependencies for LeadKit.xcodeproj](#Build-dependencies-for-LeadKit.xcodeproj)
 - [⚡ Cocoapods](#cocoapods)
 	- [Bump version in podspecs](#bump-version-in-podspecs)
 	- [Push changes to podspecs repo](#push-changes-to-podspecs-repo)
+
+## Carthage
+
+### Build dependencies for LeadKit.xcodeproj
+
+1. Build xcframeworks for iOS platform, which is usually enough:
+```sh
+carthage update --use-xcframeworks --cache-builds --platform iOS
+```
+2. Restart Xcode and clean build folder.
+3. You can also run script for another platforms: `--platform tvOS` or `--platform watchOS`.
 
 ## Cocoapods
 
