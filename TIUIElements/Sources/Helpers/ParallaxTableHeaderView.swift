@@ -17,6 +17,7 @@ open class ParallaxTableHeaderView: UIView {
         ]
         container.addSubview(subView)
         addSubview(container)
+        
         clipsToBounds = false
     }
     
