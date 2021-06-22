@@ -1,7 +1,14 @@
 # Changelog
 
-### 1.3.0
+### 1.5.0
 - **Add**: `HeaderTransitionDelegate` - Helper for transition of TableView header and navigationBar title view
+
+### 1.4.0
+- **Update**: update minor dependencies.
+- **Fix**: project's scripts.
+
+### 1.3.0
+- **Add**: `TIPaginator` - realisation of paginating items from a data source.
 
 ### 1.2.0
 - **Add**: `TIKeychainUtils` - Set of helpers for Keychain classes.

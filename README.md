@@ -12,7 +12,8 @@ This repository contains the following additional frameworks:
 - [TITableKitUtils](TITableKitUtils) - Set of helpers for TableKit classes.
 - [TIFoundationUtils](TIFoundationUtils) - Set of helpers for Foundation framework classes.
 - [TIKeychainUtils](TIKeychainUtils) - Set of helpers for Keychain classes.
-  
+- [TIPagination](TIPagination) - realisation of paginating items from a data source.
+
 Useful docs:
 - [Semantic Commit Messages](docs/semantic-commit-messages.md) - commit message codestyle.
 - [Snippets](docs/snippets.md) - useful commands and scripts for development.
@@ -23,6 +24,8 @@ Useful docs:
 ```
 ./setup
 ```
+
+- If legacy [Source](https://github.com/TouchInstinct/LeadKit/tree/master/Sources) folder needed, [build dependencies for LeadKit.xcodeproj](https://github.com/TouchInstinct/LeadKit/blob/master/docs/snippets.md#build-dependencies-for-LeadKit.xcodeproj).
 
 - Make sure the commit message codestyle is followed. More about [Semantic Commit Messages](docs/semantic-commit-messages.md).
 

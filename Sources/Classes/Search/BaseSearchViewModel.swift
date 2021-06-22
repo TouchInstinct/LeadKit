@@ -36,9 +36,8 @@ open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel
 
     open var itemsViewModelsDriver: Driver<[ItemViewModel]> {
         loadingResultObservable
-            .withUnretained(self)
-            .map { owner, items in
-                owner.viewModels(from: items)
+            .compactMap { [weak self] items in
+                self?.viewModels(from: items)
             }
             .flatMap { Observable.from(optional: $0) }
             .share(replay: 1, scope: .forever)
@@ -55,9 +54,8 @@ open class BaseSearchViewModel<Item, ItemViewModel>: GeneralDataLoadingViewModel
             .flatMapLatest { [weak self] searchText, items -> Observable<ItemsList> in
                 self?.search(by: searchText, from: items).asObservable() ?? .empty()
             }
-            .withUnretained(self)
-            .map { owner, items in
-                owner.viewModels(from: items)
+            .compactMap { [weak self] items in
+                self?.viewModels(from: items)
             }
             .flatMap { Observable.from(optional: $0) }
             .share(replay: 1, scope: .forever)
