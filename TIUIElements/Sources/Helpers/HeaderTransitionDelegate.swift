@@ -1,14 +1,10 @@
 import Foundation
 import UIKit
 
-open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
-    
-    public enum HeaderAnimationType {
-        case onlyParalax, paralaxWithTransition, transition, scale, paralaxWithScale, none
-    }
+open class HeaderTransitionDelegate: NSObject, TransitioningHandler {
+    public var animator: CollapsibleViewsAnimator?
     
     private weak var headerViewHandler: CollapsibleViewsContainer?
-    private let headerAnimationType: HeaderAnimationType
     
     private var startOffset: CGFloat = 0
     private var navigationBarOffset: CGFloat = 0
@@ -32,10 +28,10 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
         }
     }
     
-    public init(headerViewHandler: CollapsibleViewsContainer,
-                headerAnimationType: HeaderAnimationType = .none) {
-        self.headerViewHandler = headerViewHandler
-        self.headerAnimationType = headerAnimationType
+    required public init(container: CollapsibleViewsContainer,
+                         animator: CollapsibleViewsAnimator?) {
+        self.headerViewHandler = container
+        self.animator = animator
         super.init()
         
         initialUpdateHeaderView()
@@ -62,29 +58,32 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
         var alpha = offsetY / (largeHeaderView.frame.height + navigationBarOffset)
         alpha = alpha > 1 ? 1 : alpha
         
-        animate(headerAnimation: headerAnimationType, alpha: alpha)
+        guard let headerViewHandler = headerViewHandler,
+              var animator = animator else {
+            titleView?.alpha = alpha == 1 ? 1 : 0
+            return
+        }
+        
+        animator.fractionComplete = alpha
+        animator.animate(container: headerViewHandler)
     }
     
     private func setupView() {
-        switch headerAnimationType {
-        case .scale, .paralaxWithScale:
-            titleView?.transform = CGAffineTransform(scaleX: -0.5, y: 0.5)
-            
-        case .paralaxWithTransition, .transition:
-            break
-            
-        default:
-            titleView?.alpha = 1
-            titleView?.isHidden = true
+        titleView?.alpha = animator == nil ? 0 : 1
+
+        guard let headerViewHandler = headerViewHandler,
+              let animator = animator else {
+            return
         }
+
+        animator.setupView(container: headerViewHandler)
     }
     
     private func initialUpdateHeaderView() {
         titleView = headerViewHandler?.topHeaderView
-        titleView?.alpha = 0
 
         setLargeHeader()
-        
+
         setupView()
     }
     
@@ -93,46 +92,6 @@ open class HeaderTransitionDelegate: NSObject, UIScrollViewDelegate {
             return
         }
         
-        switch headerAnimationType {
-        case .paralaxWithScale, .paralaxWithTransition, .onlyParalax:
-            tableHeaderView =  ParallaxTableHeaderView(subView: largeHeaderView)
-            
-        default:
-            tableHeaderView =  largeHeaderView
-        }
-    }
-    
-    private func animate(headerAnimation: HeaderAnimationType, alpha: CGFloat) {
-        switch headerAnimation {
-        case .paralaxWithTransition:
-            titleView?.transition(to: alpha)
-            paralax()
-            
-        case .transition:
-            titleView?.transition(to: alpha)
-            
-        case .onlyParalax:
-            paralax()
-            titleView?.isHidden = alpha != 1
-            
-        case .scale:
-            titleView?.scale(alpha: alpha)
-            
-        case .paralaxWithScale:
-            titleView?.scale(alpha: alpha)
-            paralax()
-            
-        default:
-            titleView?.isHidden = alpha != 1
-        }
-    }
-    
-    private func paralax() {
-        guard let tableView = headerViewHandler?.tableView,
-              let header = tableView.tableHeaderView as? ParallaxTableHeaderView else {
-            return
-        }
-        
-        header.layoutForContentOffset(tableView.contentOffset)
+        tableHeaderView =  largeHeaderView
     }
 }

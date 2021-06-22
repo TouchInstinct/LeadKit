@@ -7,7 +7,6 @@ open class ParallaxTableHeaderView: UIView {
     public init(subView: UIView) {
         container = UIView(frame: subView.frame)
         super.init(frame: CGRect(x: 0, y: 0, width: subView.frame.size.width, height: subView.frame.size.height))
-    
         subView.autoresizingMask = [
             .flexibleLeftMargin,
             .flexibleRightMargin,
