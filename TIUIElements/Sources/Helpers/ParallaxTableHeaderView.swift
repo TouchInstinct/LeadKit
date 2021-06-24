@@ -4,10 +4,13 @@ import UIKit
 open class ParallaxTableHeaderView: UIView {
     private var container: UIView
     
-    public init(subView: UIView) {
-        container = UIView(frame: subView.frame)
-        super.init(frame: CGRect(x: 0, y: 0, width: subView.frame.size.width, height: subView.frame.size.height))
-        subView.autoresizingMask = [
+    public init(wrappedView: UIView) {
+        container = UIView(frame: wrappedView.frame)
+        super.init(frame: CGRect(x: 0,
+                                 y: 0,
+                                 width: wrappedView.frame.size.width,
+                                 height: wrappedView.frame.size.height))
+        wrappedView.autoresizingMask = [
             .flexibleLeftMargin,
             .flexibleRightMargin,
             .flexibleTopMargin,
@@ -15,7 +18,7 @@ open class ParallaxTableHeaderView: UIView {
             .flexibleHeight,
             .flexibleWidth
         ]
-        container.addSubview(subView)
+        container.addSubview(wrappedView)
         addSubview(container)
         
         clipsToBounds = false
@@ -26,13 +29,14 @@ open class ParallaxTableHeaderView: UIView {
     }
     
     
-    open func layoutForContentOffset(_ contentOffset: CGPoint) {
+    open func layout(for contentOffset: CGPoint) {
         guard contentOffset.y <= 0 else {
             return
         }
         
         let delta: CGFloat = abs(contentOffset.y)
-        var rect: CGRect = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+        var rect = frame
+        rect.origin = .zero
         rect.origin.y -= delta
         rect.size.height += delta
         container.frame = rect

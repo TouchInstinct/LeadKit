@@ -1,37 +1,37 @@
 import UIKit
 
-class ParalaxAnimator: CollapsibleViewsAnimator {
-    var fractionComplete: CGFloat = 0
+final public class ParalaxAnimator: CollapsibleViewsAnimator {
+    public var fractionComplete: CGFloat = 0
     var isWithAlphaAnimate = true
     
     init(isWithAlphaAnimate: Bool = true) {
         self.isWithAlphaAnimate = isWithAlphaAnimate
     }
     
-    func setupView(container: CollapsibleViewsContainer) {
+    public func setupView(holder: CollapsibleViewsHolder, container: CollapsibleViewsContainer ) {
         guard let largeHeaderView = container.bottomHeaderView else {
             return
         }
         
-        container.navBar?.topItem?.titleView?.alpha = 0
+        holder.navBar?.topItem?.titleView?.alpha = 0
         
-        let tableHeaderView = ParallaxTableHeaderView(subView: largeHeaderView)
+        let tableHeaderView = ParallaxTableHeaderView(wrappedView: largeHeaderView)
         
-        container.tableView.tableHeaderView = tableHeaderView
+        holder.tableView.tableHeaderView = tableHeaderView
     }
     
-    func animate(container: CollapsibleViewsContainer) {
-        paralax(container: container)
+    public func animate(holder: CollapsibleViewsHolder) {
+        paralax(holder: holder)
         if isWithAlphaAnimate {
-            container.navBar?.topItem?.titleView?.alpha = fractionComplete == 1 ? 1 : 0
+            holder.navBar?.topItem?.titleView?.alpha = fractionComplete == 1 ? 1 : 0
         }
     }
     
-    private func paralax(container: CollapsibleViewsContainer) {
-        guard let header = container.tableView.tableHeaderView as? ParallaxTableHeaderView else {
+    private func paralax(holder: CollapsibleViewsHolder) {
+        guard let header = holder.tableView.tableHeaderView as? ParallaxTableHeaderView else {
             return
         }
         
-        header.layoutForContentOffset(container.tableView.contentOffset)
+        header.layout(for: holder.tableView.contentOffset)
     }
 }

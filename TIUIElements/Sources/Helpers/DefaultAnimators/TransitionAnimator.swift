@@ -1,13 +1,13 @@
 import UIKit
 
-class TransitionAnimator: CollapsibleViewsAnimator {
-    var fractionComplete: CGFloat = 0
+final public class TransitionAnimator: CollapsibleViewsAnimator {
+    public var fractionComplete: CGFloat = 0
     
-    func setupView(container: CollapsibleViewsContainer) {
-        container.navBar?.topItem?.titleView?.alpha = 0
+    public func setupView(holder: CollapsibleViewsHolder, container: CollapsibleViewsContainer) {
+        holder.navBar?.topItem?.titleView?.alpha = 0
     }
     
-    func animate(container: CollapsibleViewsContainer) {
-        container.navBar?.topItem?.titleView?.transition(to: fractionComplete)
+    public func animate(holder: CollapsibleViewsHolder) {
+        holder.navBar?.topItem?.titleView?.transition(to: fractionComplete)
     }
 }

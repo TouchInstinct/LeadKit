@@ -1,10 +1,10 @@
 import UIKit
 
-public protocol TableViewHandler {
+public protocol TableViewHolder {
     var tableView: UITableView { get }
 }
 
-public extension TableViewHandler {
+public extension TableViewHolder {
     var startOffset: CGPoint {
         tableView.contentOffset
     }

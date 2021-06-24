@@ -1,17 +1,17 @@
 import UIKit
 
 extension UIView {
-    public func transition(to alpha: CGFloat) {
+    public func transition(to coefficient: CGFloat) {
         UIView.animate(withDuration: 0.2) { [weak self] in
-            self?.alpha = alpha
-            self?.transform = CGAffineTransform(translationX: 0, y: -alpha*10)
+            self?.alpha = coefficient
+            self?.transform = CGAffineTransform(translationX: 0, y: -coefficient*10)
         }
     }
 
-    public func scale(alpha: CGFloat) {
+    public func scale(to coefficient: CGFloat) {
         UIView.animate(withDuration: 0.2){ [weak self] in
-            self?.alpha = alpha
-            self?.transform = CGAffineTransform(scaleX: alpha, y: alpha)
+            self?.alpha = coefficient
+            self?.transform = CGAffineTransform(scaleX: coefficient, y: coefficient)
         }
     }
 }

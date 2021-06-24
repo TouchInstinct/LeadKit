@@ -1,8 +1,6 @@
 import UIKit
 
-public protocol CollapsibleViewsContainer: class,
-                                           TableViewHandler,
-                                           NavigationBarHandler  {
+public protocol CollapsibleViewsContainer  {
     var topHeaderView: UIView? { get } // titleView
     var bottomHeaderView: UIView? { get } // tableHeaderView
 

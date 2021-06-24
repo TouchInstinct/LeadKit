@@ -1,23 +1,23 @@
 import UIKit
 
-class ParalaxWithTransitionAnimator: CollapsibleViewsAnimator {
+final public class ParalaxWithTransitionAnimator: CollapsibleViewsAnimator {
     private let paralaxAnimator = ParalaxAnimator(isWithAlphaAnimate: false)
     private let transitionAnimator = TransitionAnimator()
     
-    var fractionComplete: CGFloat = 0 {
+    public var fractionComplete: CGFloat = 0 {
         didSet {
             paralaxAnimator.fractionComplete = fractionComplete
             transitionAnimator.fractionComplete = fractionComplete
         }
     }
     
-    func setupView(container: CollapsibleViewsContainer) {
-        paralaxAnimator.setupView(container: container)
-        transitionAnimator.setupView(container: container)
+    public func setupView(holder: CollapsibleViewsHolder, container: CollapsibleViewsContainer) {
+        paralaxAnimator.setupView(holder: holder, container: container)
+        transitionAnimator.setupView(holder: holder, container: container)
     }
     
-    func animate(container: CollapsibleViewsContainer) {
-        paralaxAnimator.animate(container: container)
-        transitionAnimator.animate(container: container)
+    public func animate(holder: CollapsibleViewsHolder) {
+        paralaxAnimator.animate(holder: holder)
+        transitionAnimator.animate(holder: holder)
     }
 }

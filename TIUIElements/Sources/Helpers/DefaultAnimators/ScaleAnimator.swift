@@ -1,14 +1,14 @@
 import UIKit
 
-class ScaleAnimator: CollapsibleViewsAnimator {
-    var fractionComplete: CGFloat = 0
+final public class ScaleAnimator: CollapsibleViewsAnimator {
+    public var fractionComplete: CGFloat = 0
     
-    func setupView(container: CollapsibleViewsContainer) {
-        container.navBar?.topItem?.titleView?.alpha = 0
-        container.navBar?.topItem?.titleView?.transform = CGAffineTransform(scaleX: -0.5, y: 0.5)
+    public func setupView(holder: CollapsibleViewsHolder, container: CollapsibleViewsContainer) {
+        holder.navBar?.topItem?.titleView?.alpha = 0
+        holder.navBar?.topItem?.titleView?.transform = CGAffineTransform(scaleX: -0.5, y: 0.5)
     }
     
-    func animate(container: CollapsibleViewsContainer) {
-        container.navBar?.topItem?.titleView?.scale(alpha: fractionComplete)
+    public func animate(holder: CollapsibleViewsHolder) {
+        holder.navBar?.topItem?.titleView?.scale(to: fractionComplete)
     }
 }

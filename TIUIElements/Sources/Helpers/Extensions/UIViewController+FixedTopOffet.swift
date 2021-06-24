@@ -11,7 +11,7 @@ public extension UIViewController {
         if #available(iOS 13.0, *) {
             statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
         } else {
-            statusBarHeight =  UIApplication.shared.statusBarFrame.height
+            statusBarHeight = UIApplication.shared.statusBarFrame.height
         }
 
         let navigationBarHeight = navigationBar?.bounds.height ?? 0
