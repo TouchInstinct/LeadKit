@@ -1,10 +1,6 @@
 import UIKit
 
-public typealias CollapsibleViewsHolder = TableViewHolder & NavigationBarHolder
-
 public protocol CollapsibleViewsAnimator {
-    var fractionComplete: CGFloat { get set } // progress of animation
-    
-    func setupView(holder: CollapsibleViewsHolder, container: CollapsibleViewsContainer)
-    func animate(holder: CollapsibleViewsHolder)
+   var fractionComplete: CGFloat { get set } // progress of animation
+   var currentContentOffset: CGPoint { get set } // offset on content in table view/collection view or plain scroll view
 }

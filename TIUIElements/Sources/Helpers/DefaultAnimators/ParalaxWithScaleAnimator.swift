@@ -1,8 +1,8 @@
 import UIKit
 
 final public class ParalaxWithScaleAnimator: CollapsibleViewsAnimator {
-    private let paralaxAnimator = ParalaxAnimator(isWithAlphaAnimate: false)
-    private let scaleAnimator = ScaleAnimator()
+    private let paralaxAnimator: ParalaxAnimator
+    private let scaleAnimator: ScaleAnimator
     
     public var fractionComplete: CGFloat = 0 {
         didSet {
@@ -10,14 +10,20 @@ final public class ParalaxWithScaleAnimator: CollapsibleViewsAnimator {
             scaleAnimator.fractionComplete = fractionComplete
         }
     }
-    
-    public func setupView(holder: CollapsibleViewsHolder, container: CollapsibleViewsContainer) {
-        paralaxAnimator.setupView(holder: holder, container: container)
-        scaleAnimator.setupView(holder: holder, container: container)
+
+    public var currentContentOffset: CGPoint {
+        didSet {
+            paralaxAnimator.currentContentOffset = currentContentOffset
+            scaleAnimator.currentContentOffset = currentContentOffset
+        }
     }
-    
-    public func animate(holder: CollapsibleViewsHolder) {
-        paralaxAnimator.animate(holder: holder)
-        scaleAnimator.animate(holder: holder)
+
+    private weak var navBar: UINavigationBar?
+
+    public init(tableHeaderView: ParallaxTableHeaderView, navBar: UINavigationBar? = nil, currentContentOffset: CGPoint) {
+        self.navBar = navBar
+        paralaxAnimator = ParalaxAnimator(tableHeaderView: tableHeaderView, navBar: nil, currentContentOffset: currentContentOffset)
+        scaleAnimator = ScaleAnimator(navBar: navBar)
+        self.currentContentOffset = currentContentOffset
     }
 }

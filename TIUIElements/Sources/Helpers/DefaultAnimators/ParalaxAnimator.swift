@@ -1,37 +1,24 @@
 import UIKit
 
 final public class ParalaxAnimator: CollapsibleViewsAnimator {
-    public var fractionComplete: CGFloat = 0
-    var isWithAlphaAnimate = true
-    
-    init(isWithAlphaAnimate: Bool = true) {
-        self.isWithAlphaAnimate = isWithAlphaAnimate
-    }
-    
-    public func setupView(holder: CollapsibleViewsHolder, container: CollapsibleViewsContainer ) {
-        guard let largeHeaderView = container.bottomHeaderView else {
-            return
-        }
-        
-        holder.navBar?.topItem?.titleView?.alpha = 0
-        
-        let tableHeaderView = ParallaxTableHeaderView(wrappedView: largeHeaderView)
-        
-        holder.tableView.tableHeaderView = tableHeaderView
-    }
-    
-    public func animate(holder: CollapsibleViewsHolder) {
-        paralax(holder: holder)
-        if isWithAlphaAnimate {
-            holder.navBar?.topItem?.titleView?.alpha = fractionComplete == 1 ? 1 : 0
+    public var fractionComplete: CGFloat = 0 {
+        didSet {
+            navBar?.topItem?.titleView?.alpha = fractionComplete == 1 ? 1 : 0
         }
     }
-    
-    private func paralax(holder: CollapsibleViewsHolder) {
-        guard let header = holder.tableView.tableHeaderView as? ParallaxTableHeaderView else {
-            return
+
+    public var currentContentOffset: CGPoint {
+        didSet {
+            tableHeaderView?.layout(for: currentContentOffset)
         }
-        
-        header.layout(for: holder.tableView.contentOffset)
+    }
+
+    private weak var navBar: UINavigationBar?
+    private weak var tableHeaderView: ParallaxTableHeaderView?
+
+    public init(tableHeaderView: ParallaxTableHeaderView, navBar: UINavigationBar? = nil, currentContentOffset: CGPoint) { // if nil - no alpha animation
+        self.currentContentOffset = currentContentOffset
+        self.tableHeaderView = tableHeaderView
+        self.navBar = navBar
     }
 }
