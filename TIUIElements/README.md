@@ -58,13 +58,9 @@ class ViewController: UITableViewController, CollapsibleViewsContainer {
     
     private lazy var parallaxTableHeaderView = ParallaxTableHeaderView(wrappedView: bottomHeaderView ?? UIView())
 
-    var topHeaderView: UIView? {
-        SomeCustomTopView()
-    }
+    var topHeaderView = SomeCustomTopView()
 
-    var bottomHeaderView: UIView? {
-        SomeCustomBottomView()
-    }
+    var bottomHeaderView = SomeCustomBottomView()
 
     func addViews() {
         tableView.tableHeaderView = parallaxTableHeaderView
