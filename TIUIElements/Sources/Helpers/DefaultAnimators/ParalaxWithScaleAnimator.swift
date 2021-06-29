@@ -22,7 +22,9 @@ final public class ParalaxWithScaleAnimator: CollapsibleViewsAnimator {
 
     public init(tableHeaderView: ParallaxTableHeaderView, navBar: UINavigationBar? = nil, currentContentOffset: CGPoint) {
         self.navBar = navBar
-        paralaxAnimator = ParalaxAnimator(tableHeaderView: tableHeaderView, navBar: nil, currentContentOffset: currentContentOffset)
+        paralaxAnimator = ParalaxAnimator(tableHeaderView: tableHeaderView,
+                                          navBar: nil,
+                                          currentContentOffset: currentContentOffset)
         scaleAnimator = ScaleAnimator(navBar: navBar)
         self.currentContentOffset = currentContentOffset
     }
