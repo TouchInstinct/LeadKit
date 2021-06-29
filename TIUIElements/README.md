@@ -40,7 +40,7 @@ public protocol CollapsibleViewsAnimator {
 }
 ```
 
-Already implemented animators:
+Already implemented animators
     1) **ParalaxAnimator** - applies only parallax effect to the header of table
     2) **ParalaxWithTransitionAnimator** - applies parallax effect to the header of table with transition effect down up of the navigationBar titleView
     3) **TransitionAnimator** - applies only transition effect down up of the navigationBar titleView
