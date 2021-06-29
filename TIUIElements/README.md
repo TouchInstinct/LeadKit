@@ -41,17 +41,13 @@ public protocol CollapsibleViewsAnimator {
 ```
 
 Already implemented animators
-    -- **ParalaxAnimator** - applies only parallax effect to the header of table
-    
-    -- **ParalaxWithTransitionAnimator** - applies parallax effect to the header of table with transition effect down up of the navigationBar titleView
-    
-    -- **TransitionAnimator** - applies only transition effect down up of the navigationBar titleView
-    
-    -- **ScaleAnimator** - applies only scale effect down up of the navigationBar titleView
-    
-    -- **ParalaxWithScaleAnimator** - applies parallax effect to the header of table with scale effect down up of the navigationBar titleView
-    
-    -- **nil** **(default value)** - dont applies any effects 
+
+- `ParalaxAnimator` - applies only parallax effect to the header of table
+- `ParalaxWithTransitionAnimator` - applies parallax effect to the header of table with transition effect down up of the navigationBar titleView
+- `TransitionAnimator` - applies only transition effect down up of the navigationBar titleView
+- `ScaleAnimator` - applies only scale effect down up of the navigationBar titleView
+- `ParalaxWithScaleAnimator` - applies parallax effect to the header of table with scale effect down up of the navigationBar titleView
+- `nil`(default value) - dont applies any effects 
 
 TableViewHeaderTransitioningHandler is the default implementation for TransitioningHandler. It creates an animation action when scrolling the table.
 
