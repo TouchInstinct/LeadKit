@@ -7,68 +7,85 @@ Bunch of useful protocols and views:
 # HeaderTransitionDelegate
 Use for transition table header to navigationBar view while scrolling
 
-## Your class must implement HeaderViewHandlerProtocol protocol
+## Your class must implement CollapsibleViewsContainer protocol
 
 ## HeaderViewHandlerProtocol
 ```swift 
-public protocol CollapsibleViewsContainer: class, TableViewHandler {
+public protocol CollapsibleViewsContainer {
     var topHeaderView: UIView? { get } // titleView
     var bottomHeaderView: UIView? { get } // tableHeaderView
 
     var fixedTopOffet: CGFloat { get } // status bar + nav bar height
-    var navBar: UINavigationBar? { get }
-    
-    var tableView: UITableView { get }
 }
 ```
 
-UIViewController have default realization for fixedTopOffet (defaultTopOffet). 
-If you are satisfied default realization You can implement fixedTopOffet like this  
-```swift 
-var fixedTopOffet: CGFloat {
-    defaultTopOffet
-}
-```
+UIViewController have default realization for fixedTopOffet. 
 
-UIViewController have default realization for navBar
-```swift 
-public var navBar: UINavigationBar? {
-    navigationController?.navigationBar
-}
-```
+## TransitioningHandler
+TransitioningHandler Binds animators to the container.
+```swift
+public protocol TransitioningHandler: UIScrollViewDelegate {
+    var animator: CollapsibleViewsAnimator? { get set }
 
-## Usage if your ViewController don't needs extend UITableViewDelegate
-```swift 
-let headerTransitionDelegate = HeaderTransitionDelegate(headerViewHandler: self)
-tableView.delegate = headerTransitionDelegate
-```
-
-## Usage if your ViewController needs extend UITableViewDelegate
-```swift 
-let headerTransitionDelegate = HeaderTransitionDelegate(headerViewHandler: self)
-tableView.delegate = self
-.
-.
-func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    headerTransitionDelegate?.scrollViewDidScrollHandler(scrollView)
-    
-    /// Your local work
+    init(collapsibleViewsContainer: CollapsibleViewsContainer)
 }
 ```
 
 ## Customization 
-You can use different kinds of animations to change views
+You can use both the various types of animation already implemented to change the view, or create your own. To create an animator, you need to implement the CollapsibleViewsAnimator protocol.
 ```swift
-HeaderTransitionDelegate(headerViewHandler: HeaderViewHandlerProtocol,
-                         headerAnimationType: HeaderAnimationType = .paralaxWithTransition)
+public protocol CollapsibleViewsAnimator {
+   var fractionComplete: CGFloat { get set } // progress of animation
+   var currentContentOffset: CGPoint { get set } // offset on content in table view/collection view or plain scroll view
+}
 ```
-1. *headerAnimationType* - определяет тип анимации перехода отображений:
-    - **onlyParalax** - applies only parallax effect to the header of table
-    - **paralaxWithTransition** - applies parallax effect to the header of table with transition effect down up of the navigationBar titleView
-    - **transition** - applies only transition effect down up of the navigationBar titleView
-    - **scale** - applies only scale effect down up of the navigationBar titleView
-    - **paralaxWithScale** - applies parallax effect to the header of table with scale effect down up of the navigationBar titleView
-    - **none** **(default value)** - dont applies any effects 
+
+Already implemented animators:
+    - **ParalaxAnimator** - applies only parallax effect to the header of table
+    - **ParalaxWithTransitionAnimator** - applies parallax effect to the header of table with transition effect down up of the navigationBar titleView
+    - **TransitionAnimator** - applies only transition effect down up of the navigationBar titleView
+    - **ScaleAnimator** - applies only scale effect down up of the navigationBar titleView
+    - **ParalaxWithScaleAnimator** - applies parallax effect to the header of table with scale effect down up of the navigationBar titleView
+    - **nil** **(default value)** - dont applies any effects 
+
+TableViewHeaderTransitioningHandler is the default implementation for TransitioningHandler. It creates an animation action when scrolling the table.
+
+## Usage default realization with tableView
+```swift 
+class ViewController: UITableViewController, CollapsibleViewsContainer {
+    private lazy var handler = TableViewHeaderTransitioningHandler(collapsibleViewsContainer: self)
+    
+    private lazy var parallaxTableHeaderView = ParallaxTableHeaderView(wrappedView: bottomHeaderView ?? UIView())
+
+    var topHeaderView: UIView? {
+        SomeCustomTopView()
+    }
+
+    var bottomHeaderView: UIView? {
+        SomeCustomBottomView()
+    }
+
+    func addViews() {
+        tableView.tableHeaderView = parallaxTableHeaderView
+        navigationController?.navigationBar.topItem?.titleView = topHeaderView
+    }
+    
+    func bindViews() {
+        handler.animator = ParalaxWithTransitionAnimator(tableHeaderView: parallaxTableHeaderView,
+                                                         navBar: navigationController?.navigationBar,
+                                                         currentContentOffset: tableView.contentOffset)
+
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        handler.scrollViewDidScroll(scrollView)
+    }
+}
+
+```
+
 ## Examples
 #### **none**
 <table border="0" cellspacing="30" cellpadding="30">
