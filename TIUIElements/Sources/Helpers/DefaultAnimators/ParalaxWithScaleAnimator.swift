@@ -18,10 +18,7 @@ final public class ParalaxWithScaleAnimator: CollapsibleViewsAnimator {
         }
     }
 
-    private weak var navBar: UINavigationBar?
-
     public init(tableHeaderView: ParallaxTableHeaderView, navBar: UINavigationBar? = nil, currentContentOffset: CGPoint) {
-        self.navBar = navBar
         paralaxAnimator = ParalaxAnimator(tableHeaderView: tableHeaderView,
                                           navBar: nil,
                                           currentContentOffset: currentContentOffset)

@@ -17,8 +17,8 @@ final public class ParalaxAnimator: CollapsibleViewsAnimator {
     private weak var tableHeaderView: ParallaxTableHeaderView?
 
     public init(tableHeaderView: ParallaxTableHeaderView,
-                navBar: UINavigationBar? = nil,
-                currentContentOffset: CGPoint) { // if nil - no alpha animation
+                navBar: UINavigationBar? = nil, // if nil - no alpha animation
+                currentContentOffset: CGPoint) {
         self.currentContentOffset = currentContentOffset
         self.tableHeaderView = tableHeaderView
         self.navBar = navBar
