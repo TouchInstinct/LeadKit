@@ -17,6 +17,7 @@ let package = Package(
     .library(name: "TIFoundationUtils", targets: ["TIFoundationUtils"]),
     .library(name: "TIKeychainUtils", targets: ["TIKeychainUtils"]),
     .library(name: "TITableKitUtils", targets: ["TITableKitUtils"]),
+    .library(name: "TINetworking", targets: ["TINetworking"]),
     
     // MARK: - Elements
     .library(name: "OTPSwiftView", targets: ["OTPSwiftView"]),
@@ -24,9 +25,10 @@ let package = Package(
     .library(name: "TIPagination", targets: ["TIPagination"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/maxsokolov/TableKit.git", from: "2.11.0"),
-    .package(url: "https://github.com/kishikawakatsumi/KeychainAccess.git", from: "4.2.2"),
-    .package(url: "https://github.com/petropavel13/Cursors", from: "0.5.1")
+    .package(url: "https://github.com/maxsokolov/TableKit.git", .upToNextMajor(from: "2.11.0")),
+    .package(url: "https://github.com/kishikawakatsumi/KeychainAccess.git", .upToNextMajor(from: "4.2.2")),
+    .package(url: "https://github.com/petropavel13/Cursors", .upToNextMajor(from: "0.5.1")),
+    .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.4.0")),
   ],
   targets: [
     
@@ -39,6 +41,7 @@ let package = Package(
     .target(name: "TIFoundationUtils", dependencies: ["TISwiftUtils"], path: "TIFoundationUtils/Sources"),
     .target(name: "TIKeychainUtils", dependencies: ["TIFoundationUtils", "KeychainAccess"], path: "TIKeychainUtils/Sources"),
     .target(name: "TITableKitUtils", dependencies: ["TIUIElements", "TableKit"], path: "TITableKitUtils/Sources"),
+    .target(name: "TINetworking", dependencies: ["Alamofire"], path: "TINetworking/Sources"),
     
     // MARK: - Elements
 
