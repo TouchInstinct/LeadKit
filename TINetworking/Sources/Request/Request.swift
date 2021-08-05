@@ -7,7 +7,7 @@ public struct Request<Content: BodyContent> {
     public var requestBodyContent: Content
     public var queryParameters: [String: Parameter<LocationQuery>]
     public var pathParameters: [String: Parameter<LocationPath>]
-    public var headerParameters: [String: Parameter<LocationHeader>]
+    public var headerParameters: [KeyValueTuple<String, String>]
     public var cookieParameters: [String: Parameter<LocationCookie>]
     public var acceptableStatusCodes: Set<Int>
     public var serverOverride: Server?
@@ -22,7 +22,7 @@ public struct Request<Content: BodyContent> {
                 requestBodyContent: Content,
                 queryParameters: [String: Parameter<LocationQuery>] = [:],
                 pathParameters: [String: Parameter<LocationPath>] = [:],
-                headerParameters: [String: Parameter<LocationHeader>] = [:],
+                headerParameters: [KeyValueTuple<String, String>] = [],
                 cookieParameters: [String: Parameter<LocationCookie>] = [:],
                 acceptableStatusCodes: Set<Int> = [200],
                 serverOverride: Server? = nil,
