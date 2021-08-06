@@ -1,12 +1,12 @@
-open class HeadersParameterEncoding: BaseUrlParameterEncoding, ParameterEncoding {
+open class HeadersParameterEncoding {
     public let sequenceSeparator: String
 
     public init(sequenceSeparator: String = ";") {
         self.sequenceSeparator = sequenceSeparator
     }
 
-    open func encode(parameters: [String: Parameter<LocationHeader>]) -> [String: String] {
-        Dictionary(encode(parameters: parameters)) {
+    open func encode(parameters: [KeyValueTuple<String, String>]) -> [String: String] {
+        Dictionary(parameters) {
             $0 + sequenceSeparator + $1
         }
     }
