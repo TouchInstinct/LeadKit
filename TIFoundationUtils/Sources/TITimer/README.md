@@ -5,7 +5,7 @@ The library allows you to create a timer that works either with [RunLoop](#Runlo
 
 ### Features
 
-- Track the time even while the application is in the background. For more, see - [TimerRunMode](/Sources/TITimer/Enums/TimerRunMode.swift)
+- Track the time even while the application is in the background. For more, see - [TimerRunMode](Sources/TITimer/Enums/TimerRunMode.swift)
 - Create a timer on a personal queue or on a special Runloop mode. For more, see - [TimerType](Sources/TITimer/Enums/TimerType.swift)
 - The code is covered by tests 🙂
 

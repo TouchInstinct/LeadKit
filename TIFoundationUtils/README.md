@@ -2,7 +2,7 @@
 
 Set of helpers for Foundation framework classes.
 
-* [TITimer](/Sources/TITimer) - pretty timer
+* [TITimer](Sources/TITimer) - pretty timer
 * [CodableKeyValueStorage](#codablekeyvaluestorage)
 
 ## CodableKeyValueStorage
