@@ -28,7 +28,7 @@ public final class TITimer: ITimer {
     private let mode: TimerRunMode
     private let type: TimerType
 
-    private var sourceTimer: IInvalidatable?
+    private var sourceTimer: Invalidatable?
     
     private var enterBackgroundDate: Date?
     private var interval: TimeInterval = 0
@@ -152,7 +152,7 @@ private extension TITimer {
 
 private extension TITimer {
 
-    func startDispatchSourceTimer(interval: TimeInterval, queue: DispatchQueue) -> IInvalidatable? {
+    func startDispatchSourceTimer(interval: TimeInterval, queue: DispatchQueue) -> Invalidatable? {
         let timer = DispatchSource.makeTimerSource(flags: [], queue: queue)
         timer.schedule(deadline: .now() + interval, repeating: interval)
         timer.setEventHandler(handler: handleSourceUpdate)
@@ -167,7 +167,7 @@ private extension TITimer {
 
 private extension TITimer {
     
-    func startTimer(interval: TimeInterval, runloop: RunLoop, mode: RunLoop.Mode) -> IInvalidatable {
+    func startTimer(interval: TimeInterval, runloop: RunLoop, mode: RunLoop.Mode) -> Invalidatable {
         let timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] _ in
             self?.handleSourceUpdate()
         }

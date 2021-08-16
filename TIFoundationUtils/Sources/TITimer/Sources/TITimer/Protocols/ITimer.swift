@@ -22,7 +22,7 @@
 
 import Foundation
 
-public protocol ITimer: IInvalidatable {
+public protocol ITimer: Invalidatable {
     
     // Прошедшее время
     var elapsedTime: TimeInterval { get }

@@ -22,7 +22,7 @@
 
 import Foundation
 
-public protocol IInvalidatable: AnyObject {
+public protocol Invalidatable: AnyObject {
     
     // Уничтожить объект
     func invalidate()
@@ -30,9 +30,9 @@ public protocol IInvalidatable: AnyObject {
 
 // MARK: - IInvalidatable
 
-extension Timer: IInvalidatable { }
+extension Timer: Invalidatable { }
 
-extension DispatchSource: IInvalidatable {
+extension DispatchSource: Invalidatable {
     
     public func invalidate() {
         setEventHandler(handler: nil)
