@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "LeadKit"
-  s.version         = "1.5.0"
+  s.version         = "1.5.1"
   s.summary         = "iOS framework with a bunch of tools for rapid development"
   s.homepage        = "https://github.com/TouchInstinct/LeadKit"
   s.license         = "Apache License, Version 2.0"
@@ -107,9 +107,9 @@ Pod::Spec.new do |s|
       "Sources/Classes/Controllers/BaseOrientationController.swift"
     ]
 
-    ss.dependency "RxSwift", '~> 6.0.0'
-    ss.dependency "RxCocoa", '~> 6.0.0'
-    ss.dependency "RxAlamofire", '~> 6.1.1'
+    ss.dependency "RxSwift", '~> 6.2'
+    ss.dependency "RxCocoa", '~> 6.2'
+    ss.dependency "RxAlamofire", '~> 6.1'
     ss.dependency "SwiftDate", '~> 6'
 
     ss.ios.dependency "TableKit", '~> 2.11'

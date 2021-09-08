@@ -22,6 +22,6 @@
 
 import Foundation
 
-public protocol BaseViewModel: class {
+public protocol BaseViewModel: AnyObject {
     // Nothing
 }

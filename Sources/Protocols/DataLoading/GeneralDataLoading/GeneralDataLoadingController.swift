@@ -20,7 +20,7 @@
 //  THE SOFTWARE.
 //
 
-public protocol GeneralDataLoadingController: class, ConfigurableController, GeneralDataLoadingHandler
+public protocol GeneralDataLoadingController: AnyObject, ConfigurableController, GeneralDataLoadingHandler
     where ViewModelT: GeneralDataLoadingViewModel<ResultType> {
 
     /// The loading view is shown when the `onLoadingState` method gets called
