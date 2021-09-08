@@ -21,7 +21,7 @@
 //
 
 /// PaginationWrapper delegate used for pagination results handling
-public protocol PaginatorDelegate: class {
+public protocol PaginatorDelegate: AnyObject {
 
     associatedtype Page
 

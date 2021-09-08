@@ -23,7 +23,7 @@
 import UIKit
 
 /// Protocol that describes placeholder view, containing activity indicator.
-public protocol ActivityIndicatorHolder: class {
+public protocol ActivityIndicatorHolder: AnyObject {
     var activityIndicator: Animatable { get }
     var indicatorOwner: UIView { get }
 }
