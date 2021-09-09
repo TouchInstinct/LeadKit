@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TITableKitUtils'
-  s.version          = '1.5.0'
+  s.version          = '1.5.1'
   s.summary          = 'Set of helpers for TableKit classes.'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }

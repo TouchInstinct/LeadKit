@@ -23,7 +23,7 @@
 import UIKit
 import TISwiftUtils
 
-public protocol InfiniteScrollDelegate: class {
+public protocol InfiniteScrollDelegate: AnyObject {
     
     func beginInfiniteScroll(_ forceScroll: Bool)
     func addInfiniteScroll(handler: @escaping ParameterClosure<UITableView>)
