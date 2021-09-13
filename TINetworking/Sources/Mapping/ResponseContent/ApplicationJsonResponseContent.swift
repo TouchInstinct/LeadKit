@@ -2,7 +2,7 @@ import Foundation
 
 open class ApplicationJsonResponseContent<Model: Decodable>: ResponseContent {
     public var mediaTypeName: String {
-        MediaType.applicationJson.rawValue
+        CommonMediaTypes.applicationJson.rawValue
     }
 
     public let jsonDecoder: JSONDecoder
@@ -13,5 +13,11 @@ open class ApplicationJsonResponseContent<Model: Decodable>: ResponseContent {
 
     public func decodeResponse(data: Data) throws -> Model {
         try jsonDecoder.decode(Model.self, from: data)
+    }
+}
+
+public extension JSONDecoder {
+    func responseContent<R>() -> ApplicationJsonResponseContent<R> {
+        .init(jsonDecoder: self)
     }
 }

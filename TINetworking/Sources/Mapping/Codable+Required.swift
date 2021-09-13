@@ -3,7 +3,9 @@ public extension KeyedDecodingContainer {
                               forKey key: Key,
                               required: Bool) throws -> T? {
 
-        required ? try decode(type, forKey: key) : try decodeIfPresent(T.self, forKey: key)
+        required
+            ? try decode(type, forKey: key)
+            : try decodeIfPresent(T.self, forKey: key)
     }
 }
 

@@ -1,7 +1,7 @@
 import Foundation
 
 public struct TextPlainResponseContent: ResponseContent {
-    struct UnableToDecodeStringError: Error {
+    struct StringDecodingError: Error {
         let data: Data
         let encoding: String.Encoding
     }
@@ -12,11 +12,11 @@ public struct TextPlainResponseContent: ResponseContent {
         self.encoding = encoding
     }
 
-    public let mediaTypeName = MediaType.textPlain.rawValue
+    public let mediaTypeName = CommonMediaTypes.textPlain.rawValue
 
     public func decodeResponse(data: Data) throws -> String {
         guard let plainText = String(data: data, encoding: encoding) else {
-            throw UnableToDecodeStringError(data: data, encoding: encoding)
+            throw StringDecodingError(data: data, encoding: encoding)
         }
 
         return plainText

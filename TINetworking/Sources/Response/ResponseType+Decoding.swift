@@ -1,45 +1,35 @@
-public struct ResponseTypeDecodingError: Error {
-    public let statusCode: Int
-    public let contentType: String
-}
+import Foundation
 
-public struct ContentMapping<Content: ResponseContent> {
-    public let statusCode: Int
-    public let mimeType: String?
-    public let responseContent: Content
-
-    public init(statusCode: Int, mimeType: String?, responseContent: Content) {
-        self.statusCode = statusCode
-        self.mimeType = mimeType
-        self.responseContent = responseContent
-    }
-
-    public func map<NewModel>(transform: @escaping (Content.Model) -> NewModel) -> ContentMapping<MapResponseContent<NewModel>> {
-        .init(statusCode: statusCode,
-              mimeType: mimeType,
-              responseContent: MapResponseContent(responseContent: responseContent,
-                                                  transform: transform))
-    }
-}
+public typealias StatusCodeMimeType = (statusCode: Int, mimeType: String?)
+public typealias StatusCodesMimeType = (statusCodes: Set<Int>, mimeType: String?)
 
 public extension ResponseType {
-    func decode<C>(contentMapping: [ContentMapping<C>]) -> Result<C.Model, ErrorType> {
-        for mapping in contentMapping where mapping.statusCode == statusCode && mapping.mimeType == mimeType {
+    typealias DecodingClosure<R> = (Data) throws -> R
+
+    func decode<R>(mapping: [KeyValueTuple<StatusCodeMimeType, DecodingClosure<R>>]) -> Result<R, ErrorType> {
+        for ((mappingStatusCode, mappingMimeType), decodeClosure) in mapping
+        where mappingStatusCode == statusCode && mappingMimeType == mimeType {
             do {
-                return .success(try mapping.responseContent.decodeResponse(data: data))
+                return .success(try decodeClosure(data))
             } catch {
                 return .failure(objectMappingError(underlyingError: error))
             }
         }
 
-        guard contentMapping.contains(where: { $0.statusCode == statusCode }) else {
+        guard mapping.contains(where: { $0.key.statusCode == statusCode }) else {
             return .failure(unsupportedStatusCodeError(statusCode: statusCode))
         }
 
-        guard contentMapping.contains(where: { $0.mimeType == mimeType }) else {
+        guard mapping.contains(where: { $0.key.mimeType == mimeType }) else {
             return .failure(unsupportedMimeTypeError(mimeType: mimeType))
         }
 
         return .failure(unsupportedStatusCodeMimeTypePairError(statusCode: statusCode, mimeType: mimeType))
+    }
+
+    func decode<R>(mapping: [KeyValueTuple<StatusCodesMimeType, DecodingClosure<R>>]) -> Result<R, ErrorType> {
+        decode(mapping: mapping.map { key, value in
+            key.statusCodes.map { KeyValueTuple(StatusCodeMimeType($0, key.mimeType), value) }
+        }.flatMap { $0 })
     }
 }

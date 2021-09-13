@@ -16,3 +16,21 @@ public struct MapResponseContent<Model>: ResponseContent {
         try decodeClosure(data)
     }
 }
+
+public extension ResponseContent {
+    typealias TransformClosure<T> = (Model) -> T
+
+    func map<R>(_ transform: @escaping TransformClosure<R>) -> MapResponseContent<R> {
+        .init(responseContent: self, transform: transform)
+    }
+}
+
+public extension JSONDecoder {
+    func responseContent<T: Decodable, R>(_ tranfsorm: @escaping (T) -> R) -> MapResponseContent<R> {
+        responseContent().map(tranfsorm)
+    }
+
+    func decoding<T: Decodable, R>(to tranfsorm: @escaping (T) -> R) -> (Data) throws -> R {
+        responseContent(tranfsorm).decodeResponse
+    }
+}

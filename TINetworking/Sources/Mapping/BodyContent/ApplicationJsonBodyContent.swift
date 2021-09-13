@@ -2,7 +2,7 @@ import Foundation
 
 open class ApplicationJsonBodyContent<Body>: BodyContent {
     public var mediaTypeName: String {
-        MediaType.applicationJson.rawValue
+        CommonMediaTypes.applicationJson.rawValue
     }
 
     private let encodingClosure: () throws -> Data
