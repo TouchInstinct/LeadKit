@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.5.0
+- **Add**: `HeaderTransitionDelegate` - Helper for transition of TableView header and navigationBar title view
+
 ### 1.4.0
 - **Update**: update minor dependencies.
 - **Fix**: project's scripts.

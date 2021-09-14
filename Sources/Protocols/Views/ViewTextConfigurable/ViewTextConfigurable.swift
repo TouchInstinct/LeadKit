@@ -24,7 +24,7 @@ import UIKit.UIFont
 import UIKit.UIColor
 
 /// Protocol that represents text object with appearance attributes.
-public protocol ViewTextConfigurable: class {
+public protocol ViewTextConfigurable: AnyObject {
 
     /// Font of text object.
     var textFont: UIFont? { get set }

@@ -22,7 +22,7 @@
 
 /// PaginationWrapper UI delegate used for customization
 /// of bound states (loading, empty, error, etc.).
-public protocol PaginationWrapperUIDelegate: class {
+public protocol PaginationWrapperUIDelegate: AnyObject {
 
     /// Returns placeholder view for empty state.
     ///

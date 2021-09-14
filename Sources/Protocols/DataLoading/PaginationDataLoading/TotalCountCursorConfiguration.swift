@@ -24,6 +24,6 @@ import RxSwift
 
 /// Protocol that requests class to conform RxDataSource and ResettableType
 /// with constraint ResultType to TotalCountCursorListingResult.
-public protocol TotalCountCursorConfiguration: class, RxDataSource, ResettableType
+public protocol TotalCountCursorConfiguration: AnyObject, RxDataSource, ResettableType
     where ResultType: TotalCountCursorListingResult {
 }

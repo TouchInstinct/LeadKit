@@ -20,7 +20,7 @@
 //  THE SOFTWARE.
 //
 
-public protocol PaginatorUIDelegate: class {
+public protocol PaginatorUIDelegate: AnyObject {
     
     associatedtype ErrorType
     
