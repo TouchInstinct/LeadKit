@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.6.0
+- **Add**: `TINetworking` - Swagger-frendly networking layer helpers
+
 ### 1.5.0
 - **Add**: `HeaderTransitionDelegate` - Helper for transition of TableView header and navigationBar title view
 
