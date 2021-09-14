@@ -3,9 +3,9 @@ import Foundation
 public typealias StatusCodeMimeType = (statusCode: Int, mimeType: String?)
 public typealias StatusCodesMimeType = (statusCodes: Set<Int>, mimeType: String?)
 
-public extension ResponseType {
-    typealias DecodingClosure<R> = (Data) throws -> R
+public typealias DecodingClosure<R> = (Data) throws -> R
 
+public extension ResponseType {
     func decode<R>(mapping: [KeyValueTuple<StatusCodeMimeType, DecodingClosure<R>>]) -> Result<R, ErrorType> {
         for ((mappingStatusCode, mappingMimeType), decodeClosure) in mapping
         where mappingStatusCode == statusCode && mappingMimeType == mimeType {
