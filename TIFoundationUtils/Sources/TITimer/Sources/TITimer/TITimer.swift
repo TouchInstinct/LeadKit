@@ -155,7 +155,9 @@ private extension TITimer {
     func startDispatchSourceTimer(interval: TimeInterval, queue: DispatchQueue) -> Invalidatable? {
         let timer = DispatchSource.makeTimerSource(flags: [], queue: queue)
         timer.schedule(deadline: .now() + interval, repeating: interval)
-        timer.setEventHandler(handler: handleSourceUpdate)
+        timer.setEventHandler() { [weak self] in
+            self?.handleSourceUpdate()
+        }
         
         timer.resume()
         
