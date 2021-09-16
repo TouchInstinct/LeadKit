@@ -36,4 +36,10 @@ public protocol ITimer: Invalidatable {
     
     // Запустить работу таймера
     func start(with interval: TimeInterval)
+    
+    // Приостановить работу таймера
+    func pause()
+
+    // Возобновить работу таймера
+    func resume()
 }

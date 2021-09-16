@@ -79,10 +79,18 @@ public final class TITimer: ITimer {
     }
     
     public func pause() {
+        guard isRunning else {
+            return
+        }
+        
         invalidate()
     }
     
     public func resume() {
+        guard !isRunning else {
+            return
+        }
+        
         createTimer(with: interval)
     }
     
