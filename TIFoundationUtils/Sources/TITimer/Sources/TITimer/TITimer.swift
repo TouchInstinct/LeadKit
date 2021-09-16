@@ -127,9 +127,9 @@ public final class TITimer: ITimer {
 // MARK: - Factory
 
 extension TITimer {
-
-    public static var `default`: TITimer {
-        .init(type: .runloopTimer(runloop: .main, mode: .common), mode: .activeAndBackground)
+    
+    public convenience init(mode: TimerRunMode = .activeAndBackground) {
+        self.init(type: .runloopTimer(runloop: .main, mode: .common), mode: mode)
     }
 }
 
