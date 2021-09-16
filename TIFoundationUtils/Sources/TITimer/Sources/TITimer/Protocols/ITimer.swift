@@ -21,6 +21,7 @@
 //
 
 import Foundation
+import TISwiftUtils
 
 public protocol ITimer: Invalidatable {
     
@@ -31,7 +32,7 @@ public protocol ITimer: Invalidatable {
     var isRunning: Bool { get }
     
     // Подписка на изменение прошедшего времени
-    var eventHandler: ((TimeInterval) -> Void)? { get set }
+    var eventHandler: ParameterClosure<TimeInterval>? { get set }
     
     // Запустить работу таймера
     func start(with interval: TimeInterval)

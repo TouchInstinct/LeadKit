@@ -66,30 +66,27 @@ public final class TITimer: ITimer {
         invalidate()
         
         self.interval = interval
+        self.elapsedTime = 0
         
-        switch type {
-        case let .dispatchSourceTimer(queue):
-            sourceTimer = startDispatchSourceTimer(interval: interval, queue: queue)
-            
-        case let .runloopTimer(runloop, mode):
-            sourceTimer = startTimer(interval: interval, runloop: runloop, mode: mode)
-            
-        case let .custom(timer):
-            sourceTimer = timer
+        createTimer(with: interval)
 
-            timer.start(with: interval)
-        }
-        
         eventHandler?(elapsedTime)
     }
     
     public func invalidate() {
-        elapsedTime = 0
         sourceTimer?.invalidate()
         sourceTimer = nil
     }
     
-    // MARK: - Private
+    public func pause() {
+        invalidate()
+    }
+    
+    public func resume() {
+        createTimer(with: interval)
+    }
+    
+    // MARK: - Actions
     
     @objc private func handleSourceUpdate() {
         guard enterBackgroundDate == nil else {
@@ -100,6 +97,23 @@ public final class TITimer: ITimer {
         
         eventHandler?(elapsedTime)
     }
+    
+    // MARK: - Private
+    
+    private func createTimer(with interval: TimeInterval) {
+        switch type {
+        case let .dispatchSourceTimer(queue):
+            sourceTimer = startDispatchSourceTimer(interval: interval, queue: queue)
+            
+        case let .runloopTimer(runloop, mode):
+            sourceTimer = startTimer(interval: interval, runloop: runloop, mode: mode)
+            
+        case let .custom(timer):
+            sourceTimer = timer
+            
+            timer.start(with: interval)
+        }
+    }
 }
 
 // MARK: - Factory
@@ -107,7 +121,7 @@ public final class TITimer: ITimer {
 extension TITimer {
 
     public static var `default`: TITimer {
-        .init(type: .runloopTimer(runloop: .main, mode: .default), mode: .activeAndBackground)
+        .init(type: .runloopTimer(runloop: .main, mode: .common), mode: .activeAndBackground)
     }
 }
 
@@ -158,8 +172,6 @@ private extension TITimer {
         timer.setEventHandler() { [weak self] in
             self?.handleSourceUpdate()
         }
-        
-        timer.resume()
         
         return timer as? DispatchSource
     }
