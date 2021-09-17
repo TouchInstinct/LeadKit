@@ -48,5 +48,12 @@ let package = Package(
     .target(name: "OTPSwiftView", dependencies: ["TIUIElements"], path: "OTPSwiftView/Sources"),
     .target(name: "TITransitions", path: "TITransitions/Sources"),
     .target(name: "TIPagination", dependencies: ["Cursors", "TISwiftUtils"], path: "TIPagination/Sources"),
+    
+    // MARK: - Tests
+    
+    .testTarget(
+        name: "TITimerTests",
+        dependencies: ["TIFoundationUtils"],
+        path: "Tests/TITimerTests"),
   ]
 )
