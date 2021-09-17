@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.6.0
+- **Add**: the pretty timer - TITimer.
+
 ### 1.5.0
 - **Add**: `HeaderTransitionDelegate` - Helper for transition of TableView header and navigationBar title view
 
