@@ -10,8 +10,8 @@ public struct Request<Content: BodyContent> {
     public var headerParameters: HTTPHeaders?
     public var cookieParameters: [String: Parameter<LocationCookie>]
     public var acceptableStatusCodes: Set<Int>
-    public var serverOverride: Server?
-    public var serverVariablesOverride: [KeyValueTuple<String, String>]
+    public var customServer: Server?
+    public var customServerVariables: [KeyValueTuple<String, String>]
 
     public var path: String {
         PathParameterEncoding(templateUrl: templatePath).encode(parameters: pathParameters)
@@ -25,8 +25,8 @@ public struct Request<Content: BodyContent> {
                 headerParameters: HTTPHeaders? = nil,
                 cookieParameters: [String: Parameter<LocationCookie>] = [:],
                 acceptableStatusCodes: Set<Int> = [200],
-                serverOverride: Server? = nil,
-                serverVariablesOverride: [KeyValueTuple<String, String>] = []) {
+                customServer: Server? = nil,
+                customServerVariables: [KeyValueTuple<String, String>] = []) {
 
         self.templatePath = templatePath
         self.method = method
@@ -36,7 +36,7 @@ public struct Request<Content: BodyContent> {
         self.headerParameters = headerParameters
         self.cookieParameters = cookieParameters
         self.acceptableStatusCodes = acceptableStatusCodes
-        self.serverOverride = serverOverride
-        self.serverVariablesOverride = serverVariablesOverride
+        self.customServer = customServer
+        self.customServerVariables = customServerVariables
     }
 }

@@ -10,7 +10,7 @@ public struct OneOfMappingError: Error, CustomDebugStringConvertible {
     }
 
     public var debugDescription: String {
-        var formattedString = "OneOf mapping failed for codingPath \(codingPath)\nwith following errors:\n"
+        var formattedString = "\"oneOf\" mapping failed for codingPath \(codingPath)\nwith following errors:\n"
 
         for (type, error) in mappingFailures {
             formattedString += "\(type) mapping failed with error: \(error)\n"

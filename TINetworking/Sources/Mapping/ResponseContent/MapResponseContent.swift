@@ -1,13 +1,13 @@
 import Foundation
 
 public struct MapResponseContent<Model>: ResponseContent {
-    public let mediaTypeName: String
-
     private let decodeClosure: (Data) throws -> Model
 
+    public let mediaTypeName: String
+
     public init<C: ResponseContent>(responseContent: C, transform: @escaping (C.Model) -> Model) {
-        self.mediaTypeName = responseContent.mediaTypeName
-        self.decodeClosure = {
+        mediaTypeName = responseContent.mediaTypeName
+        decodeClosure = {
             transform(try responseContent.decodeResponse(data: $0))
         }
     }

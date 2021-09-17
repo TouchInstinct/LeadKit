@@ -3,13 +3,8 @@ import Alamofire
 
 open class SessionFactory {
 
-    /// Timeout interval for requests.
     public var timeoutInterval: TimeInterval
-
-    /// A dictionary of additional headers to send with requests.
     public var additionalHttpHeaders: HTTPHeaders
-
-    /// Server trust policies.
     public var serverTrustPolicies: [String: ServerTrustEvaluating]
 
     public init(timeoutInterval: TimeInterval = 20,

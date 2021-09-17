@@ -1,22 +1,22 @@
 import Foundation
 
-open class ApplicationJsonBodyContent<Body>: BodyContent {
-    public var mediaTypeName: String {
-        CommonMediaTypes.applicationJson.rawValue
-    }
-
+open class ApplicationJsonBodyContent<Body>: BaseContent, BodyContent {
     private let encodingClosure: () throws -> Data
 
     public init(body: Body, jsonEncoder: JSONEncoder = JSONEncoder()) where Body: Encodable {
-        self.encodingClosure = {
+        encodingClosure = {
             try jsonEncoder.encode(body)
         }
+
+        super.init(mediaTypeName: CommonMediaTypes.applicationJson.rawValue)
     }
 
     public init(jsonBody: Body, options: JSONSerialization.WritingOptions = .prettyPrinted) {
-        self.encodingClosure = {
+        encodingClosure = {
             try JSONSerialization.data(withJSONObject: jsonBody, options: options)
         }
+
+        super.init(mediaTypeName: CommonMediaTypes.applicationJson.rawValue)
     }
 
     public func encodeBody() throws -> Data {

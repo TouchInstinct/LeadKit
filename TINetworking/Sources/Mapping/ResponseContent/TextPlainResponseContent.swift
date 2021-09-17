@@ -8,11 +8,15 @@ public struct TextPlainResponseContent: ResponseContent {
 
     private let encoding: String.Encoding
 
+    // MARK: - Content
+
+    public let mediaTypeName = CommonMediaTypes.textPlain.rawValue
+
     public init(encoding: String.Encoding = .utf8) {
         self.encoding = encoding
     }
 
-    public let mediaTypeName = CommonMediaTypes.textPlain.rawValue
+    // MARK: - ResponseContent
 
     public func decodeResponse(data: Data) throws -> String {
         guard let plainText = String(data: data, encoding: encoding) else {

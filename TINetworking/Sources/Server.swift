@@ -19,6 +19,10 @@ public struct Server {
         }
     }
 
+    private var defaultVariables: [KeyValueTuple<String, String>] {
+        variables.map { ($0.key, $0.value.defaultValue) }
+    }
+
     public let urlTemplate: String
     public let variables: [String: Variable]
 
@@ -29,10 +33,6 @@ public struct Server {
 
     public init(baseUrl: String) {
         self.init(urlTemplate: baseUrl, variables: [:])
-    }
-
-    private var defaultVariables: [KeyValueTuple<String, String>] {
-        variables.map { ($0.key, $0.value.defaultValue) }
     }
 
     public func url(using variables: [KeyValueTuple<String, String>] = [],

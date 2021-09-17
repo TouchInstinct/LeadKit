@@ -5,3 +5,9 @@ public final class EmptyBodyContent: BaseContent, BodyContent {
         Data()
     }
 }
+
+public extension BodyContent {
+    static var empty: EmptyBodyContent {
+        .init()
+    }
+}

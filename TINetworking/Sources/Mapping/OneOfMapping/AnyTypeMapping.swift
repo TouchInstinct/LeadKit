@@ -1,6 +1,7 @@
 public struct AnyTypeMapping<R> {
-    public let type: Any.Type
     private let mappingClosure: () -> Result<R, Error>
+
+    public let type: Any.Type
 
     public init<T: Decodable>(decoder: Decoder,
                               transform: @escaping (T) -> R) {

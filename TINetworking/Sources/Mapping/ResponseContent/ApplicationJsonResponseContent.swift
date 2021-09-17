@@ -1,14 +1,12 @@
 import Foundation
 
-open class ApplicationJsonResponseContent<Model: Decodable>: ResponseContent {
-    public var mediaTypeName: String {
-        CommonMediaTypes.applicationJson.rawValue
-    }
-
+open class ApplicationJsonResponseContent<Model: Decodable>: BaseContent, ResponseContent {
     public let jsonDecoder: JSONDecoder
 
     public init(jsonDecoder: JSONDecoder = JSONDecoder()) {
         self.jsonDecoder = jsonDecoder
+
+        super.init(mediaTypeName: CommonMediaTypes.applicationJson.rawValue)
     }
 
     public func decodeResponse(data: Data) throws -> Model {
