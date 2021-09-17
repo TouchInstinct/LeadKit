@@ -1,10 +1,12 @@
+import TISwiftUtils
+
 public struct AnyTypeMapping<R> {
-    private let mappingClosure: () -> Result<R, Error>
+    private let mappingClosure: ResultClosure<Result<R, Error>>
 
     public let type: Any.Type
 
     public init<T: Decodable>(decoder: Decoder,
-                              transform: @escaping (T) -> R) {
+                              transform: @escaping Closure<T, R>) {
 
         type = T.self
 

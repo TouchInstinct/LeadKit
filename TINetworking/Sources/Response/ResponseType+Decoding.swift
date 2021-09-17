@@ -1,9 +1,10 @@
 import Foundation
+import TISwiftUtils
 
 public typealias StatusCodeMimeType = (statusCode: Int, mimeType: String?)
 public typealias StatusCodesMimeType = (statusCodes: Set<Int>, mimeType: String?)
 
-public typealias DecodingClosure<R> = (Data) throws -> R
+public typealias DecodingClosure<R> = ThrowableClosure<Data, R>
 
 public extension ResponseType {
     func decode<R>(mapping: [KeyValueTuple<StatusCodeMimeType, DecodingClosure<R>>]) -> Result<R, ErrorType> {

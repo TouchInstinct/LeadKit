@@ -1,7 +1,8 @@
 import Foundation
+import TISwiftUtils
 
 open class ApplicationJsonBodyContent<Body>: BaseContent, BodyContent {
-    private let encodingClosure: () throws -> Data
+    private let encodingClosure: ThrowableResultClosure<Data>
 
     public init(body: Body, jsonEncoder: JSONEncoder = JSONEncoder()) where Body: Encodable {
         encodingClosure = {
