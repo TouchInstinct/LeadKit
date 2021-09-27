@@ -27,6 +27,8 @@ open class PathParameterEncoding: BaseUrlParameterEncoding, ParameterEncoding {
         self.templateUrl = templateUrl
     }
 
+    // MARK: - ParameterEncoding
+
     open func encode(parameters: [String: Parameter<LocationPath>]) -> String  {
         .render(template: templateUrl, using: encode(parameters: parameters))
     }

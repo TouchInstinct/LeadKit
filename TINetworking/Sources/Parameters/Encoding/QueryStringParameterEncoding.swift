@@ -21,6 +21,9 @@
 //
 
 open class QueryStringParameterEncoding: BaseUrlParameterEncoding, ParameterEncoding {
+
+    // MARK: - ParameterEncoding
+
     open func encode(parameters: [String: Parameter<LocationQuery>]) -> [String: Any] {
         let includedKeys = Set(super.encode(parameters: parameters).map { $0.key })
 

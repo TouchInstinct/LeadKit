@@ -23,17 +23,18 @@
 import Foundation
 import TISwiftUtils
 
-public struct MapResponseContent<Model>: ResponseContent {
+public final class MapResponseContent<Model>: BaseContent, ResponseContent {
     private let decodeClosure: ThrowableClosure<Data, Model>
 
-    public let mediaTypeName: String
-
     public init<C: ResponseContent>(responseContent: C, transform: @escaping Closure<C.Model, Model>) {
-        mediaTypeName = responseContent.mediaTypeName
         decodeClosure = {
             transform(try responseContent.decodeResponse(data: $0))
         }
+
+        super.init(mediaTypeName: responseContent.mediaTypeName)
     }
+
+    // MARK: - ResponseContent
 
     public func decodeResponse(data: Data) throws -> Model {
         try decodeClosure(data)

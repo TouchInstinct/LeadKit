@@ -23,6 +23,9 @@
 import Foundation
 
 public final class EmptyBodyContent: BaseContent, BodyContent {
+
+    // MARK: - BodyContent
+
     public func encodeBody() throws -> Data {
         Data()
     }

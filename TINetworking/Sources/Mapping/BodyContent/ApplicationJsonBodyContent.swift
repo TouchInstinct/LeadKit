@@ -42,6 +42,8 @@ open class ApplicationJsonBodyContent<Body>: BaseContent, BodyContent {
         super.init(mediaTypeName: CommonMediaTypes.applicationJson.rawValue)
     }
 
+    // MARK: - BodyContent
+
     public func encodeBody() throws -> Data {
         try encodingClosure()
     }

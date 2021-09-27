@@ -31,6 +31,8 @@ open class ApplicationJsonResponseContent<Model: Decodable>: BaseContent, Respon
         super.init(mediaTypeName: CommonMediaTypes.applicationJson.rawValue)
     }
 
+    // MARK: - ResponseContent
+
     public func decodeResponse(data: Data) throws -> Model {
         try jsonDecoder.decode(Model.self, from: data)
     }

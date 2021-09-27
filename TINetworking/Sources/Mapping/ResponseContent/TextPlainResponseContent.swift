@@ -22,20 +22,18 @@
 
 import Foundation
 
-public struct TextPlainResponseContent: ResponseContent {
-    struct StringDecodingError: Error {
+public final class TextPlainResponseContent: BaseContent, ResponseContent {
+    public struct StringDecodingError: Error {
         let data: Data
         let encoding: String.Encoding
     }
 
     private let encoding: String.Encoding
 
-    // MARK: - Content
-
-    public let mediaTypeName = CommonMediaTypes.textPlain.rawValue
-
     public init(encoding: String.Encoding = .utf8) {
         self.encoding = encoding
+
+        super.init(mediaTypeName: CommonMediaTypes.textPlain.rawValue)
     }
 
     // MARK: - ResponseContent
