@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.7.0
+- **Add**: `TINetworking` - Swagger-frendly networking layer helpers
+
 ### 1.6.0
 - **Add**: the pretty timer - TITimer.
 
