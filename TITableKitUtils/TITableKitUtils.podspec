@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
 
   s.dependency 'TIUIElements', s.version.to_s
   s.dependency 'TISwiftUtils', s.version.to_s
-  s.dependency 'TableKit', '2.11.0'
+  s.dependency 'TableKit', '~> 2.11'
 end
