@@ -3,6 +3,7 @@
 Bunch of useful protocols and views:
 
 - `RefreshControl` - a basic UIRefreshControl with fixed refresh action.
+- `TIScrollLabel` - a basic scroll view with label.
 
 # HeaderTransitionDelegate
 Use for transition table header to navigationBar view while scrolling
