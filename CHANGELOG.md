@@ -1,6 +1,6 @@
 # Changelog
 
-### 1.7.0
+### 1.8.0
 - **Add**: `TIScrollLabel` - the scroll view with label - TIScrollLabel
 
 ### 1.7.0
