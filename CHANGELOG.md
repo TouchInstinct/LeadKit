@@ -1,6 +1,9 @@
 # Changelog
 
 ### 1.7.0
+- **Add**: `TIScrollLabel` - the scroll view with label - TIScrollLabel
+
+### 1.7.0
 - **Add**: `TINetworking` - Swagger-frendly networking layer helpers
 
 ### 1.6.0
