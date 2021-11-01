@@ -27,6 +27,30 @@ open class TIScrollLabel: BaseInitializableView {
 
     private let labeledScrollView = LabeledScrollView()
 
+    public var text: String = "" {
+        didSet {
+            labeledScrollView.text = text
+        }
+    }
+
+    public var textColor: UIColor = .black {
+        didSet {
+            labeledScrollView.textColor = textColor
+        }
+    }
+    
+    public var font: UIFont = UIFont.systemFont(ofSize: 13) {
+        didSet {
+            labeledScrollView.font = font
+        }
+    }
+
+    public var textAlignment: NSTextAlignment = .center {
+        didSet {
+            labeledScrollView.textAlignment = textAlignment
+        }
+    }
+
     open override func addViews() {
         super.addViews()
         
