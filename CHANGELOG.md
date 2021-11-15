@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.8.0
+- **Add**: `AlertFactory` - Set of helpers for working with alert.
+
 ### 1.7.0
 - **Add**: `TINetworking` - Swagger-frendly networking layer helpers
 
