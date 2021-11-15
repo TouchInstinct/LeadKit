@@ -32,11 +32,8 @@ public enum AlertFactory {
 
         controller.view.tintColor = descriptor.tintColor
 
-        for action in descriptor.actions {
-            let alertAction = UIAlertAction(title: action.title, style: action.style) { _ in
-                action.closure?()
-            }
-            controller.addAction(alertAction)
+        descriptor.actions.forEach {
+            controller.addAction($0)
         }
 
         return controller
