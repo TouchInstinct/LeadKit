@@ -39,34 +39,34 @@ public protocol AlertInformative {
 
     /// An alert informing about something with one closing button (by default ["OK"])
     func presentInfoAlert(title: String?,
-                          infoAction: UIAlertAction?)
+                          infoAction: VoidClosure?)
 
     /// An alert informing about something with one closing button (by default ["OK"])
     func presentInfoAlert(title: String?,
                           message: String?,
-                          infoAction: UIAlertAction?)
+                          infoAction: VoidClosure?)
 
     /// An alert informing about something with one closing button (by default ["OK"])
     func presentInfoAlert(title: String?,
                           message: String?,
                           infoTitle: String?,
                           infoStyle: UIAlertAction.Style,
-                          infoAction: UIAlertAction?)
+                          infoAction: VoidClosure?)
 
     /// Alert offering to repeat the action (with the "Repeat" and "Cancel" buttons)
     func presentRetryAlert(title: String?,
                            message: String?,
-                           retryAction: @escaping UIAlertAction)
+                           retryAction: @escaping VoidClosure)
 
     /// Alert offering to repeat the action (with the "Repeat" and "Cancel" buttons)
     func presentRetryAlert(title: String?,
                            message: String?,
-                           retryAction: @escaping UIAlertAction,
-                           cancelAction: UIAlertAction?)
+                           retryAction: @escaping VoidClosure,
+                           cancelAction: VoidClosure?)
 
     /// Alert with custom actions and cancel button
     func presentActionsAlert(title: String?,
                              message: String?,
                              actions: [UIAlertAction],
-                             cancelAction: UIAlertAction?)
+                             cancelAction: VoidClosure?)
 }
