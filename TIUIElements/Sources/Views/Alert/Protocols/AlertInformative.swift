@@ -23,7 +23,7 @@
 import UIKit
 import TISwiftUtils
 
-protocol AlertInformative {
+public protocol AlertInformative {
 
     /// An alert informing about something with one closing button (by default ["OK"])
     func presentInfoAlert(title: String?)
@@ -39,34 +39,34 @@ protocol AlertInformative {
 
     /// An alert informing about something with one closing button (by default ["OK"])
     func presentInfoAlert(title: String?,
-                          infoAction: VoidClosure?)
+                          infoAction: UIAlertAction?)
 
     /// An alert informing about something with one closing button (by default ["OK"])
     func presentInfoAlert(title: String?,
                           message: String?,
-                          infoAction: VoidClosure?)
+                          infoAction: UIAlertAction?)
 
     /// An alert informing about something with one closing button (by default ["OK"])
     func presentInfoAlert(title: String?,
                           message: String?,
                           infoTitle: String?,
                           infoStyle: UIAlertAction.Style,
-                          infoAction: VoidClosure?)
+                          infoAction: UIAlertAction?)
 
     /// Alert offering to repeat the action (with the "Repeat" and "Cancel" buttons)
     func presentRetryAlert(title: String?,
                            message: String?,
-                           retryAction: @escaping VoidClosure)
+                           retryAction: @escaping UIAlertAction)
 
     /// Alert offering to repeat the action (with the "Repeat" and "Cancel" buttons)
     func presentRetryAlert(title: String?,
                            message: String?,
-                           retryAction: @escaping VoidClosure,
-                           cancelAction: VoidClosure?)
+                           retryAction: @escaping UIAlertAction,
+                           cancelAction: UIAlertAction?)
 
     /// Alert with custom actions and cancel button
     func presentActionsAlert(title: String?,
                              message: String?,
-                             actions: [AlertAction],
-                             cancelAction: VoidClosure?)
+                             actions: [UIAlertAction],
+                             cancelAction: UIAlertAction?)
 }

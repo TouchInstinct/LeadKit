@@ -38,13 +38,13 @@ public struct AlertDescriptor {
     public let tintColor: UIColor
     
     /// Alert actions
-    public let actions: [AlertAction]
+    public let actions: [UIAlertAction]
 
     public init(title: String? = nil,
                 message: String? = nil,
                 style: UIAlertController.Style = .alert,
                 tintColor: UIColor = .blue,
-                actions: [AlertAction] = []) {
+                actions: [UIAlertAction] = []) {
 
         self.title = title
         self.message = message

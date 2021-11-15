@@ -45,7 +45,7 @@ public enum AlertFactory {
     /// The auxiliary method of creating alerts
     public static func createAlert(title: String? = nil,
                                    message: String? = nil,
-                                   actions: [AlertAction] = []) -> UIAlertController {
+                                   actions: [UIAlertAction] = []) -> UIAlertController {
 
         let descriptor = AlertDescriptor(title: title, message: message, actions: actions)
 
