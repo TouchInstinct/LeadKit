@@ -3,6 +3,9 @@
 Bunch of useful protocols and views:
 
 - `RefreshControl` - a basic UIRefreshControl with fixed refresh action.
+- `AlertFactory` - a basic alert factory setting up UiAlertController.
+- `AlertPresentable` - a basic protocol describing api UIAlertController for custom alerts.
+- `AlertInformative` - a basic protocol describing actions for creating alerts.
 
 # HeaderTransitionDelegate
 Use for transition table header to navigationBar view while scrolling
