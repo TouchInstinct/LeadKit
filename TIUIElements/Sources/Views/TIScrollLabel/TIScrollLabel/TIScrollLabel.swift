@@ -23,50 +23,98 @@
 import UIKit
 import TIUIElements
 
-open class TIScrollLabel: BaseInitializableView {
+open class TIScrollLabel: BaseInitializableScrollView {
 
-    private let labeledScrollView = LabeledScrollView()
+    private let textLabel = UILabel()
+    private let contentView = UIView()
+
+    // MARK: - Configurable Properties
 
     public var text: String = "" {
         didSet {
-            labeledScrollView.text = text
+            textLabel.text = text
+        }
+    }
+
+    public var attributedText: NSAttributedString? = nil {
+        didSet {
+            textLabel.attributedText = attributedText
         }
     }
 
     public var textColor: UIColor = .black {
         didSet {
-            labeledScrollView.textColor = textColor
+            textLabel.textColor = textColor
         }
     }
-    
+
     public var font: UIFont = UIFont.systemFont(ofSize: 13) {
         didSet {
-            labeledScrollView.font = font
+            textLabel.font = font
         }
     }
 
     public var textAlignment: NSTextAlignment = .center {
         didSet {
-            labeledScrollView.textAlignment = textAlignment
+            textLabel.textAlignment = textAlignment
         }
     }
+
+    // MARK: - Initialization
 
     open override func addViews() {
         super.addViews()
         
-        addSubview(labeledScrollView)
+        addSubview(contentView)
+        contentView.addSubview(textLabel)
+    }
+
+    open override func configureAppearance() {
+        super.configureAppearance()
+        
+        showsVerticalScrollIndicator = false
+        showsHorizontalScrollIndicator = false
+        backgroundColor = .clear
+        clipsToBounds = true
+        
+        textLabel.numberOfLines = 0
+        textLabel.textAlignment = textAlignment
+        textLabel.textColor = textColor
+        textLabel.font = font
     }
 
     open override func configureLayout() {
         super.configureLayout()
 
-        labeledScrollView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        let contentViewBottomConstraint = contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        let contentViewCenterYConstraint = contentView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        let contentViewHeightConstraint = contentView.heightAnchor.constraint(equalTo: heightAnchor)
+
+        [
+            contentViewBottomConstraint,
+            contentViewCenterYConstraint,
+            contentViewHeightConstraint
+        ].forEach { $0.priority = .defaultLow }
 
         NSLayoutConstraint.activate([
-            labeledScrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            labeledScrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            labeledScrollView.topAnchor.constraint(equalTo: topAnchor),
-            labeledScrollView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            contentViewBottomConstraint,
+            contentViewCenterYConstraint,
+            contentViewHeightConstraint
+        ])
+
+        NSLayoutConstraint.activate([
+            textLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            textLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            textLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            textLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            textLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor)
         ])
     }
 }
