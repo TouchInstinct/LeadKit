@@ -26,7 +26,7 @@ public extension Operation {
     var flattenDependencies: [Operation] {
         dependencies.flatMap { $0.dependencies } + dependencies
     }
-
+    
     func add(to operationQueue: OperationQueue, waitUntilFinished: Bool = false) {
         operationQueue.addOperations(flattenDependencies + [self], waitUntilFinished: waitUntilFinished)
     }

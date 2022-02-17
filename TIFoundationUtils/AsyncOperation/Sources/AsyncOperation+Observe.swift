@@ -34,8 +34,7 @@ private final class ClosureObserverOperation<Output, Failure: Error>: AsyncOpera
         dependencyObservation = dependency.subscribe { [weak self] in
             onSuccess?($0)
             self?.handle(result: $0)
-        }
-        onFailure: { [weak self] in
+        } onFailure: { [weak self] in
             onFailure?($0)
             self?.handle(error: $0)
         }
@@ -48,7 +47,7 @@ private final class ClosureObserverOperation<Output, Failure: Error>: AsyncOpera
 
 public extension AsyncOperation {
     func observe(onSuccess: ((Output) -> Void)? = nil,
-                onFailure: ((Failure) -> Void)? = nil) -> AsyncOperation<Output, Failure> {
+                 onFailure: ((Failure) -> Void)? = nil) -> AsyncOperation<Output, Failure> {
 
         ClosureObserverOperation(dependency: self, onSuccess: onSuccess, onFailure: onFailure)
     }
