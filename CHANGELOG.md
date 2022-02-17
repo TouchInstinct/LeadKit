@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.8.0
+- **Add**: `TIFoundationUtils.AsyncOperation` - generic subclass of Operation with chaining and result observation support
+
 ### 1.7.0
 - **Add**: `TINetworking` - Swagger-frendly networking layer helpers
 

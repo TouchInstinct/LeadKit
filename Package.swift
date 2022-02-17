@@ -38,7 +38,7 @@ let package = Package(
     
     // MARK: - Utils
     .target(name: "TISwiftUtils", path: "TISwiftUtils/Sources"),
-    .target(name: "TIFoundationUtils", dependencies: ["TISwiftUtils"], path: "TIFoundationUtils/Sources"),
+    .target(name: "TIFoundationUtils", dependencies: ["TISwiftUtils"], path: "TIFoundationUtils"),
     .target(name: "TIKeychainUtils", dependencies: ["TIFoundationUtils", "KeychainAccess"], path: "TIKeychainUtils/Sources"),
     .target(name: "TITableKitUtils", dependencies: ["TIUIElements", "TableKit"], path: "TITableKitUtils/Sources"),
     .target(name: "TINetworking", dependencies: ["TISwiftUtils", "Alamofire"], path: "TINetworking/Sources"),
