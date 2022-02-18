@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -22,17 +22,4 @@
 
 import Foundation
 
-public final class EmptyBodyContent: BaseContent, BodyContent {
-
-    // MARK: - BodyContent
-
-    public func encodeBody() throws -> Data {
-        Data()
-    }
-}
-
-public extension BodyContent {
-    static var empty: EmptyBodyContent {
-        .init()
-    }
-}
+public struct EmptyBody: Encodable {}

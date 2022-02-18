@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,8 +20,25 @@
 //  THE SOFTWARE.
 //
 
+import TISwiftUtils
 import Foundation
 
-public protocol BodyContent: Content {
-    func encodeBody() throws -> Data
+public struct ApplicationJsonBodySerializer<Body>: BodySerializer {
+    private let encodingClosure: ThrowableClosure<Body, Data>
+
+    public init(jsonEncoder: JSONEncoder = JSONEncoder()) where Body: Encodable {
+        encodingClosure = {
+            try jsonEncoder.encode($0)
+        }
+    }
+
+    public init(options: JSONSerialization.WritingOptions = .prettyPrinted) {
+        encodingClosure = {
+            try JSONSerialization.data(withJSONObject: $0, options: options)
+        }
+    }
+
+    public func serialize(body: Body) throws -> ContentTypeData {
+        (CommonMediaTypes.applicationJson.rawValue, try encodingClosure(body))
+    }
 }
