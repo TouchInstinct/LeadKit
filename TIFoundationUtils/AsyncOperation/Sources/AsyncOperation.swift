@@ -23,7 +23,6 @@
 import Foundation
 
 open class AsyncOperation<Output, Failure: Error>: Operation {
-
     open var result: Result<Output, Failure>?
 
     var state: State? = nil { // isReady == false
@@ -38,6 +37,8 @@ open class AsyncOperation<Output, Failure: Error>: Operation {
             didChangeValue(forKey: oldValue.orReady.rawValue)
         }
     }
+
+    private var dependencyCancelObservations: [NSKeyValueObservation] = []
 
     // MARK: - Operation override
 
@@ -71,6 +72,7 @@ open class AsyncOperation<Output, Failure: Error>: Operation {
 
     open override func cancel() {
         state = .isCancelled
+        dependencyCancelObservations = []
     }
 
     // MARK: - Methods for subclass override
@@ -106,6 +108,16 @@ open class AsyncOperation<Output, Failure: Error>: Operation {
                 }
             }
         }
+    }
+
+    public func cancelOnCancellation(of dependency: Operation) {
+        let cancelObservation = dependency.observe(\.isCancelled) { [weak self] _, change in
+            if let isCancelled = change.newValue, isCancelled {
+                self?.cancel()
+            }
+        }
+
+        dependencyCancelObservations.append(cancelObservation)
     }
 }
 

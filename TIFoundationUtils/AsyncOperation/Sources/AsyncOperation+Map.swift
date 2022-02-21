@@ -31,6 +31,8 @@ private final class MapAsyncOperation<Output, Failure: Error>: AsyncOperation<Ou
 
         super.init()
 
+        cancelOnCancellation(of: dependency)
+
         dependencyObservation = dependency.subscribe { [weak self] in
             switch mapOutput($0) {
             case let .success(result):

@@ -21,22 +21,33 @@
 //
 
 public final class ClosureAsyncOperation<Output, Failure: Error>: AsyncOperation<Output, Failure> {
-    public typealias TaskClosure = (@escaping (Result<Output, Failure>) -> Void) -> Void
+    public typealias AsyncTaskClosure = () async -> Result<Output, Failure>
+    public typealias CancellableTaskClosure = (@escaping (Result<Output, Failure>) -> Void) -> CancellableTask
 
-    private let taskClosure: TaskClosure
+    private let cancellableTaskClosure: CancellableTaskClosure
+    private var cancellableTask: CancellableTask?
 
-    public init(taskClosure: @escaping TaskClosure) {
-        self.taskClosure = taskClosure
+    public init(cancellableTaskClosure: @escaping CancellableTaskClosure) {
+        self.cancellableTaskClosure = cancellableTaskClosure
 
         super.init()
 
         self.state = .isReady
     }
 
+    @available(iOS 13.0, *)
+    public convenience init(asyncTaskClosure: @escaping AsyncTaskClosure) {
+        self.init { completion in
+            Task {
+                completion(await asyncTaskClosure())
+            }
+        }
+    }
+
     public override func start() {
         super.start()
 
-        taskClosure { [weak self] in
+        cancellableTask = cancellableTaskClosure { [weak self] in
             switch $0 {
             case let .success(result):
                 self?.handle(result: result)
@@ -44,6 +55,35 @@ public final class ClosureAsyncOperation<Output, Failure: Error>: AsyncOperation
             case let .failure(error):
                 self?.handle(error: error)
             }
+        }
+    }
+
+    public override func cancel() {
+        super.cancel()
+
+        cancellableTask?.cancel()
+    }
+}
+
+public extension ClosureAsyncOperation {
+    typealias NeverFailCancellableTaskClosure = (@escaping (Output) -> Void) -> CancellableTask
+
+    convenience init(neverFailCancellableTaskClosure: @escaping NeverFailCancellableTaskClosure) where Failure == Never {
+        self.init(cancellableTaskClosure: { completion in
+            neverFailCancellableTaskClosure {
+                completion(.success($0))
+            }
+        })
+    }
+}
+
+@available(iOS 13.0, *)
+public extension ClosureAsyncOperation {
+    typealias NeverFailAsyncTaskClosure = () async -> Output
+
+    convenience init(asyncTaskClosure: @escaping NeverFailAsyncTaskClosure) where Failure == Never {
+        self.init {
+            await .success(asyncTaskClosure())
         }
     }
 }
