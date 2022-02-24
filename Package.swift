@@ -18,6 +18,7 @@ let package = Package(
     .library(name: "TIKeychainUtils", targets: ["TIKeychainUtils"]),
     .library(name: "TITableKitUtils", targets: ["TITableKitUtils"]),
     .library(name: "TINetworking", targets: ["TINetworking"]),
+    .library(name: "TIMoyaNetworking", targets: ["TIMoyaNetworking"]),
     
     // MARK: - Elements
     .library(name: "OTPSwiftView", targets: ["OTPSwiftView"]),
@@ -29,6 +30,7 @@ let package = Package(
     .package(url: "https://github.com/kishikawakatsumi/KeychainAccess.git", .upToNextMajor(from: "4.2.2")),
     .package(url: "https://github.com/petropavel13/Cursors", .upToNextMajor(from: "0.5.1")),
     .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.4.0")),
+    .package(url: "https://github.com/Moya/Moya.git", .upToNextMajor(from: "15.0.0")),
   ],
   targets: [
     
@@ -41,7 +43,11 @@ let package = Package(
     .target(name: "TIFoundationUtils", dependencies: ["TISwiftUtils"], path: "TIFoundationUtils"),
     .target(name: "TIKeychainUtils", dependencies: ["TIFoundationUtils", "KeychainAccess"], path: "TIKeychainUtils/Sources"),
     .target(name: "TITableKitUtils", dependencies: ["TIUIElements", "TableKit"], path: "TITableKitUtils/Sources"),
+
+    // MARK: - Networking
+
     .target(name: "TINetworking", dependencies: ["TISwiftUtils", "Alamofire"], path: "TINetworking/Sources"),
+    .target(name: "TIMoyaNetworking", dependencies: ["TINetworking", "Moya"], path: "TIMoyaNetworking"),
     
     // MARK: - Elements
 

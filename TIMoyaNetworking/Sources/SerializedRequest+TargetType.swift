@@ -20,37 +20,30 @@
 //  THE SOFTWARE.
 //
 
+import TINetworking
+import Moya
 import Foundation
 
-private final class ClosureObserverOperation<Output, Failure: Error>: AsyncOperation<Output, Failure> {
-    private var dependencyObservation: NSKeyValueObservation?
+extension SerializedRequest: TargetType {
+    public var sampleData: Data {
+        Data()
+    }
 
-    public init(dependency: AsyncOperation<Output, Failure>,
-                onSuccess: ((Output) -> Void)? = nil,
-                onFailure: ((Failure) -> Void)? = nil) {
-
-        super.init()
-
-        cancelOnCancellation(of: dependency)
-
-        dependencyObservation = dependency.subscribe { [weak self] in
-            onSuccess?($0)
-            self?.handle(result: $0)
-        } onFailure: { [weak self] in
-            onFailure?($0)
-            self?.handle(error: $0)
+    public var task: Task {
+        for cookie in cookies {
+            HTTPCookieStorage.shared.setCookie(cookie)
         }
 
-        addDependency(dependency) // keeps strong reference to dependency as well
-
-        state = .isReady
+        if [.get, .head, .delete].contains(method) {
+            return .requestParameters(parameters: queryParameters,
+                                      encoding: URLEncoding.queryString)
+        } else {
+            return .requestCompositeData(bodyData: bodyData,
+                                         urlParameters: queryParameters)
+        }
     }
-}
 
-public extension AsyncOperation {
-    func observe(onSuccess: ((Output) -> Void)? = nil,
-                 onFailure: ((Failure) -> Void)? = nil) -> AsyncOperation<Output, Failure> {
-
-        ClosureObserverOperation(dependency: self, onSuccess: onSuccess, onFailure: onFailure)
+    public var validationType: ValidationType {
+        .customCodes(Array(acceptableStatusCodes))
     }
 }

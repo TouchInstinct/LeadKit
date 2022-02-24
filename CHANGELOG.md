@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.9.0
+- **Add**: `TIMoyaNetworking` target - Moya + Swagger network service.
+- **Update**: `TISwiftUtils` - added async closure typealiases.
+- **Update**: `TIFoundationUtils` - added date formatting & decoding helpers.
+
 ### 1.8.0
 - **Add**: `TIFoundationUtils.AsyncOperation` - generic subclass of Operation with chaining and result observation support
 

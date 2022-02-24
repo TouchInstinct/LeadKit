@@ -58,10 +58,10 @@ public struct Server {
     }
 
     public func url(using variables: [KeyValueTuple<String, String>] = [],
-                    appendHttpsSchemeIfMissing: Bool = true) -> URL? {
+                    appendHttpsSchemeIfMissing: Bool = true) throws -> URL {
 
         guard !variables.isEmpty else {
-            return URL(string: .render(template: urlTemplate, using: defaultVariables))
+            return try String.render(template: urlTemplate, using: defaultVariables).asURL()
         }
 
         let defaultVariablesToApply = self.defaultVariables
@@ -73,9 +73,9 @@ public struct Server {
         let formattedUrlString = String.render(template: defaultParametersTemplate, using: variables)
 
         if appendHttpsSchemeIfMissing, !formattedUrlString.contains(Scheme.https.urlPrefix) {
-            return URL(string: Scheme.https.urlPrefix + formattedUrlString)
+            return try (Scheme.https.urlPrefix + formattedUrlString).asURL()
         }
 
-        return URL(string: formattedUrlString)
+        return try formattedUrlString.asURL()
     }
 }

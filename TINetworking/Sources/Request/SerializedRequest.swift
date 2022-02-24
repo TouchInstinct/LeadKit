@@ -21,36 +21,34 @@
 //
 
 import Foundation
+import Alamofire
 
-private final class ClosureObserverOperation<Output, Failure: Error>: AsyncOperation<Output, Failure> {
-    private var dependencyObservation: NSKeyValueObservation?
+public struct SerializedRequest {
+    public var baseURL: URL
+    public var path: String
+    public var method: HTTPMethod
+    public var bodyData: Data
+    public var queryParameters: Parameters
+    public var headers: [String: String]?
+    public var cookies: [HTTPCookie]
+    public var acceptableStatusCodes: Set<Int>
 
-    public init(dependency: AsyncOperation<Output, Failure>,
-                onSuccess: ((Output) -> Void)? = nil,
-                onFailure: ((Failure) -> Void)? = nil) {
+    public init(baseURL: URL,
+                path: String,
+                method: HTTPMethod,
+                bodyData: Data,
+                queryParameters: Parameters,
+                headers: [String: String],
+                cookies: [HTTPCookie],
+                acceptableStatusCodes: Set<Int>) {
 
-        super.init()
-
-        cancelOnCancellation(of: dependency)
-
-        dependencyObservation = dependency.subscribe { [weak self] in
-            onSuccess?($0)
-            self?.handle(result: $0)
-        } onFailure: { [weak self] in
-            onFailure?($0)
-            self?.handle(error: $0)
-        }
-
-        addDependency(dependency) // keeps strong reference to dependency as well
-
-        state = .isReady
-    }
-}
-
-public extension AsyncOperation {
-    func observe(onSuccess: ((Output) -> Void)? = nil,
-                 onFailure: ((Failure) -> Void)? = nil) -> AsyncOperation<Output, Failure> {
-
-        ClosureObserverOperation(dependency: self, onSuccess: onSuccess, onFailure: onFailure)
+        self.baseURL = baseURL
+        self.path = path
+        self.method = method
+        self.bodyData = bodyData
+        self.queryParameters = queryParameters
+        self.headers = headers
+        self.cookies = cookies
+        self.acceptableStatusCodes = acceptableStatusCodes
     }
 }

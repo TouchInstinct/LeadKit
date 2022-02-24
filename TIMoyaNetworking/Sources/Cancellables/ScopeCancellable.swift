@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,31 +20,13 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import Moya
 import TISwiftUtils
 
-open class ApplicationJsonBodyContent<Body>: BaseContent, BodyContent {
-    private let encodingClosure: ThrowableResultClosure<Data>
+public final class ScopeCancellable: CancellableBag {
+    public init(scopeCancellableClosure: Closure<ScopeCancellable, Cancellable>) {
+        super.init()
 
-    public init(body: Body, jsonEncoder: JSONEncoder = JSONEncoder()) where Body: Encodable {
-        encodingClosure = {
-            try jsonEncoder.encode(body)
-        }
-
-        super.init(mediaTypeName: CommonMediaTypes.applicationJson.rawValue)
-    }
-
-    public init(jsonBody: Body, options: JSONSerialization.WritingOptions = .prettyPrinted) {
-        encodingClosure = {
-            try JSONSerialization.data(withJSONObject: jsonBody, options: options)
-        }
-
-        super.init(mediaTypeName: CommonMediaTypes.applicationJson.rawValue)
-    }
-
-    // MARK: - BodyContent
-
-    public func encodeBody() throws -> Data {
-        try encodingClosure()
+        cancellables = [scopeCancellableClosure(self)]
     }
 }

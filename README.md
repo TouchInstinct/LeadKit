@@ -4,6 +4,7 @@ LeadKit is the iOS framework with a bunch of tools for rapid app development.
 ## Additional
 
 This repository contains the following additional frameworks:
+
 - [TIUIKitCore](TIUIKitCore) - core ui elements and protocols from LeadKit.
 - [TITransitions](TITransitions) - set of custom transitions to present controller.
 - [TIUIElements](TIUIElements) - bunch of of useful protocols and views.
@@ -13,6 +14,8 @@ This repository contains the following additional frameworks:
 - [TIFoundationUtils](TIFoundationUtils) - Set of helpers for Foundation framework classes.
 - [TIKeychainUtils](TIKeychainUtils) - Set of helpers for Keychain classes.
 - [TIPagination](TIPagination) - realisation of paginating items from a data source.
+- [TINetworking](TINetworking) - Swagger-frendly networking layer helpers.
+- [TIMoyaNetworking](TIMoyaNetworking) - Moya + Swagger network service.
 
 Useful docs:
 - [Semantic Commit Messages](docs/semantic-commit-messages.md) - commit message codestyle.

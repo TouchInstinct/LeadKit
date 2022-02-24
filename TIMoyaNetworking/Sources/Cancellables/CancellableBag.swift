@@ -20,37 +20,32 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import Moya
 
-private final class ClosureObserverOperation<Output, Failure: Error>: AsyncOperation<Output, Failure> {
-    private var dependencyObservation: NSKeyValueObservation?
+open class CancellableBag: BaseCancellable {
+    var cancellables: [Cancellable] = []
 
-    public init(dependency: AsyncOperation<Output, Failure>,
-                onSuccess: ((Output) -> Void)? = nil,
-                onFailure: ((Failure) -> Void)? = nil) {
-
-        super.init()
-
-        cancelOnCancellation(of: dependency)
-
-        dependencyObservation = dependency.subscribe { [weak self] in
-            onSuccess?($0)
-            self?.handle(result: $0)
-        } onFailure: { [weak self] in
-            onFailure?($0)
-            self?.handle(error: $0)
+    public override func cancel() {
+        guard !isCancelled else {
+            return
         }
 
-        addDependency(dependency) // keeps strong reference to dependency as well
+        cancellables.forEach { $0.cancel() }
 
-        state = .isReady
+        super.cancel()
+    }
+
+    public func add(cancellable: Cancellable?) {
+        guard let cancellable = cancellable else {
+            return
+        }
+
+        cancellables.append(cancellable)
     }
 }
 
-public extension AsyncOperation {
-    func observe(onSuccess: ((Output) -> Void)? = nil,
-                 onFailure: ((Failure) -> Void)? = nil) -> AsyncOperation<Output, Failure> {
-
-        ClosureObserverOperation(dependency: self, onSuccess: onSuccess, onFailure: onFailure)
+public extension Cancellable {
+    func add(to cancellableBag: CancellableBag) {
+        cancellableBag.add(cancellable: self)
     }
 }

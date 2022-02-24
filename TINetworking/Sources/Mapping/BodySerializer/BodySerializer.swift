@@ -22,35 +22,10 @@
 
 import Foundation
 
-private final class ClosureObserverOperation<Output, Failure: Error>: AsyncOperation<Output, Failure> {
-    private var dependencyObservation: NSKeyValueObservation?
+public protocol BodySerializer {
+    associatedtype Body
 
-    public init(dependency: AsyncOperation<Output, Failure>,
-                onSuccess: ((Output) -> Void)? = nil,
-                onFailure: ((Failure) -> Void)? = nil) {
+    typealias ContentTypeData = (String, Data)
 
-        super.init()
-
-        cancelOnCancellation(of: dependency)
-
-        dependencyObservation = dependency.subscribe { [weak self] in
-            onSuccess?($0)
-            self?.handle(result: $0)
-        } onFailure: { [weak self] in
-            onFailure?($0)
-            self?.handle(error: $0)
-        }
-
-        addDependency(dependency) // keeps strong reference to dependency as well
-
-        state = .isReady
-    }
-}
-
-public extension AsyncOperation {
-    func observe(onSuccess: ((Output) -> Void)? = nil,
-                 onFailure: ((Failure) -> Void)? = nil) -> AsyncOperation<Output, Failure> {
-
-        ClosureObserverOperation(dependency: self, onSuccess: onSuccess, onFailure: onFailure)
-    }
+    func serialize(body: Body) throws -> ContentTypeData
 }

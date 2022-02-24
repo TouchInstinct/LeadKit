@@ -22,35 +22,36 @@
 
 import Foundation
 
-private final class ClosureObserverOperation<Output, Failure: Error>: AsyncOperation<Output, Failure> {
-    private var dependencyObservation: NSKeyValueObservation?
+// Creating a date formatter is not a cheap operation.
+// If you are likely to use a formatter frequently,
+// it is typically more efficient to cache a single instance
+// than to create and dispose of multiple instances.
+// (https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DataFormatting/Articles/dfDateFormatting10_4.html#//apple_ref/doc/uid/TP40002369-SW10)
+public final class DateFormattersReusePool {
+    private var pool: [String: DateFormatter] = [:]
 
-    public init(dependency: AsyncOperation<Output, Failure>,
-                onSuccess: ((Output) -> Void)? = nil,
-                onFailure: ((Failure) -> Void)? = nil) {
+    public init() {}
 
-        super.init()
-
-        cancelOnCancellation(of: dependency)
-
-        dependencyObservation = dependency.subscribe { [weak self] in
-            onSuccess?($0)
-            self?.handle(result: $0)
-        } onFailure: { [weak self] in
-            onFailure?($0)
-            self?.handle(error: $0)
+    public func dateFormatter<Format: DateFormat>(for dateFormat: Format) -> DateFormatter {
+        guard let cachedFormatter = pool[dateFormat.rawValue] else {
+            return register(dateFormat: dateFormat)
         }
 
-        addDependency(dependency) // keeps strong reference to dependency as well
-
-        state = .isReady
+        return cachedFormatter
     }
-}
 
-public extension AsyncOperation {
-    func observe(onSuccess: ((Output) -> Void)? = nil,
-                 onFailure: ((Failure) -> Void)? = nil) -> AsyncOperation<Output, Failure> {
+    public func register<Format: DateFormat>(format: Format.Type) {
+        for dateFormat in Format.allCases {
+            register(dateFormat: dateFormat)
+        }
+    }
 
-        ClosureObserverOperation(dependency: self, onSuccess: onSuccess, onFailure: onFailure)
+    @discardableResult
+    public func register<Format: DateFormat>(dateFormat: Format) -> DateFormatter {
+        let dateFormatter = DateFormatter(dateFormat: dateFormat)
+
+        pool[dateFormat.rawValue] = dateFormatter
+
+        return dateFormatter
     }
 }

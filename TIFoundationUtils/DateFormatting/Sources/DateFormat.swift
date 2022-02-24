@@ -22,35 +22,20 @@
 
 import Foundation
 
-private final class ClosureObserverOperation<Output, Failure: Error>: AsyncOperation<Output, Failure> {
-    private var dependencyObservation: NSKeyValueObservation?
+public protocol DateFormat: RawRepresentable, CaseIterable where RawValue == String {
+    func configure(dateFormatter: DateFormatter)
+}
 
-    public init(dependency: AsyncOperation<Output, Failure>,
-                onSuccess: ((Output) -> Void)? = nil,
-                onFailure: ((Failure) -> Void)? = nil) {
-
-        super.init()
-
-        cancelOnCancellation(of: dependency)
-
-        dependencyObservation = dependency.subscribe { [weak self] in
-            onSuccess?($0)
-            self?.handle(result: $0)
-        } onFailure: { [weak self] in
-            onFailure?($0)
-            self?.handle(error: $0)
-        }
-
-        addDependency(dependency) // keeps strong reference to dependency as well
-
-        state = .isReady
+public extension DateFormat {
+    func configure(dateFormatter: DateFormatter) {
+        dateFormatter.dateFormat = rawValue
     }
 }
 
-public extension AsyncOperation {
-    func observe(onSuccess: ((Output) -> Void)? = nil,
-                 onFailure: ((Failure) -> Void)? = nil) -> AsyncOperation<Output, Failure> {
+public extension DateFormatter {
+    convenience init<Format: DateFormat>(dateFormat: Format) {
+        self.init()
 
-        ClosureObserverOperation(dependency: self, onSuccess: onSuccess, onFailure: onFailure)
+        dateFormat.configure(dateFormatter: self)
     }
 }

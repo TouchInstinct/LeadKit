@@ -20,37 +20,29 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import Moya
+import TINetworking
 
-private final class ClosureObserverOperation<Output, Failure: Error>: AsyncOperation<Output, Failure> {
-    private var dependencyObservation: NSKeyValueObservation?
-
-    public init(dependency: AsyncOperation<Output, Failure>,
-                onSuccess: ((Output) -> Void)? = nil,
-                onFailure: ((Failure) -> Void)? = nil) {
-
-        super.init()
-
-        cancelOnCancellation(of: dependency)
-
-        dependencyObservation = dependency.subscribe { [weak self] in
-            onSuccess?($0)
-            self?.handle(result: $0)
-        } onFailure: { [weak self] in
-            onFailure?($0)
-            self?.handle(error: $0)
-        }
-
-        addDependency(dependency) // keeps strong reference to dependency as well
-
-        state = .isReady
+extension Moya.Response: ResponseType {
+    public func unsupportedStatusCodeError(statusCode: Int) -> MoyaError {
+        .statusCode(self)
     }
-}
 
-public extension AsyncOperation {
-    func observe(onSuccess: ((Output) -> Void)? = nil,
-                 onFailure: ((Failure) -> Void)? = nil) -> AsyncOperation<Output, Failure> {
+    public func unsupportedMimeTypeError(mimeType: String?) -> MoyaError {
+        .objectMapping(MimeTypeUnsupportedError(mimeType: mimeType), self)
+    }
 
-        ClosureObserverOperation(dependency: self, onSuccess: onSuccess, onFailure: onFailure)
+    public func objectMappingError(underlyingError: Error) -> MoyaError {
+        .objectMapping(underlyingError, self)
+    }
+
+    public func unsupportedStatusCodeMimeTypePairError(statusCode: Int, mimeType: String?) -> MoyaError {
+        .objectMapping(StatusCodeMimeTypePairUnsupportedError(statusCode: statusCode,
+                                                              mimeType: mimeType),
+                       self)
+    }
+
+    public var mimeType: String? {
+        response?.mimeType
     }
 }

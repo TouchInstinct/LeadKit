@@ -22,35 +22,18 @@
 
 import Foundation
 
-private final class ClosureObserverOperation<Output, Failure: Error>: AsyncOperation<Output, Failure> {
-    private var dependencyObservation: NSKeyValueObservation?
+open class DateFormattingService {
+    private let reusePool: DateFormattersReusePool
 
-    public init(dependency: AsyncOperation<Output, Failure>,
-                onSuccess: ((Output) -> Void)? = nil,
-                onFailure: ((Failure) -> Void)? = nil) {
-
-        super.init()
-
-        cancelOnCancellation(of: dependency)
-
-        dependencyObservation = dependency.subscribe { [weak self] in
-            onSuccess?($0)
-            self?.handle(result: $0)
-        } onFailure: { [weak self] in
-            onFailure?($0)
-            self?.handle(error: $0)
-        }
-
-        addDependency(dependency) // keeps strong reference to dependency as well
-
-        state = .isReady
+    public init(reusePool: DateFormattersReusePool) {
+        self.reusePool = reusePool
     }
-}
 
-public extension AsyncOperation {
-    func observe(onSuccess: ((Output) -> Void)? = nil,
-                 onFailure: ((Failure) -> Void)? = nil) -> AsyncOperation<Output, Failure> {
+    public func string<Format: DateFormat>(from date: Date, using format: Format) -> String {
+        reusePool.dateFormatter(for: format).string(from: date)
+    }
 
-        ClosureObserverOperation(dependency: self, onSuccess: onSuccess, onFailure: onFailure)
+    public func date<Format: DateFormat>(from string: String, using format: Format) -> Date? {
+        reusePool.dateFormatter(for: format).date(from: string)
     }
 }

@@ -22,35 +22,41 @@
 
 import Foundation
 
-private final class ClosureObserverOperation<Output, Failure: Error>: AsyncOperation<Output, Failure> {
-    private var dependencyObservation: NSKeyValueObservation?
-
-    public init(dependency: AsyncOperation<Output, Failure>,
-                onSuccess: ((Output) -> Void)? = nil,
-                onFailure: ((Failure) -> Void)? = nil) {
-
-        super.init()
-
-        cancelOnCancellation(of: dependency)
-
-        dependencyObservation = dependency.subscribe { [weak self] in
-            onSuccess?($0)
-            self?.handle(result: $0)
-        } onFailure: { [weak self] in
-            onFailure?($0)
-            self?.handle(error: $0)
-        }
-
-        addDependency(dependency) // keeps strong reference to dependency as well
-
-        state = .isReady
+public extension CodingUserInfoKey {
+    static var dateFormattersReusePool: Self? {
+        .init(rawValue: "dateFormattersReusePool")
     }
 }
 
-public extension AsyncOperation {
-    func observe(onSuccess: ((Output) -> Void)? = nil,
-                 onFailure: ((Failure) -> Void)? = nil) -> AsyncOperation<Output, Failure> {
+private extension Dictionary {
+    subscript(key: Key?) -> Value? {
+        guard let key = key else {
+            return nil
+        }
 
-        ClosureObserverOperation(dependency: self, onSuccess: onSuccess, onFailure: onFailure)
+        return self[key]
+    }
+}
+
+private enum CodingUserInfoError: Error {
+    case valueNotFound(CodingUserInfoKey?)
+    case typeMismatch(Any.Type, Any.Type)
+}
+
+public extension Dictionary where Key == CodingUserInfoKey {
+    func dateFormattersReusePool() throws -> DateFormattersReusePool {
+        guard let reusePool = self[.dateFormattersReusePool] else {
+            throw CodingUserInfoError.valueNotFound(.dateFormattersReusePool)
+        }
+
+        guard let requestedReusePool = reusePool as? DateFormattersReusePool else {
+            throw CodingUserInfoError.typeMismatch(type(of: reusePool), DateFormattersReusePool.self)
+        }
+
+        return requestedReusePool
+    }
+
+    func dateFormatter<Format: DateFormat>(for dateFormat: Format) throws -> DateFormatter {
+        try dateFormattersReusePool().dateFormatter(for: dateFormat)
     }
 }
