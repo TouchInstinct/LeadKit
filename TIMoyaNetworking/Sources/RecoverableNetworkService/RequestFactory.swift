@@ -20,8 +20,11 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import TINetworking
 
-public struct EmptyBody: Encodable {
-    public init() {}
+public protocol RequestFactory {
+    associatedtype Body
+    associatedtype CreateFailure: Error
+
+    func create() -> Result<EndpointRequest<Body>, CreateFailure>
 }
