@@ -24,7 +24,6 @@ import TINetworking
 import Alamofire
 import Moya
 import TISwiftUtils
-import Dispatch
 import Foundation
 
 open class DefaultJsonNetworkService {
@@ -55,16 +54,11 @@ open class DefaultJsonNetworkService {
 
     @available(iOS 13.0.0, *)
     public func process<B: Encodable, S: Decodable, F: Decodable>(request: EndpointRequest<B>,
-                                                                  decodableSuccessStatusCodes: Set<Int>? = nil,
-                                                                  decodableFailureStatusCodes: Set<Int>? = nil,
-                                                                  mapMoyaError: @escaping Closure<MoyaError, Result<S, F>>) async -> Result<S, F> {
-
+                                                                  mapMoyaError: @escaping Closure<MoyaError, F>) async -> Result<S, F> {
         await process(request: request,
-                      decodableSuccessStatusCodes: decodableSuccessStatusCodes,
-                      decodableFailureStatusCodes: decodableFailureStatusCodes,
                       mapSuccess: Result.success,
                       mapFailure: Result.failure,
-                      mapMoyaError: mapMoyaError)
+                      mapMoyaError: { .failure(mapMoyaError($0)) })
     }
 
     @available(iOS 13.0.0, *)
@@ -160,7 +154,7 @@ open class DefaultJsonNetworkService {
                 case let (successCodes?, nil):
                     successStatusCodes = successCodes
                     failureStatusCodes = request.acceptableStatusCodes.subtracting(successCodes)
-                    
+
                 default:
                     successStatusCodes = [200]
                     failureStatusCodes = request.acceptableStatusCodes.subtracting(successStatusCodes)

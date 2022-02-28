@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.10.0
+- **Add**: `DefaultRecoverableJsonNetworkService` with error handling chain.
+
+
 ### 1.9.0
 - **Add**: `TIMoyaNetworking` target - Moya + Swagger network service.
 - **Update**: `TISwiftUtils` - added async closure typealiases.

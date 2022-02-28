@@ -20,8 +20,34 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import Moya
 
-public struct EmptyBody: Encodable {
-    public init() {}
+open class CancellableBag: BaseCancellable {
+    var cancellables: [Cancellable] = []
+
+    public override init() {}
+
+    public override func cancel() {
+        guard !isCancelled else {
+            return
+        }
+
+        cancellables.forEach { $0.cancel() }
+
+        super.cancel()
+    }
+
+    public func add(cancellable: Cancellable?) {
+        guard let cancellable = cancellable else {
+            return
+        }
+
+        cancellables.append(cancellable)
+    }
+}
+
+public extension Cancellable {
+    func add(to cancellableBag: CancellableBag) {
+        cancellableBag.add(cancellable: self)
+    }
 }

@@ -20,8 +20,17 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import TISwiftUtils
 
-public struct EmptyBody: Encodable {
-    public init() {}
+@available(iOS 13.0.0, *)
+public struct AnyAsyncEventHandler<EventType>: AsyncEventHandler {
+    private let processClosure: AsyncClosure<EventType, Bool>
+
+    public init<Handler: AsyncEventHandler>(handler: Handler) where Handler.EventType == EventType {
+        self.processClosure = handler.handle
+    }
+
+    public func handle(_ event: EventType) async -> Bool {
+        await processClosure(event)
+    }
 }

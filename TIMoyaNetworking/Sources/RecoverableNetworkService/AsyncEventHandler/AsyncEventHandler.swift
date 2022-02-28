@@ -20,8 +20,16 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+@available(iOS 13.0.0, *)
+public protocol AsyncEventHandler {
+    associatedtype EventType
 
-public struct EmptyBody: Encodable {
-    public init() {}
+    func handle(_ event: EventType) async -> Bool
+}
+
+@available(iOS 13.0.0, *)
+public extension AsyncEventHandler {
+    func asAnyAsyncEventHandler() -> AnyAsyncEventHandler<EventType> {
+        .init(handler: self)
+    }
 }

@@ -20,32 +20,8 @@
 //  THE SOFTWARE.
 //
 
-import Moya
+@available(iOS 13.0.0, *)
+public protocol AsyncErrorHandler: AsyncEventHandler where EventType: Error {}
 
-open class CancellableBag: BaseCancellable {
-    var cancellables: [Cancellable] = []
-
-    public override func cancel() {
-        guard !isCancelled else {
-            return
-        }
-
-        cancellables.forEach { $0.cancel() }
-
-        super.cancel()
-    }
-
-    public func add(cancellable: Cancellable?) {
-        guard let cancellable = cancellable else {
-            return
-        }
-
-        cancellables.append(cancellable)
-    }
-}
-
-public extension Cancellable {
-    func add(to cancellableBag: CancellableBag) {
-        cancellableBag.add(cancellable: self)
-    }
-}
+@available(iOS 13.0.0, *)
+extension AnyAsyncEventHandler: AsyncErrorHandler where EventType: Error {}

@@ -20,8 +20,22 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import TINetworking
 
-public struct EmptyBody: Encodable {
-    public init() {}
+public struct StaticRequestFactory<Body, CreateFailure: Error>: RequestFactory {
+    let request: EndpointRequest<Body>
+
+    public init(request: EndpointRequest<Body>) {
+        self.request = request
+    }
+
+    public func create() -> Result<EndpointRequest<Body>, CreateFailure> {
+        .success(request)
+    }
+}
+
+public extension EndpointRequest {
+    func staticRequestFactory<CreateFailure: Error>() -> StaticRequestFactory<Body, CreateFailure> {
+        .init(request: self)
+    }
 }
