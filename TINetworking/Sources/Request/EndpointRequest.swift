@@ -22,7 +22,7 @@
 
 import Alamofire
 
-public struct EndpointRequest<Body> {
+public struct EndpointRequest<Body, SuccessResponse> {
     public var templatePath: String
     public var method: HTTPMethod
     public var body: Body
@@ -41,7 +41,7 @@ public struct EndpointRequest<Body> {
                 pathParameters: [String: Parameter<LocationPath>] = [:],
                 headerParameters: HTTPHeaders? = nil,
                 cookieParameters: [String: Parameter<LocationCookie>] = [:],
-                acceptableStatusCodes: Set<Int> = [200],
+                acceptableStatusCodes: Set<Int> = HTTPCodes.success.asSet(),
                 server: Server,
                 customServerVariables: [KeyValueTuple<String, String>] = []) {
 

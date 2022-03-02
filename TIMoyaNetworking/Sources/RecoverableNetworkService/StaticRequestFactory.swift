@@ -22,20 +22,20 @@
 
 import TINetworking
 
-public struct StaticRequestFactory<Body, CreateFailure: Error>: RequestFactory {
-    let request: EndpointRequest<Body>
+public struct StaticRequestFactory<Body, SuccessResponse, CreateFailure: Error>: RequestFactory {
+    let request: EndpointRequest<Body, SuccessResponse>
 
-    public init(request: EndpointRequest<Body>) {
+    public init(request: EndpointRequest<Body, SuccessResponse>) {
         self.request = request
     }
 
-    public func create() -> Result<EndpointRequest<Body>, CreateFailure> {
+    public func create() -> Result<EndpointRequest<Body, SuccessResponse>, CreateFailure> {
         .success(request)
     }
 }
 
 public extension EndpointRequest {
-    func staticRequestFactory<CreateFailure: Error>() -> StaticRequestFactory<Body, CreateFailure> {
+    func staticRequestFactory<CreateFailure: Error>() -> StaticRequestFactory<Body, SuccessResponse, CreateFailure> {
         .init(request: self)
     }
 }

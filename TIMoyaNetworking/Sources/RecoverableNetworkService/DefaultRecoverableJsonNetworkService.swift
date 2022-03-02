@@ -30,23 +30,23 @@ open class DefaultRecoverableJsonNetworkService<ApiError: Decodable & Error>: De
 
     private var defaultErrorHandlers: [ErrorHandler] = []
 
-    public func process<B: Encodable, S: Decodable, RF: RequestFactory>(recoverableRequest: RF,
-                                                                        prependErrorHandlers: [ErrorHandler] = [],
-                                                                        appendErrorHandlers: [ErrorHandler] = [],
-                                                                        mapMoyaError: @escaping Closure<MoyaError, ApiError>) async -> Result<S, ApiError> where RF.Body == B, RF.CreateFailure == ApiError {
+    public func process<RF: RequestFactory>(recoverableRequest: RF,
+                                            prependErrorHandlers: [ErrorHandler] = [],
+                                            appendErrorHandlers: [ErrorHandler] = [],
+                                            mapMoyaError: @escaping Closure<MoyaError, ApiError>) async -> Result<RF.SuccessResponse, ApiError> where RF.Body: Encodable, RF.SuccessResponse: Decodable, RF.CreateFailure == ApiError {
 
         await process(recoverableRequest: recoverableRequest,
                       errorHandlers: prependErrorHandlers + defaultErrorHandlers + appendErrorHandlers,
                       mapMoyaError: mapMoyaError)
     }
 
-    public func process<B: Encodable, S: Decodable, RF: RequestFactory>(recoverableRequest: RF,
-                                                                        errorHandlers: [ErrorHandler] = [],
-                                                                        mapMoyaError: @escaping Closure<MoyaError, ApiError>) async -> Result<S, ApiError> where RF.Body == B, RF.CreateFailure == ApiError {
+    public func process<RF: RequestFactory>(recoverableRequest: RF,
+                                            errorHandlers: [ErrorHandler] = [],
+                                            mapMoyaError: @escaping Closure<MoyaError, ApiError>) async -> Result<RF.SuccessResponse, ApiError> where RF.Body: Encodable, RF.SuccessResponse: Decodable, RF.CreateFailure == ApiError {
 
         switch recoverableRequest.create() {
         case let .success(endpointRequest):
-            let result = await process(request: endpointRequest, mapMoyaError: mapMoyaError) as Result<S, ApiError>
+            let result = await process(request: endpointRequest, mapMoyaError: mapMoyaError) as Result<RF.SuccessResponse, ApiError>
 
             switch result {
             case let .failure(errorResponse):
