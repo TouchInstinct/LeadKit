@@ -24,8 +24,10 @@ import Alamofire
 import Foundation
 
 public extension EndpointRequest {
-    func serialize<Serializer: BodySerializer>(using serializer: Serializer) throws -> SerializedRequest where Serializer.Body == Body {
-        let baseUrl = try server.url(using: customServerVariables)
+    func serialize<Serializer: BodySerializer>(using serializer: Serializer,
+                                               defaultServer: Server) throws -> SerializedRequest where Serializer.Body == Body {
+
+        let baseUrl = try (server ?? defaultServer).url(using: customServerVariables)
         let path = PathParameterEncoding(templateUrl: templatePath).encode(parameters: pathParameters)
         let (contentType, bodyData) = try serializer.serialize(body: body)
         let queryParameters = QueryStringParameterEncoding().encode(parameters: queryParameters)
