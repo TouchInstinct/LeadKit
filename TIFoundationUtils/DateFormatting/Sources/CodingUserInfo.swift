@@ -26,15 +26,8 @@ public extension CodingUserInfoKey {
     static var dateFormattersReusePool: Self? {
         .init(rawValue: "dateFormattersReusePool")
     }
-}
-
-private extension Dictionary {
-    subscript(key: Key?) -> Value? {
-        guard let key = key else {
-            return nil
-        }
-
-        return self[key]
+    static var iso8601DateFormattersReusePool: Self? {
+        .init(rawValue: "iso8601DateFormattersReusePool")
     }
 }
 
@@ -44,19 +37,25 @@ private enum CodingUserInfoError: Error {
 }
 
 public extension Dictionary where Key == CodingUserInfoKey {
-    func dateFormattersReusePool() throws -> DateFormattersReusePool {
-        guard let reusePool = self[.dateFormattersReusePool] else {
-            throw CodingUserInfoError.valueNotFound(.dateFormattersReusePool)
+    func dateFormattersReusePool<T>(forKey key: CodingUserInfoKey?) throws -> T {
+        guard let reusePool = self[key] else {
+            throw CodingUserInfoError.valueNotFound(key)
         }
 
-        guard let requestedReusePool = reusePool as? DateFormattersReusePool else {
-            throw CodingUserInfoError.typeMismatch(type(of: reusePool), DateFormattersReusePool.self)
+        guard let requestedReusePool = reusePool as? T else {
+            throw CodingUserInfoError.typeMismatch(type(of: reusePool), T.self)
         }
 
         return requestedReusePool
     }
 
     func dateFormatter<Format: DateFormat>(for dateFormat: Format) throws -> DateFormatter {
-        try dateFormattersReusePool().dateFormatter(for: dateFormat)
+        let reusePool = try dateFormattersReusePool(forKey: .dateFormattersReusePool) as DateFormattersReusePool
+        return reusePool.dateFormatter(for: dateFormat)
+    }
+
+    func iso8601DateFormatter(for options: ISO8601DateFormatter.Options) throws -> ISO8601DateFormatter {
+        let reusePool = try dateFormattersReusePool(forKey: .iso8601DateFormattersReusePool) as ISO8601DateFormattersReusePool
+        return reusePool.dateFormatter(for: options)
     }
 }

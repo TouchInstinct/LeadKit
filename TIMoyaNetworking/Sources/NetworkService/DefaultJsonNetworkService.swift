@@ -51,7 +51,9 @@ open class DefaultJsonNetworkService {
     }
 
     open func createProvider() -> MoyaProvider<SerializedRequest> {
-        MoyaProvider<SerializedRequest>(callbackQueue: serializationQueue, session: session)
+        MoyaProvider<SerializedRequest>(callbackQueue: serializationQueue,
+                                        session: session,
+                                        plugins: plugins)
     }
 
     @available(iOS 13.0.0, *)
