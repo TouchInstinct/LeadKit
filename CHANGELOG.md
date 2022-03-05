@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.11.0
+- **Breaking changes**: many method signatures was changes in `TIMoyaNetworking`.
+- **Add**: `ISO8601DateFormattersReusePool` and codable helpers for ISO8601 date (de)coding.
+- **Add**: Moya plugin protocol for adding HTTP headers with default implementation.
+
 ### 1.10.0
 - **Add**: `DefaultRecoverableJsonNetworkService` with error handling chain.
 
