@@ -20,22 +20,26 @@
 //  THE SOFTWARE.
 //
 
-import TINetworking
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+public enum HTTPCodes {
+    case informational
+    case success
+    case redirection
+    case clientError
+    case serverError
 
-public struct StaticRequestFactory<Body, CreateFailure: Error>: RequestFactory {
-    let request: EndpointRequest<Body>
-
-    public init(request: EndpointRequest<Body>) {
-        self.request = request
-    }
-
-    public func create() -> Result<EndpointRequest<Body>, CreateFailure> {
-        .success(request)
-    }
-}
-
-public extension EndpointRequest {
-    func staticRequestFactory<CreateFailure: Error>() -> StaticRequestFactory<Body, CreateFailure> {
-        .init(request: self)
+    public func asSet() -> Set<Int> {
+        switch self {
+        case .informational:
+            return Set(100...199)
+        case .success:
+            return Set(200...299)
+        case .redirection:
+            return Set(300...399)
+        case .clientError:
+            return Set(400...499)
+        case .serverError:
+            return Set(500...599)
+        }
     }
 }

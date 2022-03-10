@@ -20,11 +20,21 @@
 //  THE SOFTWARE.
 //
 
-import TINetworking
+extension Dictionary {
+    subscript(key: Key?) -> Value? {
+        get {
+            guard let key = key else {
+                return nil
+            }
 
-public protocol RequestFactory {
-    associatedtype Body
-    associatedtype CreateFailure: Error
+            return self[key]
+        }
+        set {
+            guard let key = key else {
+                return
+            }
 
-    func create() -> Result<EndpointRequest<Body>, CreateFailure>
+            self[key] = newValue
+        }
+    }
 }

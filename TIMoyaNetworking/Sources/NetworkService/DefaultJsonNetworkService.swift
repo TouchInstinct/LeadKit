@@ -27,17 +27,22 @@ import TISwiftUtils
 import Foundation
 
 open class DefaultJsonNetworkService {
-    var session: Session
+    public var session: Session
 
-    var serializationQueue: DispatchQueue
-    var callbackQueue: DispatchQueue
+    public var serializationQueue: DispatchQueue
+    public var callbackQueue: DispatchQueue
 
-    var jsonDecoder: JSONDecoder
-    var jsonEncoder: JSONEncoder
+    public var jsonDecoder: JSONDecoder
+    public var jsonEncoder: JSONEncoder
+
+    public var defaultServer: Server
+
+    public var plugins: [PluginType] = []
 
     public init(session: Session,
                 jsonDecoder: JSONDecoder,
                 jsonEncoder: JSONEncoder,
+                defaultServer: Server,
                 serializationQueue: DispatchQueue = .global(qos: .default),
                 callbackQueue: DispatchQueue = .main) {
 
@@ -46,14 +51,17 @@ open class DefaultJsonNetworkService {
         self.callbackQueue = callbackQueue
         self.jsonDecoder = jsonDecoder
         self.jsonEncoder = jsonEncoder
+        self.defaultServer = defaultServer
     }
 
     open func createProvider() -> MoyaProvider<SerializedRequest> {
-        MoyaProvider<SerializedRequest>(callbackQueue: serializationQueue, session: session)
+        MoyaProvider<SerializedRequest>(callbackQueue: serializationQueue,
+                                        session: session,
+                                        plugins: plugins)
     }
 
     @available(iOS 13.0.0, *)
-    public func process<B: Encodable, S: Decodable, F: Decodable>(request: EndpointRequest<B>,
+    public func process<B: Encodable, S: Decodable, F: Decodable>(request: EndpointRequest<B, S>,
                                                                   mapMoyaError: @escaping Closure<MoyaError, F>) async -> Result<S, F> {
         await process(request: request,
                       mapSuccess: Result.success,
@@ -62,7 +70,7 @@ open class DefaultJsonNetworkService {
     }
 
     @available(iOS 13.0.0, *)
-    public func process<B: Encodable, S: Decodable, F: Decodable, R>(request: EndpointRequest<B>,
+    public func process<B: Encodable, S: Decodable, F: Decodable, R>(request: EndpointRequest<B, S>,
                                                                      decodableSuccessStatusCodes: Set<Int>? = nil,
                                                                      decodableFailureStatusCodes: Set<Int>? = nil,
                                                                      mapSuccess: @escaping Closure<S, R>,
@@ -89,7 +97,7 @@ open class DefaultJsonNetworkService {
         })
     }
 
-    public func process<B: Encodable, S: Decodable, F: Decodable, R>(request: EndpointRequest<B>,
+    public func process<B: Encodable, S: Decodable, F: Decodable, R>(request: EndpointRequest<B, S>,
                                                                      decodableSuccessStatusCodes: Set<Int>? = nil,
                                                                      decodableFailureStatusCodes: Set<Int>? = nil,
                                                                      mapSuccess: @escaping Closure<S, R>,
@@ -97,14 +105,15 @@ open class DefaultJsonNetworkService {
                                                                      mapMoyaError: @escaping Closure<MoyaError, R>,
                                                                      completion: @escaping ParameterClosure<R>) -> Cancellable {
 
-        ScopeCancellable { [jsonEncoder, serializationQueue, callbackQueue] scope in
+        ScopeCancellable { [jsonEncoder, serializationQueue, callbackQueue, defaultServer] scope in
             let workItem = DispatchWorkItem {
                 guard !scope.isCancelled else {
                     return
                 }
 
                 do {
-                    let serializedRequest = try request.serialize(using: ApplicationJsonBodySerializer(jsonEncoder: jsonEncoder))
+                    let serializedRequest = try request.serialize(using: ApplicationJsonBodySerializer(jsonEncoder: jsonEncoder),
+                                                                  defaultServer: defaultServer)
 
                     scope.add(cancellable: self.process(request: serializedRequest,
                                                         decodableSuccessStatusCodes: decodableSuccessStatusCodes,
@@ -156,7 +165,7 @@ open class DefaultJsonNetworkService {
                     failureStatusCodes = request.acceptableStatusCodes.subtracting(successCodes)
 
                 default:
-                    successStatusCodes = [200]
+                    successStatusCodes = HTTPCodes.success.asSet() // default success status codes if nothing was passed
                     failureStatusCodes = request.acceptableStatusCodes.subtracting(successStatusCodes)
                 }
 

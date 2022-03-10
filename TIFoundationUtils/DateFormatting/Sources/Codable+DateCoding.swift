@@ -26,16 +26,72 @@ public extension KeyedDecodingContainer {
     func decodeDate(forKey key: Key,
                     using dateFormatter: DateFormatter) throws -> Date {
 
-        let stringDate = try decode(String.self, forKey: key)
+        try date(from: try decode(String.self, forKey: key),
+                 forKey: key,
+                 using: dateFormatter)
+    }
 
-        guard let date = dateFormatter.date(from: stringDate) else {
+    func decodeDate(forKey key: Key,
+                    using dateFormatter: DateFormatter,
+                    required: Bool) throws -> Date? {
+
+        guard let stringDate = try decode(String?.self, forKey: key, required: required) else {
+            return nil
+        }
+
+        return try date(from: stringDate,
+                        forKey: key,
+                        using: dateFormatter)
+    }
+
+    func decodeDate(forKey key: Key,
+                    using dateFormatter: ISO8601DateFormatter) throws -> Date {
+
+        try date(from: try decode(String.self, forKey: key),
+                 forKey: key,
+                 using: dateFormatter)
+    }
+
+    func decodeDate(forKey key: Key,
+                    using dateFormatter: ISO8601DateFormatter,
+                    required: Bool) throws -> Date? {
+
+        guard let stringDate = try decode(String?.self, forKey: key, required: required) else {
+            return nil
+        }
+
+        return try date(from: stringDate,
+                        forKey: key,
+                        using: dateFormatter)
+    }
+
+    private func date(from string: String,
+                      forKey key: Key,
+                      using dateFormatter: DateFormatter) throws -> Date {
+
+        guard let date = dateFormatter.date(from: string) else {
             let failureReason: String
 
             if let dateFormat = dateFormatter.dateFormat, !dateFormat.isEmpty {
-                failureReason = "Unable to decode date from \(stringDate) using dateFormat \(dateFormat)"
+                failureReason = "Unable to decode date from \(string) using dateFormat \(dateFormat)"
             } else {
                 failureReason = "DateFormatter is not configured (dateFormat is nil or empty)"
             }
+
+            throw DecodingError.dataCorruptedError(forKey: key,
+                                                   in: self,
+                                                   debugDescription: failureReason)
+        }
+
+        return date
+    }
+
+    private func date(from string: String,
+                      forKey key: Key,
+                      using dateFormatter: ISO8601DateFormatter) throws -> Date {
+
+        guard let date = dateFormatter.date(from: string) else {
+            let failureReason = "Unable to decode date from \(string) using ISO8601 options: \(dateFormatter.formatOptions)"
 
             throw DecodingError.dataCorruptedError(forKey: key,
                                                    in: self,
@@ -51,6 +107,50 @@ public extension KeyedEncodingContainer {
                          forKey key: Key,
                          using dateFormatter: DateFormatter) throws {
 
+        let formattedDate = try string(from: date, forKey: key, using: dateFormatter)
+
+        try encode(formattedDate, forKey: key)
+    }
+
+    mutating func encode(date: Date?,
+                         forKey key: Key,
+                         using dateFormatter: DateFormatter,
+                         required: Bool) throws {
+
+        if let date = date {
+            let formattedDate = try string(from: date, forKey: key, using: dateFormatter)
+
+            try encode(formattedDate, forKey: key)
+        } else if required {
+            try encodeNil(forKey: key)
+        }
+    }
+
+    mutating func encode(date: Date,
+                         forKey key: Key,
+                         using dateFormatter: ISO8601DateFormatter) throws {
+
+        try encode(dateFormatter.string(from: date), forKey: key)
+    }
+
+    mutating func encode(date: Date?,
+                         forKey key: Key,
+                         using dateFormatter: ISO8601DateFormatter,
+                         required: Bool) throws {
+
+        if let date = date {
+            let formattedDate = dateFormatter.string(from: date)
+
+            try encode(formattedDate, forKey: key)
+        } else if required {
+            try encodeNil(forKey: key)
+        }
+    }
+
+    private func string(from date: Date,
+                        forKey key: Key,
+                        using dateFormatter: DateFormatter) throws -> String {
+
         guard let dateFormat = dateFormatter.dateFormat, !dateFormat.isEmpty else {
             let context = EncodingError.Context(codingPath: codingPath,
                                                 debugDescription: "DateFormatter is not configured (dateFormat is nil or empty)",
@@ -59,8 +159,6 @@ public extension KeyedEncodingContainer {
             throw EncodingError.invalidValue(date, context)
         }
 
-        let formattedDate = dateFormatter.string(from: date)
-
-        try encode(formattedDate, forKey: key)
+        return dateFormatter.string(from: date)
     }
 }
