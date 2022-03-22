@@ -20,8 +20,15 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import Moya
+import TISwiftUtils
 
-public struct EmptyBody: Encodable {
-    public init() {}
+public extension Cancellable {
+    static func nonCancellable() -> Cancellable {
+        NonCancellable()
+    }
+
+    static func scoped(scopeCancellableClosure: ScopeCancellable.ScopeCancellableClosure) -> Cancellable {
+        ScopeCancellable(scopeCancellableClosure: scopeCancellableClosure)
+    }
 }

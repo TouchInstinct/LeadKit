@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.12.0
+
+- **Update**: EndpointRequest Body can take a nil value
+- **Update**: Parameter value can be nil as well
+- **Update**: observe operator of AsyncOperation now accepts callback queue parameter
+
 ### 1.11.0
 - **Breaking changes**: many method signatures was changes in `TIMoyaNetworking`.
 - **Add**: `ISO8601DateFormattersReusePool` and codable helpers for ISO8601 date (de)coding.

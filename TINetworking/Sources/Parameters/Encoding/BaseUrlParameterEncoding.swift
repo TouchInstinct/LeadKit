@@ -31,11 +31,11 @@ open class BaseUrlParameterEncoding {
         var filteredComponents: [KeyValueTuple<String, String>] = []
 
         for key in parameters.keys.sorted(by: <) {
-            guard let parameter = parameters[key] else {
+            guard let parameter = parameters[key], let value = parameter.value else {
                 continue
             }
 
-            let components = encoding.queryComponents(fromKey: key, value: parameter.value)
+            let components = encoding.queryComponents(fromKey: key, value: value)
                 // filter components with empty values if parameter doesn't allow empty value
                 .filter { !$0.1.isEmpty || parameter.allowEmptyValue }
 

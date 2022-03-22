@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,12 +20,12 @@
 //  THE SOFTWARE.
 //
 
-public struct Parameter<Location: ParameterLocation> {
-    public let value: Any?
-    public let allowEmptyValue: Bool
+import Moya
 
-    public init(value: Any?, allowEmptyValue: Bool = false) {
-        self.value = value
-        self.allowEmptyValue = allowEmptyValue
+public struct NonCancellable: Cancellable {
+    public let isCancelled = true
+
+    public func cancel() {
+        // nothing
     }
 }

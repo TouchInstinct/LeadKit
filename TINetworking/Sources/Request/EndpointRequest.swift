@@ -25,10 +25,10 @@ import Alamofire
 public struct EndpointRequest<Body, SuccessResponse> {
     public var templatePath: String
     public var method: HTTPMethod
-    public var body: Body
+    public var body: Body?
     public var queryParameters: [String: Parameter<LocationQuery>]
     public var pathParameters: [String: Parameter<LocationPath>]
-    public var headerParameters: HTTPHeaders?
+    public var headerParameters: [String: Parameter<LocationHeader>]?
     public var cookieParameters: [String: Parameter<LocationCookie>]
     public var acceptableStatusCodes: Set<Int>
     public var server: Server?
@@ -36,10 +36,10 @@ public struct EndpointRequest<Body, SuccessResponse> {
 
     public init(templatePath: String,
                 method: HTTPMethod,
-                body: Body,
+                body: Body?,
                 queryParameters: [String: Parameter<LocationQuery>] = [:],
                 pathParameters: [String: Parameter<LocationPath>] = [:],
-                headerParameters: HTTPHeaders? = nil,
+                headerParameters: [String: Parameter<LocationHeader>]? = nil,
                 cookieParameters: [String: Parameter<LocationCookie>] = [:],
                 acceptableStatusCodes: Set<Int> = HTTPCodes.success.asSet(),
                 server: Server? = nil,
