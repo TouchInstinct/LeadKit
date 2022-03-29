@@ -20,7 +20,11 @@
 //  THE SOFTWARE.
 //
 
-import Dispatch
 import Moya
+import Foundation
+
+@available(iOS 13.0, *)
+extension _Concurrency.Task: Cancellable {}
 
 extension DispatchWorkItem: Cancellable {}
+extension Operation: Cancellable {}
