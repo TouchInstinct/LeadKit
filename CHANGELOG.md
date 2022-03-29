@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.11.1
+- **Fix**: `timeoutIntervalForRequest` parameter for `URLSessionConfiguration` in `NetworkServiceConfiguration` added.
+
 ### 1.11.0
 - **Breaking changes**: many method signatures was changes in `TIMoyaNetworking`.
 - **Add**: `ISO8601DateFormattersReusePool` and codable helpers for ISO8601 date (de)coding.
