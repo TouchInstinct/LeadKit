@@ -28,5 +28,6 @@ public protocol CancellableTask {
 
 @available(iOS 13.0, *)
 extension Task: CancellableTask {}
+
 extension Operation: CancellableTask {}
 extension DispatchWorkItem: CancellableTask {}

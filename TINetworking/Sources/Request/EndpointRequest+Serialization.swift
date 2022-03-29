@@ -30,10 +30,15 @@ public extension EndpointRequest {
         let baseUrl = try (server ?? defaultServer).url(using: customServerVariables)
         let path = PathParameterEncoding(templateUrl: templatePath).encode(parameters: pathParameters)
         let (contentType, bodyData) = try serializer.serialize(body: body)
-        let queryParameters = QueryStringParameterEncoding().encode(parameters: queryParameters)
+        let serializedQueryParameters = QueryStringParameterEncoding().encode(parameters: queryParameters)
 
-        var headerParameters = headerParameters ?? HTTPHeaders()
-        headerParameters.add(.contentType(contentType))
+        var serializedHeaderParameters: [String: String]?
+
+        if let customHeaderParameters = headerParameters {
+            serializedHeaderParameters = HeaderParameterEncoding().encode(parameters: customHeaderParameters)
+        }
+
+        serializedHeaderParameters?[HTTPHeader.contentType(contentType).name] = contentType
 
         let cookies: [HTTPCookie]
 
@@ -54,8 +59,8 @@ public extension EndpointRequest {
                                  path: path,
                                  method: method,
                                  bodyData: bodyData,
-                                 queryParameters: queryParameters,
-                                 headers: headerParameters.dictionary,
+                                 queryParameters: serializedQueryParameters,
+                                 headers: serializedHeaderParameters,
                                  cookies: cookies,
                                  acceptableStatusCodes: acceptableStatusCodes)
     }

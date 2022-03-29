@@ -27,5 +27,5 @@ public protocol BodySerializer {
 
     typealias ContentTypeData = (String, Data)
 
-    func serialize(body: Body) throws -> ContentTypeData
+    func serialize(body: Body?) throws -> ContentTypeData
 }

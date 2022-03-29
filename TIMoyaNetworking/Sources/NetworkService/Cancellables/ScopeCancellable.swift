@@ -24,7 +24,9 @@ import Moya
 import TISwiftUtils
 
 public final class ScopeCancellable: CancellableBag {
-    public init(scopeCancellableClosure: Closure<ScopeCancellable, Cancellable>) {
+    public typealias ScopeCancellableClosure = Closure<ScopeCancellable, Cancellable>
+
+    public init(scopeCancellableClosure: ScopeCancellableClosure) {
         super.init()
 
         cancellables = [scopeCancellableClosure(self)]

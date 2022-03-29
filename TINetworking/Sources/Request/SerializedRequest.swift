@@ -38,7 +38,7 @@ public struct SerializedRequest {
                 method: HTTPMethod,
                 bodyData: Data,
                 queryParameters: Parameters,
-                headers: [String: String],
+                headers: [String: String]?,
                 cookies: [HTTPCookie],
                 acceptableStatusCodes: Set<Int>) {
 

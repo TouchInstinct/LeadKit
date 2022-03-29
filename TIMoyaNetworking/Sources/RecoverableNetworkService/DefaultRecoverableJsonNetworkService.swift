@@ -28,11 +28,11 @@ import Moya
 open class DefaultRecoverableJsonNetworkService<ApiError: Decodable & Error>: DefaultJsonNetworkService {
     public typealias ErrorHandler = AnyAsyncEventHandler<ApiError>
 
-    private var defaultErrorHandlers: [ErrorHandler] = []
+    private(set) public var defaultErrorHandlers: [ErrorHandler] = []
 
     public func process<B: Encodable, S: Decodable>(request: EndpointRequest<B, S>,
-                                                    prependErrorHandlers: [ErrorHandler] = [],
-                                                    appendErrorHandlers: [ErrorHandler] = [],
+                                                    prependErrorHandlers: [ErrorHandler],
+                                                    appendErrorHandlers: [ErrorHandler],
                                                     mapMoyaError: @escaping Closure<MoyaError, ApiError>) async -> Result<S, ApiError> {
 
         await process(request: request,
@@ -41,7 +41,7 @@ open class DefaultRecoverableJsonNetworkService<ApiError: Decodable & Error>: De
     }
 
     public func process<B: Encodable, S: Decodable>(request: EndpointRequest<B, S>,
-                                                    errorHandlers: [ErrorHandler] = [],
+                                                    errorHandlers: [ErrorHandler],
                                                     mapMoyaError: @escaping Closure<MoyaError, ApiError>) async -> Result<S, ApiError> {
 
         let result = await process(request: request, mapMoyaError: mapMoyaError)

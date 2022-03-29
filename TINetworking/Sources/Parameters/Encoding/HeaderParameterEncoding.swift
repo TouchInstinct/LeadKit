@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,12 +20,10 @@
 //  THE SOFTWARE.
 //
 
-public struct Parameter<Location: ParameterLocation> {
-    public let value: Any?
-    public let allowEmptyValue: Bool
+open class HeaderParameterEncoding: BaseUrlParameterEncoding, ParameterEncoding {
+    // MARK: - ParameterEncoding
 
-    public init(value: Any?, allowEmptyValue: Bool = false) {
-        self.value = value
-        self.allowEmptyValue = allowEmptyValue
+    open func encode(parameters: [String: Parameter<LocationHeader>]) -> [String: String] {
+        return Dictionary(uniqueKeysWithValues: super.encode(parameters: parameters))
     }
 }

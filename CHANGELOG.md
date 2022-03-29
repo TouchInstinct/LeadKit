@@ -1,5 +1,12 @@
 # Changelog
 
+
+### 1.12.0
+
+- **Update**: EndpointRequest Body can take a nil value
+- **Update**: Parameter value can be nil as well
+- **Update**: observe operator of AsyncOperation now accepts callback queue parameter
+
 ### 1.11.1
 - **Fix**: `timeoutIntervalForRequest` parameter for `URLSessionConfiguration` in `NetworkServiceConfiguration` added.
 

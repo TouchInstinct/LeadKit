@@ -38,7 +38,13 @@ public struct ApplicationJsonBodySerializer<Body>: BodySerializer {
         }
     }
 
-    public func serialize(body: Body) throws -> ContentTypeData {
-        (CommonMediaTypes.applicationJson.rawValue, try encodingClosure(body))
+    public func serialize(body: Body?) throws -> ContentTypeData {
+        let mimeType = CommonMediaTypes.applicationJson.rawValue
+
+        guard let body = body else {
+            return (mimeType, Data())
+        }
+
+        return ContentTypeData(mimeType, try encodingClosure(body))
     }
 }
