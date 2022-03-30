@@ -30,27 +30,28 @@ open class DefaultRecoverableJsonNetworkService<ApiError: Decodable & Error>: De
 
     private(set) public var defaultErrorHandlers: [ErrorHandler] = []
 
-    public func process<B: Encodable, S: Decodable>(request: EndpointRequest<B, S>,
+    public func process<B: Encodable, S: Decodable>(recoverableRequest: EndpointRequest<B, S>,
                                                     prependErrorHandlers: [ErrorHandler],
                                                     appendErrorHandlers: [ErrorHandler],
                                                     mapMoyaError: @escaping Closure<MoyaError, ApiError>) async -> Result<S, ApiError> {
 
-        await process(request: request,
+        await process(recoverableRequest: recoverableRequest,
                       errorHandlers: prependErrorHandlers + defaultErrorHandlers + appendErrorHandlers,
                       mapMoyaError: mapMoyaError)
     }
 
-    public func process<B: Encodable, S: Decodable>(request: EndpointRequest<B, S>,
+    public func process<B: Encodable, S: Decodable>(recoverableRequest: EndpointRequest<B, S>,
                                                     errorHandlers: [ErrorHandler],
                                                     mapMoyaError: @escaping Closure<MoyaError, ApiError>) async -> Result<S, ApiError> {
 
-        let result = await process(request: request, mapMoyaError: mapMoyaError)
+        let result = await process(request: recoverableRequest,
+                                   mapMoyaError: mapMoyaError)
 
         if case let .failure(errorResponse) = result {
             let chain = AsyncEventHandlingChain(handlers: errorHandlers)
 
             if await chain.handle(errorResponse) {
-                return await process(request: request,
+                return await process(recoverableRequest: recoverableRequest,
                                      errorHandlers: errorHandlers,
                                      mapMoyaError: mapMoyaError)
             }

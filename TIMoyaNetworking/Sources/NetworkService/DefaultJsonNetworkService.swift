@@ -29,8 +29,11 @@ import Foundation
 open class DefaultJsonNetworkService {
     public var session: Session
 
-    public var serializationQueue: DispatchQueue
-    public var callbackQueue: DispatchQueue
+    public var serializationQueue: DispatchQueue = .global(qos: .default)
+    public var callbackQueue: DispatchQueue = .main
+
+    public var decodableSuccessStatusCodes: Set<Int>? = nil
+    public var decodableFailureStatusCodes: Set<Int>? = nil
 
     public var jsonDecoder: JSONDecoder
     public var jsonEncoder: JSONEncoder
@@ -42,13 +45,9 @@ open class DefaultJsonNetworkService {
     public init(session: Session,
                 jsonDecoder: JSONDecoder,
                 jsonEncoder: JSONEncoder,
-                defaultServer: Server,
-                serializationQueue: DispatchQueue = .global(qos: .default),
-                callbackQueue: DispatchQueue = .main) {
+                defaultServer: Server) {
 
         self.session = session
-        self.serializationQueue = serializationQueue
-        self.callbackQueue = callbackQueue
         self.jsonDecoder = jsonDecoder
         self.jsonEncoder = jsonEncoder
         self.defaultServer = defaultServer
@@ -71,8 +70,6 @@ open class DefaultJsonNetworkService {
 
     @available(iOS 13.0.0, *)
     public func process<B: Encodable, S: Decodable, F: Decodable, R>(request: EndpointRequest<B, S>,
-                                                                     decodableSuccessStatusCodes: Set<Int>? = nil,
-                                                                     decodableFailureStatusCodes: Set<Int>? = nil,
                                                                      mapSuccess: @escaping Closure<S, R>,
                                                                      mapFailure: @escaping Closure<F, R>,
                                                                      mapMoyaError: @escaping Closure<MoyaError, R>) async -> R {
@@ -84,8 +81,6 @@ open class DefaultJsonNetworkService {
         }, operation: {
             await withCheckedContinuation { continuation in
                 process(request: request,
-                        decodableSuccessStatusCodes: decodableSuccessStatusCodes,
-                        decodableFailureStatusCodes: decodableFailureStatusCodes,
                         mapSuccess: mapSuccess,
                         mapFailure: mapFailure,
                         mapMoyaError: mapMoyaError) {
@@ -98,8 +93,6 @@ open class DefaultJsonNetworkService {
     }
 
     public func process<B: Encodable, S: Decodable, F: Decodable, R>(request: EndpointRequest<B, S>,
-                                                                     decodableSuccessStatusCodes: Set<Int>? = nil,
-                                                                     decodableFailureStatusCodes: Set<Int>? = nil,
                                                                      mapSuccess: @escaping Closure<S, R>,
                                                                      mapFailure: @escaping Closure<F, R>,
                                                                      mapMoyaError: @escaping Closure<MoyaError, R>,
@@ -116,8 +109,6 @@ open class DefaultJsonNetworkService {
                                                                   defaultServer: defaultServer)
 
                     scope.add(cancellable: self.process(request: serializedRequest,
-                                                        decodableSuccessStatusCodes: decodableSuccessStatusCodes,
-                                                        decodableFailureStatusCodes: decodableFailureStatusCodes,
                                                         mapSuccess: mapSuccess,
                                                         mapFailure: mapFailure,
                                                         mapMoyaError: mapMoyaError,
@@ -136,14 +127,12 @@ open class DefaultJsonNetworkService {
     }
 
     public func process<S: Decodable, F: Decodable, R>(request: SerializedRequest,
-                                                       decodableSuccessStatusCodes: Set<Int>? = nil,
-                                                       decodableFailureStatusCodes: Set<Int>? = nil,
                                                        mapSuccess: @escaping Closure<S, R>,
                                                        mapFailure: @escaping Closure<F, R>,
                                                        mapMoyaError: @escaping Closure<MoyaError, R>,
                                                        completion: @escaping ParameterClosure<R>) -> Cancellable {
 
-        createProvider().request(request) { [jsonDecoder, callbackQueue] in
+        createProvider().request(request) { [jsonDecoder, callbackQueue, decodableSuccessStatusCodes, decodableFailureStatusCodes] in
             let result: R
 
             switch $0 {

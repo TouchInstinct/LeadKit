@@ -32,13 +32,15 @@ public extension EndpointRequest {
         let (contentType, bodyData) = try serializer.serialize(body: body)
         let serializedQueryParameters = QueryStringParameterEncoding().encode(parameters: queryParameters)
 
-        var serializedHeaderParameters: [String: String]?
+        var serializedHeaderParameters: [String: String]
 
         if let customHeaderParameters = headerParameters {
             serializedHeaderParameters = HeaderParameterEncoding().encode(parameters: customHeaderParameters)
+        } else {
+            serializedHeaderParameters = [:]
         }
 
-        serializedHeaderParameters?[HTTPHeader.contentType(contentType).name] = contentType
+        serializedHeaderParameters[HTTPHeader.contentType(contentType).name] = contentType
 
         let cookies: [HTTPCookie]
 

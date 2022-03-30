@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.12.1
+
+- **Update**: DefaultRecoverableNetworkService `request` parameter was renamed to prevent ambgious reference
 
 ### 1.12.0
 
