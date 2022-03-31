@@ -25,11 +25,18 @@ open class HeaderParameterEncoding: ParameterEncoding {
 
     open func encode(parameters: [String: Parameter<LocationHeader>]) -> [String: String] {
         parameters.reduce(into: [:]) {
-            $0.merge(pathComponents(fromKey: $1.key, value: $1.value)) { _, last in last }
+            let key = $1.key
+            let nonEmptyValueComponents = pathComponents(fromKey: key, value: $1.value.value)
+                .filter { !$0.value.isEmpty || (parameters[key]?.allowEmptyValue ?? true) }
+            $0.merge(nonEmptyValueComponents) { _, last in last }
         }
     }
 
-    open func pathComponents(fromKey key: String, value: Any) -> [String: String] {
+    open func pathComponents(fromKey key: String, value: Any?) -> [String: String] {
+        guard let value = value else {
+            return [:]
+        }
+
         var components: [String: String] = [:]
 
         switch value {
