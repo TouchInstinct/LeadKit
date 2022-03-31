@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.12.2
+
+- **Fix**: HeaderParameterEncoding encodes array correctly 
+
 ### 1.12.1
 
 - **Update**: DefaultRecoverableNetworkService `request` parameter was renamed to prevent ambgious reference
