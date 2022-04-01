@@ -44,15 +44,49 @@ public extension KeyedDecodingContainer {
                         using: dateFormatter)
     }
 
-    func decodeDate(forKey key: Key,
-                    using dateFormatter: ISO8601DateFormatter) throws -> Date {
+    func decodeDate(from string: String,
+                    forKey key: Key,
+                    userInfo: [CodingUserInfoKey: Any],
+                    options formatOptions: ISO8601DateFormatter.Options) throws -> Date {
 
-        try date(from: try decode(String.self, forKey: key),
-                 forKey: key,
-                 using: dateFormatter)
+        let dateFormatter = try userInfo.iso8601DateFormatter(for: formatOptions)
+
+        do {
+            return try date(from: string,
+                            forKey: key,
+                            using: dateFormatter)
+        } catch DecodingError.dataCorrupted where formatOptions == .withInternetDateTime {
+            let fractionSecondsOptions = formatOptions.union(.withFractionalSeconds)
+
+            do {
+                let fractionalSecondsDateFormatter = try userInfo.iso8601DateFormatter(for: fractionSecondsOptions)
+
+                return try date(from: string,
+                                forKey: key,
+                                using: fractionalSecondsDateFormatter)
+            } catch {
+                let failureReason = "Unable to decode date from \(string). Tried ISO8601 options: \(dateFormatter.formatOptions), \(fractionSecondsOptions)"
+
+                throw DecodingError.dataCorruptedError(forKey: key,
+                                                       in: self,
+                                                       debugDescription: failureReason)
+            }
+        }
     }
 
     func decodeDate(forKey key: Key,
+                    userInfo: [CodingUserInfoKey: Any],
+                    options formatOptions: ISO8601DateFormatter.Options) throws -> Date {
+
+        try decodeDate(from: try decode(String.self, forKey: key),
+                       forKey: key,
+                       userInfo: userInfo,
+                       options: formatOptions)
+    }
+
+    func decodeDate(forKey key: Key,
+                    userInfo: [CodingUserInfoKey: Any],
+                    options formatOptions: ISO8601DateFormatter.Options,
                     using dateFormatter: ISO8601DateFormatter,
                     required: Bool) throws -> Date? {
 
@@ -60,9 +94,10 @@ public extension KeyedDecodingContainer {
             return nil
         }
 
-        return try date(from: stringDate,
-                        forKey: key,
-                        using: dateFormatter)
+        return try decodeDate(from: stringDate,
+                              forKey: key,
+                              userInfo: userInfo,
+                              options: formatOptions)
     }
 
     private func date(from string: String,
