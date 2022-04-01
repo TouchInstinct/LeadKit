@@ -21,8 +21,9 @@
 //
 
 import Moya
+import TIFoundationUtils
 
-public struct NonCancellable: Cancellable {
+public struct NonCancellable: Cancellable, CancellableTask {
     public let isCancelled = true
 
     public init() {}

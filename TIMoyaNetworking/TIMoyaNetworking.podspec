@@ -13,6 +13,7 @@ Pod::Spec.new do |s|
   s.source_files = s.name + '/**/Sources/**/*'
 
   s.dependency 'TINetworking', s.version.to_s
+  s.dependency 'TIFoundationUtils', s.version.to_s
   s.dependency 'Moya', "~> 15.0"
 
 end
