@@ -21,9 +21,8 @@
 //
 
 import Moya
-import TIFoundationUtils
 
-open class BaseCancellable: Cancellable, CancellableTask {
+open class BaseCancellable: Cancellable {
     private(set) public var isCancelled = false
 
     open func cancel() {
