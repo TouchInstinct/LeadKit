@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.12.3
+
+- **Fix**: Try parse date in ISO8601 format appending `.withFractionalSeconds` if `.withInternetDateTime` fails
+
 ### 1.12.2
 
 - **Fix**: HeaderParameterEncoding encodes array correctly 

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TIUIKitCore'
-  s.version          = '1.12.2'
+  s.version          = '1.12.3'
   s.summary          = 'Core UI elements: protocols, views and helpers.'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }

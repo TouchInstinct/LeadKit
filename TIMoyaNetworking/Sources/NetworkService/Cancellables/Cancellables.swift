@@ -22,13 +22,18 @@
 
 import Moya
 import TISwiftUtils
+import TIFoundationUtils
 
-public extension Cancellable {
-    static func nonCancellable() -> Cancellable {
+public struct Cancellables {
+    public static func nonCancellable() -> Cancellable {
         NonCancellable()
     }
 
-    static func scoped(scopeCancellableClosure: ScopeCancellable.ScopeCancellableClosure) -> Cancellable {
+    public static func scoped(scopeCancellableClosure: ScopeCancellable.ScopeCancellableClosure) -> Cancellable {
         ScopeCancellable(scopeCancellableClosure: scopeCancellableClosure)
+    }
+
+    public static func nonCancellableTask() -> CancellableTask {
+        NonCancellable()
     }
 }

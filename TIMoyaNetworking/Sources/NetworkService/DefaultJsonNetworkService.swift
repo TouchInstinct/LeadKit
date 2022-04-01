@@ -25,6 +25,7 @@ import Alamofire
 import Moya
 import TISwiftUtils
 import Foundation
+import TIFoundationUtils
 
 open class DefaultJsonNetworkService {
     public var session: Session
@@ -43,13 +44,12 @@ open class DefaultJsonNetworkService {
     public var plugins: [PluginType] = []
 
     public init(session: Session,
-                jsonDecoder: JSONDecoder,
-                jsonEncoder: JSONEncoder,
+                jsonCodingConfigurator: JsonCodingConfigurator,
                 defaultServer: Server) {
 
         self.session = session
-        self.jsonDecoder = jsonDecoder
-        self.jsonEncoder = jsonEncoder
+        self.jsonDecoder = jsonCodingConfigurator.jsonDecoder
+        self.jsonEncoder = jsonCodingConfigurator.jsonEncoder
         self.defaultServer = defaultServer
     }
 
