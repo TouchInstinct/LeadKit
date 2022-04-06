@@ -60,8 +60,8 @@ open class DefaultJsonNetworkService {
     }
 
     @available(iOS 13.0.0, *)
-    public func process<B: Encodable, S: Decodable, F: Decodable>(request: EndpointRequest<B, S>,
-                                                                  mapMoyaError: @escaping Closure<MoyaError, F>) async -> Result<S, F> {
+    open func process<B: Encodable, S: Decodable, F: Decodable>(request: EndpointRequest<B, S>,
+                                                                mapMoyaError: @escaping Closure<MoyaError, F>) async -> Result<S, F> {
         await process(request: request,
                       mapSuccess: Result.success,
                       mapFailure: Result.failure,
@@ -69,10 +69,10 @@ open class DefaultJsonNetworkService {
     }
 
     @available(iOS 13.0.0, *)
-    public func process<B: Encodable, S: Decodable, F: Decodable, R>(request: EndpointRequest<B, S>,
-                                                                     mapSuccess: @escaping Closure<S, R>,
-                                                                     mapFailure: @escaping Closure<F, R>,
-                                                                     mapMoyaError: @escaping Closure<MoyaError, R>) async -> R {
+    open func process<B: Encodable, S: Decodable, F: Decodable, R>(request: EndpointRequest<B, S>,
+                                                                   mapSuccess: @escaping Closure<S, R>,
+                                                                   mapFailure: @escaping Closure<F, R>,
+                                                                   mapMoyaError: @escaping Closure<MoyaError, R>) async -> R {
 
         let cancellableBag = CancellableBag()
 
@@ -87,16 +87,16 @@ open class DefaultJsonNetworkService {
 
                     continuation.resume(returning: $0)
                 }
-                .add(to: cancellableBag)
+                        .add(to: cancellableBag)
             }
         })
     }
 
-    public func process<B: Encodable, S: Decodable, F: Decodable, R>(request: EndpointRequest<B, S>,
-                                                                     mapSuccess: @escaping Closure<S, R>,
-                                                                     mapFailure: @escaping Closure<F, R>,
-                                                                     mapMoyaError: @escaping Closure<MoyaError, R>,
-                                                                     completion: @escaping ParameterClosure<R>) -> Cancellable {
+    open func process<B: Encodable, S: Decodable, F: Decodable, R>(request: EndpointRequest<B, S>,
+                                                                   mapSuccess: @escaping Closure<S, R>,
+                                                                   mapFailure: @escaping Closure<F, R>,
+                                                                   mapMoyaError: @escaping Closure<MoyaError, R>,
+                                                                   completion: @escaping ParameterClosure<R>) -> Cancellable {
 
         ScopeCancellable { [jsonEncoder, serializationQueue, callbackQueue, defaultServer] scope in
             let workItem = DispatchWorkItem {
@@ -126,13 +126,17 @@ open class DefaultJsonNetworkService {
         }
     }
 
-    public func process<S: Decodable, F: Decodable, R>(request: SerializedRequest,
-                                                       mapSuccess: @escaping Closure<S, R>,
-                                                       mapFailure: @escaping Closure<F, R>,
-                                                       mapMoyaError: @escaping Closure<MoyaError, R>,
-                                                       completion: @escaping ParameterClosure<R>) -> Cancellable {
+    open func process<S: Decodable, F: Decodable, R>(request: SerializedRequest,
+                                                     mapSuccess: @escaping Closure<S, R>,
+                                                     mapFailure: @escaping Closure<F, R>,
+                                                     mapMoyaError: @escaping Closure<MoyaError, R>,
+                                                     completion: @escaping ParameterClosure<R>) -> Cancellable {
 
-        createProvider().request(request) { [jsonDecoder, callbackQueue, decodableSuccessStatusCodes, decodableFailureStatusCodes] in
+        createProvider().request(request) { [jsonDecoder,
+                                             callbackQueue,
+                                             decodableSuccessStatusCodes,
+                                             decodableFailureStatusCodes,
+                                             plugins] in
             let result: R
 
             switch $0 {
@@ -163,11 +167,19 @@ open class DefaultJsonNetworkService {
                     ((failureStatusCodes, CommonMediaTypes.applicationJson.rawValue), jsonDecoder.decoding(to: mapFailure)),
                 ])
 
+                let pluginResult: Result<Response, MoyaError>
+
                 switch decodeResult {
                 case let .success(model):
                     result = model
+                    pluginResult = .success(rawResponse)
                 case let .failure(moyaError):
                     result = mapMoyaError(moyaError)
+                    pluginResult = .failure(moyaError)
+                }
+
+                plugins.forEach {
+                    $0.didReceive(pluginResult, target: request)
                 }
             case let .failure(moyaError):
                 result = mapMoyaError(moyaError)
