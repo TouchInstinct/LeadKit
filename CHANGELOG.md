@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.13.0
+
+- **Update**: Change access modifiers in `DefaultJsonNetworkService` from `public` to `open`, added additional Moya plugins processing
+- **Add**: `DisplayDecodingErrorPlugin` for showing developer-frendly decoding error messages
+- **Add**: Gemfile for cocoapods versioning
+
 ### 1.12.3
 
 - **Fix**: Try parse date in ISO8601 format appending `.withFractionalSeconds` if `.withInternetDateTime` fails

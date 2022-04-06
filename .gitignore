@@ -104,4 +104,7 @@ cpd-output.xml
 *.swp
 *IDEWorkspaceChecks.plist
 
+# Gem
+.gem/
+
 .DS_Store
