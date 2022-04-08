@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.14.0
+
+- **Add**: [Date] coding methods
+
 ### 1.13.0
 
 - **Update**: Change access modifiers in `DefaultJsonNetworkService` from `public` to `open`, added additional Moya plugins processing

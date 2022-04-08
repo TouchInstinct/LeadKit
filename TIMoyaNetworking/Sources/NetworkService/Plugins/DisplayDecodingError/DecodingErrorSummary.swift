@@ -44,12 +44,16 @@ public struct DecodingErrorSummary: CustomStringConvertible {
         switch decodingError {
         case let .typeMismatch(_, context):
             self.init(context: context, response: response, formatter: formatter)
+
         case let .dataCorrupted(context):
             self.init(context: context, response: response, formatter: formatter)
+
         case let .keyNotFound(_, context):
             self.init(context: context, response: response, formatter: formatter)
+
         case let .valueNotFound(_, context):
             self.init(context: context, response: response, formatter: formatter)
+            
         @unknown default:
             self.init(context: .init(codingPath: [],
                                      debugDescription: ">>UNHANDLED DECODING ERROR CASE<<",

@@ -56,6 +56,6 @@ open class DecodingErrorSummaryFormatter {
     }
 
     open func format(jsonValue: Any?) -> String {
-        String(reflecting: jsonValue ?? missingDataPlaceholder)
+        String(describing: jsonValue ?? missingDataPlaceholder)
     }
 }

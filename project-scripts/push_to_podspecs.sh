@@ -15,5 +15,5 @@ ORDERED_PODSPECS="../TISwiftUtils/TISwiftUtils.podspec
 ../TIMoyaNetworking/TIMoyaNetworking.podspec"
 
 for podspec_path in ${ORDERED_PODSPECS}; do
-    pod repo push git@github.com:TouchInstinct/Podspecs ${podspec_path} --allow-warnings
+    bundle exec pod repo push git@github.com:TouchInstinct/Podspecs ${podspec_path} --allow-warnings
 done
