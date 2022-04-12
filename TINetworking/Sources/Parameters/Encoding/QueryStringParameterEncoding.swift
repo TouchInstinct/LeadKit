@@ -25,10 +25,11 @@ open class QueryStringParameterEncoding: BaseUrlParameterEncoding, ParameterEnco
     // MARK: - ParameterEncoding
 
     open func encode(parameters: [String: Parameter<LocationQuery>]) -> [String: Any] {
-        let nonEmptyValueKeys = Set(super.encode(parameters: parameters).map { $0.key })
-
-        return parameters
-            .filter { nonEmptyValueKeys.contains($0.key) }
-            .compactMapValues { $0.value }
+        parameters.filter {
+            !encode(parameter: $0.value, forKey: $0.key).isEmpty
+        }
+        .compactMapValues {
+            $0.value
+        }
     }
 }

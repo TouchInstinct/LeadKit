@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.14.1
+
+- **Fix**: Array encoding for `QueryStringParameterEncoding`
+
 ### 1.14.0
 
 - **Add**: [Date] coding methods
