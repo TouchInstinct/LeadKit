@@ -43,7 +43,7 @@ public extension TableSection {
     }
 
     /// Initializes an empty section.
-    static func nilSection() -> TableSection {
+    static func emptySection() -> TableSection {
         let tableSection = TableSection()
         
         if #available(iOS 15, *) {
