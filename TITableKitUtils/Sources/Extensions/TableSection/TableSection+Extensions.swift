@@ -30,10 +30,30 @@ public extension TableSection {
     convenience init(onlyRows rows: [Row]) {
         self.init(rows: rows)
 
-        self.headerView = nil
-        self.footerView = nil
+        if #available(iOS 15, *) {
+            self.headerView = nil
+            self.footerView = nil
+        } else {
+            self.headerView = UIView()
+            self.footerView = UIView()
+        }
 
         self.headerHeight = .leastNonzeroMagnitude
         self.footerHeight = .leastNonzeroMagnitude
+    }
+
+    /// Initializes an empty section.
+    static func emptySection() -> TableSection {
+        let tableSection = TableSection()
+        
+        if #available(iOS 15, *) {
+            tableSection.headerView = nil
+            tableSection.footerView = nil
+        } else {
+            tableSection.headerView = UIView()
+            tableSection.footerView = UIView()
+        }
+        
+        return tableSection
     }
 }
