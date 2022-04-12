@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.14.3
+
+- **Fix**: Creating headerView and footerView when initializing a section with rows in `TITableKitUtils`.
+- **Add**: Empty table section initialization method in `TITableKitUtils`.
+
 ### 1.14.2
 
 - **Update**: DateFormatters properties preset in reuse pools
