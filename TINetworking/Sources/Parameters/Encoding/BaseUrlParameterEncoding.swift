@@ -23,25 +23,35 @@
 import Alamofire
 
 open class BaseUrlParameterEncoding {
-    private let encoding: URLEncoding = .queryString
+    private let encoding: URLEncoding
 
-    public init() {}
+    public init(encoding: URLEncoding = .queryString) {
+        self.encoding = encoding
+    }
 
     open func encode<L: ParameterLocation>(parameters: [String: Parameter<L>]) -> [KeyValueTuple<String, String>] {
         var filteredComponents: [KeyValueTuple<String, String>] = []
 
         for key in parameters.keys.sorted(by: <) {
-            guard let parameter = parameters[key], let value = parameter.value else {
+            guard let parameter = parameters[key] else {
                 continue
             }
 
-            let components = encoding.queryComponents(fromKey: key, value: value)
-                // filter components with empty values if parameter doesn't allow empty value
-                .filter { !$0.1.isEmpty || parameter.allowEmptyValue }
-
-            filteredComponents.append(contentsOf: components)
+            filteredComponents.append(contentsOf: encode(parameter: parameter, forKey: key))
         }
 
         return filteredComponents
+    }
+
+    open func encode<L: ParameterLocation>(parameter: Parameter<L>, forKey key: String) -> [KeyValueTuple<String, String>] {
+        if let value = parameter.value {
+            return encoding.queryComponents(fromKey: key, value: value)
+                // filter components with empty values if parameter doesn't allow empty value
+                .filter { !$0.1.isEmpty || parameter.allowEmptyValue }
+        } else if parameter.allowEmptyValue {
+            return [KeyValueTuple(key, .init())]
+        } else {
+            return []
+        }
     }
 }
