@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.14.2
+
+- **Update**: DateFormatters properties preset in reuse pools
+
 ### 1.14.1
 
 - **Fix**: Array encoding for `QueryStringParameterEncoding`

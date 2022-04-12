@@ -22,12 +22,16 @@
 
 import Foundation
 
-public final class ISO8601DateFormattersReusePool {
+open class ISO8601DateFormattersReusePool {
     private var pool: [ISO8601DateFormatter.Options: ISO8601DateFormatter] = [:]
 
-    public init() {}
+    private let presetTimeZone: TimeZone?
 
-    public func dateFormatter(for options: ISO8601DateFormatter.Options) -> ISO8601DateFormatter {
+    public init(presetTimeZone: TimeZone? = nil) {
+        self.presetTimeZone = presetTimeZone
+    }
+
+    open func dateFormatter(for options: ISO8601DateFormatter.Options) -> ISO8601DateFormatter {
         guard let cachedFormatter = pool[options] else {
             return register(options: options)
         }
@@ -36,9 +40,13 @@ public final class ISO8601DateFormattersReusePool {
     }
 
     @discardableResult
-    public func register(options: ISO8601DateFormatter.Options) -> ISO8601DateFormatter {
+    open func register(options: ISO8601DateFormatter.Options) -> ISO8601DateFormatter {
         let dateFormatter = ISO8601DateFormatter()
         dateFormatter.formatOptions = options
+
+        if let timeZone = presetTimeZone {
+            dateFormatter.timeZone = timeZone
+        }
 
         pool[options] = dateFormatter
 

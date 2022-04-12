@@ -27,12 +27,18 @@ import Foundation
 // it is typically more efficient to cache a single instance
 // than to create and dispose of multiple instances.
 // (https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DataFormatting/Articles/dfDateFormatting10_4.html#//apple_ref/doc/uid/TP40002369-SW10)
-public final class DateFormattersReusePool {
+open class DateFormattersReusePool {
     private var pool: [String: DateFormatter] = [:]
 
-    public init() {}
+    private let presetLocale: Locale?
+    private let presetTimeZone: TimeZone?
 
-    public func dateFormatter<Format: DateFormat>(for dateFormat: Format) -> DateFormatter {
+    public init(presetLocale: Locale? = nil, presetTimeZone: TimeZone? = nil) {
+        self.presetLocale = presetLocale
+        self.presetTimeZone = presetTimeZone
+    }
+
+    open func dateFormatter<Format: DateFormat>(for dateFormat: Format) -> DateFormatter {
         guard let cachedFormatter = pool[dateFormat.rawValue] else {
             return register(dateFormat: dateFormat)
         }
@@ -40,15 +46,23 @@ public final class DateFormattersReusePool {
         return cachedFormatter
     }
 
-    public func register<Format: DateFormat>(format: Format.Type) {
+    open func register<Format: DateFormat>(format: Format.Type) {
         for dateFormat in Format.allCases {
             register(dateFormat: dateFormat)
         }
     }
 
     @discardableResult
-    public func register<Format: DateFormat>(dateFormat: Format) -> DateFormatter {
+    open func register<Format: DateFormat>(dateFormat: Format) -> DateFormatter {
         let dateFormatter = DateFormatter(dateFormat: dateFormat)
+
+        if let locale = presetLocale {
+            dateFormatter.locale = locale
+        }
+
+        if let timeZone = presetTimeZone {
+            dateFormatter.timeZone = timeZone
+        }
 
         pool[dateFormat.rawValue] = dateFormatter
 

@@ -89,7 +89,7 @@ public extension KeyedDecodingContainer {
             let failureReason: String
             
             if let dateFormat = dateFormatter.dateFormat, !dateFormat.isEmpty {
-                failureReason = "Unable to decode date from \(string) using dateFormat \(dateFormat)"
+                failureReason = "Unable to decode date from \(string) using: dateFormat \(dateFormat), locale: \(dateFormatter.locale.identifier)"
             } else {
                 failureReason = "DateFormatter is not configured (dateFormat is nil or empty)"
             }

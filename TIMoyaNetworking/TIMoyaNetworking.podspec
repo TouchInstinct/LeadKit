@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TIMoyaNetworking'
-  s.version          = '1.14.1'
+  s.version          = '1.14.2'
   s.summary          = 'Moya + Swagger network service.'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
