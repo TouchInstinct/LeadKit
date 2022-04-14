@@ -12,6 +12,7 @@ ORDERED_PODSPECS="../TISwiftUtils/TISwiftUtils.podspec
 ../TIUIElements/TIUIElements.podspec
 ../TITableKitUtils/TITableKitUtils.podspec
 ../TINetworking/TINetworking.podspec
+../TINetworking/TINetworkingCache.podspec
 ../TIMoyaNetworking/TIMoyaNetworking.podspec"
 
 for podspec_path in ${ORDERED_PODSPECS}; do

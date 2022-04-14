@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,41 +20,24 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
-import class UIKit.UIView
+import Moya
+import Foundation
 
-public extension TableSection {
+public enum EndpointErrorResult<E>: Error {
+    case apiError(E)
+    case networkError(MoyaError)
+}
 
-    /// Initializes section with rows and zero height footer and header.
-    ///
-    /// - Parameter rows: Rows to insert into section.
-    convenience init(onlyRows rows: [Row]) {
-        self.init(rows: rows)
+public extension EndpointErrorResult {
+    var isNetworkConnectionProblem: Bool {
+        guard case let .networkError(moyaError) = self,
+              case let .underlying(error, _) = moyaError,
+              case let .sessionTaskFailed(urlSessionTaskError) = error.asAFError,
+              let urlError = urlSessionTaskError as? URLError else {
 
-        if #available(iOS 15, *) {
-            self.headerView = nil
-            self.footerView = nil
-        } else {
-            self.headerView = UIView()
-            self.footerView = UIView()
-        }
+                  return false
+              }
 
-        self.headerHeight = .leastNonzeroMagnitude
-        self.footerHeight = .leastNonzeroMagnitude
-    }
-
-    /// Initializes an empty section.
-    static func emptySection() -> TableSection {
-        let tableSection = TableSection()
-        
-        if #available(iOS 15, *) {
-            tableSection.headerView = nil
-            tableSection.footerView = nil
-        } else {
-            tableSection.headerView = UIView()
-            tableSection.footerView = UIView()
-        }
-        
-        return tableSection
+        return urlError.code == .notConnectedToInternet
     }
 }
