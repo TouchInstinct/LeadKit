@@ -52,3 +52,33 @@ public struct SerializedRequest {
         self.acceptableStatusCodes = acceptableStatusCodes
     }
 }
+
+extension SerializedRequest: Hashable {
+    private var comparableQueryParameters: [String: String] {
+        queryParameters.mapValues(String.init(describing:))
+    }
+    
+    public static func == (lhs: SerializedRequest, rhs: SerializedRequest) -> Bool {
+        lhs.baseURL == rhs.baseURL &&
+        lhs.path == rhs.path &&
+        lhs.method == rhs.method &&
+        lhs.bodyData == rhs.bodyData &&
+        lhs.comparableQueryParameters == rhs.comparableQueryParameters &&
+        lhs.headers == rhs.headers &&
+        lhs.cookies == rhs.cookies &&
+        lhs.acceptableStatusCodes == rhs.acceptableStatusCodes
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(baseURL)
+        hasher.combine(path)
+        hasher.combine(method)
+        hasher.combine(bodyData)
+        hasher.combine(comparableQueryParameters.keys.sorted())
+        hasher.combine(comparableQueryParameters.values.sorted())
+        hasher.combine(headers?.keys.sorted() ?? [])
+        hasher.combine(headers?.values.sorted() ?? [])
+        hasher.combine(cookies)
+        hasher.combine(acceptableStatusCodes.sorted())
+    }
+}

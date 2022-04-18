@@ -59,13 +59,17 @@ open class DefaultJsonNetworkService {
                                         plugins: plugins)
     }
 
+    open func serialize<B: Encodable, S: Decodable>(request: EndpointRequest<B, S>) throws -> SerializedRequest {
+        try request.serialize(using: ApplicationJsonBodySerializer(jsonEncoder: jsonEncoder),
+                              defaultServer: defaultServer)
+    }
+
     @available(iOS 13.0.0, *)
-    open func process<B: Encodable, S: Decodable, F: Decodable>(request: EndpointRequest<B, S>,
-                                                                mapMoyaError: @escaping Closure<MoyaError, F>) async -> Result<S, F> {
+    open func process<B: Encodable, S, F>(request: EndpointRequest<B, S>) async -> EndpointRequestResult<S, F> {
         await process(request: request,
                       mapSuccess: Result.success,
-                      mapFailure: Result.failure,
-                      mapMoyaError: { .failure(mapMoyaError($0)) })
+                      mapFailure: { .failure(.apiError($0)) },
+                      mapMoyaError: { .failure(.networkError($0)) })
     }
 
     @available(iOS 13.0.0, *)
@@ -98,15 +102,14 @@ open class DefaultJsonNetworkService {
                                                                    mapMoyaError: @escaping Closure<MoyaError, R>,
                                                                    completion: @escaping ParameterClosure<R>) -> Cancellable {
 
-        ScopeCancellable { [jsonEncoder, serializationQueue, callbackQueue, defaultServer] scope in
+        ScopeCancellable { [serializationQueue, callbackQueue] scope in
             let workItem = DispatchWorkItem {
                 guard !scope.isCancelled else {
                     return
                 }
 
                 do {
-                    let serializedRequest = try request.serialize(using: ApplicationJsonBodySerializer(jsonEncoder: jsonEncoder),
-                                                                  defaultServer: defaultServer)
+                    let serializedRequest = try self.serialize(request: request)
 
                     scope.add(cancellable: self.process(request: serializedRequest,
                                                         mapSuccess: mapSuccess,

@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.15.0
+
+- **Update**: Network services in TIMoyaNetworking now passes MoyaError in result of EnpointRequest execution.
+- **Add**: `TINetworkingCache` module - caching results of EndpointRequests.
+- **Important Note**: `TINetworkingCache` may require you to add `DISABLE_DIAMOND_PROBLEM_DIAGNOSTIC=YES` flag to build settings of project target (see [probably related problem](https://forums.swift.org/t/adding-a-package-to-two-targets-in-one-projects-results-in-an-error/35007/18))
+
 ### 1.14.3
 
 - **Fix**: Creating headerView and footerView when initializing a section with rows in `TITableKitUtils`.

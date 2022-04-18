@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,41 +20,4 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
-import class UIKit.UIView
-
-public extension TableSection {
-
-    /// Initializes section with rows and zero height footer and header.
-    ///
-    /// - Parameter rows: Rows to insert into section.
-    convenience init(onlyRows rows: [Row]) {
-        self.init(rows: rows)
-
-        if #available(iOS 15, *) {
-            self.headerView = nil
-            self.footerView = nil
-        } else {
-            self.headerView = UIView()
-            self.footerView = UIView()
-        }
-
-        self.headerHeight = .leastNonzeroMagnitude
-        self.footerHeight = .leastNonzeroMagnitude
-    }
-
-    /// Initializes an empty section.
-    static func emptySection() -> TableSection {
-        let tableSection = TableSection()
-        
-        if #available(iOS 15, *) {
-            tableSection.headerView = nil
-            tableSection.footerView = nil
-        } else {
-            tableSection.headerView = UIView()
-            tableSection.footerView = UIView()
-        }
-        
-        return tableSection
-    }
-}
+public typealias EndpointRequestResult<S: Decodable, F: Decodable> = Result<S, EndpointErrorResult<F>>
