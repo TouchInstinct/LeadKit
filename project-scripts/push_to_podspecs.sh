@@ -14,7 +14,11 @@ ORDERED_PODSPECS="../TISwiftUtils/TISwiftUtils.podspec
 ../TITableKitUtils/TITableKitUtils.podspec
 ../TINetworking/TINetworking.podspec
 ../TINetworkingCache/TINetworkingCache.podspec
-../TIMoyaNetworking/TIMoyaNetworking.podspec"
+../TIMoyaNetworking/TIMoyaNetworking.podspec
+../TIMapUtils/TIMapUtils.podspec
+../TIAppleMapUtils/TIAppleMapUtils.podspec
+../TIGoogleMapUtils/TIGoogleMapUtils.podspec
+../TIYandexMapUtils/TIYandexMapUtils.podspec"
 
 for podspec_path in ${ORDERED_PODSPECS}; do
     bundle exec pod repo push git@github.com:TouchInstinct/Podspecs ${podspec_path} --allow-warnings

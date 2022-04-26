@@ -32,9 +32,9 @@ public extension KeyedDecodingContainer {
                  using: try userInfo.dateFormatter(for: dateFormat))
     }
     
-    func decodeDate<Format: DateFormat>(forKey key: Key,
-                                        userInfo: [CodingUserInfoKey: Any],
-                                        dateFormat: Format) throws -> [Date] {
+    func decodeDates<Format: DateFormat>(forKey key: Key,
+                                         userInfo: [CodingUserInfoKey: Any],
+                                         dateFormat: Format) throws -> [Date] {
         
         let dateFormatter = try userInfo.dateFormatter(for: dateFormat)
         
@@ -61,10 +61,10 @@ public extension KeyedDecodingContainer {
                         using: try userInfo.dateFormatter(for: dateFormat))
     }
     
-    func decodeDate<Format: DateFormat>(forKey key: Key,
-                                        userInfo: [CodingUserInfoKey: Any],
-                                        dateFormat: Format,
-                                        required: Bool) throws -> [Date]? {
+    func decodeDates<Format: DateFormat>(forKey key: Key,
+                                         userInfo: [CodingUserInfoKey: Any],
+                                         dateFormat: Format,
+                                         required: Bool) throws -> [Date]? {
         
         guard let stringDates = try decode([String]?.self, forKey: key, required: required) else {
             return nil

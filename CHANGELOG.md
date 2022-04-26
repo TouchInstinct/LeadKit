@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.16.0
+
+- **Add**: `TIMapUtils`, `TIAppleMapUtils`, `TIGoogleMapUtils` and `TIYandexMapUtils` modules for map items clustering and interacting with them.
+
 ### 1.15.0
 
 - **Update**: Network services in TIMoyaNetworking now passes MoyaError in result of EnpointRequest execution.
