@@ -58,11 +58,9 @@ public struct TransformDrawingOperation: OrientationAwareDrawingOperation {
     // MARK: - DrawingOperation
 
     public func affectedArea(in context: CGContext? = nil) -> CGRect {
-        if cropToImageBounds {
-            return CGRect(origin: offset, size: resizedRect.size)
-        } else {
-            return resizedRect.offset(by: offset)
-        }
+        cropToImageBounds
+            ? CGRect(origin: offset, size: resizedRect.size)
+            : resizedRect.offset(by: offset)
     }
 
     public func apply(in context: CGContext) {

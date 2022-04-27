@@ -102,14 +102,14 @@ open class DefaultClusterIconRenderer {
             return SolidFillDrawingOperation(color: color.cgColor,
                                              path: path)
         case let .image(image):
-            if let cgImage = image.cgImage {
-                return TransformDrawingOperation(image: cgImage,
-                                                 imageSize: image.size,
-                                                 maxNewSize: iconSize,
-                                                 flipHorizontallyDuringDrawing: true)
-            } else {
+            guard let cgImage = image.cgImage else {
                 return nil
             }
+            
+            return TransformDrawingOperation(image: cgImage,
+                                             imageSize: image.size,
+                                             maxNewSize: iconSize,
+                                             flipHorizontallyDuringDrawing: true)
         }
     }
 

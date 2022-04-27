@@ -24,7 +24,11 @@ import TIMapUtils
 import GoogleMapsUtils
 import GoogleMaps
 
-open class GoogleClusterPlacemarkManager<Model>: BasePlacemarkManager<GMSMarker, [GooglePlacemarkManager<Model>], GMSCoordinateBounds>, GMUClusterRendererDelegate, GMUClusterManagerDelegate, GMUClusterIconGenerator {
+open class GoogleClusterPlacemarkManager<Model>: BasePlacemarkManager<GMSMarker, [GooglePlacemarkManager<Model>], GMSCoordinateBounds>,
+                                                 GMUClusterRendererDelegate,
+                                                 GMUClusterManagerDelegate,
+                                                 GMUClusterIconGenerator {
+
     public var mapDelegate: GMSMapViewDelegate? {
         didSet {
             clusterManager?.setMapDelegate(mapDelegate)
@@ -51,16 +55,23 @@ open class GoogleClusterPlacemarkManager<Model>: BasePlacemarkManager<GMSMarker,
                   tapHandler: tapHandler)
     }
 
-    open func addMarkers(to map: GMSMapView) {
-        let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
+    open func clusterAlgorithm() -> GMUClusterAlgorithm {
+        GMUNonHierarchicalDistanceBasedAlgorithm()
+    }
+
+    open func clusterRenderer(for map: GMSMapView) -> GMUClusterRenderer {
         let renderer = GMUDefaultClusterRenderer(mapView: map,
                                                  clusterIconGenerator: self)
 
         renderer.delegate = self
 
+        return renderer
+    }
+
+    open func addMarkers(to map: GMSMapView) {
         clusterManager = GMUClusterManager(map: map,
-                                           algorithm: algorithm,
-                                           renderer: renderer)
+                                           algorithm: clusterAlgorithm(),
+                                           renderer: clusterRenderer(for: map))
 
         clusterManager?.setDelegate(self, mapDelegate: mapDelegate)
         clusterManager?.add(dataModel)
@@ -117,6 +128,6 @@ open class GoogleClusterPlacemarkManager<Model>: BasePlacemarkManager<GMSMarker,
     // MARK: - GMUClusterIconGenerator
 
     open func icon(forSize size: UInt) -> UIImage? {
-        nil
+        nil // icon generation will be performed in GMUClusterRendererDelegate callback
     }
 }
