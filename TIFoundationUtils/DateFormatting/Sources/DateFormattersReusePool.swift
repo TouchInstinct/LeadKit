@@ -28,7 +28,7 @@ import Foundation
 // than to create and dispose of multiple instances.
 // (https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DataFormatting/Articles/dfDateFormatting10_4.html#//apple_ref/doc/uid/TP40002369-SW10)
 open class DateFormattersReusePool {
-    private var pool: [String: DateFormatter] = [:]
+    private var pool: ThreadSafeDictionary<String, DateFormatter> = [:]
 
     private let presetLocale: Locale?
     private let presetTimeZone: TimeZone?

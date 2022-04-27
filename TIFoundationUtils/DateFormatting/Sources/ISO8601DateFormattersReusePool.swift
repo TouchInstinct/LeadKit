@@ -23,7 +23,7 @@
 import Foundation
 
 open class ISO8601DateFormattersReusePool {
-    private var pool: [ISO8601DateFormatter.Options: ISO8601DateFormatter] = [:]
+    private var pool: ThreadSafeDictionary<ISO8601DateFormatter.Options, ISO8601DateFormatter> = [:]
 
     private let presetTimeZone: TimeZone?
 
