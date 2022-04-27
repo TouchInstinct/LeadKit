@@ -23,6 +23,11 @@ let package = Package(
     .library(name: "TINetworking", targets: ["TINetworking"]),
     .library(name: "TIMoyaNetworking", targets: ["TIMoyaNetworking"]),
     .library(name: "TINetworkingCache", targets: ["TINetworkingCache"]),
+
+    // MARK: - Maps
+
+    .library(name: "TIMapUtils", targets: ["TIMapUtils"]),
+    .library(name: "TIAppleMapUtils", targets: ["TIAppleMapUtils"]),
     
     // MARK: - Elements
     .library(name: "OTPSwiftView", targets: ["OTPSwiftView"]),
@@ -54,6 +59,11 @@ let package = Package(
     .target(name: "TINetworking", dependencies: ["TISwiftUtils", "Alamofire"], path: "TINetworking/Sources"),
     .target(name: "TIMoyaNetworking", dependencies: ["TINetworking", "TIFoundationUtils", "Moya"], path: "TIMoyaNetworking"),
     .target(name: "TINetworkingCache", dependencies: ["TIFoundationUtils", "TINetworking", "Cache"], path: "TINetworkingCache/Sources"),
+
+    // MARK: - Maps
+
+    .target(name: "TIMapUtils", dependencies: [], path: "TIMapUtils/Sources"),
+    .target(name: "TIAppleMapUtils", dependencies: ["TIMapUtils"], path: "TIAppleMapUtils/Sources"),
     
     // MARK: - Elements
 
