@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.16.1
+
+- **Update**: `DateFormattersReusePool` and  `ISO8601DateFormattersReusePool` are now thread safe.
+
 ### 1.16.0
 
 - **Add**: `TIMapUtils`, `TIAppleMapUtils`, `TIGoogleMapUtils` and `TIYandexMapUtils` modules for map items clustering and interacting with them.
