@@ -20,38 +20,20 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import CoreLocation
 
-open class BasePlacemarkManager<Placemark, Model, Coordinate>: NSObject, PlacemarkManager {
-    public typealias TapHandlerClosure = (Model, Coordinate) -> Bool
-    public typealias IconProviderClosure = (Model) -> UIImage
+public struct CLCoordinateBounds: CoordinateBounds {
+    public let southWest: CLLocationCoordinate2D
+    public let northEast: CLLocationCoordinate2D
 
-    public var tapHandler: TapHandlerClosure?
-    public var iconProvider: IconProviderClosure
-
-    public let dataModel: Model
-
-    public init(dataModel: Model,
-                iconProvider: @escaping IconProviderClosure,
-                tapHandler: TapHandlerClosure?) {
-
-        self.dataModel = dataModel
-        self.iconProvider = iconProvider
-        self.tapHandler = tapHandler
+    public init(southWest: CLLocationCoordinate2D, northEast: CLLocationCoordinate2D) {
+        self.southWest = southWest
+        self.northEast = northEast
     }
 
-    public convenience init<IF: MarkerIconFactory>(dataModel: Model,
-                                                   iconFactory: IF,
-                                                   tapHandler: TapHandlerClosure?) where IF.Model == Model {
-
-        self.init(dataModel: dataModel,
-                  iconProvider: { iconFactory.markerIcon(for: $0) },
-                  tapHandler: tapHandler)
-    }
-
-    // MARK: - PlacemarkManager
-
-    open func configure(placemark: Placemark) {
-        // override in subclass
+    public static func of(southWest: CLLocationCoordinate2D, northEast: CLLocationCoordinate2D) -> CLCoordinateBounds {
+        .init(southWest: southWest, northEast: northEast)
     }
 }
+
+extension CLLocationCoordinate2D: LocationCoordinate {}

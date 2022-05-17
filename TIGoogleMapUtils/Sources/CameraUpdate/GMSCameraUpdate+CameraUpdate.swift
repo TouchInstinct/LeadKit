@@ -20,38 +20,38 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import GoogleMapsUtils
+import TIMapUtils
 
-open class BasePlacemarkManager<Placemark, Model, Coordinate>: NSObject, PlacemarkManager {
-    public typealias TapHandlerClosure = (Model, Coordinate) -> Bool
-    public typealias IconProviderClosure = (Model) -> UIImage
+extension GMSCameraUpdate: CameraUpdateFactory, CameraUpdate {
+    // MARK: - CameraUpdateFactory
 
-    public var tapHandler: TapHandlerClosure?
-    public var iconProvider: IconProviderClosure
+    public static func update(for action: CameraUpdateAction<CLLocationCoordinate2D, GMSCoordinateBounds>) -> GMSCameraUpdate {
+        switch action {
+        case let .focus(target, zoom):
+            return .setTarget(target, zoom: zoom)
 
-    public let dataModel: Model
+        case let .fit(bounds, insets):
+            return .fit(bounds, with: insets)
 
-    public init(dataModel: Model,
-                iconProvider: @escaping IconProviderClosure,
-                tapHandler: TapHandlerClosure?) {
-
-        self.dataModel = dataModel
-        self.iconProvider = iconProvider
-        self.tapHandler = tapHandler
+        case .zoomIn:
+            return .zoomIn()
+            
+        case .zoomOut:
+            return .zoomOut()
+        }
     }
 
-    public convenience init<IF: MarkerIconFactory>(dataModel: Model,
-                                                   iconFactory: IF,
-                                                   tapHandler: TapHandlerClosure?) where IF.Model == Model {
+    // MARK: - CameraUpdate
 
-        self.init(dataModel: dataModel,
-                  iconProvider: { iconFactory.markerIcon(for: $0) },
-                  tapHandler: tapHandler)
+    public func update(map: GMSMapView) {
+        map.moveCamera(self)
     }
 
-    // MARK: - PlacemarkManager
-
-    open func configure(placemark: Placemark) {
-        // override in subclass
+    public func update(map: GMSMapView, animationDuration: TimeInterval) {
+        CATransaction.begin()
+        CATransaction.setValue(animationDuration, forKey: kCATransactionAnimationDuration)
+        map.animate(with: self)
+        CATransaction.commit()
     }
 }

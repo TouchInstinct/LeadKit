@@ -20,38 +20,16 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import CoreLocation
 
-open class BasePlacemarkManager<Placemark, Model, Coordinate>: NSObject, PlacemarkManager {
-    public typealias TapHandlerClosure = (Model, Coordinate) -> Bool
-    public typealias IconProviderClosure = (Model) -> UIImage
-
-    public var tapHandler: TapHandlerClosure?
-    public var iconProvider: IconProviderClosure
-
-    public let dataModel: Model
-
-    public init(dataModel: Model,
-                iconProvider: @escaping IconProviderClosure,
-                tapHandler: TapHandlerClosure?) {
-
-        self.dataModel = dataModel
-        self.iconProvider = iconProvider
-        self.tapHandler = tapHandler
+extension CLLocationCoordinate2D: Hashable {
+    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        rhs.latitude == lhs.latitude &&
+        rhs.longitude == lhs.longitude
     }
 
-    public convenience init<IF: MarkerIconFactory>(dataModel: Model,
-                                                   iconFactory: IF,
-                                                   tapHandler: TapHandlerClosure?) where IF.Model == Model {
-
-        self.init(dataModel: dataModel,
-                  iconProvider: { iconFactory.markerIcon(for: $0) },
-                  tapHandler: tapHandler)
-    }
-
-    // MARK: - PlacemarkManager
-
-    open func configure(placemark: Placemark) {
-        // override in subclass
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(latitude)
+        hasher.combine(longitude)
     }
 }

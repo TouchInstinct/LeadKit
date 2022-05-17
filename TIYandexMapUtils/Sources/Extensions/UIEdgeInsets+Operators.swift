@@ -20,38 +20,20 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import UIKit.UIGeometry
 
-open class BasePlacemarkManager<Placemark, Model, Coordinate>: NSObject, PlacemarkManager {
-    public typealias TapHandlerClosure = (Model, Coordinate) -> Bool
-    public typealias IconProviderClosure = (Model) -> UIImage
-
-    public var tapHandler: TapHandlerClosure?
-    public var iconProvider: IconProviderClosure
-
-    public let dataModel: Model
-
-    public init(dataModel: Model,
-                iconProvider: @escaping IconProviderClosure,
-                tapHandler: TapHandlerClosure?) {
-
-        self.dataModel = dataModel
-        self.iconProvider = iconProvider
-        self.tapHandler = tapHandler
+public extension UIEdgeInsets {
+    static func +(lhs: UIEdgeInsets, rhs: UIEdgeInsets) -> UIEdgeInsets {
+        UIEdgeInsets(top: lhs.top + rhs.top,
+                     left: lhs.left + rhs.left,
+                     bottom: lhs.bottom + rhs.bottom,
+                     right: lhs.right + rhs.right)
     }
 
-    public convenience init<IF: MarkerIconFactory>(dataModel: Model,
-                                                   iconFactory: IF,
-                                                   tapHandler: TapHandlerClosure?) where IF.Model == Model {
-
-        self.init(dataModel: dataModel,
-                  iconProvider: { iconFactory.markerIcon(for: $0) },
-                  tapHandler: tapHandler)
-    }
-
-    // MARK: - PlacemarkManager
-
-    open func configure(placemark: Placemark) {
-        // override in subclass
+    static func *(lhs: UIEdgeInsets, rhs: CGFloat) -> UIEdgeInsets {
+        UIEdgeInsets(top: lhs.top * rhs,
+                     left: lhs.left * rhs,
+                     bottom: lhs.bottom * rhs,
+                     right: lhs.right * rhs)
     }
 }
