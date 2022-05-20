@@ -20,21 +20,8 @@
 //  THE SOFTWARE.
 //
 
-@available(iOS 13.0.0, *)
-public struct AsyncEventHandlingChain<Handler: AsyncEventHandler>: AsyncEventHandler {
-    private let handlers: [Handler]
-
-    public init(handlers: [Handler]) {
-        self.handlers = handlers
-    }
-
-    public func handle(_ event: Handler.EventType) async -> Bool {
-        for handler in handlers {
-            if await handler.handle(event) {
-                return true
-            }
-        }
-
-        return false
-    }
+public enum RecoverableErrorHandlerResult<ErrorType: Error> {
+    case skipError
+    case recoverRequest
+    case forwardError(ErrorType)
 }

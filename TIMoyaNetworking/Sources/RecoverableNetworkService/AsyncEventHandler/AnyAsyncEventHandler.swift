@@ -23,14 +23,16 @@
 import TISwiftUtils
 
 @available(iOS 13.0.0, *)
-public struct AnyAsyncEventHandler<EventType>: AsyncEventHandler {
-    private let processClosure: AsyncClosure<EventType, Bool>
+public struct AnyAsyncEventHandler<EventType, ResultType>: AsyncEventHandler {
+    private let processClosure: AsyncClosure<EventType, ResultType>
 
-    public init<Handler: AsyncEventHandler>(handler: Handler) where Handler.EventType == EventType {
+    public init<Handler: AsyncEventHandler>(handler: Handler)
+        where Handler.EventType == EventType, Handler.ResultType == ResultType {
+
         self.processClosure = handler.handle
     }
 
-    public func handle(_ event: EventType) async -> Bool {
+    public func handle(_ event: EventType) async -> ResultType {
         await processClosure(event)
     }
 }

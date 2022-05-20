@@ -20,46 +20,61 @@
 //  THE SOFTWARE.
 //
 
+import Moya
 import TINetworking
 import TISwiftUtils
-import Moya
 
 @available(iOS 13.0.0, *)
 open class DefaultRecoverableJsonNetworkService<ApiError: Decodable & Error>: DefaultJsonNetworkService {
-    public typealias ErrorHandler = AnyAsyncEventHandler<EndpointErrorResult<ApiError>>
+    public typealias ErrorType = EndpointErrorResult<ApiError>
+    public typealias ErrorHandlerResultType = RecoverableErrorHandlerResult<ErrorType>
+    public typealias ErrorHandlerType = AnyAsyncEventHandler<ErrorType, ErrorHandlerResultType>
 
-    private(set) public var defaultErrorHandlers: [ErrorHandler] = []
+    public private(set) var defaultErrorHandlers: [ErrorHandlerType] = []
 
     open func process<B: Encodable, S>(recoverableRequest: EndpointRequest<B, S>,
-                                       prependErrorHandlers: [ErrorHandler] = [],
-                                       appendErrorHandlers: [ErrorHandler] = []) async -> EndpointRequestResult<S, ApiError> {
+                                       prependErrorHandlers: [ErrorHandlerType] = [],
+                                       appendErrorHandlers: [ErrorHandlerType] = []) async ->
+        EndpointRequestResult<S, ApiError> {
 
         await process(recoverableRequest: recoverableRequest,
                       errorHandlers: prependErrorHandlers + defaultErrorHandlers + appendErrorHandlers)
     }
 
     open func process<B: Encodable, S>(recoverableRequest: EndpointRequest<B, S>,
-                                       errorHandlers: [ErrorHandler]) async -> EndpointRequestResult<S, ApiError> {
+                                       errorHandlers: [ErrorHandlerType]) async -> EndpointRequestResult<S, ApiError> {
 
         let result: EndpointRequestResult<S, ApiError> = await process(request: recoverableRequest)
 
         if case let .failure(errorResponse) = result {
-            let chain = AsyncEventHandlingChain(handlers: errorHandlers)
+            for handler in errorHandlers {
+                let handlerResult = await handler.handle(errorResponse)
 
-            if await chain.handle(errorResponse) {
-                return await process(recoverableRequest: recoverableRequest,
-                                     errorHandlers: errorHandlers)
+                switch handlerResult {
+                case let .forwardError(error):
+                    return .failure(error)
+
+                case .recoverRequest:
+                    return await process(recoverableRequest: recoverableRequest, errorHandlers: errorHandlers)
+
+                case .skipError:
+                    break
+                }
             }
         }
 
         return result
     }
 
-    public func register<ErrorHandler: AsyncErrorHandler>(defaultErrorHandler: ErrorHandler) where ErrorHandler.EventType == EndpointErrorResult<ApiError> {
+    public func register<ErrorHandler: AsyncErrorHandler>(defaultErrorHandler: ErrorHandler)
+        where ErrorHandler.EventType == ErrorHandlerType.EventType, ErrorHandler.ResultType == ErrorHandlerType.ResultType {
+
         defaultErrorHandlers.append(defaultErrorHandler.asAnyAsyncEventHandler())
     }
 
-    public func set<ErrorHandler: AsyncErrorHandler>(defaultErrorHandlers: ErrorHandler...) where ErrorHandler.EventType == EndpointErrorResult<ApiError> {
+    public func set<ErrorHandler: AsyncErrorHandler>(defaultErrorHandlers: ErrorHandler...)
+        where ErrorHandler.EventType == ErrorHandlerType.EventType, ErrorHandler.ResultType == ErrorHandlerType.ResultType {
+
         self.defaultErrorHandlers = defaultErrorHandlers.map { $0.asAnyAsyncEventHandler() }
     }
 }

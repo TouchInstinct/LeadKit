@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TINetworking'
-  s.version          = '1.16.1'
+  s.version          = '1.16.2'
   s.summary          = 'Swagger-frendly networking layer helpers.'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
