@@ -23,13 +23,14 @@
 @available(iOS 13.0.0, *)
 public protocol AsyncEventHandler {
     associatedtype EventType
+    associatedtype ResultType
 
-    func handle(_ event: EventType) async -> Bool
+    func handle(_ event: EventType) async -> ResultType
 }
 
 @available(iOS 13.0.0, *)
 public extension AsyncEventHandler {
-    func asAnyAsyncEventHandler() -> AnyAsyncEventHandler<EventType> {
+    func asAnyAsyncEventHandler() -> AnyAsyncEventHandler<EventType, ResultType> {
         .init(handler: self)
     }
 }
