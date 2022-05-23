@@ -27,8 +27,6 @@ import CoreLocation
 
 open class YandexClusterPlacemarkManager<Model>: BasePlacemarkManager<YMKCluster, [YandexPlacemarkManager<Model>], [YMKPoint]>, YMKClusterListener, YMKClusterTapListener {
 
-    public var placemarksMapping: [CLLocationCoordinate2D: [YandexPlacemarkManager<Model>]]?
-
     public init(placemarkManagers: [YandexPlacemarkManager<Model>],
                 iconProvider: @escaping IconProviderClosure,
                 tapHandler: TapHandlerClosure?) {
@@ -57,14 +55,9 @@ open class YandexClusterPlacemarkManager<Model>: BasePlacemarkManager<YMKCluster
 
         let placemarksZip = zip(emptyPlacemarks, dataModel)
 
-        // [(coordinate, placemarkManager)]
-        let mappingSequence = placemarksZip.map { (CLLocationCoordinate2D(ymkPoint: $0.0.geometry), $0.1) }
-
-        // [coordinate: [placemarkManager]]
-        self.placemarksMapping = Dictionary(grouping: mappingSequence) { $0.0 }.mapValues { $0.map { $0.1 } }
-
-        placemarksZip.forEach { (placemark, manager) in
+        for (placemark, manager) in placemarksZip {
             manager.configure(placemark: placemark)
+            placemark.userData = manager
         }
 
         clusterizedPlacemarkCollection.clusterPlacemarks(withClusterRadius: clusterRadius,
@@ -90,8 +83,8 @@ open class YandexClusterPlacemarkManager<Model>: BasePlacemarkManager<YMKCluster
     }
 
     open func managers(in cluster: YMKCluster) -> [YandexPlacemarkManager<Model>] {
-        cluster.placemarks.flatMap {
-            placemarksMapping?[CLLocationCoordinate2D(ymkPoint: $0.geometry)] ?? []
+        cluster.placemarks.compactMap {
+            $0.userData as? YandexPlacemarkManager<Model>
         }
     }
 
