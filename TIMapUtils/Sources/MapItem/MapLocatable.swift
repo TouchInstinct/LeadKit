@@ -20,28 +20,8 @@
 //  THE SOFTWARE.
 //
 
-import ObjectiveC
+public protocol MapLocatable {
+    associatedtype Position
 
-open class BasePlacemarkManager<Placemark, DataModel, Location>: NSObject, PlacemarkManager, PlacemarkConfigurator {
-    public typealias TapHandlerClosure = (DataModel, Location) -> Bool
-
-    public var tapHandler: TapHandlerClosure?
-    public var iconFactory: AnyMarkerIconFactory<DataModel>?
-
-    public let dataModel: DataModel
-
-    public init(dataModel: DataModel,
-                iconFactory: AnyMarkerIconFactory<DataModel>?,
-                tapHandler: TapHandlerClosure?) {
-
-        self.dataModel = dataModel
-        self.iconFactory = iconFactory
-        self.tapHandler = tapHandler
-    }
-
-    // MARK: - PlacemarkConfigurator
-
-    open func configure(placemark: Placemark) {
-        // override in subclass
-    }
+    var position: Position? { get }
 }

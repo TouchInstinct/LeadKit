@@ -48,7 +48,6 @@ open class DefaultClusterIconRenderer {
         }
     }
 
-    public var screenScale: CGFloat
     public var textAttributes: TextAttributes
     public var marginToText: CGFloat
     public var background: Background
@@ -58,14 +57,12 @@ open class DefaultClusterIconRenderer {
         border.strokeSize
     }
 
-    public init(screenScale: CGFloat,
-                textAttributes: TextAttributes = .init(font: .systemFont(ofSize: 48),
+    public init(textAttributes: TextAttributes = .init(font: .systemFont(ofSize: 48),
                                                        color: .black),
                 marginToText: CGFloat = 8,
                 background: Background = .color(.orange),
                 border: Border = .init(strokeSize: 4, color: .white)) {
 
-        self.screenScale = screenScale
         self.textAttributes = textAttributes
         self.marginToText = marginToText
         self.background = background
@@ -126,7 +123,6 @@ open class DefaultClusterIconRenderer {
     open func execute(drawingOperations: [DrawingOperation], inContextWithSize size: CGSize) -> UIImage {
         let format = UIGraphicsImageRendererFormat()
         format.opaque = false
-        format.scale = screenScale
 
         let renderer = UIGraphicsImageRenderer(size: size, format: format)
 

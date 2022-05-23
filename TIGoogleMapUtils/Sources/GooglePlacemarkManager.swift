@@ -31,30 +31,19 @@ open class GooglePlacemarkManager<Model>: BasePlacemarkManager<GMSMarker, Model,
 
     public init(dataModel: Model,
                 position: CLLocationCoordinate2D,
-                iconProvider: @escaping IconProviderClosure,
+                iconFactory: AnyMarkerIconFactory<DataModel>?,
                 tapHandler: TapHandlerClosure?) {
 
         self.position = position
 
         super.init(dataModel: dataModel,
-                   iconProvider: iconProvider,
+                   iconFactory: iconFactory,
                    tapHandler: tapHandler)
-    }
-
-    public convenience init<IF: MarkerIconFactory>(dataModel: Model,
-                                                   position: CLLocationCoordinate2D,
-                                                   iconFactory: IF,
-                                                   tapHandler: TapHandlerClosure?) where IF.Model == Model {
-
-        self.init(dataModel: dataModel,
-                  position: position,
-                  iconProvider: { iconFactory.markerIcon(for: $0) },
-                  tapHandler: tapHandler)
     }
 
     // MARK: - PlacemarkManager
 
     override open func configure(placemark: GMSMarker) {
-        placemark.icon = iconProvider(dataModel)
+        placemark.icon = iconFactory?.markerIcon(for: dataModel)
     }
 }

@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.18.0
+
+- **Add**: add MapManagers for routine maps configuration
+
 ### 1.17.0
 
 - **Add**: add smooth CameraUpdate actions for supported maps

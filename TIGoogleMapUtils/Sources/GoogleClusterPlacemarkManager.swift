@@ -37,22 +37,18 @@ open class GoogleClusterPlacemarkManager<Model>: BasePlacemarkManager<GMSMarker,
 
     public private(set) var clusterManager: GMUClusterManager?
 
-    public init(placemarkManagers: [GooglePlacemarkManager<Model>],
-                iconProvider: @escaping IconProviderClosure,
-                tapHandler: TapHandlerClosure?) {
+    public var defaultClusterIconGenerator = GMUDefaultClusterIconGenerator()
+
+    public init<IF: MarkerIconFactory>(placemarkManagers: [GooglePlacemarkManager<Model>],
+                                       iconFactory: IF?,
+                                       mapDelegate: GMSMapViewDelegate? = nil,
+                                       tapHandler: TapHandlerClosure?) where IF.Model == [Model] {
 
         super.init(dataModel: placemarkManagers,
-                   iconProvider: iconProvider,
+                   iconFactory: iconFactory?.asAnyMarkerIconFactory { $0.map { $0.dataModel } },
                    tapHandler: tapHandler)
-    }
 
-    public convenience init<IF: MarkerIconFactory>(placemarkManagers: [GooglePlacemarkManager<Model>],
-                                                   iconFactory: IF,
-                                                   tapHandler: TapHandlerClosure?) where IF.Model == [Model] {
-
-        self.init(placemarkManagers: placemarkManagers,
-                  iconProvider: { iconFactory.markerIcon(for: $0.map { $0.dataModel }) },
-                  tapHandler: tapHandler)
+        self.mapDelegate = mapDelegate
     }
 
     open func clusterAlgorithm() -> GMUClusterAlgorithm {
@@ -91,7 +87,8 @@ open class GoogleClusterPlacemarkManager<Model>: BasePlacemarkManager<GMSMarker,
                 return
             }
 
-            marker.icon = iconProvider(placemarkManagers)
+            marker.icon = iconFactory?.markerIcon(for: placemarkManagers)
+                ?? defaultClusterIconGenerator.icon(forSize: UInt(placemarkManagers.count))
         case let clusterItem as GooglePlacemarkManager<Model>:
             clusterItem.configure(placemark: marker)
         default:
