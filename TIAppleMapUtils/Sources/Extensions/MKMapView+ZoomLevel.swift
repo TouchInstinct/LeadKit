@@ -20,38 +20,23 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import MapKit
 
-open class BasePlacemarkManager<Placemark, Model, Coordinate>: NSObject, PlacemarkManager {
-    public typealias TapHandlerClosure = (Model, Coordinate) -> Bool
-    public typealias IconProviderClosure = (Model) -> UIImage
-
-    public var tapHandler: TapHandlerClosure?
-    public var iconProvider: IconProviderClosure
-
-    public let dataModel: Model
-
-    public init(dataModel: Model,
-                iconProvider: @escaping IconProviderClosure,
-                tapHandler: TapHandlerClosure?) {
-
-        self.dataModel = dataModel
-        self.iconProvider = iconProvider
-        self.tapHandler = tapHandler
+// https://stackoverflow.com/a/15020534
+public extension MKMapView {
+    var zoomLevel: Float {
+        Float(log2(360 * ((frame.size.width / .expectedMapViewTileSize) / region.span.longitudeDelta))) + 1
     }
 
-    public convenience init<IF: MarkerIconFactory>(dataModel: Model,
-                                                   iconFactory: IF,
-                                                   tapHandler: TapHandlerClosure?) where IF.Model == Model {
-
-        self.init(dataModel: dataModel,
-                  iconProvider: { iconFactory.markerIcon(for: $0) },
-                  tapHandler: tapHandler)
+    func set(zoomLevel: Float, at centerCoordinate: CLLocationCoordinate2D, animated: Bool = true) {
+        let span = MKCoordinateSpan(latitudeDelta: 0,
+                                    longitudeDelta: 360 / pow(2, Double(zoomLevel)) * frame.size.width / .expectedMapViewTileSize)
+        setRegion(MKCoordinateRegion(center: centerCoordinate, span: span), animated: animated)
     }
+}
 
-    // MARK: - PlacemarkManager
-
-    open func configure(placemark: Placemark) {
-        // override in subclass
+private extension CGFloat {
+    static var expectedMapViewTileSize: CGFloat {
+        256
     }
 }

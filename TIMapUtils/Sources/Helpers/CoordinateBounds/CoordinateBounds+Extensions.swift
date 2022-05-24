@@ -22,30 +22,31 @@
 
 import CoreLocation
 
-public struct CoordinateBounds {
-    public let southWest: CLLocationCoordinate2D
-    public let northEast: CLLocationCoordinate2D
-
-    public init(southWest: CLLocationCoordinate2D, northEast: CLLocationCoordinate2D) {
-        self.southWest = southWest
-        self.northEast = northEast
-    }
-}
-
 public extension CoordinateBounds {
-    static func from<C: Collection>(coordinates: C) -> CoordinateBounds where C.Element == CLLocationCoordinate2D {
-        guard let first = coordinates.first else {
-            return .init(southWest: CLLocationCoordinate2D(),
-                         northEast: CLLocationCoordinate2D())
+    static func from<C: Collection>(coordinates: C) -> Self? where C.Element == Coordinate {
+        guard !coordinates.isEmpty else {
+            return nil
         }
 
-        let initialBox = CoordinateBounds(southWest: first, northEast: first)
+        var (northEastLon, northEastLat) = (-CLLocationDegrees.infinity, -CLLocationDegrees.infinity)
+        var (southWestLon, southWestLat) = (CLLocationDegrees.infinity, CLLocationDegrees.infinity)
 
-        return coordinates.dropFirst().reduce(initialBox) {
-            CoordinateBounds(southWest: CLLocationCoordinate2D(latitude: min($0.southWest.latitude, $1.latitude),
-                                                               longitude: min($0.southWest.longitude, $1.longitude)),
-                             northEast: CLLocationCoordinate2D(latitude: max($0.northEast.latitude, $1.latitude),
-                                                               longitude: max($0.northEast.longitude, $1.longitude)))
+        for coordinate in coordinates {
+            southWestLon = min(southWestLon, coordinate.longitude)
+            northEastLon = max(northEastLon, coordinate.longitude)
+            southWestLat = min(southWestLat, coordinate.latitude)
+            northEastLat = max(northEastLat, coordinate.latitude)
         }
+
+        return .of(southWest: Coordinate(latitude: southWestLat, longitude: southWestLon),
+                   northEast: Coordinate(latitude: northEastLat, longitude: northEastLon))
+    }
+
+    var topLeft: Coordinate {
+        Coordinate(latitude: northEast.latitude, longitude: southWest.longitude)
+    }
+
+    var bottomRight: Coordinate {
+        Coordinate(latitude: southWest.latitude, longitude: northEast.longitude)
     }
 }

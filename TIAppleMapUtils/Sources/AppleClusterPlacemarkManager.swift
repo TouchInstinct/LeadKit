@@ -25,7 +25,7 @@ import TIMapUtils
 import MapKit
 import UIKit
 
-open class AppleClusterPlacemarkManager<Model>: BasePlacemarkManager<MKAnnotationView, [ApplePlacemarkManager<Model>], MKCoordinateRegion>, MKMapViewDelegate {
+open class AppleClusterPlacemarkManager<Model>: BasePlacemarkManager<MKAnnotationView, [ApplePlacemarkManager<Model>], MKMapRect>, MKMapViewDelegate {
     public weak var mapViewDelegate: MKMapViewDelegate?
 
     private let mapDelegateSelectors = NSObject.instanceMethodSelectors(of: MKMapViewDelegate.self)
@@ -137,22 +137,5 @@ open class AppleClusterPlacemarkManager<Model>: BasePlacemarkManager<MKAnnotatio
         }
 
         return mapViewDelegate
-    }
-}
-
-private extension MKCoordinateRegion {
-    static func from(coordinates: [CLLocationCoordinate2D]) -> MKCoordinateRegion {
-        guard !coordinates.isEmpty else {
-            return MKCoordinateRegion()
-        }
-
-        let bbox = CoordinateBounds.from(coordinates: coordinates)
-
-        let span = MKCoordinateSpan(latitudeDelta: bbox.northEast.latitude - bbox.southWest.latitude,
-                                    longitudeDelta: bbox.northEast.longitude - bbox.southWest.longitude)
-        let center = CLLocationCoordinate2D(latitude: bbox.northEast.latitude - (span.latitudeDelta / 2),
-                                            longitude: bbox.southWest.longitude + (span.longitudeDelta / 2))
-
-        return MKCoordinateRegion(center: center, span: span)
     }
 }

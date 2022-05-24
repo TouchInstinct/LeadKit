@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.17.0
+
+- **Add**: add smooth CameraUpdate actions for supported maps
+
 ### 1.16.2
 
 - **Update**: `DefaultRecoverableJsonNetworkService` now supports error forwarding from its error handlers to initial requests.

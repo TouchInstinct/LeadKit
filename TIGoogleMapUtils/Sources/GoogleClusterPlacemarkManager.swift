@@ -110,11 +110,7 @@ open class GoogleClusterPlacemarkManager<Model>: BasePlacemarkManager<GMSMarker,
             return false
         }
 
-        let bounds = placemarkManagers.reduce(GMSCoordinateBounds()) {
-            $0.includingCoordinate($1.position)
-        }
-
-        return tapHandler?(placemarkManagers, bounds) ?? false
+        return tapHandler?(placemarkManagers, .from(coordinates: placemarkManagers.map { $0.position }) ?? .init()) ?? false
     }
 
     open func clusterManager(_ clusterManager: GMUClusterManager, didTap clusterItem: GMUClusterItem) -> Bool {
@@ -129,5 +125,11 @@ open class GoogleClusterPlacemarkManager<Model>: BasePlacemarkManager<GMSMarker,
 
     open func icon(forSize size: UInt) -> UIImage? {
         nil // icon generation will be performed in GMUClusterRendererDelegate callback
+    }
+}
+
+extension GMSCoordinateBounds: CoordinateBounds {
+    public static func of(southWest: CLLocationCoordinate2D, northEast: CLLocationCoordinate2D) -> Self {
+        .init(coordinate: southWest, coordinate: northEast)
     }
 }
