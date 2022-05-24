@@ -27,6 +27,8 @@ import CoreLocation
 
 open class YandexClusterPlacemarkManager<Model>: BasePlacemarkManager<YMKCluster, [YandexPlacemarkManager<Model>], [YMKPoint]>, YMKClusterListener, YMKClusterTapListener {
 
+    private var placemarkCollection: YMKClusterizedPlacemarkCollection?
+
     public init<IF: MarkerIconFactory>(placemarkManagers: [YandexPlacemarkManager<Model>],
                                        iconFactory: IF?,
                                        tapHandler: TapHandlerClosure?) where IF.Model == [Model] {
@@ -53,6 +55,12 @@ open class YandexClusterPlacemarkManager<Model>: BasePlacemarkManager<YMKCluster
 
         clusterizedPlacemarkCollection.clusterPlacemarks(withClusterRadius: clusterRadius,
                                                          minZoom: minZoom)
+
+        self.placemarkCollection = clusterizedPlacemarkCollection
+    }
+
+    open func removeMarkers() {
+        placemarkCollection?.clear()
     }
 
     // MARK: - YMKClusterListener

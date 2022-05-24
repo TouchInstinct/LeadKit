@@ -75,7 +75,7 @@ open class BaseMapManager<Map,
                                                                  zoom: CommonZoomLevels.metropolianArea.floatValue))
     }
 
-    open func add(items: [PM.DataModel]) {
+    open func set(items: [PM.DataModel]) {
         let placemarkTapHandler: PM.TapHandlerClosure = { [map, selectPlacemarkHandler, animationDuration, cameraUpdateOnMarkerTap] model, location in
             cameraUpdateOnMarkerTap?(location).update(map: map, animationDuration: animationDuration)
 
@@ -90,8 +90,16 @@ open class BaseMapManager<Map,
             return true
         }
 
+        if let clusterManager = clusterPlacemarkManager {
+            remove(clusterPlacemarkManager: clusterManager)
+        }
+
         self.clusterPlacemarkManager = clusterPlacemarkManagerCreator(placemarkManagers, clusterTapHandler)
 
         cameraUpdateOnMarkersAdded?.update(map: map, animationDuration: animationDuration)
+    }
+
+    open func remove(clusterPlacemarkManager: CPM) {
+        // override in subclass
     }
 }

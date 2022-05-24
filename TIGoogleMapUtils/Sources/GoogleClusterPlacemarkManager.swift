@@ -74,6 +74,10 @@ open class GoogleClusterPlacemarkManager<Model>: BasePlacemarkManager<GMSMarker,
         clusterManager?.cluster()
     }
 
+    open func removeMarkers() {
+        clusterManager?.clearItems()
+    }
+
     // MARK: - GMUClusterRendererDelegate
 
     open func renderer(_ renderer: GMUClusterRenderer, markerFor object: Any) -> GMSMarker? {

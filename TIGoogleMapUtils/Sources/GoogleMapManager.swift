@@ -79,9 +79,15 @@ open class GoogleMapManager<DataModel>: BaseMapManager<GMSMapView,
                   selectPlacemarkHandler: selectPlacemarkHandler)
     }
 
-    open override func add(items: [DataModel]) {
-        super.add(items: items)
+    open override func set(items: [DataModel]) {
+        super.set(items: items)
 
         clusterPlacemarkManager?.addMarkers(to: map)
+    }
+
+    open override func remove(clusterPlacemarkManager: GoogleClusterPlacemarkManager<DataModel>) {
+        super.remove(clusterPlacemarkManager: clusterPlacemarkManager)
+
+        clusterPlacemarkManager.removeMarkers()
     }
 }

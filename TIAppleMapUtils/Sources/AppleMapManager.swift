@@ -86,9 +86,15 @@ open class AppleMapManager<DataModel>: BaseMapManager<MKMapView,
                   selectPlacemarkHandler: selectPlacemarkHandler)
     }
 
-    open override func add(items: [DataModel]) {
-        super.add(items: items)
+    open override func set(items: [DataModel]) {
+        super.set(items: items)
 
         clusterPlacemarkManager?.addMarkers(to: map)
+    }
+
+    open override func remove(clusterPlacemarkManager: AppleClusterPlacemarkManager<DataModel>) {
+        super.remove(clusterPlacemarkManager: clusterPlacemarkManager)
+
+        clusterPlacemarkManager.removeMarkers(from: map)
     }
 }

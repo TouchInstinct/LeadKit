@@ -79,9 +79,15 @@ open class YandexMapManager<DataModel>: BaseMapManager<YMKMapView,
                   selectPlacemarkHandler: selectPlacemarkHandler)
     }
 
-    open override func add(items: [DataModel]) {
-        super.add(items: items)
+    open override func set(items: [DataModel]) {
+        super.set(items: items)
 
         clusterPlacemarkManager?.addMarkers(to: map.mapWindow.map)
+    }
+
+    open override func remove(clusterPlacemarkManager: YandexClusterPlacemarkManager<DataModel>) {
+        super.remove(clusterPlacemarkManager: clusterPlacemarkManager)
+
+        clusterPlacemarkManager.removeMarkers()
     }
 }

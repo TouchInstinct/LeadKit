@@ -46,6 +46,10 @@ open class AppleClusterPlacemarkManager<Model>: BasePlacemarkManager<MKAnnotatio
         map.addAnnotations(dataModel)
     }
 
+    open func removeMarkers(from map: MKMapView) {
+        map.removeAnnotations(dataModel)
+    }
+
     // MARK: - PlacemarkManager
 
     override open func configure(placemark: MKAnnotationView) {
