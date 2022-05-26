@@ -24,9 +24,9 @@ import TIMapUtils
 import MapKit
 
 open class AppleMapManager<DataModel>: BaseMapManager<MKMapView,
-                                       ApplePlacemarkManager<DataModel>,
-                                       AppleClusterPlacemarkManager<DataModel>,
-                                       MKCameraUpdate> {
+                                                        ApplePlacemarkManager<DataModel>,
+                                                        AppleClusterPlacemarkManager<DataModel>,
+                                                        MKCameraUpdate> {
 
     public typealias ClusteringIdentifier = String
 
@@ -36,11 +36,10 @@ open class AppleMapManager<DataModel>: BaseMapManager<MKMapView,
                                                                iconFactory: IF?,
                                                                clusterIconFactory: CIF?,
                                                                mapViewDelegate: MKMapViewDelegate? = nil,
-                                                               selectPlacemarkHandler: @escaping SelectPlacemarkHandler) where IF.Model == DataModel, CIF.Model == [DataModel] {
-        let anyMarkerIconFactory = iconFactory?.asAnyMarkerIconFactory()
+                                                               selectPlacemarkHandler: @escaping SelectPlacemarkHandler)
+    where IF.Model == DataModel, CIF.Model == [DataModel] {
 
-        super.init(map: map,
-                   placemarkManagerCreator: {
+        let placemarkManagerCreator: PlacemarkManagerCreator = {
             guard let position = positionGetter($0) else {
                 return nil
             }
@@ -48,15 +47,20 @@ open class AppleMapManager<DataModel>: BaseMapManager<MKMapView,
             return ApplePlacemarkManager(dataModel: $0,
                                          position: position,
                                          clusteringIdentifier: clusteringIdentifierGetter($0),
-                                         iconFactory: anyMarkerIconFactory,
+                                         iconFactory: iconFactory?.asAnyMarkerIconFactory(),
                                          tapHandler: $1)
-        },
-                   clusterPlacemarkManagerCreator: {
+        }
+
+        let clusterPlacemarkManagerCreator: ClusterPlacemarkManagerCreator = {
             AppleClusterPlacemarkManager(placemarkManagers: $0,
                                          mapViewDelegate: mapViewDelegate,
                                          iconFactory: clusterIconFactory,
                                          tapHandler: $1)
-        },
+        }
+
+        super.init(map: map,
+                   placemarkManagerCreator: placemarkManagerCreator,
+                   clusterPlacemarkManagerCreator: clusterPlacemarkManagerCreator,
                    selectPlacemarkHandler: selectPlacemarkHandler)
     }
 

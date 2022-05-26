@@ -33,26 +33,30 @@ open class GoogleMapManager<DataModel>: BaseMapManager<GMSMapView,
                                                                iconFactory: IF?,
                                                                clusterIconFactory: CIF?,
                                                                mapViewDelegate: GMSMapViewDelegate? = nil,
-                                                               selectPlacemarkHandler: @escaping SelectPlacemarkHandler) where IF.Model == DataModel, CIF.Model == [DataModel] {
-        let anyMarkerIconFactory = iconFactory?.asAnyMarkerIconFactory()
+                                                               selectPlacemarkHandler: @escaping SelectPlacemarkHandler)
+    where IF.Model == DataModel, CIF.Model == [DataModel] {
 
-        super.init(map: map,
-                   placemarkManagerCreator: {
+        let placemarkManagerCreator: PlacemarkManagerCreator = {
             guard let position = positionGetter($0) else {
                 return nil
             }
 
             return GooglePlacemarkManager(dataModel: $0,
                                           position: position,
-                                          iconFactory: anyMarkerIconFactory,
+                                          iconFactory: iconFactory?.asAnyMarkerIconFactory(),
                                           tapHandler: $1)
-        },
-                   clusterPlacemarkManagerCreator: {
+        }
+
+        let clusterPlacemarkManagerCreator: ClusterPlacemarkManagerCreator = {
             GoogleClusterPlacemarkManager(placemarkManagers: $0,
                                           iconFactory: clusterIconFactory,
                                           mapDelegate: mapViewDelegate,
                                           tapHandler: $1)
-        },
+        }
+
+        super.init(map: map,
+                   placemarkManagerCreator: placemarkManagerCreator,
+                   clusterPlacemarkManagerCreator: clusterPlacemarkManagerCreator,
                    selectPlacemarkHandler: selectPlacemarkHandler)
     }
 

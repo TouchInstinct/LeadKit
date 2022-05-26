@@ -35,24 +35,26 @@ open class YandexMapManager<DataModel>: BaseMapManager<YMKMapView,
                                                                selectPlacemarkHandler: @escaping SelectPlacemarkHandler)
     where IF.Model == DataModel, CIF.Model == [DataModel] {
 
-        let anyMarkerIconFactory = iconFactory.asAnyMarkerIconFactory()
-
-        super.init(map: map,
-                   placemarkManagerCreator: {
+        let placemarkManagerCreator: PlacemarkManagerCreator = {
             guard let position = positionGetter($0) else {
                 return nil
             }
 
             return YandexPlacemarkManager(dataModel: $0,
                                           position: position,
-                                          iconFactory: anyMarkerIconFactory,
+                                          iconFactory: iconFactory.asAnyMarkerIconFactory(),
                                           tapHandler: $1)
-        },
-                   clusterPlacemarkManagerCreator: {
+        }
+
+        let clusterPlacemarkManagerCreator: ClusterPlacemarkManagerCreator = {
             YandexClusterPlacemarkManager(placemarkManagers: $0,
                                           iconFactory: clusterIconFactory,
                                           tapHandler: $1)
-        },
+        }
+
+        super.init(map: map,
+                   placemarkManagerCreator: placemarkManagerCreator,
+                   clusterPlacemarkManagerCreator: clusterPlacemarkManagerCreator,
                    selectPlacemarkHandler: selectPlacemarkHandler)
     }
 

@@ -70,29 +70,21 @@ open class AppleClusterPlacemarkManager<Model>: BasePlacemarkManager<MKAnnotatio
 
         switch annotation {
         case is MKClusterAnnotation:
-            let defaultAnnotationView: MKAnnotationView
-
-            if iconFactory != nil {
-                defaultAnnotationView = MKAnnotationView(annotation: annotation,
-                                                         reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-            } else {
-                defaultAnnotationView = MKMarkerAnnotationView(annotation: annotation,
-                                                               reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-            }
+            let defaultAnnotationView = iconFactory != nil
+                ? MKAnnotationView(annotation: annotation,
+                                   reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+                : MKMarkerAnnotationView(annotation: annotation,
+                                         reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
 
             configure(placemark: defaultAnnotationView)
 
             return defaultAnnotationView
         case let placemarkManager as ApplePlacemarkManager<Model>:
-            let defaultAnnotationView: MKAnnotationView
-
-            if placemarkManager.iconFactory != nil {
-                defaultAnnotationView = MKAnnotationView(annotation: annotation,
-                                                         reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-            } else {
-                defaultAnnotationView = MKMarkerAnnotationView(annotation: annotation,
-                                                               reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-            }
+            let defaultAnnotationView = placemarkManager.iconFactory != nil
+                ? MKAnnotationView(annotation: annotation,
+                                   reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+                : MKMarkerAnnotationView(annotation: annotation,
+                                         reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
 
             placemarkManager.configure(placemark: defaultAnnotationView)
 
