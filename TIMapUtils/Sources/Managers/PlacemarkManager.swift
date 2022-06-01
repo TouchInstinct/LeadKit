@@ -21,7 +21,11 @@
 //
 
 public protocol PlacemarkManager {
-    associatedtype Placemark
+    associatedtype DataModel
+    associatedtype Position
 
-    func configure(placemark: Placemark)
+    typealias TapHandlerClosure = (DataModel, Position) -> Bool
+
+    var dataModel: DataModel { get }
+    var tapHandler: TapHandlerClosure? { get set }
 }

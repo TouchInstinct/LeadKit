@@ -20,28 +20,32 @@
 //  THE SOFTWARE.
 //
 
-import ObjectiveC
+import UIKit.UIImage
 
-open class BasePlacemarkManager<Placemark, DataModel, Location>: NSObject, PlacemarkManager, PlacemarkConfigurator {
-    public typealias TapHandlerClosure = (DataModel, Location) -> Bool
+public final class AnyMarkerIconFactory<Model>: MarkerIconFactory {
+    public typealias IconProviderClosure = (Model) -> UIImage
 
-    public var tapHandler: TapHandlerClosure?
-    public var iconFactory: AnyMarkerIconFactory<DataModel>?
+    public var iconProviderClosure: IconProviderClosure
 
-    public let dataModel: DataModel
-
-    public init(dataModel: DataModel,
-                iconFactory: AnyMarkerIconFactory<DataModel>?,
-                tapHandler: TapHandlerClosure?) {
-
-        self.dataModel = dataModel
-        self.iconFactory = iconFactory
-        self.tapHandler = tapHandler
+    public init<IF: MarkerIconFactory>(iconFactory: IF) where IF.Model == Model {
+        self.iconProviderClosure = { iconFactory.markerIcon(for: $0) }
     }
 
-    // MARK: - PlacemarkConfigurator
+    public init<IF: MarkerIconFactory, T>(iconFactory: IF, transform: @escaping (Model) -> T) where IF.Model == T {
+        self.iconProviderClosure = { iconFactory.markerIcon(for: transform($0)) }
+    }
 
-    open func configure(placemark: Placemark) {
-        // override in subclass
+    public func markerIcon(for model: Model) -> UIImage {
+        iconProviderClosure(model)
+    }
+}
+
+public extension MarkerIconFactory {
+    func asAnyMarkerIconFactory() -> AnyMarkerIconFactory<Model> {
+        .init(iconFactory: self)
+    }
+
+    func asAnyMarkerIconFactory<T>(transform: @escaping (T) -> Model) -> AnyMarkerIconFactory<T> {
+        .init(iconFactory: self, transform: transform)
     }
 }

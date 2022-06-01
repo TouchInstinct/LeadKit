@@ -20,28 +20,24 @@
 //  THE SOFTWARE.
 //
 
-import ObjectiveC
+import Foundation.NSString
 
-open class BasePlacemarkManager<Placemark, DataModel, Location>: NSObject, PlacemarkManager, PlacemarkConfigurator {
-    public typealias TapHandlerClosure = (DataModel, Location) -> Bool
+public final class DefaultClusterMarkerIconFactory<Model>: DefaultCachableMarkerIconFactory<[Model], NSString> {
+    public typealias RendererPreparationClosure = ([Model], DefaultClusterIconRenderer) -> Void
 
-    public var tapHandler: TapHandlerClosure?
-    public var iconFactory: AnyMarkerIconFactory<DataModel>?
+    public var clusterIconRenderer: DefaultClusterIconRenderer
+    public var beforeRenderCallback: RendererPreparationClosure?
 
-    public let dataModel: DataModel
+    public init(beforeRenderCallback: RendererPreparationClosure? = nil) {
+        self.beforeRenderCallback = beforeRenderCallback
+        self.clusterIconRenderer = DefaultClusterIconRenderer()
 
-    public init(dataModel: DataModel,
-                iconFactory: AnyMarkerIconFactory<DataModel>?,
-                tapHandler: TapHandlerClosure?) {
+        super.init { [clusterIconRenderer] in
+            beforeRenderCallback?($0, clusterIconRenderer)
 
-        self.dataModel = dataModel
-        self.iconFactory = iconFactory
-        self.tapHandler = tapHandler
-    }
-
-    // MARK: - PlacemarkConfigurator
-
-    open func configure(placemark: Placemark) {
-        // override in subclass
+            return clusterIconRenderer.renderCluster(of: $0.count)
+        } cacheKeyProvider: {
+            String($0.count) as NSString
+        }
     }
 }

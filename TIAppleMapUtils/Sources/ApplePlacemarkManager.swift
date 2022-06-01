@@ -31,36 +31,23 @@ open class ApplePlacemarkManager<Model>: BasePlacemarkManager<MKAnnotationView, 
     public var clusteringIdentifier: String?
 
     public init(dataModel: Model,
-                coordinate: CLLocationCoordinate2D,
+                position: CLLocationCoordinate2D,
                 clusteringIdentifier: String?,
-                iconProvider: @escaping IconProviderClosure,
+                iconFactory: AnyMarkerIconFactory<DataModel>?,
                 tapHandler: TapHandlerClosure?) {
 
-        self.coordinate = coordinate
+        self.coordinate = position
         self.clusteringIdentifier = clusteringIdentifier
 
         super.init(dataModel: dataModel,
-                   iconProvider: iconProvider,
+                   iconFactory: iconFactory,
                    tapHandler: tapHandler)
-    }
-
-    public convenience init<IF: MarkerIconFactory>(dataModel: Model,
-                                                   coordinate: CLLocationCoordinate2D,
-                                                   clusteringIdentifier: String?,
-                                                   iconFactory: IF,
-                                                   tapHandler: TapHandlerClosure?) where IF.Model == Model {
-
-        self.init(dataModel: dataModel,
-                  coordinate: coordinate,
-                  clusteringIdentifier: clusteringIdentifier,
-                  iconProvider: { iconFactory.markerIcon(for: $0) },
-                  tapHandler: tapHandler)
     }
 
     // MARK: - PlacemarkManager
 
     override open func configure(placemark: MKAnnotationView) {
-        placemark.image = iconProvider(dataModel)
+        placemark.image = iconFactory?.markerIcon(for: dataModel)
         placemark.clusteringIdentifier = clusteringIdentifier
     }
 }

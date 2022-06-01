@@ -20,28 +20,16 @@
 //  THE SOFTWARE.
 //
 
-import ObjectiveC
+import UIKit.UIImage
 
-open class BasePlacemarkManager<Placemark, DataModel, Location>: NSObject, PlacemarkManager, PlacemarkConfigurator {
-    public typealias TapHandlerClosure = (DataModel, Location) -> Bool
+public final class StaticImageIconFactory<Model>: MarkerIconFactory {
+    public var image: UIImage
 
-    public var tapHandler: TapHandlerClosure?
-    public var iconFactory: AnyMarkerIconFactory<DataModel>?
-
-    public let dataModel: DataModel
-
-    public init(dataModel: DataModel,
-                iconFactory: AnyMarkerIconFactory<DataModel>?,
-                tapHandler: TapHandlerClosure?) {
-
-        self.dataModel = dataModel
-        self.iconFactory = iconFactory
-        self.tapHandler = tapHandler
+    public init(image: UIImage) {
+        self.image = image
     }
 
-    // MARK: - PlacemarkConfigurator
-
-    open func configure(placemark: Placemark) {
-        // override in subclass
+    public func markerIcon(for model: Model) -> UIImage {
+        image
     }
 }

@@ -28,25 +28,14 @@ open class YandexPlacemarkManager<Model>: BasePlacemarkManager<YMKPlacemarkMapOb
 
     public init(dataModel: Model,
                 position: YMKPoint,
-                iconProvider: @escaping IconProviderClosure,
+                iconFactory: AnyMarkerIconFactory<Model>,
                 tapHandler: TapHandlerClosure?) {
 
         self.position = position
 
         super.init(dataModel: dataModel,
-                   iconProvider: iconProvider,
+                   iconFactory: iconFactory,
                    tapHandler: tapHandler)
-    }
-
-    public convenience init<IF: MarkerIconFactory>(dataModel: Model,
-                                                   position: YMKPoint,
-                                                   iconFactory: IF,
-                                                   tapHandler: TapHandlerClosure?) where IF.Model == Model {
-
-        self.init(dataModel: dataModel,
-                  position: position,
-                  iconProvider: { iconFactory.markerIcon(for: $0) },
-                  tapHandler: tapHandler)
     }
 
     // MARK: - YMKMapObjectTapListener
@@ -59,6 +48,9 @@ open class YandexPlacemarkManager<Model>: BasePlacemarkManager<YMKPlacemarkMapOb
 
     override open func configure(placemark: YMKPlacemarkMapObject) {
         placemark.addTapListener(with: self)
-        placemark.setIconWith(iconProvider(dataModel))
+
+        if let customIcon = iconFactory?.markerIcon(for: dataModel) {
+            placemark.setIconWith(customIcon)
+        }
     }
 }

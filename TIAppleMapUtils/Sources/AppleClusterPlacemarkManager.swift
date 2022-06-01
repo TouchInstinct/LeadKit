@@ -20,7 +20,6 @@
 //  THE SOFTWARE.
 //
 
-
 import TIMapUtils
 import MapKit
 import UIKit
@@ -30,32 +29,25 @@ open class AppleClusterPlacemarkManager<Model>: BasePlacemarkManager<MKAnnotatio
 
     private let mapDelegateSelectors = NSObject.instanceMethodSelectors(of: MKMapViewDelegate.self)
 
-    public init(placemarkManagers: [ApplePlacemarkManager<Model>],
-                mapViewDelegate: MKMapViewDelegate? = nil,
-                iconProvider: @escaping IconProviderClosure,
-                tapHandler: TapHandlerClosure?) {
+    public init<IF: MarkerIconFactory>(placemarkManagers: [ApplePlacemarkManager<Model>],
+                                       mapViewDelegate: MKMapViewDelegate? = nil,
+                                       iconFactory: IF?,
+                                       tapHandler: TapHandlerClosure?) where IF.Model == [Model] {
 
         self.mapViewDelegate = mapViewDelegate
 
         super.init(dataModel: placemarkManagers,
-                   iconProvider: iconProvider,
+                   iconFactory: iconFactory?.asAnyMarkerIconFactory { $0.map { $0.dataModel } },
                    tapHandler: tapHandler)
-    }
-
-    public convenience init<IF: MarkerIconFactory>(placemarkManagers: [ApplePlacemarkManager<Model>],
-                                                   mapViewDelegate: MKMapViewDelegate? = nil,
-                                                   iconFactory: IF,
-                                                   tapHandler: TapHandlerClosure?) where IF.Model == [Model] {
-
-        self.init(placemarkManagers: placemarkManagers,
-                  mapViewDelegate: mapViewDelegate,
-                  iconProvider: { iconFactory.markerIcon(for: $0.map { $0.dataModel }) },
-                  tapHandler: tapHandler)
     }
 
     open func addMarkers(to map: MKMapView) {
         map.delegate = self
         map.addAnnotations(dataModel)
+    }
+
+    open func removeMarkers(from map: MKMapView) {
+        map.removeAnnotations(dataModel)
     }
 
     // MARK: - PlacemarkManager
@@ -66,7 +58,7 @@ open class AppleClusterPlacemarkManager<Model>: BasePlacemarkManager<MKAnnotatio
                   return
               }
 
-        placemark.image = iconProvider(placemarkManagers)
+        placemark.image = iconFactory?.markerIcon(for: placemarkManagers)
     }
 
     // MARK: - MKMapViewDelegate
@@ -78,14 +70,21 @@ open class AppleClusterPlacemarkManager<Model>: BasePlacemarkManager<MKAnnotatio
 
         switch annotation {
         case is MKClusterAnnotation:
-            let clusterAnnotationView = MKAnnotationView(annotation: annotation,
-                                                         reuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
-            configure(placemark: clusterAnnotationView)
+            let defaultAnnotationView = iconFactory != nil
+                ? MKAnnotationView(annotation: annotation,
+                                   reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+                : MKMarkerAnnotationView(annotation: annotation,
+                                         reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
 
-            return clusterAnnotationView
+            configure(placemark: defaultAnnotationView)
+
+            return defaultAnnotationView
         case let placemarkManager as ApplePlacemarkManager<Model>:
-            let defaultAnnotationView = MKAnnotationView(annotation: annotation,
-                                                         reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+            let defaultAnnotationView = placemarkManager.iconFactory != nil
+                ? MKAnnotationView(annotation: annotation,
+                                   reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+                : MKMarkerAnnotationView(annotation: annotation,
+                                         reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
 
             placemarkManager.configure(placemark: defaultAnnotationView)
 

@@ -27,22 +27,15 @@ import CoreLocation
 
 open class YandexClusterPlacemarkManager<Model>: BasePlacemarkManager<YMKCluster, [YandexPlacemarkManager<Model>], [YMKPoint]>, YMKClusterListener, YMKClusterTapListener {
 
-    public init(placemarkManagers: [YandexPlacemarkManager<Model>],
-                iconProvider: @escaping IconProviderClosure,
-                tapHandler: TapHandlerClosure?) {
+    private var placemarkCollection: YMKClusterizedPlacemarkCollection?
+
+    public init<IF: MarkerIconFactory>(placemarkManagers: [YandexPlacemarkManager<Model>],
+                                       iconFactory: IF?,
+                                       tapHandler: TapHandlerClosure?) where IF.Model == [Model] {
 
         super.init(dataModel: placemarkManagers,
-                   iconProvider: iconProvider,
+                   iconFactory: iconFactory?.asAnyMarkerIconFactory { $0.map { $0.dataModel } },
                    tapHandler: tapHandler)
-    }
-
-    public convenience init<IF: MarkerIconFactory>(placemarkManagers: [YandexPlacemarkManager<Model>],
-                                                   iconFactory: IF,
-                                                   tapHandler: TapHandlerClosure?) where IF.Model == [Model] {
-
-        self.init(placemarkManagers: placemarkManagers,
-                  iconProvider: { iconFactory.markerIcon(for: $0.map { $0.dataModel }) },
-                  tapHandler: tapHandler)
     }
 
     open func addMarkers(to map: YMKMap,
@@ -62,6 +55,12 @@ open class YandexClusterPlacemarkManager<Model>: BasePlacemarkManager<YMKCluster
 
         clusterizedPlacemarkCollection.clusterPlacemarks(withClusterRadius: clusterRadius,
                                                          minZoom: minZoom)
+
+        self.placemarkCollection = clusterizedPlacemarkCollection
+    }
+
+    open func removeMarkers() {
+        placemarkCollection?.clear()
     }
 
     // MARK: - YMKClusterListener
@@ -92,6 +91,9 @@ open class YandexClusterPlacemarkManager<Model>: BasePlacemarkManager<YMKCluster
 
     open override func configure(placemark: YMKCluster) {
         placemark.addClusterTapListener(with: self)
-        placemark.appearance.setIconWith(iconProvider(managers(in: placemark)))
+        
+        if let customIcon = iconFactory?.markerIcon(for: managers(in: placemark)) {
+            placemark.appearance.setIconWith(customIcon)
+        }
     }
 }
