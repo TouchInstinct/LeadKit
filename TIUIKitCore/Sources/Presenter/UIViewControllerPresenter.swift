@@ -20,24 +20,11 @@
 //  THE SOFTWARE.
 //
 
-import Moya
-import Foundation
+import UIKit.UIViewController
 
-public enum EndpointErrorResult<AE, NE>: Error {
-    case apiError(AE)
-    case networkError(NE)
-}
+@MainActor
+public protocol UIViewControllerPresenter {
+    associatedtype ViewController: UIViewController
 
-public extension EndpointErrorResult where NE == MoyaError {
-    var isNetworkConnectionProblem: Bool {
-        guard case let .networkError(moyaError) = self,
-              case let .underlying(error, _) = moyaError,
-              case let .sessionTaskFailed(urlSessionTaskError) = error.asAFError,
-              let urlError = urlSessionTaskError as? URLError else {
-
-                  return false
-              }
-
-        return urlError.code == .notConnectedToInternet
-    }
+    func createViewController() -> ViewController
 }

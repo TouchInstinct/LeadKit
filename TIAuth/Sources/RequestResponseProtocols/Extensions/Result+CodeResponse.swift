@@ -20,24 +20,49 @@
 //  THE SOFTWARE.
 //
 
-import Moya
 import Foundation
 
-public enum EndpointErrorResult<AE, NE>: Error {
-    case apiError(AE)
-    case networkError(NE)
+public extension Result {
+    var success: Success? {
+        if case let .success(wrapped) = self {
+            return wrapped
+        }
+
+        return nil
+    }
 }
 
-public extension EndpointErrorResult where NE == MoyaError {
-    var isNetworkConnectionProblem: Bool {
-        guard case let .networkError(moyaError) = self,
-              case let .underlying(error, _) = moyaError,
-              case let .sessionTaskFailed(urlSessionTaskError) = error.asAFError,
-              let urlError = urlSessionTaskError as? URLError else {
+extension Result: CodeResponse where Success: CodeResponse {
+    public var validUntil: Date? {
+        success?.validUntil
+    }
 
-                  return false
-              }
+    public var codeId: String? {
+        success?.codeId
+    }
 
-        return urlError.code == .notConnectedToInternet
+    public var refreshableAfter: Date? {
+        success?.refreshableAfter
+    }
+
+    public var confirmationId: String? {
+        success?.confirmationId
+    }
+
+    public var remainingAttempts: Int? {
+        success?.remainingAttempts
+    }
+}
+
+extension Result: CodeRefreshResponse where Success: CodeRefreshResponse {
+}
+
+extension Result: CodeConfirmResponse where Success: CodeConfirmResponse {
+    public var remainingAttempts: Int? {
+        success?.remainingAttempts
+    }
+
+    public var requiredAdditionalAuth: String? {
+        success?.requiredAdditionalAuth
     }
 }

@@ -20,24 +20,12 @@
 //  THE SOFTWARE.
 //
 
-import Moya
 import Foundation
 
-public enum EndpointErrorResult<AE, NE>: Error {
-    case apiError(AE)
-    case networkError(NE)
-}
-
-public extension EndpointErrorResult where NE == MoyaError {
-    var isNetworkConnectionProblem: Bool {
-        guard case let .networkError(moyaError) = self,
-              case let .underlying(error, _) = moyaError,
-              case let .sessionTaskFailed(urlSessionTaskError) = error.asAFError,
-              let urlError = urlSessionTaskError as? URLError else {
-
-                  return false
-              }
-
-        return urlError.code == .notConnectedToInternet
-    }
+public protocol CodeResponse {
+    var validUntil: Date? { get }
+    var codeId: String? { get }
+    var refreshableAfter: Date? { get }
+    var confirmationId: String? { get }
+    var remainingAttempts: Int? { get }
 }

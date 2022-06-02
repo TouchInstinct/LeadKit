@@ -26,7 +26,7 @@ import TISwiftUtils
 
 @available(iOS 13.0.0, *)
 open class DefaultRecoverableJsonNetworkService<ApiError: Decodable & Error>: DefaultJsonNetworkService {
-    public typealias ErrorType = EndpointErrorResult<ApiError>
+    public typealias ErrorType = EndpointErrorResult<ApiError, MoyaError>
     public typealias ErrorHandlerResultType = RecoverableErrorHandlerResult<ErrorType>
     public typealias ErrorHandlerType = AnyAsyncEventHandler<ErrorType, ErrorHandlerResultType>
 
@@ -35,16 +35,16 @@ open class DefaultRecoverableJsonNetworkService<ApiError: Decodable & Error>: De
     open func process<B: Encodable, S>(recoverableRequest: EndpointRequest<B, S>,
                                        prependErrorHandlers: [ErrorHandlerType] = [],
                                        appendErrorHandlers: [ErrorHandlerType] = []) async ->
-        EndpointRequestResult<S, ApiError> {
+    RequestResult<S, ApiError> {
 
         await process(recoverableRequest: recoverableRequest,
                       errorHandlers: prependErrorHandlers + defaultErrorHandlers + appendErrorHandlers)
     }
 
     open func process<B: Encodable, S>(recoverableRequest: EndpointRequest<B, S>,
-                                       errorHandlers: [ErrorHandlerType]) async -> EndpointRequestResult<S, ApiError> {
+                                       errorHandlers: [ErrorHandlerType]) async -> RequestResult<S, ApiError> {
 
-        let result: EndpointRequestResult<S, ApiError> = await process(request: recoverableRequest)
+        let result: RequestResult<S, ApiError> = await process(request: recoverableRequest)
 
         if case let .failure(errorResponse) = result {
             for handler in errorHandlers {
