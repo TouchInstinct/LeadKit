@@ -20,24 +20,17 @@
 //  THE SOFTWARE.
 //
 
-import Moya
-import Foundation
+import SwiftUI
+import Combine
 
-public enum EndpointErrorResult<ApiError, NetworkError>: Error {
-    case apiError(ApiError)
-    case networkError(NetworkError)
-}
+@MainActor
+@available(iOS 13.0, *)
+public protocol SwiftUIPresenter: ObservableObject {
+    associatedtype View: SwiftUI.View
 
-public extension EndpointErrorResult where NetworkError == MoyaError {
-    var isNetworkConnectionProblem: Bool {
-        guard case let .networkError(moyaError) = self,
-              case let .underlying(error, _) = moyaError,
-              case let .sessionTaskFailed(urlSessionTaskError) = error.asAFError,
-              let urlError = urlSessionTaskError as? URLError else {
+    func createView() -> View
 
-                  return false
-              }
-
-        return urlError.code == .notConnectedToInternet
-    }
+#if DEBUG
+    static func assembleForPreview() -> Self
+#endif
 }

@@ -20,24 +20,13 @@
 //  THE SOFTWARE.
 //
 
-import Moya
 import Foundation
 
-public enum EndpointErrorResult<ApiError, NetworkError>: Error {
-    case apiError(ApiError)
-    case networkError(NetworkError)
-}
-
-public extension EndpointErrorResult where NetworkError == MoyaError {
-    var isNetworkConnectionProblem: Bool {
-        guard case let .networkError(moyaError) = self,
-              case let .underlying(error, _) = moyaError,
-              case let .sessionTaskFailed(urlSessionTaskError) = error.asAFError,
-              let urlError = urlSessionTaskError as? URLError else {
-
-                  return false
-              }
-
-        return urlError.code == .notConnectedToInternet
-    }
+@MainActor
+public protocol CodeConfirmStateStorage: AnyObject {
+    var currentUserInput: String? { get set }
+    var canRefreshCodeAfter: Int? { get set }
+    var remainingAttempts: Int? { get set }
+    var isExecutingRequest: Bool { get set }
+    var canRequestNewCode: Bool { get set }
 }

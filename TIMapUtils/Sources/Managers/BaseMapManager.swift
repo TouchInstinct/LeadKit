@@ -20,6 +20,9 @@
 //  THE SOFTWARE.
 //
 
+import Foundation
+import UIKit.UIGeometry
+
 open class BaseMapManager<Map,
                           PM: PlacemarkManager,
                           CPM: PlacemarkManager,

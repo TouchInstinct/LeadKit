@@ -20,24 +20,20 @@
 //  THE SOFTWARE.
 //
 
-import Moya
 import Foundation
 
-public enum EndpointErrorResult<ApiError, NetworkError>: Error {
-    case apiError(ApiError)
-    case networkError(NetworkError)
-}
+@MainActor
+protocol CodeConfirmPresenter {
+    // MARK: - User actions handling
 
-public extension EndpointErrorResult where NetworkError == MoyaError {
-    var isNetworkConnectionProblem: Bool {
-        guard case let .networkError(moyaError) = self,
-              case let .underlying(error, _) = moyaError,
-              case let .sessionTaskFailed(urlSessionTaskError) = error.asAFError,
-              let urlError = urlSessionTaskError as? URLError else {
+    func inputChanged(newInput: String?)
+    func refreshCode()
 
-                  return false
-              }
+    // MARK: - View lifecycle handling
 
-        return urlError.code == .notConnectedToInternet
-    }
+    func viewDidPresented()
+
+    // MARK: - Autofill
+
+    func autofill(code: String, with codeId: String?)
 }

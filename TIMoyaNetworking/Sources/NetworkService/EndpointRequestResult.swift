@@ -20,4 +20,4 @@
 //  THE SOFTWARE.
 //
 
-public typealias EndpointRequestResult<S: Decodable, F: Decodable> = Result<S, EndpointErrorResult<F>>
+public typealias EndpointRequestResult<S: Decodable, AE: Decodable, NE> = Result<S, EndpointErrorResult<AE, NE>>

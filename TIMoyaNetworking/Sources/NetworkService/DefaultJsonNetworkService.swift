@@ -28,6 +28,8 @@ import Foundation
 import TIFoundationUtils
 
 open class DefaultJsonNetworkService {
+    public typealias RequestResult<S: Decodable, AE: Decodable> = EndpointRequestResult<S, AE, MoyaError>
+
     public var session: Session
 
     public var serializationQueue: DispatchQueue = .global(qos: .default)
@@ -65,7 +67,7 @@ open class DefaultJsonNetworkService {
     }
 
     @available(iOS 13.0.0, *)
-    open func process<B: Encodable, S, F>(request: EndpointRequest<B, S>) async -> EndpointRequestResult<S, F> {
+    open func process<B: Encodable, S, F>(request: EndpointRequest<B, S>) async -> RequestResult<S, F> {
         await process(request: request,
                       mapSuccess: Result.success,
                       mapFailure: { .failure(.apiError($0)) },

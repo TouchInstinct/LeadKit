@@ -20,24 +20,5 @@
 //  THE SOFTWARE.
 //
 
-import Moya
-import Foundation
-
-public enum EndpointErrorResult<ApiError, NetworkError>: Error {
-    case apiError(ApiError)
-    case networkError(NetworkError)
-}
-
-public extension EndpointErrorResult where NetworkError == MoyaError {
-    var isNetworkConnectionProblem: Bool {
-        guard case let .networkError(moyaError) = self,
-              case let .underlying(error, _) = moyaError,
-              case let .sessionTaskFailed(urlSessionTaskError) = error.asAFError,
-              let urlError = urlSessionTaskError as? URLError else {
-
-                  return false
-              }
-
-        return urlError.code == .notConnectedToInternet
-    }
+public protocol CodeRefreshResponse: CodeResponse {
 }

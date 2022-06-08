@@ -11,6 +11,9 @@ let package = Package(
     // MARK: - UIKit
     .library(name: "TIUIKitCore", targets: ["TIUIKitCore"]),
     .library(name: "TIUIElements", targets: ["TIUIElements"]),
+
+    // MARK: - SwiftUI
+    .library(name: "TISwiftUICore", targets: ["TISwiftUICore"]),
     
     // MARK: - Utils
     .library(name: "TISwiftUtils", targets: ["TISwiftUtils"]),
@@ -33,6 +36,7 @@ let package = Package(
     .library(name: "OTPSwiftView", targets: ["OTPSwiftView"]),
     .library(name: "TITransitions", targets: ["TITransitions"]),
     .library(name: "TIPagination", targets: ["TIPagination"]),
+    .library(name: "TIAuth", targets: ["TIAuth"]),
   ],
   dependencies: [
     .package(url: "https://github.com/maxsokolov/TableKit.git", .upToNextMajor(from: "2.11.0")),
@@ -47,6 +51,10 @@ let package = Package(
     // MARK: - UIKit
     .target(name: "TIUIKitCore", path: "TIUIKitCore/Sources"),
     .target(name: "TIUIElements", dependencies: ["TIUIKitCore", "TISwiftUtils"], path: "TIUIElements/Sources"),
+
+    // MARK: - SwiftUI
+
+    .target(name: "TISwiftUICore", path: "TISwiftUICore/Sources"),
     
     // MARK: - Utils
     .target(name: "TISwiftUtils", path: "TISwiftUtils/Sources"),
@@ -70,6 +78,7 @@ let package = Package(
     .target(name: "OTPSwiftView", dependencies: ["TIUIElements"], path: "OTPSwiftView/Sources"),
     .target(name: "TITransitions", path: "TITransitions/Sources"),
     .target(name: "TIPagination", dependencies: ["Cursors", "TISwiftUtils"], path: "TIPagination/Sources"),
+    .target(name: "TIAuth", dependencies: ["TIFoundationUtils"], path: "TIAuth/Sources"),
     
     // MARK: - Tests
     

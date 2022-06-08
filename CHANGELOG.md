@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.19.0
+
+- **Add**: Add presenter protocols to `TISwiftUICore` and `TIUIKitCore` modules
+- **Add**: `CodeConfirmPresenter` protocol and `DefaultCodeConfirmPresenter` implementation in `TIAuth` module
+
 ### 1.18.0
 
 - **Add**: add MapManagers for routine maps configuration

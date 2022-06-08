@@ -10,7 +10,9 @@ ORDERED_PODSPECS="../TISwiftUtils/TISwiftUtils.podspec
 ../TIFoundationUtils/TIFoundationUtils.podspec
 ../TIKeychainUtils/TIKeychainUtils.podspec
 ../TIUIKitCore/TIUIKitCore.podspec
+../TISwiftUICore/TISwiftUICore.podspec
 ../TIUIElements/TIUIElements.podspec
+../TIAuth/TIAuth.podspec
 ../TITableKitUtils/TITableKitUtils.podspec
 ../TINetworking/TINetworking.podspec
 ../TINetworkingCache/TINetworkingCache.podspec
