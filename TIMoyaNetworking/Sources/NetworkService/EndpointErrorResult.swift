@@ -23,12 +23,12 @@
 import Moya
 import Foundation
 
-public enum EndpointErrorResult<AE, NE>: Error {
-    case apiError(AE)
-    case networkError(NE)
+public enum EndpointErrorResult<ApiError, NetworkError>: Error {
+    case apiError(ApiError)
+    case networkError(NetworkError)
 }
 
-public extension EndpointErrorResult where NE == MoyaError {
+public extension EndpointErrorResult where NetworkError == MoyaError {
     var isNetworkConnectionProblem: Bool {
         guard case let .networkError(moyaError) = self,
               case let .underlying(error, _) = moyaError,

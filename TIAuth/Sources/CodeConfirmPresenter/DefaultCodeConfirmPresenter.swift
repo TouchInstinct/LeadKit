@@ -74,14 +74,14 @@ open class DefaultCodeConfirmPresenter<ConfirmResponse: CodeConfirmResponse,
         }
     }
 
+    private let codeRefreshTimer = TITimer(mode: .activeAndBackground)
+    private let codeLifetimeTimer = TITimer(mode: .activeAndBackground)
+
     public var output: Output
     public var requests: Requests
     public weak var stateStorage: CodeConfirmStateStorage?
     public var config = Config()
     public var currentCodeResponse: CodeResponse
-
-    private let codeRefreshTimer = TITimer(mode: .activeAndBackground)
-    private let codeLifetimeTimer = TITimer(mode: .activeAndBackground)
 
     public init<Input: CodeResponse>(input: Input,
                                      output: Output,
@@ -101,11 +101,9 @@ open class DefaultCodeConfirmPresenter<ConfirmResponse: CodeConfirmResponse,
 
         let confirmResponse = await requests.confirmRequest(code)
 
-        if self.isSuccessConfirm(response: confirmResponse) {
-            handle(successConfirmResponse: confirmResponse)
-        } else {
-            handle(failureConfirmResponse: confirmResponse)
-        }
+        isSuccessConfirm(response: confirmResponse)
+            ? handle(successConfirmResponse: confirmResponse)
+            : handle(failureConfirmResponse: confirmResponse)
 
         stateStorage?.isExecutingRequest = false
     }
@@ -242,7 +240,7 @@ open class DefaultCodeConfirmPresenter<ConfirmResponse: CodeConfirmResponse,
 
         codeRefreshTimer.eventHandler = { [weak self] in
             self?.updateRemaining(nonRefreshableInterval: nonRefreshableInterval,
-                                                        elapsedInterval: $0)
+                                  elapsedInterval: $0)
         }
         codeRefreshTimer.start()
     }
