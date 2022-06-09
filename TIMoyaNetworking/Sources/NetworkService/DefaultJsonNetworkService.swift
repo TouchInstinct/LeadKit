@@ -41,18 +41,20 @@ open class DefaultJsonNetworkService {
     public var jsonDecoder: JSONDecoder
     public var jsonEncoder: JSONEncoder
 
-    public var defaultServer: Server
+    public var openApi: OpenAPI
 
     public var plugins: [PluginType] = []
 
+    public var preprocessors: [EndpointRequestPreprocessor] = []
+
     public init(session: Session,
                 jsonCodingConfigurator: JsonCodingConfigurator,
-                defaultServer: Server) {
+                openApi: OpenAPI) {
 
         self.session = session
         self.jsonDecoder = jsonCodingConfigurator.jsonDecoder
         self.jsonEncoder = jsonCodingConfigurator.jsonEncoder
-        self.defaultServer = defaultServer
+        self.openApi = openApi
     }
 
     open func createProvider() -> MoyaProvider<SerializedRequest> {
@@ -63,7 +65,7 @@ open class DefaultJsonNetworkService {
 
     open func serialize<B: Encodable, S: Decodable>(request: EndpointRequest<B, S>) throws -> SerializedRequest {
         try request.serialize(using: ApplicationJsonBodySerializer(jsonEncoder: jsonEncoder),
-                              defaultServer: defaultServer)
+                              defaultServer: openApi.defaultServer)
     }
 
     @available(iOS 13.0.0, *)
@@ -104,14 +106,18 @@ open class DefaultJsonNetworkService {
                                                                    mapMoyaError: @escaping Closure<MoyaError, R>,
                                                                    completion: @escaping ParameterClosure<R>) -> Cancellable {
 
-        ScopeCancellable { [serializationQueue, callbackQueue] scope in
+        ScopeCancellable { [serializationQueue, callbackQueue, preprocessors] scope in
             let workItem = DispatchWorkItem {
                 guard !scope.isCancelled else {
                     return
                 }
 
                 do {
-                    let serializedRequest = try self.serialize(request: request)
+                    let preprocessedRequest = try preprocessors.reduce(request) {
+                        try $1.preprocess(request: $0)
+                    }
+
+                    let serializedRequest = try self.serialize(request: preprocessedRequest)
 
                     scope.add(cancellable: self.process(request: serializedRequest,
                                                         mapSuccess: mapSuccess,
@@ -194,5 +200,16 @@ open class DefaultJsonNetworkService {
                 completion(result)
             }
         }
+    }
+
+    public func register<T: RawRepresentable>(securityPreprocessors: [T: SecuritySchemePreprocessor]) where T.RawValue == String {
+        let schemePreprocessors = Dictionary(uniqueKeysWithValues: securityPreprocessors.map {
+            ($0.key.rawValue, $0.value)
+        })
+
+        let securityPreprocessor = DefaultEndpointSecurityPreprocessor(openApi: openApi,
+                                                                       schemePreprocessors: schemePreprocessors)
+
+        preprocessors.append(securityPreprocessor)
     }
 }

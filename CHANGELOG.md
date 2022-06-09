@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.20.0
+
+- **Add**: OpenAPI security schemes support for EndpointRequest's.
+- **Update**: Replace `AdditionalHeadersPlugin` with `SecuritySchemePreprocessor` and `EndpointRequestPreprocessor` (with default implementations)
+
 ### 1.19.0
 
 - **Add**: Add presenter protocols to `TISwiftUICore` and `TIUIKitCore` modules
