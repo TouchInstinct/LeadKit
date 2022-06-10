@@ -31,6 +31,7 @@ public struct EndpointRequest<Body, SuccessResponse> {
     public var headerParameters: [String: Parameter<LocationHeader>]?
     public var cookieParameters: [String: Parameter<LocationCookie>]
     public var acceptableStatusCodes: Set<Int>
+    public var security: [[String]]
     public var server: Server?
     public var customServerVariables: [KeyValueTuple<String, String>]
 
@@ -42,6 +43,7 @@ public struct EndpointRequest<Body, SuccessResponse> {
                 headerParameters: [String: Parameter<LocationHeader>]? = nil,
                 cookieParameters: [String: Parameter<LocationCookie>] = [:],
                 acceptableStatusCodes: Set<Int> = HTTPCodes.success.asSet(),
+                security: [[String]] = [],
                 server: Server? = nil,
                 customServerVariables: [KeyValueTuple<String, String>] = []) {
 
@@ -55,5 +57,6 @@ public struct EndpointRequest<Body, SuccessResponse> {
         self.acceptableStatusCodes = acceptableStatusCodes
         self.server = server
         self.customServerVariables = customServerVariables
+        self.security = security
     }
 }
