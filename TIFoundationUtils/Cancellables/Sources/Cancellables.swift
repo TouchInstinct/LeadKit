@@ -20,15 +20,12 @@
 //  THE SOFTWARE.
 //
 
-import Moya
-import TISwiftUtils
+public struct Cancellables {
+    public static func nonCancellable() -> Cancellable {
+        NonCancellable()
+    }
 
-public final class ScopeCancellable: CancellableBag {
-    public typealias ScopeCancellableClosure = Closure<ScopeCancellable, Cancellable>
-
-    public init(scopeCancellableClosure: ScopeCancellableClosure) {
-        super.init()
-
-        cancellables = [scopeCancellableClosure(self)]
+    public static func scoped(scopeCancellableClosure: ScopeCancellable.ScopeCancellableClosure) -> Cancellable {
+        ScopeCancellable(scopeCancellableClosure: scopeCancellableClosure)
     }
 }

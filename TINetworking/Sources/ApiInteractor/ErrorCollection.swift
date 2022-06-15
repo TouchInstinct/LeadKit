@@ -20,24 +20,22 @@
 //  THE SOFTWARE.
 //
 
-import Moya
-import Foundation
+public struct ErrorCollection<E>: Error {
+    public let failures: [E]
 
-public enum EndpointErrorResult<ApiError, NetworkError>: Error {
-    case apiError(ApiError)
-    case networkError(NetworkError)
-}
+    public init(failures: [E]) {
+        self.failures = failures
+    }
 
-public extension EndpointErrorResult where NetworkError == MoyaError {
-    var isNetworkConnectionProblem: Bool {
-        guard case let .networkError(moyaError) = self,
-              case let .underlying(error, _) = moyaError,
-              case let .sessionTaskFailed(urlSessionTaskError) = error.asAFError,
-              let urlError = urlSessionTaskError as? URLError else {
+    public func map<R>(transform: (E) -> R) -> ErrorCollection<R> {
+        .init(failures: failures.map(transform))
+    }
 
-                  return false
-              }
+    public func firstOr(_ default: E) -> E {
+        failures.first ?? `default`
+    }
 
-        return urlError.code == .notConnectedToInternet
+    public func lastOr(_ default: E) -> E {
+        failures.last ?? `default`
     }
 }

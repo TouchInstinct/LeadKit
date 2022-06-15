@@ -20,19 +20,20 @@
 //  THE SOFTWARE.
 //
 
-import TISwiftUtils
+import TINetworking
+import Moya
+import Foundation
 
-@available(iOS 13.0.0, *)
-public struct AnyAsyncEventHandler<EventType, ResultType>: AsyncEventHandler {
-    private let processClosure: AsyncClosure<EventType, ResultType>
+public extension EndpointErrorResult where NetworkError == MoyaError {
+    var isNetworkConnectionProblem: Bool {
+        guard case let .networkError(moyaError) = self,
+              case let .underlying(error, _) = moyaError,
+              case let .sessionTaskFailed(urlSessionTaskError) = error.asAFError,
+              let urlError = urlSessionTaskError as? URLError else {
 
-    public init<Handler: AsyncEventHandler>(handler: Handler)
-        where Handler.EventType == EventType, Handler.ResultType == ResultType {
+                  return false
+              }
 
-        self.processClosure = handler.handle
-    }
-
-    public func handle(_ event: EventType) async -> ResultType {
-        await processClosure(event)
+        return urlError.code == .notConnectedToInternet
     }
 }

@@ -26,55 +26,60 @@ import TISwiftUtils
 
 @available(iOS 13.0.0, *)
 open class DefaultRecoverableJsonNetworkService<ApiError: Decodable & Error>: DefaultJsonNetworkService {
+    public typealias EndpointResponse<S: Decodable> = EndpointRecoverableRequestResult<S, ApiError, MoyaError>
     public typealias ErrorType = EndpointErrorResult<ApiError, MoyaError>
-    public typealias ErrorHandlerResultType = RecoverableErrorHandlerResult<ErrorType>
-    public typealias ErrorHandlerType = AnyAsyncEventHandler<ErrorType, ErrorHandlerResultType>
+    public typealias RequestRetrier = AnyEndpointRequestRetrier<ErrorType>
 
-    public private(set) var defaultErrorHandlers: [ErrorHandlerType] = []
+    public private(set) var defaultRequestRetriers: [RequestRetrier] = []
 
     open func process<B: Encodable, S>(recoverableRequest: EndpointRequest<B, S>,
-                                       prependErrorHandlers: [ErrorHandlerType] = [],
-                                       appendErrorHandlers: [ErrorHandlerType] = []) async ->
-    RequestResult<S, ApiError> {
+                                       prependRequestRetriers: [RequestRetrier] = [],
+                                       appendRequestRetriers: [RequestRetrier] = []) async ->
+    EndpointResponse<S> {
 
         await process(recoverableRequest: recoverableRequest,
-                      errorHandlers: prependErrorHandlers + defaultErrorHandlers + appendErrorHandlers)
+                      errorHandlers: prependRequestRetriers + defaultRequestRetriers + appendRequestRetriers)
     }
 
     open func process<B: Encodable, S>(recoverableRequest: EndpointRequest<B, S>,
-                                       errorHandlers: [ErrorHandlerType]) async -> RequestResult<S, ApiError> {
+                                       errorHandlers: [RequestRetrier]) async -> EndpointResponse<S> {
 
         let result: RequestResult<S, ApiError> = await process(request: recoverableRequest)
 
         if case let .failure(errorResponse) = result {
+            var failures = [errorResponse]
+
             for handler in errorHandlers {
-                let handlerResult = await handler.handle(errorResponse)
+                let handlerResult = await handler.validateAndRepair(errorResults: failures)
 
                 switch handlerResult {
-                case let .forwardError(error):
-                    return .failure(error)
-
-                case .recoverRequest:
-                    return await process(recoverableRequest: recoverableRequest, errorHandlers: errorHandlers)
-
-                case .skipError:
-                    break
+                case let .success(retryResult):
+                    switch retryResult {
+                    case .retry, .retryWithDelay:
+                        return await process(recoverableRequest: recoverableRequest, errorHandlers: errorHandlers)
+                    case .doNotRetry, .doNotRetryWithError:
+                        break
+                    }
+                case let .failure(error):
+                    failures.append(error)
                 }
             }
+
+            return .failure(.init(failures: failures))
         }
 
-        return result
+        return result.mapError { .init(failures: [$0]) }
     }
 
-    public func register<ErrorHandler: AsyncErrorHandler>(defaultErrorHandler: ErrorHandler)
-        where ErrorHandler.EventType == ErrorHandlerType.EventType, ErrorHandler.ResultType == ErrorHandlerType.ResultType {
+    public func register<RequestRetrier: EndpointRequestRetrier>(defaultRequestRetrier: RequestRetrier)
+        where RequestRetrier.ErrorResult == ErrorType {
 
-        defaultErrorHandlers.append(defaultErrorHandler.asAnyAsyncEventHandler())
+        defaultRequestRetriers.append(defaultRequestRetrier.asAnyEndpointRequestRetrier())
     }
 
-    public func set<ErrorHandler: AsyncErrorHandler>(defaultErrorHandlers: ErrorHandler...)
-        where ErrorHandler.EventType == ErrorHandlerType.EventType, ErrorHandler.ResultType == ErrorHandlerType.ResultType {
+    public func set<RequestRetrier: EndpointRequestRetrier>(defaultRequestRetriers: RequestRetrier...)
+        where RequestRetrier.ErrorResult == ErrorType {
 
-        self.defaultErrorHandlers = defaultErrorHandlers.map { $0.asAnyAsyncEventHandler() }
+        self.defaultRequestRetriers = defaultRequestRetriers.map { $0.asAnyEndpointRequestRetrier() }
     }
 }

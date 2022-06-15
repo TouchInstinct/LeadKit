@@ -20,17 +20,10 @@
 //  THE SOFTWARE.
 //
 
-@available(iOS 13.0.0, *)
-public protocol AsyncEventHandler {
-    associatedtype EventType
-    associatedtype ResultType
+open class BaseCancellable: Cancellable {
+    private(set) public var isCancelled = false
 
-    func handle(_ event: EventType) async -> ResultType
-}
-
-@available(iOS 13.0.0, *)
-public extension AsyncEventHandler {
-    func asAnyAsyncEventHandler() -> AnyAsyncEventHandler<EventType, ResultType> {
-        .init(handler: self)
+    open func cancel() {
+        isCancelled = true
     }
 }

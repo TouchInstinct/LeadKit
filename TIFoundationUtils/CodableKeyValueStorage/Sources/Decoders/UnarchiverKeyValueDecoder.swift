@@ -22,6 +22,7 @@
 
 import Foundation
 
+@available(iOS 11.0, *)
 open class UnarchiverKeyValueDecoder: CodableKeyValueDecoder {
     public init() {}
 

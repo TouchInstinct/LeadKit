@@ -105,6 +105,7 @@ public extension KeyedDecodingContainer {
 
 // ISO8601
 
+@available(iOS 11.0, *)
 public extension KeyedDecodingContainer {
     func decodeDate(forKey key: Key,
                     userInfo: [CodingUserInfoKey: Any],

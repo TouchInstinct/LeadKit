@@ -20,8 +20,32 @@
 //  THE SOFTWARE.
 //
 
-import TINetworking
+import Alamofire
+import TIFoundationUtils
 
-public protocol EndpointRequestPreprocessor {
-    func preprocess<B,S>(request: EndpointRequest<B,S>) throws -> EndpointRequest<B,S>
+public protocol EndpointRequestRetrier {
+    associatedtype ErrorResult: Error
+
+    typealias EndpointRetryResult = Result<RetryResult, ErrorResult>
+
+    func validateAndRepair(errorResults: [ErrorResult],
+                           completion: @escaping (EndpointRetryResult) -> Void) -> Cancellable
+}
+
+@available(iOS 13.0.0, *)
+public extension EndpointRequestRetrier {
+    func validateAndRepair(errorResults: [ErrorResult]) async -> EndpointRetryResult {
+        let cancellableBag = BaseCancellableBag()
+
+        return await withTaskCancellationHandler(handler: {
+            cancellableBag.cancel()
+        }, operation: {
+            await withCheckedContinuation { continuation in
+                validateAndRepair(errorResults: errorResults) {
+                    continuation.resume(returning: $0)
+                }
+                .add(to: cancellableBag)
+            }
+        })
+    }
 }

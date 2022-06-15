@@ -20,11 +20,7 @@
 //  THE SOFTWARE.
 //
 
-import Moya
-import Foundation
-
-@available(iOS 13.0, *)
-extension _Concurrency.Task: Cancellable {}
-
-extension DispatchWorkItem: Cancellable {}
-extension Operation: Cancellable {}
+public enum EndpointErrorResult<ApiError, NetworkError>: Error {
+    case apiError(ApiError)
+    case networkError(NetworkError)
+}

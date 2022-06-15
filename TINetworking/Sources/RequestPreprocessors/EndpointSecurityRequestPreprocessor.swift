@@ -20,8 +20,8 @@
 //  THE SOFTWARE.
 //
 
-public enum RecoverableErrorHandlerResult<ErrorType: Error> {
-    case skipError
-    case recoverRequest
-    case forwardError(ErrorType)
+public protocol SecuritySchemePreprocessor {
+    func preprocess<B,S>(request: EndpointRequest<B,S>, using security: SecurityScheme) throws -> EndpointRequest<B,S>
 }
+
+

@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,23 +20,29 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+open class DefaultFingerprintsProvider: FingerprintsProvider {
+    public var secureStorage: FingerprintsSecureStorage
+    public var settingsStorage: FingerprintsSettingsStorage
 
-@available(iOS 11.0, *)
-open class ArchiverKeyValueEncoder: CodableKeyValueEncoder {
-    public init() {}
+    public init(secureStorage: FingerprintsSecureStorage,
+                settingsStorage: FingerprintsSettingsStorage,
+                bundledFingerprints: [String: Set<String>]) {
 
-    open func encodeEncodable<Value: Encodable>(value: Value, for key: StorageKey<Value>) throws -> Data {
-        let archiver = NSKeyedArchiver(requiringSecureCoding: true)
+        self.secureStorage = secureStorage
+        self.settingsStorage = settingsStorage
 
-        do {
-            try archiver.encodeEncodable(value, forKey: key.rawValue)
-        } catch {
-            throw StorageError.unableToEncode(underlyingError: error)
+        if settingsStorage.shouldResetFingerprints {
+            self.secureStorage.knownPins = bundledFingerprints
+            self.settingsStorage.shouldResetFingerprints = false
         }
+    }
 
-        archiver.finishEncoding()
+    public func fingerprints(forHost host: String) -> Set<String> {
+        secureStorage.knownPins[host] ?? []
+    }
 
-        return archiver.encodedData
+    public func add(fingerprints: [String], forHost host: String) {
+        let pinsForHost = (secureStorage.knownPins[host] ?? []).union(fingerprints)
+        secureStorage.knownPins.updateValue(pinsForHost, forKey: host)
     }
 }

@@ -22,10 +22,10 @@
 
 public final class ClosureAsyncOperation<Output, Failure: Error>: AsyncOperation<Output, Failure> {
     public typealias AsyncTaskClosure = () async -> Result<Output, Failure>
-    public typealias CancellableTaskClosure = (@escaping (Result<Output, Failure>) -> Void) -> CancellableTask
+    public typealias CancellableTaskClosure = (@escaping (Result<Output, Failure>) -> Void) -> Cancellable
 
     private let cancellableTaskClosure: CancellableTaskClosure
-    private var cancellableTask: CancellableTask?
+    private var cancellableTask: Cancellable?
 
     public init(cancellableTaskClosure: @escaping CancellableTaskClosure) {
         self.cancellableTaskClosure = cancellableTaskClosure
@@ -66,7 +66,7 @@ public final class ClosureAsyncOperation<Output, Failure: Error>: AsyncOperation
 }
 
 public extension ClosureAsyncOperation {
-    typealias NeverFailCancellableTaskClosure = (@escaping (Output) -> Void) -> CancellableTask
+    typealias NeverFailCancellableTaskClosure = (@escaping (Output) -> Void) -> Cancellable
 
     convenience init(neverFailCancellableTaskClosure: @escaping NeverFailCancellableTaskClosure) where Failure == Never {
         self.init(cancellableTaskClosure: { completion in

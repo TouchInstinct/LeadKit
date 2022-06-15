@@ -20,13 +20,18 @@
 //  THE SOFTWARE.
 //
 
-import Moya
-import TIFoundationUtils
+public struct WeakTargetCancellable<T: AnyObject>: Cancellable {
+    public typealias CancelClosure = (T?) -> Void
 
-open class BaseCancellable: Cancellable, CancellableTask {
-    private(set) public var isCancelled = false
+    private let cancelClosure: CancelClosure
+    private weak var target: T?
 
-    open func cancel() {
-        isCancelled = true
+    public init(target: T?, cancelClosure: @escaping CancelClosure) {
+        self.target = target
+        self.cancelClosure = cancelClosure
+    }
+
+    public func cancel() {
+        cancelClosure(target)
     }
 }

@@ -20,10 +20,25 @@
 //  THE SOFTWARE.
 //
 
-import TINetworking
+import Alamofire
+import TIFoundationUtils
 
-public protocol SecuritySchemePreprocessor {
-    func preprocess<B,S>(request: EndpointRequest<B,S>, using security: SecurityScheme) throws -> EndpointRequest<B,S>
+public struct AnyEndpointRequestRetrier<ErrorResult: Error>: EndpointRequestRetrier {
+    typealias ValidateAndRepairClosure = ([ErrorResult], @escaping (Result<RetryResult, ErrorResult>) -> Void) -> Cancellable
+
+    private let validateAndRepairClosure: ValidateAndRepairClosure
+
+    public init<RR: EndpointRequestRetrier>(retrier: RR) where RR.ErrorResult == ErrorResult {
+        self.validateAndRepairClosure = retrier.validateAndRepair
+    }
+
+    public func validateAndRepair(errorResults: [ErrorResult], completion: @escaping (EndpointRetryResult) -> Void) -> Cancellable {
+        validateAndRepairClosure(errorResults, completion)
+    }
 }
 
-
+public extension EndpointRequestRetrier {
+    func asAnyEndpointRequestRetrier() -> AnyEndpointRequestRetrier<ErrorResult> {
+        .init(retrier: self)
+    }
+}

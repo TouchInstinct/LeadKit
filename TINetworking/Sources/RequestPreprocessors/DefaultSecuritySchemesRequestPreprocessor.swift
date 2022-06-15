@@ -20,8 +20,6 @@
 //  THE SOFTWARE.
 //
 
-import TINetworking
-
 open class DefaultEndpointSecurityPreprocessor: EndpointRequestPreprocessor {
     enum PreprocessError: Error {
         case missingSecurityScheme(String, [String: SecurityScheme])
