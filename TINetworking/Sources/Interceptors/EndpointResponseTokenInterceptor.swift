@@ -29,7 +29,7 @@ open class EndpointResponseTokenInterceptor<AE, NE>: DefaultTokenInterceptor<End
 
     private let isTokenInvalidErrorResultClosure: IsTokenInvalidErrorResultClosure
 
-    public init(isTokenInvalidClosure: @escaping IsTokenInvalidClosure,
+    public init(isTokenInvalidClosure: @escaping ShouldRefreshTokenClosure,
                 refreshTokenClosure: @escaping RefreshTokenClosure,
                 isTokenInvalidErrorResultClosure: @escaping IsTokenInvalidErrorResultClosure,
                 requestModificationClosure: RequestModificationClosure? = nil) {

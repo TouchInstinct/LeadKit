@@ -75,33 +75,40 @@ open class DefaultJsonNetworkService: ApiInteractor {
                                                                    completion: @escaping ParameterClosure<R>) -> TIFoundationUtils.Cancellable {
 
         ScopeCancellable { [serializationQueue, callbackQueue, preprocessors] scope in
-            let workItem = DispatchWorkItem {
-                guard !scope.isCancelled else {
-                    return
-                }
+            Self.preprocess(request: request,
+                            preprocessors: preprocessors) {
+                switch $0 {
+                case let .success(preprocessedRequest):
+                    let workItem = DispatchWorkItem {
+                        guard !scope.isCancelled else {
+                            return
+                        }
 
-                do {
-                    let preprocessedRequest = try preprocessors.reduce(request) {
-                        try $1.preprocess(request: $0)
+                        do {
+                            let serializedRequest = try self.serialize(request: preprocessedRequest)
+
+                            self.process(request: serializedRequest,
+                                         mapSuccess: mapSuccess,
+                                         mapFailure: mapFailure,
+                                         mapNetworkError: mapNetworkError,
+                                         completion: completion)
+                                .add(to: scope)
+                        } catch {
+                            callbackQueue.async {
+                                completion(mapNetworkError(.encodableMapping(error)))
+                            }
+                        }
                     }
 
-                    let serializedRequest = try self.serialize(request: preprocessedRequest)
+                    workItem.add(to: scope)
 
-                    scope.add(cancellable: self.process(request: serializedRequest,
-                                                        mapSuccess: mapSuccess,
-                                                        mapFailure: mapFailure,
-                                                        mapNetworkError: mapNetworkError,
-                                                        completion: completion))
-                } catch {
+                    serializationQueue.async(execute: workItem)
+                case let .failure(error):
                     callbackQueue.async {
                         completion(mapNetworkError(.encodableMapping(error)))
                     }
                 }
             }
-
-            serializationQueue.async(execute: workItem)
-
-            return workItem
         }
     }
 
@@ -180,5 +187,30 @@ open class DefaultJsonNetworkService: ApiInteractor {
                                                                        schemePreprocessors: schemePreprocessors)
 
         preprocessors.append(securityPreprocessor)
+    }
+
+    private static func preprocess<B,S,P: Collection>(request: EndpointRequest<B,S>,
+                                                      preprocessors: P,
+                                                      completion: @escaping (Result<EndpointRequest<B,S>, Error>) -> Void) -> TIFoundationUtils.Cancellable
+    where P.Element == EndpointRequestPreprocessor {
+
+        guard let preprocessor = preprocessors.first else {
+            completion(.success(request))
+            return Cancellables.nonCancellable()
+        }
+
+        return ScopeCancellable { scope in
+            preprocessor.preprocess(request: request) {
+                switch $0 {
+                case let .success(modifiedRequest):
+                    preprocess(request: modifiedRequest,
+                               preprocessors: preprocessors.dropFirst(),
+                               completion: completion)
+                        .add(to: scope)
+                case let .failure(error):
+                    completion(.failure(error))
+                }
+            }
+        }
     }
 }

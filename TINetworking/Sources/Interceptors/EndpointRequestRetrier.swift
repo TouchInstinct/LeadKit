@@ -35,17 +35,10 @@ public protocol EndpointRequestRetrier {
 @available(iOS 13.0.0, *)
 public extension EndpointRequestRetrier {
     func validateAndRepair(errorResults: [ErrorResult]) async -> EndpointRetryResult {
-        let cancellableBag = BaseCancellableBag()
-
-        return await withTaskCancellationHandler(handler: {
-            cancellableBag.cancel()
-        }, operation: {
-            await withCheckedContinuation { continuation in
-                validateAndRepair(errorResults: errorResults) {
-                    continuation.resume(returning: $0)
-                }
-                .add(to: cancellableBag)
+        await withTaskCancellableClosure { completion in
+            validateAndRepair(errorResults: errorResults) {
+                completion($0)
             }
-        })
+        }
     }
 }

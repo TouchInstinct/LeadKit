@@ -25,24 +25,24 @@ import Foundation
 import TIFoundationUtils
 
 open class DefaultTokenInterceptor<RefreshError: Error>: RequestInterceptor {
-    public typealias IsTokenInvalidClosure = (HTTPURLResponse?, Error?) -> Bool
+    public typealias ShouldRefreshTokenClosure = (URLRequest?, HTTPURLResponse?, Error?) -> Bool
     public typealias RefreshTokenClosure = (@escaping (RefreshError?) -> Void) -> Cancellable
 
     public typealias RequestModificationClosure = (URLRequest) -> URLRequest
 
     let refreshLock = NSLock()
 
-    let isTokenInvalidClosure: IsTokenInvalidClosure
+    let shouldRefreshToken: ShouldRefreshTokenClosure
     let refreshTokenClosure: RefreshTokenClosure
 
     public var defaultRetryStrategy: RetryResult = .doNotRetry
     public var requestModificationClosure: RequestModificationClosure?
 
-    public init(isTokenInvalidClosure: @escaping IsTokenInvalidClosure,
+    public init(isTokenInvalidClosure: @escaping ShouldRefreshTokenClosure,
                 refreshTokenClosure: @escaping RefreshTokenClosure,
                 requestModificationClosure: RequestModificationClosure? = nil) {
 
-        self.isTokenInvalidClosure = isTokenInvalidClosure
+        self.shouldRefreshToken = isTokenInvalidClosure
         self.refreshTokenClosure = refreshTokenClosure
         self.requestModificationClosure = requestModificationClosure
     }
@@ -62,7 +62,7 @@ open class DefaultTokenInterceptor<RefreshError: Error>: RequestInterceptor {
 
         let modifiedRequest = requestModificationClosure?(urlRequest) ?? urlRequest
 
-        validateAndRepair(validationClosure: { true },
+        validateAndRepair(validationClosure: { shouldRefreshToken(urlRequest, nil, nil) },
                           completion: adaptCompletion,
                           defaultCompletionResult: modifiedRequest,
                           recoveredCompletionResult: modifiedRequest)
@@ -88,7 +88,7 @@ open class DefaultTokenInterceptor<RefreshError: Error>: RequestInterceptor {
             }
         }
 
-        validateAndRepair(validationClosure: { isTokenInvalidClosure(request.response, error) },
+        validateAndRepair(validationClosure: { shouldRefreshToken(request.request, request.response, error) },
                           completion: retryCompletion,
                           defaultCompletionResult: defaultRetryStrategy,
                           recoveredCompletionResult: .retry)

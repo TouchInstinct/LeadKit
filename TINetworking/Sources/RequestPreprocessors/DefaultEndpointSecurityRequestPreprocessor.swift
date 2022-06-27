@@ -20,10 +20,12 @@
 //  THE SOFTWARE.
 //
 
+import TIFoundationUtils
+
 open class DefaultSecuritySchemePreprocessor: SecuritySchemePreprocessor {
     struct ValueNotProvidedError: Error {}
 
-    public typealias ValueProvider = () -> String?
+    public typealias ValueProvider = (@escaping (String?) -> Void) -> Cancellable
 
     private let valueProvider: ValueProvider
 
@@ -32,43 +34,52 @@ open class DefaultSecuritySchemePreprocessor: SecuritySchemePreprocessor {
     }
 
     public init(staticValue: String?) {
-        self.valueProvider = { staticValue }
+        self.valueProvider = {
+            $0(staticValue)
+            return Cancellables.nonCancellable()
+        }
     }
 
     // MARK: - EndpointSecurityRequestPreprocessor
 
-    public func preprocess<B, S>(request: EndpointRequest<B, S>, using security: SecurityScheme) throws -> EndpointRequest<B, S> {
+    public func preprocess<B,S>(request: EndpointRequest<B,S>,
+                                using security: SecurityScheme,
+                                completion: @escaping (Result<EndpointRequest<B,S>, Error>) -> Void) -> Cancellable {
+
         var modifiedRequest = request
 
-        guard let value = valueProvider() else {
-            throw ValueNotProvidedError()
-        }
+        return valueProvider {
+            guard let value = $0 else {
+                completion(.failure(ValueNotProvidedError()))
+                return
+            }
 
-        switch security {
-        case let .http(authenticationScheme):
-            let headerValue = "\(authenticationScheme.rawValue) \(value)"
-            var headerParameters = modifiedRequest.headerParameters ?? [:]
-            headerParameters.updateValue(.init(value: headerValue),
-                                         forKey: "Authorization")
-
-            modifiedRequest.headerParameters = headerParameters
-        case let .apiKey(parameterLocation, parameterName):
-            switch parameterLocation {
-            case .header:
+            switch security {
+            case let .http(authenticationScheme):
+                let headerValue = "\(authenticationScheme.rawValue) \(value)"
                 var headerParameters = modifiedRequest.headerParameters ?? [:]
-                headerParameters.updateValue(.init(value: value),
-                                             forKey: parameterName)
+                headerParameters.updateValue(.init(value: headerValue),
+                                             forKey: "Authorization")
 
                 modifiedRequest.headerParameters = headerParameters
-            case .query:
-                modifiedRequest.queryParameters.updateValue(.init(value: value),
-                                                            forKey: parameterName)
-            case .cookie:
-                modifiedRequest.cookieParameters.updateValue(.init(value: value),
-                                                             forKey: parameterName)
-            }
-        }
+            case let .apiKey(parameterLocation, parameterName):
+                switch parameterLocation {
+                case .header:
+                    var headerParameters = modifiedRequest.headerParameters ?? [:]
+                    headerParameters.updateValue(.init(value: value),
+                                                 forKey: parameterName)
 
-        return modifiedRequest
+                    modifiedRequest.headerParameters = headerParameters
+                case .query:
+                    modifiedRequest.queryParameters.updateValue(.init(value: value),
+                                                                forKey: parameterName)
+                case .cookie:
+                    modifiedRequest.cookieParameters.updateValue(.init(value: value),
+                                                                 forKey: parameterName)
+                }
+            }
+
+            completion(.success(modifiedRequest))
+        }
     }
 }

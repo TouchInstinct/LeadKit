@@ -20,6 +20,20 @@
 //  THE SOFTWARE.
 //
 
+import TIFoundationUtils
+
 public protocol EndpointRequestPreprocessor {
-    func preprocess<B,S>(request: EndpointRequest<B,S>) throws -> EndpointRequest<B,S>
+    func preprocess<B,S>(request: EndpointRequest<B,S>,
+                         completion: @escaping (Result<EndpointRequest<B,S>, Error>) -> Void) -> Cancellable
+}
+
+@available(iOS 13.0.0, *)
+public extension EndpointRequestPreprocessor {
+    func preprocess<B,S>(request: EndpointRequest<B,S>) async -> Result<EndpointRequest<B,S>, Error> {
+        await withTaskCancellableClosure { completion in
+            preprocess(request: request) {
+                completion($0)
+            }
+        }
+    }
 }
