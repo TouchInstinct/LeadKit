@@ -64,7 +64,7 @@ let package = Package(
 
     // MARK: - Networking
 
-    .target(name: "TINetworking", dependencies: ["TISwiftUtils", "Alamofire"], path: "TINetworking/Sources"),
+    .target(name: "TINetworking", dependencies: ["TIFoundationUtils", "Alamofire"], path: "TINetworking/Sources"),
     .target(name: "TIMoyaNetworking", dependencies: ["TINetworking", "TIFoundationUtils", "Moya"], path: "TIMoyaNetworking"),
     .target(name: "TINetworkingCache", dependencies: ["TIFoundationUtils", "TINetworking", "Cache"], path: "TINetworkingCache/Sources"),
 

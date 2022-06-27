@@ -27,8 +27,8 @@ import TISwiftUtils
 import Foundation
 import TIFoundationUtils
 
-open class DefaultJsonNetworkService {
-    public typealias RequestResult<S: Decodable, AE: Decodable> = EndpointRequestResult<S, AE, MoyaError>
+open class DefaultJsonNetworkService: ApiInteractor {
+    public typealias NetworkError = MoyaError
 
     public var session: Session
 
@@ -68,43 +68,11 @@ open class DefaultJsonNetworkService {
                               defaultServer: openApi.defaultServer)
     }
 
-    @available(iOS 13.0.0, *)
-    open func process<B: Encodable, S, F>(request: EndpointRequest<B, S>) async -> RequestResult<S, F> {
-        await process(request: request,
-                      mapSuccess: Result.success,
-                      mapFailure: { .failure(.apiError($0)) },
-                      mapMoyaError: { .failure(.networkError($0)) })
-    }
-
-    @available(iOS 13.0.0, *)
     open func process<B: Encodable, S: Decodable, F: Decodable, R>(request: EndpointRequest<B, S>,
                                                                    mapSuccess: @escaping Closure<S, R>,
                                                                    mapFailure: @escaping Closure<F, R>,
-                                                                   mapMoyaError: @escaping Closure<MoyaError, R>) async -> R {
-
-        let cancellableBag = CancellableBag()
-
-        return await withTaskCancellationHandler(handler: {
-            cancellableBag.cancel()
-        }, operation: {
-            await withCheckedContinuation { continuation in
-                process(request: request,
-                        mapSuccess: mapSuccess,
-                        mapFailure: mapFailure,
-                        mapMoyaError: mapMoyaError) {
-
-                    continuation.resume(returning: $0)
-                }
-                        .add(to: cancellableBag)
-            }
-        })
-    }
-
-    open func process<B: Encodable, S: Decodable, F: Decodable, R>(request: EndpointRequest<B, S>,
-                                                                   mapSuccess: @escaping Closure<S, R>,
-                                                                   mapFailure: @escaping Closure<F, R>,
-                                                                   mapMoyaError: @escaping Closure<MoyaError, R>,
-                                                                   completion: @escaping ParameterClosure<R>) -> Cancellable {
+                                                                   mapNetworkError: @escaping Closure<MoyaError, R>,
+                                                                   completion: @escaping ParameterClosure<R>) -> TIFoundationUtils.Cancellable {
 
         ScopeCancellable { [serializationQueue, callbackQueue, preprocessors] scope in
             let workItem = DispatchWorkItem {
@@ -122,11 +90,11 @@ open class DefaultJsonNetworkService {
                     scope.add(cancellable: self.process(request: serializedRequest,
                                                         mapSuccess: mapSuccess,
                                                         mapFailure: mapFailure,
-                                                        mapMoyaError: mapMoyaError,
+                                                        mapNetworkError: mapNetworkError,
                                                         completion: completion))
                 } catch {
                     callbackQueue.async {
-                        completion(mapMoyaError(.encodableMapping(error)))
+                        completion(mapNetworkError(.encodableMapping(error)))
                     }
                 }
             }
@@ -140,8 +108,8 @@ open class DefaultJsonNetworkService {
     open func process<S: Decodable, F: Decodable, R>(request: SerializedRequest,
                                                      mapSuccess: @escaping Closure<S, R>,
                                                      mapFailure: @escaping Closure<F, R>,
-                                                     mapMoyaError: @escaping Closure<MoyaError, R>,
-                                                     completion: @escaping ParameterClosure<R>) -> Cancellable {
+                                                     mapNetworkError: @escaping Closure<MoyaError, R>,
+                                                     completion: @escaping ParameterClosure<R>) -> TIFoundationUtils.Cancellable {
 
         createProvider().request(request) { [jsonDecoder,
                                              callbackQueue,
@@ -185,7 +153,7 @@ open class DefaultJsonNetworkService {
                     result = model
                     pluginResult = .success(rawResponse)
                 case let .failure(moyaError):
-                    result = mapMoyaError(moyaError)
+                    result = mapNetworkError(moyaError)
                     pluginResult = .failure(moyaError)
                 }
 
@@ -193,13 +161,14 @@ open class DefaultJsonNetworkService {
                     $0.didReceive(pluginResult, target: request)
                 }
             case let .failure(moyaError):
-                result = mapMoyaError(moyaError)
+                result = mapNetworkError(moyaError)
             }
 
             callbackQueue.async {
                 completion(result)
             }
         }
+        .asFoundationUtilsCancellable()
     }
 
     public func register<T: RawRepresentable>(securityPreprocessors: [T: SecuritySchemePreprocessor]) where T.RawValue == String {

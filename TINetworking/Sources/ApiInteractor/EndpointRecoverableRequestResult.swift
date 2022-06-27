@@ -20,20 +20,4 @@
 //  THE SOFTWARE.
 //
 
-import Moya
-import TISwiftUtils
-import TIFoundationUtils
-
-public struct Cancellables {
-    public static func nonCancellable() -> Cancellable {
-        NonCancellable()
-    }
-
-    public static func scoped(scopeCancellableClosure: ScopeCancellable.ScopeCancellableClosure) -> Cancellable {
-        ScopeCancellable(scopeCancellableClosure: scopeCancellableClosure)
-    }
-
-    public static func nonCancellableTask() -> CancellableTask {
-        NonCancellable()
-    }
-}
+public typealias EndpointRecoverableRequestResult<S: Decodable, AE: Decodable, NE> = Result<S, ErrorCollection<EndpointErrorResult<AE, NE>>>

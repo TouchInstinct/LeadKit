@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,23 +20,19 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import Moya
+import TIFoundationUtils
 
-@available(iOS 11.0, *)
-open class ArchiverKeyValueEncoder: CodableKeyValueEncoder {
-    public init() {}
+struct MoyaCancellableWrapper: TIFoundationUtils.Cancellable {
+    let moyaCancellable: Moya.Cancellable
 
-    open func encodeEncodable<Value: Encodable>(value: Value, for key: StorageKey<Value>) throws -> Data {
-        let archiver = NSKeyedArchiver(requiringSecureCoding: true)
+    func cancel() {
+        moyaCancellable.cancel()
+    }
+}
 
-        do {
-            try archiver.encodeEncodable(value, forKey: key.rawValue)
-        } catch {
-            throw StorageError.unableToEncode(underlyingError: error)
-        }
-
-        archiver.finishEncoding()
-
-        return archiver.encodedData
+extension Moya.Cancellable {
+    func asFoundationUtilsCancellable() -> TIFoundationUtils.Cancellable {
+        MoyaCancellableWrapper(moyaCancellable: self)
     }
 }

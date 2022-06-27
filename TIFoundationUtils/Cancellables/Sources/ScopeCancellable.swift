@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,23 +20,22 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import TISwiftUtils
 
-@available(iOS 11.0, *)
-open class ArchiverKeyValueEncoder: CodableKeyValueEncoder {
-    public init() {}
+public final class ScopeCancellable: Cancellable {
+    public typealias ScopeCancellableClosure = Closure<BaseCancellableBag, Cancellable>
 
-    open func encodeEncodable<Value: Encodable>(value: Value, for key: StorageKey<Value>) throws -> Data {
-        let archiver = NSKeyedArchiver(requiringSecureCoding: true)
+    private let cancellableBag: BaseCancellableBag
 
-        do {
-            try archiver.encodeEncodable(value, forKey: key.rawValue)
-        } catch {
-            throw StorageError.unableToEncode(underlyingError: error)
-        }
+    public init(cancellableBag: BaseCancellableBag = .init(),
+                scopeCancellableClosure: ScopeCancellableClosure) {
 
-        archiver.finishEncoding()
+        self.cancellableBag = cancellableBag
 
-        return archiver.encodedData
+        cancellableBag.add(cancellable: scopeCancellableClosure(cancellableBag))
+    }
+
+    public func cancel() {
+        cancellableBag.cancel()
     }
 }

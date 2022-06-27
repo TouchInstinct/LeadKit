@@ -1,5 +1,15 @@
 # Changelog
 
+### 1.21.0
+
+- **Update**: `AsyncEventHandler` was replaced with `EndpointRequestRetrier`
+- **Add**: `FingerprintsTrustEvaluator` and `FingerprintsProvider` for fingerprint-based host trust evaluation
+- **Add**: `DefaultTokenInterceptor` for queue-based token refresh across all requests of single api interactor (network service).
+- **Update**: `DefaultRecoverableJsonNetworkService` now returns collection of errors in result
+- **Update**: `CancellableTask` was renamed to `Cancellable`. Cancellable implementations has been moved from `TIMoyaNetworking` to `TIFoundationUtils`.
+- **Add**: `ApiInteractor` protocol with basic request/response methods
+
+
 ### 1.20.0
 
 - **Add**: OpenAPI security schemes support for EndpointRequest's.

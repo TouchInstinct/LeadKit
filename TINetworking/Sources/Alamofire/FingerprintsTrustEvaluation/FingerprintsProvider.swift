@@ -20,15 +20,7 @@
 //  THE SOFTWARE.
 //
 
-import Moya
-import TIFoundationUtils
-
-public struct NonCancellable: Cancellable, CancellableTask {
-    public let isCancelled = true
-
-    public init() {}
-
-    public func cancel() {
-        // nothing
-    }
+public protocol FingerprintsProvider {
+    func fingerprints(forHost host: String) -> Set<String>
+    func add(fingerprints: [String], forHost host: String)
 }

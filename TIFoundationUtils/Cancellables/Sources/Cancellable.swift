@@ -20,34 +20,14 @@
 //  THE SOFTWARE.
 //
 
-import Moya
+import Foundation
 
-open class CancellableBag: BaseCancellable {
-    var cancellables: [Cancellable] = []
-
-    public override init() {}
-
-    public override func cancel() {
-        guard !isCancelled else {
-            return
-        }
-
-        cancellables.forEach { $0.cancel() }
-
-        super.cancel()
-    }
-
-    public func add(cancellable: Cancellable?) {
-        guard let cancellable = cancellable else {
-            return
-        }
-
-        cancellables.append(cancellable)
-    }
+public protocol Cancellable {
+    func cancel()
 }
 
-public extension Cancellable {
-    func add(to cancellableBag: CancellableBag) {
-        cancellableBag.add(cancellable: self)
-    }
-}
+@available(iOS 13.0, *)
+extension Task: Cancellable {}
+
+extension Operation: Cancellable {}
+extension DispatchWorkItem: Cancellable {}

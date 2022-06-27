@@ -20,14 +20,6 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
-
-public protocol CancellableTask {
-    func cancel()
+public protocol EndpointRequestPreprocessor {
+    func preprocess<B,S>(request: EndpointRequest<B,S>) throws -> EndpointRequest<B,S>
 }
-
-@available(iOS 13.0, *)
-extension Task: CancellableTask {}
-
-extension Operation: CancellableTask {}
-extension DispatchWorkItem: CancellableTask {}

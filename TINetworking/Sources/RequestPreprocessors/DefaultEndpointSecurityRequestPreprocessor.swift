@@ -20,8 +20,6 @@
 //  THE SOFTWARE.
 //
 
-import TINetworking
-
 open class DefaultSecuritySchemePreprocessor: SecuritySchemePreprocessor {
     struct ValueNotProvidedError: Error {}
 
