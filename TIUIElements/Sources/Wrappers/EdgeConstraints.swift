@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -22,50 +22,33 @@
 
 import UIKit
 
-public protocol BaseTextAttributesConfigurable {
-    func set(font: UIFont)
-    func set(color: UIColor)
-    func set(alignment: NSTextAlignment)
-}
+public struct EdgeConstraints {
+    public let leadingConstraint: NSLayoutConstraint
+    public let trailingConstraint: NSLayoutConstraint
+    public let topConstraint: NSLayoutConstraint
+    public let bottomConstraint: NSLayoutConstraint
 
-extension UILabel: BaseTextAttributesConfigurable {
-    public func set(font: UIFont) {
-        self.font = font
+    public var allConstraints: [NSLayoutConstraint] {
+        [
+            leadingConstraint,
+            trailingConstraint,
+            topConstraint,
+            bottomConstraint
+        ]
     }
 
-    public func set(color: UIColor) {
-        textColor = color
+    public func activate() {
+        NSLayoutConstraint.activate(allConstraints)
     }
 
-    public func set(alignment: NSTextAlignment) {
-        textAlignment = alignment
-    }
-}
-
-extension UITextField: BaseTextAttributesConfigurable {
-    public func set(font: UIFont) {
-        self.font = font
+    public func deactivate() {
+        NSLayoutConstraint.deactivate(allConstraints)
     }
 
-    public func set(color: UIColor) {
-        textColor = color
-    }
-
-    public func set(alignment: NSTextAlignment) {
-        textAlignment = alignment
-    }
-}
-
-extension UITextView: BaseTextAttributesConfigurable {
-    public func set(font: UIFont) {
-        self.font = font
-    }
-
-    public func set(color: UIColor) {
-        textColor = color
-    }
-
-    public func set(alignment: NSTextAlignment) {
-        textAlignment = alignment
+    public func update(from insets: UIEdgeInsets) {
+        leadingConstraint.constant = insets.left
+        trailingConstraint.constant = -insets.right
+        topConstraint.constant = insets.top
+        bottomConstraint.constant = -insets.bottom
     }
 }

@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,52 +20,6 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
-
-public protocol BaseTextAttributesConfigurable {
-    func set(font: UIFont)
-    func set(color: UIColor)
-    func set(alignment: NSTextAlignment)
-}
-
-extension UILabel: BaseTextAttributesConfigurable {
-    public func set(font: UIFont) {
-        self.font = font
-    }
-
-    public func set(color: UIColor) {
-        textColor = color
-    }
-
-    public func set(alignment: NSTextAlignment) {
-        textAlignment = alignment
-    }
-}
-
-extension UITextField: BaseTextAttributesConfigurable {
-    public func set(font: UIFont) {
-        self.font = font
-    }
-
-    public func set(color: UIColor) {
-        textColor = color
-    }
-
-    public func set(alignment: NSTextAlignment) {
-        textAlignment = alignment
-    }
-}
-
-extension UITextView: BaseTextAttributesConfigurable {
-    public func set(font: UIFont) {
-        self.font = font
-    }
-
-    public func set(color: UIColor) {
-        textColor = color
-    }
-
-    public func set(alignment: NSTextAlignment) {
-        textAlignment = alignment
-    }
+public protocol ReconfigurableView: ConfigurableView where ViewModelType: ChangeableViewModel {
+    func apply(change: ViewModelType.Change)
 }

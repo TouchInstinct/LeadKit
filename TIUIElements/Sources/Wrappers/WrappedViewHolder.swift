@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -22,50 +22,34 @@
 
 import UIKit
 
-public protocol BaseTextAttributesConfigurable {
-    func set(font: UIFont)
-    func set(color: UIColor)
-    func set(alignment: NSTextAlignment)
+public protocol WrappedViewHolder {
+    associatedtype View: UIView
+
+    var wrappedView: View { get }
+    var contentView: UIView { get }
+    var contentInsets: UIEdgeInsets { get set }
 }
 
-extension UILabel: BaseTextAttributesConfigurable {
-    public func set(font: UIFont) {
-        self.font = font
+public extension WrappedViewHolder {
+    func wrappedViewConstraints() -> EdgeConstraints {
+        .init(leadingConstraint: wrappedView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+              trailingConstraint: wrappedView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+              topConstraint: wrappedView.topAnchor.constraint(equalTo: contentView.topAnchor),
+              bottomConstraint: wrappedView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor))
     }
 
-    public func set(color: UIColor) {
-        textColor = color
-    }
+    func configureWrappedViewLayout() -> EdgeConstraints {
+        wrappedView.translatesAutoresizingMaskIntoConstraints = false
 
-    public func set(alignment: NSTextAlignment) {
-        textAlignment = alignment
-    }
-}
+        let contentEdgeConstraints = wrappedViewConstraints()
+        contentEdgeConstraints.activate()
 
-extension UITextField: BaseTextAttributesConfigurable {
-    public func set(font: UIFont) {
-        self.font = font
-    }
-
-    public func set(color: UIColor) {
-        textColor = color
-    }
-
-    public func set(alignment: NSTextAlignment) {
-        textAlignment = alignment
+        return contentEdgeConstraints
     }
 }
 
-extension UITextView: BaseTextAttributesConfigurable {
-    public func set(font: UIFont) {
-        self.font = font
-    }
-
-    public func set(color: UIColor) {
-        textColor = color
-    }
-
-    public func set(alignment: NSTextAlignment) {
-        textAlignment = alignment
+public extension WrappedViewHolder where Self: UIView {
+    var contentView: UIView {
+        self
     }
 }

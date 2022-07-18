@@ -68,6 +68,10 @@ public struct ViewText {
         attributes.configure(textField: textField, with: text)
     }
 
+    public func configure(textView: UITextView) {
+        attributes.configure(textView: textView, with: text)
+    }
+
     public func configure(button: UIButton, for state: UIControl.State) {
         attributes.configure(button: button, with: text, for: state)
     }
