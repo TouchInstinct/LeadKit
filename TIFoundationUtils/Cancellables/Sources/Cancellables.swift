@@ -29,3 +29,20 @@ public struct Cancellables {
         ScopeCancellable(scopeCancellableClosure: scopeCancellableClosure)
     }
 }
+
+@available(iOS 13.0.0, *)
+public func withTaskCancellableClosure<T>(closure: (@escaping (T) -> Void) -> Cancellable) async -> T {
+    let cancellableBag = BaseCancellableBag()
+
+    return await withTaskCancellationHandler(handler: {
+        cancellableBag.cancel()
+    }, operation: {
+        await withCheckedContinuation { continuation in
+            closure {
+                continuation.resume(returning: $0)
+            }
+            .add(to: cancellableBag)
+        }
+    })
+}
+

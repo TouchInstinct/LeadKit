@@ -49,21 +49,13 @@ public extension ApiInteractor {
                                                                      mapFailure: @escaping Closure<F, R>,
                                                                      mapNetworkError: @escaping Closure<NetworkError, R>) async -> R {
 
-        let cancellableBag = BaseCancellableBag()
-
-        return await withTaskCancellationHandler(handler: {
-            cancellableBag.cancel()
-        }, operation: {
-            await withCheckedContinuation { continuation in
-                process(request: request,
-                        mapSuccess: mapSuccess,
-                        mapFailure: mapFailure,
-                        mapNetworkError: mapNetworkError) {
-
-                    continuation.resume(returning: $0)
-                }
-                .add(to: cancellableBag)
+        await withTaskCancellableClosure { completion in
+            process(request: request,
+                    mapSuccess: mapSuccess,
+                    mapFailure: mapFailure,
+                    mapNetworkError: mapNetworkError) {
+                completion($0)
             }
-        })
+        }
     }
 }

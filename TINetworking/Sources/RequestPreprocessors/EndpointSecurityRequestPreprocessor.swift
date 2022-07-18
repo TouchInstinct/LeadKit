@@ -20,8 +20,21 @@
 //  THE SOFTWARE.
 //
 
+import TIFoundationUtils
+
 public protocol SecuritySchemePreprocessor {
-    func preprocess<B,S>(request: EndpointRequest<B,S>, using security: SecurityScheme) throws -> EndpointRequest<B,S>
+    func preprocess<B,S>(request: EndpointRequest<B,S>,
+                         using security: SecurityScheme,
+                         completion: @escaping (Result<EndpointRequest<B,S>, Error>) -> Void) -> Cancellable
 }
 
-
+@available(iOS 13.0.0, *)
+public extension SecuritySchemePreprocessor {
+    func preprocess<B,S>(request: EndpointRequest<B,S>, using security: SecurityScheme) async -> Result<EndpointRequest<B,S>, Error> {
+        await withTaskCancellableClosure { completion in
+            preprocess(request: request, using: security) {
+                completion($0)
+            }
+        }
+    }
+}

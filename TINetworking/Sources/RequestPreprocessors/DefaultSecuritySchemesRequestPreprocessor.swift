@@ -20,6 +20,8 @@
 //  THE SOFTWARE.
 //
 
+import TIFoundationUtils
+
 open class DefaultEndpointSecurityPreprocessor: EndpointRequestPreprocessor {
     enum PreprocessError: Error {
         case missingSecurityScheme(String, [String: SecurityScheme])
@@ -36,46 +38,120 @@ open class DefaultEndpointSecurityPreprocessor: EndpointRequestPreprocessor {
         self.schemePreprocessors = schemePreprocessors
     }
 
-    public func preprocess<B, S>(request: EndpointRequest<B, S>) throws -> EndpointRequest<B, S> {
+    public func preprocess<B,S>(request: EndpointRequest<B,S>,
+                                completion: @escaping (Result<EndpointRequest<B,S>, Error>) -> Void) -> Cancellable {
+
         guard !request.security.compactMap({ $0 }).isEmpty else {
-            return request
+            completion(.success(request))
+            return Cancellables.nonCancellable()
         }
 
-        let endpointSchemes: [[KeyValueTuple<String, SecurityScheme>]] = try request.security.map {
-            try $0.map {
-                guard let securityScheme = openApi.security[$0] else {
-                    throw PreprocessError.missingSecurityScheme($0, openApi.security)
-                }
+        do {
+            let endpointSchemes: [[KeyValueTuple<String, SecurityScheme>]] = try request.security.map {
+                try $0.map {
+                    guard let securityScheme = openApi.security[$0] else {
+                        throw PreprocessError.missingSecurityScheme($0, openApi.security)
+                    }
 
-                return ($0, securityScheme)
+                    return ($0, securityScheme)
+                }
             }
+
+            return Self.preprocess(request: request,
+                                   using: endpointSchemes,
+                                   schemePreprocessors: schemePreprocessors) { [schemePreprocessors] in
+                switch $0 {
+                case let .success(modifiedRequest):
+                    completion(.success(modifiedRequest))
+                case let .failure(error):
+                    completion(.failure(PreprocessError.unableToSatisfyRequirements(anyOfRequired: request.security,
+                                                                                    registeredPreprocessors: schemePreprocessors)))
+                }
+            }
+        } catch {
+            completion(.failure(error))
+            return Cancellables.nonCancellable()
         }
-
-        for schemeGroup in endpointSchemes {
-            let preprocessorsGroup: [KeyValueTuple<SecurityScheme, SecuritySchemePreprocessor>] = schemeGroup.compactMap {
-                guard let preprocessor = schemePreprocessors[$0.key] else {
-                    return nil
-                }
-
-                return ($0.value, preprocessor)
-            }
-
-            guard preprocessorsGroup.count == schemeGroup.count else {
-                continue // unable to satisfy group requirement
-            }
-
-            do {
-                return try preprocessorsGroup.reduce(request) {
-                    try $1.value.preprocess(request: $0, using: $1.key)
-                }
-            }
-        }
-
-        throw PreprocessError.unableToSatisfyRequirements(anyOfRequired: request.security,
-                                                          registeredPreprocessors: schemePreprocessors)
     }
 
     public func register(preprocessor: SecuritySchemePreprocessor, for scheme: String) {
         schemePreprocessors[scheme] = preprocessor
+    }
+
+    private static func preprocess<B,S,SC: Collection>(request: EndpointRequest<B,S>,
+                                                       using schemes: SC,
+                                                       schemePreprocessors: [String: SecuritySchemePreprocessor],
+                                                       completion: @escaping (Result<EndpointRequest<B,S>, Error>) -> Void) -> Cancellable
+    where SC.Element == [KeyValueTuple<String, SecurityScheme>] {
+
+        guard let schemeGroup = schemes.first else {
+            completion(.success(request))
+            return Cancellables.nonCancellable()
+        }
+
+        let preprocessorsGroup: [KeyValueTuple<SecurityScheme, SecuritySchemePreprocessor>] = schemeGroup.compactMap {
+            guard let preprocessor = schemePreprocessors[$0.key] else {
+                return nil
+            }
+
+            return ($0.value, preprocessor)
+        }
+
+        guard preprocessorsGroup.count == schemeGroup.count else {
+            // unable to satisfy group requirement
+            // try next scheme group
+            return preprocess(request: request,
+                              using: schemes.dropFirst(),
+                              schemePreprocessors: schemePreprocessors,
+                              completion: completion)
+        }
+
+        return ScopeCancellable { scope in
+            preprocess(request: request,
+                       with: preprocessorsGroup) {
+
+                switch $0 {
+                case let .success(modifiedRequest):
+                    completion(.success(modifiedRequest))
+                case let .failure(error):
+                    guard !schemes.isEmpty else {
+                        completion(.failure(error))
+                        return
+                    }
+
+                    preprocess(request: request,
+                               using: schemes.dropFirst(),
+                               schemePreprocessors: schemePreprocessors,
+                               completion: completion)
+                        .add(to: scope)
+                }
+            }
+        }
+    }
+
+    private static func preprocess<B,S,G: Collection>(request: EndpointRequest<B,S>,
+                                                      with groups: G,
+                                                      completion: @escaping (Result<EndpointRequest<B,S>, Error>) -> Void) -> Cancellable
+    where G.Element == KeyValueTuple<SecurityScheme, SecuritySchemePreprocessor> {
+
+        guard let group = groups.first else {
+            completion(.success(request))
+            return Cancellables.nonCancellable()
+        }
+
+        return ScopeCancellable { scope in
+            group.value.preprocess(request: request,
+                                   using: group.key) {
+                switch $0 {
+                case let .success(modifiedRequest):
+                    preprocess(request: modifiedRequest,
+                               with: groups.dropFirst(),
+                               completion: completion)
+                        .add(to: scope)
+                case let .failure(error):
+                    completion(.failure(error))
+                }
+            }
+        }
     }
 }

@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.22.0
+
+- **Update**: Asynchronous request preprocessing
+
 ### 1.21.0
 
 - **Update**: `AsyncEventHandler` was replaced with `EndpointRequestRetrier`
