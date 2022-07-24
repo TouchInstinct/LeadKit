@@ -37,7 +37,7 @@ public struct AlertAction: Identifiable {
     /// Alert button action
     public let action: VoidClosure?
 
-    init(title: String, style: UIAlertAction.Style = .default, action: VoidClosure? = nil) {
+    public init(title: String, style: UIAlertAction.Style = .default, action: VoidClosure? = nil) {
         self.title = title
         self.style = style
         self.action = action

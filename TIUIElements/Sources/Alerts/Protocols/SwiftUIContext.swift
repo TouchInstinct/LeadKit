@@ -28,7 +28,7 @@ public protocol SwiftUIContext: PresentationContext {
 }
 
 @available(iOS 13, *)
-extension SwiftUIContext {
+public extension SwiftUIContext {
     var presentedViewController: UIViewController? {
         UIApplication.shared.windows.first?.rootViewController?.presentedViewController
     }
