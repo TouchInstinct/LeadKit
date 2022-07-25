@@ -20,8 +20,16 @@
 //  THE SOFTWARE.
 //
 
-public protocol UIViewPresenter {
-    associatedtype View: AnyObject // should be stored weakly
+import Foundation
+import LocalAuthentication
 
-    func didCompleteConfiguration(of view: View)
+public protocol BiometryService {
+    var isBiometryAuthAvailable: Bool { get }
+    var biometryType: LABiometryType { get }
+}
+
+extension LAContext: BiometryService {
+    public var isBiometryAuthAvailable: Bool {
+        canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
+    }
 }

@@ -20,26 +20,12 @@
 //  THE SOFTWARE.
 //
 
-open class DefaultUIViewPresenter<View: AnyObject>: ReusableUIViewPresenter {
-    public private(set) weak var view: View?
+import Foundation
 
-    public init() {}
+public protocol TokenCipher {
+    func derive(password: String, using salt: Data) -> Result<Data, CipherError>
 
-    // MARK: - UIViewPresenter
-    
-    open func didCompleteConfiguration(of view: View) {
-        self.view = view
-    }
-
-    // MARK: - ReusableUIViewPresenter
-
-    open func willReuse(view: View) {
-        if didConfigure(view: view) {
-            self.view = nil
-        }
-    }
-
-    open func didConfigure(view: View) -> Bool {
-        self.view === view
-    }
+    func encrypt(token: Data, using password: String) -> Result<StringEncryptionResult, CipherError>
+    func decrypt(token: StringEncryptionResult, using key: Data) -> Result<Data, CipherError>
+    func decrypt(token: StringEncryptionResult, using password: String) -> Result<Data, CipherError>
 }

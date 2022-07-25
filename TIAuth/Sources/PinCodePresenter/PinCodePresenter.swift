@@ -20,26 +20,35 @@
 //  THE SOFTWARE.
 //
 
-open class DefaultUIViewPresenter<View: AnyObject>: ReusableUIViewPresenter {
-    public private(set) weak var view: View?
+import TIUIKitCore
 
-    public init() {}
+@MainActor
+public protocol PinCodePresenterDelegate: AnyObject {
+    func onViewDidPresented()
+    func onBiometryRequest()
+    func onPinChanged()
+    func onFill(pinCode: String)
+}
 
-    // MARK: - UIViewPresenter
-    
-    open func didCompleteConfiguration(of view: View) {
-        self.view = view
-    }
+@MainActor
+public protocol PinCodePresenter: LifecyclePresenter, AnyObject {
+    // MARK: - Scenario properties
 
-    // MARK: - ReusableUIViewPresenter
+    var pinCodePresenterDelegate: PinCodePresenterDelegate? { get set }
 
-    open func willReuse(view: View) {
-        if didConfigure(view: view) {
-            self.view = nil
-        }
-    }
+    var filledPinCode: String { get }
 
-    open func didConfigure(view: View) -> Bool {
-        self.view === view
-    }
+    var leadingPinPadAction: PinCodeAction? { get set }
+    var trailingPinPadAction: PinCodeAction? { get set }
+
+    // MARK: - User actions handling
+
+    func didPerform(action: PinCodeAction)
+
+    // MARK: - State management
+
+    func resetState()
+    func setCheckingState()
+    func setIncorrectCodeState()
+    func setValidCodeState()
 }

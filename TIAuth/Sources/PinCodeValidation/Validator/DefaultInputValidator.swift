@@ -20,26 +20,20 @@
 //  THE SOFTWARE.
 //
 
-open class DefaultUIViewPresenter<View: AnyObject>: ReusableUIViewPresenter {
-    public private(set) weak var view: View?
+open class DefaultInputValidator<Violation: Hashable>: InputValidator {
+    public var rules: [Violation: ValidationRule]
 
-    public init() {}
-
-    // MARK: - UIViewPresenter
-    
-    open func didCompleteConfiguration(of view: View) {
-        self.view = view
+    public init(rules: [Violation: ValidationRule]) {
+        self.rules = rules
     }
 
-    // MARK: - ReusableUIViewPresenter
-
-    open func willReuse(view: View) {
-        if didConfigure(view: view) {
-            self.view = nil
-        }
+    convenience init(violations: [Violation], rulesCreator: (Violation) -> ValidationRule) {
+        self.init(rules: .init(uniqueKeysWithValues: violations.map { ($0, rulesCreator($0)) }) )
     }
 
-    open func didConfigure(view: View) -> Bool {
-        self.view === view
+    // MARK: - InputValidator
+
+    open func validate(input: String) -> Set<Violation> {
+        Set(rules.filter { !$0.value.validate(input: input) }.keys)
     }
 }

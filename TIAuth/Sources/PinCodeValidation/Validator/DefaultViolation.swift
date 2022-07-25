@@ -20,26 +20,16 @@
 //  THE SOFTWARE.
 //
 
-open class DefaultUIViewPresenter<View: AnyObject>: ReusableUIViewPresenter {
-    public private(set) weak var view: View?
+public enum DefaultViolation: Hashable {
+    case orderedDigits(ascending: Bool, minLength: UInt)
+    case equalDigits(minEqualDigits: UInt)
 
-    public init() {}
-
-    // MARK: - UIViewPresenter
-    
-    open func didCompleteConfiguration(of view: View) {
-        self.view = view
-    }
-
-    // MARK: - ReusableUIViewPresenter
-
-    open func willReuse(view: View) {
-        if didConfigure(view: view) {
-            self.view = nil
+    public var defaultValidationRule: ValidationRule {
+        switch self {
+        case let .orderedDigits(ascending, minLength):
+            return OrderedDigitsValidationRule(ascendingSequence: ascending, minLength: minLength)
+        case let .equalDigits(minEqualDigits):
+            return EqualDigitsValidationRule(minEqualDigits: minEqualDigits)
         }
-    }
-
-    open func didConfigure(view: View) -> Bool {
-        self.view === view
     }
 }

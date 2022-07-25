@@ -20,6 +20,7 @@
 //  THE SOFTWARE.
 //
 
+@MainActor
 public protocol ReusableUIViewPresenter: UIViewPresenter {
     func willReuse(view: View)
 }

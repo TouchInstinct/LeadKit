@@ -20,26 +20,11 @@
 //  THE SOFTWARE.
 //
 
-open class DefaultUIViewPresenter<View: AnyObject>: ReusableUIViewPresenter {
-    public private(set) weak var view: View?
+public protocol SingleValueStorage {
+    associatedtype ValueType
+    associatedtype ErrorType: Error
 
-    public init() {}
-
-    // MARK: - UIViewPresenter
-    
-    open func didCompleteConfiguration(of view: View) {
-        self.view = view
-    }
-
-    // MARK: - ReusableUIViewPresenter
-
-    open func willReuse(view: View) {
-        if didConfigure(view: view) {
-            self.view = nil
-        }
-    }
-
-    open func didConfigure(view: View) -> Bool {
-        self.view === view
-    }
+    func hasStoredValue() -> Bool
+    func store(value: ValueType) -> Result<Void, ErrorType>
+    func getValue() -> Result<ValueType, ErrorType>
 }

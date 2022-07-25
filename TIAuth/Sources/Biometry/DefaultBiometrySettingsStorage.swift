@@ -20,26 +20,29 @@
 //  THE SOFTWARE.
 //
 
-open class DefaultUIViewPresenter<View: AnyObject>: ReusableUIViewPresenter {
-    public private(set) weak var view: View?
+import Foundation
 
-    public init() {}
-
-    // MARK: - UIViewPresenter
-    
-    open func didCompleteConfiguration(of view: View) {
-        self.view = view
-    }
-
-    // MARK: - ReusableUIViewPresenter
-
-    open func willReuse(view: View) {
-        if didConfigure(view: view) {
-            self.view = nil
+open class DefaultBiometrySettingsStorage: BiometrySettingsStorage {
+    public enum StorageKeys {
+        static var isBiometryAuthEnabledStorageKey: String {
+            "isBiometryAuthEnabled"
         }
     }
 
-    open func didConfigure(view: View) -> Bool {
-        self.view === view
+    public var defaultsStorage: UserDefaults
+
+    // MARK: - BiometrySettingsService
+
+    public var isBiometryAuthEnabled: Bool {
+        get {
+            defaultsStorage.bool(forKey: StorageKeys.isBiometryAuthEnabledStorageKey)
+        }
+        set {
+            defaultsStorage.set(newValue, forKey: StorageKeys.isBiometryAuthEnabledStorageKey)
+        }
+    }
+
+    public init(defaultsStorage: UserDefaults = .standard) {
+        self.defaultsStorage = defaultsStorage
     }
 }

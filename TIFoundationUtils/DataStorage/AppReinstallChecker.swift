@@ -20,26 +20,29 @@
 //  THE SOFTWARE.
 //
 
-open class DefaultUIViewPresenter<View: AnyObject>: ReusableUIViewPresenter {
-    public private(set) weak var view: View?
+import Foundation
 
-    public init() {}
+open class AppReinstallChecker {
+    private let defaultsStorage: UserDefaults
+    private let storageKey: String
 
-    // MARK: - UIViewPresenter
-    
-    open func didCompleteConfiguration(of view: View) {
-        self.view = view
-    }
+    open var isAppFirstRun: Bool {
+        get {
+            guard defaultsStorage.object(forKey: storageKey) != nil else {
+                return true
+            }
 
-    // MARK: - ReusableUIViewPresenter
-
-    open func willReuse(view: View) {
-        if didConfigure(view: view) {
-            self.view = nil
+            return defaultsStorage.bool(forKey: storageKey)
+        }
+        set {
+            defaultsStorage.set(newValue, forKey: storageKey)
         }
     }
 
-    open func didConfigure(view: View) -> Bool {
-        self.view === view
+    public init(defaultsStorage: UserDefaults = .standard,
+                storageKey: String) {
+
+        self.defaultsStorage = defaultsStorage
+        self.storageKey = storageKey
     }
 }

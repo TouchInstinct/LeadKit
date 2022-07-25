@@ -20,26 +20,35 @@
 //  THE SOFTWARE.
 //
 
-open class DefaultUIViewPresenter<View: AnyObject>: ReusableUIViewPresenter {
-    public private(set) weak var view: View?
+public enum PinCodeActionBiometryType {
+    case touchID
+    case faceID
+}
 
-    public init() {}
+public enum PinCodeAction: Identifiable {
+    case digit(UInt)
+    case backspace
+    case biometry(PinCodeActionBiometryType)
+    case logout
+    case recover
+    case custom(String)
 
-    // MARK: - UIViewPresenter
-    
-    open func didCompleteConfiguration(of view: View) {
-        self.view = view
-    }
+    // MARK: - Identifiable
 
-    // MARK: - ReusableUIViewPresenter
-
-    open func willReuse(view: View) {
-        if didConfigure(view: view) {
-            self.view = nil
+    public var id: String {
+        switch self {
+        case let .digit(digit):
+            return String(digit)
+        case .backspace:
+            return "backspace"
+        case .biometry:
+            return "biometry"
+        case .logout:
+            return "logout"
+        case .recover:
+            return "recover"
+        case let .custom(actionId):
+            return actionId
         }
-    }
-
-    open func didConfigure(view: View) -> Bool {
-        self.view === view
     }
 }

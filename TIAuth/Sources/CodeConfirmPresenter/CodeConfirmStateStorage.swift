@@ -20,8 +20,6 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
-
 @MainActor
 public protocol CodeConfirmStateStorage: AnyObject {
     var currentUserInput: String? { get set }

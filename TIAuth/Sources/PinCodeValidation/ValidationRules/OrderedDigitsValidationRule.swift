@@ -20,26 +20,20 @@
 //  THE SOFTWARE.
 //
 
-open class DefaultUIViewPresenter<View: AnyObject>: ReusableUIViewPresenter {
-    public private(set) weak var view: View?
+public struct OrderedDigitsValidationRule: ValidationRule {
+    private let ascendingSequence: Bool
+    private let minLength: UInt
 
-    public init() {}
-
-    // MARK: - UIViewPresenter
-    
-    open func didCompleteConfiguration(of view: View) {
-        self.view = view
+    public init(ascendingSequence: Bool, minLength: UInt) {
+        self.ascendingSequence = ascendingSequence
+        self.minLength = minLength
     }
 
-    // MARK: - ReusableUIViewPresenter
+    // MARK: - ValidationRule
 
-    open func willReuse(view: View) {
-        if didConfigure(view: view) {
-            self.view = nil
-        }
-    }
-
-    open func didConfigure(view: View) -> Bool {
-        self.view === view
+    public func validate(input: String) -> Bool {
+        ascendingSequence
+            ? !input.containsAscendingSequence(minLength: minLength)
+            : !input.containsDescendingSequence(minLength: minLength)
     }
 }
