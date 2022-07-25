@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -21,51 +21,36 @@
 //
 
 import UIKit
+import TIUIKitCore
 
-public protocol BaseTextAttributesConfigurable {
-    func set(font: UIFont)
-    func set(color: UIColor)
-    func set(alignment: NSTextAlignment)
-}
+open class ContainerTableViewCell<View: UIView>: BaseInitializableCell, WrappedViewHolder {
+    // MARK: - WrappedViewHolder
 
-extension UILabel: BaseTextAttributesConfigurable {
-    public func set(font: UIFont) {
-        self.font = font
+    public private(set) lazy var wrappedView = createView()
+
+    public var contentInsets: UIEdgeInsets = .zero {
+        didSet {
+            contentEdgeConstraints?.update(from: contentInsets)
+        }
     }
 
-    public func set(color: UIColor) {
-        textColor = color
+    private var contentEdgeConstraints: EdgeConstraints?
+
+    // MARK: - InitializableView
+
+    override open func addViews() {
+        super.addViews()
+
+        addSubview(wrappedView)
     }
 
-    public func set(alignment: NSTextAlignment) {
-        textAlignment = alignment
-    }
-}
+    override open func configureLayout() {
+        super.configureLayout()
 
-extension UITextField: BaseTextAttributesConfigurable {
-    public func set(font: UIFont) {
-        self.font = font
+        contentEdgeConstraints = configureWrappedViewLayout()
     }
 
-    public func set(color: UIColor) {
-        textColor = color
-    }
-
-    public func set(alignment: NSTextAlignment) {
-        textAlignment = alignment
-    }
-}
-
-extension UITextView: BaseTextAttributesConfigurable {
-    public func set(font: UIFont) {
-        self.font = font
-    }
-
-    public func set(color: UIColor) {
-        textColor = color
-    }
-
-    public func set(alignment: NSTextAlignment) {
-        textAlignment = alignment
+    open func createView() -> View {
+        return View()
     }
 }

@@ -29,14 +29,14 @@ open class EndpointResponseTokenInterceptor<AE, NE>: DefaultTokenInterceptor<End
 
     private let isTokenInvalidErrorResultClosure: IsTokenInvalidErrorResultClosure
 
-    public init(isTokenInvalidClosure: @escaping ShouldRefreshTokenClosure,
+    public init(shouldRefreshTokenClosure: @escaping ShouldRefreshTokenClosure,
                 refreshTokenClosure: @escaping RefreshTokenClosure,
                 isTokenInvalidErrorResultClosure: @escaping IsTokenInvalidErrorResultClosure,
                 requestModificationClosure: RequestModificationClosure? = nil) {
 
         self.isTokenInvalidErrorResultClosure = isTokenInvalidErrorResultClosure
 
-        super.init(isTokenInvalidClosure: isTokenInvalidClosure,
+        super.init(shouldRefreshTokenClosure: shouldRefreshTokenClosure,
                    refreshTokenClosure: refreshTokenClosure,
                    requestModificationClosure: requestModificationClosure)
     }

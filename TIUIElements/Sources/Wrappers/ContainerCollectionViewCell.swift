@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -21,51 +21,58 @@
 //
 
 import UIKit
+import TIUIKitCore
 
-public protocol BaseTextAttributesConfigurable {
-    func set(font: UIFont)
-    func set(color: UIColor)
-    func set(alignment: NSTextAlignment)
-}
+open class ContainerCollectionViewCell<View: UIView>: UICollectionViewCell, InitializableViewProtocol, WrappedViewHolder {
+    // MARK: - WrappedViewHolder
 
-extension UILabel: BaseTextAttributesConfigurable {
-    public func set(font: UIFont) {
-        self.font = font
+    public private(set) lazy var wrappedView = createView()
+
+    public var contentInsets: UIEdgeInsets = .zero {
+        didSet {
+            contentEdgeConstraints?.update(from: contentInsets)
+        }
     }
 
-    public func set(color: UIColor) {
-        textColor = color
+    private var contentEdgeConstraints: EdgeConstraints?
+
+    // MARK: - Initialization
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        initializeView()
     }
 
-    public func set(alignment: NSTextAlignment) {
-        textAlignment = alignment
-    }
-}
+    required public init?(coder: NSCoder) {
+        super.init(coder: coder)
 
-extension UITextField: BaseTextAttributesConfigurable {
-    public func set(font: UIFont) {
-        self.font = font
+        initializeView()
     }
 
-    public func set(color: UIColor) {
-        textColor = color
+    // MARK: - InitializableView
+
+    open func addViews() {
+        addSubview(wrappedView)
     }
 
-    public func set(alignment: NSTextAlignment) {
-        textAlignment = alignment
-    }
-}
-
-extension UITextView: BaseTextAttributesConfigurable {
-    public func set(font: UIFont) {
-        self.font = font
+    open func bindViews() {
+        // override in subclass
     }
 
-    public func set(color: UIColor) {
-        textColor = color
+    open func configureLayout() {
+        contentEdgeConstraints = configureWrappedViewLayout()
     }
 
-    public func set(alignment: NSTextAlignment) {
-        textAlignment = alignment
+    open func configureAppearance() {
+        // override in subclass
+    }
+
+    open func localize() {
+        // override in subclass
+    }
+
+    open func createView() -> View {
+        return View()
     }
 }

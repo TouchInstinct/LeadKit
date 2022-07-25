@@ -1,23 +1,27 @@
 # LeadKit
+
 LeadKit is the iOS framework with a bunch of tools for rapid app development.
 
-## Additional
+This repository contains the following frameworks:
 
-This repository contains the following additional frameworks:
-
+- [TISwiftUtils](TISwiftUtils) - a bunch of useful helpers for Swift development.
+- [TIFoundationUtils](TIFoundationUtils) - set of helpers for Foundation framework classes.
 - [TIUIKitCore](TIUIKitCore) - core ui elements and protocols from LeadKit.
-- [TITransitions](TITransitions) - set of custom transitions to present controller.
+- [TISwiftUICore](TISwiftUICore) Core UI elements: protocols, views and helpers.
 - [TIUIElements](TIUIElements) - bunch of of useful protocols and views.
 - [OTPSwiftView](OTPSwiftView) - a fully customizable OTP view.
-- [TISwiftUtils](TISwiftUtils) - a bunch of useful helpers for development.
-- [TITableKitUtils](TITableKitUtils) - Set of helpers for TableKit classes.
-- [TIFoundationUtils](TIFoundationUtils) - Set of helpers for Foundation framework classes.
-- [TIKeychainUtils](TIKeychainUtils) - Set of helpers for Keychain classes.
+- [TITableKitUtils](TITableKitUtils) - set of helpers for TableKit classes.
+- [TIKeychainUtils](TIKeychainUtils) - set of helpers for Keychain classes.
 - [TIPagination](TIPagination) - realisation of paginating items from a data source.
 - [TINetworking](TINetworking) - Swagger-frendly networking layer helpers.
 - [TIMoyaNetworking](TIMoyaNetworking) - Moya + Swagger network service.
+- [TIAppleMapUtils](TIAppleMapUtils) - set of helpers for map objects clustering and interacting using Apple MapKit.
+- [TIGoogleMapUtils](TIGoogleMapUtils) - set of helpers for map objects clustering and interacting using Google Maps SDK.
+- [TIYandexMapUtils](TIYandexMapUtils) - set of helpers for map objects clustering and interacting using Yandex Maps SDK.
+- [TIAuth](TIAuth) - login, registration, confirmation and other related actions
 
 Useful docs:
+
 - [Semantic Commit Messages](docs/semantic-commit-messages.md) - commit message codestyle.
 - [Snippets](docs/snippets.md) - useful commands and scripts for development.
 
@@ -51,3 +55,7 @@ pod 'TISwiftUtils', 'x.y.z'
 pod 'TIFoundationUtils', 'x.y.z'
 # ...
 ```
+
+## Legacy
+
+Code located in root `Sources` folder and  `LeadKit.podspec` should be treated as legacy and shouldn't be used in newly created projects. Please use TI* modules via SPM or CocoaPods.
