@@ -123,8 +123,8 @@ open class AlertFactory {
                         message: message,
                         tintColor: tint,
                         actions: [
-                            .init(title: localizationProvider.yesTitle, style: .destructive, action: yesAction),
-                            .init(title: localizationProvider.noTitle, action: noAction)
+                            .init(title: localizationProvider.yesTitle, action: yesAction),
+                            .init(title: localizationProvider.noTitle, style: .destructive, action: noAction)
                         ])
     }
 }
