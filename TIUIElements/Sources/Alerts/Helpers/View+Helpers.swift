@@ -40,10 +40,11 @@ public extension View {
 
     func alert(isPresented: Binding<Bool>,
                on context: PresentationContext,
-               alertViewFactory: ResultClosure<AlertPresentable>) -> some View {
+               alertDescriptor descriptor: AlertDescriptor,
+               alertViewFactory: Closure<AlertDescriptor, AlertPresentable>) -> some View {
 
         if isPresented.wrappedValue {
-            alertViewFactory().present(on: context) {
+            alertViewFactory(descriptor).present(on: context) {
                 isPresented.wrappedValue = false
             }
         }

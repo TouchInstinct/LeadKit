@@ -24,7 +24,7 @@ import TISwiftUtils
 import UIKit
 
 // struct describe alert button information
-public struct AlertAction: Identifiable {
+public struct AlertAction {
 
     public let id = UUID()
 
@@ -51,6 +51,11 @@ extension AlertAction: Equatable {
         return false
     }
 }
+
+// MARK: - AlertAction + Identifiable
+
+@available(iOS 13, *)
+extension AlertAction: Identifiable { }
 
 // MARK: - AlertAction + Helpers
 
