@@ -20,36 +20,34 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import Foundation
 
-/// Struct describes alert data
-public struct AlertDescriptor {
+/// Provide default localization for alerts' buttons
+open class DefaultAlertLocalizationProvider: AlertLocalizationProvider {
 
-    /// Alert title
-    public let title: String?
+    public private(set) var bundle: Bundle
 
-    /// Alert message
-    public let message: String?
+    public init(bundle: Bundle = .main) {
+        self.bundle = bundle
+    }
 
-    /// Alert style
-    public let style: UIAlertController.Style
+    open var okTitle: String {
+        bundle.localizedString(forKey: "common_ok", value: "Ок", table: nil)
+    }
 
-    /// Alert tint color
-    public let tintColor: UIColor
+    open var cancelTitle: String {
+        bundle.localizedString(forKey: "common_cancel", value: "Отмена", table: nil)
+    }
 
-    /// Alert actions
-    public let actions: [AlertAction]
+    open var retryTitle: String {
+        bundle.localizedString(forKey: "common_retry", value: "Повторить", table: nil)
+    }
 
-    public init(title: String? = nil,
-                message: String? = nil,
-                style: UIAlertController.Style = .alert,
-                tintColor: UIColor = .systemBlue,
-                actions: [AlertAction] = []) {
+    open var yesTitle: String {
+        bundle.localizedString(forKey: "common_yes", value: "Да", table: nil)
+    }
 
-        self.title = title
-        self.message = message
-        self.style = style
-        self.tintColor = tintColor
-        self.actions = actions
+    open var noTitle: String {
+        bundle.localizedString(forKey: "common_no", value: "Нет", table: nil)
     }
 }

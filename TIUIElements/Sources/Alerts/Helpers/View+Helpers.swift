@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -25,6 +25,12 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 public extension View {
+
+    /// Presents an alert with a description on a context when a given condition is true.
+    /// - Parameters:
+    ///   - isPresented: A binding to a Boolean value that determines whether to present the alert. When the user presses or taps one of the alert’s actions, the system sets this value to false and dismisses.
+    ///   - context: The view that will show the alert
+    ///   - alert: Descriptor of the alert.
     func alert(isPresented: Binding<Bool>,
                on context: PresentationContext,
                alert: AlertDescriptor) -> some View {
@@ -38,6 +44,12 @@ public extension View {
         return self
     }
 
+    /// Presents an alert with a description on a context with custom configuration of the alert when a given condition is true.
+    /// - Parameters:
+    ///   - isPresented: A binding to a Boolean value that determines whether to present the alert. When the user presses or taps one of the alert’s actions, the system sets this value to false and dismisses.
+    ///   - context: The view that will show the alert
+    ///   - descriptor: Descriptor of the alert.
+    ///   - alertViewFactory: A closure called to configure custom alert.
     func alert(isPresented: Binding<Bool>,
                on context: PresentationContext,
                alertDescriptor descriptor: AlertDescriptor,

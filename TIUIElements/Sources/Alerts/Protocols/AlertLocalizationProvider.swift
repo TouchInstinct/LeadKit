@@ -20,36 +20,10 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
-
-/// Struct describes alert data
-public struct AlertDescriptor {
-
-    /// Alert title
-    public let title: String?
-
-    /// Alert message
-    public let message: String?
-
-    /// Alert style
-    public let style: UIAlertController.Style
-
-    /// Alert tint color
-    public let tintColor: UIColor
-
-    /// Alert actions
-    public let actions: [AlertAction]
-
-    public init(title: String? = nil,
-                message: String? = nil,
-                style: UIAlertController.Style = .alert,
-                tintColor: UIColor = .systemBlue,
-                actions: [AlertAction] = []) {
-
-        self.title = title
-        self.message = message
-        self.style = style
-        self.tintColor = tintColor
-        self.actions = actions
-    }
+public protocol AlertLocalizationProvider {
+    var okTitle: String { get }
+    var cancelTitle: String { get }
+    var retryTitle: String { get }
+    var yesTitle: String { get }
+    var noTitle: String { get }
 }

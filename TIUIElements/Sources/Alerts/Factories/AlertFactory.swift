@@ -25,59 +25,120 @@ import UIKit
 
 open class AlertFactory {
 
-    open class func alert(title: String? = nil,
-                          message: String? = nil,
-                          tint: UIColor = .systemBlue,
-                          actions: [AlertAction]) -> AlertDescriptor {
+    public var localizationProvider: AlertLocalizationProvider
 
-        return AlertDescriptor(title: title,
-                               message: message,
-                               style: .alert,
-                               tintColor: tint,
-                               actions: actions)
+    public init(localizationProvider: AlertLocalizationProvider = DefaultAlertLocalizationProvider()) {
+        self.localizationProvider = localizationProvider
     }
 
-    open class func sheetAlert(title: String? = nil,
-                               message: String? = nil,
-                               tint: UIColor = .systemBlue,
-                               actions: [AlertAction]) -> AlertDescriptor {
+    /// Provides general alert description.
+    /// - Parameters:
+    ///   - title: A text string used as the title of the alert.
+    ///   - message: A text string used as the message of the alert.
+    ///   - tint: A color used as a tint color of the alert. Default color is UIColor.systemBlue.
+    ///   - actions: An array of actions of the alert.
+    /// - Returns: Alert descriptor, which can be used to present alert view.
+    open func alert(title: String? = nil,
+                    message: String? = nil,
+                    tint: UIColor = .systemBlue,
+                    actions: [AlertAction]) -> AlertDescriptor {
 
-        return AlertDescriptor(title: title,
-                               message: message,
-                               style: .actionSheet,
-                               tintColor: tint,
-                               actions: actions)
+        AlertDescriptor(title: title,
+                        message: message,
+                        tintColor: tint,
+                        actions: actions)
     }
 
-    open class func okAlert(title: String? = nil,
+    /// Provides general sheet alert description.
+    /// - Parameters:
+    ///   - title: A text string used as the title of the sheet alert.
+    ///   - message: A text string used as the message of the sheet alert.
+    ///   - tint: A color used as a tint color of the sheet alert. Default color is UIColor.systemBlue.
+    ///   - actions: An array of actions of the sheet alert.
+    /// - Returns: Alert descriptor, which can be used to present sheet alert view.
+    open func sheetAlert(title: String? = nil,
+                         message: String? = nil,
+                         tint: UIColor = .systemBlue,
+                         actions: [AlertAction]) -> AlertDescriptor {
+
+        AlertDescriptor(title: title,
+                        message: message,
+                        style: .actionSheet,
+                        tintColor: tint,
+                        actions: actions)
+    }
+
+    /// Provides ok type alert description.
+    /// - Parameters:
+    ///   - title: A text string used as the title of the alert.
+    ///   - message: A text string used as the message of the alert.
+    ///   - tint: A color used as a tint color of the alert. Default color is UIColor.systemBlue.
+    /// - Returns: Alert descriptor, which can be used to present alert view.
+    open func okAlert(title: String? = nil,
+                      message: String? = nil,
+                      tint: UIColor = .systemBlue) -> AlertDescriptor {
+
+        AlertDescriptor(title: title,
+                        message: message,
+                        tintColor: tint,
+                        actions: [.simpleAction(localizationProvider.okTitle)])
+    }
+
+    /// Provides retry type alert description.
+    /// - Parameters:
+    ///   - title: A text string used as the title of the alert.
+    ///   - message: A text string used as the message of the alert.
+    ///   - tint: A color used as a tint color of the alert. Default color is UIColor.systemBlue.
+    ///   - retryAction: A closure called by tapping on the retry button of the alert.
+    /// - Returns: Alert descriptor, which can be used to present alert view.
+    open func retryAlert(title: String? = nil,
+                         message: String? = nil,
+                         tint: UIColor = .systemBlue,
+                         retryAction: VoidClosure? = nil) -> AlertDescriptor {
+
+        AlertDescriptor(title: title,
+                        message: message,
+                        tintColor: tint,
+                        actions: [
+                            .cancelAction(localizationProvider.cancelTitle),
+                            .init(title: localizationProvider.retryTitle, action: retryAction)
+                        ])
+    }
+
+    /// Provides dialogue type alert description. Dialogue type alert containes to buttons: Yes and No.
+    /// - Parameters:
+    ///   - title: A text string used as the title of the alert.
+    ///   - message: A text string used as the message of the alert.
+    ///   - tint: A color used as a tint color of the alert. Default color is UIColor.systemBlue.
+    ///   - yesAction: A closure called by tapping on the yes button of the alert.
+    ///   - noAction: A closure called by tapping on the no button of the alert.
+    /// - Returns: Alert descriptor, which can be used to present alert view.
+    open func dialogueAlert(title: String? = nil,
                             message: String? = nil,
-                            tint: UIColor = .systemBlue) -> AlertDescriptor {
-        AlertDescriptor(title: title,
-                        message: message,
-                        style: .alert,
-                        tintColor: tint,
-                        actions: [.okAction])
-    }
+                            tint: UIColor = .systemBlue,
+                            yesAction: VoidClosure? = nil,
+                            noAction: VoidClosure? = nil) -> AlertDescriptor {
 
-    open class func retryAlert(title: String? = nil,
-                               message: String? = nil,
-                               cancelTitle: String = "Cancel",
-                               tint: UIColor = .systemBlue,
-                               retryAction: VoidClosure? = nil) -> AlertDescriptor {
         AlertDescriptor(title: title,
                         message: message,
                         tintColor: tint,
-                        actions: [.cancelAction(cancelTitle),
-                                  AlertAction(title: "Retry", action: retryAction)])
+                        actions: [
+                            .init(title: localizationProvider.yesTitle, style: .destructive, action: yesAction),
+                            .init(title: localizationProvider.noTitle, action: noAction)
+                        ])
     }
 }
 
+// MARK: - AlertAction + Helpers
+
 private extension AlertAction {
-    static var okAction: AlertAction {
-        AlertAction(title: "Ok", action: {})
+    static func simpleAction(_ title: String,
+                             style: UIAlertAction.Style = .default) -> AlertAction {
+
+        AlertAction(title: title, style: style, action: nil)
     }
 
-    static func cancelAction(_ title: String = "Cancel") -> AlertAction {
-        AlertAction(title: title, style: .cancel, action: {})
+    static func cancelAction(_ title: String) -> AlertAction {
+        .simpleAction(title, style: .cancel)
     }
 }
