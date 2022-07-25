@@ -20,13 +20,13 @@
 //  THE SOFTWARE.
 //
 
-import TISwiftUtils
+import typealias TISwiftUtils.VoidClosure
 import UIKit
 
-extension UIAlertController {
+public extension UIAlertController {
 
     @discardableResult
-    public func configured(with configuration: AlertDescriptor) -> Self {
+    func configured(with configuration: AlertDescriptor) -> Self {
         title = configuration.title
         message = configuration.message
         view.tintColor = configuration.tintColor
@@ -40,7 +40,7 @@ extension UIAlertController {
 }
 
 extension UIAlertController: AlertPresentable {
-    public func present(on context: PresentationContext, completion: VoidClosure?) {
+    public func present(on context: AlertPresentationContext, completion: VoidClosure?) {
         context.present(self, animated: true, completion: completion)
     }
 }

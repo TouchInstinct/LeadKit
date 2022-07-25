@@ -32,7 +32,7 @@ public extension View {
     ///   - context: The view that will show the alert
     ///   - alert: Descriptor of the alert.
     func alert(isPresented: Binding<Bool>,
-               on context: PresentationContext,
+               on context: AlertPresentationContext,
                alert: AlertDescriptor) -> some View {
 
         if isPresented.wrappedValue {
@@ -51,7 +51,7 @@ public extension View {
     ///   - descriptor: Descriptor of the alert.
     ///   - alertViewFactory: A closure called to configure custom alert.
     func alert(isPresented: Binding<Bool>,
-               on context: PresentationContext,
+               on context: AlertPresentationContext,
                alertDescriptor descriptor: AlertDescriptor,
                alertViewFactory: Closure<AlertDescriptor, AlertPresentable>) -> some View {
 

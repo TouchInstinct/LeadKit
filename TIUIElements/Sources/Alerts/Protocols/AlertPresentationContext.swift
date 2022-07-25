@@ -20,24 +20,9 @@
 //  THE SOFTWARE.
 //
 
-import SwiftUI
+import TISwiftUtils
+import UIKit
 
-@available(iOS 13, *)
-public protocol SwiftUIContext: PresentationContext {
-    var presentedViewController: UIViewController? { get }
-}
-
-@available(iOS 13, *)
-public extension SwiftUIContext {
-    var presentedViewController: UIViewController? {
-        UIApplication.shared.windows.first?.rootViewController?.presentedViewController
-    }
-
-    func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
-        guard let viewController = presentedViewController else {
-            return
-        }
-
-        viewController.present(viewControllerToPresent, animated: flag, completion: completion)
-    }
+public protocol AlertPresentationContext {
+    func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: VoidClosure?)
 }

@@ -24,5 +24,5 @@ import TISwiftUtils
 import Foundation
 
 public protocol AlertPresentable {
-    func present(on context: PresentationContext, completion: VoidClosure?)
+    func present(on context: AlertPresentationContext, completion: VoidClosure?)
 }

@@ -24,7 +24,6 @@ import TISwiftUtils
 import UIKit
 
 open class AlertFactory {
-
     public var localizationProvider: AlertLocalizationProvider
 
     public init(localizationProvider: AlertLocalizationProvider = DefaultAlertLocalizationProvider()) {

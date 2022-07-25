@@ -22,4 +22,4 @@
 
 import UIKit
 
-public protocol UIKitContext: PresentationContext { }
+public protocol UIKitAlertContext: AlertPresentationContext { }

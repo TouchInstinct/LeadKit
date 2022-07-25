@@ -23,8 +23,8 @@
 import TISwiftUtils
 import UIKit
 
-extension AlertDescriptor {
-    public func present(on context: PresentationContext, completion: VoidClosure? = nil) {
+public extension AlertDescriptor {
+    func present(on context: AlertPresentationContext, completion: VoidClosure? = nil) {
         let alertFactory: Closure<Self, UIAlertController> = { configuration in
             UIAlertController(title: configuration.title,
                               message: configuration.message,
@@ -35,7 +35,7 @@ extension AlertDescriptor {
         present(on: context, alertViewFactory: alertFactory, completion: completion)
     }
 
-    public func present(on context: PresentationContext,
+    func present(on context: AlertPresentationContext,
                         alertViewFactory: Closure<Self, AlertPresentable>,
                         completion: VoidClosure? = nil) {
         alertViewFactory(self).present(on: context, completion: completion)

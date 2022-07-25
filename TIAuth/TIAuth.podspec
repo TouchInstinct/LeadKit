@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TIAuth'
-  s.version          = '1.22.0'
+  s.version          = '1.24.0'
   s.summary          = 'Login, registration, confirmation and other related actions'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }

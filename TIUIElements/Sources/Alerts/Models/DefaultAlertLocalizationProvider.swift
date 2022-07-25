@@ -25,7 +25,7 @@ import Foundation
 /// Provide default localization for alerts' buttons
 open class DefaultAlertLocalizationProvider: AlertLocalizationProvider {
 
-    public private(set) var bundle: Bundle
+    public var bundle: Bundle
 
     public init(bundle: Bundle = .main) {
         self.bundle = bundle
