@@ -21,7 +21,7 @@
 //
 
 import TISwiftUtils
-import TIUIElements
+import TIUIKitCore
 import SwiftUI
 
 @available(iOS 13, *)
