@@ -132,7 +132,7 @@ Use to present alerts in a few lines of code. Can be used for UIKit and SwiftUI
 > You can initialize `AlertsFactory` with your own *LocalizationProvider* or use `DefaultAlertLocalizationProvider`
 
 ## Your view or view controller must implement PresentationContext protocol
-There are `UIKitAlertContext` and `SwiftUIAlertContext` protocols that are designed to make it easier to work with `AlertPresentationContext` protocol. By default, no changes need to be made for UIKit view controllers to make them conform to `UIKitAlertContext`. 
+There are `UIKitAlertContext` protocol that are designed to make it easier to work with `AlertPresentationContext` protocol. By default, no changes need to be made for UIKit view controllers to make them conform to `UIKitAlertContext`. 
 
 ## Custom alerts
 ```swift
@@ -186,18 +186,6 @@ func presentDialogueAlert() {
     factory
         .dialogueAlert(title: "Title", message: "Message")
         .present(on: self)
-}
-```
-
-## SwiftUI alerts
-```swift
-var body: some View {
-    Button("Show custom alert with binding property") {
-            alertDescription = factory.okAlert(title: "Title", message: "Message")
-            isPresentedCustomAlert = true
-        }
-    }
-    .alert(isPresented: $isPresentedAlert, on: self, alert: alertDescription)
 }
 ```
 
