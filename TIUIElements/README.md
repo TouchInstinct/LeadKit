@@ -127,68 +127,6 @@ class ViewController: UITableViewController, CollapsibleViewsContainer {
    <img src="Assets/paralaxWithScale.gif" width=300 height=600>  
 </p>
   
-# AlertsFactory
-Use to present alerts in a few lines of code. Can be used for UIKit and SwiftUI
-> You can initialize `AlertsFactory` with your own *LocalizationProvider* or use `DefaultAlertLocalizationProvider`
-
-## Your view or view controller must implement PresentationContext protocol
-There are `UIKitAlertContext` protocol that are designed to make it easier to work with `AlertPresentationContext` protocol. By default, no changes need to be made for UIKit view controllers to make them conform to `UIKitAlertContext`. 
-
-## Custom alerts
-```swift
-// Presents alert
-func presentAlert() {
-    factory
-        .alert(title: "Alert's title",
-               message: "Alert's message",
-               tint: .systemBlue,
-               actions: [
-                   AlertAction(title: "Ok", style: .default, action: nil),
-                   AlertAction(title: "Cancel", style: .cancel, action: nil)
-               ])
-        .present(on: self)
-}
-
-// Presents sheet alert
-func presentSheetAlert() {
-    factory
-        .sheetAlert(title: "Alert's title",
-               message: "Alert's message",
-               tint: .systemBlue,
-               actions: [
-                   AlertAction(title: "Ok", style: .default, action: nil),
-                   AlertAction(title: "Cancel", style: .cancel, action: nil)
-               ])
-        .present(on: self)
-}
-```
-
-## Default alerts
-```swift
-// Ok alert
-func presentOkAlert() {
-    factory
-        .okAlert(title: "Title", message: "Message")
-        .present(on: self)
-}
-
-// Retry alert
-func presentRetryAlert() {
-    factory
-        .retryAlert(title: "Title", message: "Message") { [weak self] in
-            self?.presentOkAlert()
-        }
-        .present(on: self)
-}
-
-// Dialogue alert
-func presentDialogueAlert() {
-    factory
-        .dialogueAlert(title: "Title", message: "Message")
-        .present(on: self)
-}
-```
-
 # Installation via SPM
 
 You can install this framework as a target of LeadKit.
