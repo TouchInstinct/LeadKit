@@ -4,6 +4,13 @@
 
 - **Add**: `AlertFactory` for presenting alerts in SwiftUI and UIKit.
 
+### 1.23.0
+
+- **Update**: `UITextView` now support configuration with `BaseTextAttributes`
+- **Add**: `ReconfigurableView` & `ChangeableViewModel` for non-destructing state update
+- **Add**: `WrappedViewHolder` protocol with table/collection view cell implementations
+- **Add**: `UIViewPresenter` and `ReusableUIViewPresenter ` protocols with default implementation for proper handling view/cells reuse
+
 ### 1.22.0
 
 - **Update**: Asynchronous request preprocessing

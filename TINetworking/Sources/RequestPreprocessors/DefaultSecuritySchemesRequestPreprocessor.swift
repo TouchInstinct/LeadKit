@@ -63,7 +63,7 @@ open class DefaultEndpointSecurityPreprocessor: EndpointRequestPreprocessor {
                 switch $0 {
                 case let .success(modifiedRequest):
                     completion(.success(modifiedRequest))
-                case let .failure(error):
+                case .failure:
                     completion(.failure(PreprocessError.unableToSatisfyRequirements(anyOfRequired: request.security,
                                                                                     registeredPreprocessors: schemePreprocessors)))
                 }

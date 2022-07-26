@@ -38,11 +38,11 @@ open class DefaultTokenInterceptor<RefreshError: Error>: RequestInterceptor {
     public var defaultRetryStrategy: RetryResult = .doNotRetry
     public var requestModificationClosure: RequestModificationClosure?
 
-    public init(isTokenInvalidClosure: @escaping ShouldRefreshTokenClosure,
+    public init(shouldRefreshTokenClosure: @escaping ShouldRefreshTokenClosure,
                 refreshTokenClosure: @escaping RefreshTokenClosure,
                 requestModificationClosure: RequestModificationClosure? = nil) {
 
-        self.shouldRefreshToken = isTokenInvalidClosure
+        self.shouldRefreshToken = shouldRefreshTokenClosure
         self.refreshTokenClosure = refreshTokenClosure
         self.requestModificationClosure = requestModificationClosure
     }

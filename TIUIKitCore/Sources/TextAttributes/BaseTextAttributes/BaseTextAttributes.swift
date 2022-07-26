@@ -20,8 +20,7 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UIFont
-import UIKit.UIColor
+import UIKit
 
 /// Base set of attributes to configure appearance of text.
 open class BaseTextAttributes {
@@ -31,6 +30,18 @@ open class BaseTextAttributes {
     public let alignment: NSTextAlignment
     public let lineHeightMultiple: CGFloat
     public let numberOfLines: Int
+
+    open var attributedStringAttributes: [NSAttributedString.Key : Any] {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = alignment
+        paragraphStyle.lineHeightMultiple = lineHeightMultiple
+
+        return [
+            .font: font,
+            .foregroundColor: color,
+            .paragraphStyle: paragraphStyle
+        ]
+    }
 
     public init(font: UIFont,
                 color: UIColor,
@@ -59,6 +70,10 @@ open class BaseTextAttributes {
 
     open func configure(textField: UITextField) {
         configure(textContainer: textField)
+    }
+
+    open func configure(textView: UITextView) {
+        configure(textContainer: textView)
     }
 
     open func configure(button: UIButton, for state: UIControl.State) {
@@ -110,6 +125,14 @@ open class BaseTextAttributes {
                   attributedTextConfiguration: { textField.attributedText = $0 })
     }
 
+    open func configure(textView: UITextView, with string: String?) {
+        configure(textContainer: textView,
+                  with: string,
+                  appearanceConfiguration: configure(textView:),
+                  textConfiguration: { textView.text = $0 },
+                  attributedTextConfiguration: { textView.attributedText = $0 })
+    }
+
     open func configure(button: UIButton, with string: String?, for state: UIControl.State) {
         configure(textContainer: button,
                   with: string,
@@ -122,17 +145,12 @@ open class BaseTextAttributes {
     }
 
     open func attributedString(for string: String) -> NSAttributedString {
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = alignment
-        paragraphStyle.lineHeightMultiple = lineHeightMultiple
+        NSAttributedString(string: string, attributes: attributedStringAttributes)
+    }
 
-        let attributes: [NSAttributedString.Key: Any] = [
-            .font: font,
-            .foregroundColor: color,
-            .paragraphStyle: paragraphStyle
-        ]
-
-        return NSAttributedString(string: string, attributes: attributes)
+    open func apply(in attributedString: NSMutableAttributedString, at range: NSRange? = nil) {
+        attributedString.addAttributes(attributedStringAttributes,
+                                       range: range ?? NSRange(location: 0, length: attributedString.length))
     }
 }
 
