@@ -14,6 +14,7 @@ let package = Package(
 
     // MARK: - SwiftUI
     .library(name: "TISwiftUICore", targets: ["TISwiftUICore"]),
+    .library(name: "TISwiftUIElements", targets: ["TISwiftUIElements"]),
     
     // MARK: - Utils
     .library(name: "TISwiftUtils", targets: ["TISwiftUtils"]),
@@ -55,6 +56,7 @@ let package = Package(
     // MARK: - SwiftUI
 
     .target(name: "TISwiftUICore", path: "TISwiftUICore/Sources"),
+    .target(name: "TISwiftUIElements", path: "TISwiftUIElements/Sources"),
     
     // MARK: - Utils
     .target(name: "TISwiftUtils", path: "TISwiftUtils/Sources"),

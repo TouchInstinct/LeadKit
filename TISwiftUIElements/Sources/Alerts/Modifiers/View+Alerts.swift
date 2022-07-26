@@ -21,9 +21,10 @@
 //
 
 import TISwiftUtils
+import TIUIElements
 import SwiftUI
 
-@available(iOS 13.0, *)
+@available(iOS 13, *)
 public extension View {
 
     /// Presents an alert with a description on a context when a given condition is true.

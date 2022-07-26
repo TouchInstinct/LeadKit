@@ -20,7 +20,7 @@
 //  THE SOFTWARE.
 //
 
-import typealias TISwiftUtils.VoidClosure
+import TISwiftUtils
 import UIKit
 
 public extension UIAlertController {

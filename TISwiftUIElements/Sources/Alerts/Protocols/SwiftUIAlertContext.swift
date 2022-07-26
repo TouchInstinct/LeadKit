@@ -21,14 +21,13 @@
 //
 
 import TISwiftUtils
-import SwiftUI
+import TIUIElements
+import UIKit
 
-@available(iOS 13, *)
 public protocol SwiftUIAlertContext: AlertPresentationContext {
     var presentingViewController: UIViewController { get set }
 }
 
-@available(iOS 13, *)
 public extension SwiftUIAlertContext {
     func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: VoidClosure?) {
         presentingViewController.present(viewControllerToPresent, animated: flag, completion: completion)
