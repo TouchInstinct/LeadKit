@@ -34,10 +34,10 @@ public extension AlertDescriptor {
 
         present(on: context, alertViewFactory: alertFactory, completion: completion)
     }
-
+    
     func present(on context: AlertPresentationContext,
-                        alertViewFactory: Closure<Self, AlertPresentable>,
-                        completion: VoidClosure? = nil) {
+                 alertViewFactory: Closure<Self, AlertPresentable>,
+                 completion: VoidClosure? = nil) {
         alertViewFactory(self).present(on: context, completion: completion)
     }
 }
