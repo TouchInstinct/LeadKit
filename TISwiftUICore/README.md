@@ -3,7 +3,22 @@
 Core UI elements: protocols, views and helpers.
 
 ## SwiftUI alerts
-> SwiftUI views should conform to protocol `SwiftUIAlertContext` to present alerts. This means that the view must implement the presentingViewController property. This controller is a context from which the alert will be shown.
+
+### SwiftUI views should conform to protocol `SwiftUIAlertContext` to present alerts. 
+This means that the view must implement the presentingViewController property. This controller is a context from which the alert will be shown.
+
+```swift
+// View that can present alerts.
+struct ContentView: View, SwiftUIAlerContext {
+    var presentingViewController: UIViewController
+
+    var body: some View {
+        // View realization.
+    }
+}
+```
+
+## Alerts usage example
 
 ```swift
 struct ContentView: View, SwiftUIAlertContext {

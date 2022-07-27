@@ -25,17 +25,6 @@ import TIUIKitCore
 import UIKit
 
 /// A SwiftUI context from where the alert can be presented.
-///
-/// ```
-/// // View that can present alerts.
-/// struct ContentView: View, SwiftUIAlerContext {
-///     var presentingViewController: UIViewController
-///
-///     var body: some View {
-///         // View realization.
-///     }
-/// }
-/// ```
 public protocol SwiftUIAlertContext: AlertPresentationContext {
     /// A view controller that represents a context from which the alert will be shown.
     var presentingViewController: UIViewController { get set }

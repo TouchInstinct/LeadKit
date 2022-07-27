@@ -30,6 +30,13 @@ Use to present alerts in a few lines of code. Can be used for UIKit and SwiftUI
 ### Your view or view controller must implement AlertPresentationContext protocol
 The implementation of the protocol says that an alert can be shown from this object. Also there is a `UIKitAlertContext` protocol designed to make it easier to work with `AlertPresentationContext` protocol. By default, no changes need to be made for UIKit view controllers to make them conform to `UIKitAlertContext`.
 
+```swift
+// View controller that can present alerts.
+class ViewController: UIViewController, UIKitAlerContext {
+    // Realization of the view controller
+}
+```
+
 ### Your alert controller must implement AlertPresentable protocol
 The implementation of this protocol says that an alert can be shown from the context. By default, the standard `UIAlertController` conforms to the protocol. Accordingly, when using a custom alert, it must also conform to the protocol:
 
