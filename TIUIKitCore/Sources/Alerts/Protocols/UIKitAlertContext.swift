@@ -20,4 +20,12 @@
 //  THE SOFTWARE.
 //
 
+/// An UIKit context from where the alert can be presented.
+/// 
+/// ```
+/// // View controller that can present alerts.
+/// class ViewController: UIViewController, UIKitAlerContext {
+///     // Realization of the view controller
+/// }
+/// ```
 public protocol UIKitAlertContext: AlertPresentationContext { }

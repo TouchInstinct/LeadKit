@@ -22,7 +22,29 @@
 
 import TISwiftUtils
 
-/// A protocol represents an alert which can be presented on the given context
+/// A protocol represents an alert which can be presented on the given context.
+///
+/// ```import PopupDialog
+///
+/// extension PopupDialog: AlertPresentable {
+///     @discardableResult
+///     public func configured(with configuration: AlertDescriptor) -> Self {
+///         title = configuration.title
+///
+///         for action in configuration.actions {
+///             addButton(DefaultButton(title: action.title, action: action.action))
+///         }
+///
+///         return self
+///     }
+///
+///     public func present(on context: AlertPresentationContext, completion: VoidClosure?) {
+///         context.present(self, animated: true, completion: completion)
+///     }
+/// }
+/// ```
+///
+/// The implementation of this protocol says that an alert can be shown from the context. By default, the standard `UIAlertController` conforms to the protocol. Accordingly, when using a custom alert, it must also conform to the protocol.
 public protocol AlertPresentable {
     func present(on context: AlertPresentationContext, completion: VoidClosure?)
 }

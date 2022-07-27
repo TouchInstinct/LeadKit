@@ -20,6 +20,7 @@
 //  THE SOFTWARE.
 //
 
+/// A provider of localization for common buttons' titles of the alerts.
 public protocol AlertLocalizationProvider {
     var okTitle: String { get }
     var cancelTitle: String { get }
