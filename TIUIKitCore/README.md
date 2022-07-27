@@ -27,8 +27,32 @@ Core UI elements: protocols, views and helpers.
 Use to present alerts in a few lines of code. Can be used for UIKit and SwiftUI
 > You can initialize `AlertsFactory` with your own *LocalizationProvider* or use `DefaultAlertLocalizationProvider`
 
-### Your view or view controller must implement PresentationContext protocol
-There are `UIKitAlertContext` protocol that are designed to make it easier to work with `AlertPresentationContext` protocol. By default, no changes need to be made for UIKit view controllers to make them conform to `UIKitAlertContext`. 
+### Your view or view controller must implement AlertPresentationContext protocol
+The implementation of the protocol says that an alert can be shown from this object. Also there is a `UIKitAlertContext` protocol designed to make it easier to work with `AlertPresentationContext` protocol. By default, no changes need to be made for UIKit view controllers to make them conform to `UIKitAlertContext`.
+
+### Your alert controller must implement AlertPresentable protocol
+The implementation of this protocol says that an alert can be shown from the context. By default, the standard `UIAlertController` conforms to the protocol. Accordingly, when using a custom alert, it must also conform to the protocol:
+
+```swift
+import PopupDialog
+
+extension PopupDialog: AlertPresentable {
+    @discardableResult
+    public func configured(with configuration: AlertDescriptor) -> Self {
+        title = configuration.title
+
+        for action in configuration.actions {
+            addButton(DefaultButton(title: action.title, action: action.action))
+        }
+
+        return self
+    }
+
+    public func present(on context: AlertPresentationContext, completion: VoidClosure?) {
+        context.present(self, animated: true, completion: completion)
+    }
+}
+```
 
 ## Custom alerts
 ```swift

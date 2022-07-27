@@ -20,9 +20,32 @@
 //  THE SOFTWARE.
 //
 
+import SwiftUI
 import TISwiftUtils
+import TIUIKitCore
 
-/// A protocol represents an alert which can be presented on the given context
-public protocol AlertPresentable {
-    func present(on context: AlertPresentationContext, completion: VoidClosure?)
+@available(iOS 13, *)
+struct AlertModifier: ViewModifier {
+
+    @Binding var isPresented: Bool
+    
+    let context: AlertPresentationContext
+    let alertDescriptor: AlertDescriptor
+    let alertPresentable: AlertPresentable?
+
+    func body(content: Content) -> some View {
+        if isPresented {
+            let completion: VoidClosure = {
+                isPresented = false
+            }
+
+            if let alertPresentable = alertPresentable {
+                alertPresentable.present(on: context, completion: completion)
+            } else {
+                alertDescriptor.present(on: context, completion: completion)
+            }
+        }
+
+        return content
+    }
 }

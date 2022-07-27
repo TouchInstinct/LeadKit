@@ -22,7 +22,7 @@
 
 import UIKit
 
-/// Struct describes alert data
+/// A struct describes alert data
 public struct AlertDescriptor {
 
     /// Alert title

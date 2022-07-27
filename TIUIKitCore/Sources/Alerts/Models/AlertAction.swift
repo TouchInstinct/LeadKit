@@ -23,7 +23,7 @@
 import TISwiftUtils
 import UIKit
 
-// struct describe alert button information
+/// A struct describes an alert button information
 public struct AlertAction {
 
     public let id = UUID()

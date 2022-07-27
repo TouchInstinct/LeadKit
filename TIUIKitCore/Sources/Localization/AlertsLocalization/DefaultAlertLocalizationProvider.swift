@@ -22,7 +22,7 @@
 
 import Foundation
 
-/// Provide default localization for alerts' buttons
+/// Provides default localization for alerts' buttons
 open class DefaultAlertLocalizationProvider: AlertLocalizationProvider {
 
     public var bundle: Bundle

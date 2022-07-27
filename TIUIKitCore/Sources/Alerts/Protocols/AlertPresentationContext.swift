@@ -23,6 +23,7 @@
 import TISwiftUtils
 import UIKit
 
+/// A context from where the alert can be presented
 public protocol AlertPresentationContext {
     func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: VoidClosure?)
 }

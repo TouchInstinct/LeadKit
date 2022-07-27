@@ -20,6 +20,4 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
-
 public protocol UIKitAlertContext: AlertPresentationContext { }

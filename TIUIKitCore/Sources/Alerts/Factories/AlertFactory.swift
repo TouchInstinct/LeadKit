@@ -36,7 +36,7 @@ open class AlertFactory {
     ///   - message: A text string used as the message of the alert.
     ///   - tint: A color used as a tint color of the alert. Default color is UIColor.systemBlue.
     ///   - actions: An array of actions of the alert.
-    /// - Returns: Alert descriptor, which can be used to present alert view.
+    /// - Returns: Alert descriptor which can be used to present alert view.
     open func alert(title: String? = nil,
                     message: String? = nil,
                     tint: UIColor = .systemBlue,
@@ -54,7 +54,7 @@ open class AlertFactory {
     ///   - message: A text string used as the message of the sheet alert.
     ///   - tint: A color used as a tint color of the sheet alert. Default color is UIColor.systemBlue.
     ///   - actions: An array of actions of the sheet alert.
-    /// - Returns: Alert descriptor, which can be used to present sheet alert view.
+    /// - Returns: Alert descriptor which can be used to present sheet alert view.
     open func sheetAlert(title: String? = nil,
                          message: String? = nil,
                          tint: UIColor = .systemBlue,
@@ -72,7 +72,7 @@ open class AlertFactory {
     ///   - title: A text string used as the title of the alert.
     ///   - message: A text string used as the message of the alert.
     ///   - tint: A color used as a tint color of the alert. Default color is UIColor.systemBlue.
-    /// - Returns: Alert descriptor, which can be used to present alert view.
+    /// - Returns: Alert descriptor which can be used to present alert view.
     open func okAlert(title: String? = nil,
                       message: String? = nil,
                       tint: UIColor = .systemBlue) -> AlertDescriptor {
@@ -89,7 +89,7 @@ open class AlertFactory {
     ///   - message: A text string used as the message of the alert.
     ///   - tint: A color used as a tint color of the alert. Default color is UIColor.systemBlue.
     ///   - retryAction: A closure called by tapping on the retry button of the alert.
-    /// - Returns: Alert descriptor, which can be used to present alert view.
+    /// - Returns: Alert descriptor which can be used to present alert view.
     open func retryAlert(title: String? = nil,
                          message: String? = nil,
                          tint: UIColor = .systemBlue,
@@ -111,7 +111,7 @@ open class AlertFactory {
     ///   - tint: A color used as a tint color of the alert. Default color is UIColor.systemBlue.
     ///   - yesAction: A closure called by tapping on the yes button of the alert.
     ///   - noAction: A closure called by tapping on the no button of the alert.
-    /// - Returns: Alert descriptor, which can be used to present alert view.
+    /// - Returns: Alert descriptor which can be used to present alert view.
     open func dialogueAlert(title: String? = nil,
                             message: String? = nil,
                             tint: UIColor = .systemBlue,

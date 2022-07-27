@@ -36,13 +36,10 @@ public extension View {
                on context: AlertPresentationContext,
                alert: AlertDescriptor) -> some View {
 
-        if isPresented.wrappedValue {
-            alert.present(on: context) {
-                isPresented.wrappedValue = false
-            }
-        }
-
-        return self
+        modifier(AlertModifier(isPresented: isPresented,
+                               context: context,
+                               alertDescriptor: alert,
+                               alertPresentable: nil))
     }
 
     /// Presents an alert with a description on a context with custom configuration of the alert when a given condition is true.
@@ -56,12 +53,9 @@ public extension View {
                alertDescriptor descriptor: AlertDescriptor,
                alertViewFactory: Closure<AlertDescriptor, AlertPresentable>) -> some View {
 
-        if isPresented.wrappedValue {
-            alertViewFactory(descriptor).present(on: context) {
-                isPresented.wrappedValue = false
-            }
-        }
-
-        return self
+        modifier(AlertModifier(isPresented: isPresented,
+                               context: context,
+                               alertDescriptor: descriptor,
+                               alertPresentable: alertViewFactory(descriptor)))
     }
 }
