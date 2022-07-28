@@ -117,7 +117,8 @@ public extension Reactive where Base: SessionManager {
             }
 
             return requestObservable
-                .validate(statusCodes: self.base.acceptableStatusCodes.union(additionalValidStatusCodes))
+                .validate(statusCodes: self.base.acceptableStatusCodes.union(additionalValidStatusCodes),
+                          url: url.absoluteString)
         }
     }
 
@@ -191,7 +192,8 @@ public extension Reactive where Base: SessionManager {
 
                 return self.upload(data, urlRequest: urlRequest)
                     .map { $0 as DataRequest }
-                    .validate(statusCodes: self.base.acceptableStatusCodes.union(additionalValidStatusCodes))
+                    .validate(statusCodes: self.base.acceptableStatusCodes.union(additionalValidStatusCodes),
+                              url: try? requestParameters.url.asURL().absoluteString)
                     .flatMap {
                         $0.rx.apiResponse(mappingQueue: self.base.mappingQueue, decoder: decoder)
                     }

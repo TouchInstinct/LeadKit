@@ -80,9 +80,9 @@ public extension ObservableType where Element == DataRequest {
     ///
     /// - Parameter statusCodes: set of status codes to validate
     /// - Returns: Observable on self
-    func validate(statusCodes: Set<Int>) -> Observable<Element> {
+    func validate(statusCodes: Set<Int>, url: String? = nil) -> Observable<Element> {
         map { $0.validate(statusCode: statusCodes) }
-            .catchAsRequestError()
+            .catchAsRequestError(url: url)
     }
 }
 
@@ -114,7 +114,8 @@ private extension ObservableType where Element == ServerResponse {
 
 private extension ObservableType {
 
-    func catchAsRequestError(with request: DataRequest? = nil) -> Observable<Element> {
+    func catchAsRequestError(with request: DataRequest? = nil,
+                             url: String? = nil) -> Observable<Element> {
         self.catch { error in
             let resultError: RequestError
             let response = request?.data
