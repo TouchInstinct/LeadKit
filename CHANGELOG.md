@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.24.0
+
+- **Add**: `AlertFactory` for presenting alerts in SwiftUI and UIKit.
+
 ### 1.23.0
 
 - **Update**: `UITextView` now support configuration with `BaseTextAttributes`

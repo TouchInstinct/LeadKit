@@ -126,7 +126,7 @@ class ViewController: UITableViewController, CollapsibleViewsContainer {
 <p align="left">
    <img src="Assets/paralaxWithScale.gif" width=300 height=600>  
 </p>
-                
+  
 # Installation via SPM
 
 You can install this framework as a target of LeadKit.
