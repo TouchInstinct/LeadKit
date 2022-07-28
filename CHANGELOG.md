@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.25.0
+
+- **Update**: `RequestError` cases now contain additional url assotiated value
+- **Update**: Network requests error catching now throws `RequestError` with url
+
 ### 1.24.0
 
 - **Add**: `AlertFactory` for presenting alerts in SwiftUI and UIKit.
@@ -9,7 +14,7 @@
 - **Update**: `UITextView` now support configuration with `BaseTextAttributes`
 - **Add**: `ReconfigurableView` & `ChangeableViewModel` for non-destructing state update
 - **Add**: `WrappedViewHolder` protocol with table/collection view cell implementations
-- **Add**: `UIViewPresenter` and `ReusableUIViewPresenter ` protocols with default implementation for proper handling view/cells reuse
+- **Add**: `UIViewPresenter` and `ReusableUIViewPresenter` protocols with default implementation for proper handling view/cells reuse
 
 ### 1.22.0
 

@@ -34,7 +34,7 @@ public extension Error {
     /// - Returns: optional target object
     /// - Throws: an error during decoding
     func handleMappingError<T: Decodable>(with decoder: JSONDecoder = JSONDecoder()) throws -> T? {
-        guard let self = requestError, case .mapping(_, let response) = self else {
+        guard let self = requestError, case .mapping(_, let response, _) = self else {
             return nil
         }
 
