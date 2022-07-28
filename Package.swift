@@ -49,12 +49,12 @@ let package = Package(
   targets: [
     
     // MARK: - UIKit
-    .target(name: "TIUIKitCore", path: "TIUIKitCore/Sources"),
+    .target(name: "TIUIKitCore", dependencies: ["TISwiftUtils"], path: "TIUIKitCore/Sources"),
     .target(name: "TIUIElements", dependencies: ["TIUIKitCore", "TISwiftUtils"], path: "TIUIElements/Sources"),
 
     // MARK: - SwiftUI
 
-    .target(name: "TISwiftUICore", path: "TISwiftUICore/Sources"),
+    .target(name: "TISwiftUICore", dependencies: ["TIUIKitCore", "TISwiftUtils"], path: "TISwiftUICore/Sources"),
     
     // MARK: - Utils
     .target(name: "TISwiftUtils", path: "TISwiftUtils/Sources"),
