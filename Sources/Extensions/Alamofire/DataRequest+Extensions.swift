@@ -93,7 +93,9 @@ private extension ObservableType where Element == ServerResponse {
             do {
                 return try transform($0)
             } catch {
-                throw RequestError.mapping(error: error, response: $0.1)
+                throw RequestError.mapping(error: error,
+                                           response: $0.1,
+                                           url: $0.0.url?.absoluteString)
             }
         }
     }
@@ -103,10 +105,14 @@ private extension ObservableType where Element == ServerResponse {
             do {
                 return try transform((response, result))
                     .catch {
-                        throw RequestError.mapping(error: $0, response: result)
+                        throw RequestError.mapping(error: $0,
+                                                   response: result,
+                                                   url: response.url?.absoluteString)
                     }
             } catch {
-                throw RequestError.mapping(error: error, response: result)
+                throw RequestError.mapping(error: error,
+                                           response: result,
+                                           url: response.url?.absoluteString)
             }
         }
     }
@@ -127,10 +133,10 @@ private extension ObservableType {
             case let urlError as URLError:
                 switch urlError.code {
                 case .notConnectedToInternet:
-                    resultError = .noConnection
+                    resultError = .noConnection(url: url)
 
                 default:
-                    resultError = .network(error: urlError, response: response)
+                    resultError = .network(error: urlError, response: response, url: url)
                 }
 
             case let afError as AFError:
@@ -138,21 +144,21 @@ private extension ObservableType {
                 case let .sessionTaskFailed(error):
                     switch error {
                     case let urlError as URLError where urlError.code == .notConnectedToInternet:
-                        resultError = .noConnection
+                        resultError = .noConnection(url: url)
 
                     default:
-                        resultError = .network(error: error, response: response)
+                        resultError = .network(error: error, response: response, url: url)
                     }
 
                 case .responseSerializationFailed, .responseValidationFailed:
-                    resultError = .invalidResponse(error: afError, response: response)
+                    resultError = .invalidResponse(error: afError, response: response, url: url)
 
                 default:
-                    resultError = .network(error: afError, response: response)
+                    resultError = .network(error: afError, response: response, url: url)
                 }
 
             default:
-                resultError = .network(error: error, response: response)
+                resultError = .network(error: error, response: response, url: url)
             }
 
             throw resultError

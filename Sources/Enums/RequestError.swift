@@ -31,8 +31,8 @@ import Alamofire
 /// - mapping: Errors that occurs during mapping json into model.
 public enum RequestError: Error {
 
-    case noConnection
-    case network(error: Error, response: Data?)
-    case invalidResponse(error: AFError, response: Data?)
-    case mapping(error: Error, response: Data)
+    case noConnection(url: String?)
+    case network(error: Error, response: Data?, url: String?)
+    case invalidResponse(error: AFError, response: Data?, url: String?)
+    case mapping(error: Error, response: Data, url: String?)
 }
