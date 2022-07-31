@@ -23,11 +23,12 @@
 import TIUIKitCore
 import UIKit
 
-typealias DefaultBaseFiltersCollectionView = BaseFiltersCollectionView<BaseFilterCollectionItem<BaseFilterCollectionCell, DefaultFilterPropertyValue>>
+typealias DefaultBaseFiltersCollectionView = BaseFiltersCollectionView<BaseFilterCollectionItem<BaseFilterCollectionCell,
+                                                                                                DefaultFilterPropertyValue>>
 
 open class BaseFiltersCollectionView<Cell: FilterCollectionItem>: BaseInitializableView, ConfigurableView {
 
-    typealias Director = CollectionDirector<Cell>
+    typealias Director = DefaultFiltersCollectionDirector<Cell>
 
     private var collectionDirector: Director
 
@@ -91,10 +92,9 @@ open class BaseFiltersCollectionView<Cell: FilterCollectionItem>: BaseInitializa
 // MARK: - FiltersCollectionHolder
 
 extension BaseFiltersCollectionView: FiltersCollectionHolder {
-    public func select(_ items: [FilterPropertyValueRepresenter]) {
+    open func select(_ items: [FilterPropertyValueRepresenter]) {
         guard let viewModel = viewModel else { return }
 
-        // TODO: replace instead of make new
         items.forEach { item in
             if let index = viewModel.filters.firstIndex(of: item as! DefaultFilterPropertyValue) {
                 viewModel.filters[index].isSelected = true
@@ -102,10 +102,9 @@ extension BaseFiltersCollectionView: FiltersCollectionHolder {
         }
     }
 
-    public func deselect(_ items: [FilterPropertyValueRepresenter]) {
+    open func deselect(_ items: [FilterPropertyValueRepresenter]) {
         guard let viewModel = viewModel else { return }
 
-        // TODO: replace instead of make new
         items.forEach { item in
             if let index = viewModel.filters.firstIndex(of: item as! DefaultFilterPropertyValue) {
                 viewModel.filters[index].isSelected = false
@@ -113,7 +112,7 @@ extension BaseFiltersCollectionView: FiltersCollectionHolder {
         }
     }
 
-    public func updateView() {
+    open func updateView() {
         guard let viewModel = viewModel else { return }
 
         collectionDirector.collectionItems = viewModel.filters.map {

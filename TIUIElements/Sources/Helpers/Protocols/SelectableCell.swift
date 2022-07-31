@@ -21,35 +21,15 @@
 //
 
 import UIKit
-import TIUIKitCore
 
-public typealias AnyCollectionCell = SelectableCell & ConfigurableView
-
-open class BaseFilterCollectionItem<CellType: AnyCollectionCell,
-                                    Filter: FilterPropertyValueRepresenter>: FilterCollectionItem {
-
-    public var itemType: AnyClass{
-        CellType.self
-    }
-
-    public var filter: Filter
+public protocol SelectableCell: UICollectionViewCell {
+    var isFilterSelected: Bool { get set }
     
-    public var viewModel: CellType.ViewModelType?
+    func toggleSelection()
+}
 
-    required public init(filter: Filter, viewModel: CellType.ViewModelType) {
-        self.filter = filter
-        self.viewModel = viewModel
-    }
-
-    open func configure(item: UICollectionViewCell) {
-        guard let viewModel = viewModel else {
-            return
-        }
-
-        (item as? CellType)?.configure(with: viewModel)
-    }
-
-    open func didSelectItem(atIndexPath indexPath: IndexPath, cell: UICollectionViewCell?) {
-        // Override in subviews
+public extension SelectableCell {
+    func toggleSelection() {
+        isFilterSelected.toggle()
     }
 }

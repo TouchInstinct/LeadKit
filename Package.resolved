@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
         "state": {
           "branch": null,
-          "revision": "8dd85aee02e39dd280c75eef88ffdb86eed4b07b",
-          "version": "5.6.2"
+          "revision": "f96b619bcb2383b43d898402283924b80e2c4bae",
+          "version": "5.4.3"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/petropavel13/Cursors",
         "state": {
           "branch": null,
-          "revision": "52f27b82cb1cbbc2b5fd09514c48b9c75e3b0300",
-          "version": "0.6.0"
+          "revision": "a1561869135e72832eff3b1e729075c56c2eebf6",
+          "version": "0.5.1"
         }
       },
       {

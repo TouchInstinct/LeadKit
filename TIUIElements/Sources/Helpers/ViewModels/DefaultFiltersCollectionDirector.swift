@@ -22,15 +22,16 @@
 
 import UIKit
 
-open class CollectionDirector<FilterItem: FilterCollectionItem>: NSObject,
-                                                                 UICollectionViewDataSource,
-                                                                 UICollectionViewDelegate {
+open class DefaultFiltersCollectionDirector<FilterItem: FilterCollectionItem>: NSObject,
+                                                                               CollectionDirectorRepresenter,
+                                                                               UICollectionViewDataSource,
+                                                                               UICollectionViewDelegate {
     
-    private(set) weak var collectionView: UICollectionView?
-    private weak var scrollDelegate: UIScrollViewDelegate?
-
     private var _collectionItems: [FilterItem] = []
-
+    
+    public weak var collectionView: UICollectionView?
+    public weak var delegate: FilterItemsDelegate?
+    
     public var collectionItems: [FilterItem] {
         get {
             _collectionItems
@@ -41,11 +42,7 @@ open class CollectionDirector<FilterItem: FilterCollectionItem>: NSObject,
         }
     }
     
-    public weak var delegate: FilterItemsDelegate?
-    
-    public init(collectionView: UICollectionView, scrollDelegate: UIScrollViewDelegate? = nil) {
-        self.scrollDelegate = scrollDelegate
-        
+    public init(collectionView: UICollectionView) {
         super.init()
         
         bind(to: collectionView)
@@ -70,19 +67,8 @@ open class CollectionDirector<FilterItem: FilterCollectionItem>: NSObject,
         scrollToItem(at: indexPath)
     }
     
-    public func replaceItem(with item: FilterItem, at index: Int) {
-        collectionItems[index] = item
-        
-        let indexPath = IndexPath(row: index, section: .zero)
-        scrollToItem(at: indexPath)
-    }
-    
-    public func replaceItem(with item: FilterItem, at indexPath: IndexPath) {
-        collectionItems[indexPath.row] = item
-    }
-    
-    public func update(item: FilterItem, at indexPath: IndexPath) {
-        _collectionItems[indexPath.item] = item
+    public func update(item: FilterItem, at index: Int) {
+        _collectionItems[index] = item
     }
     
     public func scrollToItem(at indexPath: IndexPath, animated: Bool = true) {
@@ -108,7 +94,7 @@ open class CollectionDirector<FilterItem: FilterCollectionItem>: NSObject,
         viewModel.configure(item: cell)
         return cell
     }
-
+    
     // MARK: - UICollectionViewDelegate
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -116,15 +102,11 @@ open class CollectionDirector<FilterItem: FilterCollectionItem>: NSObject,
         didSelectItem(atIndexPath: indexPath, cell: cell)
     }
     
-    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        scrollDelegate?.scrollViewDidEndDecelerating?(scrollView)
-    }
-    
     private func didSelectItem(atIndexPath indexPath: IndexPath,
                                cell: UICollectionViewCell?) {
         
         guard let item = item(at: indexPath) else { return }
-
+        
         delegate?.didSelectItem(atIndexPath: indexPath)
         
         item.didSelectItem(atIndexPath: indexPath, cell: cell)

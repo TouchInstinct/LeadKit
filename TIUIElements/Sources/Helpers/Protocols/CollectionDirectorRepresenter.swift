@@ -21,35 +21,16 @@
 //
 
 import UIKit
-import TIUIKitCore
 
-public typealias AnyCollectionCell = SelectableCell & ConfigurableView
+public protocol CollectionDirectorRepresenter: UICollectionViewDataSource, UICollectionViewDelegate {
 
-open class BaseFilterCollectionItem<CellType: AnyCollectionCell,
-                                    Filter: FilterPropertyValueRepresenter>: FilterCollectionItem {
+    associatedtype Item
 
-    public var itemType: AnyClass{
-        CellType.self
-    }
+    var collectionView: UICollectionView? { get set }
+    var delegate: FilterItemsDelegate? { get set }
 
-    public var filter: Filter
-    
-    public var viewModel: CellType.ViewModelType?
-
-    required public init(filter: Filter, viewModel: CellType.ViewModelType) {
-        self.filter = filter
-        self.viewModel = viewModel
-    }
-
-    open func configure(item: UICollectionViewCell) {
-        guard let viewModel = viewModel else {
-            return
-        }
-
-        (item as? CellType)?.configure(with: viewModel)
-    }
-
-    open func didSelectItem(atIndexPath indexPath: IndexPath, cell: UICollectionViewCell?) {
-        // Override in subviews
-    }
+    func insertItem(_ item: Item, at index: Int)
+    func deleteItem(at index: Int)
+    func update(item: Item, at index: Int)
+    func scrollToItem(at indexPath: IndexPath, animated: Bool)
 }

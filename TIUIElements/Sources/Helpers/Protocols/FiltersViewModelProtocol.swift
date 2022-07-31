@@ -22,12 +22,6 @@
 
 import Foundation
 
-public protocol FiltersCollectionHolder: AnyObject {
-    func select(_ items: [FilterPropertyValueRepresenter])
-    func deselect(_ items: [FilterPropertyValueRepresenter])
-    func updateView()
-}
-
 public protocol FiltersViewModelProtocol: AnyObject {
 
     associatedtype Filter: FilterPropertyValueRepresenter, Hashable
@@ -42,23 +36,17 @@ public protocol FiltersViewModelProtocol: AnyObject {
 
 public extension FiltersViewModelProtocol {
 
-    /// Method of filtering items
-    /// - Algorithm:
-    ///     1. Determine if current item is selected;
-    ///     2. If it was selected:
-    ///         - Remove the item from the array of selected items;
-    ///     3. if it wasn't selected:
-    ///         - Insert the item in the array of selected items;
-    ///         - Run excluding filtering (remove every item that should be excluded from list of selected items).
-    ///     4. Notify the collection of filters about updating of the item at indexPath
     func filterItem(atIndexPath indexPath: IndexPath) {
         guard let item = getItemSafely(indexPath.item) else { return }
 
-        filterItem(item)
+        let (s, d) = filterItem(item)
+        filtersCollectionHolder?.select(s)
+        filtersCollectionHolder?.deselect(d)
         filtersCollectionHolder?.updateView()
     }
 
-    private func filterItem(_ item: Filter) {
+    @discardableResult
+    private func filterItem(_ item: Filter) -> (selected: [Filter], deselected: [Filter]) {
         var itemsToDeselect = [Filter]()
         var itemsToSelect = [Filter]()
         let selectedItem = selectedFilters.first { selectedItem in
@@ -67,12 +55,10 @@ public extension FiltersViewModelProtocol {
 
         if let selectedItem = selectedItem {
             selectedFilters.remove(selectedItem)
-
             itemsToDeselect.append(item)
         } else {
             selectedFilters.insert(item)
             itemsToSelect.append(item)
-            itemsToDeselect.append(contentsOf: exclude(withItem: item))
 
             if let itemsToExclude =  item.excludingProperties, !itemsToExclude.isEmpty {
                 for itemIdToExclude in itemsToExclude {
@@ -81,25 +67,14 @@ public extension FiltersViewModelProtocol {
                     }
 
                     if let itemToExclude = itemToExclude {
-                        filterItem(itemToExclude)
+                        let (_, deselected) = filterItem(itemToExclude)
+                        itemsToDeselect.append(contentsOf: deselected)
                     }
                 }
             }
         }
-
-        itemsToSelect.forEach { item in
-            if let index = filters.firstIndex(of: item) {
-                filters[index].isSelected = true
-            }
-        }
-
-        itemsToDeselect.forEach { item in
-            if let index = filters.firstIndex(of: item) {
-                filters[index].isSelected = false
-            }
-        }
-//        filtersCollectionHolder?.select(itemsToSelect)
-//        filtersCollectionHolder?.deselect(itemsToDeselect)
+        
+        return (itemsToSelect, itemsToDeselect)
     }
 
     private func getItemSafely(_ index: Int) -> Filter? {
@@ -108,26 +83,5 @@ public extension FiltersViewModelProtocol {
         }
 
         return filters[index]
-    }
-
-    private func exclude(withItem item: Filter) -> [Filter] {
-        guard let itemsToExclude =  item.excludingProperties, !itemsToExclude.isEmpty else {
-            return []
-        }
-
-        var deselectedItems = [Filter]()
-
-        for itemIdToExclude in itemsToExclude {
-            let itemToExclude = selectedFilters.first { item in
-                item.id == itemIdToExclude
-            }
-
-            if let itemToExclude = itemToExclude {
-                selectedFilters.remove(itemToExclude)
-                deselectedItems.append(itemToExclude)
-            }
-        }
-
-        return deselectedItems
     }
 }

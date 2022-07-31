@@ -62,13 +62,13 @@ open class BaseFilterCollectionCell: UICollectionViewCell,
     open func addViews() {
         addSubview(titleLabel)
     }
-
+    
     open func configureLayout() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate(titleLabel.edgesEqualToSuperview())
     }
-
+    
     open func bindViews() {
         // override in subclass
     }

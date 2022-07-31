@@ -23,5 +23,5 @@ ORDERED_PODSPECS="../TISwiftUtils/TISwiftUtils.podspec
 ../TIYandexMapUtils/TIYandexMapUtils.podspec"
 
 for podspec_path in ${ORDERED_PODSPECS}; do
-    bundle exec pod repo push git@github.com:castlele/Podspecs-castle ${podspec_path} --allow-warnings
+    bundle exec pod repo push git@github.com:TouchInstinct/Podspecs ${podspec_path} --allow-warnings
 done
