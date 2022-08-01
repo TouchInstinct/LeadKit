@@ -84,7 +84,7 @@ let package = Package(
     .target(name: "TIAuth", dependencies: ["TIFoundationUtils"], path: "TIAuth/Sources"),
     
     //MARK: - Skolkovo
-    .target(name: "TIEcommerce", dependencies: ["TIEcommerce"], path: "TIEcommerce/Sources"),
+    .target(name: "TIEcommerce", path: "TIEcommerce/Sources"),
     
     // MARK: - Tests
     
