@@ -26,11 +26,13 @@ import UIKit
 public typealias DefaultBaseFiltersCollectionView = BaseFiltersCollectionView<BaseFilterCollectionItem<BaseFilterCollectionCell,
                                                                                                 DefaultFilterPropertyValue>>
 
-open class BaseFiltersCollectionView<Cell: FilterCollectionItem>: BaseInitializableView, ConfigurableView {
+open class BaseFiltersCollectionView<Cell: FilterCollectionItem>: BaseInitializableView, 
+                                                                  ConfigurableView,
+                                                                  FiltersCollectionHolder {
 
     typealias Director = DefaultFiltersCollectionDirector<Cell>
 
-    private var collectionDirector: Director
+    public var collectionDirector: Director
 
     public var collectionView: UICollectionView
 
@@ -38,7 +40,7 @@ open class BaseFiltersCollectionView<Cell: FilterCollectionItem>: BaseInitializa
 
     public weak var viewModel: DefaultFiltersViewModel?
 
-    open weak var filtersDelegate: FilterItemsDelegate?
+    public open weak var filtersDelegate: FilterItemsDelegate?
 
     // MARK: - Init
 
@@ -87,11 +89,9 @@ open class BaseFiltersCollectionView<Cell: FilterCollectionItem>: BaseInitializa
 
         updateView()
     }
-}
 
-// MARK: - FiltersCollectionHolder
+    // MARK: - FiltersCollectionHolder
 
-extension BaseFiltersCollectionView: FiltersCollectionHolder {
     open func select(_ items: [FilterPropertyValueRepresenter]) {
         guard let viewModel = viewModel else { return }
 
