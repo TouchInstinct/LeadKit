@@ -1,6 +1,6 @@
 import Foundation
 
-protocol CartProductPrice {
+protocol Price {
     ///Стоимость
     var value: Int { get }
     ///Трехсимвольный код валюты в ISO 4217
