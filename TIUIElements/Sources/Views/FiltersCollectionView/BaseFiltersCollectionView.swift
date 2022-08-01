@@ -96,7 +96,7 @@ open class BaseFiltersCollectionView<Cell: FilterCollectionItem>: BaseInitializa
         guard let viewModel = viewModel else { return }
 
         items.forEach { item in
-            if let index = viewModel.filters.firstIndex(of: item as! DefaultFilterPropertyValue) {
+            if let index = viewModel.filters.firstIndex(where: { $0.id == item.id }) {
                 viewModel.filters[index].isSelected = true
             }
         }
@@ -106,7 +106,7 @@ open class BaseFiltersCollectionView<Cell: FilterCollectionItem>: BaseInitializa
         guard let viewModel = viewModel else { return }
 
         items.forEach { item in
-            if let index = viewModel.filters.firstIndex(of: item as! DefaultFilterPropertyValue) {
+            if let index = viewModel.filters.firstIndex(where: { $0.id == item.id }) {
                 viewModel.filters[index].isSelected = false
             }
         }
@@ -115,8 +115,12 @@ open class BaseFiltersCollectionView<Cell: FilterCollectionItem>: BaseInitializa
     open func updateView() {
         guard let viewModel = viewModel else { return }
 
-        collectionDirector.collectionItems = viewModel.filters.map {
-            Cell(filter: $0 as! Cell.Filter, viewModel: $0.convertToViewModel())
+        collectionDirector.collectionItems = viewModel.filters.compactMap {
+            guard let filter = $0 as? Cell.Filter else {
+                return nil
+            }
+
+            return Cell(filter: filter, viewModel: $0.convertToViewModel())
         }
     }
 }

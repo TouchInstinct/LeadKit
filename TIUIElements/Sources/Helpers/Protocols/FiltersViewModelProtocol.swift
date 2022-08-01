@@ -23,28 +23,28 @@
 import Foundation
 
 public protocol FiltersViewModelProtocol: AnyObject {
-    
+
     associatedtype Filter: FilterPropertyValueRepresenter, Hashable
-    
+
     var filters: [Filter] { get set }
     var selectedFilters: Set<Filter> { get set }
-    
+
     var filtersCollectionHolder: FiltersCollectionHolder? { get set }
-    
+
     func filterItem(atIndexPath indexPath: IndexPath)
 }
 
 public extension FiltersViewModelProtocol {
-    
+
     func filterItem(atIndexPath indexPath: IndexPath) {
         guard let item = getItemSafely(indexPath.item) else { return }
-        
+
         let (s, d) = filterItem(item)
         filtersCollectionHolder?.select(s)
         filtersCollectionHolder?.deselect(d)
         filtersCollectionHolder?.updateView()
     }
-    
+
     @discardableResult
     private func filterItem(_ item: Filter) -> (selected: [Filter], deselected: [Filter]) {
         var itemsToDeselect = [Filter]()
@@ -52,20 +52,20 @@ public extension FiltersViewModelProtocol {
         let selectedItem = selectedFilters.first { selectedItem in
             selectedItem.id == item.id
         }
-        
+
         if let selectedItem = selectedItem {
             selectedFilters.remove(selectedItem)
             itemsToDeselect.append(item)
         } else {
             selectedFilters.insert(item)
             itemsToSelect.append(item)
-            
+
             if let itemsToExclude =  item.excludingProperties, !itemsToExclude.isEmpty {
                 for itemIdToExclude in itemsToExclude {
                     let itemToExclude = selectedFilters.first { item in
                         item.id == itemIdToExclude
                     }
-                    
+
                     if let itemToExclude = itemToExclude {
                         let (_, deselected) = filterItem(itemToExclude)
                         itemsToDeselect.append(contentsOf: deselected)
@@ -81,7 +81,7 @@ public extension FiltersViewModelProtocol {
         guard index >= 0 && index <= filters.count else {
             return nil
         }
-        
+
         return filters[index]
     }
 }
