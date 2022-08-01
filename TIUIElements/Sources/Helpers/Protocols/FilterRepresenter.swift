@@ -20,7 +20,6 @@
 //  THE SOFTWARE.
 //
 
-/// A struct that represents filter
 public protocol FilterRepresenter {
 
     associatedtype FilterProperty: FilterPropertyValueRepresenter

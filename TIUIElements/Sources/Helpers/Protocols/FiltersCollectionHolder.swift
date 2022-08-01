@@ -20,7 +20,13 @@
 //  THE SOFTWARE.
 //
 
+import UIKit
+
 public protocol FiltersCollectionHolder: AnyObject {
+
+    var collectionView: UICollectionView { get set }
+    var viewModel: DefaultFiltersViewModel? { get set }
+
     func select(_ items: [FilterPropertyValueRepresenter])
     func deselect(_ items: [FilterPropertyValueRepresenter])
     func updateView()

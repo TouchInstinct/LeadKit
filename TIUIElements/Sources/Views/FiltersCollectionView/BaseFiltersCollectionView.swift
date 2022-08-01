@@ -24,10 +24,10 @@ import TIUIKitCore
 import UIKit
 
 public typealias DefaultBaseFiltersCollectionView = BaseFiltersCollectionView<BaseFilterCollectionItem<BaseFilterCollectionCell,
-                                                                                                DefaultFilterPropertyValue>>
+                                                                                                       DefaultFilterPropertyValue>>
 
 open class BaseFiltersCollectionView<Cell: FilterCollectionItem>: BaseInitializableView, 
-                                                                  ConfigurableView,
+                                                                    ConfigurableView,
                                                                   FiltersCollectionHolder {
 
     public typealias Director = DefaultFiltersCollectionDirector<Cell>

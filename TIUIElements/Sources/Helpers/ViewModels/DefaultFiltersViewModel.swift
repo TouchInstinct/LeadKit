@@ -22,7 +22,6 @@
 
 import UIKit
 
-/// A default implementation of filters view model
 open class DefaultFiltersViewModel: FiltersViewModelProtocol, FilterItemsDelegate {
     
     public var filters: [DefaultFilterPropertyValue]
