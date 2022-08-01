@@ -84,7 +84,7 @@ open class BaseFilterCollectionCell: UICollectionViewCell,
     }
 
     open func configureAppearance() {
-        // override in subclass
+        layer.round(corners: .allCorners, radius: 6)
     }
 
     open func localize() {
