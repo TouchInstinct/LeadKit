@@ -30,7 +30,7 @@ open class BaseFiltersCollectionView<Cell: FilterCollectionItem>: BaseInitializa
                                                                   ConfigurableView,
                                                                   FiltersCollectionHolder {
 
-    typealias Director = DefaultFiltersCollectionDirector<Cell>
+    public typealias Director = DefaultFiltersCollectionDirector<Cell>
 
     public var collectionDirector: Director
 
@@ -40,7 +40,7 @@ open class BaseFiltersCollectionView<Cell: FilterCollectionItem>: BaseInitializa
 
     public weak var viewModel: DefaultFiltersViewModel?
 
-    public open weak var filtersDelegate: FilterItemsDelegate?
+    open weak var filtersDelegate: FilterItemsDelegate?
 
     // MARK: - Init
 
