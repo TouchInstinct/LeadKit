@@ -1,8 +1,8 @@
 import Foundation
 
-struct BaseErrorResponseBody: Decodable, Equatable, Hashable {
+protocol BaseErrorResponseBody: Decodable, Hashable {
     ///Код ошибки
-    let errorCode: Int
+    var errorCode: Int { get }
     ///Текст сообщения об ошибке
-    let errorMessage: String
+    var errorMessage: String { get }
 }
