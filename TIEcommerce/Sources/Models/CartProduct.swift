@@ -1,6 +1,6 @@
 import Foundation
 
-protocol CartProduct {
+protocol CartProduct: ProductPriceHolder, BonusesHolder {
     ///Идентификатор продукта
     var id: String { get }
     ///Цена в определённой валюте
