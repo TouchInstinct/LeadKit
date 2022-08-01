@@ -23,7 +23,7 @@
 import TIUIKitCore
 import UIKit
 
-typealias DefaultBaseFiltersCollectionView = BaseFiltersCollectionView<BaseFilterCollectionItem<BaseFilterCollectionCell,
+public typealias DefaultBaseFiltersCollectionView = BaseFiltersCollectionView<BaseFilterCollectionItem<BaseFilterCollectionCell,
                                                                                                 DefaultFilterPropertyValue>>
 
 open class BaseFiltersCollectionView<Cell: FilterCollectionItem>: BaseInitializableView, ConfigurableView {
