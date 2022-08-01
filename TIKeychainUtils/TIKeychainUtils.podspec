@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TIKeychainUtils'
-  s.version          = '1.25.0'
+  s.version          = '1.26.0'
   s.summary          = 'Set of helpers for Keychain classes.'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
