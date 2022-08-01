@@ -116,7 +116,7 @@ open class BaseFiltersCollectionView<Cell: FilterCollectionItem>: BaseInitializa
         guard let viewModel = viewModel else { return }
 
         collectionDirector.collectionItems = viewModel.filters.map {
-            Cell(filter: $0 as! Cell.Filter, viewModel: $0 as! Cell.ViewModel)
+            Cell(filter: $0 as! Cell.Filter, viewModel: $0.convertToViewModel())
         }
     }
 }

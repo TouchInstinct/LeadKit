@@ -20,14 +20,20 @@
 //  THE SOFTWARE.
 //
 
-public protocol FilterPropertyValueRepresenter: CellViewModelConvertable {
-    var id: String { get }
-    var excludingProperties: [String]? { get }
+import UIKit
+
+public protocol CellViewModelProtocol: CellViewModelRepresentable {
+    var id: String { get set }
+    var title: String { get set }
+    var selectedColor: UIColor { get set }
+    var insets: UIEdgeInsets { get set }
     var isSelected: Bool { get set }
 }
 
-public protocol CellViewModelRepresentable { }
-
-public protocol CellViewModelConvertable {
-    func convertToViewModel() -> CellViewModelRepresentable
+public struct DefaultCellViewModel: CellViewModelProtocol, CellViewModelRepresentable {
+    public var id: String
+    public var title: String
+    public var selectedColor: UIColor
+    public var insets: UIEdgeInsets
+    public var isSelected: Bool
 }

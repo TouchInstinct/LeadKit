@@ -20,12 +20,25 @@
 //  THE SOFTWARE.
 //
 
-public struct DefaultFilterPropertyValue: FilterPropertyValueRepresenter, Codable, Identifiable {
+import UIKit
+
+public struct DefaultFilterPropertyValue: FilterPropertyValueRepresenter,
+                                          Codable,
+                                          Identifiable {
+
     public let id: String
     public let title: String
     public let excludingProperties: [String]?
 
     public var isSelected: Bool
+
+    public func convertToViewModel() -> CellViewModelRepresentable {
+        DefaultCellViewModel(id: id,
+                             title: title,
+                             selectedColor: .green,
+                             insets: .init(top: .zero, left: 8, bottom: .zero, right: 8),
+                             isSelected: isSelected)
+    }
 }
 
 public extension DefaultFilterPropertyValue {

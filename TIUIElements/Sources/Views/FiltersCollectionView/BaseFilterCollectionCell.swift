@@ -28,9 +28,11 @@ open class BaseFilterCollectionCell: UICollectionViewCell,
                                      InitializableViewProtocol,
                                      ConfigurableView {
 
-    private let titleLabel = UILabel()
+    public let titleLabel = UILabel()
 
-    public var isFilterSelected: Bool = false {
+    public var viewModel: DefaultCellViewModel?
+
+    open var isFilterSelected: Bool = false {
         didSet {
             reloadState()
         }
@@ -43,6 +45,14 @@ open class BaseFilterCollectionCell: UICollectionViewCell,
         set {
             titleLabel.isHidden = newValue
         }
+    }
+
+    open override var intrinsicContentSize: CGSize {
+        let contentSize = super.intrinsicContentSize
+        let insets = viewModel?.insets ?? .zero
+        let xInsets = insets.left + insets.right
+        let yInsets = insets.top + insets.bottom
+        return .init(width: contentSize.width + xInsets, height: contentSize.height + yInsets)
     }
 
     public override init(frame: CGRect) {
@@ -81,16 +91,37 @@ open class BaseFilterCollectionCell: UICollectionViewCell,
         // override in subclass
     }
 
-    open func configure(with model: DefaultFilterPropertyValue) {
-        titleLabel.text = model.title
-        isFilterSelected = model.isSelected
+    open func configure(with viewModel: DefaultCellViewModel) {
+        self.viewModel = viewModel
+
+        titleLabel.text = viewModel.title
+
+        setSelected(isSelected: viewModel.isSelected)
     }
 
-    private func reloadState() {
+    open func setSelected(isSelected: Bool) {
+        let selectedColor = viewModel?.selectedColor ?? .green
+        titleLabel.textColor = isSelected ? selectedColor : .black
+
+        if isSelected {
+            backgroundColor = .white
+            layer.borderColor = selectedColor.cgColor
+            layer.borderWidth = 1
+        } else {
+            setDeselectAppearance()
+        }
+    }
+
+    open func reloadState() {
         if isFilterSelected {
             backgroundColor = .green
         } else {
             backgroundColor = .white
         }
+    }
+
+    open func setDeselectAppearance() {
+        layer.borderWidth = 0
+        backgroundColor = .lightGray
     }
 }

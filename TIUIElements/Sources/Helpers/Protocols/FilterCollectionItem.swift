@@ -26,13 +26,12 @@ import UIKit
 public protocol FilterCollectionItem {
 
     associatedtype Filter: FilterPropertyValueRepresenter
-    associatedtype ViewModel
 
     var identifier: String { get }
     var itemType: AnyClass { get }
     var filter: Filter { get set }
 
-    init(filter: Filter, viewModel: ViewModel)
+    init(filter: Filter, viewModel: CellViewModelRepresentable)
 
     func register(for collectionView: UICollectionView)
     func configure(item: UICollectionViewCell)

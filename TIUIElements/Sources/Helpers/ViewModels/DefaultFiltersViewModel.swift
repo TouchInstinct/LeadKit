@@ -24,16 +24,16 @@ import UIKit
 
 /// A default implementation of filters view model
 open class DefaultFiltersViewModel: FiltersViewModelProtocol, FilterItemsDelegate {
-
+    
     public var filters: [DefaultFilterPropertyValue]
     public var selectedFilters: Set<DefaultFilterPropertyValue> = []
-
+    
     public weak var filtersCollectionHolder: FiltersCollectionHolder?
-
+    
     public init(filters: [DefaultFilterPropertyValue]) {
         self.filters = filters
     }
-
+    
     open func didSelectItem(atIndexPath indexPath: IndexPath) {
         filterItem(atIndexPath: indexPath)
     }

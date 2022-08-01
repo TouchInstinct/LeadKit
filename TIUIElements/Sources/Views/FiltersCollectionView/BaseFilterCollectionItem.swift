@@ -26,7 +26,7 @@ import TIUIKitCore
 public typealias AnyCollectionCell = SelectableCell & ConfigurableView
 
 open class BaseFilterCollectionItem<CellType: AnyCollectionCell,
-                                    Filter: FilterPropertyValueRepresenter>: FilterCollectionItem {
+                                    Filter: FilterPropertyValueRepresenter>: FilterCollectionItem where CellType.ViewModelType: CellViewModelRepresentable {
 
     public var itemType: AnyClass{
         CellType.self
@@ -34,15 +34,15 @@ open class BaseFilterCollectionItem<CellType: AnyCollectionCell,
 
     public var filter: Filter
     
-    public var viewModel: CellType.ViewModelType?
+    public var viewModel: CellViewModelRepresentable?
 
-    required public init(filter: Filter, viewModel: CellType.ViewModelType) {
+    required public init(filter: Filter, viewModel: CellViewModelRepresentable) {
         self.filter = filter
         self.viewModel = viewModel
     }
 
     open func configure(item: UICollectionViewCell) {
-        guard let viewModel = viewModel else {
+        guard let viewModel = viewModel as? CellType.ViewModelType else {
             return
         }
 
