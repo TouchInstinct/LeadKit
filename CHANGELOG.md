@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.27.0
+
+- **Add**: Cart, products, promocodes, bonuses and other related actions
+
 ### 1.25.0
 
 - **Update**: `RequestError` cases now contain additional url assotiated value
