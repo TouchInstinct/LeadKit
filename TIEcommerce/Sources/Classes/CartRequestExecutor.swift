@@ -36,10 +36,11 @@ open class CartRequestExecutor<S: Decodable, AE: Decodable, NE>: Cancellable {
 
     public init(executionClosure: @escaping ExecutionClosure,
                 successCompletion: @escaping SuccessCompletion,
-                attemptsLeft: Int = 3) {
+                numberOfAttempts: Int = 3) {
+        
         self.executionClosure = executionClosure
         self.successCompletion = successCompletion
-        self.attemptsLeft = attemptsLeft
+        self.attemptsLeft = numberOfAttempts
     }
 
     open func execute() {
