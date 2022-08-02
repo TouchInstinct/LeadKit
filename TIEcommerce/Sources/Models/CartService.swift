@@ -23,23 +23,19 @@ import Foundation
 import TIFoundationUtils
 import TISwiftUtils
 
-protocol CartPublisher {
-    associatedtype Cart
-    func subscribeOnCartChanging(completion: ParameterClosure<Cart>) -> Cancellable
-    func subscribeOnProductChanging(productId: Int, completion:  ParameterClosure<CartProduct>) -> Cancellable
-}
-
-protocol CartService {
-    var localCart: Cart? { get }
-    var removedProducts: [CartProduct] { get }
-    var notAvailableProducts: [CartProduct] { get }
+public protocol CartService {
+    associatedtype CartType: Cart
+    associatedtype CartProductType: CartProduct
+    
+    var localCart: CartType? { get }
+    var removedProducts: [CartProductType] { get }
+    var notAvailableProducts: [CartProductType] { get }
     var promocodes: [Promocode] { get }
     
-    func updateCountInCart(for product: CartProduct, count: Int)
+    func updateCountInCart(for product: CartProductType, count: Int)
     func updateCountInCart(for productId: Int, count: Int)
     
-    func loadRemoteCart(from localCart: Cart,
-                        successCompletion: ParameterClosure<Cart>?,
+    func loadRemoteCart(successCompletion: ParameterClosure<CartType>?,
                         failureCompletion: ParameterClosure<BaseErrorResponseBody>?)
     /**
      Cлияние локальной корзины с серверной
@@ -48,8 +44,8 @@ protocol CartService {
         - remoteCart: `Cart` – серверная корзина
      - Returns: `Cart` – совмещенная корзина
      */
-    func merge(localCart: Cart,
-               remoteCart: Cart) -> Cart
+    func merge(localCart: CartType,
+               remoteCart: CartType) -> CartType
     /**
      Замена локальной корзины серверной
      - Parameters:
@@ -57,6 +53,9 @@ protocol CartService {
         - remoteCart: `Cart` – серверная корзина
      - Returns: `Cart` – серверная корзина
      */
-    func replace(localCart: Cart,
-                 with remoteCart: Cart) -> Cart
+    func replace(localCart: CartType,
+                 with remoteCart: CartType) -> CartType
+    
+    func subscribeOnCartChanging(completion: ParameterClosure<CartType>) -> Cancellable
+    func subscribeOnProductChanging(productId: Int, completion:  ParameterClosure<CartProductType>) -> Cancellable
 }
