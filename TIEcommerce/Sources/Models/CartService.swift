@@ -30,32 +30,51 @@ public protocol CartService {
     var localCart: CartType? { get }
     var removedProducts: [CartProductType] { get }
     var notAvailableProducts: [CartProductType] { get }
+    ///Примененные промокоды
     var promocodes: [Promocode] { get }
+    ///Примененные бонусы
+    var appliedBonuses: Int? { get }
     
+    //MARK: - Work with products
     func updateCountInCart(for product: CartProductType, count: Int)
     func updateCountInCart(for productId: Int, count: Int)
     
+    ///Возможность вернуть товар в корзину
+    func recoverProductBy(id: Int)
+    
+    //MARK: - Work with promocodes
+    ///Применить какой-нибудь промокод
+    func applyPromocode(_ promocode: String,
+                        successCompletion: ParameterClosure<CartType>?,
+                        failureCompletion: ParameterClosure<BaseErrorResponseBody>?)
+    ///Удалить примененный промокод
+    func removePromocode(_ promocode: String,
+                         successCompletion: ParameterClosure<CartType>?,
+                         failureCompletion: ParameterClosure<BaseErrorResponseBody>?)
+    
+    //MARK: - Network
     func loadRemoteCart(successCompletion: ParameterClosure<CartType>?,
                         failureCompletion: ParameterClosure<BaseErrorResponseBody>?)
+    
+    //MARK: - Work with local cart
     /**
      Cлияние локальной корзины с серверной
      - Parameters:
-        - localCart: `Cart` – локальная корзина
         - remoteCart: `Cart` – серверная корзина
      - Returns: `Cart` – совмещенная корзина
      */
-    func merge(localCart: CartType,
-               remoteCart: CartType) -> CartType
+    func mergeLocalCart(with remoteCart: CartType) -> CartType
     /**
      Замена локальной корзины серверной
      - Parameters:
-        - localCart: `Cart` – локальная корзина
         - remoteCart: `Cart` – серверная корзина
      - Returns: `Cart` – серверная корзина
      */
-    func replace(localCart: CartType,
-                 with remoteCart: CartType) -> CartType
+    func replaceLocalCart(with remoteCart: CartType) -> CartType
     
+    //MARK: - Subscribe on changes
+    ///Подписаться на изменение корзины
     func subscribeOnCartChanging(completion: ParameterClosure<CartType>) -> Cancellable
+    //Подписаться на изменение продукта по ID
     func subscribeOnProductChanging(productId: Int, completion:  ParameterClosure<CartProductType>) -> Cancellable
 }
