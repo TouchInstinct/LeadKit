@@ -32,14 +32,14 @@ open class CartRequestExecutor<S: Decodable, AE: Decodable, NE>: Cancellable {
     public var successCompletion: SuccessCompletion
 
     private var executingRequest: Cancellable?
-    private var numberOfAttempts: Int
+    private var attemptsLeft: Int
 
     public init(executionClosure: @escaping ExecutionClosure,
                 successCompletion: @escaping SuccessCompletion,
-                numberOfAttempts: Int = 3) {
+                attemptsLeft: Int = 3) {
         self.executionClosure = executionClosure
         self.successCompletion = successCompletion
-        self.numberOfAttempts = numberOfAttempts
+        self.attemptsLeft = attemptsLeft
     }
 
     open func execute() {
@@ -60,8 +60,8 @@ open class CartRequestExecutor<S: Decodable, AE: Decodable, NE>: Cancellable {
     }
 
     open func handle(failure: ErrorCollection<EndpointErrorResult<AE, NE>>) {
-        if shouldRetry(failure: failure) && numberOfAttempts > 0 {
-            numberOfAttempts -= 1
+        if shouldRetry(failure: failure) && attemptsLeft > 0 {
+            attemptsLeft -= 1
             execute()
         }
     }

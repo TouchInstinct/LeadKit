@@ -22,5 +22,6 @@
 import Foundation
 
 public protocol Promocode {
-    var discount: Price? { get }
+    var code: String { get }
+    var discount: Int? { get }
 }

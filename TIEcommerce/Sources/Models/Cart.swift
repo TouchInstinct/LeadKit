@@ -25,7 +25,7 @@ public protocol Cart {
     ///Продукты в корзине пользователя
     var products: [CartProduct] { get }
     ///Применённые промокоды
-    var promocodes: [String] { get }
+    var promocodes: [Promocode] { get }
     ///Количество доступных бонусов для использования
     var availableBonuses: Int? { get }
 }

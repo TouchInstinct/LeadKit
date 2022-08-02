@@ -25,7 +25,7 @@ public protocol CartProduct {
     ///Идентификатор продукта
     var id: String { get }
     ///Цена в определённой валюте
-    var price: Price { get }
+    var price: Int { get }
     ///Сколько единиц есть доступно
     var availableCount: Int? { get }
     ///Варианты товара (фасовка, цвет, размер, и т.п.)

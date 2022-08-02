@@ -21,7 +21,7 @@
 
 import Foundation
 
-public protocol BaseErrorResponseBody: Decodable, Hashable {
+public protocol BaseErrorResponseBody {
     ///Код ошибки
     var errorCode: Int { get }
     ///Текст сообщения об ошибке
