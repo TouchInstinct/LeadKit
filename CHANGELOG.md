@@ -2,7 +2,7 @@
 
 ### 1.27.0
 
-- **Add**: Cart, products, promocodes, bonuses and other related actions
+- **Add**: `TIEcommerce` module with Cart, products, promocodes, bonuses and other related actions.
 
 ### 1.25.0
 
