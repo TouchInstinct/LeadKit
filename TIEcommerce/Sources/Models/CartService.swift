@@ -27,7 +27,7 @@ public protocol CartService {
     associatedtype CartType: Cart
     associatedtype CartProductType: CartProduct
     
-    var localCart: CartType? { get }
+    var localCart: CartType { get }
     var removedProducts: [CartProductType] { get }
     var notAvailableProducts: [CartProductType] { get }
     ///Примененные бонусы
