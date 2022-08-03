@@ -48,7 +48,6 @@ open class DefaultFiltersViewModel: NSObject,
     }
 
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         let viewModel = cellsViewModels[indexPath.item]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel.id, for: indexPath)
         filtersCollectionHolder?.configure(filterCell: cell, cellViewModel: viewModel)
@@ -63,10 +62,11 @@ open class DefaultFiltersViewModel: NSObject,
 
         let changedFilters = filters
             .enumerated()
-            .filter { selected.contains($0.element) || deselected.contains($0.element) }
+            .filter { isFilterChanged($0.element, filters: selected) || isFilterChanged($0.element, filters: deselected) }
 
         for (offset, element) in changedFilters {
             cellsViewModels[offset].isSelected = selectedFilters.contains(element)
+            
             filters[offset].isSelected = selectedFilters.contains(element)
         }
 
@@ -77,5 +77,9 @@ open class DefaultFiltersViewModel: NSObject,
             }
 
         filtersCollectionHolder?.applyChange(changedItems)
+    }
+
+    private func isFilterChanged(_ filter: DefaultFilterPropertyValue, filters: [DefaultFilterPropertyValue]) -> Bool {
+        filters.contains(where: { $0.id == filter.id })
     }
 }

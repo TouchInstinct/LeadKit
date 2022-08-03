@@ -46,11 +46,10 @@ public extension UICollectionViewLayout {
         let groupSize = NSCollectionLayoutSize(widthDimension: conf.itemSize.widthDimension,
                                                heightDimension: .fractionalHeight(1))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.interItemSpacing = .fixed(conf.horizontalItemSpacing)
 
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(insets: conf.contentInsets)
-        section.interGroupSpacing = conf.verticalItemSpacing
+        section.interGroupSpacing = conf.horizontalItemSpacing
         section.orthogonalScrollingBehavior = .continuous
 
         return UICollectionViewCompositionalLayout(section: section)
