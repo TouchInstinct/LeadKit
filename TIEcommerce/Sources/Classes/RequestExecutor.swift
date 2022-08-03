@@ -22,17 +22,16 @@
 import TIFoundationUtils
 import TINetworking
 
-open class CartRequestExecutor<S: Decodable, AE: Decodable, NE>: Cancellable {
+open class RequestExecutor<S: Decodable, AE: Decodable, NE>: Cancellable {
     public typealias ExecutionCompletion = (EndpointRecoverableRequestResult<S, AE, NE>) -> Void
     public typealias ExecutionClosure = (ExecutionCompletion) -> Cancellable
-
     public typealias SuccessCompletion = (S) -> Void
 
     private let executionClosure: ExecutionClosure
-    public var successCompletion: SuccessCompletion
-
     private var executingRequest: Cancellable?
     private var attemptsLeft: Int
+    
+    public var successCompletion: SuccessCompletion
 
     public init(executionClosure: @escaping ExecutionClosure,
                 successCompletion: @escaping SuccessCompletion,
@@ -44,7 +43,7 @@ open class CartRequestExecutor<S: Decodable, AE: Decodable, NE>: Cancellable {
     }
 
     open func execute() {
-        executingRequest?.cancel()
+        cancel()
 
         executingRequest = executionClosure { [weak self] in
             switch $0 {
