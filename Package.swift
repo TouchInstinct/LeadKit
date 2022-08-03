@@ -37,6 +37,9 @@ let package = Package(
     .library(name: "TITransitions", targets: ["TITransitions"]),
     .library(name: "TIPagination", targets: ["TIPagination"]),
     .library(name: "TIAuth", targets: ["TIAuth"]),
+    
+    //MARK: - Skolkovo
+    .library(name: "TIEcommerce", targets: ["TIEcommerce"])
   ],
   dependencies: [
     .package(url: "https://github.com/maxsokolov/TableKit.git", .upToNextMajor(from: "2.11.0")),
@@ -79,6 +82,9 @@ let package = Package(
     .target(name: "TITransitions", path: "TITransitions/Sources"),
     .target(name: "TIPagination", dependencies: ["Cursors", "TISwiftUtils"], path: "TIPagination/Sources"),
     .target(name: "TIAuth", dependencies: ["TIFoundationUtils"], path: "TIAuth/Sources"),
+    
+    //MARK: - Skolkovo
+    .target(name: "TIEcommerce", dependencies: ["TIFoundationUtils", "TISwiftUtils", "TINetworking"], path: "TIEcommerce/Sources"),
     
     // MARK: - Tests
     

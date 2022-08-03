@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
-  s.name             = 'TINetworking'
+  s.name             = 'TIEcommerce'
   s.version          = '1.26.0'
-  s.summary          = 'Swagger-frendly networking layer helpers.'
+  s.summary          = 'Cart, products, promocodes, bonuses and other related actions'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'petropavel13' => 'ivan.smolin@touchin.ru' }
@@ -13,5 +13,5 @@ Pod::Spec.new do |s|
   s.source_files = s.name + '/Sources/**/*'
 
   s.dependency 'TIFoundationUtils', s.version.to_s
-  s.dependency 'Alamofire', "~> 5.4"
+  s.dependency 'TINetworking', s.version.to_s
 end

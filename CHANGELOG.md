@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.26.0
+
+- **Add**: `TIEcommerce` module with Cart, products, promocodes, bonuses and other related actions.
+
 ### 1.25.0
 
 - **Update**: `RequestError` cases now contain additional url assotiated value
