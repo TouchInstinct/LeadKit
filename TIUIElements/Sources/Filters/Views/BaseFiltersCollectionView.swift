@@ -39,6 +39,8 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
         self.viewModel = viewModel
         
         super.init(frame: .zero, collectionViewLayout: layout)
+
+        initializeView()
     }
 
     required public init?(coder aDecoder: NSCoder) {
