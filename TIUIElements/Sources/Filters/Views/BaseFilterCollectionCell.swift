@@ -23,14 +23,15 @@
 import UIKit
 import TIUIKitCore
 
-open class BaseFilterCollectionCell: UICollectionViewCell,
+open class BaseFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
                                      SelectableCell,
-                                     InitializableViewProtocol,
                                      ConfigurableView {
 
-    public let titleLabel = UILabel()
+    public override var wrappedView: UILabel {
+        UILabel()
+    }
 
-    public var viewModel: DefaultCellViewModel?
+    public var viewModel: DefaultFilterCellViewModel?
 
     open var isFilterSelected: Bool = false {
         didSet {
@@ -40,68 +41,28 @@ open class BaseFilterCollectionCell: UICollectionViewCell,
 
     open var isLabelHidden: Bool {
         get {
-            titleLabel.isHidden
+            wrappedView.isHidden
         }
         set {
-            titleLabel.isHidden = newValue
+            wrappedView.isHidden = newValue
         }
     }
 
-    open override var intrinsicContentSize: CGSize {
-        let contentSize = super.intrinsicContentSize
-        let insets = viewModel?.insets ?? .zero
-        let xInsets = insets.left + insets.right
-        let yInsets = insets.top + insets.bottom
-        return .init(width: contentSize.width + xInsets, height: contentSize.height + yInsets)
-    }
-
-    public override init(frame: CGRect) {
-        super.init(frame: .zero)
-
-        addViews()
-        configureLayout()
-        bindViews()
-        configureAppearance()
-        localize()
-    }
-
-    required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    open func addViews() {
-        addSubview(titleLabel)
-    }
-    
-    open func configureLayout() {
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate(titleLabel.edgesEqualToSuperview())
-    }
-    
-    open func bindViews() {
-        // override in subclass
-    }
-
-    open func configureAppearance() {
+    open override func configureAppearance() {
         layer.round(corners: .allCorners, radius: 6)
     }
 
-    open func localize() {
-        // override in subclass
-    }
-
-    open func configure(with viewModel: DefaultCellViewModel) {
+    open func configure(with viewModel: DefaultFilterCellViewModel) {
         self.viewModel = viewModel
 
-        titleLabel.text = viewModel.title
+        wrappedView.text = viewModel.title
 
         setSelected(isSelected: viewModel.isSelected)
     }
 
     open func setSelected(isSelected: Bool) {
         let selectedColor = viewModel?.selectedColor ?? .green
-        titleLabel.textColor = isSelected ? selectedColor : .black
+        wrappedView.textColor = isSelected ? selectedColor : .black
 
         if isSelected {
             backgroundColor = .white

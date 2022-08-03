@@ -20,8 +20,14 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+public protocol FilterPropertyValueRepresenter: FilterCellViewModelConvertable {
+    var id: String { get }
+    var excludingProperties: [String]? { get }
+    var isSelected: Bool { get set }
+}
 
-public protocol FilterItemsDelegate: AnyObject {
-    func didSelectItem(atIndexPath indexPath: IndexPath)
+public protocol FilterCellViewModelRepresentable { }
+
+public protocol FilterCellViewModelConvertable {
+    func convertToViewModel() -> FilterCellViewModelRepresentable
 }

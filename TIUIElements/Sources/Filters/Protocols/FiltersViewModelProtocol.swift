@@ -31,54 +31,51 @@ public protocol FiltersViewModelProtocol: AnyObject {
 
     var filtersCollectionHolder: FiltersCollectionHolder? { get set }
 
-    func filterItem(atIndexPath indexPath: IndexPath)
+    func toggleFilter(atIndexPath indexPath: IndexPath) -> (selected: [Filter], deselected: [Filter])
 }
 
 public extension FiltersViewModelProtocol {
 
-    func filterItem(atIndexPath indexPath: IndexPath) {
-        guard let item = getItemSafely(indexPath.item) else { return }
+    func toggleFilter(atIndexPath indexPath: IndexPath) -> (selected: [Filter], deselected: [Filter]) {
+        guard let item = getItemSafely(indexPath.item) else { return ([], []) }
 
-        let (s, d) = filterItem(item)
-        filtersCollectionHolder?.select(s)
-        filtersCollectionHolder?.deselect(d)
-        filtersCollectionHolder?.updateView()
+        return toggleFilter(item)
     }
 
     @discardableResult
-    private func filterItem(_ item: Filter) -> (selected: [Filter], deselected: [Filter]) {
-        var itemsToDeselect = [Filter]()
-        var itemsToSelect = [Filter]()
-        let selectedItem = selectedFilters.first { selectedItem in
-            selectedItem.id == item.id
+    private func toggleFilter(_ filter: Filter) -> (selected: [Filter], deselected: [Filter]) {
+        var filtersToDeselect = [Filter]()
+        var filtersToSelect = [Filter]()
+        let selectedFilter = selectedFilters.first { selectedFilter in
+            selectedFilter.id == filter.id
         }
 
-        if let selectedItem = selectedItem {
-            selectedFilters.remove(selectedItem)
-            itemsToDeselect.append(item)
+        if let selectedFilter = selectedFilter {
+            selectedFilters.remove(selectedFilter)
+            filtersToDeselect.append(filter)
         } else {
-            selectedFilters.insert(item)
-            itemsToSelect.append(item)
+            selectedFilters.insert(filter)
+            filtersToSelect.append(filter)
 
-            if let itemsToExclude =  item.excludingProperties, !itemsToExclude.isEmpty {
-                for itemIdToExclude in itemsToExclude {
-                    let itemToExclude = selectedFilters.first { item in
-                        item.id == itemIdToExclude
+            if let filtersToExclude = filter.excludingProperties, !filtersToExclude.isEmpty {
+                for filtersIdToExclude in filtersToExclude {
+                    let filterToExclude = selectedFilters.first { filter in
+                        filter.id == filtersIdToExclude
                     }
 
-                    if let itemToExclude = itemToExclude {
-                        let (_, deselected) = filterItem(itemToExclude)
-                        itemsToDeselect.append(contentsOf: deselected)
+                    if let itemToExclude = filterToExclude {
+                        let (_, deselected) = toggleFilter(itemToExclude)
+                        filtersToDeselect.append(contentsOf: deselected)
                     }
                 }
             }
         }
         
-        return (itemsToSelect, itemsToDeselect)
+        return (filtersToSelect, filtersToDeselect)
     }
     
     private func getItemSafely(_ index: Int) -> Filter? {
-        guard index >= 0 && index <= filters.count else {
+        guard index >= 0 && index < filters.count else {
             return nil
         }
 

@@ -23,33 +23,25 @@
 import TIUIKitCore
 import UIKit
 
-public typealias DefaultBaseFiltersCollectionView = BaseFiltersCollectionView<BaseFilterCollectionItem<BaseFilterCollectionCell,
-                                                                                                       DefaultFilterPropertyValue>>
+open class BaseFiltersCollectionView<CellType: UICollectionViewCell & ConfigurableView>: UICollectionView,
+                                                                                         InitializableViewProtocol,
+                                                                                         ConfigurableView,
+                                                                                         FiltersCollectionHolder where CellType.ViewModelType: FilterCellViewModelProtocol {
 
-open class BaseFiltersCollectionView<Cell: FilterCollectionItem>: BaseInitializableView, 
-                                                                    ConfigurableView,
-                                                                  FiltersCollectionHolder {
-
-    public typealias Director = DefaultFiltersCollectionDirector<Cell>
-
-    public var collectionDirector: Director
-
-    public var collectionView: UICollectionView
-
-    public var layout: CollectionViewLayoutProtocol
+    public var layout: UICollectionViewLayout
 
     public weak var viewModel: DefaultFiltersViewModel?
 
-    open weak var filtersDelegate: FilterItemsDelegate?
+    open var collectionView: UICollectionView {
+        self
+    }
 
     // MARK: - Init
 
-    public init(layout: CollectionViewLayoutProtocol) {
+    public init(layout: UICollectionViewLayout) {
         self.layout = layout
-        self.collectionView = .init(frame: .zero, collectionViewLayout: layout.collectionViewLayout)
-        self.collectionDirector = .init(collectionView: collectionView)
-
-        super.init(frame: .zero)
+        
+        super.init(frame: .zero, collectionViewLayout: layout)
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -58,25 +50,28 @@ open class BaseFiltersCollectionView<Cell: FilterCollectionItem>: BaseInitializa
 
     // MARK: - Life cycle
 
-    open override func addViews() {
-        super.addViews()
-
+    open func addViews() {
         addSubview(collectionView)
     }
 
-    open override func configureLayout() {
-        super.configureLayout()
-
+    open func configureLayout() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate(collectionView.edgesEqualToSuperview())
     }
 
-    open override func configureAppearance() {
-        super.configureAppearance()
+    open func bindViews() {
+        delegate = viewModel
+        dataSource = viewModel
+    }
 
+    open func configureAppearance() {
         backgroundColor = .white
         collectionView.backgroundColor = .white
+    }
+
+    open func localize() {
+        // override in subclass
     }
 
     // MARK: - ConfigurableView
@@ -85,43 +80,36 @@ open class BaseFiltersCollectionView<Cell: FilterCollectionItem>: BaseInitializa
         self.viewModel = viewModel
         
         viewModel.filtersCollectionHolder = self
-        collectionDirector.delegate = viewModel
 
         updateView()
     }
 
     // MARK: - FiltersCollectionHolder
 
-    open func select(_ items: [FilterPropertyValueRepresenter]) {
-        guard let viewModel = viewModel else { return }
-
-        items.forEach { item in
-            if let index = viewModel.filters.firstIndex(where: { $0.id == item.id }) {
-                viewModel.filters[index].isSelected = true
+    open func applyChange(_ changes: [DefaultFiltersViewModel.Change]) {
+        for change in changes {
+            guard let cell = cellForItem(at: change.indexPath) else {
+                continue
             }
-        }
-    }
 
-    open func deselect(_ items: [FilterPropertyValueRepresenter]) {
-        guard let viewModel = viewModel else { return }
-
-        items.forEach { item in
-            if let index = viewModel.filters.firstIndex(where: { $0.id == item.id }) {
-                viewModel.filters[index].isSelected = false
-            }
+            configure(filterCell: cell, cellViewModel: change.viewModel)
         }
     }
 
     open func updateView() {
-        guard let viewModel = viewModel else { return }
+        reloadData()
+    }
 
-        collectionDirector.collectionItems = viewModel.filters.compactMap {
-            guard let filter = $0 as? Cell.Filter else {
-                return nil
-            }
+    open func configure(filterCell: UICollectionViewCell, cellViewModel: FilterCellViewModelProtocol) {
+        guard let cellViewModel = cellViewModel as? CellType.ViewModelType else { return }
 
-            return Cell(filter: filter, viewModel: $0.convertToViewModel())
-        }
+        guard let configurableCell = filterCell as? CellType else { return }
+
+        configurableCell.configure(with: cellViewModel)
+    }
+
+    open func registerCells() {
+        viewModel?.filters.forEach { self.register(CellType.self, forCellWithReuseIdentifier: $0.id) }
     }
 }
 

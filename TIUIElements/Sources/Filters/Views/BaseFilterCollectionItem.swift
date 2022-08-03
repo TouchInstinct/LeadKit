@@ -23,33 +23,33 @@
 import UIKit
 import TIUIKitCore
 
-public typealias AnyCollectionCell = SelectableCell & ConfigurableView
+//public typealias AnyCollectionCell = SelectableCell & ConfigurableView
 
-open class BaseFilterCollectionItem<CellType: AnyCollectionCell,
-                                    Filter: FilterPropertyValueRepresenter>: FilterCollectionItem where CellType.ViewModelType: CellViewModelRepresentable {
-
-    public var itemType: AnyClass{
-        CellType.self
-    }
-
-    public var filter: Filter
-    
-    public var viewModel: CellViewModelRepresentable?
-
-    required public init(filter: Filter, viewModel: CellViewModelRepresentable) {
-        self.filter = filter
-        self.viewModel = viewModel
-    }
-
-    open func configure(item: UICollectionViewCell) {
-        guard let viewModel = viewModel as? CellType.ViewModelType else {
-            return
-        }
-
-        (item as? CellType)?.configure(with: viewModel)
-    }
-
-    open func didSelectItem(atIndexPath indexPath: IndexPath, cell: UICollectionViewCell?) {
-        // Override in subviews
-    }
-}
+//open class BaseFilterCollectionItem<CellType: AnyCollectionCell,
+//                                    Filter: FilterPropertyValueRepresenter>: FilterCollectionItem where CellType.ViewModelType: CellViewModelRepresentable {
+//
+//    public var itemType: AnyClass{
+//        CellType.self
+//    }
+//
+//    public var filter: Filter
+//
+//    public var viewModel: CellViewModelRepresentable?
+//
+//    required public init(filter: Filter, viewModel: CellViewModelRepresentable) {
+//        self.filter = filter
+//        self.viewModel = viewModel
+//    }
+//
+//    open func configure(item: UICollectionViewCell) {
+//        guard let viewModel = viewModel as? CellType.ViewModelType else {
+//            return
+//        }
+//
+//        (item as? CellType)?.configure(with: viewModel)
+//    }
+//
+//    open func didSelectItem(atIndexPath indexPath: IndexPath, cell: UICollectionViewCell?) {
+//        // Override in subviews
+//    }
+//}

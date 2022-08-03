@@ -21,7 +21,7 @@
 //
 
 import UIKit
-
-public protocol CollectionViewLayoutProtocol {
-    var collectionViewLayout: UICollectionViewLayout { get }
-}
+//
+//public protocol FilterItemsDelegate: AnyObject {
+//    func didSelectItem(atIndexPath indexPath: IndexPath)
+//}

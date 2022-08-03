@@ -22,7 +22,7 @@
 
 import UIKit
 
-public protocol CellViewModelProtocol: CellViewModelRepresentable {
+public protocol FilterCellViewModelProtocol: FilterCellViewModelRepresentable {
     var id: String { get set }
     var title: String { get set }
     var selectedColor: UIColor { get set }
@@ -30,7 +30,7 @@ public protocol CellViewModelProtocol: CellViewModelRepresentable {
     var isSelected: Bool { get set }
 }
 
-public struct DefaultCellViewModel: CellViewModelProtocol, CellViewModelRepresentable {
+public struct DefaultFilterCellViewModel: FilterCellViewModelProtocol, FilterCellViewModelRepresentable {
     public var id: String
     public var title: String
     public var selectedColor: UIColor

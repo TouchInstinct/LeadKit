@@ -19,31 +19,31 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
-
-import TIUIKitCore
-import UIKit
-
-public protocol FilterCollectionItem {
-
-    associatedtype Filter: FilterPropertyValueRepresenter
-
-    var identifier: String { get }
-    var itemType: AnyClass { get }
-    var filter: Filter { get set }
-
-    init(filter: Filter, viewModel: CellViewModelRepresentable)
-
-    func register(for collectionView: UICollectionView)
-    func configure(item: UICollectionViewCell)
-    func didSelectItem(atIndexPath indexPath: IndexPath, cell: UICollectionViewCell?)
-}
-
-public extension FilterCollectionItem {
-    var identifier: String {
-        filter.id
-    }
-
-    func register(for collectionView: UICollectionView) {
-        collectionView.register(itemType, forCellWithReuseIdentifier: identifier)
-    }
-}
+//
+//import TIUIKitCore
+//import UIKit
+//
+//public protocol FilterCollectionItem {
+//
+//    associatedtype Filter: FilterPropertyValueRepresenter
+//
+//    var identifier: String { get }
+//    var itemType: AnyClass { get }
+//    var filter: Filter { get set }
+//
+//    init(filter: Filter, viewModel: FilterCellViewModelRepresentable)
+//
+//    func register(for collectionView: UICollectionView)
+//    func configure(item: UICollectionViewCell)
+//    func didSelectItem(atIndexPath indexPath: IndexPath, cell: UICollectionViewCell?)
+//}
+//
+//public extension FilterCollectionItem {
+//    var identifier: String {
+//        filter.id
+//    }
+//
+//    func register(for collectionView: UICollectionView) {
+//        collectionView.register(itemType, forCellWithReuseIdentifier: identifier)
+//    }
+//}

@@ -24,27 +24,33 @@ import UIKit
 
 @available(iOS 13, *)
 public extension UICollectionViewLayout {
-    
-    static func makeHorizontalLayout(_ conf: FiltersLayoutConfiguration) -> UICollectionViewLayout {
+
+    static func gridLayout(_ conf: FiltersLayoutConfiguration) -> UICollectionViewLayout {
         let item = NSCollectionLayoutItem(layoutSize: conf.itemSize)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: conf.groupSize, subitems: [item])
-        group.interItemSpacing = conf.itemSpacing
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: conf.itemSize.heightDimension)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.interItemSpacing = .fixed(conf.horizontalItemSpacing)
 
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(insets: conf.contentInsets)
-        section.interGroupSpacing = conf.groupSpacing
+        section.interGroupSpacing = conf.verticalItemSpacing
 
         return UICollectionViewCompositionalLayout(section: section)
     }
 
-    static func makeHorizontalScrollLayout(_ conf: FiltersLayoutConfiguration) -> UICollectionViewLayout {
+    static func horizontalScrollLayout(_ conf: FiltersLayoutConfiguration) -> UICollectionViewLayout {
         let item = NSCollectionLayoutItem(layoutSize: conf.itemSize)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: conf.groupSize, subitems: [item])
-        group.interItemSpacing = conf.itemSpacing
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: conf.itemSize.widthDimension,
+                                               heightDimension: .fractionalHeight(1))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.interItemSpacing = .fixed(conf.horizontalItemSpacing)
 
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(insets: conf.contentInsets)
-        section.interGroupSpacing = conf.groupSpacing
+        section.interGroupSpacing = conf.verticalItemSpacing
         section.orthogonalScrollingBehavior = .continuous
 
         return UICollectionViewCompositionalLayout(section: section)

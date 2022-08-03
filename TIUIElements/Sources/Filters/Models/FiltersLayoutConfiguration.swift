@@ -23,61 +23,37 @@
 import UIKit
 
 @available(iOS 13, *)
-public enum FiltersCollectionViewLayout: CollectionViewLayoutProtocol {
-    case horizontalScroll(FiltersLayoutConfiguration?)
-    case horizontal(FiltersLayoutConfiguration?)
-    case custom(UICollectionViewLayout)
-
-    public var collectionViewLayout: UICollectionViewLayout {
-        switch self {
-        case let .horizontalScroll(configuration):
-            return .makeHorizontalScrollLayout(configuration ?? FiltersLayoutConfiguration.horizontalScrollConfiguration)
-        case let .horizontal(configuration):
-            return .makeHorizontalLayout(configuration ?? FiltersLayoutConfiguration.horizontalConfiguration)
-        case let .custom(layout):
-            return layout
-        }
-    }
-}
-
-@available(iOS 13, *)
 public struct FiltersLayoutConfiguration {
-
+    
     public var itemSize: NSCollectionLayoutSize
-    public var groupSize: NSCollectionLayoutSize
-    public var itemSpacing: NSCollectionLayoutSpacing
-    public var groupSpacing: CGFloat
+    public var horizontalItemSpacing: CGFloat
+    public var verticalItemSpacing: CGFloat
     public var contentInsets: UIEdgeInsets
 
     public init(itemSize: NSCollectionLayoutSize = .init(widthDimension: .estimated(32),
                                                          heightDimension: .estimated(32)),
-                groupSize: NSCollectionLayoutSize = .init(widthDimension: .fractionalWidth(1),
-                                                          heightDimension: .estimated(32)),
-                itemSpacing: NSCollectionLayoutSpacing = .fixed(.zero),
-                groupSpacing: CGFloat,
+                horizontalItemSpacing: CGFloat = .zero,
+                verticalItemSpacing: CGFloat = .zero,
                 contentInsets: UIEdgeInsets) {
 
         self.itemSize = itemSize
-        self.groupSize = groupSize
-        self.itemSpacing = itemSpacing
-        self.groupSpacing = groupSpacing
+        self.horizontalItemSpacing = horizontalItemSpacing
+        self.verticalItemSpacing = verticalItemSpacing
         self.contentInsets = contentInsets
     }
 }
 
 @available(iOS 13, *)
 extension FiltersLayoutConfiguration {
-    static let horizontalScrollConfiguration = FiltersLayoutConfiguration(itemSpacing: .fixed(8),
-                                                                          groupSpacing: 16,
+    static let horizontalScrollConfiguration = FiltersLayoutConfiguration(horizontalItemSpacing: 16,
                                                                           contentInsets: .init(top: .zero,
                                                                                                left: 8,
                                                                                                bottom: .zero,
                                                                                                right: 8))
 
-    static let horizontalConfiguration = FiltersLayoutConfiguration(itemSpacing: .fixed(8),
-                                                                    groupSpacing: 16,
-                                                                    contentInsets: .init(top: .zero,
-                                                                                         left: 8,
-                                                                                         bottom: .zero,
-                                                                                         right: 8))
+    static let gridConfiguration = FiltersLayoutConfiguration(verticalItemSpacing: 16,
+                                                              contentInsets: .init(top: .zero,
+                                                                                   left: 8,
+                                                                                   bottom: .zero,
+                                                                                   right: 8))
 }

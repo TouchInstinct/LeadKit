@@ -22,15 +22,36 @@
 
 import UIKit
 
-public protocol CollectionDirectorRepresenter: UICollectionViewDataSource, UICollectionViewDelegate {
+public struct DefaultFilterPropertyValue: FilterPropertyValueRepresenter,
+                                          Codable,
+                                          Identifiable {
 
-    associatedtype Item
+    public let id: String
+    public let title: String
+    public let excludingProperties: [String]?
 
-    var collectionView: UICollectionView? { get set }
-    var delegate: FilterItemsDelegate? { get set }
+    public var isSelected: Bool
 
-    func insertItem(_ item: Item, at index: Int)
-    func deleteItem(at index: Int)
-    func update(item: Item, at index: Int)
-    func scrollToItem(at indexPath: IndexPath, animated: Bool)
+    public func convertToViewModel() -> FilterCellViewModelRepresentable {
+        DefaultFilterCellViewModel(id: id,
+                                   title: title,
+                                   selectedColor: .green,
+                                   insets: .init(top: .zero, left: 8, bottom: .zero, right: 8),
+                                   isSelected: isSelected)
+    }
+}
+
+public extension DefaultFilterPropertyValue {
+    init(id: String, title: String, excludingProperties: [String]? = nil) {
+        self.id = id
+        self.title = title
+        self.excludingProperties = excludingProperties
+        self.isSelected = false
+    }
+}
+
+extension DefaultFilterPropertyValue: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }

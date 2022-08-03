@@ -20,14 +20,15 @@
 //  THE SOFTWARE.
 //
 
-public protocol FilterPropertyValueRepresenter: CellViewModelConvertable {
-    var id: String { get }
-    var excludingProperties: [String]? { get }
-    var isSelected: Bool { get set }
-}
+import UIKit
 
-public protocol CellViewModelRepresentable { }
+public protocol FiltersCollectionHolder: AnyObject {
 
-public protocol CellViewModelConvertable {
-    func convertToViewModel() -> CellViewModelRepresentable
+    var collectionView: UICollectionView { get }
+    var viewModel: DefaultFiltersViewModel? { get set }
+
+    func applyChange(_ changes: [DefaultFiltersViewModel.Change])
+    func updateView()
+    func configure(filterCell: UICollectionViewCell, cellViewModel: FilterCellViewModelProtocol)
+    func registerCells()
 }

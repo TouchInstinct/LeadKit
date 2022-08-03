@@ -22,18 +22,15 @@
 
 import UIKit
 
-open class DefaultFiltersViewModel: FiltersViewModelProtocol, FilterItemsDelegate {
-    
-    public var filters: [DefaultFilterPropertyValue]
-    public var selectedFilters: Set<DefaultFilterPropertyValue> = []
-    
-    public weak var filtersCollectionHolder: FiltersCollectionHolder?
-    
-    public init(filters: [DefaultFilterPropertyValue]) {
-        self.filters = filters
-    }
-    
-    open func didSelectItem(atIndexPath indexPath: IndexPath) {
-        filterItem(atIndexPath: indexPath)
-    }
-}
+//public protocol CollectionDirectorRepresenter: UICollectionViewDataSource, UICollectionViewDelegate {
+//
+//    associatedtype Item
+//
+//    var collectionView: UICollectionView? { get set }
+//    var delegate: FilterItemsDelegate? { get set }
+//
+//    func insertItem(_ item: Item, at index: Int)
+//    func deleteItem(at index: Int)
+//    func update(item: Item, at index: Int)
+//    func scrollToItem(at indexPath: IndexPath, animated: Bool)
+//}
