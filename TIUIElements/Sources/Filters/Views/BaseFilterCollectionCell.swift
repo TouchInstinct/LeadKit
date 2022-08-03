@@ -26,10 +26,6 @@ import TIUIKitCore
 open class BaseFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
                                      ConfigurableView {
 
-    public override var wrappedView: UILabel {
-        UILabel()
-    }
-
     public var viewModel: DefaultFilterCellViewModel?
 
     open var isLabelHidden: Bool {
@@ -45,6 +41,8 @@ open class BaseFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
         layer.round(corners: .allCorners, radius: 6)
     }
 
+    // MARK: - ConfigurableView
+
     open func configure(with viewModel: DefaultFilterCellViewModel) {
         self.viewModel = viewModel
 
@@ -53,6 +51,14 @@ open class BaseFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
 
         setSelected(isSelected: viewModel.isSelected)
     }
+
+    // MARK: - ContainerCollectionViewCell
+
+    open override func createView() -> UILabel {
+        UILabel()
+    }
+
+    // MARK: - Public methods
 
     open func setSelected(isSelected: Bool) {
         let selectedColor = viewModel?.selectedColor ?? .green
