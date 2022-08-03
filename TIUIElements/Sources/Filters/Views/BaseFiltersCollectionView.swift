@@ -71,7 +71,9 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
     // MARK: - ConfigurableView
 
     open func configure(with viewModel: DefaultFiltersViewModel) {
-        self.viewModel = viewModel
+        if viewModel == nil {
+            self.viewModel = viewModel
+        }
         
         viewModel.filtersCollectionHolder = self
 
