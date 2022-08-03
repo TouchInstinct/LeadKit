@@ -34,6 +34,8 @@ public struct DefaultFilterCellViewModel: FilterCellViewModelProtocol, FilterCel
     public var id: String
     public var title: String
     public var selectedColor: UIColor
+    public var selectedBgColor: UIColor
+    public var deselectedBgColor: UIColor
     public var insets: UIEdgeInsets
     public var isSelected: Bool
 }

@@ -30,8 +30,8 @@ public struct FiltersLayoutConfiguration {
     public var verticalItemSpacing: CGFloat
     public var contentInsets: UIEdgeInsets
 
-    public init(itemSize: NSCollectionLayoutSize = .init(widthDimension: .estimated(32),
-                                                         heightDimension: .estimated(32)),
+    public init(itemSize: NSCollectionLayoutSize = .init(widthDimension: .estimated(36),
+                                                         heightDimension: .estimated(36)),
                 horizontalItemSpacing: CGFloat = .zero,
                 verticalItemSpacing: CGFloat = .zero,
                 contentInsets: UIEdgeInsets) {

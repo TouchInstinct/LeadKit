@@ -36,6 +36,8 @@ public struct DefaultFilterPropertyValue: FilterPropertyValueRepresenter,
         DefaultFilterCellViewModel(id: id,
                                    title: title,
                                    selectedColor: .green,
+                                   selectedBgColor: .white,
+                                   deselectedBgColor: .lightGray,
                                    insets: .init(top: .zero, left: 8, bottom: .zero, right: 8),
                                    isSelected: isSelected)
     }

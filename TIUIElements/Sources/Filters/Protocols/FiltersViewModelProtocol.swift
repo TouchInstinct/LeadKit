@@ -37,7 +37,7 @@ public protocol FiltersViewModelProtocol: AnyObject {
 public extension FiltersViewModelProtocol {
 
     func toggleFilter(atIndexPath indexPath: IndexPath) -> (selected: [Filter], deselected: [Filter]) {
-        guard let item = getItemSafely(indexPath.item) else { return ([], []) }
+        guard let item = getFilterSafely(indexPath.item) else { return ([], []) }
 
         return toggleFilter(item)
     }
@@ -51,30 +51,44 @@ public extension FiltersViewModelProtocol {
         }
 
         if let selectedFilter = selectedFilter {
+            // Removes previously selected filter
             selectedFilters.remove(selectedFilter)
             filtersToDeselect.append(filter)
         } else {
+            // Selectes unselected filter
             selectedFilters.insert(filter)
             filtersToSelect.append(filter)
 
-            if let filtersToExclude = filter.excludingProperties, !filtersToExclude.isEmpty {
-                for filtersIdToExclude in filtersToExclude {
-                    let filterToExclude = selectedFilters.first { filter in
-                        filter.id == filtersIdToExclude
-                    }
-
-                    if let itemToExclude = filterToExclude {
-                        let (_, deselected) = toggleFilter(itemToExclude)
-                        filtersToDeselect.append(contentsOf: deselected)
-                    }
-                }
-            }
+            // If the filter has filters to exclude, these filters marks as deselected
+            let excludedFilters = excludeFilters(filter)
+            filtersToDeselect.append(contentsOf: excludedFilters)
         }
         
         return (filtersToSelect, filtersToDeselect)
     }
     
-    private func getItemSafely(_ index: Int) -> Filter? {
+    private func excludeFilters(_ filter: Filter) -> [Filter] {
+        guard let filtersToExclude = filter.excludingProperties, !filtersToExclude.isEmpty else {
+            return []
+        }
+
+        var excludedFilters = [Filter]()
+
+        for filtersIdToExclude in filtersToExclude {
+            let filterToExclude = selectedFilters.first { filter in
+                filter.id == filtersIdToExclude
+            }
+
+            if let itemToExclude = filterToExclude {
+                let (_, deselected) = toggleFilter(itemToExclude)
+                excludedFilters.append(contentsOf: deselected)
+            }
+        }
+
+        return excludedFilters
+    }
+    
+    private func getFilterSafely(_ index: Int) -> Filter? {
         guard index >= 0 && index < filters.count else {
             return nil
         }

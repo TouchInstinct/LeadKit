@@ -32,14 +32,11 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
 
     public weak var viewModel: DefaultFiltersViewModel?
 
-    open var collectionView: UICollectionView {
-        self
-    }
-
     // MARK: - Init
 
-    public init(layout: UICollectionViewLayout) {
+    public init(layout: UICollectionViewLayout, viewModel: DefaultFiltersViewModel? = nil) {
         self.layout = layout
+        self.viewModel = viewModel
         
         super.init(frame: .zero, collectionViewLayout: layout)
     }
@@ -51,13 +48,7 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
     // MARK: - Life cycle
 
     open func addViews() {
-        addSubview(collectionView)
-    }
-
-    open func configureLayout() {
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate(collectionView.edgesEqualToSuperview())
+        // override in subclass
     }
 
     open func bindViews() {
@@ -65,9 +56,12 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
         dataSource = viewModel
     }
 
+    open func configureLayout() {
+        // override in subclass
+    }
+
     open func configureAppearance() {
         backgroundColor = .white
-        collectionView.backgroundColor = .white
     }
 
     open func localize() {
@@ -110,22 +104,5 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
 
     open func registerCells() {
         viewModel?.filters.forEach { self.register(CellType.self, forCellWithReuseIdentifier: $0.id) }
-    }
-}
-
-extension UIView {
-    func edgesEqualToSuperview(constant c: CGFloat = .zero) -> [NSLayoutConstraint] {
-        guard let superview = self.superview else {
-            fatalError("\(self.description) doesn't have superview")
-        }
-
-        var constraints = [NSLayoutConstraint]()
-
-        constraints.append(topAnchor.constraint(equalTo: superview.topAnchor, constant: c))
-        constraints.append(trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: c))
-        constraints.append(bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: c))
-        constraints.append(leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: c))
-
-        return constraints
     }
 }

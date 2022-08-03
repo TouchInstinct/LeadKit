@@ -23,10 +23,6 @@
 import UIKit
 
 public protocol FiltersCollectionHolder: AnyObject {
-
-    var collectionView: UICollectionView { get }
-    var viewModel: DefaultFiltersViewModel? { get set }
-
     func applyChange(_ changes: [DefaultFiltersViewModel.Change])
     func updateView()
     func configure(filterCell: UICollectionViewCell, cellViewModel: FilterCellViewModelProtocol)

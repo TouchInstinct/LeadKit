@@ -24,7 +24,6 @@ import UIKit
 import TIUIKitCore
 
 open class BaseFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
-                                     SelectableCell,
                                      ConfigurableView {
 
     public override var wrappedView: UILabel {
@@ -32,12 +31,6 @@ open class BaseFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
     }
 
     public var viewModel: DefaultFilterCellViewModel?
-
-    open var isFilterSelected: Bool = false {
-        didSet {
-            reloadState()
-        }
-    }
 
     open var isLabelHidden: Bool {
         get {
@@ -56,6 +49,7 @@ open class BaseFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
         self.viewModel = viewModel
 
         wrappedView.text = viewModel.title
+        contentInsets = viewModel.insets
 
         setSelected(isSelected: viewModel.isSelected)
     }
@@ -65,7 +59,7 @@ open class BaseFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
         wrappedView.textColor = isSelected ? selectedColor : .black
 
         if isSelected {
-            backgroundColor = .white
+            backgroundColor = viewModel?.selectedBgColor ?? .white
             layer.borderColor = selectedColor.cgColor
             layer.borderWidth = 1
         } else {
@@ -73,16 +67,8 @@ open class BaseFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
         }
     }
 
-    open func reloadState() {
-        if isFilterSelected {
-            backgroundColor = .green
-        } else {
-            backgroundColor = .white
-        }
-    }
-
     open func setDeselectAppearance() {
         layer.borderWidth = 0
-        backgroundColor = .lightGray
+        backgroundColor = viewModel?.deselectedBgColor ?? .lightGray
     }
 }

@@ -79,6 +79,8 @@ open class DefaultFiltersViewModel: NSObject,
         filtersCollectionHolder?.applyChange(changedItems)
     }
 
+    // MARK: - Private methods
+
     private func isFilterChanged(_ filter: DefaultFilterPropertyValue, filters: [DefaultFilterPropertyValue]) -> Bool {
         filters.contains(where: { $0.id == filter.id })
     }
