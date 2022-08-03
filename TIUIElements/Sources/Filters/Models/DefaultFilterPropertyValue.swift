@@ -38,7 +38,7 @@ public struct DefaultFilterPropertyValue: FilterPropertyValueRepresenter,
                                    selectedColor: .green,
                                    selectedBgColor: .white,
                                    deselectedBgColor: .lightGray,
-                                   insets: .init(top: .zero, left: 8, bottom: .zero, right: 8),
+                                   insets: .init(top: 4, left: 8, bottom: 4, right: 8),
                                    isSelected: isSelected)
     }
 }
