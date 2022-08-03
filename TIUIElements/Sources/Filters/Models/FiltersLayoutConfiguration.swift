@@ -44,14 +44,15 @@ public struct FiltersLayoutConfiguration {
 }
 
 @available(iOS 13, *)
-extension FiltersLayoutConfiguration {
+public extension FiltersLayoutConfiguration {
     static let horizontalScrollConfiguration = FiltersLayoutConfiguration(horizontalItemSpacing: 16,
                                                                           contentInsets: .init(top: .zero,
                                                                                                left: 8,
                                                                                                bottom: .zero,
                                                                                                right: 8))
 
-    static let gridConfiguration = FiltersLayoutConfiguration(verticalItemSpacing: 16,
+    static let gridConfiguration = FiltersLayoutConfiguration(horizontalItemSpacing: 16,
+                                                              verticalItemSpacing: 16,
                                                               contentInsets: .init(top: .zero,
                                                                                    left: 8,
                                                                                    bottom: .zero,
