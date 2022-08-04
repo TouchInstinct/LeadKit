@@ -20,14 +20,9 @@
 //  THE SOFTWARE.
 //
 
-public protocol FilterPropertyValueRepresenter: FilterCellViewModelConvertable {
+public protocol FilterPropertyValueRepresenter {
     var id: String { get }
     var excludingProperties: [String]? { get }
+    var cellAppearance: FilterCellAppearanceProtocol { get }
     var isSelected: Bool { get set }
-}
-
-public protocol FilterCellViewModelRepresentable { }
-
-public protocol FilterCellViewModelConvertable {
-    func convertToViewModel() -> FilterCellViewModelRepresentable
 }

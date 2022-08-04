@@ -20,9 +20,9 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
 import TIUIKitCore
 import TIUIElements
+import UIKit
 
 open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
                                         ConfigurableView {
@@ -41,7 +41,7 @@ open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
         self.viewModel = viewModel
 
         wrappedView.text = viewModel.title
-        contentInsets = viewModel.insets
+        contentInsets = viewModel.appearance.contentInsets
 
         setSelected(isSelected: viewModel.isSelected)
     }
@@ -49,11 +49,13 @@ open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
     // MARK: - Public methods
 
     open func setSelected(isSelected: Bool) {
-        let selectedColor = viewModel?.selectedColor ?? .green
+        let appearance = viewModel?.appearance
+
+        let selectedColor = appearance?.selectedColor ?? .green
         wrappedView.textColor = isSelected ? selectedColor : .black
 
         if isSelected {
-            backgroundColor = viewModel?.selectedBgColor ?? .white
+            backgroundColor = appearance?.selectedBgColor ?? .white
             layer.borderColor = selectedColor.cgColor
             layer.borderWidth = 1
         } else {
@@ -63,6 +65,6 @@ open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
 
     open func setDeselectAppearance() {
         layer.borderWidth = 0
-        backgroundColor = viewModel?.deselectedBgColor ?? .lightGray
+        backgroundColor = viewModel?.appearance.deselectedBgColor ?? .lightGray
     }
 }

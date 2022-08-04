@@ -26,7 +26,8 @@ import UIKit
 @available(iOS 13.0, *)
 open class BaseFiltersCollectionView<CellType: UICollectionViewCell & ConfigurableView>: UICollectionView,
                                                                                          InitializableViewProtocol,
-                                                                                         UICollectionViewDelegate where CellType.ViewModelType: Hashable {
+                                                                                         UpdatableView,
+                                                                                         UICollectionViewDelegate where CellType.ViewModelType: FilterCellViewModelProtocol & Hashable {
 
     public enum Section {
         case main
@@ -85,6 +86,7 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
 
     open func viewDidLoad() {
         register(CellType.self, forCellWithReuseIdentifier: cellsReusedIdentifier)
+        viewModel?.filtersCollection = self
 
         applySnapshot()
     }
@@ -99,6 +101,12 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
         applyChange(changes)
     }
 
+    // MARK: - UpdatableView
+
+    open func updateView() {
+        applySnapshot()
+    }
+
     // MARK: - Open methods
 
     open func applySnapshot() {
@@ -109,7 +117,7 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
         var snapshot = Snapshot()
 
         snapshot.appendSections([.main])
-        snapshot.appendItems(viewModel.cellsViewModels as! [CellType.ViewModelType], toSection: .main)
+        snapshot.appendItems(viewModel.getCellsViewModels() as! [CellType.ViewModelType], toSection: .main)
 
         collectionViewDataSource.apply(snapshot, animatingDifferences: true)
     }
@@ -129,21 +137,13 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
 
     open func applyChange(_ changes: [DefaultFiltersViewModel.Change]) {
         for change in changes {
-            guard let cell = cellForItem(at: change.indexPath) else {
+            guard let cell = cellForItem(at: change.indexPath) as? CellType else {
                 continue
             }
 
-            configure(filterCell: cell, cellViewModel: change.viewModel)
+//            cell.configure(with: change.viewModel)
         }
 
         applySnapshot()
-    }
-
-    open func configure(filterCell: UICollectionViewCell, cellViewModel: FilterCellViewModelProtocol) {
-        guard let cellViewModel = cellViewModel as? CellType.ViewModelType else { return }
-
-        guard let configurableCell = filterCell as? CellType else { return }
-
-        configurableCell.configure(with: cellViewModel)
     }
 }

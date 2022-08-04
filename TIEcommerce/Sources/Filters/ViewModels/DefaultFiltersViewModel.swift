@@ -20,28 +20,49 @@
 //  THE SOFTWARE.
 //
 
+import TIUIKitCore
 import UIKit
 
 open class DefaultFiltersViewModel: NSObject,
                                     FiltersViewModelProtocol {
 
-    public var filters: [DefaultFilterPropertyValue]
-    public var selectedFilters: Set<DefaultFilterPropertyValue> = []
-    public var cellsViewModels: [FilterCellViewModelProtocol]
+    private var cellsViewModels: [FilterCellViewModelProtocol]
+
+    public var filters: [DefaultFilterPropertyValue] {
+        didSet {
+            rebuildCellsViewModels()
+            filtersCollection?.updateView()
+        }
+    }
+
+    public var selectedFilters: Set<DefaultFilterPropertyValue> = [] {
+        didSet {
+            reselectFilters()
+            rebuildCellsViewModels()
+            filtersCollection?.updateView()
+        }
+    }
+
+    public weak var filtersCollection: UpdatableView?
 
     public init(filters: [DefaultFilterPropertyValue]) {
         self.filters = filters
-        self.cellsViewModels = filters.compactMap { $0.convertToViewModel() as? FilterCellViewModelProtocol }
+        self.cellsViewModels = filters.compactMap {
+            DefaultFilterCellViewModel(id: $0.id,
+                                       title: $0.title,
+                                       appearance: $0.cellAppearance,
+                                       isSelected: $0.isSelected)
+        }
     }
 
-    // MARK: - Public methods
+    // MARK: - Open methods
 
     open func filterDidSelected(atIndexPath indexPath: IndexPath) -> [Change] {
         let (selected, deselected) = toggleFilter(atIndexPath: indexPath)
 
         let changedFilters = filters
             .enumerated()
-            .filter { isFilterChanged($0.element, filters: selected) || isFilterChanged($0.element, filters: deselected) }
+            .filter { isFilterInArray($0.element, filters: selected) || isFilterInArray($0.element, filters: deselected) }
 
         for (offset, element) in changedFilters {
             cellsViewModels[offset].isSelected = selectedFilters.contains(element)
@@ -57,7 +78,30 @@ open class DefaultFiltersViewModel: NSObject,
         return changedItems
     }
 
-    public func isFilterChanged(_ filter: DefaultFilterPropertyValue, filters: [DefaultFilterPropertyValue]) -> Bool {
+    open func rebuildCellsViewModels() {
+        cellsViewModels = filters.compactMap {
+            DefaultFilterCellViewModel(id: $0.id,
+                                       title: $0.title,
+                                       appearance: $0.cellAppearance,
+                                       isSelected: $0.isSelected)
+        }
+    }
+
+    // MARK: - Public methods
+
+    public func getCellsViewModels() -> [FilterCellViewModelProtocol] {
+        cellsViewModels
+    }
+
+    public func isFilterInArray(_ filter: DefaultFilterPropertyValue, filters: [DefaultFilterPropertyValue]) -> Bool {
         filters.contains(where: { $0.id == filter.id })
+    }
+
+    public func reselectFilters() {
+        let selectedFilters = Array(selectedFilters)
+
+        filters.enumerated().forEach {
+            filters[$0.offset].isSelected = isFilterInArray($0.element, filters: selectedFilters)
+        }
     }
 }

@@ -27,18 +27,9 @@ public struct DefaultFilterPropertyValue: FilterPropertyValueRepresenter, Identi
     public let id: String
     public let title: String
     public let excludingProperties: [String]?
+    public let cellAppearance: FilterCellAppearanceProtocol
 
     public var isSelected: Bool
-
-    public func convertToViewModel() -> FilterCellViewModelRepresentable {
-        DefaultFilterCellViewModel(id: id,
-                                   title: title,
-                                   selectedColor: .green,
-                                   selectedBgColor: .white,
-                                   deselectedBgColor: .lightGray,
-                                   insets: .init(top: 4, left: 8, bottom: 4, right: 8),
-                                   isSelected: isSelected)
-    }
 }
 
 public extension DefaultFilterPropertyValue {
@@ -46,11 +37,16 @@ public extension DefaultFilterPropertyValue {
         self.id = id
         self.title = title
         self.excludingProperties = excludingProperties
+        self.cellAppearance = BaseFilterCellAppearance.defaultFilterCellAppearance
         self.isSelected = false
     }
 }
 
 extension DefaultFilterPropertyValue: Hashable {
+    public static func == (lhs: DefaultFilterPropertyValue, rhs: DefaultFilterPropertyValue) -> Bool {
+        lhs.id == rhs.id
+    }
+
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }

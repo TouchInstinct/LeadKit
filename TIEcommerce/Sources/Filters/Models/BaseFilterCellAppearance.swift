@@ -20,18 +20,33 @@
 //  THE SOFTWARE.
 //
 
-public struct DefaultFilterCellViewModel: FilterCellViewModelProtocol, Hashable {
+import UIKit
 
-    public var id: String
-    public var title: String
-    public var appearance: FilterCellAppearanceProtocol
-    public var isSelected: Bool
+open class BaseFilterCellAppearance: FilterCellAppearanceProtocol {
+    public var selectedColor: UIColor
+    public var selectedBgColor: UIColor
+    public var deselectedBgColor: UIColor
+    public var contentInsets: UIEdgeInsets
 
-    public static func == (lhs: DefaultFilterCellViewModel, rhs: DefaultFilterCellViewModel) -> Bool {
-        lhs.id == rhs.id
+    init(selectedColor: UIColor,
+         selectedBgColor: UIColor,
+         deselectedBgColor: UIColor,
+         contentInsets: UIEdgeInsets) {
+
+        self.selectedColor = selectedColor
+        self.selectedBgColor = selectedBgColor
+        self.deselectedBgColor = deselectedBgColor
+        self.contentInsets = contentInsets
     }
+}
 
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
+// MARK: - Default appearance
+
+public extension BaseFilterCellAppearance {
+    static var defaultFilterCellAppearance: BaseFilterCellAppearance {
+        .init(selectedColor: .systemGreen,
+              selectedBgColor: .white,
+              deselectedBgColor: .lightGray,
+              contentInsets: .init(top: 4, left: 8, bottom: 4, right: 8))
     }
 }

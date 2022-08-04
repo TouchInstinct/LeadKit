@@ -20,18 +20,6 @@
 //  THE SOFTWARE.
 //
 
-public struct DefaultFilterCellViewModel: FilterCellViewModelProtocol, Hashable {
-
-    public var id: String
-    public var title: String
-    public var appearance: FilterCellAppearanceProtocol
-    public var isSelected: Bool
-
-    public static func == (lhs: DefaultFilterCellViewModel, rhs: DefaultFilterCellViewModel) -> Bool {
-        lhs.id == rhs.id
-    }
-
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
+public protocol UpdatableView: AnyObject {
+    func updateView()
 }
