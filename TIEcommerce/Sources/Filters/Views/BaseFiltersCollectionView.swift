@@ -54,6 +54,8 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
         super.init(frame: .zero, collectionViewLayout: layout)
 
         initializeView()
+
+        viewDidLoad()
     }
 
     required public init?(coder aDecoder: NSCoder) {
