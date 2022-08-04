@@ -54,7 +54,6 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
         super.init(frame: .zero, collectionViewLayout: layout)
 
         initializeView()
-
         viewDidLoad()
     }
 
@@ -69,8 +68,7 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
     }
 
     open func bindViews() {
-        // delegate = viewModel
-        // dataSource = viewModel
+        delegate = viewModel
     }
 
     open func configureLayout() {
@@ -91,33 +89,29 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
 
     // MARK: - FiltersCollectionHolder
 
-    open func applyChange(_ changes: [DefaultFiltersViewModel.Change]) {
-        for change in changes {
-            guard let cell = cellForItem(at: change.indexPath) else {
-                continue
-            }
+    // open func applyChange(_ changes: [DefaultFiltersViewModel.Change]) {
+    //     for change in changes {
+    //         guard let cell = cellForItem(at: change.indexPath) else {
+    //             continue
+    //         }
 
-            configure(filterCell: cell, cellViewModel: change.viewModel)
-        }
+    //         configure(filterCell: cell, cellViewModel: change.viewModel)
+    //     }
 
-        applySnapshot()
-    }
+    //     applySnapshot()
+    // }
 
     open func updateView() {
         applySnapshot()
     }
 
-    open func configure(filterCell: UICollectionViewCell, cellViewModel: FilterCellViewModelProtocol) {
-        guard let cellViewModel = cellViewModel as? CellType.ViewModelType else { return }
+    // open func configure(filterCell: UICollectionViewCell, cellViewModel: FilterCellViewModelProtocol) {
+    //     guard let cellViewModel = cellViewModel as? CellType.ViewModelType else { return }
 
-        guard let configurableCell = filterCell as? CellType else { return }
+    //     guard let configurableCell = filterCell as? CellType else { return }
 
-        configurableCell.configure(with: cellViewModel)
-    }
-
-    open func registerCells() {
-        viewModel?.filters.forEach { self.register(CellType.self, forCellWithReuseIdentifier: $0.id) }
-    }
+    //     configurableCell.configure(with: cellViewModel)
+    // }
 
     open func applySnapshot() {
         guard let viewModel = viewModel else {

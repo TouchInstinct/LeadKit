@@ -24,8 +24,7 @@ import UIKit
 
 open class DefaultFiltersViewModel: NSObject,
                                     FiltersViewModelProtocol,
-                                    UICollectionViewDelegate,
-                                    UICollectionViewDataSource {
+                                    UICollectionViewDelegate {
 
     public typealias Change = (indexPath: IndexPath, viewModel: FilterCellViewModelProtocol)
 
@@ -38,21 +37,6 @@ open class DefaultFiltersViewModel: NSObject,
     public init(filters: [DefaultFilterPropertyValue]) {
         self.filters = filters
         self.cellsViewModels = filters.compactMap { $0.convertToViewModel() as? FilterCellViewModelProtocol }
-    }
-
-    // MARK: - UICollectionViewDataSource
-
-    open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        filtersCollectionHolder?.registerCells()
-        return cellsViewModels.count
-    }
-
-    open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let viewModel = cellsViewModels[indexPath.item]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel.id, for: indexPath)
-        filtersCollectionHolder?.configure(filterCell: cell, cellViewModel: viewModel)
-        
-        return cell
     }
 
     // MARK: - UICollectionViewDelegate
@@ -70,13 +54,15 @@ open class DefaultFiltersViewModel: NSObject,
             filters[offset].isSelected = selectedFilters.contains(element)
         }
 
-        let changedItems = changedFilters
-            .map {
-                Change(indexPath: IndexPath(item: $0.offset, section: .zero),
-                       viewModel: cellsViewModels[$0.offset])
-            }
+        filtersCollectionHolder?.updateView()
 
-        filtersCollectionHolder?.applyChange(changedItems)
+        // let changedItems = changedFilters
+        //     .map {
+        //         Change(indexPath: IndexPath(item: $0.offset, section: .zero),
+        //                viewModel: cellsViewModels[$0.offset])
+        //     }
+
+        // filtersCollectionHolder?.applyChange(changedItems)
     }
 
     // MARK: - Private methods

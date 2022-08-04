@@ -23,8 +23,5 @@
 import UIKit
 
 public protocol FiltersCollectionHolder: AnyObject {
-    func applyChange(_ changes: [DefaultFiltersViewModel.Change])
     func updateView()
-    func configure(filterCell: UICollectionViewCell, cellViewModel: FilterCellViewModelProtocol)
-    func registerCells()
 }
