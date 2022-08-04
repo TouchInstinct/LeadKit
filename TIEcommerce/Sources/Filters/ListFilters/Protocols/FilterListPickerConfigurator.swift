@@ -22,11 +22,11 @@
 
 public protocol FilterListPickerConfigurator: AnyObject {
 
-    associatedtype CellViewModel: FilterRowRepresentable & Equatable
+    associatedtype RowViewModel: FilterRowRepresentable & Equatable
 
-    var visibleValues: [CellViewModel] { get }
+    var visibleValues: [RowViewModel] { get }
     var isMultiselectionEnabled: Bool { get set }
     var isFinishWithSeparator: Bool { get }
 
-    func setSelected(model: CellViewModel, isSelected: Bool)
+    func setSelected(model: RowViewModel, isSelected: Bool)
 }

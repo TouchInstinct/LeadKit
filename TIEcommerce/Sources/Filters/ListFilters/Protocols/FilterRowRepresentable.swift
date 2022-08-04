@@ -25,4 +25,9 @@ public protocol FilterRowRepresentable {
     var title: String { get }
     var isSelected: Bool { get set }
     var appearance: FilterCellAppearanceProtocol { get set }
+
+    init(id: String,
+         title: String,
+         appearance: FilterCellAppearanceProtocol,
+         isSelected: Bool)
 }

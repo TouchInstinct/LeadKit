@@ -26,7 +26,7 @@ import TIUIElements
 
 open class DefaultFilterListSectionBuilder<CellType: BaseSeparatorCell & ConfigurableCell>: FilterTableSectionBuilder {
 
-    open func makeSection<ViewModel: FilterListPickerConfigurator>(with viewModel: ViewModel) -> TableSection where ViewModel.CellViewModel == CellType.CellData {
+    open func makeSection<ViewModel: FilterListPickerConfigurator>(with viewModel: ViewModel) -> TableSection where ViewModel.RowViewModel == CellType.CellData {
         let rows = viewModel.visibleValues.map { item in
             TableRow<CellType>(item: item)
                 .on(.select) { [weak viewModel] _ in

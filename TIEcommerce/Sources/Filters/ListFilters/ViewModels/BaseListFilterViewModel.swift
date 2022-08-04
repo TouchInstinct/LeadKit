@@ -20,15 +20,15 @@
 //  THE SOFTWARE.
 //
 
-open class BaseListFilterViewModel<CellViewModelType: FilterRowRepresentable & Equatable>: FilterListPickerConfigurator {
+open class BaseListFilterViewModel<RowViewModelType: FilterRowRepresentable & Equatable>: FilterListPickerConfigurator {
 
-    public typealias CellViewModel = CellViewModelType
+    public typealias RowViewModel = RowViewModelType
 
-    public var rowViewModels: [CellViewModelType]
+    public var rowViewModels: [RowViewModelType]
 
     public weak var delegate: FiltersPickerDelegate?
 
-    public var initiallySelectedValues: [CellViewModelType]?
+    public var initiallySelectedValues: [RowViewModelType]?
 
     open var isFinishWithSeparator: Bool {
         true
@@ -52,11 +52,11 @@ open class BaseListFilterViewModel<CellViewModelType: FilterRowRepresentable & E
         return true
     }
 
-    open var selectedValues: [CellViewModelType] {
+    open var selectedValues: [RowViewModelType] {
         rowViewModels.filter { $0.isSelected }
     }
 
-    open var visibleValues: [CellViewModelType] {
+    open var visibleValues: [RowViewModelType] {
         rowViewModels
     }
 
@@ -66,7 +66,7 @@ open class BaseListFilterViewModel<CellViewModelType: FilterRowRepresentable & E
         }
     }
 
-    public init(rowViewModels: [CellViewModelType], isMultiselectionEnabled: Bool) {
+    public init(rowViewModels: [RowViewModelType], isMultiselectionEnabled: Bool) {
         self.rowViewModels = rowViewModels
         self.isMultiselectionEnabled = isMultiselectionEnabled
     }
@@ -75,7 +75,7 @@ open class BaseListFilterViewModel<CellViewModelType: FilterRowRepresentable & E
         initiallySelectedValues = selectedValues
     }
 
-    open func setSelected(model: CellViewModelType, isSelected: Bool) {
+    open func setSelected(model: RowViewModelType, isSelected: Bool) {
         if !isMultiselectionEnabled {
             rowViewModels.enumerated().forEach {
                 rowViewModels[$0.offset].isSelected = false

@@ -23,12 +23,12 @@
 import TIUIKitCore
 import UIKit
 
-open class DefaultFiltersViewModel<CellViewModelType: FilterCellViewModelProtocol & Hashable>: NSObject,
+open class DefaultFiltersViewModel<RowViewModelType: FilterCellViewModelProtocol & Hashable>: NSObject,
                                                                                                FiltersViewModelProtocol {
 
-    public typealias CellViewModel = CellViewModelType
+    public typealias RowViewModel = RowViewModelType
 
-    private var cellsViewModels: [CellViewModelType]
+    private var cellsViewModels: [RowViewModelType]
 
     public var filters: [DefaultFilterPropertyValue] {
         didSet {
@@ -50,7 +50,7 @@ open class DefaultFiltersViewModel<CellViewModelType: FilterCellViewModelProtoco
     public init(filters: [DefaultFilterPropertyValue]) {
         self.filters = filters
         self.cellsViewModels = filters.compactMap {
-            CellViewModelType(id: $0.id,
+            RowViewModelType(id: $0.id,
                               title: $0.title,
                               appearance: $0.cellAppearance,
                               isSelected: $0.isSelected)
@@ -82,7 +82,7 @@ open class DefaultFiltersViewModel<CellViewModelType: FilterCellViewModelProtoco
 
     open func rebuildCellsViewModels() {
         cellsViewModels = filters.compactMap {
-            CellViewModelType(id: $0.id,
+            RowViewModelType(id: $0.id,
                               title: $0.title,
                               appearance: $0.cellAppearance,
                               isSelected: $0.isSelected)
