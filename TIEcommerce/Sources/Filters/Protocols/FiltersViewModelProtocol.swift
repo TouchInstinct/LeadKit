@@ -25,8 +25,9 @@ import Foundation
 public protocol FiltersViewModelProtocol: AnyObject {
 
     associatedtype Filter: FilterPropertyValueRepresenter, Hashable
+    associatedtype CellViewModel: FilterCellViewModelProtocol & Hashable
 
-    typealias Change = (indexPath: IndexPath, viewModel: FilterCellViewModelProtocol)
+    typealias Change = (indexPath: IndexPath, viewModel: CellViewModel)
 
     var filters: [Filter] { get set }
     var selectedFilters: Set<Filter> { get set }

@@ -27,6 +27,17 @@ public struct DefaultFilterCellViewModel: FilterCellViewModelProtocol, Hashable 
     public var appearance: FilterCellAppearanceProtocol
     public var isSelected: Bool
 
+    public init(id: String,
+                title: String,
+                appearance: FilterCellAppearanceProtocol,
+                isSelected: Bool) {
+        
+        self.id = id
+        self.title = title
+        self.appearance = appearance
+        self.isSelected = isSelected
+    }
+
     public static func == (lhs: DefaultFilterCellViewModel, rhs: DefaultFilterCellViewModel) -> Bool {
         lhs.id == rhs.id
     }
