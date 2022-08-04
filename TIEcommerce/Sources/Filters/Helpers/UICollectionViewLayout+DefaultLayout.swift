@@ -21,6 +21,7 @@
 //
 
 import UIKit
+import TIUIKitCore
 
 @available(iOS 13, *)
 public extension UICollectionViewLayout {
@@ -53,14 +54,5 @@ public extension UICollectionViewLayout {
         section.orthogonalScrollingBehavior = .continuous
 
         return UICollectionViewCompositionalLayout(section: section)
-    }
-}
-
-private extension NSDirectionalEdgeInsets {
-    init(insets: UIEdgeInsets) {
-        self.init(top: insets.top,
-                  leading: insets.left,
-                  bottom: insets.bottom,
-                  trailing: insets.right)
     }
 }

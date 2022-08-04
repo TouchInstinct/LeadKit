@@ -20,22 +20,13 @@
 //  THE SOFTWARE.
 //
 
-public struct DefaultFilterModel: FilterRepresenter, Codable {
-    public let id: String
-    public let property: DefaultFilterPropertyValue?
-    public let properties: [DefaultFilterPropertyValue]?
-}
+import UIKit
 
-public extension DefaultFilterModel {
-    init(id: String, property: DefaultFilterPropertyValue) {
-        self.id = id
-        self.property = property
-        self.properties = nil
-    }
-
-    init(id: String, properties: [DefaultFilterPropertyValue]) {
-        self.id = id
-        self.property = nil
-        self.properties = properties
+public extension NSDirectionalEdgeInsets {
+    init(insets: UIEdgeInsets) {
+        self.init(top: insets.top,
+                  leading: insets.left,
+                  bottom: insets.bottom,
+                  trailing: insets.right)
     }
 }

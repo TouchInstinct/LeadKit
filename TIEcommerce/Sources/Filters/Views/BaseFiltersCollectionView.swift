@@ -23,14 +23,27 @@
 import TIUIKitCore
 import UIKit
 
+@available(iOS 13.0, *)
 open class BaseFiltersCollectionView<CellType: UICollectionViewCell & ConfigurableView>: UICollectionView,
                                                                                          InitializableViewProtocol,
-                                                                                         ConfigurableView,
-                                                                                         FiltersCollectionHolder where CellType.ViewModelType: FilterCellViewModelProtocol {
+                                                                                         FiltersCollectionHolder where CellType.ViewModelType: Hashable {
+
+    public enum Section {
+        case main
+    }
+
+    public typealias DataSource = UICollectionViewDiffableDataSource<Section, CellType.ViewModelType>
+    public typealias Snapshot = NSDiffableDataSourceSnapshot<Section, CellType.ViewModelType>
 
     public var layout: UICollectionViewLayout
 
     public weak var viewModel: DefaultFiltersViewModel?
+
+    public lazy var collectionViewDataSource = createDataSource()
+
+    open var cellsReusedIdentifier: String {
+        "filter-cells-identifier"
+    }
 
     // MARK: - Init
 
@@ -54,8 +67,8 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
     }
 
     open func bindViews() {
-        delegate = viewModel
-        dataSource = viewModel
+        // delegate = viewModel
+        // dataSource = viewModel
     }
 
     open func configureLayout() {
@@ -70,16 +83,8 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
         // override in subclass
     }
 
-    // MARK: - ConfigurableView
-
-    open func configure(with viewModel: DefaultFiltersViewModel) {
-        if viewModel == nil {
-            self.viewModel = viewModel
-        }
-        
-        viewModel.filtersCollectionHolder = self
-
-        updateView()
+    open func viewDidLoad() {
+        register(CellType.self, forCellWithReuseIdentifier: cellsReusedIdentifier)
     }
 
     // MARK: - FiltersCollectionHolder
@@ -92,10 +97,12 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
 
             configure(filterCell: cell, cellViewModel: change.viewModel)
         }
+
+        applySnapshot()
     }
 
     open func updateView() {
-        reloadData()
+        applySnapshot()
     }
 
     open func configure(filterCell: UICollectionViewCell, cellViewModel: FilterCellViewModelProtocol) {
@@ -108,5 +115,31 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
 
     open func registerCells() {
         viewModel?.filters.forEach { self.register(CellType.self, forCellWithReuseIdentifier: $0.id) }
+    }
+
+    open func applySnapshot() {
+        guard let viewModel = viewModel else {
+            return
+        }
+
+        var snapshot = Snapshot()
+
+        snapshot.appendSections([.main])
+        snapshot.appendItems(viewModel.cellsViewModels as! [CellType.ViewModelType], toSection: .main)
+
+        collectionViewDataSource.apply(snapshot, animatingDifferences: true)
+    }
+
+    open func createDataSource() -> DataSource {
+        let cellProvider: DataSource.CellProvider = { [weak self] collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self?.cellsReusedIdentifier ?? "",
+                                                          for: indexPath) as? CellType
+
+            cell?.configure(with: itemIdentifier)
+
+            return cell
+        }
+
+        return DataSource(collectionView: self, cellProvider: cellProvider)
     }
 }

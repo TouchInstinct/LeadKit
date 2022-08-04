@@ -20,40 +20,22 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
-
-public struct DefaultFilterPropertyValue: FilterPropertyValueRepresenter,
-                                          Codable,
-                                          Identifiable {
-
+public struct DefaultFilterModel: FilterRepresenter {
     public let id: String
-    public let title: String
-    public let excludingProperties: [String]?
-
-    public var isSelected: Bool
-
-    public func convertToViewModel() -> FilterCellViewModelRepresentable {
-        DefaultFilterCellViewModel(id: id,
-                                   title: title,
-                                   selectedColor: .green,
-                                   selectedBgColor: .white,
-                                   deselectedBgColor: .lightGray,
-                                   insets: .init(top: 4, left: 8, bottom: 4, right: 8),
-                                   isSelected: isSelected)
-    }
+    public let property: DefaultFilterPropertyValue?
+    public let properties: [DefaultFilterPropertyValue]?
 }
 
-public extension DefaultFilterPropertyValue {
-    init(id: String, title: String, excludingProperties: [String]? = nil) {
+public extension DefaultFilterModel {
+    init(id: String, property: DefaultFilterPropertyValue) {
         self.id = id
-        self.title = title
-        self.excludingProperties = excludingProperties
-        self.isSelected = false
+        self.property = property
+        self.properties = nil
     }
-}
 
-extension DefaultFilterPropertyValue: Hashable {
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
+    init(id: String, properties: [DefaultFilterPropertyValue]) {
+        self.id = id
+        self.property = nil
+        self.properties = properties
     }
 }

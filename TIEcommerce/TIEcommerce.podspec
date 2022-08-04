@@ -14,4 +14,6 @@ Pod::Spec.new do |s|
 
   s.dependency 'TIFoundationUtils', s.version.to_s
   s.dependency 'TINetworking', s.version.to_s
+  s.dependency 'TIUIKitCore', s.version.to_s
+  s.dependency 'TIUIElements', version.to_s
 end

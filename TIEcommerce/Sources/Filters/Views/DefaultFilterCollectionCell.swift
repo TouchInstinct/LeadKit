@@ -22,22 +22,16 @@
 
 import UIKit
 import TIUIKitCore
+import TIUIElements
 
-open class BaseFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
-                                     ConfigurableView {
+open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
+                                        ConfigurableView {
 
     public var viewModel: DefaultFilterCellViewModel?
 
-    open var isLabelHidden: Bool {
-        get {
-            wrappedView.isHidden
-        }
-        set {
-            wrappedView.isHidden = newValue
-        }
-    }
-
     open override func configureAppearance() {
+        super.configureAppearance()
+        
         layer.round(corners: .allCorners, radius: 6)
     }
 
@@ -50,12 +44,6 @@ open class BaseFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
         contentInsets = viewModel.insets
 
         setSelected(isSelected: viewModel.isSelected)
-    }
-
-    // MARK: - ContainerCollectionViewCell
-
-    open override func createView() -> UILabel {
-        UILabel()
     }
 
     // MARK: - Public methods
