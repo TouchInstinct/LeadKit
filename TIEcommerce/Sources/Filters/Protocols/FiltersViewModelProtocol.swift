@@ -26,11 +26,12 @@ public protocol FiltersViewModelProtocol: AnyObject {
 
     associatedtype Filter: FilterPropertyValueRepresenter, Hashable
 
+    typealias Change = (indexPath: IndexPath, viewModel: FilterCellViewModelProtocol)
+
     var filters: [Filter] { get set }
     var selectedFilters: Set<Filter> { get set }
 
-    var filtersCollectionHolder: FiltersCollectionHolder? { get set }
-
+    func filterDidSelected(atIndexPath indexPath: IndexPath) -> [Change]
     func toggleFilter(atIndexPath indexPath: IndexPath) -> (selected: [Filter], deselected: [Filter])
 }
 

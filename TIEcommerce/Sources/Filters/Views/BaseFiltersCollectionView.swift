@@ -26,7 +26,7 @@ import UIKit
 @available(iOS 13.0, *)
 open class BaseFiltersCollectionView<CellType: UICollectionViewCell & ConfigurableView>: UICollectionView,
                                                                                          InitializableViewProtocol,
-                                                                                         FiltersCollectionHolder where CellType.ViewModelType: Hashable {
+                                                                                         UICollectionViewDelegate where CellType.ViewModelType: Hashable {
 
     public enum Section {
         case main
@@ -68,7 +68,7 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
     }
 
     open func bindViews() {
-        delegate = viewModel
+        delegate = self
     }
 
     open func configureLayout() {
@@ -85,33 +85,21 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
 
     open func viewDidLoad() {
         register(CellType.self, forCellWithReuseIdentifier: cellsReusedIdentifier)
-    }
 
-    // MARK: - FiltersCollectionHolder
-
-    // open func applyChange(_ changes: [DefaultFiltersViewModel.Change]) {
-    //     for change in changes {
-    //         guard let cell = cellForItem(at: change.indexPath) else {
-    //             continue
-    //         }
-
-    //         configure(filterCell: cell, cellViewModel: change.viewModel)
-    //     }
-
-    //     applySnapshot()
-    // }
-
-    open func updateView() {
         applySnapshot()
     }
 
-    // open func configure(filterCell: UICollectionViewCell, cellViewModel: FilterCellViewModelProtocol) {
-    //     guard let cellViewModel = cellViewModel as? CellType.ViewModelType else { return }
+    // MARK: - UICollectionViewDelegate
 
-    //     guard let configurableCell = filterCell as? CellType else { return }
+    open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let viewModel = viewModel else { return }
 
-    //     configurableCell.configure(with: cellViewModel)
-    // }
+        let changes = viewModel.filterDidSelected(atIndexPath: indexPath)
+
+        applyChange(changes)
+    }
+
+    // MARK: - Open methods
 
     open func applySnapshot() {
         guard let viewModel = viewModel else {
@@ -137,5 +125,25 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
         }
 
         return DataSource(collectionView: self, cellProvider: cellProvider)
+    }
+
+    open func applyChange(_ changes: [DefaultFiltersViewModel.Change]) {
+        for change in changes {
+            guard let cell = cellForItem(at: change.indexPath) else {
+                continue
+            }
+
+            configure(filterCell: cell, cellViewModel: change.viewModel)
+        }
+
+        applySnapshot()
+    }
+
+    open func configure(filterCell: UICollectionViewCell, cellViewModel: FilterCellViewModelProtocol) {
+        guard let cellViewModel = cellViewModel as? CellType.ViewModelType else { return }
+
+        guard let configurableCell = filterCell as? CellType else { return }
+
+        configurableCell.configure(with: cellViewModel)
     }
 }

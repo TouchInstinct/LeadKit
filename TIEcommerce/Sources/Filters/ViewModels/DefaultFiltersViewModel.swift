@@ -23,25 +23,20 @@
 import UIKit
 
 open class DefaultFiltersViewModel: NSObject,
-                                    FiltersViewModelProtocol,
-                                    UICollectionViewDelegate {
-
-    public typealias Change = (indexPath: IndexPath, viewModel: FilterCellViewModelProtocol)
+                                    FiltersViewModelProtocol {
 
     public var filters: [DefaultFilterPropertyValue]
     public var selectedFilters: Set<DefaultFilterPropertyValue> = []
     public var cellsViewModels: [FilterCellViewModelProtocol]
-    
-    public weak var filtersCollectionHolder: FiltersCollectionHolder?
 
     public init(filters: [DefaultFilterPropertyValue]) {
         self.filters = filters
         self.cellsViewModels = filters.compactMap { $0.convertToViewModel() as? FilterCellViewModelProtocol }
     }
 
-    // MARK: - UICollectionViewDelegate
+    // MARK: - Public methods
 
-    open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    open func filterDidSelected(atIndexPath indexPath: IndexPath) -> [Change] {
         let (selected, deselected) = toggleFilter(atIndexPath: indexPath)
 
         let changedFilters = filters
@@ -50,24 +45,19 @@ open class DefaultFiltersViewModel: NSObject,
 
         for (offset, element) in changedFilters {
             cellsViewModels[offset].isSelected = selectedFilters.contains(element)
-            
             filters[offset].isSelected = selectedFilters.contains(element)
         }
 
-        filtersCollectionHolder?.updateView()
+        let changedItems = changedFilters
+            .map {
+                Change(indexPath: IndexPath(item: $0.offset, section: .zero),
+                       viewModel: cellsViewModels[$0.offset])
+            }
 
-        // let changedItems = changedFilters
-        //     .map {
-        //         Change(indexPath: IndexPath(item: $0.offset, section: .zero),
-        //                viewModel: cellsViewModels[$0.offset])
-        //     }
-
-        // filtersCollectionHolder?.applyChange(changedItems)
+        return changedItems
     }
 
-    // MARK: - Private methods
-
-    private func isFilterChanged(_ filter: DefaultFilterPropertyValue, filters: [DefaultFilterPropertyValue]) -> Bool {
+    public func isFilterChanged(_ filter: DefaultFilterPropertyValue, filters: [DefaultFilterPropertyValue]) -> Bool {
         filters.contains(where: { $0.id == filter.id })
     }
 }
