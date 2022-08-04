@@ -24,22 +24,21 @@ import TIUIKitCore
 import UIKit
 
 @available(iOS 13.0, *)
-open class BaseFiltersCollectionView<CellType: UICollectionViewCell & ConfigurableView,
-                                     CellViewModelType: FilterCellViewModelProtocol & Hashable>: UICollectionView,
-                                                                                                 InitializableViewProtocol,
-                                                                                                 UpdatableView,
-                                                                                                 UICollectionViewDelegate where CellType.ViewModelType == CellViewModelType {
+open class BaseFiltersCollectionView<CellType: UICollectionViewCell & ConfigurableView>: UICollectionView,
+                                                                                         InitializableViewProtocol,
+                                                                                         UpdatableView,
+                                                                                         UICollectionViewDelegate where CellType.ViewModelType: FilterCellViewModelProtocol & Hashable {
 
     public enum Section {
         case main
     }
 
-    public typealias DataSource = UICollectionViewDiffableDataSource<Section, CellViewModelType>
-    public typealias Snapshot = NSDiffableDataSourceSnapshot<Section, CellViewModelType>
+    public typealias DataSource = UICollectionViewDiffableDataSource<Section, CellType.ViewModelType>
+    public typealias Snapshot = NSDiffableDataSourceSnapshot<Section, CellType.ViewModelType>
 
     public var layout: UICollectionViewLayout
 
-    public weak var viewModel: DefaultFiltersViewModel<CellViewModelType>?
+    public weak var viewModel: DefaultFiltersViewModel<CellType.ViewModelType>?
 
     public lazy var collectionViewDataSource = createDataSource()
 
@@ -49,7 +48,7 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
 
     // MARK: - Init
 
-    public init(layout: UICollectionViewLayout, viewModel: DefaultFiltersViewModel<CellViewModelType>? = nil) {
+    public init(layout: UICollectionViewLayout, viewModel: DefaultFiltersViewModel<CellType.ViewModelType>? = nil) {
         self.layout = layout
         self.viewModel = viewModel
         
@@ -136,7 +135,7 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
         return DataSource(collectionView: self, cellProvider: cellProvider)
     }
 
-    open func applyChange(_ changes: [DefaultFiltersViewModel<CellViewModelType>.Change]) {
+    open func applyChange(_ changes: [DefaultFiltersViewModel<CellType.ViewModelType>.Change]) {
         for change in changes {
             guard let cell = cellForItem(at: change.indexPath) as? CellType else {
                 continue
