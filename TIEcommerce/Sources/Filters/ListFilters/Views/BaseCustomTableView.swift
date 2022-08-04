@@ -27,7 +27,8 @@ import UIKit
 
 open class BaseCustomTableView: BaseInitializableView, UIScrollViewDelegate {
 
-    private var tableViewContraints: EdgeConstraints?
+    private var tableViewEdgeContraints: EdgeConstraints!
+    private var tableViewHeightConstraint: NSLayoutConstraint!
 
     private lazy var tableDirector = TableDirector(tableView: tableView, scrollDelegate: self)
 
@@ -46,12 +47,17 @@ open class BaseCustomTableView: BaseInitializableView, UIScrollViewDelegate {
 
         tableView.translatesAutoresizingMaskIntoConstraints = false
 
-        tableViewContraints = .init(leadingConstraint: tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+        tableViewEdgeContraints = .init(leadingConstraint: tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
                                     trailingConstraint: tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
                                     topConstraint: tableView.topAnchor.constraint(equalTo: topAnchor),
                                     bottomConstraint: tableView.topAnchor.constraint(equalTo: topAnchor))
 
-        tableViewContraints?.activate()
+        tableViewHeightConstraint = tableView.heightAnchor.constraint(equalTo: heightAnchor)
+
+        NSLayoutConstraint.activate([
+            tableViewEdgeContraints.allConstraints,
+            [tableViewHeightConstraint]
+        ].flatMap { $0 })
     }
 
     open override func configureAppearance() {
