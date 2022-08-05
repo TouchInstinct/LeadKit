@@ -24,40 +24,37 @@ import TIUIKitCore
 import UIKit
 
 @available(iOS 13.0, *)
-open class BaseFiltersCollectionView<CellType: UICollectionViewCell & ConfigurableView>: UICollectionView,
-                                                                                         InitializableViewProtocol,
-                                                                                         UpdatableView,
-                                                                                         UICollectionViewDelegate where CellType.ViewModelType: FilterCellViewModelProtocol & Hashable {
-
-    public enum Section {
+open class BaseFiltersCollectionView<CellType: UICollectionViewCell & ConfigurableView,
+                                     PropertyValue: FilterPropertyValueRepresenter & Hashable>: UICollectionView,
+                                                                                                InitializableViewProtocol,
+                                                                                                UpdatableView,
+                                                                                                UICollectionViewDelegate where CellType.ViewModelType: FilterCellViewModelProtocol & Hashable {
+    public enum DefaultSection: String {
         case main
     }
 
-    public typealias DataSource = UICollectionViewDiffableDataSource<Section, CellType.ViewModelType>
-    public typealias Snapshot = NSDiffableDataSourceSnapshot<Section, CellType.ViewModelType>
+    public typealias DataSource = UICollectionViewDiffableDataSource<String, CellType.ViewModelType>
+    public typealias Snapshot = NSDiffableDataSourceSnapshot<String, CellType.ViewModelType>
 
     public var layout: UICollectionViewLayout
 
-    public weak var viewModel: DefaultFiltersViewModel<CellType.ViewModelType>?
+    public weak var viewModel: BaseFilterViewModel<CellType.ViewModelType, PropertyValue>?
 
     public lazy var collectionViewDataSource = createDataSource()
 
-    open var cellsReusedIdentifier: String {
-        "filter-cells-identifier"
-    }
-
     // MARK: - Init
 
-    public init(layout: UICollectionViewLayout, viewModel: DefaultFiltersViewModel<CellType.ViewModelType>? = nil) {
+    public init(layout: UICollectionViewLayout, viewModel: BaseFilterViewModel<CellType.ViewModelType, PropertyValue>? = nil) {
         self.layout = layout
         self.viewModel = viewModel
-        
+
         super.init(frame: .zero, collectionViewLayout: layout)
 
         initializeView()
         viewDidLoad()
     }
 
+    @available(*, unavailable)
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -85,7 +82,8 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
     }
 
     open func viewDidLoad() {
-        register(CellType.self, forCellWithReuseIdentifier: cellsReusedIdentifier)
+        registerCell()
+
         viewModel?.filtersCollection = self
 
         applySnapshot()
@@ -109,6 +107,10 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
 
     // MARK: - Open methods
 
+    open func registerCell() {
+        register(CellType.self, forCellWithReuseIdentifier: CellType().reuseIdentifier ?? "")
+    }
+
     open func applySnapshot() {
         guard let viewModel = viewModel else {
             return
@@ -116,15 +118,15 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
 
         var snapshot = Snapshot()
 
-        snapshot.appendSections([.main])
-        snapshot.appendItems(viewModel.getCellsViewModels() as! [CellType.ViewModelType], toSection: .main)
+        snapshot.appendSections([DefaultSection.main.rawValue])
+        snapshot.appendItems(viewModel.getCellsViewModels(), toSection: DefaultSection.main.rawValue)
 
         collectionViewDataSource.apply(snapshot, animatingDifferences: true)
     }
 
     open func createDataSource() -> DataSource {
-        let cellProvider: DataSource.CellProvider = { [weak self] collectionView, indexPath, itemIdentifier in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self?.cellsReusedIdentifier ?? "",
+        let cellProvider: DataSource.CellProvider = {collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType().reuseIdentifier ?? "",
                                                           for: indexPath) as? CellType
 
             cell?.configure(with: itemIdentifier)
@@ -135,7 +137,7 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
         return DataSource(collectionView: self, cellProvider: cellProvider)
     }
 
-    open func applyChange(_ changes: [DefaultFiltersViewModel<CellType.ViewModelType>.Change]) {
+    open func applyChange(_ changes: [BaseFilterViewModel<CellType.ViewModelType, PropertyValue>.Change]) {
         for change in changes {
             guard let cell = cellForItem(at: change.indexPath) as? CellType else {
                 continue

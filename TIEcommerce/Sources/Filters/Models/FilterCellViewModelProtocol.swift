@@ -23,11 +23,6 @@
 public protocol FilterCellViewModelProtocol {
     var id: String { get set }
     var title: String { get set }
-    var appearance: FilterCellAppearanceProtocol { get set }
     var isSelected: Bool { get set }
-    
-    init(id: String,
-         title: String,
-         appearance: FilterCellAppearanceProtocol,
-         isSelected: Bool)
+    var appearance: FilterCellAppearanceProtocol { get }
 }

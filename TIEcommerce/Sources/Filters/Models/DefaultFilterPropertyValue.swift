@@ -27,7 +27,6 @@ public struct DefaultFilterPropertyValue: FilterPropertyValueRepresenter, Identi
     public let id: String
     public let title: String
     public let excludingProperties: [String]?
-    public let cellAppearance: FilterCellAppearanceProtocol
 
     public var isSelected: Bool
 }
@@ -37,7 +36,6 @@ public extension DefaultFilterPropertyValue {
         self.id = id
         self.title = title
         self.excludingProperties = excludingProperties
-        self.cellAppearance = BaseFilterCellAppearance.defaultFilterCellAppearance
         self.isSelected = false
     }
 }

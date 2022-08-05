@@ -23,52 +23,43 @@
 import TIUIKitCore
 import UIKit
 
-open class DefaultFiltersViewModel<CellViewModelType: FilterCellViewModelProtocol & Hashable>: NSObject,
-                                                                                               FiltersViewModelProtocol {
+open class BaseFilterViewModel<CellViewModelType: FilterCellViewModelProtocol & Hashable,
+                               PropertyValue: FilterPropertyValueRepresenter & Hashable>: FilterViewModelProtocol {
 
+    // MARK: - FilterViewModelProtocol
+
+    public typealias Property = PropertyValue
     public typealias CellViewModel = CellViewModelType
 
-    private var cellsViewModels: [CellViewModelType]
+    private var cellsViewModels: [CellViewModelType] = []
 
-    public var filters: [DefaultFilterPropertyValue] {
+    public var properties: [PropertyValue] = [] {
         didSet {
-            rebuildCellsViewModels()
             filtersCollection?.updateView()
         }
     }
-
-    public var selectedFilters: Set<DefaultFilterPropertyValue> = [] {
+    public var selectedProperties: Set<PropertyValue> = [] {
         didSet {
-            reselectFilters()
-            rebuildCellsViewModels()
             filtersCollection?.updateView()
         }
     }
 
     public weak var filtersCollection: UpdatableView?
 
-    public init(filters: [DefaultFilterPropertyValue]) {
-        self.filters = filters
-        self.cellsViewModels = filters.compactMap {
-            CellViewModelType(id: $0.id,
-                              title: $0.title,
-                              appearance: $0.cellAppearance,
-                              isSelected: $0.isSelected)
-        }
+    public init(filters: [PropertyValue]) {
+        self.properties = filters
     }
 
-    // MARK: - Open methods
-
     open func filterDidSelected(atIndexPath indexPath: IndexPath) -> [Change] {
-        let (selected, deselected) = toggleFilter(atIndexPath: indexPath)
+        let (selected, deselected) = toggleProperty(atIndexPath: indexPath)
 
-        let changedFilters = filters
+        let changedFilters = properties
             .enumerated()
             .filter { isFilterInArray($0.element, filters: selected) || isFilterInArray($0.element, filters: deselected) }
 
         for (offset, element) in changedFilters {
-            cellsViewModels[offset].isSelected = selectedFilters.contains(element)
-            filters[offset].isSelected = selectedFilters.contains(element)
+            cellsViewModels[offset].isSelected = selectedProperties.contains(element)
+            properties[offset].isSelected = selectedProperties.contains(element)
         }
 
         let changedItems = changedFilters
@@ -80,30 +71,13 @@ open class DefaultFiltersViewModel<CellViewModelType: FilterCellViewModelProtoco
         return changedItems
     }
 
-    open func rebuildCellsViewModels() {
-        cellsViewModels = filters.compactMap {
-            CellViewModelType(id: $0.id,
-                              title: $0.title,
-                              appearance: $0.cellAppearance,
-                              isSelected: $0.isSelected)
-        }
+    open func getCellsViewModels() -> [CellViewModelType] {
+        cellsViewModels
     }
 
     // MARK: - Public methods
 
-    public func getCellsViewModels() -> [FilterCellViewModelProtocol] {
-        cellsViewModels
-    }
-
-    public func isFilterInArray(_ filter: DefaultFilterPropertyValue, filters: [DefaultFilterPropertyValue]) -> Bool {
+    public func isFilterInArray(_ filter: PropertyValue, filters: [PropertyValue]) -> Bool {
         filters.contains(where: { $0.id == filter.id })
-    }
-
-    public func reselectFilters() {
-        let selectedFilters = Array(selectedFilters)
-
-        filters.enumerated().forEach {
-            filters[$0.offset].isSelected = isFilterInArray($0.element, filters: selectedFilters)
-        }
     }
 }

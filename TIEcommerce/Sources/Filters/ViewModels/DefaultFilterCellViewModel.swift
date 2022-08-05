@@ -24,17 +24,18 @@ public struct DefaultFilterCellViewModel: FilterCellViewModelProtocol, Hashable 
 
     public var id: String
     public var title: String
-    public var appearance: FilterCellAppearanceProtocol
     public var isSelected: Bool
+
+    public var appearance: FilterCellAppearanceProtocol {
+        BaseFilterCellAppearance.defaultFilterCellAppearance
+    }
 
     public init(id: String,
                 title: String,
-                appearance: FilterCellAppearanceProtocol,
                 isSelected: Bool) {
         
         self.id = id
         self.title = title
-        self.appearance = appearance
         self.isSelected = isSelected
     }
 

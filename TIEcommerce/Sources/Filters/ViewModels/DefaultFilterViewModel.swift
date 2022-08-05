@@ -20,8 +20,16 @@
 //  THE SOFTWARE.
 //
 
-public protocol FilterPropertyValueRepresenter {
-    var id: String { get }
-    var excludingProperties: [String]? { get }
-    var isSelected: Bool { get set }
+open class DefaultFilterViewModel: BaseFilterViewModel<DefaultFilterCellViewModel, DefaultFilterPropertyValue> {
+
+    private var cellsViewModels: [DefaultFilterCellViewModel] = []
+
+    public override init(filters: [DefaultFilterPropertyValue]) {
+        super.init(filters: filters)
+        self.cellsViewModels = filters.compactMap {
+            DefaultFilterCellViewModel(id: $0.id,
+                                       title: $0.title,
+                                       isSelected: $0.isSelected)
+        }
+    }
 }

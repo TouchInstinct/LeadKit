@@ -29,6 +29,10 @@ open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
 
     public var viewModel: DefaultFilterCellViewModel?
 
+    open override var reuseIdentifier: String? {
+        "default-filter-cell"
+    }
+
     open override func configureAppearance() {
         super.configureAppearance()
         

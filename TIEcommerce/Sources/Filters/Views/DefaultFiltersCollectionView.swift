@@ -20,8 +20,7 @@
 //  THE SOFTWARE.
 //
 
-public protocol FilterPropertyValueRepresenter {
-    var id: String { get }
-    var excludingProperties: [String]? { get }
-    var isSelected: Bool { get set }
+@available(iOS 13.0, *)
+open class DefaultFiltersCollectionView: BaseFiltersCollectionView<DefaultFilterCollectionCell, DefaultFilterPropertyValue> {
+
 }
