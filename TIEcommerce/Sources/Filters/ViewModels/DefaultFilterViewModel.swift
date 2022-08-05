@@ -32,4 +32,12 @@ open class DefaultFilterViewModel: BaseFilterViewModel<DefaultFilterCellViewMode
                                        isSelected: $0.isSelected)
         }
     }
+
+    open override func setSelectedCell(atIndex index: Int, isSelected: Bool) {
+        cellsViewModels[index].isSelected = isSelected
+    }
+
+    open override func getCellsViewModels() -> [DefaultFilterCellViewModel] {
+        cellsViewModels
+    }
 }

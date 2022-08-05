@@ -29,7 +29,6 @@ public protocol FilterViewModelProtocol: AnyObject {
 
     typealias Change = (indexPath: IndexPath, viewModel: CellViewModel)
 
-
     var properties: [Property] { get set }
     var selectedProperties: Set<Property> { get set }
 
