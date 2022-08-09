@@ -22,5 +22,7 @@
 
 @available(iOS 13.0, *)
 open class DefaultFiltersCollectionView: BaseFiltersCollectionView<DefaultFilterCollectionCell, DefaultFilterPropertyValue> {
-
+    open override func registerCell() {
+        register(DefaultFilterCollectionCell.self, forCellWithReuseIdentifier: DefaultFilterCollectionCell.reuseIdentifier)
+    }
 }

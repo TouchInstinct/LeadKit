@@ -127,7 +127,7 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
     }
 
     open func createDataSource() -> DataSource {
-        let cellProvider: DataSource.CellProvider = {collectionView, indexPath, itemIdentifier in
+        let cellProvider: DataSource.CellProvider = { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType().reuseIdentifier ?? "",
                                                           for: indexPath) as? CellType
 
