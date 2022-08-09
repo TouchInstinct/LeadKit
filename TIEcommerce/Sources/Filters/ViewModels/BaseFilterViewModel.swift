@@ -56,7 +56,7 @@ open class BaseFilterViewModel<CellViewModelType: FilterCellViewModelProtocol & 
 
         let changedFilters = properties
             .enumerated()
-            .filter { isFilterInArray($0.element, filters: selected) || isFilterInArray($0.element, filters: deselected) }
+            .filter { isPropertyInArray($0.element, properties: selected) || isPropertyInArray($0.element, properties: deselected) }
 
         for (offset, element) in changedFilters {
             setSelectedCell(atIndex: offset, isSelected: selectedProperties.contains(element))
@@ -76,7 +76,7 @@ open class BaseFilterViewModel<CellViewModelType: FilterCellViewModelProtocol & 
         cellsViewModels[index].isSelected = isSelected
     }
 
-    open func isFilterInArray(_ filter: PropertyValue, filters: [PropertyValue]) -> Bool {
-        filters.contains(where: { $0.id == filter.id })
+    open func isPropertyInArray(_ property: PropertyValue, properties: [PropertyValue]) -> Bool {
+        properties.contains(where: { $0.id == property.id })
     }
 }

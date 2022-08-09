@@ -147,7 +147,5 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
 
             cell.configure(with: change.viewModel)
         }
-
-        applySnapshot()
     }
 }

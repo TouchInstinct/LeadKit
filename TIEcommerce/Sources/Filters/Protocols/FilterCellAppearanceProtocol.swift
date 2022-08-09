@@ -27,7 +27,7 @@ public protocol FilterCellAppearanceProtocol {
     var selectedBgColor: UIColor { get set }
     var deselectedBgColor: UIColor { get set }
     var selectedFontColor: UIColor { get set }
-        var deselectedFontColor: UIColor { get set }
+    var deselectedFontColor: UIColor { get set }
     var contentInsets: UIEdgeInsets { get set }
     var cornerRadius: CGFloat { get set }
 }
