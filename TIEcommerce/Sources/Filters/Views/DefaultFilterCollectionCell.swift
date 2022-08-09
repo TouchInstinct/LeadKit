@@ -33,7 +33,7 @@ open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
         .defaultFilterCellAppearance
     }
 
-    open class var reuseIdentifier: String {
+    open override var reuseIdentifier: String {
         "default-filter-cell"
     }
 
