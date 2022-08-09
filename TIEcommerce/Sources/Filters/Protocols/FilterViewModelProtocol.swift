@@ -34,7 +34,6 @@ public protocol FilterViewModelProtocol: AnyObject {
 
     func filterDidSelected(atIndexPath indexPath: IndexPath) -> [Change]
     func toggleProperty(atIndexPath indexPath: IndexPath) -> (selected: [Property], deselected: [Property])
-//    func getCellsViewModels() -> [CellViewModel]
 }
 
 public extension FilterViewModelProtocol {

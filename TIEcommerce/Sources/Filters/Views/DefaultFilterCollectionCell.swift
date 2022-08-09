@@ -37,16 +37,6 @@ open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
         "default-filter-cell"
     }
 
-    open override var isSelected: Bool {
-        didSet {
-            if isSelected {
-                setSelectedAppearance()
-            } else {
-                setDeselectAppearance()
-            } 
-        }
-    }
-
     open override func configureAppearance() {
         super.configureAppearance()
         
@@ -63,7 +53,15 @@ open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
 
         wrappedView.text = viewModel.title
 
-        isSelected = viewModel.isSelected
+        setSelected(viewModel.isSelected)
+    }
+
+    open func setSelected(_ isSelected: Bool) {
+        if isSelected {
+            setSelectedAppearance()
+        } else {
+            setDeselectAppearance()
+        }
     }
 
     open func setSelectedAppearance() {
