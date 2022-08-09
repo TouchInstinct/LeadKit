@@ -22,17 +22,19 @@
 
 import UIKit
 
+@available(iOS 13, *)
 public struct DefaultFilterPropertyValue: FilterPropertyValueRepresenter, Identifiable {
 
     public let id: String
     public let title: String
-    public let excludingProperties: [String]?
+    public let excludingProperties: [String]
 
     public var isSelected: Bool
 }
 
+@available(iOS 13, *)
 public extension DefaultFilterPropertyValue {
-    init(id: String, title: String, excludingProperties: [String]? = nil) {
+    init(id: String, title: String, excludingProperties: [String] = []) {
         self.id = id
         self.title = title
         self.excludingProperties = excludingProperties
@@ -40,6 +42,7 @@ public extension DefaultFilterPropertyValue {
     }
 }
 
+@available(iOS 13, *)
 extension DefaultFilterPropertyValue: Hashable {
     public static func == (lhs: DefaultFilterPropertyValue, rhs: DefaultFilterPropertyValue) -> Bool {
         lhs.id == rhs.id

@@ -26,17 +26,26 @@ open class BaseFilterCellAppearance: FilterCellAppearanceProtocol {
     public var selectedColor: UIColor
     public var selectedBgColor: UIColor
     public var deselectedBgColor: UIColor
+    public var selectedFontColor: UIColor
+    public var deselectedFontColor: UIColor
     public var contentInsets: UIEdgeInsets
+    public var cornerRadius: CGFloat
 
-    init(selectedColor: UIColor,
-         selectedBgColor: UIColor,
-         deselectedBgColor: UIColor,
-         contentInsets: UIEdgeInsets) {
+    public init(selectedColor: UIColor,
+                selectedBgColor: UIColor,
+                deselectedBgColor: UIColor,
+                selectedFontColor: UIColor,
+                deselectedFontColor: UIColor,
+                contentInsets: UIEdgeInsets,
+                cornerRadius: CGFloat) {
 
         self.selectedColor = selectedColor
         self.selectedBgColor = selectedBgColor
         self.deselectedBgColor = deselectedBgColor
+        self.selectedFontColor = selectedFontColor
+        self.deselectedFontColor = deselectedFontColor
         self.contentInsets = contentInsets
+        self.cornerRadius = cornerRadius
     }
 }
 
@@ -47,6 +56,9 @@ public extension BaseFilterCellAppearance {
         .init(selectedColor: .systemGreen,
               selectedBgColor: .white,
               deselectedBgColor: .lightGray,
-              contentInsets: .init(top: 4, left: 8, bottom: 4, right: 8))
+              selectedFontColor: .systemGreen,
+              deselectedFontColor: .black,
+              contentInsets: .init(top: 4, left: 8, bottom: 4, right: 8),
+              cornerRadius: 6)
     }
 }

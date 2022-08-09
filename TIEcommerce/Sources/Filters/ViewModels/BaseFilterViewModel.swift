@@ -36,7 +36,7 @@ open class BaseFilterViewModel<CellViewModelType: FilterCellViewModelProtocol & 
             filtersCollection?.updateView()
         }
     }
-    public var selectedProperties: Set<PropertyValue> = [] {
+    public var selectedProperties: [PropertyValue] = [] {
         didSet {
             filtersCollection?.updateView()
         }
@@ -44,8 +44,11 @@ open class BaseFilterViewModel<CellViewModelType: FilterCellViewModelProtocol & 
 
     public weak var filtersCollection: UpdatableView?
 
-    public init(filters: [PropertyValue]) {
+    public private(set) var cellsViewModels: [CellViewModelType]
+
+    public init(filters: [PropertyValue], cellsViewModels: [CellViewModelType] = []) {
         self.properties = filters
+        self.cellsViewModels = cellsViewModels
     }
 
     open func filterDidSelected(atIndexPath indexPath: IndexPath) -> [Change] {
@@ -56,8 +59,6 @@ open class BaseFilterViewModel<CellViewModelType: FilterCellViewModelProtocol & 
             .filter { isFilterInArray($0.element, filters: selected) || isFilterInArray($0.element, filters: deselected) }
 
         for (offset, element) in changedFilters {
-            guard !getCellsViewModels().isEmpty else { return [] }
-
             setSelectedCell(atIndex: offset, isSelected: selectedProperties.contains(element))
             properties[offset].isSelected = selectedProperties.contains(element)
         }
@@ -65,24 +66,17 @@ open class BaseFilterViewModel<CellViewModelType: FilterCellViewModelProtocol & 
         let changedItems = changedFilters
             .map {
                 Change(indexPath: IndexPath(item: $0.offset, section: .zero),
-                       viewModel: getCellsViewModels()[$0.offset])
+                       viewModel: cellsViewModels[$0.offset])
             }
 
         return changedItems
     }
 
     open func setSelectedCell(atIndex index: Int, isSelected: Bool) {
-        // override in subclasses
+        cellsViewModels[index].isSelected = isSelected
     }
 
-    open func getCellsViewModels() -> [CellViewModelType] {
-        // override in subclasses
-        return []
-    }
-
-    // MARK: - Public methods
-
-    public func isFilterInArray(_ filter: PropertyValue, filters: [PropertyValue]) -> Bool {
+    open func isFilterInArray(_ filter: PropertyValue, filters: [PropertyValue]) -> Bool {
         filters.contains(where: { $0.id == filter.id })
     }
 }

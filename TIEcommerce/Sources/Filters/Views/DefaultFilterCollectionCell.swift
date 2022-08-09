@@ -29,14 +29,31 @@ open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
 
     public var viewModel: DefaultFilterCellViewModel?
 
-    open override var reuseIdentifier: String? {
+    open var cellAppearance: BaseFilterCellAppearance {
+        .defaultFilterCellAppearance
+    }
+
+    open class var reuseIdentifier: String {
         "default-filter-cell"
+    }
+
+    open override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                setSelectedAppearance()
+            } else {
+                setDeselectAppearance()
+            } 
+        }
     }
 
     open override func configureAppearance() {
         super.configureAppearance()
         
-        layer.round(corners: .allCorners, radius: 6)
+        layer.round(corners: .allCorners, radius: cellAppearance.cornerRadius)
+        contentInsets = cellAppearance.contentInsets
+
+        setDeselectAppearance()
     }
 
     // MARK: - ConfigurableView
@@ -45,30 +62,20 @@ open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
         self.viewModel = viewModel
 
         wrappedView.text = viewModel.title
-        contentInsets = viewModel.appearance.contentInsets
 
-        setSelected(isSelected: viewModel.isSelected)
+        isSelected = viewModel.isSelected
     }
 
-    // MARK: - Public methods
-
-    open func setSelected(isSelected: Bool) {
-        let appearance = viewModel?.appearance
-
-        let selectedColor = appearance?.selectedColor ?? .green
-        wrappedView.textColor = isSelected ? selectedColor : .black
-
-        if isSelected {
-            backgroundColor = appearance?.selectedBgColor ?? .white
-            layer.borderColor = selectedColor.cgColor
-            layer.borderWidth = 1
-        } else {
-            setDeselectAppearance()
-        }
+    open func setSelectedAppearance() {
+        wrappedView.textColor = cellAppearance.selectedFontColor
+        backgroundColor = cellAppearance.selectedBgColor
+        layer.borderColor = cellAppearance.selectedColor.cgColor
+        layer.borderWidth = 1
     }
 
     open func setDeselectAppearance() {
+        wrappedView.textColor = cellAppearance.deselectedFontColor
         layer.borderWidth = 0
-        backgroundColor = viewModel?.appearance.deselectedBgColor ?? .lightGray
+        backgroundColor = cellAppearance.deselectedBgColor
     }
 }

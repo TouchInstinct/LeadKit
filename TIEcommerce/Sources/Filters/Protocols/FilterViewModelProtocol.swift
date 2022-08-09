@@ -24,17 +24,17 @@ import Foundation
 
 public protocol FilterViewModelProtocol: AnyObject {
 
-    associatedtype Property: FilterPropertyValueRepresenter, Hashable
+    associatedtype Property: FilterPropertyValueRepresenter & Hashable
     associatedtype CellViewModel: FilterCellViewModelProtocol & Hashable
 
     typealias Change = (indexPath: IndexPath, viewModel: CellViewModel)
 
     var properties: [Property] { get set }
-    var selectedProperties: Set<Property> { get set }
+    var selectedProperties: [Property] { get set }
 
     func filterDidSelected(atIndexPath indexPath: IndexPath) -> [Change]
     func toggleProperty(atIndexPath indexPath: IndexPath) -> (selected: [Property], deselected: [Property])
-    func getCellsViewModels() -> [CellViewModel]
+//    func getCellsViewModels() -> [CellViewModel]
 }
 
 public extension FilterViewModelProtocol {
@@ -49,17 +49,17 @@ public extension FilterViewModelProtocol {
     private func toggleProperty(_ property: Property) -> (selected: [Property], deselected: [Property]) {
         var propertiesToDeselect = [Property]()
         var propertiesToSelect = [Property]()
-        let selectedProperty = selectedProperties.first { selectedProperty in
+        let selectedPropertyId = selectedProperties.firstIndex { selectedProperty in
             selectedProperty.id == property.id
         }
 
-        if let selectedProperty = selectedProperty {
+        if let selectedPropertyId = selectedPropertyId {
             // Removes previously selected filter
-            selectedProperties.remove(selectedProperty)
+            selectedProperties.remove(at: selectedPropertyId)
             propertiesToDeselect.append(property)
         } else {
             // Selectes unselected filter
-            selectedProperties.insert(property)
+            selectedProperties.append(property)
             propertiesToSelect.append(property)
 
             // If the filter has filters to exclude, these filters marks as deselected
@@ -71,7 +71,9 @@ public extension FilterViewModelProtocol {
     }
     
     private func excludeProperties(_ filter: Property) -> [Property] {
-        guard let propertiesToExclude = filter.excludingProperties, !propertiesToExclude.isEmpty else {
+        let propertiesToExclude = filter.excludingProperties
+
+        guard !propertiesToExclude.isEmpty else {
             return []
         }
 

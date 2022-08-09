@@ -22,6 +22,6 @@
 
 public protocol FilterPropertyValueRepresenter {
     var id: String { get }
-    var excludingProperties: [String]? { get }
+    var excludingProperties: [String] { get }
     var isSelected: Bool { get set }
 }

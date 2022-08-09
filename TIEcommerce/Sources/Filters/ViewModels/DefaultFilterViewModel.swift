@@ -20,24 +20,16 @@
 //  THE SOFTWARE.
 //
 
+@available(iOS 13, *)
 open class DefaultFilterViewModel: BaseFilterViewModel<DefaultFilterCellViewModel, DefaultFilterPropertyValue> {
 
-    private var cellsViewModels: [DefaultFilterCellViewModel] = []
-
-    public override init(filters: [DefaultFilterPropertyValue]) {
-        super.init(filters: filters)
-        self.cellsViewModels = filters.compactMap {
+    public init(filters: [DefaultFilterPropertyValue]) {
+        let cellsViewModel = filters.compactMap {
             DefaultFilterCellViewModel(id: $0.id,
                                        title: $0.title,
                                        isSelected: $0.isSelected)
         }
-    }
 
-    open override func setSelectedCell(atIndex index: Int, isSelected: Bool) {
-        cellsViewModels[index].isSelected = isSelected
-    }
-
-    open override func getCellsViewModels() -> [DefaultFilterCellViewModel] {
-        cellsViewModels
+        super.init(filters: filters, cellsViewModels: cellsViewModel)
     }
 }

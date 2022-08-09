@@ -85,7 +85,9 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
         registerCell()
 
         viewModel?.filtersCollection = self
+    }
 
+    open func viewDidAppear() {
         applySnapshot()
     }
 
@@ -119,7 +121,7 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
         var snapshot = Snapshot()
 
         snapshot.appendSections([DefaultSection.main.rawValue])
-        snapshot.appendItems(viewModel.getCellsViewModels(), toSection: DefaultSection.main.rawValue)
+        snapshot.appendItems(viewModel.cellsViewModels, toSection: DefaultSection.main.rawValue)
 
         collectionViewDataSource.apply(snapshot, animatingDifferences: true)
     }
@@ -145,7 +147,5 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
 
             cell.configure(with: change.viewModel)
         }
-
-        applySnapshot()
     }
 }

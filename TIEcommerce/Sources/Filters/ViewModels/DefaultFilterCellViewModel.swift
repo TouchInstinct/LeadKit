@@ -26,10 +26,6 @@ public struct DefaultFilterCellViewModel: FilterCellViewModelProtocol, Hashable 
     public var title: String
     public var isSelected: Bool
 
-    public var appearance: FilterCellAppearanceProtocol {
-        BaseFilterCellAppearance.defaultFilterCellAppearance
-    }
-
     public init(id: String,
                 title: String,
                 isSelected: Bool) {
