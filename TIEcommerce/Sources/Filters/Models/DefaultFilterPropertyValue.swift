@@ -22,8 +22,7 @@
 
 import UIKit
 
-@available(iOS 13, *)
-public struct DefaultFilterPropertyValue: FilterPropertyValueRepresenter, Identifiable {
+public struct DefaultFilterPropertyValue: FilterPropertyValueRepresenter {
 
     public let id: String
     public let title: String
@@ -32,7 +31,6 @@ public struct DefaultFilterPropertyValue: FilterPropertyValueRepresenter, Identi
     public var isSelected: Bool
 }
 
-@available(iOS 13, *)
 public extension DefaultFilterPropertyValue {
     init(id: String, title: String, excludingProperties: [String] = []) {
         self.id = id
@@ -42,7 +40,8 @@ public extension DefaultFilterPropertyValue {
     }
 }
 
-@available(iOS 13, *)
+extension DefaultFilterPropertyValue: Identifiable { }
+
 extension DefaultFilterPropertyValue: Hashable {
     public static func == (lhs: DefaultFilterPropertyValue, rhs: DefaultFilterPropertyValue) -> Bool {
         lhs.id == rhs.id

@@ -24,7 +24,7 @@ import TIUIKitCore
 import UIKit
 
 @available(iOS 13.0, *)
-open class BaseFiltersCollectionView<CellType: UICollectionViewCell & ConfigurableView,
+open class BaseFiltersCollectionView<CellType: IdentifiableCollectionCell & ConfigurableView,
                                      PropertyValue: FilterPropertyValueRepresenter & Hashable>: UICollectionView,
                                                                                                 InitializableViewProtocol,
                                                                                                 UpdatableView,
@@ -101,6 +101,14 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
         applyChange(changes)
     }
 
+    open func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let viewModel = viewModel else { return }
+
+        let changes = viewModel.filterDidSelected(atIndexPath: indexPath)
+
+        applyChange(changes)
+    }
+
     // MARK: - UpdatableView
 
     open func updateView() {
@@ -110,7 +118,7 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
     // MARK: - Open methods
 
     open func registerCell() {
-        register(CellType.self, forCellWithReuseIdentifier: CellType().reuseIdentifier ?? "")
+        register(CellType.self, forCellWithReuseIdentifier: CellType.reuseIdentifier)
     }
 
     open func applySnapshot() {
@@ -128,7 +136,7 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
 
     open func createDataSource() -> DataSource {
         let cellProvider: DataSource.CellProvider = { collectionView, indexPath, itemIdentifier in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType().reuseIdentifier ?? "",
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.reuseIdentifier,
                                                           for: indexPath) as? CellType
 
             cell?.configure(with: itemIdentifier)

@@ -22,9 +22,12 @@
 
 import UIKit
 
-open class BaseFilterCellAppearance: FilterCellAppearanceProtocol {
+open class BaseFilterCellAppearance {
+    /// The color of the border in selected state
     public var selectedColor: UIColor
+    /// The color of the background in the selected state
     public var selectedBgColor: UIColor
+    /// The color of the background in the deselected state
     public var deselectedBgColor: UIColor
     public var selectedFontColor: UIColor
     public var deselectedFontColor: UIColor

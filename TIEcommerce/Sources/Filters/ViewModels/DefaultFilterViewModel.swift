@@ -20,7 +20,6 @@
 //  THE SOFTWARE.
 //
 
-@available(iOS 13, *)
 open class DefaultFilterViewModel: BaseFilterViewModel<DefaultFilterCellViewModel, DefaultFilterPropertyValue> {
 
     public init(filters: [DefaultFilterPropertyValue]) {

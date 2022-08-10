@@ -2,7 +2,7 @@
 //  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the Software), to deal
+//  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
 //  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 //  copies of the Software, and to permit persons to whom the Software is
@@ -11,7 +11,7 @@
 //  The above copyright notice and this permission notice shall be included in
 //  all copies or substantial portions of the Software.
 //
-//  THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 //  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 //  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 //  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -22,12 +22,17 @@
 
 import UIKit
 
-public protocol FilterCellAppearanceProtocol {
-    var selectedColor: UIColor { get set }
-    var selectedBgColor: UIColor { get set }
-    var deselectedBgColor: UIColor { get set }
-    var selectedFontColor: UIColor { get set }
-    var deselectedFontColor: UIColor { get set }
-    var contentInsets: UIEdgeInsets { get set }
-    var cornerRadius: CGFloat { get set }
+/// Protocol which ensures that specific type can return reuse identifier for view
+public protocol AbstractReuseIdentifierProtocol {
+    associatedtype IdentifierType
+
+    static var reuseIdentifier: IdentifierType { get }
 }
+
+/// Protocol which ensures that specific type can return string reuse identifier for view
+public protocol ReuseIdentifierProtocol: AbstractReuseIdentifierProtocol {
+
+     static var reuseIdentifier: String { get }
+}
+
+public typealias IdentifiableCollectionCell = UICollectionViewCell & ReuseIdentifierProtocol

@@ -25,6 +25,7 @@ import TIUIElements
 import UIKit
 
 open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
+                                        ReuseIdentifierProtocol,
                                         ConfigurableView {
 
     public var viewModel: DefaultFilterCellViewModel?
@@ -33,7 +34,7 @@ open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
         .defaultFilterCellAppearance
     }
 
-    open override var reuseIdentifier: String {
+    open class var reuseIdentifier: String {
         "default-filter-cell"
     }
 
