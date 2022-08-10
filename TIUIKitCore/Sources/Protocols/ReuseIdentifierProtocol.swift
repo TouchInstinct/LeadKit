@@ -22,17 +22,9 @@
 
 import UIKit
 
-/// Protocol which ensures that specific type can return reuse identifier for view
-public protocol AbstractReuseIdentifierProtocol {
-    associatedtype IdentifierType
-
-    static var reuseIdentifier: IdentifierType { get }
-}
-
 /// Protocol which ensures that specific type can return string reuse identifier for view
-public protocol ReuseIdentifierProtocol: AbstractReuseIdentifierProtocol {
-
+public protocol ReuseIdentifierProtocol {
      static var reuseIdentifier: String { get }
 }
 
-public typealias IdentifiableCollectionCell = UICollectionViewCell & ReuseIdentifierProtocol
+public typealias ReuseIdentifiableCollectionCell = UICollectionViewCell & ReuseIdentifierProtocol

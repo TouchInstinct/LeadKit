@@ -24,7 +24,7 @@ import TIUIKitCore
 import UIKit
 
 @available(iOS 13.0, *)
-open class BaseFiltersCollectionView<CellType: IdentifiableCollectionCell & ConfigurableView,
+open class BaseFiltersCollectionView<CellType: ReuseIdentifiableCollectionCell & ConfigurableView,
                                      PropertyValue: FilterPropertyValueRepresenter & Hashable>: UICollectionView,
                                                                                                 InitializableViewProtocol,
                                                                                                 UpdatableView,
