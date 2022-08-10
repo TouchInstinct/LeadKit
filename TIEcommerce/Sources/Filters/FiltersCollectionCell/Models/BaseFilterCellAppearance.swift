@@ -25,32 +25,42 @@ import UIKit
 open class BaseFilterCellAppearance {
 
     /// The color of the border in selected state
-    public var selectedColor: UIColor
-    /// The color of the background in the selected state
+    public var selectedBorderColor: UIColor
+    /// The color of the border in normal state
+    public var normalBorderColor: UIColor
 
+    /// The color of the background in the selected state
     public var selectedBgColor: UIColor
-    /// The color of the background in the deselected state
-    public var deselectedBgColor: UIColor
+    /// The color of the background in the normal state
+    public var normalBgColor: UIColor
 
     public var selectedFontColor: UIColor
-    public var deselectedFontColor: UIColor
+    public var normalFontColor: UIColor
+
+    public var selectedBorderWidth: CGFloat
+    public var normalBorderWidth: CGFloat
 
     public var contentInsets: UIEdgeInsets
     public var cornerRadius: CGFloat
 
-    public init(selectedColor: UIColor = .systemGreen,
+    public init(selectedBorderColor: UIColor = .systemGreen,
+                normalBorderColor: UIColor = .lightGray,
                 selectedBgColor: UIColor = .white,
-                deselectedBgColor: UIColor = .lightGray,
+                normalBgColor: UIColor = .lightGray,
                 selectedFontColor: UIColor = .systemGreen,
-                deselectedFontColor: UIColor = .black,
+                normalFontColor: UIColor = .black,
+                selectedBorderWidth: CGFloat = 1,
+                normalBorderWidth: CGFloat = 0,
                 contentInsets: UIEdgeInsets = .init(top: 4, left: 8, bottom: 4, right: 8),
                 cornerRadius: CGFloat = 6) {
 
-        self.selectedColor = selectedColor
+        self.selectedBorderColor = selectedBorderColor
         self.selectedBgColor = selectedBgColor
-        self.deselectedBgColor = deselectedBgColor
+        self.normalBgColor = normalBgColor
         self.selectedFontColor = selectedFontColor
-        self.deselectedFontColor = deselectedFontColor
+        self.normalFontColor = normalFontColor
+        self.selectedBorderWidth = selectedBorderWidth
+        self.normalBorderWidth = normalBorderWidth
         self.contentInsets = contentInsets
         self.cornerRadius = cornerRadius
     }

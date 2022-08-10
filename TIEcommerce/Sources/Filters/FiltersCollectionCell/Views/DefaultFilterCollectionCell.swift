@@ -62,30 +62,19 @@ open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
     }
 
     // MARK: - Open methdos
+
     open func setAppearance() {
         switch currentSelectionState {
         case .normal:
-            wrappedView.textColor = cellAppearance.deselectedFontColor
-            layer.borderWidth = 0
-            backgroundColor = cellAppearance.deselectedBgColor
+            wrappedView.textColor = cellAppearance.normalFontColor
+            backgroundColor = cellAppearance.normalBgColor
+            layer.borderColor = cellAppearance.normalBorderColor.cgColor
+            layer.borderWidth = cellAppearance.normalBorderWidth
         case .selected:
             wrappedView.textColor = cellAppearance.selectedFontColor
             backgroundColor = cellAppearance.selectedBgColor
-            layer.borderColor = cellAppearance.selectedColor.cgColor
-            layer.borderWidth = 1
+            layer.borderColor = cellAppearance.selectedBorderColor.cgColor
+            layer.borderWidth = cellAppearance.selectedBorderWidth
         }
-    }
-
-    open func setSelectedAppearance() {
-        wrappedView.textColor = cellAppearance.selectedFontColor
-        backgroundColor = cellAppearance.selectedBgColor
-        layer.borderColor = cellAppearance.selectedColor.cgColor
-        layer.borderWidth = 1
-    }
-
-    open func setDeselectAppearance() {
-        wrappedView.textColor = cellAppearance.deselectedFontColor
-        layer.borderWidth = 0
-        backgroundColor = cellAppearance.deselectedBgColor
     }
 }
