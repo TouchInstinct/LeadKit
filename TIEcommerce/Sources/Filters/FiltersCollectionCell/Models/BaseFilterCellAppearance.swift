@@ -24,14 +24,10 @@ import UIKit
 
 open class BaseFilterCellAppearance {
 
-    /// The color of the border in selected state
     public var selectedBorderColor: UIColor
-    /// The color of the border in normal state
     public var normalBorderColor: UIColor
 
-    /// The color of the background in the selected state
     public var selectedBgColor: UIColor
-    /// The color of the background in the normal state
     public var normalBgColor: UIColor
 
     public var selectedFontColor: UIColor
