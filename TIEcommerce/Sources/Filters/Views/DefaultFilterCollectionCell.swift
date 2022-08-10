@@ -28,14 +28,18 @@ open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
                                         ReuseIdentifierProtocol,
                                         ConfigurableView {
 
-    public var viewModel: DefaultFilterCellViewModel?
+    open class var reuseIdentifier: String {
+        "default-filter-cell"
+    }
 
     open var cellAppearance: BaseFilterCellAppearance {
         .defaultFilterCellAppearance
     }
 
-    open class var reuseIdentifier: String {
-        "default-filter-cell"
+    open override var isSelected: Bool {
+        didSet {
+            isSelected ? setSelectedAppearance() : setDeselectAppearance()
+        }
     }
 
     open override func configureAppearance() {
@@ -50,19 +54,7 @@ open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
     // MARK: - ConfigurableView
 
     open func configure(with viewModel: DefaultFilterCellViewModel) {
-        self.viewModel = viewModel
-
         wrappedView.text = viewModel.title
-
-        setSelected(viewModel.isSelected)
-    }
-
-    open func setSelected(_ isSelected: Bool) {
-        if isSelected {
-            setSelectedAppearance()
-        } else {
-            setDeselectAppearance()
-        }
     }
 
     open func setSelectedAppearance() {

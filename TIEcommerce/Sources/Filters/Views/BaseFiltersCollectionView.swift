@@ -94,19 +94,11 @@ open class BaseFiltersCollectionView<CellType: IdentifiableCollectionCell & Conf
     // MARK: - UICollectionViewDelegate
 
     open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let viewModel = viewModel else { return }
-
-        let changes = viewModel.filterDidSelected(atIndexPath: indexPath)
-
-        applyChange(changes)
+        filterDidTapped(atIndexPath: indexPath)
     }
 
     open func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let viewModel = viewModel else { return }
-
-        let changes = viewModel.filterDidSelected(atIndexPath: indexPath)
-
-        applyChange(changes)
+        filterDidTapped(atIndexPath: indexPath)
     }
 
     // MARK: - UpdatableView
@@ -119,6 +111,14 @@ open class BaseFiltersCollectionView<CellType: IdentifiableCollectionCell & Conf
 
     open func registerCell() {
         register(CellType.self, forCellWithReuseIdentifier: CellType.reuseIdentifier)
+    }
+
+    open func filterDidTapped(atIndexPath indexPath: IndexPath) {
+        guard let viewModel = viewModel else { return }
+
+        let changes = viewModel.filterDidSelected(atIndexPath: indexPath)
+
+        applyChange(changes)
     }
 
     open func applySnapshot() {
@@ -154,6 +154,10 @@ open class BaseFiltersCollectionView<CellType: IdentifiableCollectionCell & Conf
             }
 
             cell.configure(with: change.viewModel)
+
+            change.viewModel.isSelected
+            ? selectItem(at: change.indexPath, animated: false, scrollPosition: [])
+            : deselectItem(at: change.indexPath, animated: false)
         }
     }
 }

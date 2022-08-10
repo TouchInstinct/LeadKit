@@ -59,8 +59,10 @@ open class BaseFilterViewModel<CellViewModelType: FilterCellViewModelProtocol & 
             .filter { isPropertyInArray($0.element, properties: selected) || isPropertyInArray($0.element, properties: deselected) }
 
         for (offset, element) in changedFilters {
-            setSelectedCell(atIndex: offset, isSelected: selectedProperties.contains(element))
-            properties[offset].isSelected = selectedProperties.contains(element)
+            let isSelected = isPropertyInArray(element, properties: selectedProperties)
+
+            setSelectedCell(atIndex: offset, isSelected: isSelected)
+            properties[offset].isSelected = isSelected
         }
 
         let changedItems = changedFilters
