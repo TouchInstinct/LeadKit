@@ -70,6 +70,7 @@ open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
             backgroundColor = cellAppearance.normalBgColor
             layer.borderColor = cellAppearance.normalBorderColor.cgColor
             layer.borderWidth = cellAppearance.normalBorderWidth
+
         case .selected:
             wrappedView.textColor = cellAppearance.selectedFontColor
             backgroundColor = cellAppearance.selectedBgColor

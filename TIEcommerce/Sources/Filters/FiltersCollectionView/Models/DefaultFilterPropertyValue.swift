@@ -26,17 +26,15 @@ public struct DefaultFilterPropertyValue: FilterPropertyValueRepresenter {
 
     public let id: String
     public let title: String
-    public let excludingProperties: [String]
+    public let excludingPropertiesIds: [String]
 
     public var isSelected: Bool
-}
 
-public extension DefaultFilterPropertyValue {
-    init(id: String, title: String, excludingProperties: [String] = []) {
+    public init(id: String, title: String, excludingPropertiesIds: [String] = [], isSelected: Bool = false) {
         self.id = id
         self.title = title
-        self.excludingProperties = excludingProperties
-        self.isSelected = false
+        self.excludingPropertiesIds = excludingPropertiesIds
+        self.isSelected = isSelected
     }
 }
 

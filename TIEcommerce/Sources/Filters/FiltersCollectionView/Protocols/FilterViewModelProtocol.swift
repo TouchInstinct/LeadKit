@@ -25,9 +25,9 @@ import Foundation
 public protocol FilterViewModelProtocol: AnyObject {
 
     associatedtype Property: FilterPropertyValueRepresenter & Hashable
-    associatedtype CellViewModel: FilterCellViewModelProtocol & Hashable
+    associatedtype CellViewModelType: FilterCellViewModelProtocol & Hashable
 
-    typealias Change = (indexPath: IndexPath, viewModel: CellViewModel)
+    typealias Change = (indexPath: IndexPath, viewModel: CellViewModelType)
 
     var properties: [Property] { get set }
     var selectedProperties: [Property] { get set }
@@ -70,15 +70,15 @@ public extension FilterViewModelProtocol {
     }
     
     private func excludeProperties(_ filter: Property) -> [Property] {
-        let propertiesToExclude = filter.excludingProperties
+        let propertiesIdsToExclude = filter.excludingPropertiesIds
 
-        guard !propertiesToExclude.isEmpty else {
+        guard !propertiesIdsToExclude.isEmpty else {
             return []
         }
 
         var excludedProperties = [Property]()
 
-        for propertiesIdToExclude in propertiesToExclude {
+        for propertiesIdToExclude in propertiesIdsToExclude {
             let propertyToExclude = selectedProperties.first { property in
                 property.id == propertiesIdToExclude
             }

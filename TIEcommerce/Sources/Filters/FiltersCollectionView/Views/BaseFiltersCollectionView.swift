@@ -156,8 +156,8 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
             cell.configure(with: change.viewModel)
 
             change.viewModel.isSelected
-            ? selectItem(at: change.indexPath, animated: false, scrollPosition: [])
-            : deselectItem(at: change.indexPath, animated: false)
+                ? selectItem(at: change.indexPath, animated: false, scrollPosition: [])
+                : deselectItem(at: change.indexPath, animated: false)
         }
     }
 }

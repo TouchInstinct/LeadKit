@@ -20,8 +20,11 @@
 //  THE SOFTWARE.
 //
 
-public protocol FilterPropertyValueRepresenter {
-    var id: String { get }
-    var excludingPropertiesIds: [String] { get }
-    var isSelected: Bool { get set }
+import UIKit
+
+public extension Array where Element: FilterPropertyValueRepresenter {
+    
+    func contains(_ property: Element) -> Bool {
+        contains(where: { $0.id == property.id })
+    }
 }

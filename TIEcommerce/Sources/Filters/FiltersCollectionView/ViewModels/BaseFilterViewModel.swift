@@ -29,7 +29,7 @@ open class BaseFilterViewModel<CellViewModelType: FilterCellViewModelProtocol & 
     // MARK: - FilterViewModelProtocol
 
     public typealias Property = PropertyValue
-    public typealias CellViewModel = CellViewModelType
+    public typealias CellViewModelType = CellViewModelType
 
     public var properties: [PropertyValue] = [] {
         didSet {
@@ -54,18 +54,18 @@ open class BaseFilterViewModel<CellViewModelType: FilterCellViewModelProtocol & 
     open func filterDidSelected(atIndexPath indexPath: IndexPath) -> [Change] {
         let (selected, deselected) = toggleProperty(atIndexPath: indexPath)
 
-        let changedFilters = properties
+        let changedProperties = properties
             .enumerated()
-            .filter { isPropertyInArray($0.element, properties: selected) || isPropertyInArray($0.element, properties: deselected) }
+            .filter { selected.contains($0.element) || deselected.contains($0.element) }
 
-        for (offset, element) in changedFilters {
-            let isSelected = isPropertyInArray(element, properties: selectedProperties)
+        changedProperties.forEach { index, element in
+            let isSelected = selectedProperties.contains(element)
 
-            setSelectedCell(atIndex: offset, isSelected: isSelected)
-            properties[offset].isSelected = isSelected
+            setSelectedCell(atIndex: index, isSelected: isSelected)
+            setSelectedProperty(atIndex: index, isSelected: isSelected)
         }
 
-        let changedItems = changedFilters
+        let changedItems = changedProperties
             .map {
                 Change(indexPath: IndexPath(item: $0.offset, section: .zero),
                        viewModel: cellsViewModels[$0.offset])
@@ -76,6 +76,10 @@ open class BaseFilterViewModel<CellViewModelType: FilterCellViewModelProtocol & 
 
     open func setSelectedCell(atIndex index: Int, isSelected: Bool) {
         cellsViewModels[index].isSelected = isSelected
+    }
+
+    open func setSelectedProperty(atIndex index: Int, isSelected: Bool) {
+        properties[index].isSelected = isSelected
     }
 
     open func isPropertyInArray(_ property: PropertyValue, properties: [PropertyValue]) -> Bool {
