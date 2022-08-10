@@ -93,7 +93,7 @@ public extension FilterViewModelProtocol {
     }
     
     private func getPropertySafely(_ index: Int) -> Property? {
-        guard index >= 0 && index < properties.count else {
+        guard (0..<properties.count).contains(index) else {
             return nil
         }
 

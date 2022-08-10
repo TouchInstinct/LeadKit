@@ -23,24 +23,28 @@
 import UIKit
 
 open class BaseFilterCellAppearance {
+
     /// The color of the border in selected state
     public var selectedColor: UIColor
     /// The color of the background in the selected state
+
     public var selectedBgColor: UIColor
     /// The color of the background in the deselected state
     public var deselectedBgColor: UIColor
+
     public var selectedFontColor: UIColor
     public var deselectedFontColor: UIColor
+
     public var contentInsets: UIEdgeInsets
     public var cornerRadius: CGFloat
 
-    public init(selectedColor: UIColor,
-                selectedBgColor: UIColor,
-                deselectedBgColor: UIColor,
-                selectedFontColor: UIColor,
-                deselectedFontColor: UIColor,
-                contentInsets: UIEdgeInsets,
-                cornerRadius: CGFloat) {
+    public init(selectedColor: UIColor = .systemGreen,
+                selectedBgColor: UIColor = .white,
+                deselectedBgColor: UIColor = .lightGray,
+                selectedFontColor: UIColor = .systemGreen,
+                deselectedFontColor: UIColor = .black,
+                contentInsets: UIEdgeInsets = .init(top: 4, left: 8, bottom: 4, right: 8),
+                cornerRadius: CGFloat = 6) {
 
         self.selectedColor = selectedColor
         self.selectedBgColor = selectedBgColor
@@ -49,19 +53,5 @@ open class BaseFilterCellAppearance {
         self.deselectedFontColor = deselectedFontColor
         self.contentInsets = contentInsets
         self.cornerRadius = cornerRadius
-    }
-}
-
-// MARK: - Default appearance
-
-public extension BaseFilterCellAppearance {
-    static var defaultFilterCellAppearance: BaseFilterCellAppearance {
-        .init(selectedColor: .systemGreen,
-              selectedBgColor: .white,
-              deselectedBgColor: .lightGray,
-              selectedFontColor: .systemGreen,
-              deselectedFontColor: .black,
-              contentInsets: .init(top: 4, left: 8, bottom: 4, right: 8),
-              cornerRadius: 6)
     }
 }

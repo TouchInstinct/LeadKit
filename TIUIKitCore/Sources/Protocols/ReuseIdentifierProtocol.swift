@@ -27,4 +27,8 @@ public protocol ReuseIdentifierProtocol {
      static var reuseIdentifier: String { get }
 }
 
-public typealias ReuseIdentifiableCollectionCell = UICollectionViewCell & ReuseIdentifierProtocol
+extension UICollectionViewCell: ReuseIdentifierProtocol {
+    public static var reuseIdentifier: String {
+        .init(describing: Self.self)
+    }
+}

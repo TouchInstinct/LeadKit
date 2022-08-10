@@ -33,12 +33,12 @@ open class BaseFilterViewModel<CellViewModelType: FilterCellViewModelProtocol & 
 
     public var properties: [PropertyValue] = [] {
         didSet {
-            filtersCollection?.updateView()
+            filtersCollection?.update()
         }
     }
     public var selectedProperties: [PropertyValue] = [] {
         didSet {
-            filtersCollection?.updateView()
+            filtersCollection?.update()
         }
     }
 

@@ -40,6 +40,7 @@ public extension DefaultFilterPropertyValue {
     }
 }
 
+@available(iOS 13, *)
 extension DefaultFilterPropertyValue: Identifiable { }
 
 extension DefaultFilterPropertyValue: Hashable {

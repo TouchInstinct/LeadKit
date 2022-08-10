@@ -24,7 +24,7 @@ import TIUIKitCore
 import UIKit
 
 @available(iOS 13.0, *)
-open class BaseFiltersCollectionView<CellType: ReuseIdentifiableCollectionCell & ConfigurableView,
+open class BaseFiltersCollectionView<CellType: UICollectionViewCell & ConfigurableView,
                                      PropertyValue: FilterPropertyValueRepresenter & Hashable>: UICollectionView,
                                                                                                 InitializableViewProtocol,
                                                                                                 UpdatableView,
@@ -103,7 +103,7 @@ open class BaseFiltersCollectionView<CellType: ReuseIdentifiableCollectionCell &
 
     // MARK: - UpdatableView
 
-    open func updateView() {
+    open func update() {
         applySnapshot()
     }
 

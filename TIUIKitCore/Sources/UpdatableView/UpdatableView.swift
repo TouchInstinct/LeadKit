@@ -21,5 +21,5 @@
 //
 
 public protocol UpdatableView: AnyObject {
-    func updateView()
+    func update()
 }

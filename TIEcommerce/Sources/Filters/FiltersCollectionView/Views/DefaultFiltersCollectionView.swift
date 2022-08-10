@@ -21,6 +21,4 @@
 //
 
 @available(iOS 13.0, *)
-open class DefaultFiltersCollectionView: BaseFiltersCollectionView<DefaultFilterCollectionCell, DefaultFilterPropertyValue> {
-
-}
+typealias DefaultFiltersCollectionView = BaseFiltersCollectionView<DefaultFilterCollectionCell, DefaultFilterPropertyValue>
