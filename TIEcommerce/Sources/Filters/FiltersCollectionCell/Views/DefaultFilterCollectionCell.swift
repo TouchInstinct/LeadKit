@@ -52,7 +52,7 @@ open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
         layer.round(corners: .allCorners, radius: cellAppearance.cornerRadius)
         contentInsets = cellAppearance.contentInsets
 
-        setDeselectAppearance()
+        setAppearance()
     }
 
     // MARK: - ConfigurableView

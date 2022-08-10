@@ -55,6 +55,7 @@ open class BaseFilterCellAppearance {
                 cornerRadius: CGFloat = 6) {
 
         self.selectedBorderColor = selectedBorderColor
+        self.normalBorderColor = normalBorderColor
         self.selectedBgColor = selectedBgColor
         self.normalBgColor = normalBgColor
         self.selectedFontColor = selectedFontColor
