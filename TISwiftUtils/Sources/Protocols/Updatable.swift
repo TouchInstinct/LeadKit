@@ -20,8 +20,6 @@
 //  THE SOFTWARE.
 //
 
-public protocol FilterCellViewModelProtocol {
-    var id: String { get }
-    var title: String { get }
-    var isSelected: Bool { get set }
+public protocol Updatable: AnyObject {
+    func update()
 }

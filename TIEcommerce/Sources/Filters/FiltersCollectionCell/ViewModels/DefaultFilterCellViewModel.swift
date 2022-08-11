@@ -22,8 +22,8 @@
 
 public struct DefaultFilterCellViewModel: FilterCellViewModelProtocol, Hashable {
 
-    public var id: String
-    public var title: String
+    public let id: String
+    public let title: String
     public var isSelected: Bool
 
     public init(id: String,

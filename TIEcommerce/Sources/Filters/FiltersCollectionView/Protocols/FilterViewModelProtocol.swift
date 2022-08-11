@@ -21,82 +21,73 @@
 //
 
 import Foundation
+import TISwiftUtils
 
 public protocol FilterViewModelProtocol: AnyObject {
 
-    associatedtype Property: FilterPropertyValueRepresenter & Hashable
+    associatedtype PropertyValue: FilterPropertyValueRepresenter & Hashable
     associatedtype CellViewModelType: FilterCellViewModelProtocol & Hashable
 
-    typealias Change = (indexPath: IndexPath, viewModel: CellViewModelType)
+    var values: [PropertyValue] { get set }
+    var selectedValues: [PropertyValue] { get set }
 
-    var properties: [Property] { get set }
-    var selectedProperties: [Property] { get set }
-
-    func filterDidSelected(atIndexPath indexPath: IndexPath) -> [Change]
-    func toggleProperty(atIndexPath indexPath: IndexPath) -> (selected: [Property], deselected: [Property])
+    func filterDidSelected(atIndexPath indexPath: IndexPath) -> [(indexPath: IndexPath, viewModel: CellViewModelType)]
+    func toggleProperty(atIndexPath indexPath: IndexPath) -> (selected: [PropertyValue], deselected: [PropertyValue])
 }
 
 public extension FilterViewModelProtocol {
 
-    func toggleProperty(atIndexPath indexPath: IndexPath) -> (selected: [Property], deselected: [Property]) {
-        guard let item = getPropertySafely(indexPath.item) else { return ([], []) }
+    func toggleProperty(atIndexPath indexPath: IndexPath) -> (selected: [PropertyValue], deselected: [PropertyValue]) {
+        guard let item = values[safe: indexPath.item] else { return ([], []) }
 
         return toggleProperty(item)
     }
 
     @discardableResult
-    private func toggleProperty(_ property: Property) -> (selected: [Property], deselected: [Property]) {
-        var propertiesToDeselect = [Property]()
-        var propertiesToSelect = [Property]()
-        let selectedPropertyId = selectedProperties.firstIndex { selectedProperty in
-            selectedProperty.id == property.id
+    private func toggleProperty(_ value: PropertyValue) -> (selected: [PropertyValue], deselected: [PropertyValue]) {
+        var valuesToDeselect = [PropertyValue]()
+        var valuesToSelect = [PropertyValue]()
+        let selectedValueId = selectedValues.firstIndex { selectedValue in
+            selectedValue.id == value.id
         }
 
-        if let selectedPropertyId = selectedPropertyId {
+        if let selectedValueId = selectedValueId {
             // Removes previously selected filter
-            selectedProperties.remove(at: selectedPropertyId)
-            propertiesToDeselect.append(property)
+            selectedValues.remove(at: selectedValueId)
+            valuesToDeselect.append(value)
         } else {
             // Selectes unselected filter
-            selectedProperties.append(property)
-            propertiesToSelect.append(property)
+            selectedValues.append(value)
+            valuesToSelect.append(value)
 
             // If the filter has filters to exclude, these filters marks as deselected
-            let excludedProperties = excludeProperties(property)
-            propertiesToDeselect.append(contentsOf: excludedProperties)
+            let excludedValues = excludeValues(value)
+            valuesToDeselect.append(contentsOf: excludedValues)
         }
         
-        return (propertiesToSelect, propertiesToDeselect)
+        return (valuesToSelect, valuesToDeselect)
     }
     
-    private func excludeProperties(_ filter: Property) -> [Property] {
-        let propertiesIdsToExclude = filter.excludingPropertiesIds
+    private func excludeValues(_ values: PropertyValue) -> [PropertyValue] {
+        let valuesIdsToExclude = values.excludingPropertiesIds
 
-        guard !propertiesIdsToExclude.isEmpty else {
+        guard !valuesIdsToExclude.isEmpty else {
             return []
         }
 
-        var excludedProperties = [Property]()
+        var excludedValues = [PropertyValue]()
 
-        for propertiesIdToExclude in propertiesIdsToExclude {
-            let propertyToExclude = selectedProperties.first { property in
-                property.id == propertiesIdToExclude
+        for valuesIdToExclude in valuesIdsToExclude {
+            let propertyToExclude = selectedValues.first { property in
+                property.id == valuesIdToExclude
             }
 
             if let propertyToExclude = propertyToExclude {
                 let (_, deselected) = toggleProperty(propertyToExclude)
-                excludedProperties.append(contentsOf: deselected)
+                excludedValues.append(contentsOf: deselected)
             }
         }
 
-        return excludedProperties
-    }
-    
-    private func getPropertySafely(_ index: Int) -> Property? {
-        guard (0..<properties.count).contains(index) else {
-            return nil
-        }
-
-        return properties[index]
+        return excludedValues
     }
 }

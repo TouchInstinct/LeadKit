@@ -20,8 +20,8 @@
 //  THE SOFTWARE.
 //
 
-public protocol FilterCellViewModelProtocol {
-    var id: String { get }
-    var title: String { get }
-    var isSelected: Bool { get set }
+public extension Array {
+    subscript(safe index: Index) -> Element? {
+        self.enumerated().first(where: { $0.offset == index })?.element
+    }
 }

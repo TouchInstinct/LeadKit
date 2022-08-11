@@ -20,6 +20,30 @@
 //  THE SOFTWARE.
 //
 
-public protocol UpdatableView: AnyObject {
-    func update()
+import UIKit
+
+public struct FilterCellStateAppearance {
+
+    public let borderColor: UIColor
+    public let backgroundColor: UIColor
+    public let fontColor: UIColor
+
+    public let borderWidth: CGFloat
+    public let contentInsets: UIEdgeInsets
+    public let cornerRadius: CGFloat
+
+    public init(borderColor: UIColor,
+                backgroundColor: UIColor,
+                fontColor: UIColor,
+                borderWidth: CGFloat,
+                contentInsets: UIEdgeInsets = .init(top: 4, left: 8, bottom: 4, right: 8),
+                cornerRadius: CGFloat = 6) {
+
+        self.borderColor = borderColor
+        self.backgroundColor = backgroundColor
+        self.fontColor = fontColor
+        self.borderWidth = borderWidth
+        self.contentInsets = contentInsets
+        self.cornerRadius = cornerRadius
+    }
 }

@@ -20,15 +20,18 @@
 //  THE SOFTWARE.
 //
 
+import TISwiftUtils
 import TIUIKitCore
 import UIKit
 
 @available(iOS 13.0, *)
 open class BaseFiltersCollectionView<CellType: UICollectionViewCell & ConfigurableView,
-                                     PropertyValue: FilterPropertyValueRepresenter & Hashable>: UICollectionView,
-                                                                                                InitializableViewProtocol,
-                                                                                                UpdatableView,
-                                                                                                UICollectionViewDelegate where CellType.ViewModelType: FilterCellViewModelProtocol & Hashable {
+                                     PropertyValue: FilterPropertyValueRepresenter & Hashable>:
+                                        UICollectionView,
+                                        InitializableViewProtocol,
+                                        Updatable,
+                                        UICollectionViewDelegate where CellType.ViewModelType: FilterCellViewModelProtocol & Hashable {
+
     public enum DefaultSection: String {
         case main
     }
@@ -148,9 +151,9 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
     }
 
     open func applyChange(_ changes: [BaseFilterViewModel<CellType.ViewModelType, PropertyValue>.Change]) {
-        for change in changes {
+        changes.forEach { change in
             guard let cell = cellForItem(at: change.indexPath) as? CellType else {
-                continue
+                return
             }
 
             cell.configure(with: change.viewModel)

@@ -24,35 +24,41 @@ import TIUIKitCore
 import TIUIElements
 import UIKit
 
-open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
-                                        ConfigurableView {
+/*
 
-    public enum SelectionState {
-        case normal
-        case selected
+ У тебя в кейсах по сути одно и то-же написано. Я таки рекомендую у cellAppearance хранить 2 экземпляра структуры с этими свойствами в normalAppearance и в selectedAppearance, а здесь сделать один метод в который ты будешь эту структуру передавать и применять оттуда цвета и ширину линии.
+
+
+
+
+ Предлагаю визуально разделить переменные, либо завести структурку FilterCellState и дальше либо Appearance или Configuration или какой-нибудь микс из них в названии. Держать там 3 свойства color, backgroundColor и fontColor. А здесь держать 2 экземпляра этой струкруты для normal и selected состояний. Ну и кажется что нет необходимости делать BaseFilterCellAppearance классом, вместо стукруры
+
+ У тебя в инициализаторе 10 аргументов, а могло быть 4. + это упроситло бы применение апиранса. Ты просто пилишь один метод применения, и туда передаешь либо свойство normalAppearance, либо selectedAppearance и все. А внутри у тебя одинаковая реализация. + можно было бы определить набор стандартных апирансов для разных стейтов и при инициализации использовать их через .defaultSelectedAppearance, .defaultNormalAppearance и комбинировать их в нужном порядке. А сейчас нужно будет заполнять 10 аргументов инициализатора.
+
+ Ну и остался открытым вопрос, а почему собственно BaseFilterCellAppearance класс, а не структура? И есть ли смысл делать свойства переменными, а не константами?
+ */
+
+open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>, ConfigurableView {
+
+    open var selectedStateAppearance: FilterCellStateAppearance {
+        .defaultSelectedAppearance
     }
 
-    public var currentSelectionState: SelectionState {
-        isSelected ? .selected : .normal
-    }
-
-    open var cellAppearance: BaseFilterCellAppearance {
-        .init()
+    open var normalStateAppearance: FilterCellStateAppearance {
+        .defaultNormalAppearance
     }
 
     open override var isSelected: Bool {
         didSet {
-            setAppearance()
+            let appearance = isSelected ? selectedStateAppearance : normalStateAppearance
+            updateAppearance(with: appearance)
         }
     }
 
     open override func configureAppearance() {
         super.configureAppearance()
         
-        layer.round(corners: .allCorners, radius: cellAppearance.cornerRadius)
-        contentInsets = cellAppearance.contentInsets
-
-        setAppearance()
+        updateAppearance(with: normalStateAppearance)
     }
 
     // MARK: - ConfigurableView
@@ -63,19 +69,24 @@ open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>,
 
     // MARK: - Open methdos
 
-    open func setAppearance() {
-        switch currentSelectionState {
-        case .normal:
-            wrappedView.textColor = cellAppearance.normalFontColor
-            backgroundColor = cellAppearance.normalBgColor
-            layer.borderColor = cellAppearance.normalBorderColor.cgColor
-            layer.borderWidth = cellAppearance.normalBorderWidth
+    open func updateAppearance(with appearance: FilterCellStateAppearance) {
+        contentInsets = appearance.contentInsets
+        wrappedView.textColor = appearance.fontColor
 
-        case .selected:
-            wrappedView.textColor = cellAppearance.selectedFontColor
-            backgroundColor = cellAppearance.selectedBgColor
-            layer.borderColor = cellAppearance.selectedBorderColor.cgColor
-            layer.borderWidth = cellAppearance.selectedBorderWidth
-        }
+        backgroundColor = appearance.backgroundColor
+        layer.borderColor = appearance.borderColor.cgColor
+        layer.borderWidth = appearance.borderWidth
+        layer.round(corners: .allCorners, radius: appearance.cornerRadius)
+    }
+}
+
+extension FilterCellStateAppearance {
+    static var defaultSelectedAppearance: FilterCellStateAppearance {
+        .init(borderColor: .systemGreen, backgroundColor: .white, fontColor: .systemGreen, borderWidth: 1)
+    }
+
+    static var defaultNormalAppearance: FilterCellStateAppearance {
+
+        .init(borderColor: .lightGray, backgroundColor: .lightGray, fontColor: .black, borderWidth: 0)
     }
 }

@@ -20,7 +20,7 @@
 //  THE SOFTWARE.
 //
 
-import TIUIKitCore
+import TISwiftUtils
 import UIKit
 
 open class BaseFilterViewModel<CellViewModelType: FilterCellViewModelProtocol & Hashable,
@@ -28,44 +28,43 @@ open class BaseFilterViewModel<CellViewModelType: FilterCellViewModelProtocol & 
 
     // MARK: - FilterViewModelProtocol
 
-    public typealias Property = PropertyValue
-    public typealias CellViewModelType = CellViewModelType
+    public typealias Change = (indexPath: IndexPath, viewModel: CellViewModelType)
 
-    public var properties: [PropertyValue] = [] {
+    public var values: [PropertyValue] = [] {
         didSet {
             filtersCollection?.update()
         }
     }
-    public var selectedProperties: [PropertyValue] = [] {
+    public var selectedValues: [PropertyValue] = [] {
         didSet {
             filtersCollection?.update()
         }
     }
 
-    public weak var filtersCollection: UpdatableView?
+    public weak var filtersCollection: Updatable?
 
     public private(set) var cellsViewModels: [CellViewModelType]
 
-    public init(filters: [PropertyValue], cellsViewModels: [CellViewModelType] = []) {
-        self.properties = filters
+    public init(filterPropertyValues: [PropertyValue], cellsViewModels: [CellViewModelType] = []) {
+        self.values = filterPropertyValues
         self.cellsViewModels = cellsViewModels
     }
 
     open func filterDidSelected(atIndexPath indexPath: IndexPath) -> [Change] {
         let (selected, deselected) = toggleProperty(atIndexPath: indexPath)
 
-        let changedProperties = properties
+        let changedValues = values
             .enumerated()
             .filter { selected.contains($0.element) || deselected.contains($0.element) }
 
-        changedProperties.forEach { index, element in
-            let isSelected = selectedProperties.contains(element)
+        changedValues.forEach { index, element in
+            let isSelected = selectedValues.contains(element)
 
             setSelectedCell(atIndex: index, isSelected: isSelected)
             setSelectedProperty(atIndex: index, isSelected: isSelected)
         }
 
-        let changedItems = changedProperties
+        let changedItems = changedValues
             .map {
                 Change(indexPath: IndexPath(item: $0.offset, section: .zero),
                        viewModel: cellsViewModels[$0.offset])
@@ -79,10 +78,6 @@ open class BaseFilterViewModel<CellViewModelType: FilterCellViewModelProtocol & 
     }
 
     open func setSelectedProperty(atIndex index: Int, isSelected: Bool) {
-        properties[index].isSelected = isSelected
-    }
-
-    open func isPropertyInArray(_ property: PropertyValue, properties: [PropertyValue]) -> Bool {
-        properties.contains(where: { $0.id == property.id })
+        values[index].isSelected = isSelected
     }
 }

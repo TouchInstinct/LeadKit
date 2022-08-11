@@ -22,13 +22,13 @@
 
 open class DefaultFilterViewModel: BaseFilterViewModel<DefaultFilterCellViewModel, DefaultFilterPropertyValue> {
 
-    public init(filters: [DefaultFilterPropertyValue]) {
-        let cellsViewModel = filters.compactMap {
+    public init(filterPropertyValues: [DefaultFilterPropertyValue]) {
+        let cellsViewModel = filterPropertyValues.compactMap {
             DefaultFilterCellViewModel(id: $0.id,
                                        title: $0.title,
                                        isSelected: $0.isSelected)
         }
 
-        super.init(filters: filters, cellsViewModels: cellsViewModel)
+        super.init(filterPropertyValues: filterPropertyValues, cellsViewModels: cellsViewModel)
     }
 }
