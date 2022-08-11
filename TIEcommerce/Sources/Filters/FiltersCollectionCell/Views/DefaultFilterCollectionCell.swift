@@ -24,20 +24,6 @@ import TIUIKitCore
 import TIUIElements
 import UIKit
 
-/*
-
- У тебя в кейсах по сути одно и то-же написано. Я таки рекомендую у cellAppearance хранить 2 экземпляра структуры с этими свойствами в normalAppearance и в selectedAppearance, а здесь сделать один метод в который ты будешь эту структуру передавать и применять оттуда цвета и ширину линии.
-
-
-
-
- Предлагаю визуально разделить переменные, либо завести структурку FilterCellState и дальше либо Appearance или Configuration или какой-нибудь микс из них в названии. Держать там 3 свойства color, backgroundColor и fontColor. А здесь держать 2 экземпляра этой струкруты для normal и selected состояний. Ну и кажется что нет необходимости делать BaseFilterCellAppearance классом, вместо стукруры
-
- У тебя в инициализаторе 10 аргументов, а могло быть 4. + это упроситло бы применение апиранса. Ты просто пилишь один метод применения, и туда передаешь либо свойство normalAppearance, либо selectedAppearance и все. А внутри у тебя одинаковая реализация. + можно было бы определить набор стандартных апирансов для разных стейтов и при инициализации использовать их через .defaultSelectedAppearance, .defaultNormalAppearance и комбинировать их в нужном порядке. А сейчас нужно будет заполнять 10 аргументов инициализатора.
-
- Ну и остался открытым вопрос, а почему собственно BaseFilterCellAppearance класс, а не структура? И есть ли смысл делать свойства переменными, а не константами?
- */
-
 open class DefaultFilterCollectionCell: ContainerCollectionViewCell<UILabel>, ConfigurableView {
 
     open var selectedStateAppearance: FilterCellStateAppearance {
