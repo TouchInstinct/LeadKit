@@ -25,7 +25,7 @@ import Foundation
 open class AsyncOperation<Output, Failure: Error>: Operation {
     open var result: Result<Output, Failure>?
 
-    var state: State? = nil { // isReady == false
+    var state: State? = nil { // nil -> isReady == false
         // KVO support
         willSet {
             willChangeValue(forKey: newValue.orReady.rawValue)
@@ -77,34 +77,21 @@ open class AsyncOperation<Output, Failure: Error>: Operation {
 
     // MARK: - Methods for subclass override
 
-    open func handle(result: Output) {
-        self.result = .success(result)
-
-        state = .isFinished
-    }
-
-    open func handle(error: Failure) {
-        self.result = .failure(error)
+    open func handle(result: Result<Output, Failure>) {
+        self.result = result
 
         state = .isFinished
     }
 
     // MARK: - Completion observation
 
-    public func subscribe(onSuccess: ((Output) -> Void)? = nil,
-                          onFailure: ((Failure) -> Void)? = nil) -> NSKeyValueObservation {
-
+    public func subscribe(onResult: ((Result<Output, Failure>) -> Void)? = nil) -> NSKeyValueObservation {
         observe(\.isFinished, options: [.new]) { object, change in
             if let isFinished = change.newValue, isFinished {
-                switch object.result {
-                case let .success(result)?:
-                    onSuccess?(result)
-
-                case let .failure(failure)?:
-                    onFailure?(failure)
-
-                default:
-                    assertionFailure("Got nil result from operation when isFinished was true!")
+                if let result = object.result {
+                    onResult?(result)
+                } else {
+                    assertionFailure("Got nil result from operation but isFinished is true!")
                 }
             }
         }
