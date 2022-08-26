@@ -3,8 +3,12 @@
 ### 1.27.0
 
 - **Add**: Tag like filter collection view
-- **ADD**: List like filter table view
-- **ADD**: Range like filter view
+- **Add**: List like filter table view
+- **Add**: Range like filter view
+
+### 1.26.1
+- **Fix**: Use OperationQueue instead of NSLock in `DefaultTokenInterceptor`
+- **Update**: AsyncOperation refactoring
 
 ### 1.26.0
 

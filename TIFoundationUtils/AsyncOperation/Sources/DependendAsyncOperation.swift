@@ -22,30 +22,24 @@
 
 import Foundation
 
-private final class MapAsyncOperation<Output, Failure: Error>: DependendAsyncOperation<Output, Failure> {
+open class DependendAsyncOperation<Output, Failure: Error>: AsyncOperation<Output, Failure> {
+    public var dependencyObservation: NSKeyValueObservation?
+
     public init<DependencyOutput, DependencyFailure: Error>(dependency: AsyncOperation<DependencyOutput, DependencyFailure>,
-                                                            mapOutput: @escaping (DependencyOutput) -> Result<Output, Failure>,
-                                                            mapFailure: @escaping (DependencyFailure) -> Failure) {
+                                                            resultObservation: @escaping (Result<DependencyOutput, DependencyFailure>) -> Result<Output, Failure>) {
 
-        super.init(dependency: dependency) {
-            $0.mapError(mapFailure).flatMap(mapOutput)
+        super.init()
+
+        cancelOnCancellation(of: dependency)
+
+        dependencyObservation = dependency.subscribe { [weak self] in
+            self?.result = resultObservation($0)
+            self?.state = .isReady
         }
-    }
-}
 
-public extension AsyncOperation {
-    func map<NewOutput, NewFailure: Error>(mapOutput: @escaping (Output) -> Result<NewOutput, NewFailure>,
-                                           mapFailure: @escaping (Failure) -> NewFailure)
-    -> AsyncOperation<NewOutput, NewFailure> {
+        addDependency(dependency) // keeps strong reference to dependency as well
 
-        MapAsyncOperation(dependency: self,
-                          mapOutput: mapOutput,
-                          mapFailure: mapFailure)
+        state = nil // prevent start of current operation if result is not yet provided by dependency
     }
 
-    func map<NewOutput>(mapOutput: @escaping (Output) -> NewOutput) -> AsyncOperation<NewOutput, Failure> {
-        MapAsyncOperation(dependency: self,
-                          mapOutput: { .success(mapOutput($0)) },
-                          mapFailure: { $0 })
-    }
 }
