@@ -48,13 +48,7 @@ public final class ClosureAsyncOperation<Output, Failure: Error>: AsyncOperation
         super.start()
 
         cancellableTask = cancellableTaskClosure { [weak self] in
-            switch $0 {
-            case let .success(result):
-                self?.handle(result: result)
-
-            case let .failure(error):
-                self?.handle(error: error)
-            }
+            self?.handle(result: $0)
         }
     }
 

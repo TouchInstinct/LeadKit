@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.26.1
+- **Fix**: Use OperationQueue instead of NSLock in `DefaultTokenInterceptor`
+- **Update**: AsyncOperation refactoring
+
 ### 1.26.0
 
 - **Add**: `TIEcommerce` module with Cart, products, promocodes, bonuses and other related actions.

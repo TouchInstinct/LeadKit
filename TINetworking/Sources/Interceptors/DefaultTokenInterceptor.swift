@@ -30,7 +30,7 @@ open class DefaultTokenInterceptor<RefreshError: Error>: RequestInterceptor {
 
     public typealias RequestModificationClosure = (URLRequest) -> URLRequest
 
-    let refreshLock = NSLock()
+    let processingQueue = OperationQueue()
 
     let shouldRefreshToken: ShouldRefreshTokenClosure
     let refreshTokenClosure: RefreshTokenClosure
@@ -45,6 +45,8 @@ open class DefaultTokenInterceptor<RefreshError: Error>: RequestInterceptor {
         self.shouldRefreshToken = shouldRefreshTokenClosure
         self.refreshTokenClosure = refreshTokenClosure
         self.requestModificationClosure = requestModificationClosure
+
+        processingQueue.maxConcurrentOperationCount = 1
     }
 
     // MARK: - RequestAdapter
@@ -62,7 +64,7 @@ open class DefaultTokenInterceptor<RefreshError: Error>: RequestInterceptor {
 
         let modifiedRequest = requestModificationClosure?(urlRequest) ?? urlRequest
 
-        validateAndRepair(validationClosure: { shouldRefreshToken(urlRequest, nil, nil) },
+        validateAndRepair(validationClosure: { self.shouldRefreshToken(urlRequest, nil, nil) },
                           completion: adaptCompletion,
                           defaultCompletionResult: modifiedRequest,
                           recoveredCompletionResult: modifiedRequest)
@@ -88,36 +90,38 @@ open class DefaultTokenInterceptor<RefreshError: Error>: RequestInterceptor {
             }
         }
 
-        validateAndRepair(validationClosure: { shouldRefreshToken(request.request, request.response, error) },
+        validateAndRepair(validationClosure: { self.shouldRefreshToken(request.request, request.response, error) },
                           completion: retryCompletion,
                           defaultCompletionResult: defaultRetryStrategy,
                           recoveredCompletionResult: .retry)
             .add(to: retryBag)
     }
 
-    open func validateAndRepair<T>(validationClosure: () -> Bool,
+    open func validateAndRepair<T>(validationClosure: @escaping () -> Bool,
                                    completion: @escaping (Result<T, RefreshError>) -> Void,
                                    defaultCompletionResult: T,
                                    recoveredCompletionResult: T) -> Cancellable {
 
-        refreshLock.lock()
-
-        if validationClosure() {
-            return refreshTokenClosure { [refreshLock] in
-                refreshLock.unlock()
-
-                if let error = $0 {
-                    completion(.failure(error))
-                } else {
-                    completion(.success(recoveredCompletionResult))
+        let operation = ClosureAsyncOperation<T, RefreshError>(cancellableTaskClosure: { [refreshTokenClosure] operationCompletion in
+            if validationClosure() {
+                return refreshTokenClosure {
+                    if let error = $0 {
+                        operationCompletion(.failure(error))
+                    } else {
+                        operationCompletion(.success(recoveredCompletionResult))
+                    }
                 }
+            } else {
+                operationCompletion(.success(defaultCompletionResult))
+
+                return Cancellables.nonCancellable()
             }
-        } else {
-            refreshLock.unlock()
+        })
+        .observe(onResult: completion,
+                 callbackQueue: .global())
 
-            completion(.success(defaultCompletionResult))
+        operation.add(to: processingQueue)
 
-            return Cancellables.nonCancellable()
-        }
+        return operation
     }
 }

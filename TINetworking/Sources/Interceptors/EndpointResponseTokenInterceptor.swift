@@ -52,7 +52,7 @@ open class EndpointResponseTokenInterceptor<AE, NE>: DefaultTokenInterceptor<End
             return Cancellables.nonCancellable()
         }
 
-        return validateAndRepair(validationClosure: { isTokenInvalidErrorResultClosure(firstErrorResult) },
+        return validateAndRepair(validationClosure: { self.isTokenInvalidErrorResultClosure(firstErrorResult) },
                                  completion: completion,
                                  defaultCompletionResult: defaultRetryStrategy,
                                  recoveredCompletionResult: .retry)
