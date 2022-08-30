@@ -20,14 +20,8 @@
 //  THE SOFTWARE.
 //
 
-public protocol FilterCellViewModelProtocol {
-    var id: String { get set }
-    var title: String { get set }
-    var appearance: FilterCellAppearanceProtocol { get set }
-    var isSelected: Bool { get set }
-    
-    init(id: String,
-         title: String,
-         appearance: FilterCellAppearanceProtocol,
-         isSelected: Bool)
+public extension Array {
+    subscript(safe index: Index) -> Element? {
+        self.enumerated().first(where: { $0.offset == index })?.element
+    }
 }

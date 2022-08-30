@@ -20,11 +20,6 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
-
-public protocol FilterCellAppearanceProtocol {
-    var selectedColor: UIColor { get set }
-    var selectedBgColor: UIColor { get set }
-    var deselectedBgColor: UIColor { get set }
-    var contentInsets: UIEdgeInsets { get set }
+public protocol Updatable: AnyObject {
+    func update()
 }
