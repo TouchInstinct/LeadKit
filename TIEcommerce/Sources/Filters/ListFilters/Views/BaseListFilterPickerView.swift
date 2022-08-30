@@ -42,7 +42,7 @@ open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
 
     public weak var viewModel: BaseFilterViewModel<CellType.ViewModelType, PropertyValue>?
 
-    public lazy var collectionViewDataSource = createDataSource()
+    public lazy var tableViewDataSource = createDataSource()
 
     // MARK: - Init
 
@@ -51,7 +51,8 @@ open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
 
         super.init(frame: .zero, style: .plain)
 
-        self.allowsMultipleSelection = allowsMultipleSelection
+        initializeView()
+        viewDidLoad()
     }
 
     @available(*, unavailable)
@@ -77,6 +78,7 @@ open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
 
     open func configureAppearance() {
         alwaysBounceVertical = false
+        allowsMultipleSelection = allowsMultipleSelection
 
 //        reloadData(with: viewModel?.visibleSelectedIndexes ?? [])
     }
@@ -135,7 +137,7 @@ open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
         snapshot.appendSections([DefaultSection.main.rawValue])
         snapshot.appendItems(viewModel.cellsViewModels, toSection: DefaultSection.main.rawValue)
 
-        collectionViewDataSource.apply(snapshot, animatingDifferences: true)
+        tableViewDataSource.apply(snapshot, animatingDifferences: true)
     }
 
     open func createDataSource() -> DataSource {
