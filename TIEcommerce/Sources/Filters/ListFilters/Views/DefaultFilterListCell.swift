@@ -56,6 +56,10 @@ open class DefaultPickerView: BaseInitializableView {
         }
     }
 
+    open var defaultImageSize: CGFloat {
+        image?.size.height ?? 0
+    }
+
     open override func addViews() {
         super.addViews()
 
@@ -75,7 +79,8 @@ open class DefaultPickerView: BaseInitializableView {
 
             selectionStateImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             selectionStateImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            selectionStateImageView.heightAnchor.constraint(equalTo: heightAnchor),
+            selectionStateImageView.heightAnchor.constraint(equalToConstant: defaultImageSize)
+            selectionStateImageView.widthAnchor.constraint(equalToConstant: defaultImageSize)
         ])
     }
 }
