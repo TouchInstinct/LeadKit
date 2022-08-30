@@ -46,10 +46,13 @@ open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
 
     // MARK: - Init
 
-    public init(viewModel: BaseFilterViewModel<CellType.ViewModelType, PropertyValue>, allowsMultipleSelection: Bool = true) {
+    public init(viewModel: BaseFilterViewModel<CellType.ViewModelType, PropertyValue>,
+                allowsMultipleSelection: Bool = true,
+                style: UITableView.Style = .plain) {
+
         self.viewModel = viewModel
 
-        super.init(frame: .zero, style: .plain)
+        super.init(frame: .zero, style: style)
 
         initializeView()
         viewDidLoad()
