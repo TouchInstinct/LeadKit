@@ -112,6 +112,7 @@ open class DefaultFilterListCell: ContainerTableViewCell<DefaultPickerView>, Con
     open func updateAppearance(with appearance: FilterCellStateAppearance) {
         contentInsets = appearance.contentInsets
         wrappedView.textColor = appearance.fontColor
+        wrappedView.image = appearance.selectionImage
 
         backgroundColor = appearance.backgroundColor
         layer.borderColor = appearance.borderColor.cgColor
