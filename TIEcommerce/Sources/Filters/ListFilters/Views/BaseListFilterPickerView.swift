@@ -62,8 +62,6 @@ open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
 
     // MARK: - Life cycle
 
-    // MARK: - Life cycle
-
     open func addViews() {
         // override in subclass
     }
@@ -97,13 +95,13 @@ open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
         applySnapshot()
     }
 
-    // MARK: - UICollectionViewDelegate
+    // MARK: - UITableViewDelegate
 
-    open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         filterDidTapped(atIndexPath: indexPath)
     }
 
-    open func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         filterDidTapped(atIndexPath: indexPath)
     }
 
