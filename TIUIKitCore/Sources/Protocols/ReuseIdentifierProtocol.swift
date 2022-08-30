@@ -32,3 +32,9 @@ extension UICollectionViewCell: ReuseIdentifierProtocol {
         .init(describing: Self.self)
     }
 }
+
+extension UITableViewCell: ReuseIdentifierProtocol {
+    public static var reuseIdentifier: String {
+        .init(describing: Self.self)
+    }
+}

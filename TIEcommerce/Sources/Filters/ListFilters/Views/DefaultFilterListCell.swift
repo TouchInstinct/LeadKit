@@ -20,91 +20,123 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
 import TIUIElements
+import TIUIKitCore
 import UIKit
 
-open class DefaultFilterListCell: BaseSeparatorCell, ConfigurableCell {
+open class DefaultPickerView: BaseInitializableView {
 
-    private var titleLeadingConstraint: NSLayoutConstraint!
-    private var titleTopConstraint: NSLayoutConstraint!
-    private var titleBottomConstraint: NSLayoutConstraint!
+    private let titleLabel = UILabel()
+    private let selectionStateImageView = UIImageView()
 
-    private var imageTrailingConstraint: NSLayoutConstraint!
-    private var imageTopConstraint: NSLayoutConstraint!
-    private var imageBottomConstraint: NSLayoutConstraint!
-
-    public lazy var titleLabel = UILabel()
-    public lazy var selectionCheckmarkImageView = UIImageView()
-
-    open var selectedImage: UIImage? {
-        if #available(iOS 13.0, *) {
-            return UIImage(systemName: "checkmark")!
+    open var image: UIImage? {
+        get {
+            selectionStateImageView.image
         }
-
-        return nil
+        set {
+            selectionStateImageView.image = newValue
+        }
     }
 
-    open var deselectedImage: UIImage? {
-        nil
+    open var text: String? {
+        get {
+            titleLabel.text
+        }
+        set {
+            titleLabel.text = newValue
+        }
+    }
+
+    open var textColor: UIColor {
+        get {
+            titleLabel.textColor
+        }
+        set {
+            titleLabel.textColor = newValue
+        }
     }
 
     open override func addViews() {
         super.addViews()
 
-        contentView.addSubviews(titleLabel, selectionCheckmarkImageView)
+        addSubviews(titleLabel, selectionStateImageView)
     }
 
     open override func configureLayout() {
         super.configureLayout()
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        selectionCheckmarkImageView.translatesAutoresizingMaskIntoConstraints = false
-
-        titleLeadingConstraint = titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
-        titleTopConstraint = titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor)
-        titleBottomConstraint = titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-
-        imageTrailingConstraint = selectionCheckmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-        imageTopConstraint = selectionCheckmarkImageView.topAnchor.constraint(equalTo: contentView.topAnchor)
-        imageBottomConstraint = selectionCheckmarkImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-
+        selectionStateImageView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            titleLeadingConstraint,
-            titleTopConstraint,
-            titleBottomConstraint,
-            imageTrailingConstraint,
-            imageTopConstraint,
-            imageBottomConstraint
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.heightAnchor.constraint(equalTo: heightAnchor),
+
+            selectionStateImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            selectionStateImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            selectionStateImageView.heightAnchor.constraint(equalTo: heightAnchor),
         ])
     }
+}
 
-    open func configure(with viewModel: DefaultFilterRowViewModel) {
-        titleLabel.text = viewModel.title
+open class DefaultFilterListCell: ContainerTableViewCell<DefaultPickerView>, ConfigurableView {
 
-        setContentInsets(viewModel.appearance.contentInsets)
-        contentView.backgroundColor = viewModel.appearance.deselectedBgColor
+    open var selectedStateAppearance: FilterCellStateAppearance {
+        .defaultSelectedRowAppearance
     }
 
-    open func setContentInsets(_ insets: UIEdgeInsets) {
-        titleLeadingConstraint.constant = insets.left
-        imageTrailingConstraint.constant = -insets.right
-
-        titleTopConstraint.constant = insets.top
-        imageTopConstraint.constant = insets.top
-
-        titleBottomConstraint.constant = -insets.bottom
-        imageBottomConstraint.constant = -insets.bottom
+    open var normalStateAppearance: FilterCellStateAppearance {
+        .defaultNormalRowAppearance
     }
 
-    open override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        if selected {
-            selectionCheckmarkImageView.image = selectedImage
-        } else {
-            selectionCheckmarkImageView.image = deselectedImage
+    open override var isSelected: Bool {
+        didSet {
+            let appearance = isSelected ? selectedStateAppearance : normalStateAppearance
+            updateAppearance(with: appearance)
         }
+    }
+
+    open override func configureAppearance() {
+        super.configureAppearance()
+
+        updateAppearance(with: normalStateAppearance)
+    }
+
+    open func configure(with viewModel: DefaultFilterCellViewModel) {
+        wrappedView.text = viewModel.title
+    }
+
+    // MARK: - Open methods
+
+    open func updateAppearance(with appearance: FilterCellStateAppearance) {
+        contentInsets = appearance.contentInsets
+        wrappedView.textColor = appearance.fontColor
+
+        backgroundColor = appearance.backgroundColor
+        layer.borderColor = appearance.borderColor.cgColor
+        layer.borderWidth = appearance.borderWidth
+        layer.round(corners: .allCorners, radius: appearance.cornerRadius)
+    }
+}
+
+extension FilterCellStateAppearance {
+    static var defaultSelectedRowAppearance: FilterCellStateAppearance {
+        var selectionImage: UIImage?
+
+        if #available(iOS 13, *) {
+            selectionImage = UIImage(systemName: "checkmark")
+        }
+
+        return .init(borderColor: .systemGreen,
+                     backgroundColor: .white,
+                     fontColor: .systemGreen,
+                     borderWidth: 1,
+                     selectionImage: selectionImage)
+    }
+
+    static var defaultNormalRowAppearance: FilterCellStateAppearance {
+
+        .init(borderColor: .lightGray, backgroundColor: .lightGray, fontColor: .black, borderWidth: 0)
     }
 }

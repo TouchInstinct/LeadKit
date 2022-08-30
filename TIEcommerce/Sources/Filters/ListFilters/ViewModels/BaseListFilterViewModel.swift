@@ -20,74 +20,74 @@
 //  THE SOFTWARE.
 //
 
-open class BaseListFilterViewModel<RowViewModelType: FilterRowRepresentable & Equatable>: FilterListPickerConfigurator {
-
-    public typealias RowViewModel = RowViewModelType
-
-    public var rowViewModels: [RowViewModelType]
-
-    public weak var delegate: FiltersPickerDelegate?
-
-    public var initiallySelectedValues: [RowViewModelType]?
-
-    open var isFinishWithSeparator: Bool {
-        true
-    }
-
-    open var isMultiselectionEnabled: Bool = false
-
-    open var areInitiallySelectedValuesTheSame: Bool {
-        guard let initiallySelectedValues = initiallySelectedValues else {
-            return false
-        }
-
-        return initiallySelectedValues == selectedValues
-    }
-
-    open var areThereAnyValuesSelected: Bool {
-        if let _ = rowViewModels.first(where: { $0.isSelected }) {
-            return false
-        }
-
-        return true
-    }
-
-    open var selectedValues: [RowViewModelType] {
-        rowViewModels.filter { $0.isSelected }
-    }
-
-    open var visibleValues: [RowViewModelType] {
-        rowViewModels
-    }
-
-    open var visibleSelectedIndexes: [Int] {
-        visibleValues.enumerated().compactMap {
-            $0.element.isSelected ? $0.offset : nil
-        }
-    }
-
-    public init(rowViewModels: [RowViewModelType], isMultiselectionEnabled: Bool) {
-        self.rowViewModels = rowViewModels
-        self.isMultiselectionEnabled = isMultiselectionEnabled
-    }
-
-    open func viewDidLoad() {
-        initiallySelectedValues = selectedValues
-    }
-
-    open func setSelected(model: RowViewModelType, isSelected: Bool) {
-        if !isMultiselectionEnabled {
-            rowViewModels.enumerated().forEach {
-                rowViewModels[$0.offset].isSelected = false
-            }
-        }
-
-        if let index = rowViewModels.firstIndex(of: model) {
-            rowViewModels[index].isSelected = isSelected
-        }
-
-        if !selectedValues.isEmpty {
-            delegate?.filters(didSelect: selectedValues)
-        }
-    }
-}
+//open class BaseListFilterViewModel<RowViewModelType: FilterRowRepresentable & Equatable>: FilterListPickerConfigurator {
+//
+//    public typealias RowViewModel = RowViewModelType
+//
+//    public var rowViewModels: [RowViewModelType]
+//
+//    public weak var delegate: FiltersPickerDelegate?
+//
+//    public var initiallySelectedValues: [RowViewModelType]?
+//
+//    open var isFinishWithSeparator: Bool {
+//        true
+//    }
+//
+//    open var isMultiselectionEnabled: Bool = false
+//
+//    open var areInitiallySelectedValuesTheSame: Bool {
+//        guard let initiallySelectedValues = initiallySelectedValues else {
+//            return false
+//        }
+//
+//        return initiallySelectedValues == selectedValues
+//    }
+//
+//    open var areThereAnyValuesSelected: Bool {
+//        if let _ = rowViewModels.first(where: { $0.isSelected }) {
+//            return false
+//        }
+//
+//        return true
+//    }
+//
+//    open var selectedValues: [RowViewModelType] {
+//        rowViewModels.filter { $0.isSelected }
+//    }
+//
+//    open var visibleValues: [RowViewModelType] {
+//        rowViewModels
+//    }
+//
+//    open var visibleSelectedIndexes: [Int] {
+//        visibleValues.enumerated().compactMap {
+//            $0.element.isSelected ? $0.offset : nil
+//        }
+//    }
+//
+//    public init(rowViewModels: [RowViewModelType], isMultiselectionEnabled: Bool) {
+//        self.rowViewModels = rowViewModels
+//        self.isMultiselectionEnabled = isMultiselectionEnabled
+//    }
+//
+//    open func viewDidLoad() {
+//        initiallySelectedValues = selectedValues
+//    }
+//
+//    open func setSelected(model: RowViewModelType, isSelected: Bool) {
+//        if !isMultiselectionEnabled {
+//            rowViewModels.enumerated().forEach {
+//                rowViewModels[$0.offset].isSelected = false
+//            }
+//        }
+//
+//        if let index = rowViewModels.firstIndex(of: model) {
+//            rowViewModels[index].isSelected = isSelected
+//        }
+//
+//        if !selectedValues.isEmpty {
+//            delegate?.filters(didSelect: selectedValues)
+//        }
+//    }
+//}

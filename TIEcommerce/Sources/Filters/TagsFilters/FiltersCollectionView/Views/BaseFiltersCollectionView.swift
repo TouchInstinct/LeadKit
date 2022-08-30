@@ -68,12 +68,12 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
         // override in subclass
     }
 
-    open func bindViews() {
-        delegate = self
-    }
-
     open func configureLayout() {
         // override in subclass
+    }
+
+    open func bindViews() {
+        delegate = self
     }
 
     open func configureAppearance() {

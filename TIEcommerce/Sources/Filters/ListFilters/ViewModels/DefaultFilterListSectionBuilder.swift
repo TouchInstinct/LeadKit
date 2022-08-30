@@ -24,26 +24,26 @@ import TableKit
 import TITableKitUtils
 import TIUIElements
 
-open class DefaultFilterListSectionBuilder<CellType: BaseSeparatorCell & ConfigurableCell>: FilterTableSectionBuilder {
-
-    open func makeSection<ViewModel: FilterListPickerConfigurator>(with viewModel: ViewModel) -> TableSection where ViewModel.RowViewModel == CellType.CellData {
-        let rows = viewModel.visibleValues.map { item in
-            TableRow<CellType>(item: item)
-                .on(.select) { [weak viewModel] _ in
-                    viewModel?.setSelected(model: item, isSelected: !item.isSelected)
-                }
-                .on(.deselect) { [weak viewModel] _ in
-                    viewModel?.setSelected(model: item, isSelected: false)
-                }
-        }
-
-        let separatedRows: [SeparatorRowBox] = rows.map { $0.separatorRowBox }
-        let separator = SeparatorConfiguration(color: .gray)
-
-        separatedRows.configureSeparators(first: separator,
-                                          middle: separator,
-                                          last: viewModel.isFinishWithSeparator ? separator : SeparatorConfiguration(color: .clear))
-
-        return .init(rows: separatedRows.rows)
-    }
-}
+//open class DefaultFilterListSectionBuilder<CellType: BaseSeparatorCell & ConfigurableCell>: FilterTableSectionBuilder {
+//
+//    open func makeSection<ViewModel: FilterListPickerConfigurator>(with viewModel: ViewModel) -> TableSection where ViewModel.RowViewModel == CellType.CellData {
+//        let rows = viewModel.visibleValues.map { item in
+//            TableRow<CellType>(item: item)
+//                .on(.select) { [weak viewModel] _ in
+//                    viewModel?.setSelected(model: item, isSelected: !item.isSelected)
+//                }
+//                .on(.deselect) { [weak viewModel] _ in
+//                    viewModel?.setSelected(model: item, isSelected: false)
+//                }
+//        }
+//
+//        let separatedRows: [SeparatorRowBox] = rows.map { $0.separatorRowBox }
+//        let separator = SeparatorConfiguration(color: .gray)
+//
+//        separatedRows.configureSeparators(first: separator,
+//                                          middle: separator,
+//                                          last: viewModel.isFinishWithSeparator ? separator : SeparatorConfiguration(color: .clear))
+//
+//        return .init(rows: separatedRows.rows)
+//    }
+//}

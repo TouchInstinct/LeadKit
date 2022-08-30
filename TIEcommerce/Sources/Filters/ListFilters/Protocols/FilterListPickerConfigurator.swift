@@ -20,13 +20,13 @@
 //  THE SOFTWARE.
 //
 
-public protocol FilterListPickerConfigurator: AnyObject {
-
-    associatedtype RowViewModel: FilterRowRepresentable & Equatable
-
-    var visibleValues: [RowViewModel] { get }
-    var isMultiselectionEnabled: Bool { get set }
-    var isFinishWithSeparator: Bool { get }
-
-    func setSelected(model: RowViewModel, isSelected: Bool)
-}
+//public protocol FilterListPickerConfigurator: AnyObject {
+//
+//    associatedtype RowViewModel: FilterRowRepresentable & Equatable
+//
+//    var visibleValues: [RowViewModel] { get }
+//    var isMultiselectionEnabled: Bool { get set }
+//    var isFinishWithSeparator: Bool { get }
+//
+//    func setSelected(model: RowViewModel, isSelected: Bool)
+//}

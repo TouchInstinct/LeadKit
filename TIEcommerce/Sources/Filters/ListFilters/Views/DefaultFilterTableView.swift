@@ -20,24 +20,5 @@
 //  THE SOFTWARE.
 //
 
-public struct DefaultFilterRowViewModel: FilterRowRepresentable, Equatable {
-    public let id: String
-    public let title: String
-    public var appearance: FilterCellAppearanceProtocol
-    public var isSelected: Bool
-
-    public init(id: String,
-                title: String,
-                appearance: FilterCellAppearanceProtocol,
-                isSelected: Bool) {
-
-        self.id = id
-        self.title = title
-        self.appearance = appearance
-        self.isSelected = isSelected
-    }
-
-    public static func == (lhs: Self, rhs: Self) -> Bool {
-        lhs.id == rhs.id
-    }
-}
+@available(iOS 13.0, *)
+public typealias DefaultFiltersTableView = BaseFiltersTableView<DefaultFilterListCell, DefaultFilterPropertyValue>

@@ -20,46 +20,147 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
+import TISwiftUtils
 import TIUIElements
+import TIUIKitCore
 import UIKit
 
-open class BaseListFilterPickerView<CellType: BaseSeparatorCell & ConfigurableCell>: BaseCustomTableView where CellType.CellData: FilterRowRepresentable & Equatable {
+@available(iOS 13.0, *)
+open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
+                                PropertyValue: FilterPropertyValueRepresenter & Hashable>:
+                                    UITableView,
+                                    InitializableViewProtocol,
+                                    Updatable,
+                                    UITableViewDelegate where CellType.ViewModelType: FilterCellViewModelProtocol & Hashable {
 
-    public let builder = DefaultFilterListSectionBuilder<CellType>()
-    public weak var viewModel: BaseListFilterViewModel<CellType.CellData>?
-
-    public init(viewModel: BaseListFilterViewModel<CellType.CellData>) {
-        self.viewModel = viewModel
-
-        super.init(frame: .zero)
-        
-        tableView.allowsMultipleSelection = viewModel.isMultiselectionEnabled
+    public enum DefaultSection: String {
+        case main
     }
 
+    public typealias DataSource = UITableViewDiffableDataSource<String, CellType.ViewModelType>
+    public typealias Snapshot = NSDiffableDataSourceSnapshot<String, CellType.ViewModelType>
+
+    public weak var viewModel: BaseFilterViewModel<CellType.ViewModelType, PropertyValue>?
+
+    public lazy var collectionViewDataSource = createDataSource()
+
+    // MARK: - Init
+
+    public init(viewModel: BaseFilterViewModel<CellType.ViewModelType, PropertyValue>, allowsMultipleSelection: Bool = true) {
+        self.viewModel = viewModel
+
+        super.init(frame: .zero, style: .plain)
+
+        self.allowsMultipleSelection = allowsMultipleSelection
+    }
+
+    @available(*, unavailable)
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    open override func configureAppearance() {
-        super.configureAppearance()
+    // MARK: - Life cycle
 
-        tableView.alwaysBounceVertical = false
-        viewModel?.viewDidLoad()
+    // MARK: - Life cycle
 
-        reloadData(with: viewModel?.visibleSelectedIndexes ?? [])
+    open func addViews() {
+        // override in subclass
     }
 
-    open func reloadData(with selectedIndexes: [Int]) {
+    open func configureLayout() {
+        // override in subclass
+    }
+
+    open func bindViews() {
+        delegate = self
+    }
+
+    open func configureAppearance() {
+        alwaysBounceVertical = false
+
+//        reloadData(with: viewModel?.visibleSelectedIndexes ?? [])
+    }
+
+    open func localize() {
+        // override in subclass
+    }
+
+    open func viewDidLoad() {
+        registerCell()
+
+        viewModel?.filtersCollection = self
+    }
+
+    open func viewDidAppear() {
+        applySnapshot()
+    }
+
+    // MARK: - UICollectionViewDelegate
+
+    open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        filterDidTapped(atIndexPath: indexPath)
+    }
+
+    open func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        filterDidTapped(atIndexPath: indexPath)
+    }
+
+    // MARK: - UpdatableView
+
+    open func update() {
+        applySnapshot()
+    }
+
+    // MARK: - Open methods
+
+    open func registerCell() {
+        register(CellType.self, forCellReuseIdentifier: CellType.reuseIdentifier)
+    }
+
+    open func filterDidTapped(atIndexPath indexPath: IndexPath) {
         guard let viewModel = viewModel else { return }
 
-        let elements = builder.makeSection(with: viewModel)
-        updateTableView(elements)
+        let changes = viewModel.filterDidSelected(atIndexPath: indexPath)
 
-        selectedIndexes.forEach {
-            tableView.selectRow(at: IndexPath(row: $0, section: .zero),
-                                animated: false,
-                                scrollPosition: .none)
+        applyChange(changes)
+    }
+
+    open func applySnapshot() {
+        guard let viewModel = viewModel else {
+            return
+        }
+
+        var snapshot = Snapshot()
+
+        snapshot.appendSections([DefaultSection.main.rawValue])
+        snapshot.appendItems(viewModel.cellsViewModels, toSection: DefaultSection.main.rawValue)
+
+        collectionViewDataSource.apply(snapshot, animatingDifferences: true)
+    }
+
+    open func createDataSource() -> DataSource {
+        let cellProvider: DataSource.CellProvider = { tableView, indexPath, itemIdentifier in
+            let cell = tableView.dequeueReusableCell(withIdentifier: CellType.reuseIdentifier, for: indexPath) as? CellType
+
+            cell?.configure(with: itemIdentifier)
+
+            return cell
+        }
+
+        return DataSource(tableView: self, cellProvider: cellProvider)
+    }
+
+    open func applyChange(_ changes: [BaseFilterViewModel<CellType.ViewModelType, PropertyValue>.Change]) {
+        changes.forEach { change in
+            guard let cell = cellForRow(at: change.indexPath) as? CellType else {
+                return
+            }
+
+            cell.configure(with: change.viewModel)
+
+            change.viewModel.isSelected
+                ? selectRow(at: change.indexPath, animated: false, scrollPosition: ScrollPosition.none)
+                : deselectRow(at: change.indexPath, animated: false)
         }
     }
 }

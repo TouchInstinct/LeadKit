@@ -23,8 +23,8 @@
 import TableKit
 import TIUIElements
 
-public protocol FilterTableSectionBuilder {
-    associatedtype CellType: BaseSeparatorCell & ConfigurableCell
-
-    func makeSection<ViewModel: FilterListPickerConfigurator>(with viewModel: ViewModel) -> TableSection where ViewModel.RowViewModel == CellType.CellData
-}
+//public protocol FilterTableSectionBuilder {
+//    associatedtype CellType: BaseSeparatorCell & ConfigurableCell
+//
+//    func makeSection<ViewModel: FilterListPickerConfigurator>(with viewModel: ViewModel) -> TableSection where ViewModel.RowViewModel == CellType.CellData
+//}
