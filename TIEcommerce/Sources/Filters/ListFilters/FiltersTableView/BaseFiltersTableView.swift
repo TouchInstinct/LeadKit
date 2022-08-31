@@ -80,8 +80,6 @@ open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
     open func configureAppearance() {
         alwaysBounceVertical = false
         allowsMultipleSelection = allowsMultipleSelection
-
-//        reloadData(with: viewModel?.visibleSelectedIndexes ?? [])
     }
 
     open func localize() {
@@ -160,6 +158,10 @@ open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
             }
 
             cell.configure(with: change.viewModel)
+
+            if let selectableCell = cell as? Selectable {
+                selectableCell.setSelected(change.viewModel.isSelected)
+            }
 
             change.viewModel.isSelected
                 ? selectRow(at: change.indexPath, animated: false, scrollPosition: ScrollPosition.none)

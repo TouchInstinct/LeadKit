@@ -20,11 +20,19 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
-import TIUIElements
+public protocol Selectable: AnyObject {
+    var isSelected: Bool { get set }
 
-//public protocol FilterTableSectionBuilder {
-//    associatedtype CellType: BaseSeparatorCell & ConfigurableCell
-//
-//    func makeSection<ViewModel: FilterListPickerConfigurator>(with viewModel: ViewModel) -> TableSection where ViewModel.RowViewModel == CellType.CellData
-//}
+    func setSelected()
+    func setDeselected()
+}
+
+public extension Selectable {
+    func setSelected(_ isSelected: Bool) {
+        isSelected ? setSelected() : setDeselected()
+    }
+
+    func setSelected() { isSelected = true }
+
+    func setDeselected() { isSelected = false }
+}

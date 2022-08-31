@@ -21,4 +21,4 @@
 //
 
 @available(iOS 13.0, *)
-public typealias DefaultFiltersTableView = BaseFiltersTableView<DefaultFilterListCell, DefaultFilterPropertyValue>
+public typealias DefaultFiltersTableView = BaseFiltersTableView<DefaultFilterTableViewCell, DefaultFilterPropertyValue>

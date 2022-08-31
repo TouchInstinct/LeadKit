@@ -20,72 +20,12 @@
 //  THE SOFTWARE.
 //
 
+import TISwiftUtils
 import TIUIElements
 import TIUIKitCore
 import UIKit
 
-open class DefaultPickerView: BaseInitializableView {
-
-    private let titleLabel = UILabel()
-    private let selectionStateImageView = UIImageView()
-
-    open var image: UIImage? {
-        get {
-            selectionStateImageView.image
-        }
-        set {
-            selectionStateImageView.image = newValue
-        }
-    }
-
-    open var text: String? {
-        get {
-            titleLabel.text
-        }
-        set {
-            titleLabel.text = newValue
-        }
-    }
-
-    open var textColor: UIColor {
-        get {
-            titleLabel.textColor
-        }
-        set {
-            titleLabel.textColor = newValue
-        }
-    }
-
-    open var defaultImageSize: CGFloat {
-        image?.size.height ?? 0
-    }
-
-    open override func addViews() {
-        super.addViews()
-
-        addSubviews(titleLabel, selectionStateImageView)
-    }
-
-    open override func configureLayout() {
-        super.configureLayout()
-
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        selectionStateImageView.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.heightAnchor.constraint(equalTo: heightAnchor),
-
-            selectionStateImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            selectionStateImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            selectionStateImageView.heightAnchor.constraint(equalToConstant: defaultImageSize)
-            selectionStateImageView.widthAnchor.constraint(equalToConstant: defaultImageSize)
-        ])
-    }
-}
-
-open class DefaultFilterListCell: ContainerTableViewCell<DefaultPickerView>, ConfigurableView {
+open class DefaultFilterTableViewCell: ContainerTableViewCell<DefaultPickerView>, ConfigurableView, Selectable {
 
     open var selectedStateAppearance: FilterCellStateAppearance {
         .defaultSelectedRowAppearance
@@ -102,11 +42,15 @@ open class DefaultFilterListCell: ContainerTableViewCell<DefaultPickerView>, Con
         }
     }
 
+    // MARK: Life cycle
+
     open override func configureAppearance() {
         super.configureAppearance()
 
         updateAppearance(with: normalStateAppearance)
     }
+
+    // MARK: - ConfigurableView
 
     open func configure(with viewModel: DefaultFilterCellViewModel) {
         wrappedView.text = viewModel.title
@@ -127,6 +71,7 @@ open class DefaultFilterListCell: ContainerTableViewCell<DefaultPickerView>, Con
 }
 
 extension FilterCellStateAppearance {
+
     static var defaultSelectedRowAppearance: FilterCellStateAppearance {
         var selectionImage: UIImage?
 
@@ -134,15 +79,15 @@ extension FilterCellStateAppearance {
             selectionImage = UIImage(systemName: "checkmark")
         }
 
-        return .init(borderColor: .systemGreen,
+        return .init(borderColor: .clear,
                      backgroundColor: .white,
-                     fontColor: .systemGreen,
-                     borderWidth: 1,
+                     fontColor: .black,
+                     borderWidth: .zero,
+                     cornerRadius: .zero,
                      selectionImage: selectionImage)
     }
 
     static var defaultNormalRowAppearance: FilterCellStateAppearance {
-
-        .init(borderColor: .lightGray, backgroundColor: .lightGray, fontColor: .black, borderWidth: 0)
+        .init(borderColor: .clear, backgroundColor: .white, fontColor: .black, borderWidth: .zero, cornerRadius: .zero, selectionImage: nil)
     }
 }
