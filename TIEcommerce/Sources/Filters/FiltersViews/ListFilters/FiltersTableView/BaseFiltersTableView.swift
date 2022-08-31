@@ -54,6 +54,8 @@ open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
 
         super.init(frame: .zero, style: style)
 
+        self.allowsMultipleSelection = allowsMultipleSelection
+
         initializeView()
         viewDidLoad()
     }
@@ -79,7 +81,6 @@ open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
 
     open func configureAppearance() {
         alwaysBounceVertical = false
-        allowsMultipleSelection = allowsMultipleSelection
     }
 
     open func localize() {
