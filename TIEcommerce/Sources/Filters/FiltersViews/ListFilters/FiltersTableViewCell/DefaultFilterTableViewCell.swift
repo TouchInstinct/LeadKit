@@ -72,6 +72,8 @@ open class DefaultFilterTableViewCell: ContainerTableViewCell<DefaultPickerView>
 
 extension FilterCellStateAppearance {
 
+    private static let defaultContentInsets = UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8) 
+
     static var defaultSelectedRowAppearance: FilterCellStateAppearance {
         var selectionImage: UIImage?
 
@@ -83,11 +85,16 @@ extension FilterCellStateAppearance {
                      backgroundColor: .white,
                      fontColor: .black,
                      borderWidth: .zero,
-                     cornerRadius: .zero,
+                     contentInsets: defaultContentInsets, cornerRadius: .zero,
                      selectionImage: selectionImage)
     }
 
     static var defaultNormalRowAppearance: FilterCellStateAppearance {
-        .init(borderColor: .clear, backgroundColor: .white, fontColor: .black, borderWidth: .zero, cornerRadius: .zero, selectionImage: nil)
+        .init(borderColor: .clear,
+              backgroundColor: .white,
+              fontColor: .black,
+              borderWidth: .zero, 
+              contentInsets: defaultContentInsets,
+              cornerRadius: .zero)
     }
 }

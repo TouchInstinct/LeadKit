@@ -56,7 +56,7 @@ open class DefaultPickerView: BaseInitializableView {
     }
 
     open var defaultImageSize: CGFloat {
-        image?.size.height ?? 0
+        20
     }
 
     open override func addViews() {

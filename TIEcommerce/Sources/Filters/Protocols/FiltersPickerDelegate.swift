@@ -21,5 +21,5 @@
 //
 
 public protocol FiltersPickerDelegate: AnyObject {
-    func filters(didSelect filters: [FilterPropertyValueRepresenter])
+    func filters(didSelected filters: [FilterPropertyValueRepresenter])
 }

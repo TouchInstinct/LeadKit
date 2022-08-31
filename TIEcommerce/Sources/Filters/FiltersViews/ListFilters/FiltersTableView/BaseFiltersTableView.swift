@@ -106,7 +106,7 @@ open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
         filterDidTapped(atIndexPath: indexPath)
     }
 
-    // MARK: - UpdatableView
+    // MARK: - Updatable
 
     open func update() {
         applySnapshot()
