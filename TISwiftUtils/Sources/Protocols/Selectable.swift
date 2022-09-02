@@ -23,16 +23,11 @@
 public protocol Selectable: AnyObject {
     var isSelected: Bool { get set }
 
-    func setSelected()
-    func setDeselected()
+    func setSelected(_ isSelected: Bool)
 }
 
 public extension Selectable {
     func setSelected(_ isSelected: Bool) {
-        isSelected ? setSelected() : setDeselected()
+        self.isSelected = isSelected
     }
-
-    func setSelected() { isSelected = true }
-
-    func setDeselected() { isSelected = false }
 }

@@ -61,7 +61,7 @@ open class DefaultFilterTableViewCell: ContainerTableViewCell<DefaultPickerView>
     open func updateAppearance(with appearance: FilterCellStateAppearance) {
         contentInsets = appearance.contentInsets
         wrappedView.textColor = appearance.fontColor
-        wrappedView.image = appearance.selectionImage
+        wrappedView.images
 
         backgroundColor = appearance.backgroundColor
         layer.borderColor = appearance.borderColor.cgColor
@@ -72,13 +72,16 @@ open class DefaultFilterTableViewCell: ContainerTableViewCell<DefaultPickerView>
 
 extension FilterCellStateAppearance {
 
-    private static let defaultContentInsets = UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8) 
+    @available(iOS 13, *)
+    private static let defaultStateImages: UIControl.StateImages = [.normal: nil,
+                                                             .selected: UIImage(systemName: "checkmark")]
+    private static let defaultContentInsets = UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8)
 
     static var defaultSelectedRowAppearance: FilterCellStateAppearance {
-        var selectionImage: UIImage?
+        var stateImages: UIControl.StateImages?
 
         if #available(iOS 13, *) {
-            selectionImage = UIImage(systemName: "checkmark")
+            stateImages = defaultStateImages
         }
 
         return .init(borderColor: .clear,
@@ -86,15 +89,22 @@ extension FilterCellStateAppearance {
                      fontColor: .black,
                      borderWidth: .zero,
                      contentInsets: defaultContentInsets, cornerRadius: .zero,
-                     selectionImage: selectionImage)
+                     stateImages: stateImages)
     }
 
     static var defaultNormalRowAppearance: FilterCellStateAppearance {
-        .init(borderColor: .clear,
-              backgroundColor: .white,
-              fontColor: .black,
-              borderWidth: .zero, 
-              contentInsets: defaultContentInsets,
-              cornerRadius: .zero)
+        var stateImages: UIControl.StateImages?
+
+        if #available(iOS 13, *) {
+            stateImages = defaultStateImages
+        }
+
+        return .init(borderColor: .clear,
+                     backgroundColor: .white,
+                     fontColor: .black,
+                     borderWidth: .zero,
+                     contentInsets: defaultContentInsets,
+                     cornerRadius: .zero,
+                     stateImages: stateImages)
     }
 }

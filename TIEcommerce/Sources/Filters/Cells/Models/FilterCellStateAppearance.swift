@@ -20,6 +20,7 @@
 //  THE SOFTWARE.
 //
 
+import TIUIKitCore
 import UIKit
 
 public struct FilterCellStateAppearance {
@@ -32,7 +33,7 @@ public struct FilterCellStateAppearance {
     public let contentInsets: UIEdgeInsets
     public let cornerRadius: CGFloat
 
-    public let selectionImage: UIImage?
+    public let stateImages: UIControl.StateImages?
 
     public init(borderColor: UIColor,
                 backgroundColor: UIColor,
@@ -40,7 +41,7 @@ public struct FilterCellStateAppearance {
                 borderWidth: CGFloat,
                 contentInsets: UIEdgeInsets = .init(top: 4, left: 8, bottom: 4, right: 8),
                 cornerRadius: CGFloat = 6,
-                selectionImage: UIImage? = nil) {
+                stateImages: UIControl.StateImages? = nil) {
 
         self.borderColor = borderColor
         self.backgroundColor = backgroundColor
@@ -48,6 +49,6 @@ public struct FilterCellStateAppearance {
         self.borderWidth = borderWidth
         self.contentInsets = contentInsets
         self.cornerRadius = cornerRadius
-        self.selectionImage = selectionImage
+        self.stateImages = stateImages
     }
 }

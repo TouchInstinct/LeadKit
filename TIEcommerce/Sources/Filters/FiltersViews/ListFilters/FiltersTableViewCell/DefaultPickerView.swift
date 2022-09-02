@@ -21,19 +21,34 @@
 //
 
 import TIUIElements
+import TIUIKitCore
+import TISwiftUtils
 import UIKit
 
-open class DefaultPickerView: BaseInitializableView {
+open class DefaultPickerView: BaseInitializableView, Selectable {
 
     private let titleLabel = UILabel()
     private let selectionStateImageView = UIImageView()
 
-    open var image: UIImage? {
-        get {
-            selectionStateImageView.image
-        }
-        set {
-            selectionStateImageView.image = newValue
+    private var normalImage: UIImage?
+    private var selectedImage: UIImage?
+
+    open var images: UIControl.StateImages? {
+        didSet {
+            guard let images = images else { return }
+
+            for (state, image) in images {
+                switch state {
+                case .normal:
+                    normalImage = image
+                case .highlighted:
+                    selectionStateImageView.highlightedImage = image
+                case .selected:
+                    selectedImage = image
+                default:
+                    continue
+                }
+            }
         }
     }
 
@@ -52,6 +67,12 @@ open class DefaultPickerView: BaseInitializableView {
         }
         set {
             titleLabel.textColor = newValue
+        }
+    }
+
+    open var isSelected: Bool = false {
+        didSet {
+            selectionStateImageView.image = isSelected ? selectedImage : normalImage
         }
     }
 

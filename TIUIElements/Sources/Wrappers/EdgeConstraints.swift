@@ -28,17 +28,6 @@ public struct EdgeConstraints {
     public let topConstraint: NSLayoutConstraint
     public let bottomConstraint: NSLayoutConstraint
 
-    public init(leadingConstraint: NSLayoutConstraint,
-                trailingConstraint: NSLayoutConstraint,
-                topConstraint: NSLayoutConstraint,
-                bottomConstraint: NSLayoutConstraint) {
-        
-        self.leadingConstraint = leadingConstraint
-        self.trailingConstraint = trailingConstraint
-        self.topConstraint = topConstraint
-        self.bottomConstraint = bottomConstraint
-    }
-
     public var allConstraints: [NSLayoutConstraint] {
         [
             leadingConstraint,
