@@ -39,6 +39,7 @@ open class DefaultFilterTableViewCell: ContainerTableViewCell<DefaultPickerView>
         didSet {
             let appearance = isSelected ? selectedStateAppearance : normalStateAppearance
             updateAppearance(with: appearance)
+            wrappedView.setSelected(isSelected)
         }
     }
 
@@ -61,7 +62,7 @@ open class DefaultFilterTableViewCell: ContainerTableViewCell<DefaultPickerView>
     open func updateAppearance(with appearance: FilterCellStateAppearance) {
         contentInsets = appearance.contentInsets
         wrappedView.textColor = appearance.fontColor
-        wrappedView.images
+        wrappedView.images = appearance.stateImages
 
         backgroundColor = appearance.backgroundColor
         layer.borderColor = appearance.borderColor.cgColor
