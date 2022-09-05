@@ -40,7 +40,7 @@ open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
     public typealias DataSource = UITableViewDiffableDataSource<String, CellType.ViewModelType>
     public typealias Snapshot = NSDiffableDataSourceSnapshot<String, CellType.ViewModelType>
 
-    public weak var viewModel: BaseFilterViewModel<CellType.ViewModelType, PropertyValue>?
+    public let viewModel: BaseFilterViewModel<CellType.ViewModelType, PropertyValue>
 
     public lazy var tableViewDataSource = createDataSource()
 
@@ -90,7 +90,7 @@ open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
     open func viewDidLoad() {
         registerCell()
 
-        viewModel?.filtersCollection = self
+        viewModel.filtersCollection = self
     }
 
     open func viewDidAppear() {
@@ -120,18 +120,12 @@ open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
     }
 
     open func filterDidTapped(atIndexPath indexPath: IndexPath) {
-        guard let viewModel = viewModel else { return }
-
         let changes = viewModel.filterDidSelected(atIndexPath: indexPath)
 
-        applyChange(changes)
+        applyChanges(changes)
     }
 
     open func applySnapshot() {
-        guard let viewModel = viewModel else {
-            return
-        }
-
         var snapshot = Snapshot()
 
         snapshot.appendSections([DefaultSection.main.rawValue])
@@ -149,10 +143,10 @@ open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
             return cell
         }
 
-        return DataSource(tableView: self, cellProvider: cellProvider)
+        return .init(tableView: self, cellProvider: cellProvider)
     }
 
-    open func applyChange(_ changes: [BaseFilterViewModel<CellType.ViewModelType, PropertyValue>.Change]) {
+    open func applyChanges(_ changes: [BaseFilterViewModel<CellType.ViewModelType, PropertyValue>.Change]) {
         changes.forEach { change in
             guard let cell = cellForRow(at: change.indexPath) as? CellType else {
                 return

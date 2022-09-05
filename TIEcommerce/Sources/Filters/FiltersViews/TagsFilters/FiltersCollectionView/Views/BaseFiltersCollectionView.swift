@@ -121,7 +121,7 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
 
         let changes = viewModel.filterDidSelected(atIndexPath: indexPath)
 
-        applyChange(changes)
+        applyChanges(changes)
     }
 
     open func applySnapshot() {
@@ -147,10 +147,10 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
             return cell
         }
 
-        return DataSource(collectionView: self, cellProvider: cellProvider)
+        return .init(collectionView: self, cellProvider: cellProvider)
     }
 
-    open func applyChange(_ changes: [BaseFilterViewModel<CellType.ViewModelType, PropertyValue>.Change]) {
+    open func applyChanges(_ changes: [BaseFilterViewModel<CellType.ViewModelType, PropertyValue>.Change]) {
         changes.forEach { change in
             guard let cell = cellForItem(at: change.indexPath) as? CellType else {
                 return

@@ -32,7 +32,7 @@ open class DefaultFilterTableViewCell: ContainerTableViewCell<DefaultPickerView>
     }
 
     open var normalStateAppearance: FilterCellStateAppearance {
-        .defaultNormalRowAppearance
+        .defaultRowAppearance
     }
 
     open override var isSelected: Bool {
@@ -75,7 +75,7 @@ extension FilterCellStateAppearance {
 
     @available(iOS 13, *)
     private static let defaultStateImages: UIControl.StateImages = [.normal: nil,
-                                                             .selected: UIImage(systemName: "checkmark")]
+                                                                    .selected: UIImage(systemName: "checkmark")]
     private static let defaultContentInsets = UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8)
 
     static var defaultSelectedRowAppearance: FilterCellStateAppearance {
@@ -89,11 +89,12 @@ extension FilterCellStateAppearance {
                      backgroundColor: .white,
                      fontColor: .black,
                      borderWidth: .zero,
-                     contentInsets: defaultContentInsets, cornerRadius: .zero,
+                     contentInsets: defaultContentInsets,
+                     cornerRadius: .zero,
                      stateImages: stateImages)
     }
 
-    static var defaultNormalRowAppearance: FilterCellStateAppearance {
+    static var defaultRowAppearance: FilterCellStateAppearance {
         var stateImages: UIControl.StateImages?
 
         if #available(iOS 13, *) {
