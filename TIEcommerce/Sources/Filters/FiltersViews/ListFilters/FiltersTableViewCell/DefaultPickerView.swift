@@ -41,10 +41,13 @@ open class DefaultPickerView: BaseInitializableView, Selectable {
                 switch state {
                 case .normal:
                     normalImage = image
+
                 case .highlighted:
                     selectionStateImageView.highlightedImage = image
+
                 case .selected:
                     selectedImage = image
+
                 default:
                     continue
                 }
