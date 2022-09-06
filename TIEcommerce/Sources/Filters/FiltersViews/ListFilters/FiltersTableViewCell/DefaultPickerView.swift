@@ -30,27 +30,10 @@ open class DefaultPickerView: BaseInitializableView, Selectable {
     private let titleLabel = UILabel()
     private let selectionStateImageView = UIImageView()
 
-    private var normalImage: UIImage?
-    private var selectedImage: UIImage?
-
-    open var images: UIControl.StateImages? {
+    open var images: UIControl.StateImages = [:] {
         didSet {
-            guard let images = images else { return }
-
-            for (state, image) in images {
-                switch state {
-                case .normal:
-                    normalImage = image
-
-                case .highlighted:
-                    selectionStateImageView.highlightedImage = image
-
-                case .selected:
-                    selectedImage = image
-
-                default:
-                    continue
-                }
+            if images.contains(where: { $0.key == .highlighted }) {
+                selectionStateImageView.highlightedImage = images[.highlighted] ?? nil
             }
         }
     }
@@ -75,7 +58,7 @@ open class DefaultPickerView: BaseInitializableView, Selectable {
 
     open var isSelected: Bool = false {
         didSet {
-            selectionStateImageView.image = isSelected ? selectedImage : normalImage
+            selectionStateImageView.image = images[isSelected ? .selected : .normal] ?? nil
         }
     }
 
