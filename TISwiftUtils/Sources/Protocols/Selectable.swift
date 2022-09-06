@@ -20,37 +20,14 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
-import TIUIKitCore
+public protocol Selectable: AnyObject {
+    var isSelected: Bool { get set }
 
-open class ContainerTableViewCell<View: UIView>: BaseInitializableCell, WrappedViewHolder {
-    // MARK: - WrappedViewHolder
+    func setSelected(_ isSelected: Bool)
+}
 
-    public private(set) lazy var wrappedView = createView()
-
-    public var contentInsets: UIEdgeInsets = .zero {
-        didSet {
-            contentEdgeConstraints?.update(from: contentInsets)
-        }
-    }
-
-    private var contentEdgeConstraints: EdgeConstraints?
-
-    // MARK: - InitializableView
-
-    override open func addViews() {
-        super.addViews()
-
-        contentView.addSubview(wrappedView)
-    }
-
-    override open func configureLayout() {
-        super.configureLayout()
-
-        contentEdgeConstraints = configureWrappedViewLayout()
-    }
-
-    open func createView() -> View {
-        return View()
+public extension Selectable {
+    func setSelected(_ isSelected: Bool) {
+        self.isSelected = isSelected
     }
 }

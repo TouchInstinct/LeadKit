@@ -20,37 +20,6 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
-import TIUIKitCore
-
-open class ContainerTableViewCell<View: UIView>: BaseInitializableCell, WrappedViewHolder {
-    // MARK: - WrappedViewHolder
-
-    public private(set) lazy var wrappedView = createView()
-
-    public var contentInsets: UIEdgeInsets = .zero {
-        didSet {
-            contentEdgeConstraints?.update(from: contentInsets)
-        }
-    }
-
-    private var contentEdgeConstraints: EdgeConstraints?
-
-    // MARK: - InitializableView
-
-    override open func addViews() {
-        super.addViews()
-
-        contentView.addSubview(wrappedView)
-    }
-
-    override open func configureLayout() {
-        super.configureLayout()
-
-        contentEdgeConstraints = configureWrappedViewLayout()
-    }
-
-    open func createView() -> View {
-        return View()
-    }
+public protocol FiltersPickerDelegate: AnyObject {
+    func filters(didSelected filters: [FilterPropertyValueRepresenter])
 }

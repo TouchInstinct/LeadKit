@@ -3,6 +3,7 @@
 ### 1.27.0
 
 - **Add**: Tag like filter collection view
+- **ADD**: List like filter table view
 
 ### 1.26.0
 

@@ -21,37 +21,40 @@
 //
 
 import TISwiftUtils
+import TIUIElements
 import TIUIKitCore
 import UIKit
 
 @available(iOS 13.0, *)
-open class BaseFiltersCollectionView<CellType: UICollectionViewCell & ConfigurableView,
-                                     PropertyValue: FilterPropertyValueRepresenter & Hashable>:
-                                        UICollectionView,
-                                        InitializableViewProtocol,
-                                        Updatable,
-                                        UICollectionViewDelegate where CellType.ViewModelType: FilterCellViewModelProtocol & Hashable {
+open class BaseFiltersTableView<CellType: UITableViewCell & ConfigurableView,
+                                PropertyValue: FilterPropertyValueRepresenter & Hashable>:
+                                    UITableView,
+                                    InitializableViewProtocol,
+                                    Updatable,
+                                    UITableViewDelegate where CellType.ViewModelType: FilterCellViewModelProtocol & Hashable {
 
     public enum DefaultSection: String {
         case main
     }
 
-    public typealias DataSource = UICollectionViewDiffableDataSource<String, CellType.ViewModelType>
+    public typealias DataSource = UITableViewDiffableDataSource<String, CellType.ViewModelType>
     public typealias Snapshot = NSDiffableDataSourceSnapshot<String, CellType.ViewModelType>
 
-    public var layout: UICollectionViewLayout
+    public let viewModel: BaseFilterViewModel<CellType.ViewModelType, PropertyValue>
 
-    public weak var viewModel: BaseFilterViewModel<CellType.ViewModelType, PropertyValue>?
-
-    public lazy var collectionViewDataSource = createDataSource()
+    public lazy var tableViewDataSource = createDataSource()
 
     // MARK: - Init
 
-    public init(layout: UICollectionViewLayout, viewModel: BaseFilterViewModel<CellType.ViewModelType, PropertyValue>? = nil) {
-        self.layout = layout
+    public init(viewModel: BaseFilterViewModel<CellType.ViewModelType, PropertyValue>,
+                allowsMultipleSelection: Bool = true,
+                style: UITableView.Style = .plain) {
+
         self.viewModel = viewModel
 
-        super.init(frame: .zero, collectionViewLayout: layout)
+        super.init(frame: .zero, style: style)
+
+        self.allowsMultipleSelection = allowsMultipleSelection
 
         initializeView()
         viewDidLoad()
@@ -68,16 +71,16 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
         // override in subclass
     }
 
-    open func bindViews() {
-        delegate = self
-    }
-
     open func configureLayout() {
         // override in subclass
     }
 
+    open func bindViews() {
+        delegate = self
+    }
+
     open func configureAppearance() {
-        backgroundColor = .white
+        alwaysBounceVertical = false
     }
 
     open func localize() {
@@ -87,24 +90,24 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
     open func viewDidLoad() {
         registerCell()
 
-        viewModel?.filtersCollection = self
+        viewModel.filtersCollection = self
     }
 
     open func viewDidAppear() {
         applySnapshot()
     }
 
-    // MARK: - UICollectionViewDelegate
+    // MARK: - UITableViewDelegate
 
-    open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         filterDidTapped(atIndexPath: indexPath)
     }
 
-    open func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         filterDidTapped(atIndexPath: indexPath)
     }
 
-    // MARK: - UpdatableView
+    // MARK: - Updatable
 
     open func update() {
         applySnapshot()
@@ -113,54 +116,51 @@ open class BaseFiltersCollectionView<CellType: UICollectionViewCell & Configurab
     // MARK: - Open methods
 
     open func registerCell() {
-        register(CellType.self, forCellWithReuseIdentifier: CellType.reuseIdentifier)
+        register(CellType.self, forCellReuseIdentifier: CellType.reuseIdentifier)
     }
 
     open func filterDidTapped(atIndexPath indexPath: IndexPath) {
-        guard let viewModel = viewModel else { return }
-
         let changes = viewModel.filterDidSelected(atIndexPath: indexPath)
 
-        applyChange(changes)
+        applyChanges(changes)
     }
 
     open func applySnapshot() {
-        guard let viewModel = viewModel else {
-            return
-        }
-
         var snapshot = Snapshot()
 
         snapshot.appendSections([DefaultSection.main.rawValue])
         snapshot.appendItems(viewModel.cellsViewModels, toSection: DefaultSection.main.rawValue)
 
-        collectionViewDataSource.apply(snapshot, animatingDifferences: true)
+        tableViewDataSource.apply(snapshot, animatingDifferences: true)
     }
 
     open func createDataSource() -> DataSource {
-        let cellProvider: DataSource.CellProvider = { collectionView, indexPath, itemIdentifier in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.reuseIdentifier,
-                                                          for: indexPath) as? CellType
+        let cellProvider: DataSource.CellProvider = { tableView, indexPath, itemIdentifier in
+            let cell = tableView.dequeueReusableCell(withIdentifier: CellType.reuseIdentifier, for: indexPath) as? CellType
 
             cell?.configure(with: itemIdentifier)
 
             return cell
         }
 
-        return DataSource(collectionView: self, cellProvider: cellProvider)
+        return .init(tableView: self, cellProvider: cellProvider)
     }
 
-    open func applyChange(_ changes: [BaseFilterViewModel<CellType.ViewModelType, PropertyValue>.Change]) {
+    open func applyChanges(_ changes: [BaseFilterViewModel<CellType.ViewModelType, PropertyValue>.Change]) {
         changes.forEach { change in
-            guard let cell = cellForItem(at: change.indexPath) as? CellType else {
+            guard let cell = cellForRow(at: change.indexPath) as? CellType else {
                 return
             }
 
             cell.configure(with: change.viewModel)
 
+            if let selectableCell = cell as? Selectable {
+                selectableCell.setSelected(change.viewModel.isSelected)
+            }
+
             change.viewModel.isSelected
-                ? selectItem(at: change.indexPath, animated: false, scrollPosition: [])
-                : deselectItem(at: change.indexPath, animated: false)
+                ? selectRow(at: change.indexPath, animated: false, scrollPosition: ScrollPosition.none)
+                : deselectRow(at: change.indexPath, animated: false)
         }
     }
 }

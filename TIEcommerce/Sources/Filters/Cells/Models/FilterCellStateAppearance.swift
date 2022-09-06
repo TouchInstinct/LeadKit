@@ -20,37 +20,35 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
 import TIUIKitCore
+import UIKit
 
-open class ContainerTableViewCell<View: UIView>: BaseInitializableCell, WrappedViewHolder {
-    // MARK: - WrappedViewHolder
+public struct FilterCellStateAppearance {
 
-    public private(set) lazy var wrappedView = createView()
+    public let borderColor: UIColor
+    public let backgroundColor: UIColor
+    public let fontColor: UIColor
 
-    public var contentInsets: UIEdgeInsets = .zero {
-        didSet {
-            contentEdgeConstraints?.update(from: contentInsets)
-        }
-    }
+    public let borderWidth: CGFloat
+    public let contentInsets: UIEdgeInsets
+    public let cornerRadius: CGFloat
 
-    private var contentEdgeConstraints: EdgeConstraints?
+    public let stateImages: UIControl.StateImages?
 
-    // MARK: - InitializableView
+    public init(borderColor: UIColor,
+                backgroundColor: UIColor,
+                fontColor: UIColor,
+                borderWidth: CGFloat,
+                contentInsets: UIEdgeInsets = .init(top: 4, left: 8, bottom: 4, right: 8),
+                cornerRadius: CGFloat = 6,
+                stateImages: UIControl.StateImages? = nil) {
 
-    override open func addViews() {
-        super.addViews()
-
-        contentView.addSubview(wrappedView)
-    }
-
-    override open func configureLayout() {
-        super.configureLayout()
-
-        contentEdgeConstraints = configureWrappedViewLayout()
-    }
-
-    open func createView() -> View {
-        return View()
+        self.borderColor = borderColor
+        self.backgroundColor = backgroundColor
+        self.fontColor = fontColor
+        self.borderWidth = borderWidth
+        self.contentInsets = contentInsets
+        self.cornerRadius = cornerRadius
+        self.stateImages = stateImages
     }
 }

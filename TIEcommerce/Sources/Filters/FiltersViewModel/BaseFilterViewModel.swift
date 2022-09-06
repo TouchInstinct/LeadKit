@@ -42,6 +42,7 @@ open class BaseFilterViewModel<CellViewModelType: FilterCellViewModelProtocol & 
     }
 
     public weak var filtersCollection: Updatable?
+    public weak var pickerDelegate: FiltersPickerDelegate?
 
     public private(set) var cellsViewModels: [CellViewModelType]
 
@@ -69,6 +70,8 @@ open class BaseFilterViewModel<CellViewModelType: FilterCellViewModelProtocol & 
                 Change(indexPath: IndexPath(item: $0.offset, section: .zero),
                        viewModel: cellsViewModels[$0.offset])
             }
+
+        pickerDelegate?.filters(didSelected: selected)
 
         return changedItems
     }
