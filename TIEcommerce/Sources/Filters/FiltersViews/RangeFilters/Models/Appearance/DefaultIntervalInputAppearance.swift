@@ -20,39 +20,29 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
-open class BaseRangeValuesFormatter: RangeValuesFormatterProtocol {
+public struct DefaultIntervalInputAppearance {
 
-    public let formatter: NumberFormatter
+    public var textFieldsHeight: CGFloat
+    public var textFieldsWidth: CGFloat
+    public var textFieldLabelsSpacing: CGFloat
+    public var textFieldContentInsets: UIEdgeInsets
+    public var textFieldsBorderColor: UIColor
+    public var textFieldsBorderWidth: CGFloat
 
-    open var floatValueDelimiter: String {
-        "."
-    }
+    public init(textFieldsHeight: CGFloat = 32,
+                textFieldsWidth: CGFloat = 100,
+                textFieldLabelsSpacing: CGFloat = 4,
+                textFieldContentInsets: UIEdgeInsets = .init(top: 4, left: 8, bottom: 4, right: 8),
+                textFieldsBorderColor: UIColor = .black,
+                textFieldsBorderWidth: CGFloat = 1) {
 
-    public init() {
-        formatter = NumberFormatter()
-
-        formatter.minimumFractionDigits = 0
-        formatter.maximumFractionDigits = 1
-    }
-
-    open func getIntervalInputLabel(state: BaseIntervalInputView.TextFieldState) -> String {
-        switch state {
-        case .fromValue:
-            return "от"
-        case .toValue:
-            return "до"
-        }
-    }
-
-    open func string(fromDouble value: Double) -> String {
-        let nsNumber = NSNumber(floatLiteral: value)
-
-        return formatter.string(from: nsNumber) ?? ""
-    }
-
-    open func double(fromString value: String) -> Double {
-        formatter.number(from: value)?.doubleValue ?? 0
+        self.textFieldsHeight = textFieldsHeight
+        self.textFieldsWidth = textFieldsWidth
+        self.textFieldLabelsSpacing = textFieldLabelsSpacing
+        self.textFieldContentInsets = textFieldContentInsets
+        self.textFieldsBorderColor = textFieldsBorderColor
+        self.textFieldsBorderWidth = textFieldsBorderWidth
     }
 }

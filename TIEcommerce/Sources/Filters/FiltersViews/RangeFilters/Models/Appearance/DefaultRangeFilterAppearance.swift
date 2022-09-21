@@ -1,62 +1,49 @@
+//
+//  Copyright (c) 2022 Touch Instinct
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the Software), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+//
+
 import UIKit
 
 public struct DefaultRangeFilterAppearance {
 
-    public var textFieldsHeight: CGFloat
-    public var textFieldsWidth: CGFloat
-    public var textFieldLabelsSpacing: CGFloat
-    public var textFieldContentInsets: UIEdgeInsets
-    public var textFieldsBorderColor: UIColor
-    public var textFieldsBorderWidth: CGFloat
+    public var intervalInputAppearance: DefaultIntervalInputAppearance
+    public var stepSliderAppearance: DefaultStepSliderAppearance
 
-    public var sliderColor: UIColor
-    public var sliderOffColor: UIColor
-    public var thumbSize: CGFloat
-
-    public var textFieldsSpacing: CGFloat
     public var spacing: CGFloat
     public var leadingSpacing: CGFloat
     public var trailingSpacing: CGFloat
     public var fontColor: UIColor
 
-    public init(textFieldsHeight: CGFloat = 32,
-                textFieldsWidth: CGFloat = 100,
-                textFieldLabelsSpacing: CGFloat = 4,
-                textFieldContentInsets: UIEdgeInsets = .zero,
-                textFieldsBorderColor: UIColor = .black,
-                textFieldsBorderWidth: CGFloat = 1,
-                sliderColor: UIColor = .cyan,
-                sliderOffColor: UIColor = .darkGray,
-                thumbSize: CGFloat = 21,
-                textFieldsSpacing: CGFloat = 10,
+    public init(intervalInputAppearance: DefaultIntervalInputAppearance = .init(),
+                stepSliderAppearance: DefaultStepSliderAppearance = .init(),
                 spacing: CGFloat = 16,
                 leadingSpacing: CGFloat = 16,
                 trailingSpacing: CGFloat = 16,
                 fontColor: UIColor = .black) {
 
-        self.textFieldsHeight = textFieldsHeight
-        self.textFieldsWidth = textFieldsWidth
-        self.textFieldLabelsSpacing = textFieldLabelsSpacing
-        self.textFieldContentInsets = textFieldContentInsets
-        self.textFieldsBorderColor = textFieldsBorderColor
-        self.textFieldsBorderWidth = textFieldsBorderWidth
-        self.sliderColor = sliderColor
-        self.sliderOffColor = sliderOffColor
-        self.thumbSize = thumbSize
-        self.textFieldsSpacing = textFieldsSpacing
+        self.intervalInputAppearance = intervalInputAppearance
+        self.stepSliderAppearance = stepSliderAppearance
         self.spacing = spacing
         self.leadingSpacing = leadingSpacing
         self.trailingSpacing = trailingSpacing
         self.fontColor = fontColor
-    }
-
-    
-}
-
-// MARK: - Default appearance
-
-public extension DefaultRangeFilterAppearance {
-    static var defaultAppearance: DefaultRangeFilterAppearance {
-        .init(textFieldContentInsets: .init(top: 4, left: 8, bottom: 4, right: 8))
     }
 }

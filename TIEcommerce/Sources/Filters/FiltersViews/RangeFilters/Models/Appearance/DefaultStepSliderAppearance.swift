@@ -20,39 +20,20 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
-open class BaseRangeValuesFormatter: RangeValuesFormatterProtocol {
+public struct DefaultStepSliderAppearance {
 
-    public let formatter: NumberFormatter
+    public var sliderColor: UIColor
+    public var sliderOffColor: UIColor
+    public var thumbSize: CGFloat
 
-    open var floatValueDelimiter: String {
-        "."
-    }
+    public init(sliderColor: UIColor = .cyan,
+                sliderOffColor: UIColor = .darkGray,
+                thumbSize: CGFloat = 21) {
 
-    public init() {
-        formatter = NumberFormatter()
-
-        formatter.minimumFractionDigits = 0
-        formatter.maximumFractionDigits = 1
-    }
-
-    open func getIntervalInputLabel(state: BaseIntervalInputView.TextFieldState) -> String {
-        switch state {
-        case .fromValue:
-            return "от"
-        case .toValue:
-            return "до"
-        }
-    }
-
-    open func string(fromDouble value: Double) -> String {
-        let nsNumber = NSNumber(floatLiteral: value)
-
-        return formatter.string(from: nsNumber) ?? ""
-    }
-
-    open func double(fromString value: String) -> Double {
-        formatter.number(from: value)?.doubleValue ?? 0
+        self.sliderColor = sliderColor
+        self.sliderOffColor = sliderOffColor
+        self.thumbSize = thumbSize
     }
 }
