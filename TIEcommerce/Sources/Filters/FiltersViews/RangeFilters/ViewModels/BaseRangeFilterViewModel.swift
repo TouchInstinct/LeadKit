@@ -14,7 +14,7 @@ open class BaseRangeFilterViewModel: RangeFilterViewModelProtocol {
     public var initialToValue: Double?
 
     public weak var filterRangeView: FilterRangeViewRepresenter?
-    public weak var delegate: RangeFilterDelegate?
+    public weak var pickerDelegate: RangeFiltersPickerDelegate?
 
     open var initialValues: FilterRangeValue {
         (initialFromValue ?? fromValue, initialToValue ?? toValue)
@@ -39,31 +39,31 @@ open class BaseRangeFilterViewModel: RangeFilterViewModelProtocol {
 
     open func rangeSliderValueIsChanging(_ values: FilterRangeValue) {
         filterRangeView?.configureTextFields(with: values)
-        delegate?.valuesIsChanging(values)
+        pickerDelegate?.valuesIsChanging(values)
     }
 
     open func rangeSliderValueDidEndChanging(_ values: FilterRangeValue) {
         filterRangeView?.configureTextFields(with: values)
-        delegate?.valueDidEndChanging(values)
+        pickerDelegate?.valueDidEndChanging(values)
     }
 
     open func fromValueIsChanging(_ values: FilterRangeValue) {
         filterRangeView?.configureRangeView(with: values)
-        delegate?.valueDidEndChanging(values)
+        pickerDelegate?.valueDidEndChanging(values)
     }
 
     open func toValueIsChanging(_ values: FilterRangeValue) {
         filterRangeView?.configureRangeView(with: values)
-        delegate?.valueDidEndChanging(values)
+        pickerDelegate?.valueDidEndChanging(values)
     }
 
     open func fromValueDidEndChanging(_ values: FilterRangeValue) {
         filterRangeView?.configureRangeView(with: values)
-        delegate?.valueDidEndChanging(values)
+        pickerDelegate?.valueDidEndChanging(values)
     }
 
     open func toValueDidEndChanging(_ values: FilterRangeValue) {
         filterRangeView?.configureRangeView(with: values)
-        delegate?.valueDidEndChanging(values)
+        pickerDelegate?.valueDidEndChanging(values)
     }
 }
