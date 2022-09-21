@@ -37,6 +37,17 @@ public struct EdgeConstraints {
         ]
     }
 
+    public init(leadingConstraint: NSLayoutConstraint,
+                trailingConstraint: NSLayoutConstraint,
+                topConstraint: NSLayoutConstraint,
+                bottomConstraint: NSLayoutConstraint) {
+
+        self.leadingConstraint = leadingConstraint
+        self.trailingConstraint = trailingConstraint
+        self.topConstraint = topConstraint
+        self.bottomConstraint = bottomConstraint
+    }
+
     public func activate() {
         NSLayoutConstraint.activate(allConstraints)
     }
