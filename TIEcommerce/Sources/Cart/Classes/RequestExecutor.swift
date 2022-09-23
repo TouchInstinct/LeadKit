@@ -26,19 +26,23 @@ open class RequestExecutor<S: Decodable, AE: Decodable, NE>: Cancellable {
     public typealias ExecutionCompletion = (EndpointRecoverableRequestResult<S, AE, NE>) -> Void
     public typealias ExecutionClosure = (ExecutionCompletion) -> Cancellable
     public typealias SuccessCompletion = (S) -> Void
+    public typealias FailureCompletion = (ErrorCollection<EndpointErrorResult<AE, NE>>) -> Void
 
     private let executionClosure: ExecutionClosure
     private var executingRequest: Cancellable?
     private var attemptsLeft: Int
     
     public var successCompletion: SuccessCompletion
+    public var failureCompletion: FailureCompletion
 
     public init(executionClosure: @escaping ExecutionClosure,
                 successCompletion: @escaping SuccessCompletion,
+                failureCompletion: FailureCompletion? = nil,
                 numberOfAttempts: Int = 3) {
         
         self.executionClosure = executionClosure
         self.successCompletion = successCompletion
+        self.failureCompletion = failureCompletion
         self.attemptsLeft = numberOfAttempts
     }
 
@@ -63,6 +67,8 @@ open class RequestExecutor<S: Decodable, AE: Decodable, NE>: Cancellable {
         if shouldRetry(failure: failure) && attemptsLeft > 0 {
             attemptsLeft -= 1
             execute()
+        } else {
+            failureCompletion?(failure)
         }
     }
 
