@@ -33,7 +33,7 @@ open class RequestExecutor<S: Decodable, AE: Decodable, NE>: Cancellable {
     private var attemptsLeft: Int
     
     public var successCompletion: SuccessCompletion
-    public var failureCompletion: FailureCompletion
+    public var failureCompletion: FailureCompletion?
 
     public init(executionClosure: @escaping ExecutionClosure,
                 successCompletion: @escaping SuccessCompletion,
