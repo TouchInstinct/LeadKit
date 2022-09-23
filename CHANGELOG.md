@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.26.2
+- **Update**: Add failureCompletion in `RequestExecutor`
+
 ### 1.26.1
 - **Fix**: Use OperationQueue instead of NSLock in `DefaultTokenInterceptor`
 - **Update**: AsyncOperation refactoring
