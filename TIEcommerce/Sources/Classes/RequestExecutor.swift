@@ -24,7 +24,7 @@ import TINetworking
 
 open class RequestExecutor<S: Decodable, AE: Decodable, NE>: Cancellable {
     public typealias ExecutionCompletion = (EndpointRecoverableRequestResult<S, AE, NE>) -> Void
-    public typealias ExecutionClosure = (ExecutionCompletion) -> Cancellable
+    public typealias ExecutionClosure = (@escaping ExecutionCompletion) -> Cancellable
     public typealias SuccessCompletion = (S) -> Void
     public typealias FailureCompletion = (ErrorCollection<EndpointErrorResult<AE, NE>>) -> Void
 
