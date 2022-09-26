@@ -6,6 +6,12 @@
 - **Add**: List like filter table view
 - **Add**: Range like filter view
 
+### 1.26.3
+- **Update**: Add @escaping in `RequestExecutor.ExecutionClosure`
+
+### 1.26.2
+- **Update**: Add failureCompletion in `RequestExecutor`
+
 ### 1.26.1
 - **Fix**: Use OperationQueue instead of NSLock in `DefaultTokenInterceptor`
 - **Update**: AsyncOperation refactoring
