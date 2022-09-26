@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.26.3
+- **Update**: Add @escaping in `RequestExecutor.ExecutionClosure`
+
 ### 1.26.2
 - **Update**: Add failureCompletion in `RequestExecutor`
 
