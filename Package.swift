@@ -20,6 +20,7 @@ let package = Package(
     .library(name: "TIFoundationUtils", targets: ["TIFoundationUtils"]),
     .library(name: "TIKeychainUtils", targets: ["TIKeychainUtils"]),
     .library(name: "TITableKitUtils", targets: ["TITableKitUtils"]),
+    .library(name: "TILogging", targets: ["TILogging"]),
 
     // MARK: - Networking
 
@@ -64,6 +65,7 @@ let package = Package(
     .target(name: "TIFoundationUtils", dependencies: ["TISwiftUtils"], path: "TIFoundationUtils"),
     .target(name: "TIKeychainUtils", dependencies: ["TIFoundationUtils", "KeychainAccess"], path: "TIKeychainUtils/Sources"),
     .target(name: "TITableKitUtils", dependencies: ["TIUIElements", "TableKit"], path: "TITableKitUtils/Sources"),
+    .target(name: "TILogging", dependencies: [], path: "TILogging/Sources"),
 
     // MARK: - Networking
 
