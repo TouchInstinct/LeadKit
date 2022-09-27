@@ -1,9 +1,11 @@
+import Foundation
 import os
 
 public struct TILogger: LoggerRepresentable {
 
     // MARK: - Properties
 
+    @available(iOS 12, *)
     public static let defaultLogger = TILogger(subsystem: .defaultSubsystem ?? "", category: .pointsOfInterest)
 
     public let logInfo: OSLog
@@ -14,6 +16,7 @@ public struct TILogger: LoggerRepresentable {
         self.logInfo = .init(subsystem: subsystem, category: category)
     }
 
+    @available(iOS 12, *)
     public init(subsystem: String, category: OSLog.Category) {
         self.logInfo = .init(subsystem: subsystem, category: category)
     }
