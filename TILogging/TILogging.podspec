@@ -12,4 +12,8 @@ Pod::Spec.new do |s|
 
   s.source_files = s.name + '/Sources/**/*'
 
+  s.dependency 'TIUIKitCore', s.version.to_s
+  s.dependency 'TISwiftUtils', s.version.to_s
+  s.dependency 'TIUIElements', s.version.to_s
+
 end
