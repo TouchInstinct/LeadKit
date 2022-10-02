@@ -71,7 +71,7 @@ open class LogsStorageViewModel {
             let logStore = try? OSLogStore(scope: .currentProcessIdentifier)
             let entries = try? logStore?.getEntries()
 
-            let logs =  entries?
+            let logs = entries?
                 .reversed()
                 .compactMap { $0 as? OSLogEntryLog }
 
