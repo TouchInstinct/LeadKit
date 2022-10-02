@@ -20,37 +20,44 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
-import TIUIKitCore
+import Foundation
 
-open class ContainerTableViewCell<View: UIView>: BaseInitializableCell, WrappedViewHolder {
-    // MARK: - WrappedViewHolder
+public struct TIFileCreator {
 
-    public private(set) lazy var wrappedView = createView()
+    public var fileName: String
+    public var fileExtension: String
 
-    public var contentInsets: UIEdgeInsets = .zero {
-        didSet {
-            contentEdgeConstraints?.update(from: contentInsets)
+    public var fullFileName: String {
+        fileName + "." + fileExtension
+    }
+
+    public init(fileName: String, fileExtension: String) {
+        self.fileName = fileName
+        self.fileExtension = fileExtension
+    }
+
+    @discardableResult
+    public func createFile(withData data: Data) -> URL? {
+        guard var url = getDocumentsDirectory() else {
+            return nil
         }
+
+        url.appendPathComponent(fullFileName)
+
+        do {
+            try data.write(to: url)
+            return url
+            
+        } catch {
+            return nil
+        }
+
     }
 
-    private var contentEdgeConstraints: EdgeConstraints?
-
-    // MARK: - InitializableView
-
-    override open func addViews() {
-        super.addViews()
-
-        contentView.addSubview(wrappedView)
-    }
-
-    override open func configureLayout() {
-        super.configureLayout()
-
-        contentEdgeConstraints = configureWrappedViewLayout()
-    }
-
-    open func createView() -> View {
-        return View()
+    public func getDocumentsDirectory() -> URL? {
+        try? FileManager.default.url(for: .documentDirectory,
+                                     in: .userDomainMask,
+                                     appropriateFor: nil,
+                                     create: false)
     }
 }

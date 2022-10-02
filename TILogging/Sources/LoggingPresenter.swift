@@ -21,36 +21,31 @@
 //
 
 import UIKit
-import TIUIKitCore
 
-open class ContainerTableViewCell<View: UIView>: BaseInitializableCell, WrappedViewHolder {
-    // MARK: - WrappedViewHolder
+@available(iOS 15, *)
+final public class LoggingPresenter {
 
-    public private(set) lazy var wrappedView = createView()
+    public static let shared = LoggingPresenter()
 
-    public var contentInsets: UIEdgeInsets = .zero {
-        didSet {
-            contentEdgeConstraints?.update(from: contentInsets)
-        }
+    private lazy var window: UIWindow = {
+        let window = LoggingTogglingWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = loggingViewController
+
+        return window
+    }()
+
+    private lazy var loggingViewController: UIViewController = {
+        LoggingTogglingViewController()
+    }()
+
+    private init() { }
+
+    public func start(_ scene: UIWindowScene? = nil) {
+        window.windowScene = scene
+        window.isHidden = false
     }
 
-    private var contentEdgeConstraints: EdgeConstraints?
-
-    // MARK: - InitializableView
-
-    override open func addViews() {
-        super.addViews()
-
-        contentView.addSubview(wrappedView)
-    }
-
-    override open func configureLayout() {
-        super.configureLayout()
-
-        contentEdgeConstraints = configureWrappedViewLayout()
-    }
-
-    open func createView() -> View {
-        return View()
+    public func stop() {
+        window.isHidden = true
     }
 }

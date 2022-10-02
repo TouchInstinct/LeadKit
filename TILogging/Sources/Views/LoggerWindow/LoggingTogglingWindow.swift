@@ -21,36 +21,34 @@
 //
 
 import UIKit
-import TIUIKitCore
 
-open class ContainerTableViewCell<View: UIView>: BaseInitializableCell, WrappedViewHolder {
-    // MARK: - WrappedViewHolder
+@available(iOS 15, *)
+class LoggingTogglingWindow: UIWindow {
 
-    public private(set) lazy var wrappedView = createView()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
 
-    public var contentInsets: UIEdgeInsets = .zero {
-        didSet {
-            contentEdgeConstraints?.update(from: contentInsets)
+        windowLevel = .statusBar
+        backgroundColor = .clear
+    }
+
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        guard let rootView = rootViewController else { return false }
+
+        if let loggingController = rootView.presentedViewController {
+            return loggingController.view.point(inside: point, with: event)
         }
-    }
 
-    private var contentEdgeConstraints: EdgeConstraints?
+        if let button = rootView.view.subviews.first {
+            let buttonPoint = convert(point, to: button)
+            return button.point(inside: buttonPoint, with: event)
+        }
 
-    // MARK: - InitializableView
-
-    override open func addViews() {
-        super.addViews()
-
-        contentView.addSubview(wrappedView)
-    }
-
-    override open func configureLayout() {
-        super.configureLayout()
-
-        contentEdgeConstraints = configureWrappedViewLayout()
-    }
-
-    open func createView() -> View {
-        return View()
+        return false
     }
 }
