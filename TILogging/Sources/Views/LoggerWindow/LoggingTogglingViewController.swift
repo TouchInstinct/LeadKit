@@ -64,6 +64,8 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .white
         button.layer.cornerRadius = 10
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.gray.cgColor
     }
 
     // MARK: - Private methods
