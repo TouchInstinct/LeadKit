@@ -20,13 +20,15 @@
 //  THE SOFTWARE.
 //
 
+import CoreGraphics
+
 public protocol RangeFilterViewModelProtocol {
     
-    var fromValue: Double { get }
-    var toValue: Double { get }
-    var stepValues: [Double] { get }
-    var initialFromValue: Double? { get }
-    var initialToValue: Double? { get }
+    var fromValue: CGFloat { get }
+    var toValue: CGFloat { get }
+    var stepValues: [CGFloat] { get }
+    var initialFromValue: CGFloat? { get }
+    var initialToValue: CGFloat? { get }
 
     func rangeSliderValueIsChanging(_ values: FilterRangeValue)
     func rangeSliderValueDidEndChanging(_ values: FilterRangeValue)

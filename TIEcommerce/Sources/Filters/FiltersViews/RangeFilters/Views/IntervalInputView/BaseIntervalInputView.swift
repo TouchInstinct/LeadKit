@@ -70,7 +70,7 @@ open class BaseIntervalInputView: BaseInitializableView, UITextFieldDelegate {
             return 0 
         }
 
-        return formatter.double(fromString: inputTextField.text)
+        return formatter.double(fromString: inputText)
     }
 
     open override var intrinsicContentSize: CGSize {

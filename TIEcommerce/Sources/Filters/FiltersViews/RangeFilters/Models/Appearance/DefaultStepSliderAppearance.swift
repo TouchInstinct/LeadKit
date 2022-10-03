@@ -27,13 +27,16 @@ public struct DefaultStepSliderAppearance {
     public var sliderColor: UIColor
     public var sliderOffColor: UIColor
     public var thumbSize: CGFloat
+    public var stepLabelsOffset: CGFloat
 
     public init(sliderColor: UIColor = .cyan,
                 sliderOffColor: UIColor = .darkGray,
-                thumbSize: CGFloat = 21) {
+                thumbSize: CGFloat = 21,
+                stepLabelsOffset: CGFloat = 11) {
 
         self.sliderColor = sliderColor
         self.sliderOffColor = sliderOffColor
         self.thumbSize = thumbSize
+        self.stepLabelsOffset = stepLabelsOffset
     }
 }

@@ -37,11 +37,11 @@ open class BaseRangeValuesFormatter: RangeValuesFormatterProtocol {
         formatter.maximumFractionDigits = 1
     }
 
-    open func getIntervalInputLabel(state: BaseIntervalInputView.TextFieldState) -> String {
+    open func getIntervalInputLabel(state: RangeBoundSide) -> String {
         switch state {
-        case .fromValue:
+        case .lower:
             return "от"
-        case .toValue:
+        case .upper:
             return "до"
         }
     }

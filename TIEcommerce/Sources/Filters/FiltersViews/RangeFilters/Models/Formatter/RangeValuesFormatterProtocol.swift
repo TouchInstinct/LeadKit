@@ -23,7 +23,7 @@
 public protocol RangeValuesFormatterProtocol {
     var floatValueDelimiter: String { get }
 
-    func getIntervalInputLabel(state: BaseIntervalInputView.TextFieldState) -> String
+    func getIntervalInputLabel(state: RangeBoundSide) -> String
 
     func string(fromDouble value: Double) -> String
     func double(fromString value: String) -> Double

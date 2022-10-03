@@ -78,6 +78,12 @@ open class BaseFilterRangeSlider: StepRangeSlider {
         }
     }
 
+    open var stepLabelsOffset: CGFloat = 0 {
+        didSet {
+            setNeedsLayout()
+        }
+    }
+
     open override var intrinsicContentSize: CGSize {
         let superSize = super.intrinsicContentSize
 
@@ -209,8 +215,8 @@ open class BaseFilterRangeSlider: StepRangeSlider {
 
             let circleView = stepCircleViews[index]
             let yPosition = layout == .textFieldsOnTop
-                ? circleView.frame.maxY
-                : circleView.frame.minY - label.bounds.height
+                ? circleView.frame.maxY + stepLabelsOffset
+                : circleView.frame.minY - label.bounds.height - stepLabelsOffset
 
             label.center.x = circleView.center.x
             label.sizeToFit()

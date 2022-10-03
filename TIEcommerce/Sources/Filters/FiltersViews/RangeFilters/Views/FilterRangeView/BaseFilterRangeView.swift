@@ -224,8 +224,6 @@ open class BaseFilterRangeView<ViewModel: RangeFilterViewModelProtocol>: BaseIni
     open override func bindViews() {
         super.bindViews()
 
-        defaultConfigure()
-
         fromValueView.configure(with: formatter)
         toValueView.configure(with: formatter)
         rangeSlider.configure(with: formatter)
@@ -243,6 +241,8 @@ open class BaseFilterRangeView<ViewModel: RangeFilterViewModelProtocol>: BaseIni
         rangeSlider.addTarget(self,
                               action: #selector(rangeSliderValueDidEndChanging),
                               for: .editingDidEnd)
+
+        defaultConfigure()
     }
 
     open override func configureAppearance() {
@@ -304,6 +304,7 @@ open class BaseFilterRangeView<ViewModel: RangeFilterViewModelProtocol>: BaseIni
         rangeSlider.sliderColor = sliderAppearance.sliderColor
         rangeSlider.sliderOffColor = sliderAppearance.sliderOffColor
         rangeSlider.thumbSize = sliderAppearance.thumbSize
+        rangeSlider.stepLabelsOffset = sliderAppearance.stepLabelsOffset
     }
 
     private func configureTextFieldOnTop() {

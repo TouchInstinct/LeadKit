@@ -71,11 +71,11 @@ open class BaseRangeFilterViewModel: RangeFilterViewModelProtocol {
 
     open func intervalInputValueIsChanging(_ values: FilterRangeValue, side: RangeBoundSide) {
         switch side {
-        case lower:
+        case .lower:
             filterRangeView?.configureRangeView(with: values)
             pickerDelegate?.valueDidEndChanging(values)
 
-        case upper:
+        case .upper:
             filterRangeView?.configureRangeView(with: values)
             pickerDelegate?.valueDidEndChanging(values)
         }
@@ -83,11 +83,11 @@ open class BaseRangeFilterViewModel: RangeFilterViewModelProtocol {
 
     open func intervalInputValueDidEndChanging(_ values: FilterRangeValue, side: RangeBoundSide) {
         switch side {
-        case lower:
+        case .lower:
             filterRangeView?.configureRangeView(with: values)
             pickerDelegate?.valueDidEndChanging(values)
 
-        case upper:
+        case .upper:
             filterRangeView?.configureRangeView(with: values)
             pickerDelegate?.valueDidEndChanging(values)
         }
