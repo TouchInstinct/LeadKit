@@ -31,9 +31,6 @@ public protocol RangeFilterViewModelProtocol {
     func rangeSliderValueIsChanging(_ values: FilterRangeValue)
     func rangeSliderValueDidEndChanging(_ values: FilterRangeValue)
 
-    func toValueIsChanging(_ values: FilterRangeValue)
-    func toValueDidEndChanging(_ values: FilterRangeValue)
-
-    func fromValueDidEndChanging(_ values: FilterRangeValue)
-    func fromValueIsChanging(_ values: FilterRangeValue)
+    func intervalInputValueIsChanging(_ values: FilterRangeValue, side: RangeBoundSide)
+    func intervalInputValueDidEndChanging(_ values: FilterRangeValue, side: RangeBoundSide)
 }

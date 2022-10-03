@@ -184,14 +184,16 @@ open class BaseFilterRangeSlider: StepRangeSlider {
     }
 
     private func createStepLabels() {
+        guard let formatter = formatter else { return }
+
         stepLabels.forEach {
             $0.removeFromSuperview()
         }
 
         stepValues.forEach {
             let label = UILabel()
-            let formattedText = formatter?.string(fromDouble: $0)
-            label.text = formattedText ?? ""
+            let formattedText = formatter.string(fromDouble: $0)
+            label.text = formattedText
 
             stepLabels.append(label)
         }
@@ -207,8 +209,8 @@ open class BaseFilterRangeSlider: StepRangeSlider {
 
             let circleView = stepCircleViews[index]
             let yPosition = layout == .textFieldsOnTop
-                ? circleView.frame.maxY + .stepLabelsTopInset
-                : circleView.frame.minY - label.bounds.height - .stepLabelsTopInset
+                ? circleView.frame.maxY
+                : circleView.frame.minY - label.bounds.height
 
             label.center.x = circleView.center.x
             label.sizeToFit()
@@ -223,10 +225,4 @@ open class BaseFilterRangeSlider: StepRangeSlider {
         let unit = trackUsingWidth / (maximumValue - minimumValue)
         return (value - minimumValue) * unit
     }
-}
-
-// MARK: - Constant
-
-private extension CGFloat {
-    static let stepLabelsTopInset: CGFloat = 11
 }

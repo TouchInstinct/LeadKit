@@ -26,9 +26,9 @@ open class BaseRangeValuesFormatter: RangeValuesFormatterProtocol {
 
     public let formatter: NumberFormatter
 
-    open var floatValueDelimiter: String {
-        "."
-    }
+    public var floatValueDelimiter = "."
+
+    public var formattingFailureValue = 0.0
 
     public init() {
         formatter = NumberFormatter()
@@ -49,10 +49,10 @@ open class BaseRangeValuesFormatter: RangeValuesFormatterProtocol {
     open func string(fromDouble value: Double) -> String {
         let nsNumber = NSNumber(floatLiteral: value)
 
-        return formatter.string(from: nsNumber) ?? ""
+        return formatter.string(from: nsNumber) ?? "\(formattingFailureValue)"
     }
 
     open func double(fromString value: String) -> Double {
-        formatter.number(from: value)?.doubleValue ?? 0
+        formatter.number(from: value)?.doubleValue ?? formattingFailureValue
     }
 }

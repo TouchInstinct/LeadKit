@@ -24,16 +24,16 @@ import CoreGraphics
 import Foundation
 import TISwiftUtils
 
-public typealias FilterRangeValue = (fromValue: Double, toValue: Double)
+public typealias FilterRangeValue = (fromValue: CGFloat, toValue: CGFloat)
 
 open class BaseRangeFilterViewModel: RangeFilterViewModelProtocol {
 
-    public let fromValue: Double
-    public let toValue: Double
-    public let stepValues: [Double]
+    public let fromValue: CGFloat
+    public let toValue: CGFloat
+    public let stepValues: [CGFloat]
 
-    public var initialFromValue: Double?
-    public var initialToValue: Double?
+    public var initialFromValue: CGFloat?
+    public var initialToValue: CGFloat?
 
     public weak var filterRangeView: FilterRangeViewRepresenter?
     public weak var pickerDelegate: RangeFiltersPickerDelegate?
@@ -46,11 +46,11 @@ open class BaseRangeFilterViewModel: RangeFilterViewModelProtocol {
         initialFromValue != fromValue || initialToValue != toValue
     }
 
-    public init(fromValue: Double,
-                toValue: Double,
-                stepValues: [Double],
-                initialFromValue: Double? = nil,
-                initialToValue: Double? = nil) {
+    public init(fromValue: CGFloat,
+                toValue: CGFloat,
+                stepValues: [CGFloat],
+                initialFromValue: CGFloat? = nil,
+                initialToValue: CGFloat? = nil) {
 
         self.fromValue = fromValue
         self.toValue = toValue
@@ -69,23 +69,27 @@ open class BaseRangeFilterViewModel: RangeFilterViewModelProtocol {
         pickerDelegate?.valueDidEndChanging(values)
     }
 
-    open func fromValueIsChanging(_ values: FilterRangeValue) {
-        filterRangeView?.configureRangeView(with: values)
-        pickerDelegate?.valueDidEndChanging(values)
+    open func intervalInputValueIsChanging(_ values: FilterRangeValue, side: RangeBoundSide) {
+        switch side {
+        case lower:
+            filterRangeView?.configureRangeView(with: values)
+            pickerDelegate?.valueDidEndChanging(values)
+
+        case upper:
+            filterRangeView?.configureRangeView(with: values)
+            pickerDelegate?.valueDidEndChanging(values)
+        }
     }
 
-    open func toValueIsChanging(_ values: FilterRangeValue) {
-        filterRangeView?.configureRangeView(with: values)
-        pickerDelegate?.valueDidEndChanging(values)
-    }
+    open func intervalInputValueDidEndChanging(_ values: FilterRangeValue, side: RangeBoundSide) {
+        switch side {
+        case lower:
+            filterRangeView?.configureRangeView(with: values)
+            pickerDelegate?.valueDidEndChanging(values)
 
-    open func fromValueDidEndChanging(_ values: FilterRangeValue) {
-        filterRangeView?.configureRangeView(with: values)
-        pickerDelegate?.valueDidEndChanging(values)
-    }
-
-    open func toValueDidEndChanging(_ values: FilterRangeValue) {
-        filterRangeView?.configureRangeView(with: values)
-        pickerDelegate?.valueDidEndChanging(values)
+        case upper:
+            filterRangeView?.configureRangeView(with: values)
+            pickerDelegate?.valueDidEndChanging(values)
+        }
     }
 }

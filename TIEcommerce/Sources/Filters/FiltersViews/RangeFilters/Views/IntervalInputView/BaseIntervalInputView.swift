@@ -24,17 +24,17 @@ import TIUIElements
 import TIUIKitCore
 import UIKit
 
-open class BaseIntervalInputView: BaseInitializableView, UITextFieldDelegate {
+public enum RangeBoundSide {
+    case lower
+    case upper
+}
 
-    public enum TextFieldState {
-        case fromValue
-        case toValue
-    }
+open class BaseIntervalInputView: BaseInitializableView, UITextFieldDelegate {
 
     private var contentEdgesConstraints: EdgeConstraints?
     private var labelsSpacingConstraint: NSLayoutConstraint?
 
-    public let state: TextFieldState
+    public let state: RangeBoundSide
 
     public let intervalLabel = UILabel()
     public let inputTextField = UITextField()
@@ -45,11 +45,11 @@ open class BaseIntervalInputView: BaseInitializableView, UITextFieldDelegate {
         }
     }
 
-    open var validCharacterSet: CharacterSet {
+    open lazy var validCharacterSet: CharacterSet = {
         CharacterSet
             .decimalDigits
             .union(CharacterSet(charactersIn: formatter?.floatValueDelimiter ?? "."))
-    }
+    }()
 
     open var fontColor: UIColor = .black {
         didSet {
@@ -65,7 +65,12 @@ open class BaseIntervalInputView: BaseInitializableView, UITextFieldDelegate {
     }
 
     open var currentValue: Double {
-        formatter?.double(fromString: inputTextField.text ?? "") ?? 0
+        guard let formatter = formatter, 
+              let inputText = inputTextField.text else {
+            return 0 
+        }
+
+        return formatter.double(fromString: inputTextField.text)
     }
 
     open override var intrinsicContentSize: CGSize {
@@ -78,7 +83,7 @@ open class BaseIntervalInputView: BaseInitializableView, UITextFieldDelegate {
 
     // MARK: - Init
 
-    public init(state: TextFieldState) {
+    public init(state: RangeBoundSide) {
         self.state = state
 
         super.init(frame: .zero)

@@ -41,20 +41,22 @@ open class BaseFilterRangeView<ViewModel: RangeFilterViewModelProtocol>: BaseIni
     public let rangeSlider: BaseFilterRangeSlider
 
     public let textFieldsContainer = UIView()
-    public let fromValueView = BaseIntervalInputView(state: .fromValue)
-    public let toValueView = BaseIntervalInputView(state: .toValue)
+    public let fromValueView = BaseIntervalInputView(state: .lower)
+    public let toValueView = BaseIntervalInputView(state: .upper)
 
     public var viewModel: ViewModel?
 
     // MARK: - Open properties
 
     open var rangeSliderValue: FilterRangeValue {
-        (rangeSlider.leftValue, rangeSlider.rightValue)
+        (fromValue: rangeSlider.leftValue, toValue: rangeSlider.rightValue)
     }
 
     open var textFieldsValues: FilterRangeValue {
-        (min(fromValueView.currentValue, viewModel?.toValue ?? .zero),
-         max(toValueView.currentValue, viewModel?.fromValue ?? .zero))
+        (
+            fromValue: min(fromValueView.currentValue, viewModel?.toValue ?? .zero),
+            toValue: max(toValueView.currentValue, viewModel?.fromValue ?? .zero)
+         )
     }
     // MARK: - Text Fields Setup
 
@@ -183,26 +185,36 @@ open class BaseFilterRangeView<ViewModel: RangeFilterViewModelProtocol>: BaseIni
         let toTextFieldWidthConstraint = toValueView.widthAnchor.constraint(greaterThanOrEqualToConstant: textFieldsMinWidth)
         let fromTextFieldWidthConstraint = fromValueView.widthAnchor.constraint(greaterThanOrEqualToConstant: textFieldsMinWidth)
 
+        let fromTextFieldConstraints = [
+            fromTextFieldWidthConstraint,
+            fromValueView.leadingAnchor.constraint(equalTo: textFieldsContainer.leadingAnchor),
+            fromValueView.topAnchor.constraint(equalTo: textFieldsContainer.topAnchor),
+            fromValueView.bottomAnchor.constraint(equalTo: textFieldsContainer.bottomAnchor),
+        ]
+
+        let toTextFieldConstraints = [
+            toTextFieldWidthConstraint,
+            toValueView.trailingAnchor.constraint(equalTo: textFieldsContainer.trailingAnchor),
+            toValueView.topAnchor.constraint(equalTo: textFieldsContainer.topAnchor),
+            toValueView.bottomAnchor.constraint(equalTo: textFieldsContainer.bottomAnchor),
+        ]
+
+        let sliderConstraints = [
+            rangeSlider.leadingAnchor.constraint(equalTo: textFieldsContainer.leadingAnchor),
+            rangeSlider.trailingAnchor.constraint(equalTo: textFieldsContainer.trailingAnchor),
+            layout == .textFieldsOnTop
+                ? rangeSlider.bottomAnchor.constraint(equalTo: bottomAnchor)
+                : rangeSlider.topAnchor.constraint(equalTo: topAnchor)
+        ]
+
         NSLayoutConstraint.activate(
             contentEdgesConstraints.allConstraints
             +
-            [
-                toTextFieldWidthConstraint,
-                fromTextFieldWidthConstraint,
-
-                toValueView.trailingAnchor.constraint(equalTo: textFieldsContainer.trailingAnchor),
-                toValueView.topAnchor.constraint(equalTo: textFieldsContainer.topAnchor),
-                toValueView.bottomAnchor.constraint(equalTo: textFieldsContainer.bottomAnchor),
-                fromValueView.leadingAnchor.constraint(equalTo: textFieldsContainer.leadingAnchor),
-                fromValueView.topAnchor.constraint(equalTo: textFieldsContainer.topAnchor),
-                fromValueView.bottomAnchor.constraint(equalTo: textFieldsContainer.bottomAnchor),
-
-                rangeSlider.leadingAnchor.constraint(equalTo: textFieldsContainer.leadingAnchor),
-                rangeSlider.trailingAnchor.constraint(equalTo: textFieldsContainer.trailingAnchor),
-                layout == .textFieldsOnTop
-                    ? rangeSlider.bottomAnchor.constraint(equalTo: bottomAnchor)
-                    : rangeSlider.topAnchor.constraint(equalTo: topAnchor)
-            ]
+            fromTextFieldConstraints
+            +
+            toTextFieldConstraints
+            +
+            sliderConstraints
         )
 
         self.toTextFieldWidthConstraint = toTextFieldWidthConstraint
@@ -211,6 +223,8 @@ open class BaseFilterRangeView<ViewModel: RangeFilterViewModelProtocol>: BaseIni
 
     open override func bindViews() {
         super.bindViews()
+
+        defaultConfigure()
 
         fromValueView.configure(with: formatter)
         toValueView.configure(with: formatter)
@@ -234,7 +248,6 @@ open class BaseFilterRangeView<ViewModel: RangeFilterViewModelProtocol>: BaseIni
     open override func configureAppearance() {
         super.configureAppearance()
 
-        defaultConfigure()
         updateAppearance()
 
         layoutSubviews()
@@ -250,13 +263,13 @@ open class BaseFilterRangeView<ViewModel: RangeFilterViewModelProtocol>: BaseIni
         fromValueView.configure(with: viewModel.initialFromValue ?? viewModel.fromValue)
         toValueView.configure(with: viewModel.initialToValue ?? viewModel.toValue)
 
-        rangeSlider.minimumValue = CGFloat(viewModel.fromValue)
-        rangeSlider.maximumValue = CGFloat(viewModel.toValue)
+        rangeSlider.minimumValue = viewModel.fromValue
+        rangeSlider.maximumValue = viewModel.toValue
 
-        rangeSlider.leftValue = CGFloat(viewModel.initialFromValue ?? viewModel.fromValue)
-        rangeSlider.rightValue = CGFloat(viewModel.initialToValue ?? viewModel.toValue)
+        rangeSlider.leftValue = viewModel.initialFromValue ?? viewModel.fromValue
+        rangeSlider.rightValue = viewModel.initialToValue ?? viewModel.toValue
 
-        rangeSlider.addStep(stepValues: viewModel.stepValues.map { CGFloat($0) })
+        rangeSlider.addStep(stepValues: viewModel.stepValues)
     }
 
     // MARK: - FilterRangeViewRepresenter
@@ -318,18 +331,18 @@ open class BaseFilterRangeView<ViewModel: RangeFilterViewModelProtocol>: BaseIni
     }
 
     @objc private func fromValueIsChanging() {
-        viewModel?.fromValueIsChanging(textFieldsValues)
+        viewModel?.intervalInputValueIsChanging(textFieldsValues, side: .lower)
     }
 
     @objc private func toValueIsChanging() {
-        viewModel?.toValueIsChanging(textFieldsValues)
+        viewModel?.intervalInputValueIsChanging(textFieldsValues, side: .upper)
     }
 
     @objc private func fromValueDidEndChanging() {
-        viewModel?.fromValueDidEndChanging(textFieldsValues)
+        viewModel?.intervalInputValueDidEndChanging(textFieldsValues, side: .lower)
     }
 
     @objc private func toValueDidEndChanging() {
-        viewModel?.toValueDidEndChanging(textFieldsValues)
+        viewModel?.intervalInputValueDidEndChanging(textFieldsValues, side: .upper)
     }
 }
