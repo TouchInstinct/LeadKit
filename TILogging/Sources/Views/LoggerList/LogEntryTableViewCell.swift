@@ -25,70 +25,8 @@ import TIUIElements
 import UIKit
 import OSLog
 
-open class LogCellView: BaseInitializableView {
-
-    public let containerView = UIStackView()
-    public let timeLabel = UILabel()
-    public let processLabel = UILabel()
-    public let messageLabel = UILabel()
-    public let levelTypeView = UIView()
-
-    // MARK: - Life cycle
-
-    open override func addViews() {
-        super.addViews()
-
-        containerView.addArrangedSubviews(timeLabel, processLabel)
-        addSubviews(containerView,
-                    messageLabel,
-                    levelTypeView)
-    }
-
-    open override func configureLayout() {
-        super.configureLayout()
-
-        [containerView, timeLabel, processLabel, messageLabel, levelTypeView]
-            .forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
-
-        NSLayoutConstraint.activate([
-            containerView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            containerView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-
-            messageLabel.leadingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 8),
-            messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-            messageLabel.trailingAnchor.constraint(equalTo: levelTypeView.leadingAnchor, constant: -8),
-
-            levelTypeView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            levelTypeView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            levelTypeView.heightAnchor.constraint(equalToConstant: 10),
-            levelTypeView.widthAnchor.constraint(equalToConstant: 10),
-        ])
-    }
-
-    open override func configureAppearance() {
-        super.configureAppearance()
-
-        containerView.axis = .vertical
-        containerView.spacing = 4
-
-        timeLabel.font = .systemFont(ofSize: 10)
-
-        processLabel.lineBreakMode = .byTruncatingTail
-        processLabel.font = .systemFont(ofSize: 12)
-
-        messageLabel.numberOfLines = 0
-        messageLabel.lineBreakMode = .byWordWrapping
-        messageLabel.font = .systemFont(ofSize: 12)
-
-        levelTypeView.layer.cornerRadius = 3
-    }
-}
-
 @available(iOS 15, *)
-open class LogEntryTableViewCell: ContainerTableViewCell<LogCellView>, ConfigurableView {
+open class LogEntryTableViewCell: ContainerTableViewCell<LogEntryCellView>, ConfigurableView {
 
     // MARK: - ConfigurableView
     

@@ -28,6 +28,18 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
 
     private var initialCenter = CGPoint()
 
+    private var isRegisteredForShackingEvent: Bool {
+        !isVisibleState
+    }
+
+    private(set) public var isLogsPresented = false
+
+    private(set) public var isVisibleState = true {
+        didSet {
+            button.isHidden = !isVisibleState
+        }
+    }
+
     public lazy var button: UIButton = {
         let safeAreaFrame = view.safeAreaLayoutGuide.layoutFrame
         let button = UIButton(frame: .init(x: safeAreaFrame.minX,
@@ -37,6 +49,8 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
 
         return button
     }()
+
+    open override var canBecomeFirstResponder: Bool { true }
 
     // MARK: - Life cycle
 
@@ -52,7 +66,10 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(gesture:)))
 
         button.addGestureRecognizer(panGesture)
-        button.addTarget(self, action: #selector(openLoggingScreen), for: .touchUpInside)
+        button.addTarget(self, action: #selector(openLoggingScreenAction), for: .touchUpInside)
+
+        // Needed for catching shacking motion
+        becomeFirstResponder()
     }
 
     open override func configureAppearance() {
@@ -66,6 +83,28 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.gray.cgColor
+    }
+
+    // MARK: - Overrided methods
+
+    open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if !isLogsPresented, isRegisteredForShackingEvent {
+            openLoggingScreen()
+        }
+    }
+
+    // MARK: - Public methods
+
+    public func setVisible(isVisible: Bool) {
+        isVisibleState = isVisible
+    }
+
+    public func openLoggingScreen() {
+        present(LogsListView(), animated: true, completion: { [self] in
+            isLogsPresented = false
+        })
+
+        isLogsPresented = true
     }
 
     // MARK: - Private methods
@@ -123,7 +162,7 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
         }
     }
 
-    @objc private func openLoggingScreen() {
-        present(LogsListView(), animated: true)
+    @objc private func openLoggingScreenAction() {
+        openLoggingScreen()
     }
 }

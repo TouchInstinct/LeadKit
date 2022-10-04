@@ -22,29 +22,51 @@
 
 import UIKit
 
+/// A presenter of a window on which list of logs can be opened.
 @available(iOS 15, *)
 final public class LoggingPresenter {
 
     public static let shared = LoggingPresenter()
 
-    private lazy var window: UIWindow = {
+    private lazy var window: LoggingTogglingWindow = {
         let window = LoggingTogglingWindow(frame: UIScreen.main.bounds)
         window.rootViewController = loggingViewController
 
         return window
     }()
 
-    private lazy var loggingViewController: UIViewController = {
+    private lazy var loggingViewController: LoggingTogglingViewController = {
         LoggingTogglingViewController()
     }()
 
     private init() { }
 
+    /// binds openning and closing of logging list view to a shacking motion.
+    public func bind(_ scene: UIWindowScene? = nil) {
+        if let scene = scene {
+            window.windowScene = scene
+        }
+
+        window.makeKeyAndVisible()
+        loggingViewController.setVisible(isVisible: false)
+    }
+
+    /// unbinds openning and closing of logging list view by shacking motion.
+    public func unbind() {
+        window.isHidden = true
+        loggingViewController.setVisible(isVisible: true)
+    }
+
+    /// shows the UIWindow with a button that opens a logging list view.
     public func start(_ scene: UIWindowScene? = nil) {
-        window.windowScene = scene
+        if let scene = scene {
+            window.windowScene = scene
+        }
+
         window.isHidden = false
     }
 
+    /// hides the UIWindow.
     public func stop() {
         window.isHidden = true
     }
