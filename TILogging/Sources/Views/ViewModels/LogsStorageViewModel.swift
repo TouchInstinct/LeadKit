@@ -56,7 +56,7 @@ open class LogsStorageViewModel {
         }
     }
 
-    public var fileCreator: TIFileCreator?
+    public var fileCreator: FileCreator?
     weak public var logsListView: LogsListViewOutput?
 
     public init() { }

@@ -22,7 +22,7 @@
 
 import Foundation
 
-public struct TIFileCreator {
+public struct FileCreator {
 
     public var fileName: String
     public var fileExtension: String
