@@ -41,7 +41,7 @@ final public class LoggingPresenter {
 
     private init() { }
 
-    /// binds openning and closing of logging list view to a shacking motion.
+    /// binds openning and closing of logging list view to a shaking motion.
     public func bind(_ scene: UIWindowScene? = nil) {
         if let scene = scene {
             window.windowScene = scene
@@ -51,7 +51,7 @@ final public class LoggingPresenter {
         loggingViewController.setVisible(isVisible: false)
     }
 
-    /// unbinds openning and closing of logging list view by shacking motion.
+    /// unbinds openning and closing of logging list view by shaking motion.
     public func unbind() {
         window.isHidden = true
         loggingViewController.setVisible(isVisible: true)

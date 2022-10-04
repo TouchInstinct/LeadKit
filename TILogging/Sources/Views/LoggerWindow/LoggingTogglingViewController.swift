@@ -28,7 +28,7 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
 
     private var initialCenter = CGPoint()
 
-    private var isRegisteredForShackingEvent: Bool {
+    private var isRegisteredForShakingEvent: Bool {
         !isVisibleState
     }
 
@@ -68,7 +68,7 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
         button.addGestureRecognizer(panGesture)
         button.addTarget(self, action: #selector(openLoggingScreenAction), for: .touchUpInside)
 
-        // Needed for catching shacking motion
+        // Needed for catching shaking motion
         becomeFirstResponder()
     }
 
@@ -88,7 +88,7 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
     // MARK: - Overrided methods
 
     open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        if !isLogsPresented, isRegisteredForShackingEvent {
+        if motion == .motionShake, !isLogsPresented, isRegisteredForShakingEvent {
             openLoggingScreen()
         }
     }
