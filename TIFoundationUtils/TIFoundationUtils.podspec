@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TIFoundationUtils'
-  s.version          = '1.26.3'
+  s.version          = '1.27.0'
   s.summary          = 'Set of helpers for Foundation framework classes.'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }

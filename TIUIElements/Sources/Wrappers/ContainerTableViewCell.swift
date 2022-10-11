@@ -41,7 +41,7 @@ open class ContainerTableViewCell<View: UIView>: BaseInitializableCell, WrappedV
     override open func addViews() {
         super.addViews()
 
-        addSubview(wrappedView)
+        contentView.addSubview(wrappedView)
     }
 
     override open func configureLayout() {

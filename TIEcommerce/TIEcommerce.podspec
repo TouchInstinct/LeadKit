@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TIEcommerce'
-  s.version          = '1.26.3'
+  s.version          = '1.27.0'
   s.summary          = 'Cart, products, promocodes, bonuses and other related actions'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -14,4 +14,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'TIFoundationUtils', s.version.to_s
   s.dependency 'TINetworking', s.version.to_s
+  s.dependency 'TIUIKitCore', s.version.to_s
+  s.dependency 'TIUIElements', version.to_s
+  s.dependency 'TISwiftUtils', version.to_s
 end
