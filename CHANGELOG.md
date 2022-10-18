@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.27.1
+
+- **Fix**: Weak target reference in `RefreshControl`
+
 ### 1.27.0
 
 - **Add**: Tag like filter collection view
