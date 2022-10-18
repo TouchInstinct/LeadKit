@@ -1,8 +1,10 @@
 import UIKit
 
 open class RefreshControl: UIRefreshControl {
+
     private var action: Selector?
-    private var target: NSObjectProtocol?
+
+    private weak var target: NSObjectProtocol?
 
     // Handle .valueChanged event of refresh control
     public override func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
