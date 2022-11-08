@@ -49,7 +49,7 @@ final public class LoggingPresenter {
     }
 
     /// Shows the UIWindow with a button that opens a logging list view.
-    public func addLogsButton(to scene: UIWindowScene? = nil, isShakingMotionAllowed isShaking: Bool = true) {
+    public func addLogsButton(to scene: UIWindowScene? = nil, isShakingMotionAllowed isShaking: Bool = false) {
         showWindow(withScene: scene)
         loggingViewController.setVisible(isVisible: true)
         loggingViewController.setRegistrationForShacking(isShackingEventAllowed: isShaking)
