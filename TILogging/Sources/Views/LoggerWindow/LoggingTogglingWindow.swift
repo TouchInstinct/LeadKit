@@ -88,7 +88,9 @@ public extension UIWindow {
             return
         }
 
-        if motion == .motionShake, loggingController.isRegisteredForShakingEvent {
+        if motion == .motionShake, 
+           logginController.isLogsPresented,
+           loggingController.isRegisteredForShakingEvent {
             loggingController.openLoggingScreen()
         } else {
             super.motionEnded(motion, with: event)
