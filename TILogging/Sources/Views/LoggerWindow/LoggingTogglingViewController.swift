@@ -28,9 +28,7 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
 
     private var initialCenter = CGPoint()
 
-    private var isRegisteredForShakingEvent: Bool {
-        !isVisibleState
-    }
+    private(set) public var isRegisteredForShakingEvent: Bool = false
 
     private(set) public var isLogsPresented = false
 
@@ -95,6 +93,11 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
 
     // MARK: - Public methods
 
+    public func setRegistrationForShacking(isShackingEventAllowed: Bool) {
+        isRegisteredForShakingEvent = isShackingEventAllowed
+    }
+
+    /// Hides a button that opens logs list view controller.
     public func setVisible(isVisible: Bool) {
         isVisibleState = isVisible
     }

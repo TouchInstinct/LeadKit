@@ -41,26 +41,30 @@ final public class LoggingPresenter {
 
     private init() { }
 
-    /// binds openning and closing of logging list view to a shaking motion.
+    /// Binds openning and closing of logging list view to a shaking motion.
     public func displayOnShakeEvent(of scene: UIWindowScene? = nil) {
+        showWindow(withScene: scene)
+        loggingViewController.setVisible(isVisible: false)
+        loggingViewController.setRegistrationForShacking(isShackingEventAllowed: true)
+    }
+
+    /// Shows the UIWindow with a button that opens a logging list view.
+    public func addLogsButton(to scene: UIWindowScene? = nil, isShakingMotionAllowed isShaking: Bool = true) {
+        showWindow(withScene: scene)
+        loggingViewController.setVisible(isVisible: true)
+        loggingViewController.setRegistrationForShacking(isShackingEventAllowed: isShaking)
+    }
+
+    /// Shows the UIWindow
+    public func showWindow(withScene scene: UIWindowScene? = nil) {
         if let scene = scene {
             window.windowScene = scene
         }
 
         window.makeKeyAndVisible()
-        loggingViewController.setVisible(isVisible: false)
     }
 
-    /// shows the UIWindow with a button that opens a logging list view.
-    public func addLogsButton(to scene: UIWindowScene? = nil) {
-        if let scene = scene {
-            window.windowScene = scene
-        }
-
-        window.isHidden = false
-    }
-
-    /// hides the UIWindow.
+    /// Hides the UIWindow.
     public func hide() {
         window.isHidden = true
         loggingViewController.setVisible(isVisible: true)

@@ -23,7 +23,7 @@
 import UIKit
 
 @available(iOS 15, *)
-class LoggingTogglingWindow: UIWindow {
+final class LoggingTogglingWindow: UIWindow {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,18 +35,6 @@ class LoggingTogglingWindow: UIWindow {
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        guard let rootView = rootViewController else { return }
-
-        guard let loggingController = rootView.presentedViewController as? LoggingTogglingViewController else {
-            return
-        }
-
-        if motion == .motionShake {
-            loggingController.openLoggingScreen()
-        }
     }
 
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
@@ -62,5 +50,48 @@ class LoggingTogglingWindow: UIWindow {
         }
 
         return false
+    }
+}
+
+// MARK: - Registration for shaking event
+
+public extension UIWindow {
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if #available(iOS 15, *) {
+            guard let window = getLoggingWindow() else {
+                super.motionEnded(motion, with: event)
+                return
+            }
+
+            checkForShakingMotion(motion, forWindow: window, with: event)
+
+        } else {
+            super.motionEnded(motion, with: event)
+        }
+    }
+
+    @available(iOS 15, *)
+    private func getLoggingWindow() -> LoggingTogglingWindow? {
+        guard let windows = windowScene?.windows else {
+            return nil
+        }
+
+        return windows.compactMap { $0 as? LoggingTogglingWindow }.first
+    }
+
+    @available(iOS 15, *)
+    private func checkForShakingMotion(_ motion: UIEvent.EventSubtype,
+                                       forWindow window: LoggingTogglingWindow,
+                                       with event: UIEvent?) {
+        guard let loggingController = window.rootViewController as? LoggingTogglingViewController else {
+            super.motionEnded(motion, with: event)
+            return
+        }
+
+        if motion == .motionShake, loggingController.isRegisteredForShakingEvent {
+            loggingController.openLoggingScreen()
+        } else {
+            super.motionEnded(motion, with: event)
+        }
     }
 }
