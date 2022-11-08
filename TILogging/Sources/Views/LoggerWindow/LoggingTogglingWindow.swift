@@ -37,6 +37,18 @@ class LoggingTogglingWindow: UIWindow {
         fatalError("init(coder:) has not been implemented")
     }
 
+    open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        guard let rootView = rootViewController else { return }
+
+        guard let loggingController = rootView.presentedViewController as? LoggingTogglingViewController else {
+            return
+        }
+
+        if motion == .motionShake {
+            loggingController.openLoggingScreen()
+        }
+    }
+
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         guard let rootView = rootViewController else { return false }
 

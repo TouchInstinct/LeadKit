@@ -30,7 +30,7 @@ public struct TILogger: LoggerRepresentable {
     @available(iOS 12, *)
     public static let defaultLogger = TILogger(subsystem: .defaultSubsystem ?? "", category: .pointsOfInterest)
 
-    public let logInfo: OSLog
+    public let logInfo: NSLog
 
     // MARK: - Init
 

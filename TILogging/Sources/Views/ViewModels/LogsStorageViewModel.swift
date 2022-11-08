@@ -68,7 +68,7 @@ open class LogsStorageViewModel {
         preCompletion?()
 
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            let logStore = try? OSLogStore(scope: .currentProcessIdentifier)
+            let logStore = try? OSLogStore(scope: .system)
             let entries = try? logStore?.getEntries()
 
             let logs = entries?
