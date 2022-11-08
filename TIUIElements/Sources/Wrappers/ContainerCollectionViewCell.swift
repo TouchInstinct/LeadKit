@@ -53,7 +53,7 @@ open class ContainerCollectionViewCell<View: UIView>: UICollectionViewCell, Init
     // MARK: - InitializableView
 
     open func addViews() {
-        addSubview(wrappedView)
+        contentView.addSubview(wrappedView)
     }
 
     open func bindViews() {

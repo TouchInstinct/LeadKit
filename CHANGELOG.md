@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.27.0
+
+- **Add**: Tag like filter collection view
+- **Add**: List like filter table view
+- **Add**: Range like filter view
+
 ### 1.26.3
 - **Update**: Add @escaping in `RequestExecutor.ExecutionClosure`
 
