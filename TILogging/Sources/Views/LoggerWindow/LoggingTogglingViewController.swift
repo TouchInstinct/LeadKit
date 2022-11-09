@@ -28,7 +28,7 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
 
     private var initialCenter = CGPoint()
 
-    private(set) public var isRegisteredForShakingEvent: Bool = false
+    private(set) public var isRegisteredForShakingEvent = false
 
     private(set) public var isLogsPresented = false
 
@@ -38,15 +38,7 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
         }
     }
 
-    public lazy var button: UIButton = {
-        let safeAreaFrame = view.safeAreaLayoutGuide.layoutFrame
-        let button = UIButton(frame: .init(x: safeAreaFrame.minX,
-                                           y: safeAreaFrame.midY,
-                                           width: 70,
-                                           height: 32))
-
-        return button
-    }()
+    public let button = UIButton()
 
     open override var canBecomeFirstResponder: Bool { true }
 
@@ -56,6 +48,16 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
         super.addViews()
 
         view.addSubview(button)
+    }
+
+    open override func configureLayout() {
+        super.configureLayout()
+
+        let safeAreaFrame = view.safeAreaLayoutGuide.layoutFrame
+        button.frame = .init(x: safeAreaFrame.minX,
+                             y: safeAreaFrame.midY,
+                             width: 70,
+                             height: 32)
     }
 
     open override func bindViews() {
@@ -93,12 +95,12 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
 
     // MARK: - Public methods
 
-    public func setRegistrationForShacking(isShackingEventAllowed: Bool) {
-        isRegisteredForShakingEvent = isShackingEventAllowed
+    public func set(isRegisteredForShakingEvent: Bool) {
+        self.isRegisteredForShakingEvent = isRegisteredForShakingEvent
     }
 
     /// Hides a button that opens logs list view controller.
-    public func setVisible(isVisible: Bool) {
+    public func set(isVisible: Bool) {
         isVisibleState = isVisible
     }
 

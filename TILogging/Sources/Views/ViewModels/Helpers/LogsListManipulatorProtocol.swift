@@ -20,48 +20,10 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import OSLog
 
-public struct FileCreator {
-
-    public var fileName: String
-    public var fileExtension: String
-
-    public var fullFileName: String {
-        fileName + "." + fileExtension
-    }
-
-    public init(fileName: String, fileExtension: String) {
-        self.fileName = fileName
-        self.fileExtension = fileExtension
-    }
-
-    @discardableResult
-    public func createFile(withData data: Data) -> Result<URL, Error> {
-        let result = getDocumentsDirectory()
-
-        guard case var .success(url) = result else {
-            return result
-        }
-
-        url.appendPathComponent(fullFileName)
-
-        do {
-            try data.write(to: url)
-            return .success(url)
-            
-        } catch {
-            return .failure(error)
-        }
-
-    }
-
-    public func getDocumentsDirectory() -> Result<URL, Error> {
-        Result {
-            try FileManager.default.url(for: .documentDirectory,
-                                        in: .userDomainMask,
-                                        appropriateFor: nil,
-                                        create: false)
-        }
-    }
+@available(iOS 15, *)
+public protocol LogsListManipulatorProtocol {
+    func fetchLogs() async -> [OSLogEntryLog]?
+    func filter(_ logs: [OSLogEntryLog], byText text: String) async -> [OSLogEntryLog]
 }

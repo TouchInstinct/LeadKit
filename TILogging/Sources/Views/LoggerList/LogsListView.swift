@@ -20,6 +20,7 @@
 //  THE SOFTWARE.
 //
 
+import TISwiftUtils
 import TIUIKitCore
 import OSLog
 import UIKit
@@ -56,7 +57,7 @@ open class LogsListView: BaseInitializeableViewController,
     open override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel.loadLogs()
+        loadLogs()
     }
 
     open override func viewWillAppear(_ animated: Bool) {
@@ -273,10 +274,16 @@ open class LogsListView: BaseInitializeableViewController,
         present(activityViewController, animated: true, completion: nil)
     }
 
+    private func loadLogs(preCompletion: VoidClosure? = nil, postCompletion: VoidClosure? = nil) {
+        Task {
+            await viewModel.loadLogs(preCompletion: preCompletion, postCompletion: postCompletion)
+        }
+    }
+
     // MARK: - Actions
 
     @objc private func reloadLogs() {
-        viewModel.loadLogs(preCompletion: stopLoadingAnimation, postCompletion: refreshControl.endRefreshing)
+        loadLogs(preCompletion: stopLoadingAnimation, postCompletion: refreshControl.endRefreshing)
     }
 
     @objc private func shareLogs() {
@@ -284,6 +291,8 @@ open class LogsListView: BaseInitializeableViewController,
     }
 
     @objc private func filterLogsByText() {
-        viewModel.filterLogs(byText: searchView.text ?? "")
+        Task {
+            await viewModel.filterLogs(byText: searchView.text ?? "")
+        }
     }
 }

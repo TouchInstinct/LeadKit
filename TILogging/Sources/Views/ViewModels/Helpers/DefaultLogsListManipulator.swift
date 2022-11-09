@@ -20,48 +20,28 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import OSLog
 
-public struct FileCreator {
+@available(iOS 15, *)
+public actor DefaultLogsListManipulator: LogsListManipulatorProtocol {
+    public func fetchLogs() async -> [OSLogEntryLog]? {
+        let logStore = try? OSLogStore(scope: .currentProcessIdentifier)
+        let entries = try? logStore?.getEntries()
 
-    public var fileName: String
-    public var fileExtension: String
-
-    public var fullFileName: String {
-        fileName + "." + fileExtension
+        return entries?
+            .reversed()
+            .compactMap { $0 as? OSLogEntryLog }
     }
 
-    public init(fileName: String, fileExtension: String) {
-        self.fileName = fileName
-        self.fileExtension = fileExtension
-    }
+    public func filter(_ logs: [OSLogEntryLog], byText text: String) async -> [OSLogEntryLog] {
+        logs.filter { log in
+            let isDate = log.date.formatted().contains(text)
+            let isMessage = log.composedMessage.contains(text)
+            let isCategory = log.category.contains(text)
+            let isSubsystem = log.subsystem.contains(text)
+            let isProcess = log.process.contains(text)
 
-    @discardableResult
-    public func createFile(withData data: Data) -> Result<URL, Error> {
-        let result = getDocumentsDirectory()
-
-        guard case var .success(url) = result else {
-            return result
-        }
-
-        url.appendPathComponent(fullFileName)
-
-        do {
-            try data.write(to: url)
-            return .success(url)
-            
-        } catch {
-            return .failure(error)
-        }
-
-    }
-
-    public func getDocumentsDirectory() -> Result<URL, Error> {
-        Result {
-            try FileManager.default.url(for: .documentDirectory,
-                                        in: .userDomainMask,
-                                        appropriateFor: nil,
-                                        create: false)
+            return isDate || isMessage || isCategory || isSubsystem || isProcess
         }
     }
 }

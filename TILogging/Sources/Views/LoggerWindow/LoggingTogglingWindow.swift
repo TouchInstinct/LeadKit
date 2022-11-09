@@ -25,9 +25,14 @@ import UIKit
 @available(iOS 15, *)
 final class LoggingTogglingWindow: UIWindow {
 
-    override init(frame: CGRect) {
+    let loggingController: LoggingTogglingViewController
+
+    init(frame: CGRect, loggingController: LoggingTogglingViewController) {
+        self.loggingController = loggingController
+
         super.init(frame: frame)
 
+        rootViewController = loggingController
         windowLevel = .statusBar
         backgroundColor = .clear
     }
@@ -83,13 +88,10 @@ public extension UIWindow {
     private func checkForShakingMotion(_ motion: UIEvent.EventSubtype,
                                        forWindow window: LoggingTogglingWindow,
                                        with event: UIEvent?) {
-        guard let loggingController = window.rootViewController as? LoggingTogglingViewController else {
-            super.motionEnded(motion, with: event)
-            return
-        }
+        let loggingController = window.loggingController
 
-        if motion == .motionShake, 
-           logginController.isLogsPresented,
+        if motion == .motionShake,
+           loggingController.isLogsPresented,
            loggingController.isRegisteredForShakingEvent {
             loggingController.openLoggingScreen()
         } else {

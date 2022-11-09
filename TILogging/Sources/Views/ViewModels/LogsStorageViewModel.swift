@@ -44,6 +44,8 @@ open class LogsStorageViewModel {
         case fault
     }
 
+    private let logsManipulator: LogsListManipulatorProtocol
+
     private var allLogs: [OSLogEntryLog] = [] {
         didSet {
             filterLogs()
@@ -59,35 +61,27 @@ open class LogsStorageViewModel {
     public var fileCreator: FileCreator?
     weak public var logsListView: LogsListViewOutput?
 
-    public init() { }
+    public init(logsManipulator: LogsListManipulatorProtocol? = nil) {
+        self.logsManipulator = logsManipulator ?? DefaultLogsListManipulator()
+    }
 
-    open func loadLogs(preCompletion: VoidClosure? = nil, postCompletion: VoidClosure? = nil) {
+    @MainActor
+    open func loadLogs(preCompletion: VoidClosure? = nil, postCompletion: VoidClosure? = nil) async {
         allLogs = []
         logsListView?.setLoadingState()
-
         preCompletion?()
 
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            let logStore = try? OSLogStore(scope: .currentProcessIdentifier)
-            let entries = try? logStore?.getEntries()
-
-            let logs = entries?
-                .reversed()
-                .compactMap { $0 as? OSLogEntryLog }
-
-            DispatchQueue.main.async {
-                self?.allLogs = logs ?? []
-                self?.logsListView?.setNormalState()
-                postCompletion?()
-            }
-        }
+        allLogs = await logsManipulator.fetchLogs() ?? []
+        logsListView?.setNormalState()
+        postCompletion?()
     }
 
     open func filterLogs(filter: Closure<OSLogEntryLog, Bool>? = nil) {
         filteredLogs = allLogs.filter { filter?($0) ?? true }
     }
 
-    open func filterLogs(byText text: String) {
+    @MainActor
+    open func filterLogs(byText text: String) async {
         guard !text.isEmpty else {
             filteredLogs = allLogs
             return
@@ -95,22 +89,10 @@ open class LogsStorageViewModel {
 
         logsListView?.startSearch()
 
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            let localFilteredLogs = self?.allLogs.filter { log in
-                let isDate = log.date.formatted().contains(text)
-                let isMessage = log.composedMessage.contains(text)
-                let isCategory = log.category.contains(text)
-                let isSubsystem = log.subsystem.contains(text)
-                let isProcess = log.process.contains(text)
+        let localFilteredLogs = await logsManipulator.filter(allLogs, byText: text)
 
-                return isDate || isMessage || isCategory || isSubsystem || isProcess
-            }
-
-            DispatchQueue.main.async {
-                self?.filteredLogs = localFilteredLogs ?? []
-                self?.logsListView?.stopSearch()
-            }
-        }
+        filteredLogs = localFilteredLogs
+        logsListView?.stopSearch()
     }
 
     open func getFileWithLogs() -> URL? {
@@ -118,10 +100,14 @@ open class LogsStorageViewModel {
             return nil
         }
 
-        return fileCreator?.createFile(withData: data)
+        if case let .success(url) = fileCreator?.createFile(withData: data) {
+            return url
+        }
+
+        return nil
     }
 
-    func encodeLogs() -> Data? {
+    public func encodeLogs() -> Data? {
         filteredLogs
             .map { $0.getDescription() }
             .joined(separator: "\n\n")

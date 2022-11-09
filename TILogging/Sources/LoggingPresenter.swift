@@ -28,15 +28,13 @@ final public class LoggingPresenter {
 
     public static let shared = LoggingPresenter()
 
+    private let loggingViewController = LoggingTogglingViewController()
+
     private lazy var window: LoggingTogglingWindow = {
-        let window = LoggingTogglingWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = loggingViewController
+        let window = LoggingTogglingWindow(frame: UIScreen.main.bounds,
+                                           loggingController: loggingViewController)
 
         return window
-    }()
-
-    private lazy var loggingViewController: LoggingTogglingViewController = {
-        LoggingTogglingViewController()
     }()
 
     private init() { }
@@ -44,15 +42,15 @@ final public class LoggingPresenter {
     /// Binds openning and closing of logging list view to a shaking motion.
     public func displayOnShakeEvent(of scene: UIWindowScene? = nil) {
         showWindow(withScene: scene)
-        loggingViewController.setVisible(isVisible: false)
-        loggingViewController.setRegistrationForShacking(isShackingEventAllowed: true)
+        loggingViewController.set(isVisible: false)
+        loggingViewController.set(isRegisteredForShakingEvent: true)
     }
 
     /// Shows the UIWindow with a button that opens a logging list view.
     public func addLogsButton(to scene: UIWindowScene? = nil, isShakingMotionAllowed isShaking: Bool = false) {
         showWindow(withScene: scene)
-        loggingViewController.setVisible(isVisible: true)
-        loggingViewController.setRegistrationForShacking(isShackingEventAllowed: isShaking)
+        loggingViewController.set(isVisible: true)
+        loggingViewController.set(isRegisteredForShakingEvent: isShaking)
     }
 
     /// Shows the UIWindow
@@ -67,6 +65,6 @@ final public class LoggingPresenter {
     /// Hides the UIWindow.
     public func hide() {
         window.isHidden = true
-        loggingViewController.setVisible(isVisible: true)
+        loggingViewController.set(isVisible: true)
     }
 }
