@@ -117,32 +117,31 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
     private func clipButtonIfNeeded() {
         let viewFrame = view.safeAreaLayoutGuide.layoutFrame
         let buttonFrame = button.frame
+        var x: CGFloat = buttonFrame.minX
+        var y: CGFloat = buttonFrame.minY
 
         if buttonFrame.maxX > viewFrame.maxX {
-            button.frame = .init(x: viewFrame.maxX - buttonFrame.width,
-                                 y: buttonFrame.minY,
-                                 width: buttonFrame.width,
-                                 height: buttonFrame.height)
+            x = viewFrame.maxX - buttonFrame.width
+            y = buttonFrame.minY
 
         } else if buttonFrame.minX < viewFrame.minX {
-            button.frame = .init(x: viewFrame.minX,
-                                 y: buttonFrame.minY,
-                                 width: buttonFrame.width,
-                                 height: buttonFrame.height)
+            x = viewFrame.minX
+            y = buttonFrame.minY
         }
 
         if buttonFrame.maxY > viewFrame.maxY {
-            button.frame = .init(x: button.frame.minX,
-                                 y: viewFrame.maxY - button.frame.height,
-                                 width: button.frame.width,
-                                 height: button.frame.height)
+            x = buttonFrame.minX
+            y = viewFrame.maxY - buttonFrame.height
 
         } else if buttonFrame.minY < viewFrame.minY {
-            button.frame = .init(x: buttonFrame.minX,
-                                 y: viewFrame.minY,
-                                 width: buttonFrame.width,
-                                 height: buttonFrame.height)
+            x = buttonFrame.minX
+            y = viewFrame.minY
         }
+
+        button.frame = .init(x: x,
+                             y: y,
+                             width: buttonFrame.width,
+                             height: buttonFrame.height)
     }
 
     // MARK: - Actions

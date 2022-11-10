@@ -25,12 +25,20 @@ import OSLog
 @available(iOS 15, *)
 public actor DefaultLogsListManipulator: LogsListManipulatorProtocol {
     public func fetchLogs() async -> [OSLogEntryLog]? {
-        let logStore = try? OSLogStore(scope: .currentProcessIdentifier)
-        let entries = try? logStore?.getEntries()
+        let logsResult = Result { try OSLogStore(scope: .currentProcessIdentifier) }
+            .flatMap { logStore in
+                Result {
+                    try logStore
+                        .getEntries()
+                        .reversed()
+                        .compactMap { $0 as? OSLogEntryLog }
+                }
+            }
+        if case let .success(logs) = logsResult {
+            return logs
+        }
 
-        return entries?
-            .reversed()
-            .compactMap { $0 as? OSLogEntryLog }
+        return nil
     }
 
     public func filter(_ logs: [OSLogEntryLog], byText text: String) async -> [OSLogEntryLog] {
