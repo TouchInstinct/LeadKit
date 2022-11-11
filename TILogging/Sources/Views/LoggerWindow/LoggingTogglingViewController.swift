@@ -117,8 +117,8 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
     private func clipButtonIfNeeded() {
         let viewFrame = view.safeAreaLayoutGuide.layoutFrame
         let buttonFrame = button.frame
-        var x: CGFloat = buttonFrame.minX
-        var y: CGFloat = buttonFrame.minY
+        var x = buttonFrame.minX
+        var y = buttonFrame.minY
 
         if buttonFrame.maxX > viewFrame.maxX {
             x = viewFrame.maxX - buttonFrame.width

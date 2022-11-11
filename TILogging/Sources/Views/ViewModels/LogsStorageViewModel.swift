@@ -71,7 +71,10 @@ open class LogsStorageViewModel {
         logsListView?.setLoadingState()
         preCompletion?()
 
-        allLogs = await logsManipulator.fetchLogs() ?? []
+        if case let .success(logs) = await logsManipulator.fetchLogs() {
+            allLogs = logs
+        }
+
         logsListView?.setNormalState()
         postCompletion?()
     }

@@ -24,6 +24,6 @@ import OSLog
 
 @available(iOS 15, *)
 public protocol LogsListManipulatorProtocol {
-    func fetchLogs() async -> [OSLogEntryLog]?
+    func fetchLogs() async -> Result<[OSLogEntryLog], Error>
     func filter(_ logs: [OSLogEntryLog], byText text: String) async -> [OSLogEntryLog]
 }
