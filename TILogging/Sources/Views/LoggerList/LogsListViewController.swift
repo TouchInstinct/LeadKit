@@ -27,10 +27,10 @@ import UIKit
 
 @available(iOS 15, *)
 open class LogsListViewController: BaseInitializeableViewController,
-                         LogsListViewOutput,
-                         AlertPresentationContext,
-                         UISearchBarDelegate,
-                         UITextFieldDelegate {
+                                   LogsListViewOutput,
+                                   AlertPresentationContext,
+                                   UISearchBarDelegate,
+                                   UITextFieldDelegate {
 
     private var timer: Timer?
 

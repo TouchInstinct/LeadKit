@@ -24,14 +24,6 @@ import TISwiftUtils
 import UIKit
 import OSLog
 
-public protocol LogsListViewOutput: AnyObject {
-    func reloadTableView()
-    func setLoadingState()
-    func setNormalState()
-    func startSearch()
-    func stopSearch()
-}
-
 @available(iOS 15, *)
 open class LogsStorageViewModel {
 
