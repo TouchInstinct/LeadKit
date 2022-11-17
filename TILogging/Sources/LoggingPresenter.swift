@@ -63,7 +63,7 @@ final public class LoggingPresenter {
     }
 
     /// Hides the UIWindow.
-    public func hide() {
+    public func hideWindow() {
         window.isHidden = true
         loggingViewController.set(isVisible: true)
     }

@@ -26,7 +26,7 @@ import OSLog
 import UIKit
 
 @available(iOS 15, *)
-open class LogsListView: BaseInitializeableViewController,
+open class LogsListViewController: BaseInitializeableViewController,
                          LogsListViewOutput,
                          AlertPresentationContext,
                          UISearchBarDelegate,

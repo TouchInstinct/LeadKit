@@ -105,7 +105,7 @@ open class LoggingTogglingViewController: BaseInitializeableViewController {
     }
 
     public func openLoggingScreen() {
-        present(LogsListView(), animated: true, completion: { [self] in
+        present(LogsListViewController(), animated: true, completion: { [self] in
             isLogsPresented = false
         })
 
