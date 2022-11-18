@@ -1,10 +1,11 @@
 Pod::Spec.new do |s|
-  s.name             = 'TIPagination'
+  s.name             = 'TILogging'
   s.version          = '1.28.0'
-  s.summary          = 'Generic pagination component.'
+  s.summary          = 'Logging API'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'petropavel13' => 'ivan.smolin@touchin.ru' }
+  s.author           = { 'petropavel13' => 'ivan.smolin@touchin.ru',
+                         'castlele' => 'nikita.semenov@touchin.ru' }
   s.source           = { :git => 'https://github.com/TouchInstinct/LeadKit.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '10.0'
@@ -12,6 +13,8 @@ Pod::Spec.new do |s|
 
   s.source_files = s.name + '/Sources/**/*'
 
+  s.dependency 'TIUIKitCore', s.version.to_s
   s.dependency 'TISwiftUtils', s.version.to_s
-  s.dependency 'Cursors', "~> 0.6.0"
+  s.dependency 'TIUIElements', s.version.to_s
+
 end
