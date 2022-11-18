@@ -41,11 +41,12 @@ final public class LoggingPresenter {
     }
 
     /// Shows the UIWindow with a button that opens a logging list view.
-    public func addLogsButton(to scene: UIWindowScene? = nil) {
-        window = .init(frame: UIScreen.main.bounds)
+    public func addLogsButton(to scene: UIWindowScene? = nil,
+                              windowRect rect: CGRect = UIScreen.main.bounds) {
+
+        window = .init(frame: rect)
         showWindow(withScene: scene)
 
-        window?.setDefaultRootController()
         window?.set(isVisible: true)
         window?.set(isRegisteredForShakingEvent: false)
     }

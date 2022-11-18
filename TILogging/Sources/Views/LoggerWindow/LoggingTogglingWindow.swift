@@ -20,6 +20,7 @@
 //  THE SOFTWARE.
 //
 
+import TIUIKitCore
 import UIKit
 
 @available(iOS 15, *)
@@ -34,6 +35,7 @@ public final class LoggingTogglingWindow: UIWindow {
     override public init(frame: CGRect) {
         super.init(frame: frame)
 
+        rootViewController = loggingController
         windowLevel = .statusBar
         backgroundColor = .clear
     }
@@ -70,10 +72,6 @@ public final class LoggingTogglingWindow: UIWindow {
 
     // MARK: - Public methdos
 
-    public func setDefaultRootController() {
-        rootViewController = loggingController
-    }
-
     public func set(isRegisteredForShakingEvent: Bool) {
         loggingController.set(isRegisteredForShakingEvent: isRegisteredForShakingEvent)
     }
@@ -97,20 +95,12 @@ public final class LoggingTogglingWindow: UIWindow {
             return
         }
 
-        let topViewController = getTopViewController(from: rootViewController)
+        let topViewController = rootViewController.topVisibleViewController
 
         topViewController.present(LogsListViewController(), animated: true, completion: { [weak self] in
             self?.loggingController.set(isLogsPresented: false)
         })
 
         loggingController.set(isLogsPresented: true)
-    }
-
-    private func getTopViewController(from viewController: UIViewController) -> UIViewController {
-        guard let presentedViewController = viewController.presentedViewController else {
-            return viewController
-        }
-
-        return getTopViewController(from: presentedViewController)
     }
 }

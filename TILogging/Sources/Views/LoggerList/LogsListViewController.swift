@@ -51,6 +51,7 @@ open class LogsListViewController: BaseInitializeableViewController,
     public typealias Snapshot = NSDiffableDataSourceSnapshot<String, OSLogEntryLog>
 
     public let viewModel = LogsStorageViewModel()
+    public var logsFileExtension = "log"
 
     // MARK: - Life cycle
 
@@ -117,7 +118,8 @@ open class LogsListViewController: BaseInitializeableViewController,
 
         viewModel.logsListView = self
         searchView.delegate = self
-        tableView.register(LogEntryTableViewCell.self, forCellReuseIdentifier: "identifier")
+        tableView.register(LogEntryTableViewCell.self,
+                           forCellReuseIdentifier: LogEntryTableViewCell.reuseIdentifier)
         refreshControl.addTarget(self, action: #selector(reloadLogs), for: .valueChanged)
         shareButton.addTarget(self, action: #selector(shareLogs), for: .touchUpInside)
     }
@@ -170,7 +172,7 @@ open class LogsListViewController: BaseInitializeableViewController,
         }
 
         timer?.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 3,
+        timer = Timer.scheduledTimer(timeInterval: 1,
                                      target: self,
                                      selector: #selector(filterLogsByText),
                                      userInfo: nil,
@@ -182,14 +184,14 @@ open class LogsListViewController: BaseInitializeableViewController,
     }
 
     open func textFieldDidEndEditing(_ textField: UITextField) {
-        viewModel.fileCreator = .init(fileName: textField.text ?? "", fileExtension: "log")
+        viewModel.fileCreator = .init(fileName: textField.text ?? "", fileExtension: logsFileExtension)
     }
 
     // MARK: - Open methods
 
     open func createDataSource() -> DataSource {
         let cellProvider: DataSource.CellProvider = { collectionView, indexPath, itemIdentifier in
-            let cell = collectionView.dequeueReusableCell(withIdentifier: "identifier",
+            let cell = collectionView.dequeueReusableCell(withIdentifier: LogEntryTableViewCell.reuseIdentifier,
                                                           for: indexPath) as? LogEntryTableViewCell
 
             cell?.configure(with: itemIdentifier)
