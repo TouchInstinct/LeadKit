@@ -23,16 +23,17 @@
 import UIKit
 
 @available(iOS 15, *)
-final class LoggingTogglingWindow: UIWindow {
+public final class LoggingTogglingWindow: UIWindow {
 
-    let loggingController: LoggingTogglingViewController
+    let loggingController = LoggingTogglingViewController()
 
-    init(frame: CGRect, loggingController: LoggingTogglingViewController) {
-        self.loggingController = loggingController
+    override public init(windowScene: UIWindowScene) {
+        super.init(windowScene: windowScene)
+    }
 
+    override public init(frame: CGRect) {
         super.init(frame: frame)
 
-        rootViewController = loggingController
         windowLevel = .statusBar
         backgroundColor = .clear
     }
@@ -42,7 +43,17 @@ final class LoggingTogglingWindow: UIWindow {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+    public override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake,
+           !loggingController.isLogsPresented {
+            openLoggingScreen()
+
+        } else {
+            super.motionEnded(motion, with: event)
+        }
+    }
+
+    public override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         guard let rootView = rootViewController else { return false }
 
         if let loggingController = rootView.presentedViewController {
@@ -56,46 +67,50 @@ final class LoggingTogglingWindow: UIWindow {
 
         return false
     }
-}
 
-// MARK: - Registration for shaking event
+    // MARK: - Public methdos
 
-public extension UIWindow {
-    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        if #available(iOS 15, *) {
-            guard let window = getLoggingWindow() else {
-                super.motionEnded(motion, with: event)
-                return
-            }
+    public func setDefaultRootController() {
+        rootViewController = loggingController
+    }
 
-            checkForShakingMotion(motion, forWindow: window, with: event)
+    public func set(isRegisteredForShakingEvent: Bool) {
+        loggingController.set(isRegisteredForShakingEvent: isRegisteredForShakingEvent)
+    }
 
+    public func set(isVisible: Bool) {
+        loggingController.set(isVisible: isVisible)
+    }
+
+    // MARK: - Private methods
+
+    private func openLoggingScreen() {
+        if loggingController.isRegisteredForShakingEvent {
+            openLoggingScreenOnTopViewController()
         } else {
-            super.motionEnded(motion, with: event)
-        }
-    }
-
-    @available(iOS 15, *)
-    private func getLoggingWindow() -> LoggingTogglingWindow? {
-        guard let windows = windowScene?.windows else {
-            return nil
-        }
-
-        return windows.compactMap { $0 as? LoggingTogglingWindow }.first
-    }
-
-    @available(iOS 15, *)
-    private func checkForShakingMotion(_ motion: UIEvent.EventSubtype,
-                                       forWindow window: LoggingTogglingWindow,
-                                       with event: UIEvent?) {
-        let loggingController = window.loggingController
-
-        if motion == .motionShake,
-           loggingController.isLogsPresented,
-           loggingController.isRegisteredForShakingEvent {
             loggingController.openLoggingScreen()
-        } else {
-            super.motionEnded(motion, with: event)
         }
+    }
+
+    private func openLoggingScreenOnTopViewController() {
+        guard let rootViewController = rootViewController else {
+            return
+        }
+
+        let topViewController = getTopViewController(from: rootViewController)
+
+        topViewController.present(LogsListViewController(), animated: true, completion: { [weak self] in
+            self?.loggingController.set(isLogsPresented: false)
+        })
+
+        loggingController.set(isLogsPresented: true)
+    }
+
+    private func getTopViewController(from viewController: UIViewController) -> UIViewController {
+        guard let presentedViewController = viewController.presentedViewController else {
+            return viewController
+        }
+
+        return getTopViewController(from: presentedViewController)
     }
 }

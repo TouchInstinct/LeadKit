@@ -28,43 +28,40 @@ final public class LoggingPresenter {
 
     public static let shared = LoggingPresenter()
 
-    private let loggingViewController = LoggingTogglingViewController()
-
-    private lazy var window: LoggingTogglingWindow = {
-        let window = LoggingTogglingWindow(frame: UIScreen.main.bounds,
-                                           loggingController: loggingViewController)
-
-        return window
-    }()
+    private var window: LoggingTogglingWindow?
 
     private init() { }
 
     /// Binds openning and closing of logging list view to a shaking motion.
-    public func displayOnShakeEvent(of scene: UIWindowScene? = nil) {
-        showWindow(withScene: scene)
-        loggingViewController.set(isVisible: false)
-        loggingViewController.set(isRegisteredForShakingEvent: true)
+    public func displayOnShakeEvent(withWindow window: LoggingTogglingWindow) {
+        self.window = window
+
+        window.set(isVisible: false)
+        window.set(isRegisteredForShakingEvent: true)
     }
 
     /// Shows the UIWindow with a button that opens a logging list view.
-    public func addLogsButton(to scene: UIWindowScene? = nil, isShakingMotionAllowed isShaking: Bool = false) {
+    public func addLogsButton(to scene: UIWindowScene? = nil) {
+        window = .init(frame: UIScreen.main.bounds)
         showWindow(withScene: scene)
-        loggingViewController.set(isVisible: true)
-        loggingViewController.set(isRegisteredForShakingEvent: isShaking)
+
+        window?.setDefaultRootController()
+        window?.set(isVisible: true)
+        window?.set(isRegisteredForShakingEvent: false)
     }
 
     /// Shows the UIWindow
     public func showWindow(withScene scene: UIWindowScene? = nil) {
         if let scene = scene {
-            window.windowScene = scene
+            window?.windowScene = scene
         }
 
-        window.makeKeyAndVisible()
+        window?.makeKeyAndVisible()
     }
 
     /// Hides the UIWindow.
     public func hideWindow() {
-        window.isHidden = true
-        loggingViewController.set(isVisible: true)
+        window?.isHidden = true
+        window?.set(isVisible: true)
     }
 }
