@@ -12,6 +12,7 @@ ORDERED_PODSPECS="../TISwiftUtils/TISwiftUtils.podspec
 ../TIUIKitCore/TIUIKitCore.podspec
 ../TISwiftUICore/TISwiftUICore.podspec
 ../TIUIElements/TIUIElements.podspec
+../TILogging/TILogging.podspec
 ../TIAuth/TIAuth.podspec
 ../TITableKitUtils/TITableKitUtils.podspec
 ../TINetworking/TINetworking.podspec
