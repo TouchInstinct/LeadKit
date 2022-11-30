@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TIYandexMapUtils'
-  s.version          = '1.30.0'
+  s.version          = '1.31.0'
   s.summary          = 'Set of helpers for map objects clustering and interacting using Yandex Maps SDK.'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }

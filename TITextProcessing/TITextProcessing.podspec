@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
-  s.name             = 'TINetworking'
+  s.name             = 'TITextProcessing'
   s.version          = '1.31.0'
-  s.summary          = 'Swagger-frendly networking layer helpers.'
+  s.summary          = 'A text processing service helping to get a text mask and a placeholder from incoming regex.'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'petropavel13' => 'ivan.smolin@touchin.ru' }
@@ -12,6 +12,7 @@ Pod::Spec.new do |s|
 
   s.source_files = s.name + '/Sources/**/*'
 
-  s.dependency 'TIFoundationUtils', s.version.to_s
-  s.dependency 'Alamofire', "~> 5.4"
+  s.static_framework = true
+  s.user_target_xcconfig = { 'VALID_ARCHS[sdk=iphonesimulator*]' => 'x86_64' }
+  s.pod_target_xcconfig = { 'VALID_ARCHS[sdk=iphonesimulator*]' => 'x86_64' }
 end

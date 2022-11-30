@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "Antlr4",
+        "repositoryURL": "https://github.com/antlr/antlr4",
+        "state": {
+          "branch": null,
+          "revision": "44d87bc1d130c88aa452894aa5f7e2f710f68253",
+          "version": "4.10.1"
+        }
+      },
+      {
         "package": "Cache",
         "repositoryURL": "https://github.com/hyperoslo/Cache.git",
         "state": {

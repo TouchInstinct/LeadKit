@@ -38,9 +38,8 @@ let package = Package(
     .library(name: "TITransitions", targets: ["TITransitions"]),
     .library(name: "TIPagination", targets: ["TIPagination"]),
     .library(name: "TIAuth", targets: ["TIAuth"]),
-    
-    //MARK: - Skolkovo
-    .library(name: "TIEcommerce", targets: ["TIEcommerce"])
+    .library(name: "TIEcommerce", targets: ["TIEcommerce"]),
+    .library(name: "TITextProcessing", targets: ["TITextProcessing"])
   ],
   dependencies: [
     .package(url: "https://github.com/maxsokolov/TableKit.git", .upToNextMajor(from: "2.11.0")),
@@ -48,7 +47,8 @@ let package = Package(
     .package(url: "https://github.com/petropavel13/Cursors", .upToNextMajor(from: "0.5.1")),
     .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.4.0")),
     .package(url: "https://github.com/Moya/Moya.git", .upToNextMajor(from: "15.0.0")),
-    .package(url: "https://github.com/hyperoslo/Cache.git", .upToNextMajor(from: "6.0.0"))
+    .package(url: "https://github.com/hyperoslo/Cache.git", .upToNextMajor(from: "6.0.0")),
+    .package(url: "https://github.com/antlr/antlr4", .upToNextMinor(from: "4.10.1"))
   ],
   targets: [
     
@@ -81,6 +81,7 @@ let package = Package(
     .target(name: "TIPagination", dependencies: ["Cursors", "TISwiftUtils"], path: "TIPagination/Sources"),
     .target(name: "TIAuth", dependencies: ["TIFoundationUtils", "TIUIKitCore", "KeychainAccess"], path: "TIAuth/Sources"),
     .target(name: "TIEcommerce", dependencies: ["TIFoundationUtils", "TISwiftUtils", "TINetworking", "TIUIKitCore", "TIUIElements"], path: "TIEcommerce/Sources"),
+    .target(name: "TITextProcessing", dependencies: ["Antlr4"], path: "TITextProcessing/Sources"),
     
     // MARK: - Tests
     
