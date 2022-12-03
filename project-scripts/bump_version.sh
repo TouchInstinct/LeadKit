@@ -11,4 +11,5 @@ find ../ -name '*.podspec' \
 	-not -path "../*/Carthage/*" \
 	-not -path "../Pods/*" \
 	-not -path "../*/Pods/*" \
+	-not -path "../*/.gem/*" \
 	| xargs -I% npx podspec-bump -i "$1" -w -p %

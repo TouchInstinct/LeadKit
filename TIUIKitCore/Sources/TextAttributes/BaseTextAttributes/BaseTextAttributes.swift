@@ -21,22 +21,18 @@
 //
 
 import UIKit
+import TISwiftUtils
 
 /// Base set of attributes to configure appearance of text.
 open class BaseTextAttributes {
 
     public let font: UIFont
     public let color: UIColor
-    public let alignment: NSTextAlignment
-    public let lineHeightMultiple: CGFloat
+    public let paragraphStyle: NSParagraphStyle
     public let numberOfLines: Int
 
     open var attributedStringAttributes: [NSAttributedString.Key : Any] {
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = alignment
-        paragraphStyle.lineHeightMultiple = lineHeightMultiple
-
-        return [
+        [
             .font: font,
             .foregroundColor: color,
             .paragraphStyle: paragraphStyle
@@ -45,21 +41,25 @@ open class BaseTextAttributes {
 
     public init(font: UIFont,
                 color: UIColor,
-                alignment: NSTextAlignment,
-                lineHeightMultiple: CGFloat,
-                numberOfLines: Int) {
+                numberOfLines: Int,
+                paragraphStyleConfiguration: ParameterClosure<NSMutableParagraphStyle>) {
 
         self.font = font
         self.color = color
-        self.alignment = alignment
-        self.lineHeightMultiple = lineHeightMultiple
+
+        let mutableParagraphStyle = NSMutableParagraphStyle()
+        paragraphStyleConfiguration(mutableParagraphStyle)
+
+        self.paragraphStyle = mutableParagraphStyle
         self.numberOfLines = numberOfLines
     }
+
+    // MARK: - UI elements appearance configuration
 
     private func configure<T: BaseTextAttributesConfigurable>(textContainer: T) {
         textContainer.set(font: font)
         textContainer.set(color: color)
-        textContainer.set(alignment: alignment)
+        textContainer.set(alignment: paragraphStyle.alignment)
     }
 
     open func configure(label: UILabel) {
@@ -84,12 +84,17 @@ open class BaseTextAttributes {
         button.setTitleColor(color, for: state)
     }
 
+    // MARK: - UI elements text configuration
+
     private func configure<T>(textContainer: T,
                               with string: String?,
                               appearanceConfiguration: (T) -> Void,
                               textConfiguration: (String?) -> Void,
                               attributedTextConfiguration: (NSAttributedString?) -> Void) {
-        if lineHeightMultiple == 1.0 { // default
+
+        let lineHeightMultipleIsUnsetOrDefault = [NSParagraphStyle().lineHeightMultiple, 1.0].contains(paragraphStyle.lineHeightMultiple)
+
+        if lineHeightMultipleIsUnsetOrDefault {
             appearanceConfiguration(textContainer)
 
             textConfiguration(string)
@@ -112,9 +117,9 @@ open class BaseTextAttributes {
                   appearanceConfiguration: configure(label:),
                   textConfiguration: { label.text = $0 },
                   attributedTextConfiguration: {
-                    label.attributedText = $0
-                    label.numberOfLines = numberOfLines
-                  })
+            label.attributedText = $0
+            label.numberOfLines = numberOfLines
+        })
     }
 
     open func configure(textField: UITextField, with string: String?) {
@@ -139,10 +144,12 @@ open class BaseTextAttributes {
                   appearanceConfiguration: { configure(button: $0, for: state) },
                   textConfiguration: { button.setTitle($0, for: state) },
                   attributedTextConfiguration: {
-                    button.setAttributedTitle($0, for: state)
-                    button.titleLabel?.numberOfLines = numberOfLines
-                  })
+            button.setAttributedTitle($0, for: state)
+            button.titleLabel?.numberOfLines = numberOfLines
+        })
     }
+
+    // MARK: - Attributed string manipulation
 
     open func attributedString(for string: String) -> NSAttributedString {
         NSAttributedString(string: string, attributes: attributedStringAttributes)
@@ -151,6 +158,38 @@ open class BaseTextAttributes {
     open func apply(in attributedString: NSMutableAttributedString, at range: NSRange? = nil) {
         attributedString.addAttributes(attributedStringAttributes,
                                        range: range ?? NSRange(location: 0, length: attributedString.length))
+    }
+
+    // MARK: - Size calculation
+
+    open func size(of string: String?,
+                   with size: CGSize,
+                   options: NSStringDrawingOptions = [.usesFontLeading, .usesLineFragmentOrigin],
+                   context: NSStringDrawingContext? = nil) -> CGSize {
+
+        guard let string = string else {
+            return .zero
+        }
+
+        let attributedString = NSAttributedString(string: string,
+                                                  attributes: attributedStringAttributes)
+
+        return attributedString
+            .boundingRect(with: size,
+                          options: options,
+                          context: context)
+            .size
+    }
+
+    open func heigth(of string: String?,
+                     with width: CGFloat,
+                     options: NSStringDrawingOptions = [.usesFontLeading, .usesLineFragmentOrigin],
+                     context: NSStringDrawingContext? = nil) -> CGFloat {
+
+        size(of: string,
+             with: CGSize(width: width, height: .greatestFiniteMagnitude),
+             options: options,
+             context: context).height
     }
 }
 
@@ -168,5 +207,19 @@ public extension BaseTextAttributes {
                   alignment: alignment,
                   lineHeightMultiple: lineHeight / 100.0,
                   numberOfLines: isMultiline ? 0 : 1)
+    }
+
+    convenience init(font: UIFont,
+                     color: UIColor,
+                     alignment: NSTextAlignment,
+                     lineHeightMultiple: CGFloat,
+                     numberOfLines: Int) {
+
+        self.init(font: font,
+                  color: color,
+                  numberOfLines: numberOfLines) {
+            $0.lineHeightMultiple = lineHeightMultiple
+            $0.alignment = alignment
+        }
     }
 }

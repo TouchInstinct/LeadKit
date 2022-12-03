@@ -1,5 +1,12 @@
 # Changelog
 
+### 1.29.0
+
+- **Added**: `BaseTextAttributes`can now measure text size and provides paragraph style configuration API.
+- **Removed**: `ViewText`. Was fully replaced with `BaseTextAttributes`
+- **Fixed**: `Operation.flattenDependencies` used in `Operation.add(to:waitUntilFinished:)` now works correctly.
+- **Added**: Now it's possible to add dependent operation to start of the queue.
+
 ### 1.28.0
 
 - **Add**: `LoggingPresenter`to present list of logs with ability of sharing it
