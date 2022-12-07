@@ -210,6 +210,7 @@ open class DefaultJsonNetworkService: ApiInteractor {
                            preprocessors: preprocessors.dropFirst(),
                            cancellableBag: cancellableBag,
                            completion: completion)
+
             case let .failure(error):
                 completion(.failure(error))
             }

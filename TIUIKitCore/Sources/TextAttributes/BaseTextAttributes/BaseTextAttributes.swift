@@ -181,7 +181,7 @@ open class BaseTextAttributes {
             .size
     }
 
-    open func heigth(of string: String?,
+    open func height(of string: String?,
                      with width: CGFloat,
                      options: NSStringDrawingOptions = [.usesFontLeading, .usesLineFragmentOrigin],
                      context: NSStringDrawingContext? = nil) -> CGFloat {
