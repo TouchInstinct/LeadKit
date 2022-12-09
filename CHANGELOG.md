@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.29.1
+
+- **Fixed**: `contentInsets` for `ContainerTableViewCell` now have an `open` modifier.
+
 ### 1.29.0
 
 - **Added**: `BaseTextAttributes`can now measure text size and provides paragraph style configuration API.

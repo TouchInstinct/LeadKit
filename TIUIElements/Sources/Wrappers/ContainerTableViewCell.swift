@@ -26,13 +26,13 @@ import TIUIKitCore
 open class ContainerTableViewCell<View: UIView>: BaseInitializableCell, WrappedViewHolder {
     // MARK: - WrappedViewHolder
 
-    public private(set) lazy var wrappedView = createView()
-
-    public var contentInsets: UIEdgeInsets = .zero {
+    open var contentInsets: UIEdgeInsets = .zero {
         didSet {
             contentEdgeConstraints?.update(from: contentInsets)
         }
     }
+
+    public private(set) lazy var wrappedView = createView()
 
     private var contentEdgeConstraints: EdgeConstraints?
 
