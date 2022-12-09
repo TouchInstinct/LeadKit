@@ -24,7 +24,21 @@ import Foundation
 
 public extension Operation {
     var flattenDependencies: [Operation] {
-        dependencies.flatMap { $0.dependencies } + dependencies
+        dependencies.flatMap { $0.flattenDependencies } + dependencies
+    }
+
+    var leafDependencies: [Operation] {
+        guard !dependencies.isEmpty else {
+            return [self]
+        }
+
+        return dependencies.flatMap { $0.leafDependencies }
+    }
+
+    func beforeAll(add startOperation: Operation) {
+        for leafDependency in leafDependencies {
+            leafDependency.addDependency(startOperation)
+        }
     }
     
     func add(to operationQueue: OperationQueue, waitUntilFinished: Bool = false) {

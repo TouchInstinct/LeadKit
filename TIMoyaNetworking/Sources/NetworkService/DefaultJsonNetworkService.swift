@@ -74,42 +74,45 @@ open class DefaultJsonNetworkService: ApiInteractor {
                                                                    mapNetworkError: @escaping Closure<MoyaError, R>,
                                                                    completion: @escaping ParameterClosure<R>) -> TIFoundationUtils.Cancellable {
 
-        ScopeCancellable { [serializationQueue, callbackQueue, preprocessors] scope in
-            Self.preprocess(request: request,
-                            preprocessors: preprocessors) {
-                switch $0 {
-                case let .success(preprocessedRequest):
-                    let workItem = DispatchWorkItem {
-                        guard !scope.isCancelled else {
-                            return
-                        }
+        let cancellableBag = BaseCancellableBag()
 
-                        do {
-                            let serializedRequest = try self.serialize(request: preprocessedRequest)
-
-                            self.process(request: serializedRequest,
-                                         mapSuccess: mapSuccess,
-                                         mapFailure: mapFailure,
-                                         mapNetworkError: mapNetworkError,
-                                         completion: completion)
-                                .add(to: scope)
-                        } catch {
-                            callbackQueue.async {
-                                completion(mapNetworkError(.encodableMapping(error)))
-                            }
-                        }
+        Self.preprocess(request: request,
+                        preprocessors: preprocessors,
+                        cancellableBag: cancellableBag) { [serializationQueue, callbackQueue] in
+            switch $0 {
+            case let .success(preprocessedRequest):
+                let workItem = DispatchWorkItem {
+                    guard !cancellableBag.isCancelled else {
+                        return
                     }
 
-                    workItem.add(to: scope)
+                    do {
+                        let serializedRequest = try self.serialize(request: preprocessedRequest)
 
-                    serializationQueue.async(execute: workItem)
-                case let .failure(error):
-                    callbackQueue.async {
-                        completion(mapNetworkError(.encodableMapping(error)))
+                        self.process(request: serializedRequest,
+                                     mapSuccess: mapSuccess,
+                                     mapFailure: mapFailure,
+                                     mapNetworkError: mapNetworkError,
+                                     completion: completion)
+                            .add(to: cancellableBag)
+                    } catch {
+                        callbackQueue.async {
+                            completion(mapNetworkError(.encodableMapping(error)))
+                        }
                     }
+                }
+
+                workItem.add(to: cancellableBag)
+
+                serializationQueue.async(execute: workItem)
+            case let .failure(error):
+                callbackQueue.async {
+                    completion(mapNetworkError(.encodableMapping(error)))
                 }
             }
         }
+
+        return cancellableBag
     }
 
     open func process<S: Decodable, F: Decodable, R>(request: SerializedRequest,
@@ -191,26 +194,27 @@ open class DefaultJsonNetworkService: ApiInteractor {
 
     private static func preprocess<B,S,P: Collection>(request: EndpointRequest<B,S>,
                                                       preprocessors: P,
-                                                      completion: @escaping (Result<EndpointRequest<B,S>, Error>) -> Void) -> TIFoundationUtils.Cancellable
+                                                      cancellableBag: BaseCancellableBag,
+                                                      completion: @escaping (Result<EndpointRequest<B,S>, Error>) -> Void)
     where P.Element == EndpointRequestPreprocessor {
 
         guard let preprocessor = preprocessors.first else {
             completion(.success(request))
-            return Cancellables.nonCancellable()
+            return
         }
 
-        return ScopeCancellable { scope in
-            preprocessor.preprocess(request: request) {
-                switch $0 {
-                case let .success(modifiedRequest):
-                    preprocess(request: modifiedRequest,
-                               preprocessors: preprocessors.dropFirst(),
-                               completion: completion)
-                        .add(to: scope)
-                case let .failure(error):
-                    completion(.failure(error))
-                }
+        preprocessor.preprocess(request: request) {
+            switch $0 {
+            case let .success(modifiedRequest):
+                preprocess(request: modifiedRequest,
+                           preprocessors: preprocessors.dropFirst(),
+                           cancellableBag: cancellableBag,
+                           completion: completion)
+
+            case let .failure(error):
+                completion(.failure(error))
             }
         }
+        .add(to: cancellableBag)
     }
 }
