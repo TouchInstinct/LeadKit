@@ -77,6 +77,8 @@ open class DefaultCodeConfirmPresenter<ConfirmResponse: CodeConfirmResponse,
     private let codeRefreshTimer = TITimer(mode: .activeAndBackground)
     private let codeLifetimeTimer = TITimer(mode: .activeAndBackground)
 
+    private var executingTask: Cancellable?
+
     public var output: Output
     public var requests: Requests
     public weak var stateStorage: CodeConfirmStateStorage?
@@ -190,7 +192,7 @@ open class DefaultCodeConfirmPresenter<ConfirmResponse: CodeConfirmResponse,
         if let code = newInput, code.count >= config.codeLength {
             stateStorage?.isExecutingRequest = true
 
-            Task {
+            executingTask = Task {
                 await confirm(code: code)
             }
         }
@@ -200,7 +202,7 @@ open class DefaultCodeConfirmPresenter<ConfirmResponse: CodeConfirmResponse,
         stateStorage?.canRequestNewCode = false
         stateStorage?.canRefreshCodeAfter = nil
 
-        Task {
+        executingTask = Task {
             await refreshCode()
         }
     }
@@ -211,6 +213,10 @@ open class DefaultCodeConfirmPresenter<ConfirmResponse: CodeConfirmResponse,
         start(codeLifetimeTimer: codeLifetimeTimer,
               codeRefreshTimer: codeRefreshTimer,
               for: currentCodeResponse)
+    }
+
+    open func viewWillDestroy() {
+        executingTask?.cancel()
     }
 
     // MARK: - Autofill

@@ -20,26 +20,22 @@
 //  THE SOFTWARE.
 //
 
-open class DefaultUIViewPresenter<View: AnyObject>: ReusableUIViewPresenter {
-    public private(set) weak var view: View?
+import Foundation
 
-    public init() {}
-
-    // MARK: - UIViewPresenter
-    
-    open func didCompleteConfiguration(of view: View) {
-        self.view = view
+enum CryptoConstants {
+    static var saltLength: Int {
+        32
     }
 
-    // MARK: - ReusableUIViewPresenter
-
-    open func willReuse(view: View) {
-        if didConfigure(view: view) {
-            self.view = nil
-        }
+    static var ivLength: Int {
+        16
     }
 
-    open func didConfigure(view: View) -> Bool {
-        self.view === view
+    static var keyLength: Int {
+        32
+    }
+
+    static var pbkdf2NumberOfIterations: Int {
+        8192
     }
 }

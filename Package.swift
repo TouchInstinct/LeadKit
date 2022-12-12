@@ -79,7 +79,7 @@ let package = Package(
     .target(name: "OTPSwiftView", dependencies: ["TIUIElements"], path: "OTPSwiftView/Sources"),
     .target(name: "TITransitions", path: "TITransitions/Sources"),
     .target(name: "TIPagination", dependencies: ["Cursors", "TISwiftUtils"], path: "TIPagination/Sources"),
-    .target(name: "TIAuth", dependencies: ["TIFoundationUtils"], path: "TIAuth/Sources"),
+    .target(name: "TIAuth", dependencies: ["TIFoundationUtils", "TIUIKitCore", "KeychainAccess"], path: "TIAuth/Sources"),
     .target(name: "TIEcommerce", dependencies: ["TIFoundationUtils", "TISwiftUtils", "TINetworking", "TIUIKitCore", "TIUIElements"], path: "TIEcommerce/Sources"),
     
     // MARK: - Tests

@@ -20,26 +20,22 @@
 //  THE SOFTWARE.
 //
 
-open class DefaultUIViewPresenter<View: AnyObject>: ReusableUIViewPresenter {
-    public private(set) weak var view: View?
+import Foundation
 
-    public init() {}
+open class DefaultSaltPreprocessor: SaltPreprocessor {
+    public typealias DeviceIdProviderClosure = () -> String?
 
-    // MARK: - UIViewPresenter
-    
-    open func didCompleteConfiguration(of view: View) {
-        self.view = view
+    private let deviceIdProvider: DeviceIdProviderClosure
+
+    public init(deviceIdProvider: @escaping DeviceIdProviderClosure) {
+        self.deviceIdProvider = deviceIdProvider
     }
 
-    // MARK: - ReusableUIViewPresenter
+    // MARK: - SaltPreprocessor
 
-    open func willReuse(view: View) {
-        if didConfigure(view: view) {
-            self.view = nil
-        }
-    }
-
-    open func didConfigure(view: View) -> Bool {
-        self.view === view
+    public func preprocess(salt: Data) -> Data {
+        deviceIdProvider().map {
+            salt + Data($0.utf8)
+        } ?? salt
     }
 }

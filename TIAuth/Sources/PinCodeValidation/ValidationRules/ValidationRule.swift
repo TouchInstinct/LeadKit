@@ -20,26 +20,6 @@
 //  THE SOFTWARE.
 //
 
-open class DefaultUIViewPresenter<View: AnyObject>: ReusableUIViewPresenter {
-    public private(set) weak var view: View?
-
-    public init() {}
-
-    // MARK: - UIViewPresenter
-    
-    open func didCompleteConfiguration(of view: View) {
-        self.view = view
-    }
-
-    // MARK: - ReusableUIViewPresenter
-
-    open func willReuse(view: View) {
-        if didConfigure(view: view) {
-            self.view = nil
-        }
-    }
-
-    open func didConfigure(view: View) -> Bool {
-        self.view === view
-    }
+public protocol ValidationRule {
+    func validate(input: String) -> Bool
 }

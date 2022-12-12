@@ -20,26 +20,32 @@
 //  THE SOFTWARE.
 //
 
-open class DefaultUIViewPresenter<View: AnyObject>: ReusableUIViewPresenter {
-    public private(set) weak var view: View?
+import TIFoundationUtils
+import Foundation
 
-    public init() {}
-
-    // MARK: - UIViewPresenter
-    
-    open func didCompleteConfiguration(of view: View) {
-        self.view = view
-    }
-
-    // MARK: - ReusableUIViewPresenter
-
-    open func willReuse(view: View) {
-        if didConfigure(view: view) {
-            self.view = nil
+open class DefaultFingerprintsSettingsStorage: FingerprintsSettingsStorage {
+    public enum Defaults {
+        public static var shouldResetFingerprintsKey: String {
+            "shouldResetFingerprints"
         }
     }
 
-    open func didConfigure(view: View) -> Bool {
-        self.view === view
+    private let reinstallChecker: AppReinstallChecker
+
+    // MARK: - PinCodeSettingsStorage
+
+    open var shouldResetFingerprints: Bool {
+        get {
+            reinstallChecker.isAppFirstRun
+        }
+        set {
+            reinstallChecker.isAppFirstRun = newValue
+        }
+    }
+
+    public init(defaultsStorage: UserDefaults = .standard,
+                storageKey: String = Defaults.shouldResetFingerprintsKey) {
+
+        self.reinstallChecker = AppReinstallChecker(defaultsStorage: defaultsStorage, storageKey: storageKey)
     }
 }
