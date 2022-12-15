@@ -54,7 +54,7 @@ open class BaseTextAttributes {
 
         let equator = KeyPathEquatable(rhs: mutableParagraphStyle, lhs: NSParagraphStyle.default)
 
-        // The following attributes requires to construct NSAttributedString instead of
+        // The following attributes require to construct NSAttributedString instead of
         // using plain String + BaseTextAttributesConfigurable target
         let equalityResults = [
             equator(\.lineSpacing),
