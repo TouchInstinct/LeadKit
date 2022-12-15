@@ -26,6 +26,7 @@ public protocol BaseTextAttributesConfigurable {
     func set(font: UIFont)
     func set(color: UIColor)
     func set(alignment: NSTextAlignment)
+    func set(lineBreakMode: NSLineBreakMode)
 }
 
 extension UILabel: BaseTextAttributesConfigurable {
@@ -39,6 +40,10 @@ extension UILabel: BaseTextAttributesConfigurable {
 
     public func set(alignment: NSTextAlignment) {
         textAlignment = alignment
+    }
+
+    public func set(lineBreakMode: NSLineBreakMode) {
+        self.lineBreakMode = lineBreakMode
     }
 }
 
@@ -54,6 +59,10 @@ extension UITextField: BaseTextAttributesConfigurable {
     public func set(alignment: NSTextAlignment) {
         textAlignment = alignment
     }
+
+    public func set(lineBreakMode: NSLineBreakMode) {
+        // not applicable
+    }
 }
 
 extension UITextView: BaseTextAttributesConfigurable {
@@ -67,5 +76,9 @@ extension UITextView: BaseTextAttributesConfigurable {
 
     public func set(alignment: NSTextAlignment) {
         textAlignment = alignment
+    }
+
+    public func set(lineBreakMode: NSLineBreakMode) {
+        self.textContainer.lineBreakMode = lineBreakMode
     }
 }
