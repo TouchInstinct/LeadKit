@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.29.1
+
+- **Updated**: `BaseTextAttributes` correct detection of the necessity of using attributed string
+
 ### 1.29.0
 
 - **Added**: `BaseTextAttributes`can now measure text size and provides paragraph style configuration API.

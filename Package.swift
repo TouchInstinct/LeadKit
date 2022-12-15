@@ -57,7 +57,6 @@ let package = Package(
     .target(name: "TIUIElements", dependencies: ["TIUIKitCore", "TISwiftUtils"], path: "TIUIElements/Sources"),
 
     // MARK: - SwiftUI
-
     .target(name: "TISwiftUICore", dependencies: ["TIUIKitCore", "TISwiftUtils"], path: "TISwiftUICore/Sources"),
     
     // MARK: - Utils
@@ -68,24 +67,19 @@ let package = Package(
     .target(name: "TILogging", dependencies: ["TIUIElements", "TISwiftUtils", "TIUIKitCore"], path: "TILogging/Sources"),
 
     // MARK: - Networking
-
     .target(name: "TINetworking", dependencies: ["TIFoundationUtils", "Alamofire"], path: "TINetworking/Sources"),
     .target(name: "TIMoyaNetworking", dependencies: ["TINetworking", "TIFoundationUtils", "Moya"], path: "TIMoyaNetworking"),
     .target(name: "TINetworkingCache", dependencies: ["TIFoundationUtils", "TINetworking", "Cache"], path: "TINetworkingCache/Sources"),
 
     // MARK: - Maps
-
     .target(name: "TIMapUtils", dependencies: [], path: "TIMapUtils/Sources"),
     .target(name: "TIAppleMapUtils", dependencies: ["TIMapUtils"], path: "TIAppleMapUtils/Sources"),
     
     // MARK: - Elements
-
     .target(name: "OTPSwiftView", dependencies: ["TIUIElements"], path: "OTPSwiftView/Sources"),
     .target(name: "TITransitions", path: "TITransitions/Sources"),
     .target(name: "TIPagination", dependencies: ["Cursors", "TISwiftUtils"], path: "TIPagination/Sources"),
     .target(name: "TIAuth", dependencies: ["TIFoundationUtils"], path: "TIAuth/Sources"),
-    
-    //MARK: - Skolkovo
     .target(name: "TIEcommerce", dependencies: ["TIFoundationUtils", "TISwiftUtils", "TINetworking", "TIUIKitCore", "TIUIElements"], path: "TIEcommerce/Sources"),
     
     // MARK: - Tests

@@ -31,6 +31,8 @@ open class BaseTextAttributes {
     public let paragraphStyle: NSParagraphStyle
     public let numberOfLines: Int
 
+    private let forceAttributedStringUsage: Bool
+
     open var attributedStringAttributes: [NSAttributedString.Key : Any] {
         [
             .font: font,
@@ -50,6 +52,27 @@ open class BaseTextAttributes {
         let mutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyleConfiguration(mutableParagraphStyle)
 
+        let equator = KeyPathEquatable(rhs: mutableParagraphStyle, lhs: NSParagraphStyle.default)
+
+        // The following attributes requires to construct NSAttributedString instead of
+        // using plain String + BaseTextAttributesConfigurable target
+        let equalityResults = [
+            equator(\.lineSpacing),
+            equator(\.paragraphSpacing),
+            equator(\.headIndent),
+            equator(\.tailIndent),
+            equator(\.firstLineHeadIndent),
+            equator(\.minimumLineHeight),
+            equator(\.maximumLineHeight),
+            equator(\.lineHeightMultiple),
+            equator(\.paragraphSpacingBefore),
+            equator(\.hyphenationFactor),
+            equator(\.allowsDefaultTighteningForTruncation),
+            equator(\.lineBreakStrategy)
+        ]
+
+        forceAttributedStringUsage = !equalityResults.allSatisfy { $0 }
+
         self.paragraphStyle = mutableParagraphStyle
         self.numberOfLines = numberOfLines
     }
@@ -60,6 +83,7 @@ open class BaseTextAttributes {
         textContainer.set(font: font)
         textContainer.set(color: color)
         textContainer.set(alignment: paragraphStyle.alignment)
+        textContainer.set(lineBreakMode: paragraphStyle.lineBreakMode)
     }
 
     open func configure(label: UILabel) {
@@ -76,14 +100,6 @@ open class BaseTextAttributes {
         configure(textContainer: textView)
     }
 
-    open func configure(button: UIButton, for state: UIControl.State) {
-        if let buttonLabel = button.titleLabel {
-            configure(label: buttonLabel)
-        }
-
-        button.setTitleColor(color, for: state)
-    }
-
     // MARK: - UI elements text configuration
 
     private func configure<T>(textContainer: T,
@@ -92,13 +108,7 @@ open class BaseTextAttributes {
                               textConfiguration: (String?) -> Void,
                               attributedTextConfiguration: (NSAttributedString?) -> Void) {
 
-        let lineHeightMultipleIsUnsetOrDefault = [NSParagraphStyle().lineHeightMultiple, 1.0].contains(paragraphStyle.lineHeightMultiple)
-
-        if lineHeightMultipleIsUnsetOrDefault {
-            appearanceConfiguration(textContainer)
-
-            textConfiguration(string)
-        } else {
+        if forceAttributedStringUsage {
             let resultAttributedString: NSAttributedString?
 
             if let string = string {
@@ -108,6 +118,10 @@ open class BaseTextAttributes {
             }
 
             attributedTextConfiguration(resultAttributedString)
+        } else {
+            appearanceConfiguration(textContainer)
+
+            textConfiguration(string)
         }
     }
 
@@ -136,17 +150,6 @@ open class BaseTextAttributes {
                   appearanceConfiguration: configure(textView:),
                   textConfiguration: { textView.text = $0 },
                   attributedTextConfiguration: { textView.attributedText = $0 })
-    }
-
-    open func configure(button: UIButton, with string: String?, for state: UIControl.State) {
-        configure(textContainer: button,
-                  with: string,
-                  appearanceConfiguration: { configure(button: $0, for: state) },
-                  textConfiguration: { button.setTitle($0, for: state) },
-                  attributedTextConfiguration: {
-            button.setAttributedTitle($0, for: state)
-            button.titleLabel?.numberOfLines = numberOfLines
-        })
     }
 
     // MARK: - Attributed string manipulation
@@ -200,26 +203,36 @@ public extension BaseTextAttributes {
                      color: UIColor,
                      alignment: NSTextAlignment,
                      isMultiline: Bool,
-                     lineHeight: FigmaPercent = 100.0) {
+                     lineHeight: FigmaPercent? = nil) {
 
         self.init(font: font,
                   color: color,
                   alignment: alignment,
-                  lineHeightMultiple: lineHeight / 100.0,
+                  lineHeightMultiple: lineHeight?.dividing(by: 100),
                   numberOfLines: isMultiline ? 0 : 1)
     }
 
     convenience init(font: UIFont,
                      color: UIColor,
                      alignment: NSTextAlignment,
-                     lineHeightMultiple: CGFloat,
+                     lineHeightMultiple: CGFloat?,
                      numberOfLines: Int) {
 
         self.init(font: font,
                   color: color,
                   numberOfLines: numberOfLines) {
-            $0.lineHeightMultiple = lineHeightMultiple
+
+            if let lineHeightMultiple = lineHeightMultiple {
+                $0.lineHeightMultiple = lineHeightMultiple
+            }
+
             $0.alignment = alignment
         }
+    }
+}
+
+private extension BaseTextAttributes.FigmaPercent {
+    func dividing(by other: Self) -> Self {
+        self / other
     }
 }
