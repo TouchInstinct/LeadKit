@@ -20,7 +20,7 @@
 //  THE SOFTWARE.
 //
 
-open class DefaultUIViewPresenter<View: AnyObject>: ReusableUIViewPresenter{
+open class DefaultUIViewPresenter<View: AnyObject>: ReusableUIViewPresenter {
     public private(set) weak var view: View?
 
     public init() {}

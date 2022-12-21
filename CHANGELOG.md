@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.30.0
+
+- **Added**: Base classes for encryption and decryption user token with pin code or biometry
+- **Added**: Pin code validators
+
 ### 1.29.1
 
 - **Updated**: `BaseTextAttributes` correct detection of the necessity of using attributed string

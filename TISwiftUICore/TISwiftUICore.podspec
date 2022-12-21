@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'TISwiftUICore'
-  s.version          = '1.29.1'
-  s.summary          = 'Core UI elements: protocols, views and helpers..'
+  s.version          = '1.30.0'
+  s.summary          = 'Core UI elements: protocols, views and helpers.'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'petropavel13' => 'ivan.smolin@touchin.ru' }

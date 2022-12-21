@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TIAuth'
-  s.version          = '1.29.1'
+  s.version          = '1.30.0'
   s.summary          = 'Login, registration, confirmation and other related actions'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -13,4 +13,6 @@ Pod::Spec.new do |s|
   s.source_files = s.name + '/Sources/**/*'
 
   s.dependency 'TIFoundationUtils', s.version.to_s
+  s.dependency 'TIUIKitCore', s.version.to_s
+  s.dependency 'KeychainAccess', "~> 4.2"
 end

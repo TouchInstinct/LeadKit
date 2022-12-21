@@ -21,17 +21,14 @@
 //
 
 import Foundation
+import TIUIKitCore
 
 @MainActor
-protocol CodeConfirmPresenter {
+protocol CodeConfirmPresenter: LifecyclePresenter {
     // MARK: - User actions handling
 
     func inputChanged(newInput: String?)
     func refreshCode()
-
-    // MARK: - View lifecycle handling
-
-    func viewDidPresented()
 
     // MARK: - Autofill
 
