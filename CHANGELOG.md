@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.32.0
+
+- **Added**: `BaseInitializableWebView`with navigation and error handling api.
+
 ### 1.30.0
 
 - **Added**: Base classes for encryption and decryption user token with pin code or biometry
