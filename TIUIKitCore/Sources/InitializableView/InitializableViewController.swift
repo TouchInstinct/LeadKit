@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2022 Touch Instinct
+//  Copyright (c) 2021 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,41 +20,23 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UITextView
-import TIUIKitCore
+public protocol InitializableViewController: InitializableViewProtocol {
 
-open class BaseInitializeableTextView: UITextView, InitializableViewProtocol {
-    public override init(frame: CGRect, textContainer: NSTextContainer?) {
-        super.init(frame: frame, textContainer: textContainer)
+    func configureBarButtons()
+}
 
-        initializeView()
+public extension InitializableViewController {
+    func initializeView() {
+        assertionFailure("Use \(String(describing: initializeController)) for UIViewController instead!")
     }
 
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-
-        initializeView()
-    }
-
-    // MARK: - InitializableView
-
-    open func addViews() {
-        // override in subclass
-    }
-
-    open func configureLayout() {
-        // override in subclass
-    }
-
-    open func bindViews() {
-        // override in subclass
-    }
-
-    open func configureAppearance() {
-        // override in subclass
-    }
-
-    open func localize() {
-        // override in subclass
+    /// Method that should be called in viewDidLoad method of UIViewController.
+    func initializeController() {
+        addViews()
+        configureLayout()
+        configureAppearance()
+        configureBarButtons()
+        localize()
+        bindViews()
     }
 }

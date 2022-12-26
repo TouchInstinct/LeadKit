@@ -22,7 +22,7 @@
 
 import UIKit
 
-open class BaseCustomViewController<View: UIView>: BaseInitializeableViewController {
+open class BaseCustomViewController<View: UIView>: BaseInitializableViewController {
 
     public private(set) lazy var customView = createView()
 

@@ -20,23 +20,43 @@
 //  THE SOFTWARE.
 //
 
-public protocol InitializeableViewController: InitializableViewProtocol {
+import UIKit.UIViewController
 
-    func configureBarButtons()
-}
+open class BaseInitializableViewController: UIViewController, InitializableViewController {
 
-public extension InitializeableViewController {
-    func initializeView() {
-        assertionFailure("Use \(String(describing: initializeController)) for UIViewController instead!")
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+
+        onViewDidLoad()
     }
 
-    /// Method that should be called in viewDidLoad method of UIViewController.
-    func initializeController() {
-        addViews()
-        configureLayout()
-        configureAppearance()
-        configureBarButtons()
-        localize()
-        bindViews()
+    open func onViewDidLoad() {
+        initializeController()
+    }
+
+    // MARK: - InitializableController
+
+    open func addViews() {
+        // override in subclass
+    }
+
+    open func configureLayout() {
+        // override in subclass
+    }
+
+    open func bindViews() {
+        // override in subclass
+    }
+
+    open func configureAppearance() {
+        // override in subclass
+    }
+
+    open func localize() {
+        // override in subclass
+    }
+
+    open func configureBarButtons() {
+        // override in subclass
     }
 }

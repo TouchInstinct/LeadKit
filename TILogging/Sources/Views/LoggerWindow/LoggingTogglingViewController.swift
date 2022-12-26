@@ -24,7 +24,7 @@ import TIUIKitCore
 import UIKit
 
 @available(iOS 15, *)
-open class LoggingTogglingViewController: BaseInitializeableViewController {
+open class LoggingTogglingViewController: BaseInitializableViewController {
 
     private var initialCenter = CGPoint()
 

@@ -23,7 +23,7 @@
 import UIKit.UIGeometry
 import TIUIKitCore
 
-open class URLInteractiveTextView: BaseInitializeableTextView, ConfigurableView {
+open class URLInteractiveTextView: BaseInitializableTextView, ConfigurableView {
     public var interactionHandler: UITextViewURLInteractionHandler? {
         didSet {
             delegate = interactionHandler
