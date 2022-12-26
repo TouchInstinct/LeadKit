@@ -48,8 +48,8 @@ public extension UITextView {
         interactiveParts
             .compactMap { interactivePart -> InteractiveRange? in
                 guard let range = text.range(of: interactivePart.text),
-                      let url = interactivePart.url
-                else {
+                      let url = interactivePart.url else {
+
                     return nil
                 }
 

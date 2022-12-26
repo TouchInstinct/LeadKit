@@ -49,5 +49,4 @@ open class URLInteractiveTextView: BaseInitializableTextView, ConfigurableView {
 
         interactionHandler = viewModel.interactionHandler
     }
-
 }
