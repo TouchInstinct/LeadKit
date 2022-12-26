@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -23,8 +23,9 @@
 import WebKit
 
 public protocol WebViewModelProtocol: WKScriptMessageHandler {
-    var injector: WebViewUrlInjectorProtocol { get }
-    var navigator: WebViewNavigatorProtocol { get }
+    var injector: BaseWebViewUrlInjector { get }
+    var navigator: BaseWebViewNavigator { get }
+    var errorHandler: BaseWebViewErrorHandler { get }
 
     func makeUrlInjection(forWebView webView: WKWebView)
     func shouldNavigate(toUrl url: URL) -> WKNavigationActionPolicy

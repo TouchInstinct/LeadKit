@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,6 +20,10 @@
 //  THE SOFTWARE.
 //
 
-public protocol WebViewErrorHandlerProtocol {
-    func didRecievedError(_ error: WebViewErrorModel)
+import protocol WebKit.WKNavigationDelegate
+
+public protocol WebViewStateHandler: WKNavigationDelegate {
+    var viewModel: WebViewModelProtocol? { get set }
+
+    func navigationProgress(_ progress: Double, isLoading: Bool)
 }

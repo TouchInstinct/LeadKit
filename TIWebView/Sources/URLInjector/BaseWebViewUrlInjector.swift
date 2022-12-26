@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -23,7 +23,7 @@
 import Foundation
 import class WebKit.WKWebView
 
-open class BaseWebViewUrlInjector: WebViewUrlInjectorProtocol {
+open class BaseWebViewUrlInjector {
 
     public typealias URLInjection = [WebViewUrlComparator: [WebViewUrlInjection]]
 
@@ -37,7 +37,9 @@ open class BaseWebViewUrlInjector: WebViewUrlInjectorProtocol {
         self.init(injection: [:])
     }
 
-    open func inject(onWebView webView: WKWebView) {
+    // MARK: - Open methods
+
+    open func inject(on webView: WKWebView) {
         guard !injection.isEmpty, let url = webView.url else {
             return
         }
@@ -50,6 +52,8 @@ open class BaseWebViewUrlInjector: WebViewUrlInjectorProtocol {
             injections.forEach { evaluteInjection(onWebView: webView, injection: $0) }
         }
     }
+
+    // MARK: - Private methods
 
     private func evaluteInjection(onWebView webView: WKWebView, injection: WebViewUrlInjection) {
         let jsScript = makeJsScript(fromInjection: injection)
@@ -66,12 +70,8 @@ open class BaseWebViewUrlInjector: WebViewUrlInjectorProtocol {
         case let .css(css):
             return cssJsScript(css: css)
 
-        case let .cssForFile(file):
-            guard let path = Bundle.main.path(forResource: file, ofType: "css") else {
-                return ""
-            }
-
-            let css = try? String(contentsOfFile: path)
+        case let .cssForFile(url):
+            let css = try? String(contentsOf: url)
                 .components(separatedBy: .newlines)
                 .joined()
 

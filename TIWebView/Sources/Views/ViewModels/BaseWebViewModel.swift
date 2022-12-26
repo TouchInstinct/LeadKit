@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -24,15 +24,15 @@ import WebKit
 
 open class BaseWebViewModel: NSObject, WebViewModelProtocol {
 
-    public var injector: WebViewUrlInjectorProtocol
-    public var navigator: WebViewNavigatorProtocol
-    public var errorHandler: WebViewErrorHandlerProtocol
+    public var injector: BaseWebViewUrlInjector
+    public var navigator: BaseWebViewNavigator
+    public var errorHandler: BaseWebViewErrorHandler
 
     // MARK: - Init
 
-    public init(injector: WebViewUrlInjectorProtocol = BaseWebViewUrlInjector(),
-                navigator: WebViewNavigatorProtocol = BaseWebViewNavigator(),
-                errorHandler: WebViewErrorHandlerProtocol = BaseWebViewErrorHandler()) {
+    public init(injector: BaseWebViewUrlInjector = .init(),
+                navigator: BaseWebViewNavigator = .init(),
+                errorHandler: BaseWebViewErrorHandler = .init()) {
 
         self.injector = injector
         self.navigator = navigator
@@ -44,7 +44,7 @@ open class BaseWebViewModel: NSObject, WebViewModelProtocol {
     // MARK: - Open methods
 
     open func makeUrlInjection(forWebView webView: WKWebView) {
-        injector.inject(onWebView: webView)
+        injector.inject(on: webView)
     }
 
     open func shouldNavigate(toUrl url: URL) -> WKNavigationActionPolicy {
@@ -60,18 +60,17 @@ open class BaseWebViewModel: NSObject, WebViewModelProtocol {
     open func userContentController(_ userContentController: WKUserContentController,
                                     didReceive message: WKScriptMessage) {
 
-        if message.name == WebViewErrorConstants.errorMessageName,
-           let error = parseError(message){
-            let url = message.webView?.url
-            errorHandler.didRecievedError(.init(url: url, jsErrorMessage: error))
+        if message.name == WebViewErrorConstants.errorMessageName {
+            let error = parseError(message)
+            errorHandler.didRecievedError(error)
         }
     }
 
     // MARK: - Private methods
 
-    private func parseError(_ message: WKScriptMessage) -> String? {
+    private func parseError(_ message: WKScriptMessage) -> WebViewErrorModel {
         let body = message.body as? [String: Any]
         let error = body?[WebViewErrorConstants.errorPropertyName] as? String
-        return error
+        return .init(jsErrorMessage: error)
     }
 }

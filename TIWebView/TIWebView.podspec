@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
                          'castlele' => 'nikita.semenov@touchin.ru' }
   s.source           = { :git => 'https://github.com/TouchInstinct/LeadKit.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '13.0'
+  s.ios.deployment_target = '11.0'
   s.swift_versions = ['5.3']
 
   s.source_files = s.name + '/Sources/**/*'

@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -25,17 +25,25 @@ import WebKit
 
 open class BaseInitializableWebView: WKWebView,
                                      InitializableViewProtocol,
-                                     ConfigurableView,
-                                     WKNavigationDelegate {
+                                     ConfigurableView {
 
-    public var viewModel: WebViewModelProtocol?
-    public var delegate: WebViewNavigationDelegate?
+    public var viewModel: WebViewModelProtocol? {
+        didSet {
+            stateHandler?.viewModel = viewModel
+        }
+    }
+    public var stateHandler: WebViewStateHandler? {
+        didSet {
+            navigationDelegate = stateHandler
+        }
+    }
 
     // MARK: - Init
 
-    public init() {
+    public init(stateHandler: WebViewStateHandler? = BaseWebViewStateHandler()) {
         super.init(frame: .zero, configuration: .init())
 
+        self.stateHandler = stateHandler
         initializeView()
     }
 
@@ -55,9 +63,6 @@ open class BaseInitializableWebView: WKWebView,
     }
 
     public func bindViews() {
-        navigationDelegate = self
-        configuration.preferences.javaScriptEnabled = true
-
         addObserver(self,
                     forKeyPath: #keyPath(WKWebView.estimatedProgress),
                     options: .new,
@@ -80,7 +85,7 @@ open class BaseInitializableWebView: WKWebView,
                                     context: UnsafeMutableRawPointer?) {
 
         if keyPath == #keyPath(WKWebView.estimatedProgress) {
-            delegate?.navigationProgress(estimatedProgress, isLoading: isLoading)
+            stateHandler?.navigationProgress(estimatedProgress, isLoading: isLoading)
         }
     }
 
@@ -90,43 +95,5 @@ open class BaseInitializableWebView: WKWebView,
         self.viewModel = viewModel
 
         configuration.userContentController.add(viewModel, name: WebViewErrorConstants.errorMessageName)
-    }
-
-    // MARK: - WKNavigationDelegate
-
-    open func webView(_ webView: WKWebView,
-                      decidePolicyFor navigationAction: WKNavigationAction,
-                      decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-
-        guard let url = navigationAction.request.url else {
-            return decisionHandler(.cancel)
-        }
-
-        let decision = viewModel?.shouldNavigate(toUrl: url) ?? .cancel
-        decisionHandler(decision)
-    }
-
-    open func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        delegate?.didCommit(navigation, forWebView: webView)
-    }
-
-    open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        delegate?.didFinish(navigation, forWebView: webView)
-        viewModel?.makeUrlInjection(forWebView: webView)
-    }
-
-    open func webView(_ webView: WKWebView,
-                      didFailProvisionalNavigation navigation: WKNavigation!,
-                      withError error: Error) {
-        viewModel?.handleError(error, url: webView.url)
-        delegate?.didFailProvisionalNavigation(navigation, withError: error, forWebView: webView)
-    }
-
-    open func webView(_ webView: WKWebView,
-                      didFail navigation: WKNavigation!,
-                      withError error: Error) {
-
-        viewModel?.handleError(error, url: webView.url)
-        delegate?.didFail(navigation, withError: error, forWebView: webView)
     }
 }

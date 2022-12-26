@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -22,9 +22,9 @@
 
 import TILogging
 
-open class BaseWebViewErrorHandler: WebViewErrorHandlerProtocol {
+open class BaseWebViewErrorHandler {
 
-    let logger: TILogger?
+    public var logger: TILogger?
 
     public init(logger: TILogger? = nil) {
         self.logger = logger
