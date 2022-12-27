@@ -56,7 +56,10 @@ public extension UITextView {
                 return InteractiveRange(range: range, url: url)
             }
             .forEach { range, url in
-                mutableAttributedText.addAttributes(interactiveAttributes, range: NSRange(range, in: text))
+                var partLinkAttributes = interactiveAttributes
+                partLinkAttributes.updateValue(url, forKey: .link)
+
+                mutableAttributedText.addAttributes(partLinkAttributes, range: NSRange(range, in: text))
             }
 
         attributedText = mutableAttributedText
