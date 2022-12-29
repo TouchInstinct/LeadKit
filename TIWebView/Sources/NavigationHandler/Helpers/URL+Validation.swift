@@ -21,26 +21,24 @@
 //
 
 import Foundation
-import enum WebKit.WKNavigationActionPolicy
 
-open class BaseWebViewNavigator {
+extension URL {
+    func validate(with regex: NSRegularExpression) -> Bool {
+        let range = NSRange(location: 0, length: absoluteString.utf16.count)
 
-    public let navigationMap: [NavigationPolicy]
-
-    public init(navigationMap: [NavigationPolicy]) {
-        self.navigationMap = navigationMap
+        return regex.firstMatch(in: absoluteString, range: range) != nil
     }
 
-    public convenience init() {
-        self.init(navigationMap: [])
-    }
+    func validate(by component: URLComponent) -> Bool {
+        switch component {
+        case let .host(host):
+            return self.host == host
 
-    open func shouldNavigate(toUrl url: URL) -> WKNavigationActionPolicy {
-        guard !navigationMap.isEmpty else {
-            return .cancel
+        case let .absolutePath(path):
+            return absoluteString == path
+
+        case let .query(query):
+            return (self.query ?? "").contains(query)
         }
-
-        let allowPolicy = navigationMap.filter { $0.policy(for: url) == .allow }
-        return allowPolicy.isEmpty ? .cancel : .allow
     }
 }

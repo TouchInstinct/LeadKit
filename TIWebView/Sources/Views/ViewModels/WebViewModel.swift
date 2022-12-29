@@ -20,27 +20,29 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
-import enum WebKit.WKNavigationActionPolicy
+import WebKit
 
-open class BaseWebViewNavigator {
+public protocol WebViewModel: WKScriptMessageHandler {
+    var injector: BaseWebViewUrlInjector { get }
+    var navigator: BaseWebViewNavigator { get }
+    var errorHandler: BaseWebViewErrorHandler { get }
 
-    public let navigationMap: [NavigationPolicy]
+    func makeUrlInjection(forWebView webView: WKWebView)
+    func shouldNavigate(toUrl url: URL) -> WKNavigationActionPolicy
+    func handleError(_ error: Error, url: URL?)
+}
 
-    public init(navigationMap: [NavigationPolicy]) {
-        self.navigationMap = navigationMap
+public extension WebViewModel {
+
+    func makeUrlInjection(forWebView webView: WKWebView) {
+        injector.inject(on: webView)
     }
 
-    public convenience init() {
-        self.init(navigationMap: [])
+    func shouldNavigate(toUrl url: URL) -> WKNavigationActionPolicy {
+        navigator.shouldNavigate(toUrl: url)
     }
 
-    open func shouldNavigate(toUrl url: URL) -> WKNavigationActionPolicy {
-        guard !navigationMap.isEmpty else {
-            return .cancel
-        }
-
-        let allowPolicy = navigationMap.filter { $0.policy(for: url) == .allow }
-        return allowPolicy.isEmpty ? .cancel : .allow
+    func handleError(_ error: Error, url: URL?) {
+        errorHandler.didRecievedError(.standardError(url, error))
     }
 }

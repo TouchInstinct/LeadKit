@@ -20,6 +20,7 @@
 //  THE SOFTWARE.
 //
 
+import TISwiftUtils
 import TIUIKitCore
 import WebKit
 
@@ -27,23 +28,20 @@ open class BaseInitializableWebView: WKWebView,
                                      InitializableViewProtocol,
                                      ConfigurableView {
 
-    public var viewModel: WebViewModelProtocol? {
+    public var stateHandler: WebViewStateHandler
+    public var viewModel: WebViewModel? {
         didSet {
-            stateHandler?.viewModel = viewModel
-        }
-    }
-    public var stateHandler: WebViewStateHandler? {
-        didSet {
-            navigationDelegate = stateHandler
+            stateHandler.viewModel = viewModel
         }
     }
 
     // MARK: - Init
 
-    public init(stateHandler: WebViewStateHandler? = BaseWebViewStateHandler()) {
+    public init(stateHandler: WebViewStateHandler = BaseWebViewStateHandler()) {
+        self.stateHandler = stateHandler
+
         super.init(frame: .zero, configuration: .init())
 
-        self.stateHandler = stateHandler
         initializeView()
     }
 
@@ -63,10 +61,7 @@ open class BaseInitializableWebView: WKWebView,
     }
 
     public func bindViews() {
-        addObserver(self,
-                    forKeyPath: #keyPath(WKWebView.estimatedProgress),
-                    options: .new,
-                    context: nil)
+        navigationDelegate = stateHandler
     }
 
     public func configureAppearance() {
@@ -77,23 +72,21 @@ open class BaseInitializableWebView: WKWebView,
         // override in subviews
     }
 
-    // MARK: - Overrided methods
-
-    open override func observeValue(forKeyPath keyPath: String?,
-                                    of object: Any?,
-                                    change: [NSKeyValueChangeKey : Any]?,
-                                    context: UnsafeMutableRawPointer?) {
-
-        if keyPath == #keyPath(WKWebView.estimatedProgress) {
-            stateHandler?.navigationProgress(estimatedProgress, isLoading: isLoading)
-        }
-    }
-
     // MARK: - ConfigurableView
 
-    open func configure(with viewModel: WebViewModelProtocol) {
+    open func configure(with viewModel: WebViewModel) {
         self.viewModel = viewModel
 
         configuration.userContentController.add(viewModel, name: WebViewErrorConstants.errorMessageName)
+    }
+
+    // MARK: - Public methods
+
+    public func subscribe(onProgress: ParameterClosure<Double>? = nil) -> NSKeyValueObservation {
+        observe(\.estimatedProgress, options: [.new]) { webView, change in
+            if webView.isLoading, let newValue = change.newValue {
+                onProgress?(newValue)
+            }
+        }
     }
 }

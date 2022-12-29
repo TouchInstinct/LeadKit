@@ -21,10 +21,31 @@
 //
 
 import Foundation
-import TISwiftUtils
 import enum WebKit.WKNavigationActionPolicy
 
-public enum NavigationResult {
-    case closure(Closure<URL, WKNavigationActionPolicy>)
-    case simpleResult(WKNavigationActionPolicy)
+open class RegexNavigationPolicy: AnyNavigationPolicy {
+
+    public var regex: NSRegularExpression
+
+    // MARK: - Init
+
+    public init(regex: NSRegularExpression) {
+        self.regex = regex
+
+        super.init()
+    }
+
+    public convenience init?(stringRegex: String) {
+        guard let regex = try? NSRegularExpression(pattern: stringRegex) else {
+            return nil
+        }
+
+        self.init(regex: regex)
+    }
+
+    // MARK: - NavigationPolicy
+
+    open override func policy(for url: URL) -> WKNavigationActionPolicy {
+        url.validate(with: regex) ? .allow : .cancel
+    }
 }

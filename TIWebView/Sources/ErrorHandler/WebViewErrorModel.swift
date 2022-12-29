@@ -22,17 +22,7 @@
 
 import Foundation
 
-public struct WebViewErrorModel {
-    public let url: URL?
-    public let error: Error?
-    public let jsErrorMessage: String?
-
-    public init(url: URL? = nil,
-                error: Error? = nil,
-                jsErrorMessage: String? = nil) {
-
-        self.url = url
-        self.error = error
-        self.jsErrorMessage = jsErrorMessage
-    }
+public enum WebViewError: Error {
+    case standardError(URL?, Error)
+    case jsError(URL?, String)
 }

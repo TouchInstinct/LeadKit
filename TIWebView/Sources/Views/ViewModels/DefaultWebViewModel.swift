@@ -22,7 +22,7 @@
 
 import WebKit
 
-open class BaseWebViewModel: NSObject, WebViewModelProtocol {
+open class DefaultWebViewModel: NSObject, WebViewModel {
 
     public var injector: BaseWebViewUrlInjector
     public var navigator: BaseWebViewNavigator
@@ -41,20 +41,6 @@ open class BaseWebViewModel: NSObject, WebViewModelProtocol {
         super.init()
     }
 
-    // MARK: - Open methods
-
-    open func makeUrlInjection(forWebView webView: WKWebView) {
-        injector.inject(on: webView)
-    }
-
-    open func shouldNavigate(toUrl url: URL) -> WKNavigationActionPolicy {
-        navigator.shouldNavigate(toUrl: url)
-    }
-
-    open func handleError(_ error: Error, url: URL?) {
-        errorHandler.didRecievedError(.init(url: url, error: error))
-    }
-
     // MARK: - WKScriptMessageHandler
 
     open func userContentController(_ userContentController: WKUserContentController,
@@ -68,9 +54,9 @@ open class BaseWebViewModel: NSObject, WebViewModelProtocol {
 
     // MARK: - Private methods
 
-    private func parseError(_ message: WKScriptMessage) -> WebViewErrorModel {
+    private func parseError(_ message: WKScriptMessage) -> WebViewError {
         let body = message.body as? [String: Any]
         let error = body?[WebViewErrorConstants.errorPropertyName] as? String
-        return .init(jsErrorMessage: error)
+        return .jsError(message.webView?.url, error ?? "")
     }
 }

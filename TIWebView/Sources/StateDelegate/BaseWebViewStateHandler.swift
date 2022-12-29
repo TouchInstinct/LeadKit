@@ -24,15 +24,9 @@ import WebKit
 
 open class BaseWebViewStateHandler: NSObject, WebViewStateHandler {
 
-    public weak var viewModel: WebViewModelProtocol?
+    public weak var viewModel: WebViewModel?
 
     // MARK: - WebViewStateHandler
-
-    open func navigationProgress(_ progress: Double, isLoading: Bool) {
-        // Override in subclass
-    }
-
-    // MARK: - WKNavigationDelegate
 
     open func webView(_ webView: WKWebView,
                       decidePolicyFor navigationAction: WKNavigationAction,
@@ -47,6 +41,7 @@ open class BaseWebViewStateHandler: NSObject, WebViewStateHandler {
     }
 
     open func webView(_ webView: WKWebView, didCommit navigation: WKNavigation?) {
+        // override in subviews
     }
 
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation?) {
@@ -56,6 +51,7 @@ open class BaseWebViewStateHandler: NSObject, WebViewStateHandler {
     open func webView(_ webView: WKWebView,
                       didFailProvisionalNavigation navigation: WKNavigation?,
                       withError error: Error) {
+
         viewModel?.handleError(error, url: webView.url)
     }
 

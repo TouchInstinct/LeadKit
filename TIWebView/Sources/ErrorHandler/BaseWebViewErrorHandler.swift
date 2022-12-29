@@ -24,13 +24,11 @@ import TILogging
 
 open class BaseWebViewErrorHandler {
 
-    public var logger: TILogger?
+    public init() {
 
-    public init(logger: TILogger? = nil) {
-        self.logger = logger
     }
 
-    open func didRecievedError(_ error: WebViewErrorModel) {
-        logger?.error("%@", "\(error)")
+    open func didRecievedError(_ error: WebViewError) {
+        // override in subviews
     }
 }

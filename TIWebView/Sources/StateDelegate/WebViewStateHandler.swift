@@ -23,7 +23,5 @@
 import protocol WebKit.WKNavigationDelegate
 
 public protocol WebViewStateHandler: WKNavigationDelegate {
-    var viewModel: WebViewModelProtocol? { get set }
-
-    func navigationProgress(_ progress: Double, isLoading: Bool)
+    var viewModel: WebViewModel? { get set }
 }

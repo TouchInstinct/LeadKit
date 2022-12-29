@@ -20,14 +20,25 @@
 //  THE SOFTWARE.
 //
 
-import WebKit
+import Foundation
+import enum WebKit.WKNavigationActionPolicy
 
-public protocol WebViewModelProtocol: WKScriptMessageHandler {
-    var injector: BaseWebViewUrlInjector { get }
-    var navigator: BaseWebViewNavigator { get }
-    var errorHandler: BaseWebViewErrorHandler { get }
+/// Compares URL with combination of URL components.
+open class URLComponentsNavigationPolicy: AnyNavigationPolicy {
 
-    func makeUrlInjection(forWebView webView: WKWebView)
-    func shouldNavigate(toUrl url: URL) -> WKNavigationActionPolicy
-    func handleError(_ error: Error, url: URL?)
+    public var components: [URLComponent]
+
+    // MARK: - Init
+
+    public init(components: [URLComponent]) {
+        self.components = components
+
+        super.init()
+    }
+
+    // MARK: - NavigationPolicy
+
+    open override func policy(for url: URL) -> WKNavigationActionPolicy {
+        components.allSatisfy { url.validate(by: $0) } ? .allow : .cancel
+    }
 }

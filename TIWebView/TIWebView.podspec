@@ -15,6 +15,5 @@ Pod::Spec.new do |s|
 
   s.dependency 'TIUIKitCore', s.version.to_s
   s.dependency 'TISwiftUtils', s.version.to_s
-  s.dependency 'TILogging', s.version.to_s
 
 end

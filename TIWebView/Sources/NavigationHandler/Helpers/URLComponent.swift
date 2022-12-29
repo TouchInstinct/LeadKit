@@ -20,27 +20,8 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
-import enum WebKit.WKNavigationActionPolicy
-
-open class BaseWebViewNavigator {
-
-    public let navigationMap: [NavigationPolicy]
-
-    public init(navigationMap: [NavigationPolicy]) {
-        self.navigationMap = navigationMap
-    }
-
-    public convenience init() {
-        self.init(navigationMap: [])
-    }
-
-    open func shouldNavigate(toUrl url: URL) -> WKNavigationActionPolicy {
-        guard !navigationMap.isEmpty else {
-            return .cancel
-        }
-
-        let allowPolicy = navigationMap.filter { $0.policy(for: url) == .allow }
-        return allowPolicy.isEmpty ? .cancel : .allow
-    }
+public enum URLComponent {
+    case host(String)
+    case absolutePath(String)
+    case query(String)
 }

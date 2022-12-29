@@ -23,24 +23,13 @@
 import Foundation
 import enum WebKit.WKNavigationActionPolicy
 
-open class BaseWebViewNavigator {
+open class AnyNavigationPolicy: NavigationPolicy {
 
-    public let navigationMap: [NavigationPolicy]
+    public init() {
 
-    public init(navigationMap: [NavigationPolicy]) {
-        self.navigationMap = navigationMap
     }
 
-    public convenience init() {
-        self.init(navigationMap: [])
-    }
-
-    open func shouldNavigate(toUrl url: URL) -> WKNavigationActionPolicy {
-        guard !navigationMap.isEmpty else {
-            return .cancel
-        }
-
-        let allowPolicy = navigationMap.filter { $0.policy(for: url) == .allow }
-        return allowPolicy.isEmpty ? .cancel : .allow
+    open func policy(for url: URL) -> WKNavigationActionPolicy {
+        .allow
     }
 }

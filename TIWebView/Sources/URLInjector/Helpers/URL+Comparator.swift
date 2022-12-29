@@ -29,22 +29,19 @@ public extension URL {
             return true
 
         case let .absolutePath(path):
-            return absoluteString == path
+            return compare(by: .absolutePath(path))
 
         case let .host(host):
-            return self.host == host
+            return compare(by: .host(host))
 
         case let .query(query):
-            return (self.query ?? "").contains(query)
+            return compare(by: .query(query))
 
         case let .regex(stringRegex):
             guard let regex = try? NSRegularExpression(pattern: stringRegex) else {
                 return false
             }
-
-            let range = NSRange(location: 0, length: absoluteString.utf16.count)
-
-            return regex.firstMatch(in: absoluteString, range: range) != nil
+            return validate(with: regex)
         }
     }
 }
