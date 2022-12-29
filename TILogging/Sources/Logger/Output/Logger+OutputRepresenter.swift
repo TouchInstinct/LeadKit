@@ -22,6 +22,9 @@
 
 import os
 
-public protocol LoggerRepresentable {
-    func log(_ message: StaticString, log: OSLog?, type: OSLogType, _ arguments: CVarArg...)
+@available(iOS 14.0, *)
+extension Logger: LogOutputStream {
+    public func log(type: OSLogType, log: OSLog?, _ message: String) {
+        self.log(level: type, "\(message)")
+    }
 }

@@ -23,7 +23,7 @@
 import Foundation
 import os
 
-public struct TILogger: LoggerRepresentable {
+public struct TILogger {
 
     // MARK: - Properties
 
@@ -31,44 +31,75 @@ public struct TILogger: LoggerRepresentable {
     public static let defaultLogger = TILogger(subsystem: .defaultSubsystem ?? "", category: .pointsOfInterest)
 
     public let logInfo: OSLog
+    public var loggerHandler: LogHandler?
 
     // MARK: - Init
 
     public init(subsystem: String, category: String) {
         self.logInfo = .init(subsystem: subsystem, category: category)
+        self.loggerHandler = DefaultLoggerHandler(logInfo: logInfo)
     }
 
     @available(iOS 12, *)
     public init(subsystem: String, category: OSLog.Category) {
         self.logInfo = .init(subsystem: subsystem, category: category)
-    }
-
-    // MARK: - LoggerRepresentable
-
-    public func log(_ message: StaticString, log: OSLog?, type: OSLogType, _ arguments: CVarArg...) {
-        os_log(message, log: log ?? logInfo, type: type, arguments)
+        self.loggerHandler = DefaultLoggerHandler(logInfo: logInfo)
     }
 
     // MARK: - Public methods
 
+    public func log(_ message: StaticString, log: OSLog? = nil, type: OSLogType, _ arguments: CVarArg...) {
+        let stringMessage = String(format: "\(message)", arguments: arguments)
+        self.log(type: type, log: log, stringMessage)
+    }
+
+    public func log(type: OSLogType, log: OSLog? = nil, _ message: String) {
+        loggerHandler?.log(type: type, log: log ?? logInfo, message)
+    }
+
     public func verbose(_ message: StaticString, _ arguments: CVarArg...) {
-        self.log(message, log: logInfo, type: .default, arguments)
+        let stringMessage = String(format: "\(message)", arguments: arguments)
+        self.log(type: .default, stringMessage)
+    }
+
+    public func verbose(_ message: String) {
+        self.log(type: .default, message)
     }
 
     public func info(_ message: StaticString, _ arguments: CVarArg...) {
-        self.log(message, log: logInfo, type: .info, arguments)
+        let stringMessage = String(format: "\(message)", arguments: arguments)
+        self.log(type: .info, stringMessage)
+    }
+
+    public func info(_ message: String) {
+        self.log(type: .info, message)
     }
 
     public func debug(_ message: StaticString, _ arguments: CVarArg...) {
-        self.log(message, log: logInfo, type: .debug, arguments)
+        let stringMessage = String(format: "\(message)", arguments: arguments)
+        self.log(type: .debug, stringMessage)
+    }
+
+    public func debug(_ message: String) {
+        self.log(type: .debug, message)
     }
 
     public func error(_ message: StaticString, _ arguments: CVarArg...) {
-        self.log(message, log: logInfo, type: .error, arguments)
+        let stringMessage = String(format: "\(message)", arguments: arguments)
+        self.log(type: .error, stringMessage)
+    }
+
+    public func error(_ message: String) {
+        self.log(type: .error, message)
     }
 
     public func fault(_ message: StaticString, _ arguments: CVarArg...) {
-        self.log(message, log: logInfo, type: .fault, arguments)
+        let stringMessage = String(format: "\(message)", arguments: arguments)
+        self.log(type: .fault, stringMessage)
+    }
+
+    public func fault(_ message: String) {
+        self.log(type: .fault, message)
     }
 }
 

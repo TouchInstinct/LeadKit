@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TIPagination'
-  s.version          = '1.30.0'
+  s.version          = '1.30.1'
   s.summary          = 'Generic pagination component.'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
