@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.30.1
+
+- **Fix**: `TILogging` bug with passing arguments to a logging message with wrapped `os_log` function;
+- **Added**: Documentation for `TILogging`.
+
 ### 1.30.0
 
 - **Added**: Base classes for encryption and decryption user token with pin code or biometry
