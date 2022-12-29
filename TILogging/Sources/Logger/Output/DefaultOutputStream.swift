@@ -23,7 +23,7 @@
 import os
 import _SwiftOSOverlayShims
 
-public struct DefaultOutput: LogOutputRepresentater {
+public struct DefaultOutputStream: LogOutputStream {
 
     public func log(type: OSLogType, log: OSLog?, _ message: String) {
         guard let logInfo = log, logInfo.isEnabled(type: type) else {
@@ -34,7 +34,7 @@ public struct DefaultOutput: LogOutputRepresentater {
         var mutableMessage = message
 
         mutableMessage.withUTF8 { (buf: UnsafeBufferPointer<UInt8>) in
-            buf.baseAddress!.withMemoryRebound(to: CChar.self, capacity: buf.count) { str in
+            buf.baseAddress?.withMemoryRebound(to: CChar.self, capacity: buf.count) { str in
                 withVaList([]) { valist in
                     _swift_os_log(#dsohandle, ra, logInfo, type, str, valist)
                 }

@@ -25,7 +25,7 @@ import os
 public struct DefaultLoggerHandler: LogHandler {
 
     public var logInfo: OSLog
-    public var logger: LogOutputRepresentater?
+    public var logger: LogOutputStream?
 
     public init(logInfo: OSLog) {
         self.logInfo = logInfo
@@ -33,7 +33,7 @@ public struct DefaultLoggerHandler: LogHandler {
         if #available(iOS 14, *) {
             self.logger = Logger(logInfo)
         } else {
-            self.logger = DefaultOutput()
+            self.logger = DefaultOutputStream()
         }
     }
 

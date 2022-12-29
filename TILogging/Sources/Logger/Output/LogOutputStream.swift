@@ -22,6 +22,6 @@
 
 import os
 
-public protocol LogOutputRepresentater {
+public protocol LogOutputStream {
     func log(type: OSLogType, log: OSLog?, _ message: String)
 }

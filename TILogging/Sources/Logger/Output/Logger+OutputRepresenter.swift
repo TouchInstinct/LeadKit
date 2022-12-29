@@ -23,7 +23,7 @@
 import os
 
 @available(iOS 14.0, *)
-extension Logger: LogOutputRepresentater {
+extension Logger: LogOutputStream {
     public func log(type: OSLogType, log: OSLog?, _ message: String) {
         self.log(level: type, "\(message)")
     }

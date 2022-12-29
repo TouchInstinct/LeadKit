@@ -25,9 +25,3 @@ import os
 public protocol LogHandler {
     func log(type: OSLogType, log: OSLog?, _ message: String)
 }
-
-public extension LogHandler {
-    func log(type: OSLogType, log: OSLog?, _ message: String) {
-        // empty implementation
-    }
-}
