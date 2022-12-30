@@ -23,7 +23,7 @@
 import Foundation
 import enum WebKit.WKNavigationActionPolicy
 
-open class RegexNavigationPolicy: AnyNavigationPolicy {
+open class RegexNavigationPolicy: AlwaysAllowNavigationPolicy {
 
     public var regex: NSRegularExpression
 
@@ -46,6 +46,6 @@ open class RegexNavigationPolicy: AnyNavigationPolicy {
     // MARK: - NavigationPolicy
 
     open override func policy(for url: URL) -> WKNavigationActionPolicy {
-        url.validate(with: regex) ? .allow : .cancel
+        url.matches(regex) ? .allow : .cancel
     }
 }

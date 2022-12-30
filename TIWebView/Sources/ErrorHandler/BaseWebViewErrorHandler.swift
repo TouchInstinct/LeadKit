@@ -20,15 +20,9 @@
 //  THE SOFTWARE.
 //
 
-import TILogging
-
-open class BaseWebViewErrorHandler {
+open class BaseWebViewErrorHandler: WebViewErrorHandler {
 
     public init() {
 
-    }
-
-    open func didRecievedError(_ error: WebViewError) {
-        // override in subviews
     }
 }

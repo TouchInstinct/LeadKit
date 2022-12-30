@@ -23,26 +23,27 @@
 import WebKit
 
 public protocol WebViewModel: WKScriptMessageHandler {
-    var injector: BaseWebViewUrlInjector { get }
-    var navigator: BaseWebViewNavigator { get }
-    var errorHandler: BaseWebViewErrorHandler { get }
+    var injector: WebViewUrlInjector { get }
+    var navigator: WebViewNavigator { get }
+    var errorHandler: WebViewErrorHandler { get }
 
-    func makeUrlInjection(forWebView webView: WKWebView)
-    func shouldNavigate(toUrl url: URL) -> WKNavigationActionPolicy
+    func makeUrlInjection(into webView: WKWebView)
+    func shouldNavigate(to url: URL) -> WKNavigationActionPolicy
     func handleError(_ error: Error, url: URL?)
 }
 
 public extension WebViewModel {
 
-    func makeUrlInjection(forWebView webView: WKWebView) {
-        injector.inject(on: webView)
+    func makeUrlInjection(into webView: WKWebView) {
+        injector.inject(into: webView)
     }
 
-    func shouldNavigate(toUrl url: URL) -> WKNavigationActionPolicy {
-        navigator.shouldNavigate(toUrl: url)
+    func shouldNavigate(to url: URL) -> WKNavigationActionPolicy {
+        navigator.shouldNavigate(to: url)
     }
 
     func handleError(_ error: Error, url: URL?) {
-        errorHandler.didRecievedError(.standardError(url, error))
+        let errorModel = WebViewLoadingError(contentURL: url, innerError: error)
+        errorHandler.didRecievedError(errorModel)
     }
 }

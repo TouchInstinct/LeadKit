@@ -37,11 +37,8 @@ public extension URL {
         case let .query(query):
             return compare(by: .query(query))
 
-        case let .regex(stringRegex):
-            guard let regex = try? NSRegularExpression(pattern: stringRegex) else {
-                return false
-            }
-            return validate(with: regex)
+        case let .regex(nsRegex):
+            return matches(nsRegex)
         }
     }
 }

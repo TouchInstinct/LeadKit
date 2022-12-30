@@ -23,9 +23,7 @@
 import Foundation
 import class WebKit.WKWebView
 
-open class BaseWebViewUrlInjector {
-
-    public typealias URLInjection = [WebViewUrlComparator: [WebViewUrlInjection]]
+open class BaseWebViewUrlInjector: WebViewUrlInjector {
 
     public var injection: URLInjection
 
@@ -35,58 +33,5 @@ open class BaseWebViewUrlInjector {
 
     public convenience init() {
         self.init(injection: [:])
-    }
-
-    // MARK: - Open methods
-
-    open func inject(on webView: WKWebView) {
-        guard !injection.isEmpty, let url = webView.url else {
-            return
-        }
-
-        injection.forEach { (comparator, injections) in
-            guard url.compare(by: comparator) else {
-                return
-            }
-
-            injections.forEach { evaluteInjection(onWebView: webView, injection: $0) }
-        }
-    }
-
-    // MARK: - Private methods
-
-    private func evaluteInjection(onWebView webView: WKWebView, injection: WebViewUrlInjection) {
-        let jsScript = makeJsScript(fromInjection: injection)
-
-        guard !jsScript.isEmpty else {
-            return
-        }
-
-        webView.evaluateJavaScript(jsScript, completionHandler: nil)
-    }
-
-    private func makeJsScript(fromInjection injection: WebViewUrlInjection) -> String {
-        switch injection {
-        case let .css(css):
-            return cssJsScript(css: css)
-
-        case let .cssForFile(url):
-            let css = try? String(contentsOf: url)
-                .components(separatedBy: .newlines)
-                .joined()
-
-            return cssJsScript(css: css ?? "")
-
-        case let .javaScript(script):
-            return script
-        }
-    }
-
-    private func cssJsScript(css: String) -> String {
-        """
-        var style = document.createElement('style');
-        style.innerHTML = '\(css)';
-        document.head.appendChild(style);
-        """
     }
 }

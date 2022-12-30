@@ -24,7 +24,7 @@ import Foundation
 import enum WebKit.WKNavigationActionPolicy
 
 /// Compares URL with combination of URL components.
-open class URLComponentsNavigationPolicy: AnyNavigationPolicy {
+open class URLComponentsNavigationPolicy: AlwaysAllowNavigationPolicy {
 
     public var components: [URLComponent]
 

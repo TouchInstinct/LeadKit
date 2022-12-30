@@ -20,24 +20,14 @@
 //  THE SOFTWARE.
 //
 
-public enum WebViewErrorConstants {
-    static var errorMessageName: String {
-        "error"
-    }
+import Foundation
 
-    static var errorMessage: String {
-        "message"
-    }
+public struct WebViewLoadingError: WebViewError {
+    public let contentURL: URL?
+    public let innerError: Error
 
-    static var errorName: String {
-        "name"
-    }
-
-    static var errorUrl: String {
-        "url"
-    }
-
-    static var errorStack: String {
-        "stack"
+    public init(contentURL: URL?, innerError: Error) {
+        self.contentURL = contentURL
+        self.innerError = innerError
     }
 }

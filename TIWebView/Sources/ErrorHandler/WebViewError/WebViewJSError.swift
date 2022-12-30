@@ -20,24 +20,22 @@
 //  THE SOFTWARE.
 //
 
-public enum WebViewErrorConstants {
-    static var errorMessageName: String {
-        "error"
-    }
+import Foundation
 
-    static var errorMessage: String {
-        "message"
-    }
+public struct WebViewJSError: WebViewError, Codable {
+    public let contentURL: URL?
+    public let name: String?
+    public let message: String?
+    public let stackTrace: String?
 
-    static var errorName: String {
-        "name"
-    }
+    public init(contentURL: URL?,
+                name: String?,
+                message: String?,
+                stackTrace: String?) {
 
-    static var errorUrl: String {
-        "url"
-    }
-
-    static var errorStack: String {
-        "stack"
+        self.contentURL = contentURL
+        self.name = name
+        self.message = message
+        self.stackTrace = stackTrace
     }
 }

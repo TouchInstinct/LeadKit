@@ -20,24 +20,16 @@
 //  THE SOFTWARE.
 //
 
-public enum WebViewErrorConstants {
-    static var errorMessageName: String {
-        "error"
+import Foundation
+import enum WebKit.WKNavigationActionPolicy
+
+open class AlwaysAllowNavigationPolicy: NavigationPolicy {
+
+    public init() {
+
     }
 
-    static var errorMessage: String {
-        "message"
-    }
-
-    static var errorName: String {
-        "name"
-    }
-
-    static var errorUrl: String {
-        "url"
-    }
-
-    static var errorStack: String {
-        "stack"
+    open func policy(for url: URL) -> WKNavigationActionPolicy {
+        .allow
     }
 }

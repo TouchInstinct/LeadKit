@@ -24,15 +24,15 @@ import WebKit
 
 open class DefaultWebViewModel: NSObject, WebViewModel {
 
-    public var injector: BaseWebViewUrlInjector
-    public var navigator: BaseWebViewNavigator
-    public var errorHandler: BaseWebViewErrorHandler
+    public var injector: WebViewUrlInjector
+    public var navigator: WebViewNavigator
+    public var errorHandler: WebViewErrorHandler
 
     // MARK: - Init
 
-    public init(injector: BaseWebViewUrlInjector = .init(),
-                navigator: BaseWebViewNavigator = .init(),
-                errorHandler: BaseWebViewErrorHandler = .init()) {
+    public init(injector: WebViewUrlInjector = BaseWebViewUrlInjector(),
+                navigator: WebViewNavigator = BaseWebViewNavigator(),
+                errorHandler: WebViewErrorHandler = BaseWebViewErrorHandler()) {
 
         self.injector = injector
         self.navigator = navigator
@@ -56,7 +56,9 @@ open class DefaultWebViewModel: NSObject, WebViewModel {
 
     private func parseError(_ message: WKScriptMessage) -> WebViewError {
         let body = message.body as? [String: Any]
-        let error = body?[WebViewErrorConstants.errorPropertyName] as? String
-        return .jsError(message.webView?.url, error ?? "")
+        return WebViewJSError(contentURL: body?[WebViewErrorConstants.errorUrl] as? URL,
+                              name: body?[WebViewErrorConstants.errorName] as? String,
+                              message: body?[WebViewErrorConstants.errorMessage] as? String,
+                              stackTrace: body?[WebViewErrorConstants.errorStack] as? String)
     }
 }

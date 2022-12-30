@@ -23,9 +23,8 @@
 import Foundation
 
 extension URL {
-    func validate(with regex: NSRegularExpression) -> Bool {
+    func matches(_ regex: NSRegularExpression) -> Bool {
         let range = NSRange(location: 0, length: absoluteString.utf16.count)
-
         return regex.firstMatch(in: absoluteString, range: range) != nil
     }
 
@@ -38,7 +37,10 @@ extension URL {
             return absoluteString == path
 
         case let .query(query):
-            return (self.query ?? "").contains(query)
+            if let urlQuery = self.query {
+                return urlQuery.contains(query)
+            }
+            return false
         }
     }
 }

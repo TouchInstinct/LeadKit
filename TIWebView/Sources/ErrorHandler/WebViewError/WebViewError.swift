@@ -21,15 +21,7 @@
 //
 
 import Foundation
-import enum WebKit.WKNavigationActionPolicy
 
-open class AnyNavigationPolicy: NavigationPolicy {
-
-    public init() {
-
-    }
-
-    open func policy(for url: URL) -> WKNavigationActionPolicy {
-        .allow
-    }
+public protocol WebViewError: Error {
+    var contentURL: URL? { get }
 }

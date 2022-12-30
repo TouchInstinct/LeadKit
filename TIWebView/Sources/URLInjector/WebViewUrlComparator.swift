@@ -20,10 +20,12 @@
 //  THE SOFTWARE.
 //
 
+import Foundation
+
 public enum WebViewUrlComparator: Hashable {
     case any
     case absolutePath(String)
     case host(String)
     case query(String)
-    case regex(String)
+    case regex(NSRegularExpression)
 }

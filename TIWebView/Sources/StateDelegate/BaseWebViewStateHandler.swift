@@ -36,16 +36,16 @@ open class BaseWebViewStateHandler: NSObject, WebViewStateHandler {
             return decisionHandler(.cancel)
         }
 
-        let decision = viewModel?.shouldNavigate(toUrl: url) ?? .cancel
+        let decision = viewModel?.shouldNavigate(to: url) ?? .cancel
         decisionHandler(decision)
     }
 
     open func webView(_ webView: WKWebView, didCommit navigation: WKNavigation?) {
-        // override in subviews
+        // override in subclasses
     }
 
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation?) {
-        viewModel?.makeUrlInjection(forWebView: webView)
+        viewModel?.makeUrlInjection(into: webView)
     }
 
     open func webView(_ webView: WKWebView,

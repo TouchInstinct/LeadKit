@@ -20,24 +20,12 @@
 //  THE SOFTWARE.
 //
 
-public enum WebViewErrorConstants {
-    static var errorMessageName: String {
-        "error"
-    }
+public protocol WebViewErrorHandler {
+    func didRecievedError(_ error: WebViewError)
+}
 
-    static var errorMessage: String {
-        "message"
-    }
-
-    static var errorName: String {
-        "name"
-    }
-
-    static var errorUrl: String {
-        "url"
-    }
-
-    static var errorStack: String {
-        "stack"
+public extension WebViewErrorHandler {
+    func didRecievedError(_ error: WebViewError) {
+        // override in subclasses
     }
 }
