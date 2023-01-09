@@ -56,9 +56,9 @@ open class DefaultWebViewModel: NSObject, WebViewModel {
 
     private func parseError(_ message: WKScriptMessage) -> WebViewError {
         let body = message.body as? [String: Any]
-        return WebViewJSError(contentURL: body?[WebViewErrorConstants.errorUrl] as? URL,
+        return WebViewJSError(stringURL: body?[WebViewErrorConstants.errorUrl] as? String,
                               name: body?[WebViewErrorConstants.errorName] as? String,
-                              message: body?[WebViewErrorConstants.errorMessage] as? String,
+                              message: body?[WebViewErrorConstants.errorMessage] as? Int,
                               stackTrace: body?[WebViewErrorConstants.errorStack] as? String)
     }
 }

@@ -25,15 +25,20 @@ import Foundation
 public struct WebViewJSError: WebViewError, Codable {
     public let contentURL: URL?
     public let name: String?
-    public let message: String?
+    public let message: Int?
     public let stackTrace: String?
 
-    public init(contentURL: URL?,
+    public init(stringURL: String?,
                 name: String?,
-                message: String?,
+                message: Int?,
                 stackTrace: String?) {
 
-        self.contentURL = contentURL
+        if let stringURL = stringURL {
+            self.contentURL = URL(string: stringURL)
+        } else {
+            self.contentURL = nil
+        }
+
         self.name = name
         self.message = message
         self.stackTrace = stackTrace
