@@ -23,11 +23,11 @@
 import Foundation
 
 public struct WebViewLoadingError: WebViewError {
-    public let contentURL: URL?
+    public let sourceURL: URL?
     public let innerError: Error
 
-    public init(contentURL: URL?, innerError: Error) {
-        self.contentURL = contentURL
+    public init(sourceURL: URL?, innerError: Error) {
+        self.sourceURL = sourceURL
         self.innerError = innerError
     }
 }

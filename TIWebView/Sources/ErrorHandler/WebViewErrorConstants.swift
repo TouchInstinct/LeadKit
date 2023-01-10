@@ -33,12 +33,16 @@ public enum WebViewErrorConstants {
         "line"
     }
 
+    static var errorColumnNumber: String {
+        "column"
+    }
+
     static var errorName: String {
         "name"
     }
 
     static var errorUrl: String {
-        "url"
+        "sourceURL"
     }
 
     static var errorStack: String {

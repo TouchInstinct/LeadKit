@@ -25,34 +25,38 @@ import Foundation
 public struct WebViewJSError: WebViewError, Codable {
 
     public enum CodingKeys: String, CodingKey {
-        case contentURL
+        case sourceURL
         case name
         case message
         case lineNumber = "line"
+        case columnNumber = "column"
         case stackTrace = "stack"
     }
 
-    public let contentURL: URL?
+    public let sourceURL: URL?
     public let name: String?
     public let message: String?
     public let lineNumber: Int?
+    public let columnNumber: Int?
     public let stackTrace: String?
 
-    public init(stringURL: String?,
+    public init(sourceURL: String?,
                 name: String?,
                 message: String?,
                 lineNumber: Int?,
+                columnNumber: Int?,
                 stackTrace: String?) {
 
-        if let stringURL = stringURL {
-            self.contentURL = URL(string: stringURL)
+        if let sourceURL = sourceURL {
+            self.sourceURL = URL(string: sourceURL)
         } else {
-            self.contentURL = nil
+            self.sourceURL = nil
         }
 
         self.name = name
         self.message = message
         self.lineNumber = lineNumber
+        self.columnNumber = columnNumber
         self.stackTrace = stackTrace
     }
 }

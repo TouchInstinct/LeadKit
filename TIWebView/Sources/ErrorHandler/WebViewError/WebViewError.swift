@@ -23,5 +23,5 @@
 import Foundation
 
 public protocol WebViewError: Error {
-    var contentURL: URL? { get }
+    var sourceURL: URL? { get }
 }
