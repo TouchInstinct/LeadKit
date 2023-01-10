@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
-  s.name             = 'TIDeepLink'
+  s.name             = 'TIDeeplink'
   s.version          = '1.33.0'
-  s.summary          = 'Deep link service API'
+  s.summary          = 'Deeplink service API'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'petropavel13' => 'ivan.smolin@touchin.ru',
@@ -12,4 +12,7 @@ Pod::Spec.new do |s|
   s.swift_versions = ['5.3']
 
   s.source_files = s.name + '/Sources/**/*'
+
+  s.dependency 'TIFoundationUtils', s.version.to_s
+  
 end
