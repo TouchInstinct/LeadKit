@@ -58,7 +58,8 @@ open class DefaultWebViewModel: NSObject, WebViewModel {
         let body = message.body as? [String: Any]
         return WebViewJSError(stringURL: body?[WebViewErrorConstants.errorUrl] as? String,
                               name: body?[WebViewErrorConstants.errorName] as? String,
-                              message: body?[WebViewErrorConstants.errorMessage] as? Int,
+                              message: body?[WebViewErrorConstants.errorMessage] as? String,
+                              lineNumber: body?[WebViewErrorConstants.errorLineNumber] as? Int,
                               stackTrace: body?[WebViewErrorConstants.errorStack] as? String)
     }
 }

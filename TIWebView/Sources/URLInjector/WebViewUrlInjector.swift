@@ -50,16 +50,14 @@ public extension WebViewUrlInjector {
     // MARK: - Helper methods
 
     private func evaluteInjection(onWebView webView: WKWebView, injection: WebViewUrlInjection) {
-        let jsScript = makeJsScript(fromInjection: injection)
-
-        guard !jsScript.isEmpty else {
+        guard let jsScript = makeJsScript(fromInjection: injection) else {
             return
         }
 
         webView.evaluateJavaScript(jsScript, completionHandler: nil)
     }
 
-    private func makeJsScript(fromInjection injection: WebViewUrlInjection) -> String {
+    private func makeJsScript(fromInjection injection: WebViewUrlInjection) -> String? {
         switch injection {
         case let .css(css):
             return cssJsScript(css: css)
@@ -69,7 +67,11 @@ public extension WebViewUrlInjector {
                 .components(separatedBy: .newlines)
                 .joined()
 
-            return cssJsScript(css: css ?? "")
+            if let css = css, !css.isEmpty {
+                return cssJsScript(css: css)
+            }
+
+            return nil
 
         case let .javaScript(script):
             return script

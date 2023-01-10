@@ -23,14 +23,25 @@
 import Foundation
 
 public struct WebViewJSError: WebViewError, Codable {
+
+    public enum CodingKeys: String, CodingKey {
+        case contentURL
+        case name
+        case message
+        case lineNumber = "line"
+        case stackTrace = "stack"
+    }
+
     public let contentURL: URL?
     public let name: String?
-    public let message: Int?
+    public let message: String?
+    public let lineNumber: Int?
     public let stackTrace: String?
 
     public init(stringURL: String?,
                 name: String?,
-                message: Int?,
+                message: String?,
+                lineNumber: Int?,
                 stackTrace: String?) {
 
         if let stringURL = stringURL {
@@ -41,6 +52,7 @@ public struct WebViewJSError: WebViewError, Codable {
 
         self.name = name
         self.message = message
+        self.lineNumber = lineNumber
         self.stackTrace = stackTrace
     }
 }

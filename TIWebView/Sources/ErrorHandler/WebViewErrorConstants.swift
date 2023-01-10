@@ -29,6 +29,10 @@ public enum WebViewErrorConstants {
         "message"
     }
 
+    static var errorLineNumber: String {
+        "line"
+    }
+
     static var errorName: String {
         "name"
     }
