@@ -24,28 +24,4 @@ public enum WebViewErrorConstants {
     static var errorMessageName: String {
         "error"
     }
-
-    static var errorMessage: String {
-        "message"
-    }
-
-    static var errorLineNumber: String {
-        "line"
-    }
-
-    static var errorColumnNumber: String {
-        "column"
-    }
-
-    static var errorName: String {
-        "name"
-    }
-
-    static var errorUrl: String {
-        "sourceURL"
-    }
-
-    static var errorStack: String {
-        "stack"
-    }
 }
