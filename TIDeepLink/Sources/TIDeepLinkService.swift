@@ -38,7 +38,7 @@ public final class TIDeeplinksService {
     // MARK: - Public properties
 
     public var deeplinkMapper: DeeplinkMapper?
-    public var deeplinkHandler = BaseNavigationStackDeeplinkHandler()
+    public var deeplinkHandler: DeeplinkHandler?
 
     // MARK: - Init
 
@@ -62,7 +62,7 @@ public final class TIDeeplinksService {
 
     public func tryHandle() {
         guard let deeplink = pendingDeeplink,
-              deeplinkHandler.canHandle(deeplink: deeplink) else {
+              deeplinkHandler?.canHandle(deeplink: deeplink) ?? false else {
             return
         }
 
@@ -71,7 +71,7 @@ public final class TIDeeplinksService {
 
     public func handle() {
         guard let deeplink = pendingDeeplink,
-              let lastOperation = deeplinkHandler.handle(deeplink: deeplink) else {
+              let lastOperation = deeplinkHandler?.handle(deeplink: deeplink) else {
             return
         }
 
