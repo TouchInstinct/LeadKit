@@ -82,7 +82,7 @@ open class BaseInitializableWebView: WKWebView,
 
     // MARK: - Public methods
 
-    public func subscribe(onProgress: ParameterClosure<Double>? = nil) -> NSKeyValueObservation {
+    public func subscribe(onProgress: ParameterClosure<Double>?) -> NSKeyValueObservation {
         observe(\.estimatedProgress, options: [.new]) { webView, change in
             if webView.isLoading, let newValue = change.newValue {
                 onProgress?(newValue)

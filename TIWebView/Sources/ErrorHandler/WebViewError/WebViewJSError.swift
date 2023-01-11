@@ -59,4 +59,13 @@ public struct WebViewJSError: WebViewError, Codable {
         self.columnNumber = columnNumber
         self.stackTrace = stackTrace
     }
+
+    public init?(from json: [String: Any]) {
+        guard let data = try? JSONSerialization.data(withJSONObject: json),
+              let error = try? JSONDecoder().decode(WebViewJSError.self, from: data) else {
+            return nil
+        }
+
+        self = error
+    }
 }
