@@ -60,9 +60,9 @@ public struct WebViewJSError: WebViewError, Codable {
         self.stackTrace = stackTrace
     }
 
-    public init?(from json: [String: Any]) {
+    public init?(from json: [String: Any], jsonDecoder: JSONDecoder = .init()) {
         guard let data = try? JSONSerialization.data(withJSONObject: json),
-              let error = try? JSONDecoder().decode(WebViewJSError.self, from: data) else {
+              let error = try? jsonDecoder.decode(WebViewJSError.self, from: data) else {
             return nil
         }
 
