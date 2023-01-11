@@ -25,13 +25,53 @@ import UIKit
 public typealias DeeplinkHandlerViewController = DeeplinkHandler & UIViewController
 
 public extension UIViewController {
+
     func findHandler(for deeplink: DeeplinkType) -> DeeplinkHandlerViewController? {
         if let deeplinksHandler = self as? DeeplinkHandlerViewController,
            deeplinksHandler.canHandle(deeplink: deeplink) {
             return deeplinksHandler
         }
 
-        let deeplinksHandler = presentedViewController?.findHandler(for: deeplink)
-        return deeplinksHandler
+        if let deeplinksHandler = presentedViewController?.findHandler(for: deeplink) {
+            return deeplinksHandler
+        }
+
+        return findHandlerInViewHierarchy(for: deeplink)
+    }
+
+    private func findHandlerInViewHierarchy(for deeplink: DeeplinkType) -> DeeplinkHandlerViewController? {
+        switch self {
+        case let navController as UINavigationController:
+            return navController.viewControllers.reversed().findHadler(for: deeplink)
+
+        case let tabController as UITabBarController:
+            if let deeplinksHandler = tabController.selectedViewController?.findHandler(for: deeplink) {
+                return deeplinksHandler
+            } else if var tabControllers = tabController.viewControllers {
+                if tabController.selectedIndex != NSNotFound {
+                    tabControllers.remove(at: tabController.selectedIndex)
+                }
+
+                if let deeplinksHandler = tabControllers.findHadler(for: deeplink) {
+                    return deeplinksHandler
+                }
+            }
+
+        default:
+            return nil
+        }
+
+        return nil
+    }
+}
+
+private extension Sequence where Element: UIViewController {
+    func findHadler(for deeplink: DeeplinkType) -> DeeplinkHandlerViewController? {
+        for controller in self {
+            if let deeplinksHandler = controller.findHandler(for: deeplink) {
+                return deeplinksHandler
+            }
+        }
+        return nil
     }
 }

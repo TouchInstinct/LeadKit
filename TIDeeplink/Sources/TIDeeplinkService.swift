@@ -33,7 +33,7 @@ public final class TIDeeplinksService {
 
     private var pendingDeeplink: DeeplinkType?
 
-    private(set) var isProcessDeeplink = false
+    private(set) var isProcessingDeeplink = false
 
     // MARK: - Public properties
 
@@ -48,6 +48,11 @@ public final class TIDeeplinksService {
 
     // MARK: - Public methods
 
+    public func configure(mapper: DeeplinkMapper, handler: DeeplinkHandler) {
+        deeplinkMapper = mapper
+        deeplinkHandler = handler
+    }
+
     @discardableResult
     public func deferredHandle(url: URL) -> Bool {
         pendingDeeplink = deeplinkMapper?.map(url: url)
@@ -57,7 +62,7 @@ public final class TIDeeplinksService {
     public func reset() {
         operationQueue.cancelAllOperations()
         pendingDeeplink = nil
-        isProcessDeeplink = false
+        isProcessingDeeplink = false
     }
 
     public func tryHandle() {
@@ -76,13 +81,13 @@ public final class TIDeeplinksService {
         }
 
         operationQueue.addOperation { [weak self] in
-            self?.isProcessDeeplink = true
+            self?.isProcessingDeeplink = true
             self?.pendingDeeplink = nil
         }
         operationQueue.addOperations(lastOperation.flattenDependencies + [lastOperation],
                                      waitUntilFinished: false)
         operationQueue.addOperation { [weak self] in
-            self?.isProcessDeeplink = false
+            self?.isProcessingDeeplink = false
         }
     }
 }
