@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.31.0
+
+- **Added**: `URLInteractiveTextView` for terms and conditions hints in login flow
+
 ### 1.30.0
 
 - **Added**: Base classes for encryption and decryption user token with pin code or biometry

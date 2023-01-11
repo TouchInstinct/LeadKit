@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TINetworkingCache'
-  s.version          = '1.30.0'
+  s.version          = '1.31.0'
   s.summary          = 'Caching results of EndpointRequests.'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }

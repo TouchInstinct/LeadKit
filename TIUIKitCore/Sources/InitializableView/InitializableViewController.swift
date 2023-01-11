@@ -20,26 +20,23 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+public protocol InitializableViewController: InitializableViewProtocol {
 
-open class BaseCustomViewController<View: UIView>: BaseInitializableViewController {
+    func configureBarButtons()
+}
 
-    public private(set) lazy var customView = createView()
-
-    public init() {
-        super.init(nibName: nil, bundle: nil)
+public extension InitializableViewController {
+    func initializeView() {
+        assertionFailure("Use \(String(describing: initializeController)) for UIViewController instead!")
     }
 
-    @available(*, unavailable)
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented. Use init()")
-    }
-
-    override open func loadView() {
-        view = customView
-    }
-
-    open func createView() -> View {
-        return View()
+    /// Method that should be called in viewDidLoad method of UIViewController.
+    func initializeController() {
+        addViews()
+        configureLayout()
+        configureAppearance()
+        configureBarButtons()
+        localize()
+        bindViews()
     }
 }
