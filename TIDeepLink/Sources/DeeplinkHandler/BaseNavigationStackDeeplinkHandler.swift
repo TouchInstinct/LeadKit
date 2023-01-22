@@ -23,13 +23,14 @@
 import Foundation
 import UIKit
 
-open class BaseNavigationStackDeeplinkHandler: DeeplinkHandler {
+open class BaseNavigationStackDeeplinkHandler<ControllerKeeper: RootViewControllerKeeper>: DeeplinkHandler {
+
+    public typealias DeeplinkType = ControllerKeeper.DeeplinkHandler.DeeplinkType
+    public typealias Handler = ControllerKeeper.DeeplinkHandler
+
+    public var rootViewControllerKeeper: ControllerKeeper?
 
     // MARK: - DeeplinkHandler
-
-    open func canHandle(deeplink: DeeplinkType) -> Bool {
-        findHandler(for: deeplink) != nil
-    }
 
     open func handle(deeplink: DeeplinkType) -> Operation? {
         let handler = findHandler(for: deeplink)
@@ -38,8 +39,9 @@ open class BaseNavigationStackDeeplinkHandler: DeeplinkHandler {
 
     // MARK: - Open methods
 
-    open func findHandler(for deeplink: DeeplinkType) -> DeeplinkHandler? {
-        guard let rootController = UIApplication.shared.keyWindow?.rootViewController else {
+    open func findHandler(for deeplink: DeeplinkType) -> Handler? {
+
+        guard let rootController = rootViewControllerKeeper?.rootDeeplinkHandlerController else {
             return nil
         }
 

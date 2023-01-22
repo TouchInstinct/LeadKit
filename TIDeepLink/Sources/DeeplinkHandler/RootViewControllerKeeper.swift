@@ -20,5 +20,10 @@
 //  THE SOFTWARE.
 //
 
-public protocol DeeplinkType {
+import UIKit
+
+public protocol RootViewControllerKeeper {
+    associatedtype DeeplinkHandler: DeeplinkHandlerViewController
+
+    var rootDeeplinkHandlerController: DeeplinkHandler { get }
 }

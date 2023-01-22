@@ -23,6 +23,7 @@
 import Foundation
 
 public protocol DeeplinkHandler {
-    func canHandle(deeplink: DeeplinkType) -> Bool
+    associatedtype DeeplinkType: Hashable
+
     func handle(deeplink: DeeplinkType) -> Operation?
 }

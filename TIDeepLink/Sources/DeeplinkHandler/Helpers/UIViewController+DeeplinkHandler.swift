@@ -26,33 +26,40 @@ public typealias DeeplinkHandlerViewController = DeeplinkHandler & UIViewControl
 
 public extension UIViewController {
 
-    func findHandler(for deeplink: DeeplinkType) -> DeeplinkHandlerViewController? {
-        if let deeplinksHandler = self as? DeeplinkHandlerViewController,
-           deeplinksHandler.canHandle(deeplink: deeplink) {
+    func findHandler<DeeplinkHandler: DeeplinkHandlerViewController>(
+        for deeplink: DeeplinkHandler.DeeplinkType
+    ) -> DeeplinkHandler? {
+
+        if let deeplinksHandler = self as? DeeplinkHandler,
+           let _ = deeplinksHandler.handle(deeplink: deeplink) {
             return deeplinksHandler
         }
 
-        if let deeplinksHandler = presentedViewController?.findHandler(for: deeplink) {
+        if let deeplinksHandler: DeeplinkHandler = presentedViewController?.findHandler(for: deeplink) {
             return deeplinksHandler
         }
 
         return findHandlerInViewHierarchy(for: deeplink)
     }
 
-    private func findHandlerInViewHierarchy(for deeplink: DeeplinkType) -> DeeplinkHandlerViewController? {
+    private func findHandlerInViewHierarchy<DeeplinkHandler: DeeplinkHandlerViewController>(
+        for deeplink: DeeplinkHandler.DeeplinkType
+    ) -> DeeplinkHandler? {
+
         switch self {
         case let navController as UINavigationController:
-            return navController.viewControllers.reversed().findHadler(for: deeplink)
+            let deeplinksHandler: DeeplinkHandler? = navController.viewControllers.reversed().findHandler(for: deeplink)
+            return deeplinksHandler
 
         case let tabController as UITabBarController:
-            if let deeplinksHandler = tabController.selectedViewController?.findHandler(for: deeplink) {
+            if let deeplinksHandler: DeeplinkHandler = tabController.selectedViewController?.findHandler(for: deeplink) {
                 return deeplinksHandler
             } else if var tabControllers = tabController.viewControllers {
                 if tabController.selectedIndex != NSNotFound {
                     tabControllers.remove(at: tabController.selectedIndex)
                 }
 
-                if let deeplinksHandler = tabControllers.findHadler(for: deeplink) {
+                if let deeplinksHandler: DeeplinkHandler = tabControllers.findHandler(for: deeplink) {
                     return deeplinksHandler
                 }
             }
@@ -66,9 +73,12 @@ public extension UIViewController {
 }
 
 private extension Sequence where Element: UIViewController {
-    func findHadler(for deeplink: DeeplinkType) -> DeeplinkHandlerViewController? {
+    func findHandler<DeeplinkHandler: DeeplinkHandlerViewController>(
+        for deeplink: DeeplinkHandler.DeeplinkType
+    ) -> DeeplinkHandler? {
+
         for controller in self {
-            if let deeplinksHandler = controller.findHandler(for: deeplink) {
+            if let deeplinksHandler: DeeplinkHandler = controller.findHandler(for: deeplink) {
                 return deeplinksHandler
             }
         }

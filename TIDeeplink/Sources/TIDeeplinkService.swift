@@ -23,71 +23,83 @@
 import Foundation
 import TIFoundationUtils
 
-public final class TIDeeplinksService {
-
-    public static let shared = TIDeeplinksService()
+open class TIDeeplinksService<DeeplinkType: Hashable,
+                              Mapper: DeeplinkMapper,
+                              Handler: DeeplinkHandler> where Mapper.DeeplinkType == Handler.DeeplinkType,
+                                                              Mapper.DeeplinkType == DeeplinkType {
 
     // MARK: - Private properties
 
-    private let operationQueue = OperationQueue.main
+    private var operationQueue: OperationQueue
 
-    private var pendingDeeplink: DeeplinkType?
-
-    private(set) var isProcessingDeeplink = false
+    private var deeplinkQueue: [DeeplinkType] = []
+    private var inProcessingSet: Set<DeeplinkType> = []
 
     // MARK: - Public properties
 
-    public var deeplinkMapper: DeeplinkMapper?
-    public var deeplinkHandler: DeeplinkHandler?
+    public var deeplinkMapper: Mapper?
+    public var deeplinkHandler: Handler?
 
     // MARK: - Init
 
-    private init() {
-
+    public init(operationQueue: OperationQueue = .main) {
+        self.operationQueue = operationQueue
     }
 
-    // MARK: - Public methods
+    // MARK: - Open methods
 
-    public func configure(mapper: DeeplinkMapper, handler: DeeplinkHandler) {
+    open func configure(mapper: Mapper, handler: Handler) {
         deeplinkMapper = mapper
         deeplinkHandler = handler
     }
 
     @discardableResult
-    public func deferredHandle(url: URL) -> Bool {
-        pendingDeeplink = deeplinkMapper?.map(url: url)
-        return pendingDeeplink != nil
+    open func deferredHandle(url: URL) -> Bool {
+        let deeplink = deeplinkMapper?.map(url: url)
+
+        guard let deeplink = deeplink else {
+            return false
+        }
+
+        deeplinkQueue.append(deeplink)
+
+        return true
     }
 
-    public func reset() {
+    open func reset() {
         operationQueue.cancelAllOperations()
-        pendingDeeplink = nil
-        isProcessingDeeplink = false
+        deeplinkQueue.removeAll()
+        inProcessingSet.removeAll()
     }
 
-    public func tryHandle() {
-        guard let deeplink = pendingDeeplink,
-              deeplinkHandler?.canHandle(deeplink: deeplink) ?? false else {
+    open func tryHandle() {
+        guard !deeplinkQueue.isEmpty else {
             return
         }
 
         handle()
     }
 
-    public func handle() {
-        guard let deeplink = pendingDeeplink,
-              let lastOperation = deeplinkHandler?.handle(deeplink: deeplink) else {
+    open func handle() {
+        guard let deeplink = deeplinkQueue.first else {
             return
         }
 
-        operationQueue.addOperation { [weak self] in
-            self?.isProcessingDeeplink = true
-            self?.pendingDeeplink = nil
+        deeplinkQueue.remove(at: .zero)
+
+        guard !inProcessingSet.contains(deeplink),
+              let operation = deeplinkHandler?.handle(deeplink: deeplink) else {
+            return
         }
-        operationQueue.addOperations(lastOperation.flattenDependencies + [lastOperation],
-                                     waitUntilFinished: false)
-        operationQueue.addOperation { [weak self] in
-            self?.isProcessingDeeplink = false
+
+        inProcessingSet.formUnion([deeplink])
+
+        let competionOperation = BlockOperation { [weak self] in
+            self?.inProcessingSet.subtract([deeplink])
         }
+
+        competionOperation.addDependency(operation)
+
+        competionOperation.add(to: operationQueue)
     }
 }

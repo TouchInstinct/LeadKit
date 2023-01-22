@@ -23,5 +23,7 @@
 import Foundation
 
 public protocol DeeplinkMapper {
+    associatedtype DeeplinkType
+
     func map(url: URL) -> DeeplinkType?
 }
