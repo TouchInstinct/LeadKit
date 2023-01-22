@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,43 +20,9 @@
 //  THE SOFTWARE.
 //
 
-import UIKit.UIViewController
+import UIKit.UITextView
+import TISwiftUtils
 
-open class BaseInitializeableViewController: UIViewController, InitializeableViewController {
-
-    override open func viewDidLoad() {
-        super.viewDidLoad()
-
-        onViewDidLoad()
-    }
-
-    open func onViewDidLoad() {
-        initializeController()
-    }
-
-    // MARK: - InitializeableController
-
-    open func addViews() {
-        // override in subclass
-    }
-
-    open func configureLayout() {
-        // override in subclass
-    }
-
-    open func bindViews() {
-        // override in subclass
-    }
-
-    open func configureAppearance() {
-        // override in subclass
-    }
-
-    open func localize() {
-        // override in subclass
-    }
-
-    open func configureBarButtons() {
-        // override in subclass
-    }
+public protocol UITextViewURLInteractionHandler: UITextViewDelegate {
+    var urlInteractionHandler: ParameterClosure<URL>? { get set }
 }

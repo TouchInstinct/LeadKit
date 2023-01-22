@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,23 +20,23 @@
 //  THE SOFTWARE.
 //
 
-public protocol InitializeableViewController: InitializableViewProtocol {
+import UIKit.UITextView
+import TISwiftUtils
 
-    func configureBarButtons()
-}
+open class DefaultUITextViewURLInteractionHandler: NSObject, UITextViewURLInteractionHandler {
+    public var urlInteractionHandler: ParameterClosure<URL>?
 
-public extension InitializeableViewController {
-    func initializeView() {
-        assertionFailure("Use \(String(describing: initializeController)) for UIViewController instead!")
+    public init(urlInteractionHandler: ParameterClosure<URL>?) {
+        self.urlInteractionHandler = urlInteractionHandler
     }
 
-    /// Method that should be called in viewDidLoad method of UIViewController.
-    func initializeController() {
-        addViews()
-        configureLayout()
-        configureAppearance()
-        configureBarButtons()
-        localize()
-        bindViews()
+    open func textView(_ textView: UITextView,
+                       shouldInteractWith URL: URL,
+                       in characterRange: NSRange,
+                       interaction: UITextItemInteraction) -> Bool {
+
+        urlInteractionHandler?(URL)
+
+        return false
     }
 }

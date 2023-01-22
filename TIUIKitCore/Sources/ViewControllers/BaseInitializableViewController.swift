@@ -20,26 +20,43 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import UIKit.UIViewController
 
-open class BaseCustomViewController<View: UIView>: BaseInitializableViewController {
+open class BaseInitializableViewController: UIViewController, InitializableViewController {
 
-    public private(set) lazy var customView = createView()
+    override open func viewDidLoad() {
+        super.viewDidLoad()
 
-    public init() {
-        super.init(nibName: nil, bundle: nil)
+        onViewDidLoad()
     }
 
-    @available(*, unavailable)
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented. Use init()")
+    open func onViewDidLoad() {
+        initializeController()
     }
 
-    override open func loadView() {
-        view = customView
+    // MARK: - InitializableController
+
+    open func addViews() {
+        // override in subclass
     }
 
-    open func createView() -> View {
-        return View()
+    open func configureLayout() {
+        // override in subclass
+    }
+
+    open func bindViews() {
+        // override in subclass
+    }
+
+    open func configureAppearance() {
+        // override in subclass
+    }
+
+    open func localize() {
+        // override in subclass
+    }
+
+    open func configureBarButtons() {
+        // override in subclass
     }
 }
