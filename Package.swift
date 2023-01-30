@@ -11,6 +11,7 @@ let package = Package(
     // MARK: - UIKit
     .library(name: "TIUIKitCore", targets: ["TIUIKitCore"]),
     .library(name: "TIUIElements", targets: ["TIUIElements"]),
+    .library(name: "TIWebView", targets: ["TIWebView"]),
 
     // MARK: - SwiftUI
     .library(name: "TISwiftUICore", targets: ["TISwiftUICore"]),
@@ -55,6 +56,7 @@ let package = Package(
     // MARK: - UIKit
     .target(name: "TIUIKitCore", dependencies: ["TISwiftUtils"], path: "TIUIKitCore/Sources"),
     .target(name: "TIUIElements", dependencies: ["TIUIKitCore", "TISwiftUtils"], path: "TIUIElements/Sources"),
+    .target(name: "TIWebView", dependencies: ["TIUIKitCore", "TISwiftUtils"], path: "TIWebView/Sources"),
 
     // MARK: - SwiftUI
     .target(name: "TISwiftUICore", dependencies: ["TIUIKitCore", "TISwiftUtils"], path: "TISwiftUICore/Sources"),

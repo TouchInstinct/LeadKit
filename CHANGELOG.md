@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.32.0
+
+- **Added**: `BaseInitializableWebView` with navigation and error handling api.
+
 ### 1.31.0
 
 - **Added**: `URLInteractiveTextView` for terms and conditions hints in login flow
