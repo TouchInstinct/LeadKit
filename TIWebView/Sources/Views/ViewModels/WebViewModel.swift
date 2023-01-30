@@ -44,6 +44,6 @@ public extension WebViewModel {
 
     func handleError(_ error: Error, url: URL?) {
         let errorModel = WebViewLoadingError(sourceURL: url, innerError: error)
-        errorHandler.didRecievedError(errorModel)
+        errorHandler.didReceiveError(errorModel)
     }
 }

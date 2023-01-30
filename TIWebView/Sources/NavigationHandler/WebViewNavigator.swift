@@ -24,18 +24,18 @@ import Foundation
 import enum WebKit.WKNavigationActionPolicy
 
 public protocol WebViewNavigator {
-    var navigationMap: [NavigationPolicy] { get set }
+    var navigationPolicyMap: [NavigationPolicy] { get set }
 
     func shouldNavigate(to url: URL) -> WKNavigationActionPolicy
 }
 
 public extension WebViewNavigator {
     func shouldNavigate(to url: URL) -> WKNavigationActionPolicy {
-        guard !navigationMap.isEmpty else {
+        guard !navigationPolicyMap.isEmpty else {
             return .cancel
         }
 
-        let allowPolicy = navigationMap.filter { $0.policy(for: url) == .allow }
+        let allowPolicy = navigationPolicyMap.filter { $0.policy(for: url) == .allow }
         return allowPolicy.isEmpty ? .cancel : .allow
     }
 }

@@ -48,7 +48,7 @@ open class DefaultWebViewModel: NSObject, WebViewModel {
 
         if message.name == WebViewErrorConstants.errorMessageName,
            let error = parseError(message) {
-            errorHandler.didRecievedError(error)
+            errorHandler.didReceiveError(error)
         }
     }
 

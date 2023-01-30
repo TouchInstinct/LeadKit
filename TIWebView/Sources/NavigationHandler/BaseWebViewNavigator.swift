@@ -22,13 +22,13 @@
 
 open class BaseWebViewNavigator: WebViewNavigator {
 
-    public var navigationMap: [NavigationPolicy]
+    public var navigationPolicyMap: [NavigationPolicy]
 
-    public init(navigationMap: [NavigationPolicy]) {
-        self.navigationMap = navigationMap
+    public init(navigationPolicyMap: [NavigationPolicy]) {
+        self.navigationPolicyMap = navigationPolicyMap
     }
 
     public convenience init() {
-        self.init(navigationMap: [])
+        self.init(navigationPolicyMap: [])
     }
 }

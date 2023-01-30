@@ -2,7 +2,7 @@
 
 ### 1.32.0
 
-- **Added**: `BaseInitializableWebView`with navigation and error handling api.
+- **Added**: `BaseInitializableWebView` with navigation and error handling api.
 
 ### 1.31.0
 

@@ -21,11 +21,11 @@
 //
 
 public protocol WebViewErrorHandler {
-    func didRecievedError(_ error: WebViewError)
+    func didReceiveError(_ error: WebViewError)
 }
 
 public extension WebViewErrorHandler {
-    func didRecievedError(_ error: WebViewError) {
+    func didReceiveError(_ error: WebViewError) {
         // override in subclasses
     }
 }
