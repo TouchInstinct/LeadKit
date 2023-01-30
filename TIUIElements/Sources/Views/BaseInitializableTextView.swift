@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,26 +20,41 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import UIKit.UITextView
+import TIUIKitCore
 
-open class BaseCustomViewController<View: UIView>: BaseInitializableViewController {
+open class BaseInitializableTextView: UITextView, InitializableViewProtocol {
+    public override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
 
-    public private(set) lazy var customView = createView()
-
-    public init() {
-        super.init(nibName: nil, bundle: nil)
+        initializeView()
     }
 
-    @available(*, unavailable)
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented. Use init()")
+        super.init(coder: aDecoder)
+
+        initializeView()
     }
 
-    override open func loadView() {
-        view = customView
+    // MARK: - InitializableView
+
+    open func addViews() {
+        // override in subclass
     }
 
-    open func createView() -> View {
-        return View()
+    open func configureLayout() {
+        // override in subclass
+    }
+
+    open func bindViews() {
+        // override in subclass
+    }
+
+    open func configureAppearance() {
+        // override in subclass
+    }
+
+    open func localize() {
+        // override in subclass
     }
 }

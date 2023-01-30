@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Touch Instinct
+//  Copyright (c) 2022 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,26 +20,33 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import UIKit.UIGeometry
+import TIUIKitCore
 
-open class BaseCustomViewController<View: UIView>: BaseInitializableViewController {
-
-    public private(set) lazy var customView = createView()
-
-    public init() {
-        super.init(nibName: nil, bundle: nil)
+open class URLInteractiveTextView: BaseInitializableTextView, ConfigurableView {
+    public var interactionHandler: UITextViewURLInteractionHandler? {
+        didSet {
+            delegate = interactionHandler
+        }
     }
 
-    @available(*, unavailable)
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented. Use init()")
+    open override func configureAppearance() {
+        super.configureAppearance()
+
+        isEditable = false
+
+        textContainerInset = UIEdgeInsets(top: .zero,
+                                          left: -textContainer.lineFragmentPadding,
+                                          bottom: .zero,
+                                          right: -textContainer.lineFragmentPadding)
     }
 
-    override open func loadView() {
-        view = customView
-    }
+    public func configure(with viewModel: URLInteractiveTextViewModel) {
+        set(text: viewModel.text,
+            primaryTextStyle: viewModel.primaryTextStyle,
+            interactiveParts: viewModel.interactiveParts,
+            interactivePartsStyle: viewModel.interactivePartsStyle)
 
-    open func createView() -> View {
-        return View()
+        interactionHandler = viewModel.interactionHandler
     }
 }
