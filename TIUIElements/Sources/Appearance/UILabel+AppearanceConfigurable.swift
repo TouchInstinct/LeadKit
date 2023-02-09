@@ -20,23 +20,15 @@
 //  THE SOFTWARE.
 //
 
+import TIUIKitCore
 import UIKit
 
-extension UIView {
-    public func configureUIView<L: ViewLayout>(appearance: BaseAppearance<L>) {
-        backgroundColor = appearance.backgroundColor
-        layer.masksToBounds = true
-        layer.maskedCorners = appearance.roundedCorners
-        layer.cornerRadius = appearance.cornerRadius
+extension UILabel {
+    public func configureUILabel<L: ViewLayout>(appearance: BaseAppearance<L>) {
+        appearance.textAttributes?
+            .configure(label: self,
+                       with: attributedText?.string ?? text)
 
-        guard let shadow = appearance.shadow else {
-            return
-        }
-
-        layer.shadowOpacity = shadow.opacity
-        layer.shadowOffset = shadow.offset
-        layer.shadowColor = shadow.color.cgColor
-        layer.shadowRadius = shadow.radius
-        clipsToBounds = false
+        super.configureUIView(appearance: appearance)
     }
 }

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TIEcommerce'
-  s.version          = '1.32.1'
+  s.version          = '1.33.0'
   s.summary          = 'Cart, products, promocodes, bonuses and other related actions'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
