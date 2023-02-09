@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.32.1
+
+- **Added**: `ViewAppearance` and `ViewLayout` models for setting up Views' appearance and layout
+- **Added**: `TableKit.Row` extension for configuration inner View's appearance and layout
+
 ### 1.32.0
 
 - **Added**: `BaseInitializableWebView` with navigation and error handling api.

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TIWebView'
-  s.version          = '1.32.0'
+  s.version          = '1.32.1'
   s.summary          = 'Universal web view API'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
