@@ -28,7 +28,7 @@ extension TableRow: AppearanceConfigurable where CellType: AppearanceConfigurabl
         "TableRowConfigureAppearanceActionId"
     }
 
-    func with(appearance: CellType.Appearance) -> Self {
+    public func with(appearance: CellType.Appearance) -> Self {
         configure(appearance: appearance)
         return self
     }
