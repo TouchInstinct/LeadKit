@@ -20,6 +20,7 @@
 //  THE SOFTWARE.
 //
 
+import TIUIKitCore
 import UIKit
 
 public final class ContainerView<View: UIView>: BaseInitializableView, WrappedViewHolder {
@@ -46,5 +47,28 @@ public final class ContainerView<View: UIView>: BaseInitializableView, WrappedVi
         super.configureLayout()
 
         contentEdgeConstraints = configureWrappedViewLayout()
+    }
+}
+
+// MARK: - ConfigurableView
+
+extension ContainerView: ConfigurableView where View: ConfigurableView {
+
+    public func configure(with viewModel: View.ViewModelType) {
+        wrappedView.configure(with: viewModel)
+    }
+}
+
+// MARK: - AppearanceConfigurable
+
+extension ContainerView: AppearanceConfigurable where View: AppearanceConfigurable,
+                                                      View.Appearance: WrappedViewAppearance {
+
+    public typealias Appearance = UIView.DefaultWrappedViewHolderAppearance<View.Appearance, UIView.DefaultWrappedLayout>
+
+    public func configure(appearance: Appearance) {
+        wrappedView.configure(appearance: appearance.subviewAppearance)
+        configureUIView(appearance: appearance)
+        contentInsets = appearance.subviewAppearance.layout.insets
     }
 }
