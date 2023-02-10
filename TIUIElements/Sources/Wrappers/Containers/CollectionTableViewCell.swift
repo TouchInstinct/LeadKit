@@ -29,6 +29,7 @@ open class CollectionTableViewCell<CollectionView: UICollectionView>: ContainerT
     open override func systemLayoutSizeFitting(_ targetSize: CGSize,
                                                withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
                                                verticalFittingPriority: UILayoutPriority) -> CGSize {
+
         let cachedCollectionFrame = wrappedView.frame
         wrappedView.frame.size.width = targetSize.width - contentInsets.left - contentInsets.right
         let collectionContentHeight = wrappedView.collectionViewLayout.collectionViewContentSize.height
