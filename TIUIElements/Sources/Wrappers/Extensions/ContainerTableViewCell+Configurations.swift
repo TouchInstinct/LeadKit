@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2023 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,17 +20,21 @@
 //  THE SOFTWARE.
 //
 
+import TIUIKitCore
 import UIKit
 
-public struct SeparatorConfiguration {
+extension ContainerTableViewCell: AppearanceConfigurable where View: AppearanceConfigurable,
+                                                               View.Appearance: WrappedViewAppearance {
 
-    public let color: UIColor
-    public let insets: UIEdgeInsets
-    public let height: CGFloat
+    public func configure(appearance: DefaultWrappedViewHolderAppearance<View.Appearance, UIView.NoLayout>) {
+        configureContainerTableViewCell(appearance: appearance)
+        wrappedView.configure(appearance: appearance.subviewAppearance)
+    }
+}
 
-    public init(color: UIColor, insets: UIEdgeInsets = .zero, height: CGFloat = 1) {
-        self.color = color
-        self.insets = insets
-        self.height = height
+extension ContainerTableViewCell {
+    public func configureContainerTableViewCell(appearance: BaseWrappedViewHolderAppearance<some WrappedViewAppearance, some ViewLayout>) {
+        contentInsets = appearance.subviewAppearance.layout.insets
+        configureUIView(appearance: appearance)
     }
 }

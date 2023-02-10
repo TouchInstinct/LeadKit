@@ -20,22 +20,25 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
-import TISwiftUtils
-import TIUIElements
+import TIUIKitCore
+import UIKit
 
-/// Class that used to configure separators when multiply cells presented in one section
-public final class SeparatorRowBox {
-    private let setSeparatorHandler: ParameterClosure<SeparatorsConfiguration>
-
-    public func set(separatorType: SeparatorsConfiguration) {
-        setSeparatorHandler(separatorType)
+public final class SeparatorLayout: UIView.BaseWrappedLayout, WrappedViewLayout {
+    public static var defaultLayout: Self {
+        Self()
     }
 
-    public let row: Row
+    public init(insets: UIEdgeInsets = .zero,
+                size: CGSize = .fixedHeight(0.5)) {
 
-    public init<T>(row: TableRow<T>) where T: SeparatorsConfigurable {
-        self.row = row
-        setSeparatorHandler = row.configureSeparators(with:)
+        super.init(insets: insets,
+                   size: size,
+                   centerOffset: .nan)
+    }
+}
+
+public final class SeparatorAppearance: UIView.BaseAppearance<SeparatorLayout>, ViewAppearance {
+    public static var defaultAppearance: Self {
+        Self(backgroundColor: .lightGray)
     }
 }

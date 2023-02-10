@@ -23,28 +23,29 @@
 import TableKit
 import TIUIElements
 
-private let configureSeparatorActionId = "TableRowConfigureSeparatorActionId"
+extension TableRow: SeparatorsConfigurable where CellType: SeparatorsConfigurable {
+    private static var configureSeparatorsActionId: String {
+        "TableRowConfigureSeparatorsActionId"
+    }
 
-public extension TableRow where CellType: SeparatorConfigurable {
-
-    func with(separatorType: ViewSeparatorType) -> Self {
-        set(separatorType: separatorType)
+    public func with(separators: SeparatorsConfiguration) -> Self {
+        configureSeparators(with: separators)
         return self
     }
 
-    func set(separatorType: ViewSeparatorType) {
-        removeAction(forActionId: configureSeparatorActionId)
+    public func configureSeparators(with separatorsConfiguration: SeparatorsConfiguration) {
+        removeAction(forActionId: Self.configureSeparatorsActionId)
 
-        let action = TableRowAction<CellType>(.configure) {
-            $0.cell?.configureSeparators(with: separatorType)
+        let action = TableRowAction<CellType>(.configure) { options in
+            options.cell?.configureSeparators(with: separatorsConfiguration)
         }
 
-        action.id = configureSeparatorActionId
+        action.id = Self.configureSeparatorsActionId
         on(action)
     }
 }
 
-public extension TableRow where CellType: SeparatorConfigurable {
+public extension TableRow where CellType: SeparatorsConfigurable {
 
     /// TableRow typed as SeparatorRowBox
     var separatorRowBox: SeparatorRowBox {

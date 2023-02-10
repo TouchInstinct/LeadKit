@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2023 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,22 +20,31 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
-import TISwiftUtils
-import TIUIElements
+import UIKit
 
-/// Class that used to configure separators when multiply cells presented in one section
-public final class SeparatorRowBox {
-    private let setSeparatorHandler: ParameterClosure<SeparatorsConfiguration>
+public final class ContainerView<View: UIView>: BaseInitializableView, WrappedViewHolder {
 
-    public func set(separatorType: SeparatorsConfiguration) {
-        setSeparatorHandler(separatorType)
+    public var wrappedView = View()
+
+    public var contentInsets: UIEdgeInsets = .zero {
+        didSet {
+            contentEdgeConstraints?.update(from: contentInsets)
+        }
     }
 
-    public let row: Row
+    private var contentEdgeConstraints: EdgeConstraints?
 
-    public init<T>(row: TableRow<T>) where T: SeparatorsConfigurable {
-        self.row = row
-        setSeparatorHandler = row.configureSeparators(with:)
+    // MARK: - InitializableView
+
+    public override func addViews() {
+        super.addViews()
+
+        addSubview(wrappedView)
+    }
+
+    public override func configureLayout() {
+        super.configureLayout()
+
+        contentEdgeConstraints = configureWrappedViewLayout()
     }
 }
