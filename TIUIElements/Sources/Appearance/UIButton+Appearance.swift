@@ -23,12 +23,31 @@
 import TIUIKitCore
 import UIKit
 
-extension UILabel {
-    public func configureUILabel(appearance: BaseAppearance<some ViewLayout>) {
-        appearance.textAttributes?
-            .configure(label: self,
-                       with: attributedText?.string ?? text)
+extension UIButton {
+    open class BaseAppearance<Layout: ViewLayout>: UIView.BaseAppearance<Layout> {
 
-        super.configureUIView(appearance: appearance)
+        public var textAttributes: BaseTextAttributes?
+
+        public init(layout: Layout = .defaultLayout,
+                    backgroundColor: UIColor = .clear,
+                    roundedCorners: CACornerMask = [],
+                    cornerRadius: CGFloat = .zero,
+                    shadow: UIViewShadow? = nil,
+                    textAttributes: BaseTextAttributes? = nil) {
+
+            self.textAttributes = textAttributes
+
+            super.init(layout: layout,
+                       backgroundColor: backgroundColor,
+                       roundedCorners: roundedCorners,
+                       cornerRadius: cornerRadius,
+                       shadow: shadow)
+        }
+    }
+
+    public final class DefaultAppearance: BaseAppearance<UIView.DefaultWrappedLayout>, WrappedViewAppearance {
+        public static var defaultAppearance: DefaultAppearance {
+            DefaultAppearance()
+        }
     }
 }

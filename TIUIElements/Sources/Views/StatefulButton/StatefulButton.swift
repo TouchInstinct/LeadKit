@@ -24,7 +24,7 @@ import TISwiftUtils
 import TIUIKitCore
 import UIKit
 
-open class StatefulButton: UIButton {
+open class StatefulButton<ButtonLayout: ViewLayout>: UIButton {
 
     public enum ActivityIndicatorPosition {
         case center
@@ -42,6 +42,7 @@ open class StatefulButton: UIButton {
         }
     }
 
+    public typealias StateAppearance = [State: UIButton.BaseAppearance<ButtonLayout>]
     public typealias StateEventPropagations = [State: Bool]
 
     private var activityIndicator: ActivityIndicator? {
@@ -73,24 +74,22 @@ open class StatefulButton: UIButton {
 
     // MARK: - Background
 
-    private var backgroundColors: StateColors = [:] {
+    private var stateAppearance: StateAppearance = [:] {
         didSet {
-            updateBackgroundColor()
+            updateAppearance()
         }
     }
 
-    public func set(backgroundColors: StateColors) {
-        backgroundColors.forEach { setBackgroundColor($1, for: $0) }
+    public func set(appearance: StateAppearance) {
+        appearance.forEach { setAppearance($1, for: $0) }
     }
 
-    public func setBackgroundColor(_ color: UIColor?, for state: State) {
-        backgroundColors[state] = color
+    public func setAppearance(_ appearance: UIButton.BaseAppearance<ButtonLayout>?, for state: State) {
+        stateAppearance[state] = appearance
     }
 
-    public func backgroundColor(for state: State) -> UIColor? {
-        // Value of optional type 'UIColor??' must be unwrapped to a value of type 'UIColor?'
-        // 🤷 Swift 5.3 (Xcode 12.2)
-        backgroundColors[state] ?? nil //swiftlint:disable:this redundant_nil_coalescing
+    public func appearance(for state: State) -> UIButton.BaseAppearance<ButtonLayout>? {
+        stateAppearance[state]
     }
 
     public func setEventPropagation(_ eventPropagation: Bool, for state: State) {
@@ -101,19 +100,19 @@ open class StatefulButton: UIButton {
 
     override open var isEnabled: Bool {
         didSet {
-            updateBackgroundColor()
+            updateAppearance()
         }
     }
 
     override open var isHighlighted: Bool {
         didSet {
-            updateBackgroundColor()
+            updateAppearance()
         }
     }
 
     open override var isSelected: Bool {
         didSet {
-            updateBackgroundColor()
+            updateAppearance()
         }
     }
 
@@ -207,23 +206,24 @@ open class StatefulButton: UIButton {
         }
     }
 
-    private func updateBackgroundColor() {
+    private func updateAppearance() {
         if isEnabled {
             if isHighlighted {
-                updateBackgroundColor(to: .highlighted)
+                updateAppearance(to: .highlighted)
             } else {
-                updateBackgroundColor(to: .normal)
+                updateAppearance(to: .normal)
             }
         } else {
-            updateBackgroundColor(to: .disabled)
+            updateAppearance(to: .disabled)
         }
+
     }
 
-    private func updateBackgroundColor(to state: State) {
-        if let stateColor = backgroundColor(for: state) {
-            backgroundColor = stateColor
-        } else if state != .normal, let normalStateColor = backgroundColor(for: .normal) {
-            backgroundColor = normalStateColor
+    private func updateAppearance(to state: State) {
+        if let appearance = stateAppearance[state] {
+            configureUIButton(appearance: appearance)
+        } else if state != .normal, let appearance = stateAppearance[.normal] {
+            configureUIButton(appearance: appearance)
         }
     }
 }

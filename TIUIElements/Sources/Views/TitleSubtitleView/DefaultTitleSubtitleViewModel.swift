@@ -20,15 +20,18 @@
 //  THE SOFTWARE.
 //
 
-import TIUIKitCore
-import UIKit
+public final class DefaultTitleSubtitleViewModel {
+    public let title: String?
+    public let subtitle: String?
 
-extension UILabel {
-    public func configureUILabel(appearance: BaseAppearance<some ViewLayout>) {
-        appearance.textAttributes?
-            .configure(label: self,
-                       with: attributedText?.string ?? text)
+    public var isSubtitleHidden: Bool {
+        subtitle == nil
+    }
 
-        super.configureUIView(appearance: appearance)
+    public init(title: String? = nil,
+                subtitle: String? = nil) {
+
+        self.title = title
+        self.subtitle = subtitle
     }
 }

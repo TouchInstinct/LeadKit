@@ -20,9 +20,10 @@
 //  THE SOFTWARE.
 //
 
+import TIUIKitCore
 import UIKit
 
-open class RoundedStatefulButton: StatefulButton {
+open class RoundedStatefulButton<ButtonLayout: ViewLayout>: StatefulButton<ButtonLayout> {
 
     // UIView override
 

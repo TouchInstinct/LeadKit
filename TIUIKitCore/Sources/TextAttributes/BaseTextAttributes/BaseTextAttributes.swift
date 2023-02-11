@@ -152,7 +152,30 @@ open class BaseTextAttributes {
                   attributedTextConfiguration: { textView.attributedText = $0 })
     }
 
+    open func configure(button: UIButton, with string: String? = nil) {
+        if #available(iOS 15, *) {
+            var configuration = UIButton.Configuration.plain()
+
+            if let title = string {
+                configuration.attributedTitle = attributedString(for: title)
+                button.configuration = configuration
+            }
+        } else {
+            button.setTitle(string, for: .normal)
+            button.setTitleColor(color, for: .normal)
+
+            if let label = button.titleLabel {
+                configure(label: label)
+            }
+        }
+    }
+
     // MARK: - Attributed string manipulation
+
+    @available(iOS 15, *)
+    open func attributedString(for string: String) -> AttributedString {
+        AttributedString(attributedString(for: string))
+    }
 
     open func attributedString(for string: String) -> NSAttributedString {
         NSAttributedString(string: string, attributes: attributedStringAttributes)
