@@ -42,17 +42,17 @@ open class TIDeeplinksService<DeeplinkType: Hashable,
 
     // MARK: - Init
 
-    public init(operationQueue: OperationQueue = .main) {
+    public init(mapper: Mapper, handler: Handler, operationQueue: OperationQueue = .main) {
+        self.deeplinkMapper = mapper
+        self.deeplinkHandler = handler
         self.operationQueue = operationQueue
     }
 
     // MARK: - Open methods
 
-    open func configure(mapper: Mapper, handler: Handler) {
-        deeplinkMapper = mapper
-        deeplinkHandler = handler
-    }
-
+    /// Mapping the given url to deeplink model and appending it to the queue.
+    /// - Parameter url: URL to map into deeplink model
+    /// - Returns: true if a mapper mapped url to deeplink model successfully. Also returns false if `deeplinkMapper` is nil
     @discardableResult
     open func deferredHandle(url: URL) -> Bool {
         let deeplink = deeplinkMapper?.map(url: url)
@@ -72,23 +72,16 @@ open class TIDeeplinksService<DeeplinkType: Hashable,
         inProcessingSet.removeAll()
     }
 
-    open func tryHandle() {
-        guard !deeplinkQueue.isEmpty else {
-            return
-        }
-
-        handle()
-    }
-
-    open func handle() {
-        guard let deeplink = deeplinkQueue.first else {
+    open func handlePendingDeeplinks() {
+        guard let deeplink = deeplinkQueue.first,
+              let handler = deeplinkHandler else {
             return
         }
 
         deeplinkQueue.remove(at: .zero)
 
         guard !inProcessingSet.contains(deeplink),
-              let operation = deeplinkHandler?.handle(deeplink: deeplink) else {
+              let operation = handler.handle(deeplink: deeplink) else {
             return
         }
 
