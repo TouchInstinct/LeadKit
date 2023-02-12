@@ -67,17 +67,15 @@ public final class DefaultTitleSubtitleView: BaseInitializableView,
         titleLabel.text = viewModel.title
         subtitleLabel.text = viewModel.subtitle
 
-        if viewModel.isSubtitleHidden {
-            remakeConstraintsForOneTitle()
-        }
+        hideSubtitle(viewModel.isSubtitleHidden)
     }
 
     // MARK: - Public methods
 
-    public func remakeConstraintsForOneTitle() {
-        subtitleLabel.isHidden = true
-        spacingConstraint?.isActive = false
-        titleLableBottomConstraint?.isActive = true
+    public func hideSubtitle(_ isHidden: Bool) {
+        subtitleLabel.isHidden = isHidden
+        spacingConstraint?.isActive = !isHidden
+        titleLableBottomConstraint?.isActive = isHidden
     }
 }
 
