@@ -187,7 +187,7 @@ open class BaseListItemView<LeadingView: UIView,
         let leadingViewLeftInset: CGFloat
 
         if isLeadingViewHidden {
-            hideView(leadingViewConstraints)
+            NSLayoutConstraint.deactivate(leadingViewConstraints.compactMap { $0 })
             middleViewLeadingToSuperViewConstraint?.isActive = true
 
             leadingToSuperviewContraint = middleViewLeadingToSuperViewConstraint
@@ -204,10 +204,9 @@ open class BaseListItemView<LeadingView: UIView,
                                topConstraint: leadingViewTopConstraint,
                                bottomContraint: leadingViewBottomConstraint)
 
-            setupSize(width: leadingViewLayout.size.width,
-                      height: leadingViewLayout.size.height,
-                      widthConstraint: leadingViewWidthConstraint,
-                      heightConstraint: leadingViewHeightConstraint)
+            setup(size: leadingViewLayout.size,
+                  widthConstraint: leadingViewWidthConstraint,
+                  heightConstraint: leadingViewHeightConstraint)
 
             leadingToSuperviewContraint = leadingViewLeadingToSuperviewConstraint
             leadingViewLeftInset = leadingViewLayout.insets.left
@@ -224,10 +223,9 @@ open class BaseListItemView<LeadingView: UIView,
                            topConstraint: middleViewTopConstraint,
                            bottomContraint: middleViewBottomConstraint)
 
-        setupSize(width: middleViewLayout.size.width,
-                  height: middleViewLayout.size.height,
-                  widthConstraint: middleViewWidthConstraint,
-                  heightConstraint: middleViewHeightConstraint)
+        setup(size: middleViewLayout.size,
+              widthConstraint: middleViewWidthConstraint,
+              heightConstraint: middleViewHeightConstraint)
     }
 
     private func updateTrailingViewLayout(trailingViewLayout: WrappedViewLayout,
@@ -237,7 +235,7 @@ open class BaseListItemView<LeadingView: UIView,
         let trailingViewRightInset: CGFloat
 
         if isTrailingViewHidden {
-            hideView(trailingViewConstraints)
+            NSLayoutConstraint.deactivate(trailingViewConstraints.compactMap { $0 })
             middleViewTrailingToSuperViewConstraint?.isActive = true
 
             trailingToSuperviewConstraint = middleViewTrailingToSuperViewConstraint
@@ -253,20 +251,15 @@ open class BaseListItemView<LeadingView: UIView,
                                topConstraint: trailingViewTopConstraint,
                                bottomContraint: trailingViewBottomConstraint)
 
-            setupSize(width: trailingViewLayout.size.width,
-                      height: trailingViewLayout.size.height,
-                      widthConstraint: trailingViewWidthConstraint,
-                      heightConstraint: trailingViewWidthConstraint)
+            setup(size: trailingViewLayout.size,
+                  widthConstraint: trailingViewWidthConstraint,
+                  heightConstraint: trailingViewWidthConstraint)
 
             trailingToSuperviewConstraint = trailingViewTrailingToSuperviewConstraint
             trailingViewRightInset = trailingViewLayout.insets.right
         }
 
         trailingToSuperviewConstraint?.constant = -trailingViewRightInset
-    }
-
-    private func hideView(_ constraints: [NSLayoutConstraint?]) {
-        NSLayoutConstraint.deactivate(constraints.compactMap { $0 })
     }
 
     private func setupCenterYOffset(layout: WrappedViewLayout,
@@ -290,20 +283,19 @@ open class BaseListItemView<LeadingView: UIView,
         }
     }
 
-    private func setupSize(width: CGFloat,
-                           height: CGFloat,
-                           widthConstraint: NSLayoutConstraint?,
-                           heightConstraint: NSLayoutConstraint?) {
+    private func setup(size: CGSize,
+                       widthConstraint: NSLayoutConstraint?,
+                       heightConstraint: NSLayoutConstraint?) {
 
-        if width.isFinite {
-            widthConstraint?.constant = width
+        if size.width.isFinite {
+            widthConstraint?.constant = size.width
             widthConstraint?.isActive = true
         } else {
             widthConstraint?.isActive = false
         }
 
-        if height.isFinite {
-            heightConstraint?.constant = height
+        if size.height.isFinite {
+            heightConstraint?.constant = size.height
             heightConstraint?.isActive = true
         } else {
             heightConstraint?.isActive = false

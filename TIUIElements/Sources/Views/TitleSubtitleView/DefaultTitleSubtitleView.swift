@@ -24,7 +24,8 @@ import TIUIKitCore
 import UIKit
 
 public final class DefaultTitleSubtitleView: BaseInitializableView,
-                                             ConfigurableView {
+                                             ConfigurableView,
+                                             AppearanceConfigurable {
 
     private let titleLabel = UILabel()
     private let subtitleLabel = UILabel()
@@ -67,21 +68,19 @@ public final class DefaultTitleSubtitleView: BaseInitializableView,
         titleLabel.text = viewModel.title
         subtitleLabel.text = viewModel.subtitle
 
-        hideSubtitle(viewModel.isSubtitleHidden)
+        setSubtitle(hidden: viewModel.isSubtitleHidden)
     }
 
     // MARK: - Public methods
 
-    public func hideSubtitle(_ isHidden: Bool) {
-        subtitleLabel.isHidden = isHidden
-        spacingConstraint?.isActive = !isHidden
-        titleLableBottomConstraint?.isActive = isHidden
+    public func setSubtitle(hidden: Bool) {
+        subtitleLabel.isHidden = hidden
+        spacingConstraint?.isActive = !hidden
+        titleLableBottomConstraint?.isActive = hidden
     }
-}
 
-// MARK: - AppearanceConfigurable
+    // MARK: - AppearanceConfigurable
 
-extension DefaultTitleSubtitleView: AppearanceConfigurable {
     public func configure(appearance: Appearance) {
         configureUIView(appearance: appearance)
         titleLabel.configureUILabel(appearance: appearance.titleAppearance)

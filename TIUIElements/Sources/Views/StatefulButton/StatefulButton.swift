@@ -24,7 +24,7 @@ import TISwiftUtils
 import TIUIKitCore
 import UIKit
 
-open class StatefulButton<ButtonLayout: ViewLayout>: UIButton {
+open class StatefulButton: UIButton {
 
     public enum ActivityIndicatorPosition {
         case center
@@ -42,7 +42,8 @@ open class StatefulButton<ButtonLayout: ViewLayout>: UIButton {
         }
     }
 
-    public typealias StateAppearance = [State: UIButton.BaseAppearance<ButtonLayout>]
+    public typealias Appearance = UILabel.BaseAppearance<UIView.DefaultWrappedLayout>
+    public typealias StateAppearance = [State: Appearance]
     public typealias StateEventPropagations = [State: Bool]
 
     private var activityIndicator: ActivityIndicator? {
@@ -84,11 +85,11 @@ open class StatefulButton<ButtonLayout: ViewLayout>: UIButton {
         appearance.forEach { setAppearance($1, for: $0) }
     }
 
-    public func setAppearance(_ appearance: UIButton.BaseAppearance<ButtonLayout>?, for state: State) {
+    public func setAppearance(_ appearance: Appearance, for state: State) {
         stateAppearance[state] = appearance
     }
 
-    public func appearance(for state: State) -> UIButton.BaseAppearance<ButtonLayout>? {
+    public func appearance(for state: State) -> Appearance? {
         stateAppearance[state]
     }
 

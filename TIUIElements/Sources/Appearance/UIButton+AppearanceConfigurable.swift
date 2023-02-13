@@ -24,7 +24,7 @@ import TIUIKitCore
 import UIKit
 
 extension UIButton {
-    public func configureUIButton(appearance: BaseAppearance<some ViewLayout>) {
+    public func configureUIButton(appearance: UILabel.BaseAppearance<some ViewLayout>) {
         appearance.textAttributes?
             .configure(button: self,
                        with: titleLabel?.attributedText?.string ?? titleLabel?.text)
