@@ -23,31 +23,50 @@
 import TIUIKitCore
 import UIKit
 
-extension UILabel {
-    open class BaseAppearance<Layout: ViewLayout>: UIView.BaseAppearance<Layout> {
+extension DefaultTitleSubtitleView {
+    public final class Layout: UIView.BaseWrappedLayout, WrappedViewLayout {
 
-        public var textAttributes: BaseTextAttributes?
+        public static var defaultLayout: Layout {
+            Self()
+        }
+
+        public var spacing: CGFloat
+
+        public init(insets: UIEdgeInsets = .zero,
+                    centerOffset: UIOffset = .zero,
+                    spacing: CGFloat = .zero) {
+
+            self.spacing = spacing
+
+            super.init(insets: insets, centerOffset: centerOffset)
+        }
+    }
+
+    public final class Appearance: UIView.BaseAppearance<Layout>, WrappedViewAppearance {
+
+        public static var defaultAppearance: Appearance {
+            Self()
+        }
+
+        public var titleAppearance: UILabel.DefaultAppearance
+        public var subtitleAppearance: UILabel.DefaultAppearance
 
         public init(layout: Layout = .defaultLayout,
                     backgroundColor: UIColor = .clear,
                     roundedCorners: CACornerMask = [],
                     cornerRadius: CGFloat = .zero,
                     shadow: UIViewShadow? = nil,
-                    textAttributes: BaseTextAttributes? = nil) {
+                    titleAppearance: UILabel.DefaultAppearance = .defaultAppearance,
+                    subtitleAppearance: UILabel.DefaultAppearance = .defaultAppearance) {
 
-            self.textAttributes = textAttributes
+            self.titleAppearance = titleAppearance
+            self.subtitleAppearance = subtitleAppearance
 
             super.init(layout: layout,
                        backgroundColor: backgroundColor,
                        roundedCorners: roundedCorners,
                        cornerRadius: cornerRadius,
                        shadow: shadow)
-        }
-    }
-
-    public final class DefaultAppearance: BaseAppearance<UIView.DefaultWrappedLayout>, WrappedViewAppearance {
-        public static var defaultAppearance: DefaultAppearance {
-            DefaultAppearance()
         }
     }
 }

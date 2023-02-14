@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.34.0
+
+- **Added**: `BaseListItemView` for displaying three views horizontally
+- **Added**: `DefaultTitleSubtitleView` for displaying one or two labels vertically
+- **Update**: `StatefulButton` now can be configured with `ViewAppearance` model for each state
+
 ### 1.33.0
 
 - **Added**: `ViewAppearance` and `ViewLayout` models for setting up Views' appearance and layout

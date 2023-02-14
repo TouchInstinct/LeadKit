@@ -23,11 +23,11 @@
 import TIUIKitCore
 import UIKit
 
-extension UILabel {
-    public func configureUILabel(appearance: BaseAppearance<some ViewLayout>) {
+extension UIButton {
+    public func configureUIButton(appearance: UILabel.BaseAppearance<some ViewLayout>) {
         appearance.textAttributes?
-            .configure(label: self,
-                       with: attributedText?.string ?? text)
+            .configure(button: self,
+                       with: titleLabel?.attributedText?.string ?? titleLabel?.text)
 
         super.configureUIView(appearance: appearance)
     }

@@ -20,6 +20,7 @@
 //  THE SOFTWARE.
 //
 
+import TIUIKitCore
 import UIKit
 
 open class RoundedStatefulButton: StatefulButton {
