@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TILogging'
-  s.version          = '1.34.1'
+  s.version          = '1.35.0'
   s.summary          = 'Logging API'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }

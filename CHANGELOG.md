@@ -4,6 +4,7 @@
 
 - **Added**: `TIDeveloperUtils` framework, that contains different utils for development
 - **Added**: `UIView` and `UIViewController` extensions for showing SwiftUI previews
+- **Added**: `DashedBoundsLayer` for debugging views' frames visually
 
 ### 1.34.0
 

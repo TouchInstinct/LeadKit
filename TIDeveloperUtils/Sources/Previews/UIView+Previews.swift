@@ -24,7 +24,7 @@ import SwiftUI
 import UIKit
 
 @available(iOS 13, *)
-extension UIView {
+public extension UIView {
     private struct Preview: UIViewRepresentable {
         let view: UIView
 

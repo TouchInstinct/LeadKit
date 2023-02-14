@@ -24,7 +24,7 @@ import UIKit
 import SwiftUI
 
 @available(iOS 13, *)
-extension UIViewController {
+public extension UIViewController {
 
     private struct Preview: UIViewControllerRepresentable {
         let viewController: UIViewController
