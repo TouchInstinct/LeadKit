@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2023 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -22,7 +22,8 @@
 
 import UIKit
 
-open class BaseSeparatorCell: BaseInitializableCell, SeparatorConfigurable {
+open class ContainerSeparatorTableViewCell<View: UIView>: ContainerTableViewCell<View>, SeparatorsConfigurable {
+
     private lazy var topSeparatorView = createTopSeparator()
     private lazy var bottomSeparatorView = createBottomSeparator()
 
@@ -52,23 +53,25 @@ open class BaseSeparatorCell: BaseInitializableCell, SeparatorConfigurable {
         contentView.addSubview(bottomSeparatorView)
     }
 
-    public func configureSeparators(with separatorType: ViewSeparatorType) {
-        topSeparatorView.isHidden = separatorType.topIsHidden
-        bottomSeparatorView.isHidden = separatorType.bottomIsHidden
+    // MARK: - SeparatorsConfigurable
 
-        switch separatorType {
+    public func configureSeparators(with separatorsConfiguration: SeparatorsConfiguration) {
+        topSeparatorView.isHidden = separatorsConfiguration.topIsHidden
+        bottomSeparatorView.isHidden = separatorsConfiguration.bottomIsHidden
+
+        switch separatorsConfiguration {
         case .none:
             break
 
-        case let .bottom(configuration):
-            updateBottomSeparator(with: configuration)
+        case let .bottom(appearance):
+            updateBottomSeparator(with: appearance)
 
-        case let .top(configuration):
-            updateTopSeparator(with: configuration)
+        case let .top(appearance):
+            updateTopSeparator(with: appearance)
 
-        case let .full(topConfiguration, bottomConfiguration):
-            updateTopSeparator(with: topConfiguration)
-            updateBottomSeparator(with: bottomConfiguration)
+        case let .full(topAppearance, bottomAppearance):
+            updateTopSeparator(with: topAppearance)
+            updateBottomSeparator(with: bottomAppearance)
         }
     }
 
@@ -127,26 +130,26 @@ open class BaseSeparatorCell: BaseInitializableCell, SeparatorConfigurable {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
     }
-}
 
-private extension BaseSeparatorCell {
-    func updateTopSeparator(with configuration: SeparatorConfiguration) {
-        topSeparatorView.backgroundColor = configuration.color
+    // MARK: - Private
 
-        topViewHeightConstraint?.constant = configuration.height
+    private func updateTopSeparator(with appearance: SeparatorAppearance) {
+        topSeparatorView.configureUIView(appearance: appearance)
 
-        topViewTopConstraint?.constant = configuration.insets.top
-        topViewLeftConstraint?.constant = configuration.insets.left
-        topViewRightConstraint?.constant = configuration.insets.right
+        topViewHeightConstraint?.constant = appearance.layout.size.height
+
+        topViewTopConstraint?.constant = appearance.layout.insets.top
+        topViewLeftConstraint?.constant = appearance.layout.insets.left
+        topViewRightConstraint?.constant = appearance.layout.insets.right
     }
 
-    func updateBottomSeparator(with configuration: SeparatorConfiguration) {
-        bottomSeparatorView.backgroundColor = configuration.color
+    private func updateBottomSeparator(with appearance: SeparatorAppearance) {
+        bottomSeparatorView.configureUIView(appearance: appearance)
 
-        bottomViewHeightConstraint?.constant = configuration.height
+        bottomViewHeightConstraint?.constant = appearance.layout.size.height
 
-        bottomViewBottomConstraint?.constant = configuration.insets.bottom
-        bottomViewLeftConstraint?.constant = configuration.insets.left
-        bottomViewRightConstraint?.constant = configuration.insets.right
+        bottomViewBottomConstraint?.constant = appearance.layout.insets.bottom
+        bottomViewLeftConstraint?.constant = appearance.layout.insets.left
+        bottomViewRightConstraint?.constant = appearance.layout.insets.right
     }
 }

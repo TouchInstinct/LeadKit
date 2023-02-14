@@ -20,22 +20,14 @@
 //  THE SOFTWARE.
 //
 
-public enum ViewSeparatorType {
-
-    /// All separators for view is hidden
+public enum SeparatorsConfiguration {
     case none
-
-    /// Show only top separator
-    case top(SeparatorConfiguration)
-
-    /// Show only bottom separator
-    case bottom(SeparatorConfiguration)
-
-    /// First configuration for top, second for bottom
-    case full(SeparatorConfiguration, SeparatorConfiguration)
+    case top(SeparatorAppearance)
+    case bottom(SeparatorAppearance)
+    case full(top: SeparatorAppearance, bottom: SeparatorAppearance)
 }
 
-public extension ViewSeparatorType {
+public extension SeparatorsConfiguration {
 
     /// Determine if bottom separator is hidden.
     var bottomIsHidden: Bool {
@@ -48,7 +40,7 @@ public extension ViewSeparatorType {
     }
 
     /// Returns top configuration if type is top or full.
-    var topConfiguration: SeparatorConfiguration? {
+    var topConfiguration: SeparatorAppearance? {
         switch self {
         case let .top(configuration), let .full(configuration, _):
             return configuration
@@ -59,7 +51,7 @@ public extension ViewSeparatorType {
     }
 
     /// Returns bottom configuration if type is bottom or full.
-    var bottomConfiguration: SeparatorConfiguration? {
+    var bottomConfiguration: SeparatorAppearance? {
         switch self {
         case let .bottom(configuration), let .full(_, configuration):
             return configuration

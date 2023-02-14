@@ -4,6 +4,9 @@
 
 - **Added**: `ViewAppearance` and `ViewLayout` models for setting up Views' appearance and layout
 - **Added**: `TableKit.Row` extension for configuration inner View's appearance and layout
+- **Added**: `WrappableView` with typealiases for creating wrapped in the container views
+- **Added**: `CollectionTableViewCell` and `ContainerView`
+- **Update**: Separator appearance configureation for table views
 
 ### 1.32.0
 

@@ -20,6 +20,6 @@
 //  THE SOFTWARE.
 //
 
-public protocol SeparatorConfigurable {
-    func configureSeparators(with separatorType: ViewSeparatorType)
+public protocol SeparatorsConfigurable {
+    func configureSeparators(with separatorsConfiguration: SeparatorsConfiguration)
 }

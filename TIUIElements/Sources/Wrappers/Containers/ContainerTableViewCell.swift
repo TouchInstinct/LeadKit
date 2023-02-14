@@ -53,4 +53,22 @@ open class ContainerTableViewCell<View: UIView>: BaseInitializableCell, WrappedV
     open func createView() -> View {
         return View()
     }
+
+    // MARK: - Open methods
+
+    public func configureContainerTableViewCell(appearance: BaseWrappedViewHolderAppearance<some WrappedViewAppearance, some ViewLayout>) {
+        contentInsets = appearance.subviewAppearance.layout.insets
+        configureUIView(appearance: appearance)
+    }
+}
+
+// MARK: - AppearanceConfigurable
+
+extension ContainerTableViewCell: AppearanceConfigurable where View: AppearanceConfigurable,
+                                                               View.Appearance: WrappedViewAppearance {
+
+    public func configure(appearance: DefaultWrappedViewHolderAppearance<View.Appearance, UIView.NoLayout>) {
+        configureContainerTableViewCell(appearance: appearance)
+        wrappedView.configure(appearance: appearance.subviewAppearance)
+    }
 }
