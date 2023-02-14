@@ -87,3 +87,14 @@ public extension UIView {
         }
     }
 }
+
+// MARK: - UIViewController + DashedBoundsLayer
+
+public extension UIViewController {
+
+    @discardableResult
+    func debugBoundsVisually(debugSubviews: Bool = true) -> UIViewController {
+        view.debugBoundsVisually(debugSubviews: debugSubviews)
+        return self
+    }
+}

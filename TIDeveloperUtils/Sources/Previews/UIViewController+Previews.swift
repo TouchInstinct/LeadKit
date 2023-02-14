@@ -20,8 +20,8 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
 import SwiftUI
+import UIKit
 
 @available(iOS 13, *)
 public extension UIViewController {
