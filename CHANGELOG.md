@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.34.1
+
+- **Added**: `TIDeveloperUtils` framework, that contains different utils for development
+- **Added**: `UIView` and `UIViewController` extensions for showing SwiftUI previews
+
 ### 1.34.0
 
 - **Added**: `BaseListItemView` for displaying three views horizontally
