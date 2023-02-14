@@ -8,6 +8,7 @@ cd "$DIR"
 ORDERED_PODSPECS="../TISwiftUtils/TISwiftUtils.podspec
 ../TIPagination/TIPagination.podspec
 ../TIFoundationUtils/TIFoundationUtils.podspec
+../TIDeeplink/TIDeeplink.podspec
 ../TIKeychainUtils/TIKeychainUtils.podspec
 ../TIUIKitCore/TIUIKitCore.podspec
 ../TISwiftUICore/TISwiftUICore.podspec

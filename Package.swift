@@ -22,6 +22,7 @@ let package = Package(
     .library(name: "TIKeychainUtils", targets: ["TIKeychainUtils"]),
     .library(name: "TITableKitUtils", targets: ["TITableKitUtils"]),
     .library(name: "TILogging", targets: ["TILogging"]),
+    .library(name: "TIDeeplink", targets: ["TIDeeplink"]),
 
     // MARK: - Networking
 
@@ -33,7 +34,7 @@ let package = Package(
 
     .library(name: "TIMapUtils", targets: ["TIMapUtils"]),
     .library(name: "TIAppleMapUtils", targets: ["TIAppleMapUtils"]),
-    
+
     // MARK: - Elements
     .library(name: "OTPSwiftView", targets: ["OTPSwiftView"]),
     .library(name: "TITransitions", targets: ["TITransitions"]),
@@ -67,6 +68,7 @@ let package = Package(
     .target(name: "TIKeychainUtils", dependencies: ["TIFoundationUtils", "KeychainAccess"], path: "TIKeychainUtils/Sources"),
     .target(name: "TITableKitUtils", dependencies: ["TIUIElements", "TableKit"], path: "TITableKitUtils/Sources"),
     .target(name: "TILogging", dependencies: ["TIUIElements", "TISwiftUtils", "TIUIKitCore"], path: "TILogging/Sources"),
+    .target(name: "TIDeeplink", dependencies: ["TIFoundationUtils"], path: "TIDeeplink/Sources"),
 
     // MARK: - Networking
     .target(name: "TINetworking", dependencies: ["TIFoundationUtils", "Alamofire"], path: "TINetworking/Sources"),
@@ -76,7 +78,7 @@ let package = Package(
     // MARK: - Maps
     .target(name: "TIMapUtils", dependencies: [], path: "TIMapUtils/Sources"),
     .target(name: "TIAppleMapUtils", dependencies: ["TIMapUtils"], path: "TIAppleMapUtils/Sources"),
-    
+
     // MARK: - Elements
     .target(name: "OTPSwiftView", dependencies: ["TIUIElements"], path: "OTPSwiftView/Sources"),
     .target(name: "TITransitions", path: "TITransitions/Sources"),
