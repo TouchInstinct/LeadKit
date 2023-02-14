@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2023 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,17 +20,15 @@
 //  THE SOFTWARE.
 //
 
+import TIUIKitCore
 import UIKit
 
-public struct SeparatorConfiguration {
+extension UILabel {
+    public func configureUILabel<L: ViewLayout>(appearance: BaseAppearance<L>) {
+        appearance.textAttributes?
+            .configure(label: self,
+                       with: attributedText?.string ?? text)
 
-    public let color: UIColor
-    public let insets: UIEdgeInsets
-    public let height: CGFloat
-
-    public init(color: UIColor, insets: UIEdgeInsets = .zero, height: CGFloat = 1) {
-        self.color = color
-        self.insets = insets
-        self.height = height
+        super.configureUIView(appearance: appearance)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2023 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,22 +20,33 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
-import TISwiftUtils
-import TIUIElements
+import TIUIKitCore
+import UIKit
 
-/// Class that used to configure separators when multiply cells presented in one section
-public final class SeparatorRowBox {
-    private let setSeparatorHandler: ParameterClosure<SeparatorsConfiguration>
+extension UILabel {
+    open class BaseAppearance<Layout: ViewLayout>: UIView.BaseAppearance<Layout> {
+        public var textAttributes: BaseTextAttributes?
 
-    public func set(separatorType: SeparatorsConfiguration) {
-        setSeparatorHandler(separatorType)
+        public init(layout: Layout = .defaultLayout,
+                    backgroundColor: UIColor = .clear,
+                    roundedCorners: CACornerMask = [],
+                    cornerRadius: CGFloat = .zero,
+                    shadow: UIViewShadow? = nil,
+                    textAttributes: BaseTextAttributes? = nil) {
+
+            self.textAttributes = textAttributes
+
+            super.init(layout: layout,
+                       backgroundColor: backgroundColor,
+                       roundedCorners: roundedCorners,
+                       cornerRadius: cornerRadius,
+                       shadow: shadow)
+        }
     }
 
-    public let row: Row
-
-    public init<T>(row: TableRow<T>) where T: SeparatorsConfigurable {
-        self.row = row
-        setSeparatorHandler = row.configureSeparators(with:)
+    public final class DefaultAppearance: BaseAppearance<UIView.DefaultWrappedLayout>, WrappedViewAppearance {
+        public static var defaultAppearance: DefaultAppearance {
+            DefaultAppearance()
+        }
     }
 }

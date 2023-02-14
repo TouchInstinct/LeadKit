@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Touch Instinct
+//  Copyright (c) 2023 Touch Instinct
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the Software), to deal
@@ -20,22 +20,19 @@
 //  THE SOFTWARE.
 //
 
-import TableKit
-import TISwiftUtils
-import TIUIElements
+import CoreGraphics.CGBase
 
-/// Class that used to configure separators when multiply cells presented in one section
-public final class SeparatorRowBox {
-    private let setSeparatorHandler: ParameterClosure<SeparatorsConfiguration>
-
-    public func set(separatorType: SeparatorsConfiguration) {
-        setSeparatorHandler(separatorType)
+public extension CGSize {
+    static var infinity: Self {
+        Self(width: CGFloat.infinity, height: CGFloat.infinity)
     }
 
-    public let row: Row
+    static func fixedWidth(_ width: CGFloat) -> Self {
+        Self(width: width, height: CGFloat.infinity)
+    }
 
-    public init<T>(row: TableRow<T>) where T: SeparatorsConfigurable {
-        self.row = row
-        setSeparatorHandler = row.configureSeparators(with:)
+    static func fixedHeight(_ height: CGFloat) -> Self {
+        Self(width: CGFloat.infinity, height: height)
     }
 }
+

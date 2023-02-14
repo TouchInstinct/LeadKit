@@ -31,23 +31,23 @@ public extension Array where Element == SeparatorRowBox {
     }
 
     /// Configure separators from SeparatorRowBox array
-    /// - parameter extreme: Configuration that will be used for extreme values, for first or last row
-    /// - parameter middle: Configuration for intermediate rows
-    func configureSeparators(extreme extremeSeparatorConfiguration: SeparatorConfiguration,
-                             middle middleSeparatorConfiguration: SeparatorConfiguration) {
+    /// - parameter extreme: Appearance that will be used for extreme values, for first or last row
+    /// - parameter middle: Apearance for intermediate rows
+    func configureSeparators(extreme extremeSeparatorsAppearance: SeparatorAppearance,
+                             middle middleSeparatorsAppearance: SeparatorAppearance) {
 
-        configureSeparators(first: extremeSeparatorConfiguration,
-                            middle: middleSeparatorConfiguration,
-                            last: extremeSeparatorConfiguration)
+        configureSeparators(first: extremeSeparatorsAppearance,
+                            middle: middleSeparatorsAppearance,
+                            last: extremeSeparatorsAppearance)
     }
 
     /// Configure separators from SeparatorRowBox array
-    /// - parameter first: Configuration of the top separator of the first row
-    /// - parameter middle: Configuration of the separators between the rows
-    /// - parameter last: Configuration of the bottom separator of the last row
-    func configureSeparators(first firstSeparatorConfiguration: SeparatorConfiguration,
-                             middle middleSeparatorConfiguration: SeparatorConfiguration,
-                             last lastSeparatorConfiguration: SeparatorConfiguration) {
+    /// - parameter first: Appearance of the top separator of the first row
+    /// - parameter middle: Appearance of the separators between the rows
+    /// - parameter last: Appearance of the bottom separator of the last row
+    func configureSeparators(first firstSeparatorsAppearance: SeparatorAppearance,
+                             middle middleSeparatorsAppearance: SeparatorAppearance,
+                             last lastSeparatorsAppearance: SeparatorAppearance) {
 
         if isEmpty {
             return
@@ -55,12 +55,12 @@ public extension Array where Element == SeparatorRowBox {
 
         switch count {
         case 1:
-            first?.set(separatorType: .full(firstSeparatorConfiguration, lastSeparatorConfiguration))
+            first?.set(separatorType: .full(top: firstSeparatorsAppearance, bottom: lastSeparatorsAppearance))
 
         default:
-            dropFirst().dropLast().forEach { $0.set(separatorType: .bottom(middleSeparatorConfiguration)) }
-            first?.set(separatorType: .full(firstSeparatorConfiguration, middleSeparatorConfiguration))
-            last?.set(separatorType: .bottom(lastSeparatorConfiguration))
+            dropFirst().dropLast().forEach { $0.set(separatorType: .bottom(middleSeparatorsAppearance)) }
+            first?.set(separatorType: .full(top: firstSeparatorsAppearance, bottom: middleSeparatorsAppearance))
+            last?.set(separatorType: .bottom(lastSeparatorsAppearance))
         }
     }
 }
