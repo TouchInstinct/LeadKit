@@ -20,8 +20,10 @@ This repository contains the following frameworks:
 - [TIYandexMapUtils](TIYandexMapUtils) - set of helpers for map objects clustering and interacting using Yandex Maps SDK.
 - [TIAuth](TIAuth) - login, registration, confirmation and other related actions
 
-Useful docs:
+Docs:
 
+- [TIFoundationUtils](docs/tifoundationutils)
+  * [AsyncOperation](docs/tifoundationutils/asyncoperation.md)
 - [Semantic Commit Messages](docs/semantic-commit-messages.md) - commit message codestyle.
 - [Snippets](docs/snippets.md) - useful commands and scripts for development.
 

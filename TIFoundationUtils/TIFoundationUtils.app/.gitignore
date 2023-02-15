@@ -1,0 +1,4 @@
+# gitignore nef files
+**/build/
+**/nef/
+LICENSE

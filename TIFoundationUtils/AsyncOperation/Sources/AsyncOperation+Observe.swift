@@ -25,15 +25,25 @@ import Foundation
 private final class ClosureObserverOperation<Output, Failure: Error>: DependendAsyncOperation<Output, Failure> {
     public typealias OnResultClosure = (Result<Output, Failure>) -> Void
 
+    private let onResult: OnResultClosure?
+    private let callbackQueue: DispatchQueue
+
     public init(dependency: AsyncOperation<Output, Failure>,
                 onResult: OnResultClosure? = nil,
                 callbackQueue: DispatchQueue = .main) {
 
-        super.init(dependency: dependency) { result in
-            callbackQueue.async {
-                onResult?(result)
-            }
-            return result
+        self.onResult = onResult
+        self.callbackQueue = callbackQueue
+
+        super.init(dependency: dependency) { $0 }
+    }
+
+    override func handle(result: Result<Output, Failure>) {
+        self.result = result
+
+        callbackQueue.async {
+            self.onResult?(result)
+            self.state = .isFinished
         }
     }
 }

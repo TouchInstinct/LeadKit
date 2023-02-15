@@ -1,15 +1,18 @@
 #!/bin/sh
 
-# Find source dir
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" 
+# Description:
+#   Updates version in podspecs
+#
+# Parameters:
+#   $1 - new version
+#
+# Required environment variables:
+#   SRCROOT - path to project folder.
+#
+# Examples of usage:
+#   . bump_version.sh 1.34.1
+#
 
-cd "$DIR"
-
-# Bump version
-find ../ -name '*.podspec' \
-	-not -path "../Carthage/*" \
-	-not -path "../*/Carthage/*" \
-	-not -path "../Pods/*" \
-	-not -path "../*/Pods/*" \
-	-not -path "../*/.gem/*" \
-	| xargs -I% npx podspec-bump -i "$1" -w -p %
+for module_name in $(cat ${SRCROOT}/project-scripts/ordered_modules_list.txt); do
+    npx podspec-bump -i $1 -w -p ${SRCROOT}/${module_name}/${module_name}.podspec
+done

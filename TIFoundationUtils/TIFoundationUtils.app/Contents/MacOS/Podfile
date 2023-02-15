@@ -1,0 +1,7 @@
+target 'TIFoundationUtils' do
+  platform :ios, 10.0
+  use_frameworks!
+
+  pod 'TISwiftUtils', :path => '../../../../TISwiftUtils/TISwiftUtils.podspec'
+  pod 'TIFoundationUtils', :path => '../../../../TIFoundationUtils/TIFoundationUtils.podspec'
+end
