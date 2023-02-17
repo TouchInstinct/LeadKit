@@ -20,7 +20,68 @@ This repository contains the following frameworks:
 - [TIYandexMapUtils](TIYandexMapUtils) - set of helpers for map objects clustering and interacting using Yandex Maps SDK.
 - [TIAuth](TIAuth) - login, registration, confirmation and other related actions
 
-Docs:
+## Playgrounds
+
+### Create new Playground
+
+```sh
+cd TIModuleName
+nef plaground --name TIModuleName --cocoapods --custom-podfile PlaygroundPodfile
+```
+See example of `PlaygroundPodfile` in `TIFoundationUtils`
+
+
+### Rename/add pages to Playground
+
+For every new feature in module create new Playground page with documentation in comments. See [nef markdown documentation](https://github.com/bow-swift/nef#-generating-a-markdown-project).
+
+### Create symlink to nef playground
+
+```sh
+cd TIModuleName
+ln -s TIModuleName.app/Contents/MacOS/TIModuleName.playground TIModuleName.playground
+```
+
+### Add nef files to TIModuleName.app/.gitignore
+
+```
+# gitignore nef files
+**/build/
+**/nef/
+LICENSE
+```
+
+### Add new playground to pre release script
+
+`project-scripts/gen_docs_from_playgrounds.sh`:
+
+```sh
+PLAYGROUNDS="${SRCROOT}/TIFoundationUtils/TIFoundationUtils.app
+${SRCROOT}/TIModuleName/TIModuleName.app"
+```
+
+### Exclude .app bundles from package sources
+
+#### SPM
+
+```swift
+.target(name: "TIModuleName", dependencies: ..., path: ..., exclude: ["TIModuleName.app"]),
+```
+
+#### Podspec
+
+```ruby
+  sources = 'your_sources_expression'
+  if File.basename(Dir.getwd) == s.name # installing using :path =>
+    s.source_files = sources
+    s.exclude_files = s.name + '.app'
+  else
+    s.source_files = s.name + '/' + sources
+    s.exclude_files = s.name + '/*.app'
+  end
+```
+
+## Docs:
 
 - [TIFoundationUtils](docs/tifoundationutils)
   * [AsyncOperation](docs/tifoundationutils/asyncoperation.md)
