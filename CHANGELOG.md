@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.35.1
+
+- **Added**: Auto documentation generation for `TIFoundationUtils` playground and compile checks for playground before release
+- **Updated**: `AsyncOperation` fixed ordering of chain operations execution
+
 ### 1.35.0
 
 - **Added**: `TIDeveloperUtils` framework, that contains different utils for development

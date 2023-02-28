@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TISwiftUtils'
-  s.version          = '1.35.0'
+  s.version          = '1.35.1'
   s.summary          = 'Bunch of useful helpers for Swift development.'
   s.homepage         = 'https://github.com/TouchInstinct/LeadKit/tree/' + s.version.to_s + '/' + s.name
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -10,5 +10,12 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
   s.swift_versions = ['5.3']
 
-  s.source_files = s.name + '/Sources/**/*'
+  sources = 'Sources/**/*'
+  if File.basename(Dir.getwd) == s.name # installing using :path =>
+    s.source_files = sources
+    s.exclude_files = s.name + '.app'
+  else
+    s.source_files = s.name + '/' + sources
+    s.exclude_files = s.name + '/*.app'
+  end
 end

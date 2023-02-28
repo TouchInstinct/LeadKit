@@ -24,22 +24,26 @@ import Foundation
 
 open class DependendAsyncOperation<Output, Failure: Error>: AsyncOperation<Output, Failure> {
     public var dependencyObservation: NSKeyValueObservation?
+    private let dependency: Operation
 
     public init<DependencyOutput, DependencyFailure: Error>(dependency: AsyncOperation<DependencyOutput, DependencyFailure>,
                                                             resultObservation: @escaping (Result<DependencyOutput, DependencyFailure>) -> Result<Output, Failure>) {
+        self.dependency = dependency
 
         super.init()
 
-        cancelOnCancellation(of: dependency)
+        dependency.cancelOnCancellation(of: self)
 
         dependencyObservation = dependency.subscribe { [weak self] in
-            self?.result = resultObservation($0)
-            self?.state = .isReady
+            self?.handle(result: resultObservation($0))
         }
 
-        addDependency(dependency) // keeps strong reference to dependency as well
-
-        state = nil // prevent start of current operation if result is not yet provided by dependency
+        state = .isReady
     }
 
+    open override func start() {
+        state = .isExecuting
+
+        dependency.start()
+    }
 }

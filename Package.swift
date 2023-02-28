@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.7
 import PackageDescription
 
 let package = Package(
@@ -64,7 +64,7 @@ let package = Package(
     
     // MARK: - Utils
     .target(name: "TISwiftUtils", path: "TISwiftUtils/Sources"),
-    .target(name: "TIFoundationUtils", dependencies: ["TISwiftUtils"], path: "TIFoundationUtils"),
+    .target(name: "TIFoundationUtils", dependencies: ["TISwiftUtils"], path: "TIFoundationUtils", exclude: ["TIFoundationUtils.app"]),
     .target(name: "TIKeychainUtils", dependencies: ["TIFoundationUtils", "KeychainAccess"], path: "TIKeychainUtils/Sources"),
     .target(name: "TITableKitUtils", dependencies: ["TIUIElements", "TableKit"], path: "TITableKitUtils/Sources"),
     .target(name: "TILogging", dependencies: ["TIUIElements", "TISwiftUtils", "TIUIKitCore"], path: "TILogging/Sources"),
