@@ -27,7 +27,7 @@ open class DirectionalSkeletonsAnimationConfiguration: BaseSkeletonsAnimationCon
     public var direction: SkeletonsAnimationDirection
 
     public init(direction: SkeletonsAnimationDirection = .leftToRight,
-                duration: CFTimeInterval = 1,
+                duration: CFTimeInterval = 1.5,
                 timingFunction: CAMediaTimingFunction? = nil) {
 
         self.direction = direction

@@ -100,11 +100,13 @@ open class SkeletonLayer: CAShapeLayer {
     }
 
     open func remove(from view: UIView) {
+        stopAnimation()
         removeFromSuperlayer()
+        viewBoundsObservation = nil
     }
 
     open func startAnimation() {
-        guard let animation = configuration.animation?() else {
+        guard let animation = configuration.animation?(self) else {
             return
         }
 
@@ -114,7 +116,7 @@ open class SkeletonLayer: CAShapeLayer {
 
     open func stopAnimation() {
         animationLayer.removeAllAnimations()
-        mask = nil
+        mask?.removeFromSuperlayer()
     }
 
     // MARK: - Private methods

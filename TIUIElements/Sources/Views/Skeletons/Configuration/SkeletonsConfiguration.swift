@@ -28,7 +28,7 @@ open class SkeletonsConfiguration {
     public var viewConfiguration: BaseViewSkeletonsConfiguration
     public var labelConfiguration: LabelSkeletonsConfiguration
     public var imageViewConfiguration: BaseViewSkeletonsConfiguration
-    public var animation: ResultClosure<CAAnimationGroup>?
+    public var animation: Closure<SkeletonLayer, CAAnimationGroup>?
 
     public var skeletonsBackgroundColor: CGColor
     public var skeletonsMovingColor: CGColor
@@ -36,7 +36,7 @@ open class SkeletonsConfiguration {
 
     public weak var configurationDelegate: SkeletonsConfigurationDelegate?
 
-    public var isContainersHidden: Bool {
+    open var isContainersHidden: Bool {
         borderWidth == .zero
     }
 
@@ -45,9 +45,8 @@ open class SkeletonsConfiguration {
     public init(viewConfiguration: BaseViewSkeletonsConfiguration = .init(),
                 labelConfiguration: LabelSkeletonsConfiguration = .init(),
                 imageViewConfiguration: BaseViewSkeletonsConfiguration = .init(),
-                animation: ResultClosure<CAAnimationGroup>? = nil,
+                animation: Closure<SkeletonLayer, CAAnimationGroup>? = nil,
                 skeletonsBackgroundColor: UIColor = .lightGray.withAlphaComponent(0.7),
-                skeletonsMovingColor: UIColor = .lightGray.withAlphaComponent(0.2),
                 borderWidth: CGFloat = .zero,
                 configurationDelegate: SkeletonsConfigurationDelegate? = nil) {
 
@@ -56,7 +55,7 @@ open class SkeletonsConfiguration {
         self.imageViewConfiguration = imageViewConfiguration
         self.animation = animation
         self.skeletonsBackgroundColor = skeletonsBackgroundColor.cgColor
-        self.skeletonsMovingColor = skeletonsMovingColor.cgColor
+        self.skeletonsMovingColor = skeletonsBackgroundColor.withAlphaComponent(0.2).cgColor
         self.borderWidth = borderWidth
         self.configurationDelegate = configurationDelegate
     }
