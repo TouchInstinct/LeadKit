@@ -10,8 +10,8 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
   s.swift_versions = ['5.3']
 
-  sources = 'Sources/**/*'
-  if File.basename(Dir.getwd) == s.name # installing using :path =>
+  sources = 'Sources/**/*.swift'
+  if ENV["DEVELOPMENT_INSTALL"] # installing using :path =>
     s.source_files = sources
     s.exclude_files = s.name + '.app'
   else
