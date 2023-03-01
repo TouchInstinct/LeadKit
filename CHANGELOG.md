@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.36.0
+
+- **Added**: API for converting view hierarchy to skeletons
+
 ### 1.35.1
 
 - **Added**: Auto documentation generation for `TIFoundationUtils` playground and compile checks for playground before release
