@@ -44,7 +44,7 @@ open class SkeletonsConfiguration {
 
     public init(viewConfiguration: BaseViewSkeletonsConfiguration = .init(),
                 labelConfiguration: LabelSkeletonsConfiguration = .init(),
-                imageViewConfiguration: BaseViewSkeletonsConfiguration = .init(),
+                imageViewConfiguration: BaseViewSkeletonsConfiguration = .init(shape: .circle),
                 animation: Closure<SkeletonLayer, CAAnimationGroup>? = nil,
                 skeletonsBackgroundColor: UIColor = .lightGray.withAlphaComponent(0.7),
                 borderWidth: CGFloat = .zero,
